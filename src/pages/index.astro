@@ -136,8 +136,8 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
       };
 
       const drawCoverFrame = (source) => {
-        const sourceWidth = source.displayWidth || source.width || image.naturalWidth || width;
-        const sourceHeight = source.displayHeight || source.height || image.naturalHeight || height;
+        const sourceWidth = source.naturalWidth || source.displayWidth || source.width || image.naturalWidth || width;
+        const sourceHeight = source.naturalHeight || source.displayHeight || source.height || image.naturalHeight || height;
         const sourceRatio = sourceWidth / sourceHeight;
         const targetRatio = width / height;
         let drawWidth = width;
@@ -248,7 +248,7 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
         if (time - lastFrameTime >= 1000 / SCREENTONE.fps) {
           lastFrameTime = time;
           try {
-            const frame = decodedFrames.length ? getFrameAt(time - animationStartedAt) : image;
+            const frame = getFrameAt(time - animationStartedAt);
             if (!frame) {
               setFallback();
               return;
@@ -272,13 +272,18 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
           decodedFrames = [];
         }
 
+        if (!decodedFrames.length) {
+          setFallback();
+          return;
+        }
+
         root.classList.remove("is-raw-fallback");
         canvas.hidden = false;
         if (placeholder instanceof HTMLElement) placeholder.hidden = true;
         cancelAnimationFrame(rafId);
         resize();
         animationStartedAt = performance.now();
-        renderScreentone(decodedFrames[0]?.bitmap || image);
+        renderScreentone(decodedFrames[0].bitmap);
         rafId = requestAnimationFrame(tick);
       };
 

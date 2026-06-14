@@ -304,6 +304,19 @@ main {
   filter: saturate(0) contrast(1.08);
 }
 
+.home-instrument.is-raw-fallback::after {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background:
+    radial-gradient(circle, rgba(23, 23, 23, 0.68) 0 0.9px, transparent 1.15px)
+    center / 3px 3px;
+  content: "";
+  mix-blend-mode: multiply;
+  opacity: 0.55;
+  pointer-events: none;
+}
+
 .home-instrument-canvas {
   z-index: 1;
   background: var(--bg);
