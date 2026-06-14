@@ -1,0 +1,224 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { artsGiftedEducationCertificate, education, experiences, profile, projects, type MediaItem } from "../data/cv";
+
+const experienceInitialCount = 4;
+const projectInitialCount = 4;
+
+const mediaItems = (items: MediaItem[] | undefined) => items?.filter((item) => item.src || item.href) ?? [];
+const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items).filter((item) => item.src);
+---
+
+<Layout title="CV" description="Minimal editable CV for mapsycoy.">
+  <div class="cv-page">
+    <section class="cv-profile" aria-label="Profile summary">
+      <div class="cv-profile-identity">
+        <div class="cv-profile-photo" aria-hidden={!profile.photo}>
+          {profile.photo && <img src={profile.photo} alt="" loading="lazy" onerror="this.hidden=true" />}
+        </div>
+      </div>
+      <div class="cv-profile-education" aria-label="Education">
+        <div class="cv-profile-heading">
+          <div class="cv-profile-name-row">
+            <p class="cv-profile-name">{profile.name}</p>
+            {profile.location && <p class="cv-profile-location">{profile.location}</p>}
+          </div>
+          <p class="cv-profile-headline">{profile.headline}</p>
+        </div>
+        {education.map((item) => (
+          <article class="cv-profile-education-item">
+            <h2 class="cv-profile-education-title">
+              <span>{item.degree}</span>
+              <span>{item.institution}</span>
+            </h2>
+            <p class="cv-entry-period">{item.period}</p>
+            {item.description && (
+              <ul class="cv-entry-description">
+                {item.description.map((line) => <li>{line}</li>)}
+              </ul>
+            )}
+          </article>
+        ))}
+        <article class="cv-profile-education-item cv-certificate">
+          <h2 class="cv-profile-education-title">
+            <span>{artsGiftedEducationCertificate.title}</span>
+          </h2>
+          <div class="cv-certificate-logos" aria-label={`${artsGiftedEducationCertificate.title} logos`}>
+            {artsGiftedEducationCertificate.logos.map((logo, index) => (
+              <div class="cv-certificate-logo" aria-label={logo.alt || `Certificate logo ${index + 1}`}>
+                {logo.src ? (
+                  <img src={logo.src} alt={logo.alt} loading="lazy" onerror="this.hidden=true" />
+                ) : (
+                  <span>Logo {index + 1}</span>
+                )}
+              </div>
+            ))}
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="cv-section-block" aria-labelledby="experience-heading" data-cv-section>
+      <h2 class="cv-section-header" id="experience-heading">Experience</h2>
+      <div class="cv-list">
+        {experiences.map((item, index) => (
+          <article class="cv-entry" data-cv-item hidden={index >= experienceInitialCount}>
+            <div class="cv-entry-logo" aria-hidden="true">
+              {item.logo && <img src={item.logo} alt="" loading="lazy" onerror="this.hidden=true" />}
+            </div>
+            <div class="cv-entry-main">
+              <h3 class="cv-entry-title">{item.role}</h3>
+              <p class="cv-entry-meta">
+                {item.organization}{item.employmentType && ` · ${item.employmentType}`}
+              </p>
+              <p class="cv-entry-period">
+                {item.period}{item.duration && ` · ${item.duration}`}
+              </p>
+              {item.description && (
+                <ul class="cv-entry-description">
+                  {item.description.map((line) => <li>{line}</li>)}
+                </ul>
+              )}
+
+              {item.subEntries && (
+                <div class="cv-subentries">
+                  {item.subEntries.map((subEntry) => (
+                    <div class="cv-subentry">
+                      <h4>{subEntry.title}</h4>
+                      <p class="cv-entry-period">
+                        {subEntry.period}{subEntry.duration && ` · ${subEntry.duration}`}
+                      </p>
+                      {subEntry.description && (
+                        <ul class="cv-entry-description">
+                          {subEntry.description.map((line) => <li>{line}</li>)}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
+
+              {mediaItems(item.media).length > 0 && (
+                <div class="cv-media-row">
+                  {mediaItems(item.media).map((media) => (
+                    media.href ? (
+                      <a class="cv-media-thumb" href={media.href} aria-label={media.label ?? media.alt ?? "Open related media"}>
+                        {media.src ? (
+                          <img src={media.src} alt={media.alt ?? ""} loading="lazy" onerror="this.hidden=true" />
+                        ) : (
+                          <span>{media.label ?? "Open link"}</span>
+                        )}
+                      </a>
+                    ) : (
+                      <div class="cv-media-thumb">
+                        <img src={media.src} alt={media.alt ?? ""} loading="lazy" onerror="this.hidden=true" />
+                      </div>
+                    )
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+      {experiences.length > experienceInitialCount && (
+        <button
+          class="cv-show-toggle"
+          type="button"
+          data-cv-toggle
+          data-initial-count={experienceInitialCount}
+          data-total-count={experiences.length}
+          data-label="experiences"
+          aria-expanded="false"
+        >
+          Show all {experiences.length} experiences
+        </button>
+      )}
+    </section>
+
+    <section class="cv-section-block cv-section-block-no-rule" aria-labelledby="projects-heading" data-cv-section>
+      <h2 class="cv-section-header" id="projects-heading">Projects</h2>
+      <div class="cv-list">
+        {projects.map((item, index) => (
+          <article class="cv-entry cv-project-entry" data-cv-item hidden={index >= projectInitialCount}>
+            <div class="cv-entry-main">
+              <div class="cv-project-heading">
+                <h3 class="cv-entry-title">{item.title}</h3>
+                <p class="cv-entry-period">{item.period}</p>
+              </div>
+              {item.description && (
+                <ul class="cv-entry-description">
+                  {item.description.map((line) => <li>{line}</li>)}
+                </ul>
+              )}
+              {thumbnailMediaItems(item.media).length > 0 && (
+                <div class="cv-media-row">
+                  {thumbnailMediaItems(item.media).map((media) => (
+                    media.href ? (
+                      <a
+                        class="cv-media-thumb"
+                        href={media.href}
+                        aria-label={media.label ?? media.alt ?? "Open project media"}
+                        target={media.href.startsWith("http") ? "_blank" : undefined}
+                        rel={media.href.startsWith("http") ? "noreferrer" : undefined}
+                      >
+                        <img src={media.src} alt={media.alt ?? ""} loading="lazy" onerror="this.hidden=true" />
+                      </a>
+                    ) : (
+                      <div class="cv-media-thumb">
+                        <img src={media.src} alt={media.alt ?? ""} loading="lazy" onerror="this.hidden=true" />
+                      </div>
+                    )
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+      {projects.length > projectInitialCount && (
+        <button
+          class="cv-show-toggle"
+          type="button"
+          data-cv-toggle
+          data-initial-count={projectInitialCount}
+          data-total-count={projects.length}
+          data-label="projects"
+          aria-expanded="false"
+        >
+          Show all {projects.length} projects
+        </button>
+      )}
+    </section>
+  </div>
+
+  <script is:inline>
+    document.querySelectorAll("[data-cv-section]").forEach((section) => {
+      if (!(section instanceof HTMLElement)) return;
+
+      const toggle = section.querySelector("[data-cv-toggle]");
+      if (!(toggle instanceof HTMLButtonElement)) return;
+
+      const items = Array.from(section.querySelectorAll("[data-cv-item]"));
+      const initialCount = Number(toggle.dataset.initialCount ?? items.length);
+      const totalCount = Number(toggle.dataset.totalCount ?? items.length);
+      const label = toggle.dataset.label ?? "items";
+
+      const setExpanded = (isExpanded) => {
+        items.forEach((item, index) => {
+          if (!(item instanceof HTMLElement)) return;
+          item.hidden = !isExpanded && index >= initialCount;
+        });
+
+        toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
+        toggle.textContent = isExpanded
+          ? "Show fewer"
+          : `Show all ${totalCount} ${label}`;
+      };
+
+      toggle.addEventListener("click", () => {
+        setExpanded(toggle.getAttribute("aria-expanded") !== "true");
+      });
+    });
+  </script>
+</Layout>

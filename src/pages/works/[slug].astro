@@ -1,0 +1,397 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { getWorks, type WorkItem } from "../../data/works";
+
+type Props = {
+  work: WorkItem;
+};
+
+export async function getStaticPaths() {
+  const works = await getWorks();
+
+  return works.map((work) => ({
+    params: { slug: work.id },
+    props: { work }
+  }));
+}
+
+const getVideoSource = (value: string) => {
+  const trimmedValue = value.trim();
+  const iframeSource = trimmedValue.match(/<iframe[^>]+src=["']([^"']+)["']/i)?.[1];
+
+  return (iframeSource ?? trimmedValue).replaceAll("&amp;", "&");
+};
+
+const withVimeoEmbedParams = (url: string) => {
+  const parsed = new URL(url);
+
+  parsed.searchParams.set("transparent", "0");
+  parsed.searchParams.set("title", "0");
+  parsed.searchParams.set("byline", "0");
+  parsed.searchParams.set("portrait", "0");
+  parsed.searchParams.set("badge", "0");
+  parsed.searchParams.set("dnt", "1");
+
+  return parsed.toString();
+};
+
+const getVideoEmbedUrl = (value: string): string | null => {
+  if (!value.trim()) return null;
+
+  const url = getVideoSource(value);
+
+  try {
+    const parsed = new URL(url);
+    const host = parsed.hostname.replace(/^www\./, "");
+
+    if (host === "youtube.com" || host === "m.youtube.com" || host === "youtube-nocookie.com") {
+      if (parsed.pathname === "/watch") {
+        const id = parsed.searchParams.get("v");
+        return id ? `https://www.youtube.com/embed/${id}` : null;
+      }
+
+      if (parsed.pathname.startsWith("/embed/")) {
+        return `https://www.youtube.com${parsed.pathname}`;
+      }
+
+      if (parsed.pathname.startsWith("/shorts/")) {
+        const id = parsed.pathname.split("/").filter(Boolean)[1];
+        return id ? `https://www.youtube.com/embed/${id}` : null;
+      }
+    }
+
+    if (host === "youtu.be") {
+      const id = parsed.pathname.split("/").filter(Boolean)[0];
+      return id ? `https://www.youtube.com/embed/${id}` : null;
+    }
+
+    if (host === "vimeo.com") {
+      const id = parsed.pathname.split("/").filter(Boolean)[0];
+      return id ? withVimeoEmbedParams(`https://player.vimeo.com/video/${id}`) : null;
+    }
+
+    if (host === "player.vimeo.com" && parsed.pathname.startsWith("/video/")) {
+      return withVimeoEmbedParams(`https://player.vimeo.com${parsed.pathname}${parsed.search}`);
+    }
+  } catch {
+    return null;
+  }
+
+  return null;
+};
+
+const escapeHtml = (value: string) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;");
+
+const escapeAttribute = (value: string) => escapeHtml(value).replaceAll("'", "&#39;");
+
+const renderInlineMarkdown = (value: string) =>
+  escapeHtml(value)
+    .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
+    .replace(/\*([^*]+)\*/g, "<em>$1</em>")
+    .replace(/!\[([^\]]*)\]\(([^)]+)\)/g, '<img src="$2" alt="$1" loading="lazy">')
+    .replace(/\[((?:[^\[\]]|\[[^\]]*\])+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/&lt;(https?:\/\/[^&\s]+)&gt;/g, '<a href="$1">$1</a>')
+    .replace(
+      /\{\{color:(accent|ink|muted|rust|blue)\}\}([\s\S]*?)\{\{\/color\}\}/g,
+      '<span class="work-text-color work-text-color-$1">$2</span>'
+    );
+
+const renderParagraph = (value: string) => `<p>${renderInlineMarkdown(value).replace(/\n/g, "<br>")}</p>`;
+
+const getMarkdownImage = (value: string) =>
+  value.match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+["']([^"']+)["'])?\)$/);
+
+const getStandaloneLink = (value: string) =>
+  value.match(/^(?:\\?\[([\s\S]+)\]\((https?:\/\/[^)\s]+)\)|<((?:https?:\/\/)[^>\s]+)>|(https?:\/\/\S+))$/);
+
+const getLinkHost = (value: string) => {
+  try {
+    return new URL(value).hostname.replace(/^www\./, "");
+  } catch {
+    return value;
+  }
+};
+
+const normalizeLinkLabel = (value: string) => value.replace(/\\([\[\]])/g, "$1");
+
+const renderLinkPreview = (match: RegExpMatchArray) => {
+  const href = match[2] || match[3] || match[4];
+  const label = match[1] ? normalizeLinkLabel(match[1]) : getLinkHost(href);
+
+  return [
+    `<p class="text-link-preview">`,
+    `<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">`,
+    `<span class="text-link-preview-label">Link</span>`,
+    `<span class="text-link-preview-title">${renderInlineMarkdown(label)}</span>`,
+    `<span class="text-link-preview-url">${escapeHtml(href)}</span>`,
+    "</a>",
+    "</p>",
+  ].join("");
+};
+
+const renderCaptionedImage = (match: RegExpMatchArray) => {
+  const caption = match[3] || match[1] || "";
+
+  return [
+    "<figure>",
+    `<img src="${escapeAttribute(match[2])}" alt="" loading="lazy">`,
+    caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : "",
+    "</figure>",
+  ].join("");
+};
+
+const getImageGrid = (value: string) =>
+  value.match(/^\{\{image-grid columns="([23])"\}\}\n([\s\S]+)\n\{\{\/image-grid\}\}$/);
+
+const renderImageGrid = (match: RegExpMatchArray) => {
+  const columns = match[1];
+  const images = match[2]
+    .split(/\n+/)
+    .map((line) => line.trim().match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+["']([^"']+)["'])?\)$/))
+    .filter((image): image is RegExpMatchArray => Boolean(image));
+
+  if (images.length === 0) return "";
+
+  return [
+    `<div class="work-image-grid work-image-grid-${columns}">`,
+    ...images.map((image) => {
+      const caption = image[3] || image[1] || "";
+
+      return [
+        "<figure>",
+        `<img src="${escapeAttribute(image[2])}" alt="" loading="lazy">`,
+        caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : "",
+        "</figure>",
+      ].join("");
+    }),
+    "</div>",
+  ].join("");
+};
+
+const renderList = (lines: string[], ordered: boolean) => {
+  const tag = ordered ? "ol" : "ul";
+  const items = lines
+    .map((line) => {
+      const markerPattern = ordered ? /^\s*\d+\.\s+/ : /^\s*[-*+]\s+/;
+      return `<li>${renderInlineMarkdown(line.replace(markerPattern, "").trim())}</li>`;
+    })
+    .join("");
+
+  return `<${tag}>${items}</${tag}>`;
+};
+
+const renderTextBlock = (value: string) => {
+  const blocks = value.trim().split(/\n{2,}/);
+
+  return blocks
+    .map((block) => {
+      const trimmedBlock = block.trim();
+      const lines = trimmedBlock.split(/\n/).map((line) => line.trimEnd());
+      const imageGridMatch = getImageGrid(trimmedBlock);
+      const imageMatch = getMarkdownImage(trimmedBlock);
+      const linkMatch = getStandaloneLink(trimmedBlock);
+      const headingMatch = trimmedBlock.match(/^(#{1,6})\s+(.+)$/);
+      const isDivider = /^ {0,3}([-*_])(?:\s*\1){2,}\s*$/.test(trimmedBlock);
+      const isBlockquote = lines.every((line) => line.trim().startsWith(">"));
+      const isOrderedList = lines.every((line) => /^\s*\d+\.\s+/.test(line));
+      const isUnorderedList = lines.every((line) => /^\s*[-*+]\s+/.test(line));
+
+      if (imageGridMatch) {
+        return renderImageGrid(imageGridMatch);
+      }
+
+      if (imageMatch) {
+        return renderCaptionedImage(imageMatch);
+      }
+
+      if (linkMatch) {
+        return renderLinkPreview(linkMatch);
+      }
+
+      if (isDivider) {
+        return "<hr>";
+      }
+
+      if (headingMatch) {
+        const level = headingMatch[1].length;
+        return `<h${level}>${renderInlineMarkdown(headingMatch[2].trim())}</h${level}>`;
+      }
+
+      if (isBlockquote) {
+        const quote = lines.map((line) => line.replace(/^\s*>\s?/, "")).join("\n").trim();
+        return `<blockquote>${renderParagraph(quote)}</blockquote>`;
+      }
+
+      if (isOrderedList || isUnorderedList) {
+        return renderList(lines, isOrderedList);
+      }
+
+      return renderParagraph(trimmedBlock);
+    })
+    .join("");
+};
+
+const { work } = Astro.props;
+const tags = work.data.tags ?? [];
+const heroImage = work.data.heroImage?.trim() ?? "";
+const heroImageCaption = work.data.heroImageCaption?.trim() ?? "";
+const videoUrl = work.data.videoUrl?.trim() ?? "";
+const legacyVideoItems = [
+  ...(work.data.videos ?? []).map((video) => ({
+    embedUrl: getVideoEmbedUrl(video.embed),
+    caption: video.caption,
+  })),
+  ...(videoUrl
+    ? [
+        {
+          embedUrl: getVideoEmbedUrl(videoUrl),
+          caption: "",
+        },
+      ]
+    : []),
+].filter((video): video is { embedUrl: string; caption?: string } => Boolean(video.embedUrl));
+const blockItems = (work.data.contentBlocks ?? []).map((block) => {
+  if (block.type === "video") {
+    return {
+      ...block,
+      embedUrl: getVideoEmbedUrl(block.embed),
+    };
+  }
+
+  return block;
+});
+const blockVideos = blockItems.filter(
+  (block): block is { type: "video"; embed: string; embedUrl: string; caption?: string } =>
+    block.type === "video" && Boolean(block.embedUrl)
+);
+const hasContentBlocks = blockItems.length > 0;
+const videoItems = hasContentBlocks ? blockVideos : legacyVideoItems;
+const uniqueVideoItems = videoItems.filter(
+  (video, index, videos) => videos.findIndex((item) => item.embedUrl === video.embedUrl) === index
+);
+const leadVideo = !heroImage ? uniqueVideoItems[0] : undefined;
+const legacySectionVideos = hasContentBlocks ? [] : legacyVideoItems.filter(
+  (video) => video.embedUrl && video.embedUrl !== leadVideo?.embedUrl
+);
+const infoItems: { label: string; value: string | undefined; icon?: "location" }[] = [
+  { label: "Role", value: work.data.artistOrRole },
+  { label: "Year", value: work.data.year },
+  { label: "Location", value: work.data.venue, icon: "location" }
+];
+const visibleInfoItems = infoItems.filter(
+  (item): item is { label: string; value: string; icon?: "location" } => Boolean(item.value)
+);
+---
+
+<Layout title={`${work.data.title} | Works`} description={work.data.title}>
+  <article class="work-detail">
+    <a class="work-back-link" href="/works/">&#8592; Works</a>
+
+    <header class="work-detail-header">
+      <h1 class="work-detail-title">{work.data.title}</h1>
+    </header>
+
+    {visibleInfoItems.length > 0 && (
+      <dl class="work-info-list" aria-label="Project information">
+        {visibleInfoItems.map((item) => (
+          <div>
+            <dt class:list={[item.icon === "location" && "work-meta-icon-label"]}>
+              {item.icon === "location" ? (
+                <>
+                  <svg class="work-meta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path
+                      fill="currentColor"
+                      d="M12 2.75c-3.31 0-6 2.69-6 6 0 4.5 6 12.5 6 12.5s6-8 6-12.5c0-3.31-2.69-6-6-6Zm0 8.25a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z"
+                    />
+                  </svg>
+                  <span class="sr-only">Location</span>
+                </>
+              ) : (
+                item.label
+              )}
+            </dt>
+            <dd>{item.value}</dd>
+          </div>
+        ))}
+      </dl>
+    )}
+
+    <section class="work-media-carousel" data-work-carousel aria-label={`${work.data.title} media`}>
+      {leadVideo ? (
+        <div class="work-video-item">
+          <div class="work-video-embed">
+            <iframe
+              src={leadVideo.embedUrl}
+              title={`${work.data.title} video`}
+              loading="eager"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            ></iframe>
+          </div>
+          {leadVideo.caption && <p class="work-video-caption">{leadVideo.caption}</p>}
+        </div>
+      ) : heroImage ? (
+        <figure class="work-media-slide">
+          <img src={heroImage} alt={`${work.data.title} image`} loading="eager" />
+          {heroImageCaption && <figcaption>{heroImageCaption}</figcaption>}
+        </figure>
+      ) : (
+        <div class="work-detail-placeholder" aria-hidden="true"></div>
+      )}
+    </section>
+
+    <section class="work-section work-description-section work-section-full">
+      <div class="work-detail-body work-content-flow">
+        {legacySectionVideos.map((video, index) => (
+          <div class="work-video-item">
+            <div class="work-video-embed">
+              <iframe
+                src={video.embedUrl}
+                title={`${work.data.title} video ${index + 1}`}
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                allowfullscreen
+              ></iframe>
+            </div>
+            {video.caption && <p class="work-video-caption">{video.caption}</p>}
+          </div>
+        ))}
+        {blockItems.map((block, index) => (
+          block.type === "text" ? (
+            <div class="work-text-block" set:html={renderTextBlock(block.body)} />
+          ) : block.embedUrl && block.embedUrl !== leadVideo?.embedUrl ? (
+            <div class="work-video-item">
+              <div class="work-video-embed">
+                <iframe
+                  src={block.embedUrl}
+                  title={`${work.data.title} video block ${index + 1}`}
+                  loading="lazy"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                ></iframe>
+              </div>
+              {block.caption && <p class="work-video-caption">{block.caption}</p>}
+            </div>
+          ) : null
+        ))}
+      </div>
+    </section>
+
+    {tags.length > 0 && (
+      <section class="work-section work-section-full work-tags-section">
+        <div>
+          <ul class="work-tags" aria-label={`${work.data.title} tags`}>
+            {tags.map((tag) => <li>{tag}</li>)}
+          </ul>
+        </div>
+      </section>
+    )}
+
+  </article>
+</Layout>
