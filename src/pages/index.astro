@@ -1,0 +1,343 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const contactEmail = "mapsycoy@gmail.com";
+const homeInstrumentSrc = "/landing/home-instrument.gif";
+---
+
+<Layout>
+  <section class="home-landing">
+    <div class="home-kicker">Greeting</div>
+
+    <div class="home-copy">
+      <h1 class="ko-title">안녕하세요.<h1 class="title">Welcome to my space.</h1>
+    </div>
+
+    <p class="lede">
+      This is an archive of my works, projects, experiments, and the questions that shaped them.
+    </p>
+
+    <figure class="home-media">
+      <div class="home-instrument" data-home-instrument aria-label="Animated visual note">
+        <img
+          class="home-instrument-source"
+          src={homeInstrumentSrc}
+          alt="Animated visual note"
+          loading="eager"
+          decoding="async"
+        />
+        <canvas class="home-instrument-canvas" aria-hidden="true"></canvas>
+        <div class="home-instrument-placeholder" hidden aria-hidden="true"></div>
+      </div>
+      <figcaption class="home-media-meta">
+        <div class="home-media-meta-row">
+          <span class="home-media-meta-label">Source</span>
+          <span>Castle In The Sky | Studio Ghibli</span>
+        </div>
+        <div class="home-media-meta-row">
+          <span class="home-media-meta-icon" aria-label="Location">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2.5c-3.6 0-6.5 2.9-6.5 6.5 0 4.9 6.5 12.5 6.5 12.5S18.5 13.9 18.5 9c0-3.6-2.9-6.5-6.5-6.5Zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z" />
+            </svg>
+          </span>
+          <span>Republic of Korea / Seoul</span>
+          <time data-seoul-time datetime="">00/00/0000 00:00:00 KST</time>
+        </div>
+      </figcaption>
+    </figure>
+
+    <form class="home-contact" data-home-contact data-contact-email={contactEmail}>
+      <label class="sr-only" for="home-email">Email</label>
+      <div class="home-contact-row">
+        <span class="home-contact-label" aria-hidden="true">Contact</span>
+        <input
+          id="home-email"
+          type="email"
+          name="email"
+          aria-label="email"
+          required
+          autocomplete="email"
+          placeholder="▛▚▞▜ ▞▚ █ ▙"
+        />
+        <button type="submit" aria-label="Start contact">&#8599;</button>
+      </div>
+      <p class="home-contact-note">Leave your email address.</p>
+    </form>
+
+    <p class="home-caption">
+      Hello, I’m Junyeop Kim, working under the name 𝑀̲𝐴̲𝑃̲𝑆̲𝑌̲𝐶̲𝑂̲𝑌̲. 
+      𝑀̲𝐴̲𝑃̲𝑆̲𝑌̲+𝐶̲𝑂̲𝑌̲ began with “<span class="hunmin">맵시</span>,” a Korean word for form, style, and subtle presence.
+      The “𝐶̲𝑂̲𝑌̲,” part adds a quieter meaning: reserved, restrained, and not fully revealed at once.
+      Together, 𝑀̲𝐴̲𝑃̲𝑆̲𝑌̲𝐶̲𝑂̲𝑌̲ became a name for visual works, unfinished thoughts, and questions that are still taking shape.
+    </p>
+  </section>
+
+  <script is:inline>
+    const SCREENTONE = {
+      cellSize: 3,
+      contrast: 1.22,
+      gamma: 1.15,
+      minDotRadius: 0,
+      maxDotRadius: 1.18,
+      fps: 12,
+      paper: "#f8f8f5",
+      ink: "#171717"
+    };
+
+    document.querySelectorAll("[data-home-instrument]").forEach((root) => {
+      if (!(root instanceof HTMLElement)) return;
+
+      const image = root.querySelector(".home-instrument-source");
+      const canvas = root.querySelector(".home-instrument-canvas");
+      const placeholder = root.querySelector(".home-instrument-placeholder");
+
+      if (!(image instanceof HTMLImageElement) || !(canvas instanceof HTMLCanvasElement)) return;
+
+      const context = canvas.getContext("2d");
+      const sampleCanvas = document.createElement("canvas");
+      const sampleContext = sampleCanvas.getContext("2d", { willReadFrequently: true });
+
+      if (!context || !sampleContext) return;
+
+      let width = 0;
+      let height = 0;
+      let rafId = 0;
+      let lastFrameTime = 0;
+      let resizeObserver;
+      let decodedFrames = [];
+      let animationStartedAt = 0;
+
+      const setFallback = () => {
+        cancelAnimationFrame(rafId);
+        canvas.hidden = true;
+        root.classList.add("is-raw-fallback");
+        if (placeholder instanceof HTMLElement) {
+          placeholder.hidden = image.complete && image.naturalWidth > 0;
+        }
+      };
+
+      const resize = () => {
+        const rect = root.getBoundingClientRect();
+        const nextWidth = Math.max(1, Math.round(rect.width));
+        const nextHeight = Math.max(1, Math.round(rect.height));
+
+        if (nextWidth === width && nextHeight === height) return;
+
+        width = nextWidth;
+        height = nextHeight;
+
+        const scale = Math.min(window.devicePixelRatio || 1, 2);
+        canvas.width = Math.round(width * scale);
+        canvas.height = Math.round(height * scale);
+        context.setTransform(scale, 0, 0, scale, 0, 0);
+
+        sampleCanvas.width = width;
+        sampleCanvas.height = height;
+      };
+
+      const drawCoverFrame = (source) => {
+        const sourceWidth = source.displayWidth || source.width || image.naturalWidth || width;
+        const sourceHeight = source.displayHeight || source.height || image.naturalHeight || height;
+        const sourceRatio = sourceWidth / sourceHeight;
+        const targetRatio = width / height;
+        let drawWidth = width;
+        let drawHeight = height;
+        let drawX = 0;
+        let drawY = 0;
+
+        if (sourceRatio > targetRatio) {
+          drawHeight = height;
+          drawWidth = height * sourceRatio;
+          drawX = (width - drawWidth) / 2;
+        } else {
+          drawWidth = width;
+          drawHeight = width / sourceRatio;
+          drawY = (height - drawHeight) / 2;
+        }
+
+        sampleContext.clearRect(0, 0, width, height);
+        sampleContext.drawImage(source, drawX, drawY, drawWidth, drawHeight);
+      };
+
+      const renderScreentone = (source) => {
+        resize();
+        drawCoverFrame(source);
+
+        const { cellSize, contrast, gamma, minDotRadius, maxDotRadius, paper, ink } = SCREENTONE;
+        const frame = sampleContext.getImageData(0, 0, width, height);
+        const pixels = frame.data;
+
+        context.fillStyle = paper;
+        context.fillRect(0, 0, width, height);
+        context.fillStyle = ink;
+
+        for (let y = 0; y < height; y += cellSize) {
+          for (let x = 0; x < width; x += cellSize) {
+            let luminance = 0;
+            let count = 0;
+            const cellRight = Math.min(width, x + cellSize);
+            const cellBottom = Math.min(height, y + cellSize);
+
+            for (let sampleY = y; sampleY < cellBottom; sampleY += 1) {
+              for (let sampleX = x; sampleX < cellRight; sampleX += 1) {
+                const index = (sampleY * width + sampleX) * 4;
+                luminance += pixels[index] * 0.299 + pixels[index + 1] * 0.587 + pixels[index + 2] * 0.114;
+                count += 1;
+              }
+            }
+
+            const average = count ? luminance / count / 255 : 1;
+            const contrasted = Math.min(1, Math.max(0, (average - 0.5) * contrast + 0.5));
+            const inkAmount = Math.pow(1 - contrasted, gamma);
+            const radius = minDotRadius + inkAmount * (maxDotRadius - minDotRadius);
+
+            if (radius < 0.12) continue;
+
+            const offset = Math.floor(y / cellSize) % 2 === 0 ? 0 : cellSize * 0.45;
+            const centerX = x + cellSize / 2 + offset;
+            const centerY = y + cellSize / 2;
+
+            if (centerX > width + radius) continue;
+
+            context.beginPath();
+            context.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            context.fill();
+          }
+        }
+      };
+
+      const decodeGifFrames = async () => {
+        if (!("ImageDecoder" in window)) return [];
+
+        const response = await fetch(image.currentSrc || image.src);
+        if (!response.ok) return [];
+
+        const data = await response.arrayBuffer();
+        const decoder = new ImageDecoder({ data, type: "image/gif" });
+        await decoder.tracks.ready;
+
+        const frameCount = decoder.tracks.selectedTrack?.frameCount || 1;
+        const frames = [];
+
+        for (let index = 0; index < frameCount; index += 1) {
+          const result = await decoder.decode({ frameIndex: index });
+          const bitmap = await createImageBitmap(result.image);
+          const duration = Math.max(30, Math.round((result.image.duration || 100000) / 1000));
+          result.image.close();
+          frames.push({ bitmap, duration });
+        }
+
+        return frames;
+      };
+
+      const getFrameAt = (elapsed) => {
+        if (!decodedFrames.length) return null;
+
+        const totalDuration = decodedFrames.reduce((sum, frame) => sum + frame.duration, 0);
+        let time = elapsed % totalDuration;
+
+        for (const frame of decodedFrames) {
+          if (time < frame.duration) return frame.bitmap;
+          time -= frame.duration;
+        }
+
+        return decodedFrames[0].bitmap;
+      };
+
+      const tick = (time) => {
+        if (time - lastFrameTime >= 1000 / SCREENTONE.fps) {
+          lastFrameTime = time;
+          try {
+            const frame = getFrameAt(time - animationStartedAt);
+            if (!frame) {
+              setFallback();
+              return;
+            }
+            renderScreentone(frame);
+          } catch {
+            setFallback();
+            return;
+          }
+        }
+
+        rafId = requestAnimationFrame(tick);
+      };
+
+      const start = async () => {
+        if (!image.complete || !image.naturalWidth) return;
+
+        try {
+          decodedFrames = await decodeGifFrames();
+        } catch {
+          decodedFrames = [];
+        }
+
+        if (!decodedFrames.length) {
+          setFallback();
+          return;
+        }
+
+        root.classList.remove("is-raw-fallback");
+        canvas.hidden = false;
+        if (placeholder instanceof HTMLElement) placeholder.hidden = true;
+        cancelAnimationFrame(rafId);
+        resize();
+        animationStartedAt = performance.now();
+        renderScreentone(decodedFrames[0].bitmap);
+        rafId = requestAnimationFrame(tick);
+      };
+
+      image.addEventListener("load", start);
+      image.addEventListener("error", setFallback);
+      window.addEventListener("resize", resize, { passive: true });
+      if ("ResizeObserver" in window) {
+        resizeObserver = new ResizeObserver(() => resize());
+        resizeObserver.observe(root);
+      }
+      start();
+    });
+
+    document.querySelectorAll("[data-home-contact]").forEach((form) => {
+      if (!(form instanceof HTMLFormElement)) return;
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        if (!form.reportValidity()) return;
+
+        const emailInput = form.querySelector('input[type="email"]');
+        if (!(emailInput instanceof HTMLInputElement)) return;
+
+        const recipient = form.dataset.contactEmail || "mapsycoy@gmail.com";
+        const subject = encodeURIComponent("Hello from mapsycoy.com");
+        const body = encodeURIComponent(`My email is: ${emailInput.value}`);
+
+        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+      });
+    });
+
+    document.querySelectorAll("[data-seoul-time]").forEach((timeElement) => {
+      if (!(timeElement instanceof HTMLTimeElement)) return;
+
+      const formatter = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Asia/Seoul",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false
+      });
+
+      const updateSeoulTime = () => {
+        const now = new Date();
+        timeElement.dateTime = now.toISOString();
+        timeElement.textContent = `${formatter.format(now).replace(",", "")} KST`;
+      };
+
+      updateSeoulTime();
+      window.setInterval(updateSeoulTime, 1000);
+    });
+  </script>
+</Layout>

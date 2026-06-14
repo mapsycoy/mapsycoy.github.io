@@ -1,0 +1,136 @@
+---
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>mapsycoy Admin</title>
+  </head>
+  <body>
+    <script src="https://unpkg.com/decap-cms@^3.8.0/dist/decap-cms.js"></script>
+    <script>
+      if (window.CMS) {
+        window.CMS.registerEditorComponent({
+          id: "divider",
+          label: "Divider",
+          fields: [],
+          pattern: /^---$/m,
+          fromBlock: () => ({}),
+          toBlock: () => "\n\n---\n\n",
+          toPreview: () => "<hr />",
+        });
+
+        window.CMS.registerEditorComponent({
+          id: "captioned-image",
+          label: "Image",
+          fields: [
+            {
+              name: "image",
+              label: "Image",
+              widget: "image",
+            },
+            {
+              name: "caption",
+              label: "Caption",
+              widget: "string",
+              required: false,
+            },
+          ],
+          pattern: /^!\[([^\]]*)\]\(([^)\s]+)(?:\s+["']([^"']+)["'])?\)$/m,
+          fromBlock: (match) => ({
+            caption: match[3] || match[1] || "",
+            image: match[2],
+          }),
+          toBlock: ({ image, caption }) => `![${caption || ""}](${image})`,
+          toPreview: ({ image, caption }) =>
+            `<figure><img src="${image}" alt="" /><figcaption>${caption || ""}</figcaption></figure>`,
+        });
+
+        window.CMS.registerEditorComponent({
+          id: "image-grid",
+          label: "Image Grid",
+          fields: [
+            {
+              name: "columns",
+              label: "Columns",
+              widget: "select",
+              default: "2",
+              options: [
+                { label: "2 columns", value: "2" },
+                { label: "3 columns", value: "3" },
+              ],
+            },
+            {
+              name: "images",
+              label: "Images",
+              widget: "list",
+              fields: [
+                {
+                  name: "image",
+                  label: "Image",
+                  widget: "image",
+                },
+                {
+                  name: "caption",
+                  label: "Caption",
+                  widget: "string",
+                  required: false,
+                },
+              ],
+            },
+          ],
+          pattern: /^\{\{image-grid columns="([23])"\}\}\n([\s\S]+?)\n\{\{\/image-grid\}\}$/m,
+          fromBlock: (match) => ({
+            columns: match[1],
+            images: match[2]
+              .split(/\n+/)
+              .map((line) => line.trim().match(/^!\[([^\]]*)\]\(([^)\s]+)(?:\s+["']([^"']+)["'])?\)$/))
+              .filter(Boolean)
+              .map((image) => ({
+                caption: image[3] || image[1] || "",
+                image: image[2],
+              })),
+          }),
+          toBlock: ({ columns, images }) => [
+            `{{image-grid columns="${columns || "2"}"}}`,
+            ...(images || []).map(({ image, caption }) => `![${caption || ""}](${image})`),
+            "{{/image-grid}}",
+          ].join("\n"),
+          toPreview: ({ columns, images }) =>
+            `<div style="display:grid;grid-template-columns:repeat(${columns || "2"},minmax(0,1fr));gap:12px;">${(images || [])
+              .map(({ image, caption }) => `<figure><img src="${image}" alt="" /><figcaption>${caption || ""}</figcaption></figure>`)
+              .join("")}</div>`,
+        });
+
+      }
+
+      const removeOptionalLabels = () => {
+        const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+        const textNodes = [];
+
+        while (walker.nextNode()) {
+          const node = walker.currentNode;
+          const text = node.textContent?.trim().toLowerCase();
+
+          if (text === "optional" || text === "(optional)") {
+            textNodes.push(node);
+          }
+        }
+
+        textNodes.forEach((node) => {
+          node.textContent = "";
+        });
+      };
+
+      const observer = new MutationObserver(removeOptionalLabels);
+
+      window.addEventListener("load", () => {
+        removeOptionalLabels();
+        observer.observe(document.body, { childList: true, subtree: true, characterData: true });
+      });
+    </script>
+  </body>
+</html>
