@@ -1,6 +1,5 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import { readFileSync } from "node:fs";
-import { fileURLToPath } from "node:url";
+import worksOrder from "./works-order.json";
 
 export type WorkItem = CollectionEntry<"works">;
 
@@ -9,19 +8,12 @@ type WorksOrder = {
 };
 
 const getWorkOrder = () => {
-  try {
-    const orderPath = fileURLToPath(new URL("./works-order.json", import.meta.url));
-    const worksOrder = JSON.parse(readFileSync(orderPath, "utf-8")) as WorksOrder;
-
-    return new Map(
-      (worksOrder.works ?? [])
-        .map((item) => item.work)
-        .filter((work): work is string => Boolean(work))
-        .map((work, index) => [work, index])
-    );
-  } catch {
-    return new Map<string, number>();
-  }
+  return new Map(
+    ((worksOrder as WorksOrder).works ?? [])
+      .map((item) => item.work)
+      .filter((work): work is string => Boolean(work))
+      .map((work, index) => [work, index])
+  );
 };
 
 const workOrder = getWorkOrder();
