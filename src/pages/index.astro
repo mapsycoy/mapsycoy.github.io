@@ -248,7 +248,7 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
         if (time - lastFrameTime >= 1000 / SCREENTONE.fps) {
           lastFrameTime = time;
           try {
-            const frame = getFrameAt(time - animationStartedAt);
+            const frame = decodedFrames.length ? getFrameAt(time - animationStartedAt) : image;
             if (!frame) {
               setFallback();
               return;
@@ -272,18 +272,13 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
           decodedFrames = [];
         }
 
-        if (!decodedFrames.length) {
-          setFallback();
-          return;
-        }
-
         root.classList.remove("is-raw-fallback");
         canvas.hidden = false;
         if (placeholder instanceof HTMLElement) placeholder.hidden = true;
         cancelAnimationFrame(rafId);
         resize();
         animationStartedAt = performance.now();
-        renderScreentone(decodedFrames[0].bitmap);
+        renderScreentone(decodedFrames[0]?.bitmap || image);
         rafId = requestAnimationFrame(tick);
       };
 
