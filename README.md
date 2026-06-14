@@ -1,31 +1,32 @@
-# mapsycoy.github.io
+# MAPSYCOY
 
-Minimal Astro foundation for the mapsycoy personal website.
+Personal website and archive of Junyeop Kim, working under the name 'mapsycoy'.
 
-## Commands
+This site collects selected works, writings, and CV materials in one place.
 
-```sh
+## Sections
+
+* Works
+* Blog
+* CV
+
+## Built with
+
+* Astro
+* GitHub Pages
+
+## Development
+
+```bash
 npm install
 npm run dev
 npm run build
 ```
 
-The site is configured for GitHub Pages at `https://mapsycoy.github.io`.
+## Notes
 
-## Content editing
+This repository is used for a personal website.
 
-Blog posts live in `src/content/blog`, and works posts live in `src/content/works`.
-The site includes a Decap CMS admin screen at `/admin/`.
+## Rights
 
-Local editing with Decap CMS requires the local proxy server:
-
-```sh
-npx decap-server
-npm run dev
-```
-
-Then open `http://127.0.0.1:4321/admin/`.
-
-After the repository is pushed to GitHub, the admin screen will edit Markdown files
-in `mapsycoy/mapsycoy.github.io` on the `main` branch. GitHub authentication must be
-configured before the hosted admin screen can save changes.
+All rights reserved by Kim Junyeop.
