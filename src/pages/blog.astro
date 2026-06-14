@@ -1,0 +1,163 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { blogTags, getBlogPosts, getPostDateLabel, hasKoreanText } from "../data/blog";
+
+const normalizeFilter = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+const postsPerPage = 8;
+const posts = await getBlogPosts();
+---
+
+<Layout title="Blog" description="Essays, technical notes, and archived writings by mapsycoy.">
+  <section class="works-filter" aria-label="Filter blog entries by tag" data-blog-filter>
+    <button class="work-filter-button is-active" type="button" data-filter="all" aria-pressed="true">
+      All
+    </button>
+    {blogTags.map((tag) => (
+      <button class="work-filter-button" type="button" data-filter={normalizeFilter(tag)} aria-pressed="false">
+        {tag}
+      </button>
+    ))}
+  </section>
+
+  <section class="entry-list blog-entry-list" aria-label="Blog entries">
+    {posts.map((post, index) => (
+      <article
+        class:list={[
+          "blog-entry",
+          index === 0 && "is-first-visible",
+          index === Math.min(posts.length, postsPerPage) - 1 && "is-last-visible"
+        ]}
+        data-blog-entry
+        data-tags={normalizeFilter(post.data.tag)}
+        hidden={index >= postsPerPage}
+      >
+        <a class="blog-entry-link" href={`/blog/${post.id}/`} aria-label={`Open ${post.data.title} post`}>
+          <div class="blog-entry-copy">
+            <p class="entry-meta blog-entry-meta">
+              {post.data.pinned && (
+                <span class="pin-icon" aria-label="Pinned post">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14.7 3.3 20.7 9.3 18.6 11.4 17.2 10 13 14.2V18L11.7 19.3 8.8 16.4 4.4 20.8 3.2 19.6 7.6 15.2 4.7 12.3 6 11H9.8L14 6.8 12.6 5.4 14.7 3.3Z" />
+                  </svg>
+                </span>
+              )}
+              <span>{post.data.tag}</span>
+            </p>
+            <h2 class:list={[hasKoreanText(post.data.title) && "ko-title"]}>{post.data.title}</h2>
+            <p class="blog-entry-date">
+              {getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}
+            </p>
+          </div>
+          <div class="blog-entry-thumb" aria-label={`${post.data.title} thumbnail`}>
+            {post.data.thumbnail ? (
+              <img src={post.data.thumbnail} alt="" loading="lazy" />
+            ) : (
+              <div class="blog-entry-thumb-placeholder" aria-hidden="true"></div>
+            )}
+          </div>
+        </a>
+      </article>
+    ))}
+  </section>
+
+  <nav class="blog-pagination" aria-label="Blog pagination" data-blog-pagination data-page-size={postsPerPage}>
+    <div class="blog-page-numbers" data-page-numbers>
+      {Array.from({ length: Math.max(1, Math.ceil(posts.length / postsPerPage)) }, (_, index) => (
+        <button class:list={["blog-page-button", index === 0 && "is-active"]} type="button" data-page-number={index + 1} aria-current={index === 0 ? "page" : undefined}>
+          {index + 1}
+        </button>
+      ))}
+    </div>
+  </nav>
+
+  <script is:inline>
+    const filterRoot = document.querySelector("[data-blog-filter]");
+    const entries = Array.from(document.querySelectorAll("[data-blog-entry]"));
+    const pagination = document.querySelector("[data-blog-pagination]");
+    const pageSize = pagination instanceof HTMLElement ? Number(pagination.dataset.pageSize ?? "8") : 8;
+    const pageNumbers = pagination?.querySelector("[data-page-numbers]");
+    let currentFilter = "all";
+    let currentPage = 1;
+
+    const getFilteredEntries = () => entries.filter((entry) => {
+      if (!(entry instanceof HTMLElement)) return false;
+
+      const tags = entry.dataset.tags ?? "";
+      return currentFilter === "all" || tags.split(" ").includes(currentFilter);
+    });
+
+    const renderEntries = () => {
+      const filteredEntries = getFilteredEntries();
+      const pageCount = Math.max(1, Math.ceil(filteredEntries.length / pageSize));
+      currentPage = Math.min(currentPage, pageCount);
+
+      const startIndex = (currentPage - 1) * pageSize;
+      const visibleEntries = filteredEntries.slice(startIndex, startIndex + pageSize);
+
+      entries.forEach((entry) => {
+        if (!(entry instanceof HTMLElement)) return;
+        entry.classList.remove("is-first-visible", "is-last-visible");
+        entry.hidden = !visibleEntries.includes(entry);
+      });
+
+      visibleEntries[0]?.classList.add("is-first-visible");
+      visibleEntries[visibleEntries.length - 1]?.classList.add("is-last-visible");
+
+      if (pagination instanceof HTMLElement) {
+        pagination.hidden = false;
+      }
+
+      if (pageNumbers instanceof HTMLElement) {
+        Array.from(pageNumbers.querySelectorAll("[data-page-number]")).forEach((button) => {
+          if (!(button instanceof HTMLButtonElement)) return;
+
+          const page = Number(button.dataset.pageNumber ?? "1");
+          const isVisiblePage = page <= pageCount;
+          const isActivePage = page === currentPage;
+
+          button.hidden = !isVisiblePage;
+          button.classList.toggle("is-active", isActivePage);
+
+          if (isActivePage) {
+            button.setAttribute("aria-current", "page");
+          } else {
+            button.removeAttribute("aria-current");
+          }
+        });
+      }
+    };
+
+    if (filterRoot instanceof HTMLElement) {
+      const buttons = Array.from(filterRoot.querySelectorAll("[data-filter]"));
+
+      const applyFilter = (activeButton) => {
+        currentFilter = activeButton.dataset.filter ?? "all";
+        currentPage = 1;
+
+        buttons.forEach((button) => {
+          const isActive = button === activeButton;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+
+        renderEntries();
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => applyFilter(button));
+      });
+    }
+
+    if (pageNumbers instanceof HTMLElement) {
+      pageNumbers.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof HTMLButtonElement)) return;
+
+        currentPage = Number(target.dataset.pageNumber ?? "1");
+        renderEntries();
+      });
+    }
+
+    renderEntries();
+  </script>
+</Layout>

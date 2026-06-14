@@ -1,0 +1,267 @@
+backend:
+  name: github
+  repo: mapsycoy/mapsycoy.github.io
+  branch: main
+  use_graphql: true
+  commit_messages:
+    create: "Create {{collection}} {{slug}}"
+    update: "Update {{collection}} {{slug}}"
+    delete: "Delete {{collection}} {{slug}}"
+    uploadMedia: "Upload {{path}}"
+    deleteMedia: "Delete {{path}}"
+
+local_backend: true
+
+site_url: https://mapsycoy.github.io
+display_url: https://mapsycoy.github.io
+logo:
+  src: /logo/mapsycoy-title.svg
+  show_in_header: true
+
+media_folder: public/uploads
+public_folder: /uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+  sanitize_replacement: "-"
+
+collections:
+  - name: blog
+    label: Blog
+    label_singular: Blog Post
+    folder: src/content/blog
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    preview_path: blog/{{slug}}
+    summary: "{{title}} - {{publishedAt}}"
+    sortable_fields:
+      - title
+      - publishedAt
+      - tag
+      - status
+    view_filters:
+      - label: Published
+        field: status
+        pattern: published
+      - label: Drafts
+        field: status
+        pattern: draft
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Published Date
+        name: publishedAt
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+      - label: Updated Date
+        name: updatedAt
+        widget: datetime
+        date_format: YYYY-MM-DD
+        time_format: false
+        format: YYYY-MM-DD
+        required: false
+      - label: Status
+        name: status
+        widget: select
+        default: published
+        options:
+          - label: Published
+            value: published
+          - label: Draft
+            value: draft
+      - label: Pinned
+        name: pinned
+        widget: boolean
+        default: false
+        required: false
+        hint: Turn this on for one blog post to keep it at the top of the blog list.
+      - label: Tag
+        name: tag
+        widget: select
+        options:
+          - Essay
+          - AI
+          - Paper
+      - label: Thumbnail
+        name: thumbnail
+        widget: image
+        required: false
+      - label: Hero Image
+        name: heroImage
+        widget: image
+        required: false
+      - label: Hero Image Caption
+        name: heroImageCaption
+        widget: string
+        required: false
+      - label: Body
+        name: body
+        widget: markdown
+        buttons:
+          - bold
+          - italic
+          - code
+          - link
+          - heading-one
+          - heading-two
+          - heading-three
+          - heading-four
+          - heading-five
+          - heading-six
+          - quote
+          - bulleted-list
+          - numbered-list
+        editor_components:
+          - captioned-image
+          - divider
+        hint: Use the Image component to add an image with a caption. Use <mark>text</mark> to highlight text inline. Uploaded files are stored in the shared uploads folder.
+
+  - name: works
+    label: Works
+    label_singular: Work
+    folder: src/content/works
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: "{{slug}}"
+    preview_path: works/{{slug}}
+    summary: "{{title}} - {{year}}"
+    sortable_fields:
+      - title
+      - year
+      - status
+      - artistOrRole
+      - venue
+    view_filters:
+      - label: Published
+        field: status
+        pattern: published
+      - label: Drafts
+        field: status
+        pattern: draft
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Year
+        name: year
+        widget: string
+      - label: Status
+        name: status
+        widget: select
+        default: published
+        options:
+          - label: Published
+            value: published
+          - label: Draft
+            value: draft
+      - label: Role / Artist
+        name: artistOrRole
+        widget: string
+        required: false
+      - label: Venue
+        name: venue
+        widget: string
+        required: false
+      - label: Content Blocks
+        name: contentBlocks
+        widget: list
+        required: false
+        collapsed: true
+        minimize_collapsed: true
+        summary: "{{fields.type}}"
+        types:
+          - label: Text
+            name: text
+            widget: object
+            fields:
+              - label: Body
+                name: body
+                widget: markdown
+                buttons:
+                  - bold
+                  - italic
+                  - code
+                  - link
+                  - heading-one
+                  - heading-two
+                  - heading-three
+                  - heading-four
+                  - heading-five
+                  - heading-six
+                  - quote
+                  - bulleted-list
+                  - numbered-list
+                editor_components:
+                  - captioned-image
+                  - image-grid
+                  - divider
+          - label: Video
+            name: video
+            widget: object
+            fields:
+              - label: Video Embed
+                name: embed
+                widget: text
+                hint: Paste a YouTube/Vimeo URL or iframe embed code.
+              - label: Caption
+                name: caption
+                widget: string
+                required: false
+      - label: Tags
+        name: tags
+        widget: list
+        collapsed: false
+        minimize_collapsed: true
+        summary: "{{fields.tag}}"
+        field:
+          label: Tag
+          name: tag
+          widget: string
+      - label: Thumbnail
+        name: thumbnail
+        widget: image
+      - label: Hero Image
+        name: heroImage
+        widget: image
+        required: false
+      - label: Hero Image Caption
+        name: heroImageCaption
+        widget: string
+        required: false
+
+  - name: settings
+    label: Settings
+    files:
+      - label: Works Order
+        name: worksOrder
+        file: src/data/works-order.json
+        format: json
+        fields:
+          - label: Works Order
+            name: works
+            widget: list
+            collapsed: false
+            minimize_collapsed: false
+            summary: "{{fields.work}}"
+            hint: Drag the blocks to change the order on the Works page.
+            fields:
+              - label: Work
+                name: work
+                widget: relation
+                collection: works
+                search_fields:
+                  - title
+                  - year
+                value_field: "{{slug}}"
+                display_fields:
+                  - title
+                  - year

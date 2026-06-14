@@ -1,0 +1,123 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { getWorks, type WorkItem } from "../data/works";
+
+const normalizeFilter = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+const works = await getWorks();
+const getTags = (work: WorkItem) => work.data.tags ?? [];
+const filterTags = ["All", ...new Set(works.flatMap(getTags))];
+const visibleFilterCount = 5;
+const getTagText = (work: WorkItem) => getTags(work).map(normalizeFilter).join(" ");
+---
+
+<Layout title="Works" description="Selected projects, visual experiments, and work-in-progress archives.">
+  <section class="works-filter" aria-label="Filter works by tag" data-works-filter>
+    {filterTags.map((tag, index) => (
+      <button
+        class:list={[
+          "work-filter-button",
+          tag === "All" && "is-active",
+          index >= visibleFilterCount && "is-extra"
+        ]}
+        type="button"
+        data-filter={normalizeFilter(tag)}
+        aria-pressed={tag === "All" ? "true" : "false"}
+      >
+        {tag}
+      </button>
+    ))}
+    {filterTags.length > visibleFilterCount && (
+      <button
+        class="works-filter-toggle"
+        type="button"
+        data-filter-toggle
+        aria-expanded="false"
+        aria-label="Show more categories"
+      >
+        {"\u00b7\u00b7\u00b7"}
+      </button>
+    )}
+  </section>
+
+  <section class="works-grid" aria-label="Selected work entries">
+    {works.map((work) => (
+      <article class="work-card" data-work-card data-tags={getTagText(work)}>
+        <a class="work-card-link" href={`/works/${work.id}/`} aria-label={`Open ${work.data.title} project detail`}>
+          <div class="work-media" aria-label={`${work.data.title} media preview`}>
+            {work.data.thumbnail ? (
+              <img src={work.data.thumbnail} alt={`${work.data.title} project thumbnail`} loading="lazy" />
+            ) : (
+              <div class="work-media-placeholder" aria-hidden="true">
+              </div>
+            )}
+          </div>
+
+          <div class="work-card-body">
+            <div class="work-card-heading">
+              <h2>{work.data.title}</h2>
+              <span>{work.data.year}</span>
+            </div>
+
+            <ul class="work-tags" aria-label={`${work.data.title} tags`}>
+              {getTags(work).map((tag) => <li>{tag}</li>)}
+            </ul>
+          </div>
+        </a>
+      </article>
+    ))}
+  </section>
+
+  <script is:inline>
+    const filterRoot = document.querySelector("[data-works-filter]");
+    const workCards = Array.from(document.querySelectorAll("[data-work-card]"));
+
+    if (filterRoot instanceof HTMLElement) {
+      const buttons = Array.from(filterRoot.querySelectorAll("[data-filter]"));
+      const toggleButton = filterRoot.querySelector("[data-filter-toggle]");
+
+      const applyFilter = (activeButton) => {
+        const filter = activeButton.dataset.filter ?? "all";
+
+        buttons.forEach((button) => {
+          const isActive = button === activeButton;
+          button.classList.toggle("is-active", isActive);
+          button.setAttribute("aria-pressed", isActive ? "true" : "false");
+        });
+
+        workCards.forEach((card) => {
+          if (!(card instanceof HTMLElement)) return;
+
+          const tags = card.dataset.tags ?? "";
+          const shouldShow = filter === "all" || tags.split(" ").includes(filter);
+          card.hidden = !shouldShow;
+        });
+      };
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          applyFilter(button);
+        });
+      });
+
+      if (toggleButton instanceof HTMLButtonElement) {
+        toggleButton.addEventListener("click", () => {
+          const willExpand = !filterRoot.classList.contains("is-expanded");
+          filterRoot.classList.toggle("is-expanded", willExpand);
+          toggleButton.textContent = willExpand ? "\u00d7" : "\u00b7\u00b7\u00b7";
+          toggleButton.setAttribute("aria-expanded", willExpand ? "true" : "false");
+          toggleButton.setAttribute(
+            "aria-label",
+            willExpand ? "Show fewer categories" : "Show more categories"
+          );
+
+          if (!willExpand) {
+            const allButton = buttons.find((button) => button.dataset.filter === "all");
+            if (allButton instanceof HTMLButtonElement) {
+              applyFilter(allButton);
+            }
+          }
+        });
+      }
+    }
+  </script>
+</Layout>

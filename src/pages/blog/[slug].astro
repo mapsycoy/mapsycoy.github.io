@@ -1,0 +1,65 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { render } from "astro:content";
+import { getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../data/blog";
+
+export async function getStaticPaths() {
+  const posts = await getBlogPosts();
+
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post }
+  }));
+}
+
+type Props = {
+  post: BlogPost;
+};
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const heroImageCaption = post.data.heroImageCaption?.trim() ?? "";
+---
+
+<Layout title={`${post.data.title} | Blog`} description={post.data.title}>
+  <article class="blog-post">
+    <a class="work-back-link" href="/blog/">&#8592; Blog</a>
+
+    <header class="blog-post-header">
+      <p class="entry-meta blog-entry-meta">
+        {post.data.pinned && (
+          <span class="pin-icon" aria-label="Pinned post">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M14.7 3.3 20.7 9.3 18.6 11.4 17.2 10 13 14.2V18L11.7 19.3 8.8 16.4 4.4 20.8 3.2 19.6 7.6 15.2 4.7 12.3 6 11H9.8L14 6.8 12.6 5.4 14.7 3.3Z" />
+            </svg>
+          </span>
+        )}
+        <span>{post.data.tag}</span>
+      </p>
+      <h1 class:list={["blog-post-title", hasKoreanText(post.data.title) && "ko-title"]}>{post.data.title}</h1>
+
+      <div class="blog-post-byline" aria-label="Post information">
+        <span>{getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}</span>
+      </div>
+    </header>
+
+    <figure class="blog-post-hero">
+      {post.data.heroImage ? (
+        <>
+          <img src={post.data.heroImage} alt="" loading="eager" />
+          {heroImageCaption && (
+            <figcaption class:list={[hasKoreanText(heroImageCaption) && "ko-title"]}>
+              {heroImageCaption}
+            </figcaption>
+          )}
+        </>
+      ) : (
+        <div class="blog-post-hero-placeholder" aria-hidden="true"></div>
+      )}
+    </figure>
+
+    <div class="blog-post-body">
+      <Content />
+    </div>
+  </article>
+</Layout>
