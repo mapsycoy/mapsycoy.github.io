@@ -36,9 +36,9 @@ Come to think of it, at some point, I lost the ability to truly imagine. This be
 
 When we think of animations that embody the essence of childhood innocence, Pixar films like *Toy Story* and *Monsters, Inc.* may come to mind. However, if we focus on a uniquely East Asian emotional sensibility, Studio Ghibli comes to mind first.
 
-In particular, Hayao Miyazaki’s *My Neighbor Totoro* shows us childhood innocence in a very intuitive way.
+In particular, Hayao Miyazaki’s *「My Neighbor Totoro」* shows us childhood innocence in a very intuitive way.
 
-Early in the film, when Mei’s family moves into their new house and the children first discover the *Makkuro Kurosuke* (soot sprites), the line spoken by Kanta’s grandmother is especially memorable:
+Early in the film, when Mei’s family moves into their new house and the children first discover the *Makkuro Kurosuke*(soot sprites), the line spoken by Kanta’s grandmother is especially memorable:
 
 > “Oh, so they’re Makkuro Kurosuke. I see, you can see them too.”
 >
@@ -66,7 +66,7 @@ In the essay, the author explains that through a series of studies, she discover
 
 Interacting with an AI companion forces a child to follow the pre-programmed flow of the algorithm. Conversely, with an imaginary friend, children retain full autonomy; they can freely think, act, and steer the narrative in whatever way suits their inner needs. This kind of solo role-playing fosters richer creative thinking and enhances perspective-taking, among various other developmental benefits.
 
-Of course, a child’s imagination can also have a darker side. During role-play, children might explore themes of violence, death, or other heavy topics. Crucially, an imaginary friend does not actively encourage or validate those thoughts. (Pathological delusions, such as those related to schizophrenia, are a separate matter entirely.)
+Of course, a child’s imagination can also have a darker side. During role-play, children might explore themes of violence, death, or other heavy topics. Crucially, an imaginary friend does not actively encourage or validate those thoughts.(Pathological delusions, such as those related to schizophrenia, are a separate matter entirely.)
 
 With AI companions, however, safety features like content filtering can fail during long-term use, risking inappropriate or harmful feedback. More alarmingly, because an AI companion speaks as an "external, authoritative voice," it poses a severe psychological risk if it ends up validating or justifying a child’s risky behavior.
 
@@ -80,7 +80,7 @@ Therefore, no matter how advanced technology becomes, the author's ultimate conc
 
 ## The More Passive the Imaginary Friend Is, the More Active I Become
 
-All the spirits that appear in *My Neighbor Totoro* share something in common.
+All the spirits that appear in *「My Neighbor Totoro」* share something in common.
 
 That is <mark>**passivity**</mark>and <mark>**silence**</mark>.
 
@@ -96,7 +96,9 @@ The sisters’ **innocence** and their father’s **respect** also play an impor
 
 If Satsuki and Mei had been precocious children who were already cynical about reality, they wouldn't have noticed the soot sprites; they likely would have just complained about the dusty, unhygienic state of the old house.
 
-And when Mei eagerly told her father about Totoro, what if he had dismissed her by saying, *"I’m already exhausted, do I really have to listen to this nonsense? You probably just had a dream,"* instead of validating her with, *"You must have met the keeper of the forest. That’s a very lucky thing"*? If he had shut her down, the magical narrative could not have unfolded.
+And when Mei eagerly told her father about Totoro, what if he had dismissed her by saying, *"I’m already exhausted, do I really have to listen to this nonsense? You probably just had a dream,"* instead of validating her with, *"You must have met the keeper of the forest. That’s a very lucky thing"*? 
+
+If he had shut her down, the magical narrative could not have unfolded.
 
 
 
@@ -116,7 +118,7 @@ When we prompt an AI, it delivers an instant answer.
 
 <mark>**The amount of knowledge we passively receive may increase, but it cannot be compared to the wisdom gained through an active process of solving things ourselves.**</mark>
 
-Some might ask, *"In this day and age, if we don't aggressively utilize AI, won't we be left behind as relics of the past?"*
+Some might ask, *"In this day, if we don't aggressively utilize AI, won't we be left behind?"*
 
 I believe we can still cultivate wisdom—it all depends on *how* we use AI.
 
