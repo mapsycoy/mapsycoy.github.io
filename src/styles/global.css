@@ -1088,6 +1088,40 @@ h3 {
   margin-top: 0.18rem;
 }
 
+.work-text-block table,
+.blog-post-body table {
+  width: 100%;
+  margin: 1.4rem 0;
+  border: 1px solid var(--line);
+  border-collapse: collapse;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.45;
+}
+
+.work-text-block th,
+.work-text-block td,
+.blog-post-body th,
+.blog-post-body td {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+
+.work-text-block th,
+.blog-post-body th {
+  background: var(--soft);
+  color: var(--text);
+  font-weight: 600;
+}
+
+.work-text-block tbody tr:nth-child(even),
+.blog-post-body tbody tr:nth-child(even) {
+  background: color-mix(in srgb, var(--soft) 45%, transparent);
+}
+
 .work-text-block code,
 .blog-post-body code {
   padding: 0.08em 0.24em;
