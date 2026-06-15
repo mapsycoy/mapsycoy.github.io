@@ -2115,8 +2115,7 @@ h3 {
 .site-footer {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
   gap: 12px 18px;
   width: 100%;
   padding: 28px 0;
@@ -2134,6 +2133,8 @@ h3 {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: 0 0 auto;
+  margin-left: auto;
   width: 34px;
   height: 34px;
   border: 1px solid var(--line);
