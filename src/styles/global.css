@@ -2114,9 +2114,10 @@ h3 {
 
 .site-footer {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   align-items: flex-start;
-  gap: 12px;
+  justify-content: space-between;
+  gap: 12px 18px;
   width: 100%;
   padding: 28px 0;
   border-top: 1px solid var(--line);
@@ -2126,12 +2127,10 @@ h3 {
 }
 
 .site-footer p {
-  align-self: flex-start;
   margin: 0;
 }
 
 .footer-social-link {
-  align-self: flex-start;
   display: inline-flex;
   align-items: center;
   justify-content: center;
