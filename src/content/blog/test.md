@@ -5,7 +5,7 @@ status: published
 pinned: false
 tag: Paper
 ---
-| Column 1 | Column 2 |
-| --- | --- |
-| Row 1 | Value 1 |
-| Row 2 | Value 2 |
+| 표 테스트 | Column 2 | Column 3 |
+| --- | --- | --- |
+| Row 1 | 테스트입니다. | Value 1 |
+| Row 2 | Value 2 | 테스트 |
