@@ -144,7 +144,7 @@ The parasocial relationships (PSRs) we form with characters from animations or v
 
 I'm not sure how things are today, but back when I was in high school, the anime channel Tooniverse used to run special events where a character's voice actor would personally wish selected viewers a happy birthday.
 
-But the key point here, I think, is the **aesthetics of waiting**.
+The key point here, I think, is the **aesthetics of waiting**.
 
 Writing a physical letter detailing your story, mailing it to the broadcasting station, and sitting anxiously in front of the television at the scheduled airtime—this entire sequence of active, hopeful investment is worlds apart from having an AI trained on a character's persona instantly spit out a generic birthday greeting.
 
