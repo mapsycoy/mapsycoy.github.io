@@ -105,6 +105,86 @@
               .join("")}</div>`,
         });
 
+        const splitTableLine = (line) => {
+          const trimmed = `${line || ""}`.trim().replace(/^\|/, "").replace(/\|$/, "");
+          return trimmed.split("|").map((cell) => cell.trim());
+        };
+
+        const escapeTableCell = (cell) => `${cell || ""}`.replace(/\|/g, "\\|").trim();
+
+        const escapeHtml = (value) =>
+          `${value || ""}`
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;");
+
+        const normalizeTableRows = (rows) =>
+          `${rows || ""}`
+            .split(/\r?\n/)
+            .map((line) => splitTableLine(line))
+            .filter((cells) => cells.some(Boolean));
+
+        const renderMarkdownTable = ({ headers, rows }) => {
+          const headerCells = splitTableLine(headers || "Column 1 | Column 2").filter(Boolean);
+          const safeHeaders = headerCells.length ? headerCells : ["Column 1", "Column 2"];
+          const rowCells = normalizeTableRows(rows);
+          const width = safeHeaders.length;
+          const normalizeWidth = (cells) => [
+            ...cells.slice(0, width),
+            ...Array.from({ length: Math.max(0, width - cells.length) }, () => ""),
+          ];
+
+          return [
+            `| ${safeHeaders.map(escapeTableCell).join(" | ")} |`,
+            `| ${safeHeaders.map(() => "---").join(" | ")} |`,
+            ...rowCells.map((cells) => `| ${normalizeWidth(cells).map(escapeTableCell).join(" | ")} |`),
+          ].join("\n");
+        };
+
+        window.CMS.registerEditorComponent({
+          id: "table",
+          label: "Table",
+          fields: [
+            {
+              name: "headers",
+              label: "Headers",
+              widget: "string",
+              default: "Column 1 | Column 2",
+              hint: "Separate columns with a vertical bar: Name | Value | Note",
+            },
+            {
+              name: "rows",
+              label: "Rows",
+              widget: "text",
+              default: "Row 1 | Value 1\nRow 2 | Value 2",
+              hint: "Use one row per line. Separate cells with a vertical bar.",
+            },
+          ],
+          pattern: /^\|(.+)\|\n\|([\s:|-]+)\|\n((?:\|.*\|\n?)*)/m,
+          fromBlock: (match) => ({
+            headers: splitTableLine(match[1]).join(" | "),
+            rows: `${match[3] || ""}`
+              .trim()
+              .split(/\r?\n/)
+              .filter(Boolean)
+              .map((line) => splitTableLine(line).join(" | "))
+              .join("\n"),
+          }),
+          toBlock: renderMarkdownTable,
+          toPreview: ({ headers, rows }) => {
+            const headerCells = splitTableLine(headers || "Column 1 | Column 2").filter(Boolean);
+            const safeHeaders = headerCells.length ? headerCells : ["Column 1", "Column 2"];
+            const rowCells = normalizeTableRows(rows);
+
+            return `<table><thead><tr>${safeHeaders
+              .map((cell) => `<th>${escapeHtml(cell)}</th>`)
+              .join("")}</tr></thead><tbody>${rowCells
+              .map((cells) => `<tr>${safeHeaders.map((_, index) => `<td>${escapeHtml(cells[index])}</td>`).join("")}</tr>`)
+              .join("")}</tbody></table>`;
+          },
+        });
+
       }
 
       const removeOptionalLabels = () => {

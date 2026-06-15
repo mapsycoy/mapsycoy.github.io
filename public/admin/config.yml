@@ -132,8 +132,9 @@ collections:
           - numbered-list
         editor_components:
           - captioned-image
+          - table
           - divider
-        hint: Use the Image component to add an image with a caption. Use <mark>text</mark> to highlight text inline. Uploaded files are stored in the shared uploads folder.
+        hint: Use the Image component to add an image with a caption. Use the Table component to add a markdown table. Use <mark>text</mark> to highlight text inline. Uploaded files are stored in the shared uploads folder.
 
   - name: works
     label: Works
