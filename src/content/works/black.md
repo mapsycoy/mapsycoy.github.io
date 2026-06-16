@@ -2,7 +2,7 @@
 title: Black
 year: "2021"
 status: published
-artistOrRole: Illustrator
+artistOrRole: Maker
 venue: Seoul
 contentBlocks:
   - type: text
