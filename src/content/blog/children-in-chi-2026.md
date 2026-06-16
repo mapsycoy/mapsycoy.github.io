@@ -18,12 +18,12 @@ Within these studies, a child is a learner, a creator, a family member, a platfo
 
 <mark>The important takeaway is that CHI 2026 does not treat children as a single, monolithic user group.</mark> However, if we narrow the criteria for this article to research on typically developing children under 13 in South Korea, the scope becomes much tighter.
 
-| Criteria | Description |
-| --- | --- |
-| Target of Interest | Typically developing children under 13 |
-| Comparison Targets | Adolescents, K-12, parents/family, special needs children, accessibility, safety, AI literacy research |
-| Domestic Research | 'Design' research conducted by institutions in South Korea |
-| Award-winning Papers | CHI 2026 Best Paper / Honorable Mention |
+| Criteria             | Description                                                                                            |
+| -------------------- | ------------------------------------------------------------------------------------------------------ |
+| Target of Interest   | Typically developing children under 13                                                                 |
+| Comparison Targets   | Adolescents, K-12, parents/family, special needs children, accessibility, safety, AI literacy research |
+| Domestic Research    | 'Design' research conducted by institutions in South Korea                                             |
+| Award-winning Papers | CHI 2026 Best Paper / Honorable Mention                                                                |
 
 
 
@@ -31,23 +31,22 @@ Within these studies, a child is a learner, a creator, a family member, a platfo
 
 
 
-| Category | Paper | Judgment based on Criteria |
-| --- | --- | --- |
-| Core Match | FutureMe / “I Can Be Anything!” | A CHI 2026 full paper by researchers from a domestic institution. It deals with generative AI-based self-representation, future imagination, and career imagination for children aged 7–11. It is closest to the core interest of this post as it is not classified as research on special needs or clinical groups. |
-| Outside Criteria but Important | When Scaffolding Breaks | A study centered around KAIST on LLM writing support in South Korean middle school classrooms. CHI 2026 Best Paper. Important as domestic AI/education research, but the target is 8th-grade middle school students, so it is not a case centered on typically developing children under 13. |
-| Excluded | Endless Swipes and Recommendations | CHI 2026 Honorable Mention. Research including authors from institutions like KAIST and Samsung, dealing with the impact of children's short-form video platform usage on context switching and working memory. Excluded as it is not design-related research. |
-| Excluded | Stories Left Unsaid | A study dealing with the issues of identity disclosure and stigma experienced by North Korean defector mothers raising children in South Korea. Excluded because it is neither a study on general children-AI interaction under 13 nor design-related research. |
-| Excluded | Autiverse | AI journaling research for autistic youth involving NAVER AI Lab, SKKU, and NAVER Cloud. It deviates from the criteria of typically developing children. |
-| Auxiliary Case | HabitTune | CHI 2026 Extended Abstracts. Deals with generative AI song-based habit formation for families of children aged 3–6. Kept only as an auxiliary case since it is not a full paper. |
+| Category                       | Paper                              | Judgment based on Criteria                                                                                                                                                                                                                                                                                           |
+| ------------------------------ | ---------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Core Match                     | FutureMe / “I Can Be Anything!”    | A CHI 2026 full paper by researchers from a domestic institution. It deals with generative AI-based self-representation, future imagination, and career imagination for children aged 7–11. It is closest to the core interest of this post as it is not classified as research on special needs or clinical groups. |
+| Outside Criteria but Important | When Scaffolding Breaks            | A study centered around KAIST on LLM writing support in South Korean middle school classrooms. CHI 2026 Best Paper. Important as domestic AI/education research, but the target is 8th-grade middle school students, so it is not a case centered on typically developing children under 13.                         |
+| Excluded                       | Endless Swipes and Recommendations | CHI 2026 Honorable Mention. Research including authors from institutions like KAIST and Samsung, dealing with the impact of children's short-form video platform usage on context switching and working memory. Excluded as it is not design-related research.                                                       |
+| Excluded                       | Stories Left Unsaid                | A study dealing with the issues of identity disclosure and stigma experienced by North Korean defector mothers raising children in South Korea. Excluded because it is neither a study on general children-AI interaction under 13 nor design-related research.                                                      |
+| Excluded                       | Autiverse                          | AI journaling research for autistic youth involving NAVER AI Lab, SKKU, and NAVER Cloud. It deviates from the criteria of typically developing children.                                                                                                                                                             |
+| Auxiliary Case                 | HabitTune                          | CHI 2026 Extended Abstracts. Deals with generative AI song-based habit formation for families of children aged 3–6. Kept only as an auxiliary case since it is not a full paper.                                                                                                                                     |
 
 Below are the award-winning papers from the studies above.
 
-*(Note that* ｢*Endless Swipes and Recommendations*｣ *won an Honorable Mention, but is not included here as it significantly deviates from the criteria.)*
+*(*Note that* ｢*Endless Swipes and Recommendations*｣ *won an Honorable Mention, but is not included here as it significantly deviates from the criteria.)*
 
-| Award | Paper | Meaning within the Criteria |
-| --- | --- | --- |
+| Award      | Paper                                                                                           | Meaning within the Criteria                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
+| ---------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Best Paper | KAIST DxD Lab's flow of AI research on children and youth: AACessTalk → When Scaffolding Breaks | A flow extending from AACessTalk at CHI 2025 to When Scaffolding Breaks at CHI 2026. AACessTalk was conducted jointly by institutions including Prof. Hwajung Hong's research team at KAIST and NAVER AI Lab, winning the CHI 2025 Best Paper. When Scaffolding Breaks is confirmed as a CHI 2026 Best Paper. These are strong achievements in domestic AI research for children and youth, but they differ from the criteria as they are situated in the contexts of special needs accessibility and secondary education, respectively. |
-| Honorable Mention | N/A |  |
 
 What is noteworthy here is the trajectory of AI research on children and adolescents centered around KAIST's DxD Lab. 
 
@@ -89,7 +88,7 @@ Ultimately, this paper is the closest prior research to my own, but at the same 
 
 
 
-#### Wrapping Up 
+#### Wrapping Up
 
 How do children appear in domestic CHI 2026 research?
 
