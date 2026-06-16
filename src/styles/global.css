@@ -2388,7 +2388,7 @@ h3 {
   }
 
   .works-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .work-card-body {
@@ -2431,6 +2431,12 @@ h3 {
   }
 
   .work-image-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 380px) {
+  .works-grid {
     grid-template-columns: 1fr;
   }
 }
