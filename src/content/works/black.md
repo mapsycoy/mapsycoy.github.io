@@ -1,5 +1,5 @@
 ---
-title: Black
+title: 黑(Black)
 year: "2021"
 status: published
 artistOrRole: Maker
