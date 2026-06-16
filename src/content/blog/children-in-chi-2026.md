@@ -4,8 +4,8 @@ publishedAt: 2026-06-16
 status: published
 pinned: false
 tag: Paper
-thumbnail: ""
-heroImage: ""
+thumbnail: /uploads/chi26.png
+heroImage: /uploads/chi26.png
 heroImageCaption: ACM CHI 2026
 ---
 > Since I've recently revamped my website, I'd like to cover CHI 2026 papers as the first post in the 'paper' category.
