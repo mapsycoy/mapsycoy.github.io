@@ -42,13 +42,19 @@ Within these studies, a child is a learner, a creator, a family member, a platfo
 
 Below are the award-winning papers from the studies above.
 
-*(*Note that* ｢*Endless Swipes and Recommendations*｣ *won an Honorable Mention, but is not included here as it significantly deviates from the criteria.)*
+*(*Note that *｢*Endless Swipes and Recommendations*｣* won an Honorable Mention, but is not included here as it significantly deviates from the criteria.)*
 
 | Award      | Paper                                                                                           | Meaning within the Criteria                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 | ---------- | ----------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Best Paper | KAIST DxD Lab's flow of AI research on children and youth: AACessTalk → When Scaffolding Breaks | A flow extending from AACessTalk at CHI 2025 to When Scaffolding Breaks at CHI 2026. AACessTalk was conducted jointly by institutions including Prof. Hwajung Hong's research team at KAIST and NAVER AI Lab, winning the CHI 2025 Best Paper. When Scaffolding Breaks is confirmed as a CHI 2026 Best Paper. These are strong achievements in domestic AI research for children and youth, but they differ from the criteria as they are situated in the contexts of special needs accessibility and secondary education, respectively. |
 
 What is noteworthy here is the trajectory of AI research on children and adolescents centered around KAIST's DxD Lab. 
+
+
+
+---
+
+
 
 [DxD Lab](https://dxd-lab.github.io/)
 
@@ -88,7 +94,7 @@ Ultimately, this paper is the closest prior research to my own, but at the same 
 
 
 
-#### Wrapping Up
+## Wrapping Up
 
 How do children appear in domestic CHI 2026 research?
 
