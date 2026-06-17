@@ -83,8 +83,8 @@ export const education: EducationItem[] = [
   },
   {
     institution: "",
-    degree: "In update",
-    period: "",
+    degree: "Incoming Graduate Student focused on HCI",
+    period: "Sep 2026 -",
     description: [
       "",
     ],
