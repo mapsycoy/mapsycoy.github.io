@@ -44,7 +44,7 @@ As past descriptions suggest, children were treated not as passive students, but
 
 While it is often compared to gifted music education, the two fields operated under very different systemic contexts. Music education, despite high financial barriers, offered quantifiable metrics through competitions and auditions. Art education, however, prioritized originality over technical skill, making its evaluation criteria seem inherently ambiguous to outsiders.
 
-It is entirely understandable that the government sought to reframe art gifted education through the lens of closing the educational gap and fostering social integration.
+It is entirely understandable that the government sought to reframe Art gifted education through the lens of closing the educational gap and fostering social integration.
 
 The problem is that expanding public access should never serve as an excuse to dilute the depth of the education itself.
 
@@ -62,7 +62,7 @@ As welfare policies tangled with budget demands, and as authority was completely
 
 
 
-## The Method
+## What I Found
 
 Good Art gifted education views a child as a being who shapes their own senses and logic. It reads the process rather than grading the output. It avoids teaching right answers, opting instead to ask questions that help the child establish their own standards.
 
