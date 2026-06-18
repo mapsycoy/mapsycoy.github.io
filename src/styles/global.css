@@ -2429,13 +2429,34 @@ h3 {
   }
 
   .work-card-body {
-    padding: 16px;
+    padding: 12px;
   }
 
   .work-card-heading {
     flex-direction: column;
     gap: 2px;
     align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .work-card h2 {
+    font-size: 1rem;
+    line-height: 1.22;
+  }
+
+  .work-card-heading span {
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+
+  .work-tags {
+    gap: 5px;
+  }
+
+  .work-tags li {
+    min-height: 20px;
+    padding: 1px 6px;
+    font-size: 0.68rem;
   }
 
   .work-detail-header {
