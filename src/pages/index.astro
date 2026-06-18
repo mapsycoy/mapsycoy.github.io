@@ -290,6 +290,33 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
         rafId = requestAnimationFrame(tick);
       };
 
+      const tickImageFallback = (time) => {
+        if (time - lastFrameTime >= 1000 / SCREENTONE.fps) {
+          lastFrameTime = time;
+          try {
+            renderScreentone(image);
+          } catch {
+            setFallback();
+            return;
+          }
+        }
+
+        rafId = requestAnimationFrame(tickImageFallback);
+      };
+
+      const startImageFallback = () => {
+        root.classList.remove("is-raw-fallback");
+        root.classList.remove("is-preprocessed-fallback");
+        canvas.hidden = false;
+        if (halftoneFallback instanceof HTMLImageElement) halftoneFallback.hidden = true;
+        if (placeholder instanceof HTMLElement) placeholder.hidden = true;
+        cancelAnimationFrame(rafId);
+        resize();
+        lastFrameTime = 0;
+        renderScreentone(image);
+        rafId = requestAnimationFrame(tickImageFallback);
+      };
+
       const start = async () => {
         if (!image.complete || !image.naturalWidth) return;
 
@@ -300,7 +327,11 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
         }
 
         if (!decodedFrames.length) {
-          setFallback();
+          try {
+            startImageFallback();
+          } catch {
+            setFallback();
+          }
           return;
         }
 
