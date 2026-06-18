@@ -22,6 +22,8 @@ Korean gifted education, especially programs run under public institutions, is o
 
 
 
+## A Memory
+
 Having experienced the Seoul Arts Center’s program for five years as a child, I can confidently say its approach was remarkable. It wasn't about technical skill or drawing better than peers; it was about helping children visualize and verbalize their inner worlds.
 
 Here, we were encouraged to freely express our inner worlds using unrestricted materials and techniques, but we had to explain our choices—why we used a certain color, shape, or omission.
@@ -35,6 +37,8 @@ As past descriptions suggest, children were treated not as passive students, but
 ---
 
 
+
+## The Paradox
 
 **At some point, however, "gifted education" became a socially uncomfortable term.** Art gifted education, in particular, found itself in an even tougher position when it came to justifying its existence.
 
@@ -58,6 +62,8 @@ As welfare policies tangled with budget demands, and as authority was completely
 
 
 
+## The Method
+
 Good Art gifted education views a child as a being who shapes their own senses and logic. It reads the process rather than grading the output. It avoids teaching right answers, opting instead to ask questions that help the child establish their own standards.
 
 Translating this structure into a methodology yields five core principles:
@@ -75,6 +81,8 @@ My hope is to see these five pedagogical principles fully embedded into Child-Co
 ---
 
 
+
+## Into HCI
 
 Current generative AI interfaces generally operate by quickly providing a plausible "finished product" based on user input. For instance, if a child thinks of a "forest" and types it in, the AI instantly renders a highly polished illustration.
 
