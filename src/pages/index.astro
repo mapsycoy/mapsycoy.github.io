@@ -86,7 +86,9 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
     </p>
   </section>
 
-  <script is:inline>
+  <script>
+    import { decompressFrames, parseGIF } from "gifuct-js";
+
     const SCREENTONE = {
       cellSize: 4,
       contrast: 1.22,
@@ -233,13 +235,16 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
         }
       };
 
-      const decodeGifFrames = async () => {
-        if (!("ImageDecoder" in window)) return [];
-
+      const fetchGifData = async () => {
         const response = await fetch(image.currentSrc || image.src);
         if (!response.ok) return [];
 
-        const data = await response.arrayBuffer();
+        return response.arrayBuffer();
+      };
+
+      const decodeGifFramesWithImageDecoder = async (data) => {
+        if (!("ImageDecoder" in window)) return [];
+
         const decoder = new ImageDecoder({ data, type: "image/gif" });
         await decoder.tracks.ready;
 
@@ -255,6 +260,73 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
         }
 
         return frames;
+      };
+
+      const decodeGifFramesWithParser = async (data) => {
+        const gif = parseGIF(data);
+        const frames = decompressFrames(gif, true);
+        const gifWidth = gif.lsd?.width || image.naturalWidth;
+        const gifHeight = gif.lsd?.height || image.naturalHeight;
+        const frameCanvas = document.createElement("canvas");
+        const frameContext = frameCanvas.getContext("2d", { willReadFrequently: true });
+
+        if (!frameContext || !gifWidth || !gifHeight) return [];
+
+        frameCanvas.width = gifWidth;
+        frameCanvas.height = gifHeight;
+
+        const decoded = [];
+
+        for (const frame of frames) {
+          let restoreData = null;
+          const { left, top, width: frameWidth, height: frameHeight } = frame.dims;
+
+          if (frame.disposalType === 3) {
+            restoreData = frameContext.getImageData(0, 0, gifWidth, gifHeight);
+          }
+
+          const patch = new ImageData(frame.patch, frameWidth, frameHeight);
+          frameContext.putImageData(patch, left, top);
+
+          let source = frameCanvas;
+          if ("createImageBitmap" in window) {
+            source = await createImageBitmap(frameCanvas);
+          } else {
+            const snapshot = document.createElement("canvas");
+            const snapshotContext = snapshot.getContext("2d");
+            snapshot.width = gifWidth;
+            snapshot.height = gifHeight;
+            snapshotContext?.drawImage(frameCanvas, 0, 0);
+            source = snapshot;
+          }
+
+          decoded.push({
+            bitmap: source,
+            duration: Math.max(30, frame.delay || 100)
+          });
+
+          if (frame.disposalType === 2) {
+            frameContext.clearRect(left, top, frameWidth, frameHeight);
+          } else if (frame.disposalType === 3 && restoreData) {
+            frameContext.putImageData(restoreData, 0, 0);
+          }
+        }
+
+        return decoded;
+      };
+
+      const decodeGifFrames = async () => {
+        const data = await fetchGifData();
+        if (!(data instanceof ArrayBuffer)) return [];
+
+        try {
+          const imageDecoderFrames = await decodeGifFramesWithImageDecoder(data);
+          if (imageDecoderFrames.length) return imageDecoderFrames;
+        } catch {
+          // Fall through to the parser path for browsers without reliable WebCodecs GIF support.
+        }
+
+        return decodeGifFramesWithParser(data);
       };
 
       const getFrameAt = (elapsed) => {
@@ -290,33 +362,6 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
         rafId = requestAnimationFrame(tick);
       };
 
-      const tickImageFallback = (time) => {
-        if (time - lastFrameTime >= 1000 / SCREENTONE.fps) {
-          lastFrameTime = time;
-          try {
-            renderScreentone(image);
-          } catch {
-            setFallback();
-            return;
-          }
-        }
-
-        rafId = requestAnimationFrame(tickImageFallback);
-      };
-
-      const startImageFallback = () => {
-        root.classList.remove("is-raw-fallback");
-        root.classList.remove("is-preprocessed-fallback");
-        canvas.hidden = false;
-        if (halftoneFallback instanceof HTMLImageElement) halftoneFallback.hidden = true;
-        if (placeholder instanceof HTMLElement) placeholder.hidden = true;
-        cancelAnimationFrame(rafId);
-        resize();
-        lastFrameTime = 0;
-        renderScreentone(image);
-        rafId = requestAnimationFrame(tickImageFallback);
-      };
-
       const start = async () => {
         if (!image.complete || !image.naturalWidth) return;
 
@@ -327,11 +372,7 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
         }
 
         if (!decodedFrames.length) {
-          try {
-            startImageFallback();
-          } catch {
-            setFallback();
-          }
+          setFallback();
           return;
         }
 
