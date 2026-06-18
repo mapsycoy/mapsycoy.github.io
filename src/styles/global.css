@@ -283,6 +283,7 @@ main {
 
 .home-instrument-source,
 .home-instrument-canvas,
+.home-instrument-halftone-fallback,
 .home-instrument-placeholder {
   position: absolute;
   inset: 0;
@@ -296,6 +297,20 @@ main {
   object-fit: cover;
   opacity: 0.001;
   pointer-events: none;
+}
+
+.home-instrument-halftone-fallback {
+  z-index: 2;
+  object-fit: cover;
+  pointer-events: none;
+}
+
+.home-instrument-halftone-fallback[hidden] {
+  display: none;
+}
+
+.home-instrument.is-preprocessed-fallback .home-instrument-source {
+  opacity: 0.001;
 }
 
 .home-instrument.is-raw-fallback .home-instrument-source {

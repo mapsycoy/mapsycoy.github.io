@@ -3,6 +3,8 @@ import Layout from "../layouts/Layout.astro";
 
 const contactEmail = "mapsycoy@gmail.com";
 const homeInstrumentSrc = "/landing/home-instrument.gif";
+const homeInstrumentHalftoneSrc = "/landing/home-instrument-halftone.gif";
+const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.gif";
 ---
 
 <Layout>
@@ -27,6 +29,17 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
           decoding="async"
         />
         <canvas class="home-instrument-canvas" aria-hidden="true"></canvas>
+        <img
+          class="home-instrument-halftone-fallback"
+          data-src={homeInstrumentHalftoneSrc}
+          data-srcset={`${homeInstrumentHalftoneSrc} 390w, ${homeInstrumentHalftoneLargeSrc} 728w`}
+          sizes="(max-width: 780px) calc(100vw - 40px), 390px"
+          alt=""
+          loading="eager"
+          decoding="async"
+          hidden
+          aria-hidden="true"
+        />
         <div class="home-instrument-placeholder" hidden aria-hidden="true"></div>
       </div>
       <figcaption class="home-media-meta">
@@ -90,6 +103,7 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
 
       const image = root.querySelector(".home-instrument-source");
       const canvas = root.querySelector(".home-instrument-canvas");
+      const halftoneFallback = root.querySelector(".home-instrument-halftone-fallback");
       const placeholder = root.querySelector(".home-instrument-placeholder");
 
       if (!(image instanceof HTMLImageElement) || !(canvas instanceof HTMLCanvasElement)) return;
@@ -111,10 +125,22 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
       const setFallback = () => {
         cancelAnimationFrame(rafId);
         canvas.hidden = true;
-        root.classList.add("is-raw-fallback");
-        if (placeholder instanceof HTMLElement) {
-          placeholder.hidden = image.complete && image.naturalWidth > 0;
+
+        if (halftoneFallback instanceof HTMLImageElement) {
+          if (!halftoneFallback.currentSrc) {
+            halftoneFallback.srcset = halftoneFallback.dataset.srcset || "";
+            halftoneFallback.src = halftoneFallback.dataset.src || "";
+          }
+          root.classList.remove("is-raw-fallback");
+          root.classList.add("is-preprocessed-fallback");
+          halftoneFallback.hidden = false;
+          if (placeholder instanceof HTMLElement) placeholder.hidden = true;
+          return;
         }
+
+        root.classList.remove("is-preprocessed-fallback");
+        root.classList.add("is-raw-fallback");
+        if (placeholder instanceof HTMLElement) placeholder.hidden = image.complete && image.naturalWidth > 0;
       };
 
       const resize = () => {
@@ -279,7 +305,9 @@ const homeInstrumentSrc = "/landing/home-instrument.gif";
         }
 
         root.classList.remove("is-raw-fallback");
+        root.classList.remove("is-preprocessed-fallback");
         canvas.hidden = false;
+        if (halftoneFallback instanceof HTMLImageElement) halftoneFallback.hidden = true;
         if (placeholder instanceof HTMLElement) placeholder.hidden = true;
         cancelAnimationFrame(rafId);
         resize();

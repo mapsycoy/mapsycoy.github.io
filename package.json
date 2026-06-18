@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
+    "generate:halftone": "node scripts/generate-halftone-fallback.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "build": "npm run optimize:images && astro build",
     "preview": "astro preview"
@@ -12,5 +13,8 @@
   "dependencies": {
     "astro": "^6.4.5",
     "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "gifenc": "^1.0.3"
   }
 }
