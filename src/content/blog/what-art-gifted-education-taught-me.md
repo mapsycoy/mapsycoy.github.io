@@ -88,7 +88,7 @@ Current generative AI interfaces generally operate by quickly providing a plausi
 
 What interests me is not teaching children the technical skill of writing a "good prompt." Instead, I want to create a structure that pulls the raw, unrefined senses out of the child—letting them observe how their raw expression interacts with the interface, encouraging them to look back at their own thoughts.
 
-For example, when a child creates their own world and says they want a certain being to exist there, I do not want the AI to immediately draw a finished character. Instead, I want it to leave an ambiguous, indistinct little presence inside the child's world—something too unfamiliar to call a friend, yet strangely close to be considered a mere illusion. It quietly stays somewhere in the world the child built; it doesn't speak, but it constantly draws the child's gaze.
+For example, when a child creates their own world, I do not want the AI to immediately complete it with a finished scene. Instead, I imagine the system responding by quietly placing a small, ambiguous presence inside the child’s world—something too unfamiliar to call a friend, yet strangely too close to dismiss as a mere illusion. It stays somewhere in the world the child has built. It does not speak, but it keeps drawing the child’s gaze.
 
 Confronted with that presence, the child might start asking questions: *Who is this? Why is it here?* In answering them, the child gradually begins to construct the rules of their own world.
 
