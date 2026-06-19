@@ -261,11 +261,11 @@ collections:
                   - label: Value
                     name: value
                     widget: string
-                    hint: Examples: 191.8M, 24, 1.2K
+                    hint: "Examples: 191.8M, 24, 1.2K"
                   - label: Label
                     name: label
                     widget: string
-                    hint: Examples: GIF Views, Uploads, Followers
+                    hint: "Examples: GIF Views, Uploads, Followers"
       - label: Tags
         name: tags
         widget: list
