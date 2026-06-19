@@ -45,20 +45,25 @@
       "organization": "NEXON KOREA",
       "employmentType": "Internship",
       "period": "Dec 2025 - May 2026",
-      "logo": "/cv/logos/nexon.png"
+      "logo": "/cv/logos/nexon.png",
+      "team": "M-Content Generation AI Team"
     },
     {
       "role": "AI Illustrator",
       "organization": "Enuma Inc.",
       "employmentType": "Contract",
       "period": "Jul 2025 - Sep 2025",
-      "logo": "/cv/logos/enuma.png"
+      "logo": "/cv/logos/enuma.png",
+      "team": "Content Team"
     },
     {
       "role": "CDO",
       "organization": "unipuskr",
       "period": "Feb 2023 - Dec 2023",
-      "logo": "/cv/logos/unipuskr.png"
+      "logo": "/cv/logos/unipuskr.png",
+      "description": [],
+      "media": [],
+      "employmentType": "Self-employed"
     },
     {
       "role": "Animator · Illustrator",
