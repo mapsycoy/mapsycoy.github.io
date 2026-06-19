@@ -1073,6 +1073,10 @@ h3 {
   background: var(--line);
 }
 
+.work-stats-list-single {
+  grid-template-columns: 1fr;
+}
+
 .work-stats-list > div {
   display: grid;
   gap: 3px;

@@ -277,6 +277,7 @@ const blockItems = await Promise.all((work.data.contentBlocks ?? []).map(async (
   if (block.type === "statsLink") {
     return {
       ...block,
+      stats: block.stats.filter((stat) => stat.label.trim() && stat.value.trim()),
       previewImage: await getLinkPreviewImage(block.url),
     };
   }
@@ -413,7 +414,7 @@ const visibleInfoItems = infoItems.filter(
                 </a>
               </div>
               {block.stats.length > 0 && (
-                <dl class="work-stats-list">
+                <dl class:list={["work-stats-list", block.stats.length === 1 && "work-stats-list-single"]}>
                   {block.stats.map((stat) => (
                     <div>
                       <dt>{stat.label}</dt>
