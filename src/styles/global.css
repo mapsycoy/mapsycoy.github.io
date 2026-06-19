@@ -2092,6 +2092,11 @@ h3 {
   line-height: 1.35;
 }
 
+.cv-entry-team {
+  color: var(--muted);
+  font-weight: 500;
+}
+
 .cv-entry-meta,
 .cv-entry-period {
   margin: 0;

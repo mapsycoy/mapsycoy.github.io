@@ -302,6 +302,235 @@ collections:
   - name: settings
     label: Settings
     files:
+      - label: CV
+        name: cv
+        file: src/data/cv.json
+        format: json
+        fields:
+          - label: Profile
+            name: profile
+            widget: object
+            fields:
+              - label: Name
+                name: name
+                widget: string
+              - label: Location
+                name: location
+                widget: string
+                required: false
+              - label: Photo
+                name: photo
+                widget: string
+                required: false
+          - label: Education
+            name: education
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: "{{fields.degree}}"
+            fields:
+              - label: Institution
+                name: institution
+                widget: string
+                required: false
+              - label: Degree
+                name: degree
+                widget: string
+              - label: Period
+                name: period
+                widget: string
+              - label: Description
+                name: description
+                widget: list
+                required: false
+                field:
+                  label: Line
+                  name: line
+                  widget: string
+          - label: Arts Gifted Education Certificate
+            name: artsGiftedEducationCertificate
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Logos
+                name: logos
+                widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: "{{fields.alt}}"
+                fields:
+                  - label: Source
+                    name: src
+                    widget: string
+                  - label: Alt
+                    name: alt
+                    widget: string
+          - label: Experiences
+            name: experiences
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: "{{fields.role}}"
+            fields:
+              - label: Role
+                name: role
+                widget: string
+              - label: Team
+                name: team
+                widget: string
+                required: false
+                hint: Optional team name shown after the role.
+              - label: Organization
+                name: organization
+                widget: string
+              - label: Employment Type
+                name: employmentType
+                widget: string
+                required: false
+              - label: Period
+                name: period
+                widget: string
+              - label: Duration
+                name: duration
+                widget: string
+                required: false
+              - label: Logo
+                name: logo
+                widget: string
+                required: false
+              - label: Description
+                name: description
+                widget: list
+                required: false
+                field:
+                  label: Line
+                  name: line
+                  widget: string
+              - label: Sub Entries
+                name: subEntries
+                widget: list
+                required: false
+                collapsed: true
+                minimize_collapsed: true
+                summary: "{{fields.title}}"
+                fields:
+                  - label: Title
+                    name: title
+                    widget: string
+                  - label: Period
+                    name: period
+                    widget: string
+                  - label: Duration
+                    name: duration
+                    widget: string
+                    required: false
+                  - label: Description
+                    name: description
+                    widget: list
+                    required: false
+                    field:
+                      label: Line
+                      name: line
+                      widget: string
+              - label: Media
+                name: media
+                widget: list
+                required: false
+                collapsed: true
+                minimize_collapsed: true
+                summary: "{{fields.label}}"
+                fields:
+                  - label: Type
+                    name: type
+                    widget: select
+                    default: image
+                    options:
+                      - image
+                      - link
+                  - label: Source
+                    name: src
+                    widget: string
+                    required: false
+                  - label: URL
+                    name: href
+                    widget: string
+                    required: false
+                  - label: Alt
+                    name: alt
+                    widget: string
+                    required: false
+                  - label: Label
+                    name: label
+                    widget: string
+                    required: false
+          - label: Projects
+            name: projects
+            widget: list
+            collapsed: true
+            minimize_collapsed: true
+            summary: "{{fields.title}}"
+            fields:
+              - label: Title
+                name: title
+                widget: string
+              - label: Period
+                name: period
+                widget: string
+              - label: Description
+                name: description
+                widget: list
+                required: false
+                field:
+                  label: Line
+                  name: line
+                  widget: string
+              - label: Media
+                name: media
+                widget: list
+                required: false
+                collapsed: true
+                minimize_collapsed: true
+                summary: "{{fields.label}}"
+                fields:
+                  - label: Type
+                    name: type
+                    widget: select
+                    default: image
+                    options:
+                      - image
+                      - link
+                  - label: Source
+                    name: src
+                    widget: string
+                    required: false
+                  - label: URL
+                    name: href
+                    widget: string
+                    required: false
+                  - label: Alt
+                    name: alt
+                    widget: string
+                    required: false
+                  - label: Label
+                    name: label
+                    widget: string
+                    required: false
+              - label: Links
+                name: links
+                widget: list
+                required: false
+                collapsed: true
+                minimize_collapsed: true
+                summary: "{{fields.label}}"
+                fields:
+                  - label: Label
+                    name: label
+                    widget: string
+                  - label: URL
+                    name: href
+                    widget: string
       - label: Works Order
         name: worksOrder
         file: src/data/works-order.json

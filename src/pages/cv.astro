@@ -67,7 +67,10 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
               {item.logo && <img src={item.logo} alt="" loading="lazy" onerror="this.hidden=true" />}
             </div>
             <div class="cv-entry-main">
-              <h3 class="cv-entry-title">{item.role}</h3>
+              <h3 class="cv-entry-title">
+                {item.role}
+                {item.team && <span class="cv-entry-team"> / {item.team}</span>}
+              </h3>
               <p class="cv-entry-meta">
                 {item.organization}{item.employmentType && ` · ${item.employmentType}`}
               </p>
