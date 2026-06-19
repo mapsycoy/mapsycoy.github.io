@@ -48,9 +48,9 @@ It is entirely understandable that the government sought to reframe Art gifted e
 
 The problem is that expanding public access should never serve as an excuse to dilute the depth of the education itself.
 
-I witnessed this paradox firsthand. For 13 years—from 2010 as a student to 2022 when I resigned—I was part of the Gifted Art Education Center at Seoul National University of Education, working as a student, TA, and staff member. As an insider, I saw that despite its idealistic mission, the education was gradually being consumed by paperwork and funding requirements.
+I witnessed this paradox firsthand. For 13 years—from 2010 as a student to 2022 when I resigned—I was part of the Gifted Art Education Center at Seoul National University of Education, working as a student, TA, and Admin. As an insider, I saw that despite its idealistic mission, the education was gradually being consumed by paperwork and funding requirements.
 
-Helping disadvantaged kids through special admissions is absolutely necessary. But the moment this turns into a mere numbers game—just to fill quotas and secure government funding—it loses its real meaning. On the other hand, regular admissions also had flaws; because parents' jobs and addresses weren't completely hidden, wealthy backgrounds still gave some kids an unfair advantage.
+Helping disadvantaged kids through special admissions is necessary. But the moment this turns into a mere numbers game—just to fill quotas and secure government funding—it loses its real meaning. On the other hand, regular admissions also had flaws; because parents' jobs and addresses weren't completely hidden, wealthy backgrounds still gave some kids an unfair advantage.
 
 Every year, administrative energy went into meeting annually changing government guidelines and checklists, creating an imbalance in the operational structure. The success of the program was often explained through the names and authority of experts, while much of the practical work, along with the responsibility when problems arose, fell on the frontline staff.
 
