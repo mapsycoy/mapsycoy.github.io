@@ -5,9 +5,6 @@ status: published
 artistOrRole: Maker
 venue: Seoul
 contentBlocks:
-  - type: video
-    embed: https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmdkeXdyZWw4Ym54c3FrMWdsMWkyeDl5b3Rvd2c2ZW56NThmYnA3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/wbUIFk2B1YDMCdEpmv/giphy.gif
-    caption: ""
   - type: statsLink
     ctaLabel: View on GIPHY
     title: Caffeine is my life
@@ -21,4 +18,5 @@ contentBlocks:
 tags:
   - Animation
 thumbnail: /uploads/caffeine.png
+heroImage: https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmdkeXdyZWw4Ym54c3FrMWdsMWkyeDl5b3Rvd2c2ZW56NThmYnA3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/wbUIFk2B1YDMCdEpmv/giphy.gif
 ---
