@@ -34,7 +34,7 @@ media_folder: public/uploads
 public_folder: /uploads
 
 slug:
-  encoding: ascii
+  encoding: unicode
   clean_accents: true
   sanitize_replacement: "-"
 
@@ -229,6 +229,43 @@ collections:
                 name: caption
                 widget: string
                 required: false
+          - label: Stats Link
+            name: statsLink
+            widget: object
+            summary: "{{fields.title}}"
+            fields:
+              - label: Title
+                name: title
+                widget: string
+                hint: Name of the external profile, project, or platform page.
+              - label: Subtitle
+                name: subtitle
+                widget: string
+                required: false
+                hint: Optional context, such as @username on GIPHY.
+              - label: URL
+                name: url
+                widget: string
+              - label: Button Label
+                name: ctaLabel
+                widget: string
+                default: View link
+                required: false
+              - label: Stats
+                name: stats
+                widget: list
+                collapsed: false
+                minimize_collapsed: true
+                summary: "{{fields.value}} {{fields.label}}"
+                fields:
+                  - label: Value
+                    name: value
+                    widget: string
+                    hint: Examples: 191.8M, 24, 1.2K
+                  - label: Label
+                    name: label
+                    widget: string
+                    hint: Examples: GIF Views, Uploads, Followers
       - label: Tags
         name: tags
         widget: list

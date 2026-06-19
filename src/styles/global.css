@@ -979,6 +979,106 @@ h3 {
   gap: 0;
 }
 
+.work-stats-link {
+  display: grid;
+  gap: 16px;
+  margin: 1.4rem 0;
+  padding: 18px;
+  border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--soft) 58%, transparent);
+}
+
+.work-stats-link-main {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 18px;
+  align-items: start;
+}
+
+.work-stats-link-kicker,
+.work-stats-link-subtitle,
+.work-stats-link-url {
+  margin: 0;
+  color: var(--muted);
+}
+
+.work-stats-link-kicker {
+  margin-bottom: 6px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.work-stats-link h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.25rem;
+  line-height: 1.25;
+}
+
+.work-stats-link-subtitle {
+  margin-top: 4px;
+  font-size: 0.92rem;
+  line-height: 1.4;
+}
+
+.work-stats-link-action {
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  border-bottom: 1px solid currentColor;
+  color: var(--text);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.work-stats-link-action:hover {
+  color: var(--accent);
+}
+
+.work-stats-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0;
+  border: 1px solid var(--line);
+  background: var(--line);
+}
+
+.work-stats-list > div {
+  display: grid;
+  gap: 3px;
+  min-width: 0;
+  padding: 12px;
+  background: var(--bg);
+}
+
+.work-stats-list dt {
+  order: 2;
+  color: var(--muted);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  line-height: 1.25;
+  text-transform: uppercase;
+}
+
+.work-stats-list dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.4rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.work-stats-link-url {
+  overflow-wrap: anywhere;
+  font-size: 0.82rem;
+  line-height: 1.35;
+}
+
 .work-text-block,
 .blog-post-body {
   color: var(--muted);
@@ -2490,6 +2590,19 @@ h3 {
 
   .work-image-grid {
     grid-template-columns: 1fr;
+  }
+
+  .work-stats-link {
+    padding: 14px;
+  }
+
+  .work-stats-link-main,
+  .work-stats-list {
+    grid-template-columns: 1fr;
+  }
+
+  .work-stats-link-action {
+    justify-self: flex-start;
   }
 }
 

@@ -135,6 +135,15 @@ const renderLinkPreview = (match: RegExpMatchArray) => {
   ].join("");
 };
 
+const getDisplayUrl = (value: string) => {
+  try {
+    const parsed = new URL(value);
+    return `${parsed.hostname.replace(/^www\./, "")}${parsed.pathname === "/" ? "" : parsed.pathname}`;
+  } catch {
+    return value;
+  }
+};
+
 const renderCaptionedImage = (match: RegExpMatchArray) => {
   const caption = match[3] || match[1] || "";
 
@@ -365,7 +374,7 @@ const visibleInfoItems = infoItems.filter(
         {blockItems.map((block, index) => (
           block.type === "text" ? (
             <div class="work-text-block" set:html={renderTextBlock(block.body)} />
-          ) : block.embedUrl && block.embedUrl !== leadVideo?.embedUrl ? (
+          ) : block.type === "video" && block.embedUrl && block.embedUrl !== leadVideo?.embedUrl ? (
             <div class="work-video-item">
               <div class="work-video-embed">
                 <iframe
@@ -378,6 +387,30 @@ const visibleInfoItems = infoItems.filter(
               </div>
               {block.caption && <p class="work-video-caption">{block.caption}</p>}
             </div>
+          ) : block.type === "statsLink" ? (
+            <aside class="work-stats-link" aria-label={block.title}>
+              <div class="work-stats-link-main">
+                <div>
+                  <p class="work-stats-link-kicker">External profile</p>
+                  <h2>{block.title}</h2>
+                  {block.subtitle && <p class="work-stats-link-subtitle">{block.subtitle}</p>}
+                </div>
+                <a class="work-stats-link-action" href={block.url} target="_blank" rel="noreferrer">
+                  {block.ctaLabel || "View link"}
+                </a>
+              </div>
+              {block.stats.length > 0 && (
+                <dl class="work-stats-list">
+                  {block.stats.map((stat) => (
+                    <div>
+                      <dt>{stat.label}</dt>
+                      <dd>{stat.value}</dd>
+                    </div>
+                  ))}
+                </dl>
+              )}
+              <p class="work-stats-link-url">{getDisplayUrl(block.url)}</p>
+            </aside>
           ) : null
         ))}
       </div>

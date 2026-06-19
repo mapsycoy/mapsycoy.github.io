@@ -55,6 +55,21 @@ const works = defineCollection({
             embed: z.string(),
             caption: z.string().optional(),
           }),
+          z.object({
+            type: z.literal("statsLink"),
+            title: z.string(),
+            url: z.string(),
+            subtitle: z.string().optional(),
+            ctaLabel: z.string().default("View link"),
+            stats: z
+              .array(
+                z.object({
+                  label: z.string(),
+                  value: z.string(),
+                })
+              )
+              .default([]),
+          }),
         ])
       )
       .default([]),
