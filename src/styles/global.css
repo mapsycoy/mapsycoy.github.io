@@ -796,6 +796,11 @@ h3 {
   margin: 0;
 }
 
+.work-media-slide-contained {
+  display: grid;
+  justify-items: center;
+}
+
 .work-media-slide[hidden] {
   display: none;
 }
@@ -805,6 +810,12 @@ h3 {
   width: 100%;
   height: auto;
   object-fit: contain;
+}
+
+.work-media-slide-contained img {
+  width: auto;
+  max-width: min(100%, 420px);
+  max-height: 70vh;
 }
 
 .work-carousel-controls {

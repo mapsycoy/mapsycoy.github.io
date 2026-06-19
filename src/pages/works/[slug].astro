@@ -247,6 +247,7 @@ const renderTextBlock = (value: string) => {
 const { work } = Astro.props;
 const tags = work.data.tags ?? [];
 const heroImage = work.data.heroImage?.trim() ?? "";
+const heroImageDisplay = work.data.heroImageDisplay ?? "full";
 const heroImageCaption = work.data.heroImageCaption?.trim() ?? "";
 const videoUrl = work.data.videoUrl?.trim() ?? "";
 const legacyVideoItems = [
@@ -352,7 +353,7 @@ const visibleInfoItems = infoItems.filter(
           {leadVideo.caption && <p class="work-video-caption">{leadVideo.caption}</p>}
         </div>
       ) : heroImage ? (
-        <figure class="work-media-slide">
+        <figure class:list={["work-media-slide", heroImageDisplay === "contained" && "work-media-slide-contained"]}>
           <img src={heroImage} alt={`${work.data.title} image`} loading="eager" />
           {heroImageCaption && <figcaption>{heroImageCaption}</figcaption>}
         </figure>

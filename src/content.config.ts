@@ -33,6 +33,7 @@ const works = defineCollection({
     tags: z.array(z.string()).default([]),
     thumbnail: requiredImagePathSchema,
     heroImage: imagePathSchema,
+    heroImageDisplay: z.enum(["full", "contained"]).default("full"),
     heroImageCaption: z.string().default(""),
     videoUrl: z.string().default(""),
     videos: z

@@ -283,6 +283,17 @@ collections:
         name: heroImage
         widget: image
         required: false
+      - label: Hero Image Display
+        name: heroImageDisplay
+        widget: select
+        default: full
+        required: false
+        options:
+          - label: Full width
+            value: full
+          - label: Contained
+            value: contained
+        hint: Use Contained for small GIFs, stickers, or transparent images that should not be enlarged to full page width.
       - label: Hero Image Caption
         name: heroImageCaption
         widget: string
