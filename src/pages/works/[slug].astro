@@ -394,26 +394,28 @@ const visibleInfoItems = infoItems.filter(
                   <img src={block.previewImage} alt={`${block.title} thumbnail`} loading="lazy" referrerpolicy="no-referrer" />
                 </a>
               )}
-              <div class="work-stats-link-main">
-                <div>
-                  <p class="work-stats-link-kicker">External profile</p>
-                  <h2>{block.title}</h2>
-                  {block.subtitle && <p class="work-stats-link-subtitle">{block.subtitle}</p>}
+              <div class="work-stats-link-content">
+                <div class="work-stats-link-main">
+                  <div>
+                    <p class="work-stats-link-kicker">External profile</p>
+                    <h2>{block.title}</h2>
+                    {block.subtitle && <p class="work-stats-link-subtitle">{block.subtitle}</p>}
+                  </div>
+                  <a class="work-stats-link-action" href={block.url} target="_blank" rel="noreferrer">
+                    {block.ctaLabel || "View link"}
+                  </a>
                 </div>
-                <a class="work-stats-link-action" href={block.url} target="_blank" rel="noreferrer">
-                  {block.ctaLabel || "View link"}
-                </a>
+                {block.stats.length > 0 && (
+                  <dl class="work-stats-list">
+                    {block.stats.map((stat) => (
+                      <div>
+                        <dt>{stat.label}</dt>
+                        <dd>{stat.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                )}
               </div>
-              {block.stats.length > 0 && (
-                <dl class:list={["work-stats-list", block.stats.length === 1 && "work-stats-list-single"]}>
-                  {block.stats.map((stat) => (
-                    <div>
-                      <dt>{stat.label}</dt>
-                      <dd>{stat.value}</dd>
-                    </div>
-                  ))}
-                </dl>
-              )}
             </aside>
           ) : null
         ))}
