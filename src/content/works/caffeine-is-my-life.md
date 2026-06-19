@@ -11,8 +11,10 @@ contentBlocks:
     subtitle: "@mapsycoy on GIPHY"
     url: https://giphy.com/mapsycoy
     stats:
+      - value: "24"
+        label: Uploads
       - value: 191.8M
-        label: GIF Views
+        label: GIF Views(June 2026)
 tags:
   - Animation
 thumbnail: /uploads/caffeine.png
