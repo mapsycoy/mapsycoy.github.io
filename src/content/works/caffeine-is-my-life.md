@@ -6,13 +6,8 @@ artistOrRole: Maker
 venue: Seoul
 contentBlocks:
   - type: video
-    embed: <iframe width="560" height="315"
-      src="https://www.youtube.com/embed/rZ08OfHH9xQ?si=k_XroW-Fl3c15fW-&amp;start=22"
-      title="YouTube video player" frameborder="0" allow="accelerometer;
-      autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;
-      web-share" referrerpolicy="strict-origin-when-cross-origin"
-      allowfullscreen></iframe>
-    caption: Featured in YouTube Content
+    embed: https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmdkeXdyZWw4Ym54c3FrMWdsMWkyeDl5b3Rvd2c2ZW56NThmYnA3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/wbUIFk2B1YDMCdEpmv/giphy.gif
+    caption: ""
   - type: statsLink
     ctaLabel: View on GIPHY
     title: Caffeine is my life
