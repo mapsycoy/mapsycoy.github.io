@@ -1022,8 +1022,7 @@ h3 {
 }
 
 .work-stats-link-kicker,
-.work-stats-link-subtitle,
-.work-stats-link-url {
+.work-stats-link-subtitle {
   margin: 0;
   color: var(--muted);
 }
@@ -1067,10 +1066,8 @@ h3 {
 .work-stats-list {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1px;
+  gap: 14px;
   margin: 0;
-  border: 1px solid var(--line);
-  background: var(--line);
 }
 
 .work-stats-list-single {
@@ -1081,8 +1078,6 @@ h3 {
   display: grid;
   gap: 3px;
   min-width: 0;
-  padding: 12px;
-  background: var(--bg);
 }
 
 .work-stats-list dt {
@@ -1101,12 +1096,6 @@ h3 {
   font-size: 1.4rem;
   font-weight: 700;
   line-height: 1.1;
-}
-
-.work-stats-link-url {
-  overflow-wrap: anywhere;
-  font-size: 0.82rem;
-  line-height: 1.35;
 }
 
 .work-text-block,

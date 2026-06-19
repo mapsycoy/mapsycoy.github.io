@@ -136,15 +136,6 @@ const renderLinkPreview = (match: RegExpMatchArray) => {
   ].join("");
 };
 
-const getDisplayUrl = (value: string) => {
-  try {
-    const parsed = new URL(value);
-    return `${parsed.hostname.replace(/^www\./, "")}${parsed.pathname === "/" ? "" : parsed.pathname}`;
-  } catch {
-    return value;
-  }
-};
-
 const renderCaptionedImage = (match: RegExpMatchArray) => {
   const caption = match[3] || match[1] || "";
 
@@ -423,7 +414,6 @@ const visibleInfoItems = infoItems.filter(
                   ))}
                 </dl>
               )}
-              <p class="work-stats-link-url">{getDisplayUrl(block.url)}</p>
             </aside>
           ) : null
         ))}
