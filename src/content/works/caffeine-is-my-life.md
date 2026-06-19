@@ -1,0 +1,19 @@
+---
+title: Caffeine is my life
+year: "2021"
+status: published
+artistOrRole: Maker
+venue: Seoul
+contentBlocks:
+  - type: statsLink
+    ctaLabel: View on GIPHY
+    title: Caffeine is my life
+    subtitle: "@mapsycoy on GIPHY"
+    url: https://giphy.com/mapsycoy
+    stats:
+      - value: 191.8M
+        label: GIF Views
+tags:
+  - Animation
+thumbnail: /uploads/caffeine.png
+---
