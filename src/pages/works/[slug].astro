@@ -36,6 +36,12 @@ const withVimeoEmbedParams = (url: string) => {
   return parsed.toString();
 };
 
+const getYouTubeEmbedSearch = (parsed: URL) => {
+  const searchParams = new URLSearchParams(parsed.search);
+  searchParams.delete("v");
+  return searchParams.toString() ? `?${searchParams.toString()}` : "";
+};
+
 const getVideoEmbedUrl = (value: string): string | null => {
   if (!value.trim()) return null;
 
@@ -48,22 +54,22 @@ const getVideoEmbedUrl = (value: string): string | null => {
     if (host === "youtube.com" || host === "m.youtube.com" || host === "youtube-nocookie.com") {
       if (parsed.pathname === "/watch") {
         const id = parsed.searchParams.get("v");
-        return id ? `https://www.youtube.com/embed/${id}` : null;
+        return id ? `https://www.youtube.com/embed/${id}${getYouTubeEmbedSearch(parsed)}` : null;
       }
 
       if (parsed.pathname.startsWith("/embed/")) {
-        return `https://www.youtube.com${parsed.pathname}`;
+        return `https://www.youtube.com${parsed.pathname}${parsed.search}`;
       }
 
       if (parsed.pathname.startsWith("/shorts/")) {
         const id = parsed.pathname.split("/").filter(Boolean)[1];
-        return id ? `https://www.youtube.com/embed/${id}` : null;
+        return id ? `https://www.youtube.com/embed/${id}${getYouTubeEmbedSearch(parsed)}` : null;
       }
     }
 
     if (host === "youtu.be") {
       const id = parsed.pathname.split("/").filter(Boolean)[0];
-      return id ? `https://www.youtube.com/embed/${id}` : null;
+      return id ? `https://www.youtube.com/embed/${id}${getYouTubeEmbedSearch(parsed)}` : null;
     }
 
     if (host === "vimeo.com") {
