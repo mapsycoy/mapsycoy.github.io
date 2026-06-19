@@ -2643,7 +2643,7 @@ h3 {
   }
 }
 
-@media (max-width: 380px) {
+@media (max-width: 300px) {
   .works-grid {
     grid-template-columns: 1fr;
   }
