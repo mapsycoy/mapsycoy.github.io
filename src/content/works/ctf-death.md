@@ -1,6 +1,6 @@
 ---
 title: CTF-DEATH
-year: "2025"
+year: "2025.05"
 status: published
 artistOrRole: Maker
 venue: KMU Design
