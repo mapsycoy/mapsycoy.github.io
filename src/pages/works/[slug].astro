@@ -65,6 +65,11 @@ const getVideoEmbedUrl = (value: string): string | null => {
         const id = parsed.pathname.split("/").filter(Boolean)[1];
         return id ? `https://www.youtube.com/embed/${id}${getYouTubeEmbedSearch(parsed)}` : null;
       }
+
+      if (parsed.pathname.startsWith("/live/")) {
+        const id = parsed.pathname.split("/").filter(Boolean)[1];
+        return id ? `https://www.youtube.com/embed/${id}${getYouTubeEmbedSearch(parsed)}` : null;
+      }
     }
 
     if (host === "youtu.be") {
@@ -85,6 +90,16 @@ const getVideoEmbedUrl = (value: string): string | null => {
   }
 
   return null;
+};
+
+const isVideoProviderUrl = (value: string) => {
+  try {
+    const parsed = new URL(value);
+    const host = parsed.hostname.replace(/^www\./, "");
+    return ["youtube.com", "m.youtube.com", "youtube-nocookie.com", "youtu.be", "vimeo.com", "player.vimeo.com"].includes(host);
+  } catch {
+    return false;
+  }
 };
 
 const escapeHtml = (value: string) =>
@@ -142,8 +157,41 @@ const renderLinkPreview = (match: RegExpMatchArray) => {
   ].join("");
 };
 
+const renderVideoItem = (embedUrl: string, caption = "") =>
+  [
+    `<div class="work-video-item">`,
+    `<div class="work-video-embed">`,
+    `<iframe src="${escapeAttribute(embedUrl)}" title="${escapeAttribute(caption || "Embedded video")}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+    "</div>",
+    caption ? `<p class="work-video-caption">${renderInlineMarkdown(caption)}</p>` : "",
+    "</div>",
+  ].join("");
+
+const renderMediaLink = (href: string, label = "") => {
+  const title = label || getLinkHost(href);
+
+  return [
+    `<p class="text-link-preview">`,
+    `<a href="${escapeAttribute(href)}" target="_blank" rel="noreferrer">`,
+    `<span class="text-link-preview-label">Link</span>`,
+    `<span class="text-link-preview-title">${renderInlineMarkdown(title)}</span>`,
+    `<span class="text-link-preview-url">${escapeHtml(href)}</span>`,
+    "</a>",
+    "</p>",
+  ].join("");
+};
+
 const renderCaptionedImage = (match: RegExpMatchArray) => {
   const caption = match[3] || match[1] || "";
+  const embedUrl = getVideoEmbedUrl(match[2]);
+
+  if (embedUrl) {
+    return renderVideoItem(embedUrl, caption);
+  }
+
+  if (isVideoProviderUrl(match[2])) {
+    return renderMediaLink(match[2], caption);
+  }
 
   return [
     "<figure>",
@@ -169,6 +217,27 @@ const renderImageGrid = (match: RegExpMatchArray) => {
     `<div class="work-image-grid work-image-grid-${columns}">`,
     ...images.map((image) => {
       const caption = image[3] || image[1] || "";
+      const embedUrl = getVideoEmbedUrl(image[2]);
+
+      if (embedUrl) {
+        return [
+          "<figure>",
+          `<div class="work-video-embed">`,
+          `<iframe src="${escapeAttribute(embedUrl)}" title="${escapeAttribute(caption || "Embedded video")}" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`,
+          "</div>",
+          caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : "",
+          "</figure>",
+        ].join("");
+      }
+
+      if (isVideoProviderUrl(image[2])) {
+        return [
+          "<figure>",
+          `<a href="${escapeAttribute(image[2])}" target="_blank" rel="noreferrer">${escapeHtml(caption || getLinkHost(image[2]))}</a>`,
+          caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : "",
+          "</figure>",
+        ].join("");
+      }
 
       return [
         "<figure>",
