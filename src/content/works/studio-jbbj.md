@@ -54,7 +54,7 @@ contentBlocks:
       allowfullscreen></iframe>
     caption: Participated in partial production for 국밥용사 전경훈
   - type: statsLink
-    ctaLabel: Visit Youtube channel
+    ctaLabel: Visit Youtube
     url: https://www.youtube.com/@studio_jbbj/featured
     title: 장삐쭈
     stats:
