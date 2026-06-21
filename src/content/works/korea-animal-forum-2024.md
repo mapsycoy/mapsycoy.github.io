@@ -4,7 +4,7 @@ year: "2024"
 status: published
 workType: collaborative
 artistOrRole: Maker
-venue: Suwon Messe / Location Songdo Convensia
+venue: Suwon Messe / Songdo Convensia
 contentBlocks:
   - type: text
     body: >-
