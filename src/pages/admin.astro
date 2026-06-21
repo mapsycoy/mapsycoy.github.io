@@ -222,6 +222,8 @@
         toolbar: null,
         countNode: null,
         deleteButton: null,
+        overlayLayer: null,
+        controls: new Map(),
       };
 
       const getButtonLabel = (button) =>
@@ -415,6 +417,44 @@
         return toolbar;
       };
 
+      const ensureMediaBulkOverlayLayer = () => {
+        if (mediaBulkState.overlayLayer) return mediaBulkState.overlayLayer;
+
+        const layer = document.createElement("div");
+        layer.className = "mapsycoy-media-bulk-layer";
+        document.body.appendChild(layer);
+        mediaBulkState.overlayLayer = layer;
+
+        return layer;
+      };
+
+      const positionMediaSelectControl = (root, control) => {
+        const rect = root.getBoundingClientRect?.();
+        if (!rect || rect.width <= 0 || rect.height <= 0) {
+          control.hidden = true;
+          return;
+        }
+
+        control.hidden = false;
+        control.style.left = `${Math.max(8, rect.left + 8)}px`;
+        control.style.top = `${Math.max(8, rect.top + 8)}px`;
+      };
+
+      const removeMediaSelectControl = (root) => {
+        const control = mediaBulkState.controls.get(root);
+        if (control) {
+          control.remove();
+          mediaBulkState.controls.delete(root);
+        }
+
+        enhancedMediaAssets.delete(root);
+
+        if (selectedMediaAssets.has(root)) {
+          selectedMediaAssets.delete(root);
+          mediaBulkState.selectedCount = Math.max(0, mediaBulkState.selectedCount - 1);
+        }
+      };
+
       const updateMediaSelection = (root, isSelected) => {
         if (isSelected) {
           if (!selectedMediaAssets.has(root)) {
@@ -432,6 +472,16 @@
 
       const enhanceMediaBulkSelection = () => {
         const entries = getMediaAssetEntries();
+        const activeRoots = new Set(entries.map(({ root }) => root));
+
+        mediaBulkState.controls.forEach((control, root) => {
+          if (!activeRoots.has(root) || !document.body.contains(root)) {
+            removeMediaSelectControl(root);
+            return;
+          }
+
+          positionMediaSelectControl(root, control);
+        });
 
         if (entries.length === 0) {
           if (mediaBulkState.toolbar) {
@@ -441,9 +491,14 @@
         }
 
         ensureMediaBulkToolbar().hidden = false;
+        const overlayLayer = ensureMediaBulkOverlayLayer();
 
         entries.forEach(({ root }) => {
-          if (enhancedMediaAssets.has(root)) return;
+          const existingControl = mediaBulkState.controls.get(root);
+          if (existingControl) {
+            positionMediaSelectControl(root, existingControl);
+            return;
+          }
 
           enhancedMediaAssets.add(root);
           root.classList.add("mapsycoy-media-selectable");
@@ -460,8 +515,12 @@
             updateMediaSelection(root, input.checked);
           });
 
-          root.prepend(control);
+          overlayLayer.appendChild(control);
+          mediaBulkState.controls.set(root, control);
+          positionMediaSelectControl(root, control);
         });
+
+        syncMediaBulkToolbar();
       };
 
       const injectAdminStyles = () => {
@@ -511,8 +570,11 @@
             color: #8b1e1e;
           }
 
-          .mapsycoy-media-selectable {
-            position: relative !important;
+          .mapsycoy-media-bulk-layer {
+            position: fixed;
+            inset: 0;
+            z-index: 2147483646;
+            pointer-events: none;
           }
 
           .mapsycoy-media-selected {
@@ -521,9 +583,7 @@
           }
 
           .mapsycoy-media-select-control {
-            position: absolute;
-            top: 8px;
-            left: 8px;
+            position: fixed;
             z-index: 20;
             display: inline-flex;
             align-items: center;
@@ -535,6 +595,7 @@
             color: #171717;
             font: 12px/1.2 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             cursor: pointer;
+            pointer-events: auto;
           }
 
           .mapsycoy-media-select-input {
@@ -587,6 +648,9 @@
         enhanceMediaBulkSelection();
         mediaBulkObserver.observe(document.body, { childList: true, subtree: true });
       });
+
+      window.addEventListener("resize", enhanceMediaBulkSelection);
+      window.addEventListener("scroll", enhanceMediaBulkSelection, true);
     </script>
   </body>
 </html>
