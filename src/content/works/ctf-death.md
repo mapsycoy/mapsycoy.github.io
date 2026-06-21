@@ -1,8 +1,7 @@
 ---
 title: CTF-DEATH
-year: "2025.05"
+year: 2025.05-06
 status: published
-workType: independent
 artistOrRole: Maker
 venue: KMU Design
 contentBlocks:
@@ -18,15 +17,16 @@ contentBlocks:
       **"Simulation for the New Humanity"**
 
 
-      > This is a virtual simulation where you engage in a role-playing experience with an LLM that has been trained on the project's unique world-building.
-
-
-      <https://ctf-death.vercel.app/>
+      Created around May–June 2025, it combines an LLM-based role-playing structure, FLUX.1 Kontext image editing, Seedance video generation, and a simple web interface made through vibe coding. I see it less as a polished artwork and more as a small experiment in connecting the AI tools available at the time into one interactive experience.
 
 
       * A brief explanation of the world-building is included in the Intro chapter.
 
       * All credits are listed in the Clear chapter.
+  - type: statsLink
+    ctaLabel: View link
+    url: https://ctf-death.vercel.app/
+    title: CTF-DEATH
 tags:
   - AI
 thumbnail: /uploads/ctfdeath.jpg
