@@ -15,14 +15,15 @@ contentBlocks:
       web-share"   allowfullscreen></iframe>
   - type: text
     body: >-
-      Expressing My Identity: Graffiti × Caravaggio’s *<David with the Head of
-      Goliath>*
+      > The reception of this piece led to my first invitation to Atelier
+      Gwanghwa: 2023 Invitation to the Square, working on the Lee Jung-seop
+      segment.
+
+
+      Expressing My Identity: Graffiti × Caravaggio’s *<David with the Head of Goliath>*
 
 
       Frame-by-frame scans of acrylic on an actual canvas, physically capturing the tactile texture of raw brushstrokes.
-
-
-      > The reception of this piece led to my first invitation to Atelier Gwanghwa: 2023 Invitation to the Square, working on the Lee Jung-seop segment.
 tags:
   - Animation
 thumbnail: /uploads/stationid.jpg
