@@ -16,16 +16,62 @@ contentBlocks:
     caption: "[Trailer] FACES (KOR) | KIAFA[AniSEED]"
   - type: text
     body: |-
-      Concept Art Collection for the 3D Short Film 「*FACES*」 by. AHN Hyoseul
+      Concept Art Collection for the 3D Short Film 「*FACES*」 by. *AHN Hyoseul*
 
-      ![FACES-poster concept](/uploads/faces-concept.png)
+      {{image-grid columns="2"}}
+      ![Kitchen](/uploads/faces-kitchen.jpg)
+      ![Living room](/uploads/faces-living-room.jpg)
+      {{/image-grid}}
 
-      ![FACES-poster](/uploads/faces-poster.jpg)
+      {{image-grid columns="2"}}
+      ![Room](/uploads/faces-room.jpg)
+      ![Bathroom](/uploads/faces-bathroom.jpg)
+      {{/image-grid}}
+
+
+
+      {{image-grid columns="2"}}
+      ![Ending](/uploads/faces-ending.jpg)
+      ![Outdoor](/uploads/faces-outdoor.jpg)
+      {{/image-grid}}
+
+
+
+      {{image-grid columns="2"}}
+      ![Spider](/uploads/faces-spider.jpg)
+      ![Poster concept](/uploads/faces-poster-concept.jpg)
+      {{/image-grid}}
+
+      ![Poster](/uploads/faces-poster.jpg)
   - type: statsLink
     ctaLabel: View link
     url: https://indieground.kr/indie/movieLibraryView.do?seq=6000&type=D
     subtitle: 독립영화라이브러리
     title: 페이시스 ∣ indieground
+    body: |-
+      Concept Art Collection for the 3D Short Film 「*FACES*」 by. *AHN Hyoseul*
+
+      {{image-grid columns="2"}}
+      ![Kitchen](/uploads/faces-kitchen.jpg)
+      ![Living room](/uploads/faces-living-room.jpg)
+      {{/image-grid}}
+
+      {{image-grid columns="2"}}
+      ![Room](/uploads/faces-room.jpg)
+      ![Bathroom](/uploads/faces-bathroom.jpg)
+      {{/image-grid}}
+
+      {{image-grid columns="2"}}
+      ![Ending](/uploads/faces-ending.jpg)
+      ![Outdoor](/uploads/faces-outdoor.jpg)
+      {{/image-grid}}
+
+      {{image-grid columns="2"}}
+      ![Spider](/uploads/faces-spider.jpg)
+      ![Poster concept](/uploads/faces-poster-concept.jpg)
+      {{/image-grid}}
+
+      ![Poster](/uploads/faces-poster.jpg)
 tags:
   - Illustration
 thumbnail: /uploads/faces.jpg
