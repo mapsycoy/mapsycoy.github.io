@@ -25,7 +25,7 @@ contentBlocks:
     subtitle: 광화문광장에 쏘아 올린 다섯 학생의 도전
 tags:
   - Media Art
-thumbnail: /works/atelier-gwanghwa-2023-invitation-to-the-square/jungseop.jpg
+thumbnail: https://www.ilyoweekly.co.kr/news/data/20230727/p1065594020970021_262_thum.jpg
 heroImage: ""
 videoUrl: ""
 ---
