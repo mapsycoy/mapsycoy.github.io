@@ -1,7 +1,8 @@
 ---
 title: CTF-DEATH
-year: 2025.05-06
+year: "2025"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: KMU Design
 contentBlocks:
@@ -27,6 +28,7 @@ contentBlocks:
     ctaLabel: View link
     url: https://ctf-death.vercel.app/
     title: CTF-DEATH
+    subtitle: Simulation for the New Humanity
 tags:
   - AI
 thumbnail: /uploads/ctfdeath.jpg
