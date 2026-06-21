@@ -59,6 +59,12 @@ const works = defineCollection({
             caption: z.string().optional(),
           }),
           z.object({
+            type: z.literal("embed"),
+            provider: z.enum(["x", "reddit"]),
+            url: z.string(),
+            caption: z.string().optional(),
+          }),
+          z.object({
             type: z.literal("statsLink"),
             title: z.string(),
             url: z.string(),

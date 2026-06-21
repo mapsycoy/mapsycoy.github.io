@@ -245,6 +245,28 @@ collections:
                 name: caption
                 widget: string
                 required: false
+          - label: Embed
+            name: embed
+            widget: object
+            summary: "{{fields.provider}} - {{fields.url}}"
+            fields:
+              - label: Provider
+                name: provider
+                widget: select
+                default: x
+                options:
+                  - label: X Post
+                    value: x
+                  - label: Reddit Post
+                    value: reddit
+              - label: URL
+                name: url
+                widget: string
+                hint: Paste the public X or Reddit post URL.
+              - label: Caption
+                name: caption
+                widget: string
+                required: false
           - label: Stats Link
             name: statsLink
             widget: object

@@ -181,6 +181,46 @@ const renderMediaLink = (href: string, label = "") => {
   ].join("");
 };
 
+const getEmbedLabel = (provider: "x" | "reddit") => {
+  if (provider === "x") return "X post";
+  return "Reddit post";
+};
+
+const renderExternalEmbed = ({
+  provider,
+  url,
+  caption = "",
+}: {
+  provider: "x" | "reddit";
+  url: string;
+  caption?: string;
+}) => {
+  const href = url.trim();
+  const label = caption || getEmbedLabel(provider);
+
+  if (!/^https?:\/\//i.test(href)) return "";
+
+  if (provider === "x") {
+    return [
+      `<figure class="work-social-embed work-social-embed-x">`,
+      `<blockquote class="twitter-tweet" data-media-max-width="560">`,
+      `<a href="${escapeAttribute(href)}">${escapeHtml(label)}</a>`,
+      `</blockquote>`,
+      caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : "",
+      `</figure>`,
+    ].join("");
+  }
+
+  return [
+    `<figure class="work-social-embed work-social-embed-reddit">`,
+    `<blockquote class="reddit-embed-bq">`,
+    `<a href="${escapeAttribute(href)}">${escapeHtml(label)}</a>`,
+    `</blockquote>`,
+    caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : "",
+    `</figure>`,
+  ].join("");
+};
+
 const renderCaptionedImage = (match: RegExpMatchArray) => {
   const caption = match[3] || match[1] || "";
   const embedUrl = getVideoEmbedUrl(match[2]);
@@ -355,6 +395,8 @@ const blockVideos = blockItems.filter(
   (block): block is { type: "video"; embed: string; embedUrl: string; caption?: string } =>
     block.type === "video" && Boolean(block.embedUrl)
 );
+const hasXEmbed = blockItems.some((block) => block.type === "embed" && block.provider === "x");
+const hasRedditEmbed = blockItems.some((block) => block.type === "embed" && block.provider === "reddit");
 const hasContentBlocks = blockItems.length > 0;
 const videoItems = hasContentBlocks ? blockVideos : legacyVideoItems;
 const uniqueVideoItems = videoItems.filter(
@@ -463,6 +505,8 @@ const visibleInfoItems = infoItems.filter(
               </div>
               {block.caption && <p class="work-video-caption">{block.caption}</p>}
             </div>
+          ) : block.type === "embed" ? (
+            <div class="work-text-block" set:html={renderExternalEmbed(block)} />
           ) : block.type === "statsLink" ? (
             <aside class:list={["work-stats-link", block.previewImage && "work-stats-link-with-thumb"]} aria-label={block.title}>
               {block.previewImage && (
@@ -508,4 +552,6 @@ const visibleInfoItems = infoItems.filter(
     )}
 
   </article>
+  {hasXEmbed && <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>}
+  {hasRedditEmbed && <script async src="https://embed.reddit.com/widgets.js" charset="utf-8"></script>}
 </Layout>

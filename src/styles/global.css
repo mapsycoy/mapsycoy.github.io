@@ -1029,6 +1029,21 @@ h3 {
   gap: 0;
 }
 
+.work-social-embed {
+  display: grid;
+  justify-items: start;
+  margin: 1.4rem 0;
+}
+
+.work-social-embed blockquote {
+  width: min(100%, 560px);
+  margin: 0;
+}
+
+.work-social-embed figcaption {
+  width: min(100%, 560px);
+}
+
 .work-stats-link {
   display: grid;
   gap: 16px;
