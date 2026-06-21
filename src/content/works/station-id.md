@@ -15,10 +15,8 @@ contentBlocks:
       web-share"   allowfullscreen></iframe>
   - type: text
     body: >-
-      **Station ID Project:** Expressing My Identity
-
-
-      **Concept:** Graffiti × Caravaggio’s *<David with the Head of Goliath>*
+      Expressing My Identity: Graffiti × Caravaggio’s *<David with the Head of
+      Goliath>*
 
 
       Frame-by-frame scans of acrylic on an actual canvas, physically capturing the tactile texture of raw brushstrokes.
