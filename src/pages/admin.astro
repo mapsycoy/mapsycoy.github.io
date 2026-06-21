@@ -222,7 +222,6 @@
         toolbar: null,
         countNode: null,
         deleteButton: null,
-        overlayLayer: null,
         controls: new Map(),
       };
 
@@ -421,80 +420,6 @@
         return toolbar;
       };
 
-      const ensureMediaBulkOverlayLayer = () => {
-        if (mediaBulkState.overlayLayer) return mediaBulkState.overlayLayer;
-
-        const layer = document.createElement("div");
-        layer.className = "mapsycoy-media-bulk-layer";
-        document.body.appendChild(layer);
-        mediaBulkState.overlayLayer = layer;
-
-        return layer;
-      };
-
-      const getMediaVisibleClipRect = (root) => {
-        const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
-        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
-        const clip = {
-          left: 0,
-          top: 0,
-          right: viewportWidth,
-          bottom: viewportHeight,
-        };
-
-        let node = root?.parentElement;
-        while (node && node !== document.body) {
-          const style = window.getComputedStyle(node);
-          const clipsOverflow = /(auto|scroll|hidden|clip)/.test(`${style.overflow} ${style.overflowX} ${style.overflowY}`);
-
-          if (clipsOverflow) {
-            const rect = node.getBoundingClientRect();
-            clip.left = Math.max(clip.left, rect.left);
-            clip.top = Math.max(clip.top, rect.top);
-            clip.right = Math.min(clip.right, rect.right);
-            clip.bottom = Math.min(clip.bottom, rect.bottom);
-          }
-
-          node = node.parentElement;
-        }
-
-        return clip;
-      };
-
-      const positionMediaSelectControl = (root, control) => {
-        const rect = root.getBoundingClientRect?.();
-        const clip = getMediaVisibleClipRect(root);
-
-        if (
-          !rect ||
-          rect.width <= 0 ||
-          rect.height <= 0 ||
-          clip.right <= clip.left ||
-          clip.bottom <= clip.top ||
-          rect.right <= clip.left ||
-          rect.bottom <= clip.top ||
-          rect.left >= clip.right ||
-          rect.top >= clip.bottom
-        ) {
-          control.hidden = true;
-          return;
-        }
-
-        control.hidden = false;
-
-        const controlWidth = control.offsetWidth || 84;
-        const controlHeight = control.offsetHeight || 28;
-        const minLeft = clip.left + 8;
-        const minTop = clip.top + 8;
-        const maxLeft = Math.max(minLeft, clip.right - controlWidth - 8);
-        const maxTop = Math.max(minTop, clip.bottom - controlHeight - 8);
-        const left = Math.min(maxLeft, Math.max(minLeft, rect.left + 8));
-        const top = Math.min(maxTop, Math.max(minTop, rect.top + 8));
-
-        control.style.left = `${left}px`;
-        control.style.top = `${top}px`;
-      };
-
       const removeMediaSelectControl = (root) => {
         const control = mediaBulkState.controls.get(root);
         if (control) {
@@ -532,10 +457,7 @@
         mediaBulkState.controls.forEach((control, root) => {
           if (!activeRoots.has(root) || !document.body.contains(root)) {
             removeMediaSelectControl(root);
-            return;
           }
-
-          positionMediaSelectControl(root, control);
         });
 
         if (entries.length === 0) {
@@ -546,14 +468,9 @@
         }
 
         ensureMediaBulkToolbar().hidden = false;
-        const overlayLayer = ensureMediaBulkOverlayLayer();
 
         entries.forEach(({ root }) => {
-          const existingControl = mediaBulkState.controls.get(root);
-          if (existingControl) {
-            positionMediaSelectControl(root, existingControl);
-            return;
-          }
+          if (mediaBulkState.controls.has(root)) return;
 
           enhancedMediaAssets.add(root);
           root.classList.add("mapsycoy-media-selectable");
@@ -570,9 +487,8 @@
             updateMediaSelection(root, input.checked);
           });
 
-          overlayLayer.appendChild(control);
+          root.appendChild(control);
           mediaBulkState.controls.set(root, control);
-          positionMediaSelectControl(root, control);
         });
 
         syncMediaBulkToolbar();
@@ -625,12 +541,8 @@
             color: #8b1e1e;
           }
 
-          .mapsycoy-media-bulk-layer {
-            position: fixed;
-            inset: 0;
-            z-index: 2147483646;
-            overflow: hidden;
-            pointer-events: none;
+          .mapsycoy-media-selectable {
+            position: relative !important;
           }
 
           .mapsycoy-media-selected {
@@ -640,11 +552,12 @@
 
           .mapsycoy-media-select-control {
             position: absolute;
+            top: 8px;
+            left: 8px;
             z-index: 20;
             display: inline-flex;
             align-items: center;
             gap: 6px;
-            max-width: calc(100vw - 16px);
             box-sizing: border-box;
             padding: 5px 7px;
             border: 1px solid rgba(23, 23, 23, 0.2);
@@ -707,9 +620,6 @@
         enhanceMediaBulkSelection();
         mediaBulkObserver.observe(document.body, { childList: true, subtree: true });
       });
-
-      window.addEventListener("resize", enhanceMediaBulkSelection);
-      window.addEventListener("scroll", enhanceMediaBulkSelection, true);
     </script>
   </body>
 </html>
