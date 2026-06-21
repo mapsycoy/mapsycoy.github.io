@@ -1031,17 +1031,26 @@ h3 {
 
 .work-social-embed {
   display: grid;
-  justify-items: start;
+  justify-items: center;
   margin: 1.4rem 0;
 }
 
+.work-social-embed-inner,
 .work-social-embed blockquote {
   width: min(100%, 560px);
   margin: 0;
 }
 
+.work-social-embed iframe,
+.work-social-embed .twitter-tweet,
+.work-social-embed .twitter-tweet-rendered {
+  margin-right: auto !important;
+  margin-left: auto !important;
+}
+
 .work-social-embed figcaption {
   width: min(100%, 560px);
+  text-align: center;
 }
 
 .work-stats-link {

@@ -248,7 +248,7 @@ collections:
           - label: Embed
             name: embed
             widget: object
-            summary: "{{fields.provider}} - {{fields.url}}"
+            summary: "{{fields.provider}}"
             fields:
               - label: Provider
                 name: provider
@@ -259,10 +259,10 @@ collections:
                     value: x
                   - label: Reddit Post
                     value: reddit
-              - label: URL
-                name: url
-                widget: string
-                hint: Paste the public X or Reddit post URL.
+              - label: Embed Code
+                name: embedCode
+                widget: text
+                hint: Paste the official embed HTML. Script tags are handled by the site and can be left in or removed.
               - label: Caption
                 name: caption
                 widget: string

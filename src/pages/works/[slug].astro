@@ -186,17 +186,35 @@ const getEmbedLabel = (provider: "x" | "reddit") => {
   return "Reddit post";
 };
 
+const stripEmbedScripts = (value: string) =>
+  value
+    .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+    .replace(/\s+on[a-z]+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+    .trim();
+
 const renderExternalEmbed = ({
   provider,
+  embedCode = "",
   url,
   caption = "",
 }: {
   provider: "x" | "reddit";
-  url: string;
+  embedCode?: string;
+  url?: string;
   caption?: string;
 }) => {
-  const href = url.trim();
+  const html = stripEmbedScripts(embedCode);
+  const href = url?.trim() ?? "";
   const label = caption || getEmbedLabel(provider);
+
+  if (html) {
+    return [
+      `<figure class="work-social-embed work-social-embed-${provider}">`,
+      `<div class="work-social-embed-inner">${html}</div>`,
+      caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : "",
+      `</figure>`,
+    ].join("");
+  }
 
   if (!/^https?:\/\//i.test(href)) return "";
 
