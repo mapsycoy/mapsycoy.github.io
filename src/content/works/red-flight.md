@@ -1,5 +1,5 @@
 ---
-title: Red Flight
+title: RED Flight
 year: "2024"
 status: published
 workType: collaborative
