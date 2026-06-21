@@ -552,13 +552,32 @@ collections:
         file: src/data/works-order.json
         format: json
         fields:
-          - label: Works Order
-            name: works
+          - label: Collaborative Works Order
+            name: collaborative
             widget: list
             collapsed: false
             minimize_collapsed: false
             summary: "{{fields.work}}"
-            hint: Drag the blocks to change the order on the Works page.
+            hint: Drag the blocks to change the order within the Collaborative section.
+            fields:
+              - label: Work
+                name: work
+                widget: relation
+                collection: works
+                search_fields:
+                  - title
+                  - year
+                value_field: "{{slug}}"
+                display_fields:
+                  - title
+                  - year
+          - label: Independent Works Order
+            name: independent
+            widget: list
+            collapsed: false
+            minimize_collapsed: false
+            summary: "{{fields.work}}"
+            hint: Drag the blocks to change the order within the Independent section.
             fields:
               - label: Work
                 name: work

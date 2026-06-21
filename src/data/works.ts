@@ -5,15 +5,22 @@ export type WorkItem = CollectionEntry<"works">;
 
 type WorksOrder = {
   works?: { work?: string }[];
+  collaborative?: { work?: string }[];
+  independent?: { work?: string }[];
 };
 
+const getOrderedWorks = (items?: { work?: string }[]) =>
+  (items ?? []).map((item) => item.work).filter((work): work is string => Boolean(work));
+
 const getWorkOrder = () => {
-  return new Map(
-    ((worksOrder as WorksOrder).works ?? [])
-      .map((item) => item.work)
-      .filter((work): work is string => Boolean(work))
-      .map((work, index) => [work, index])
-  );
+  const order = worksOrder as WorksOrder;
+  const sectionOrder = [
+    ...getOrderedWorks(order.collaborative),
+    ...getOrderedWorks(order.independent),
+  ];
+  const orderedWorks = sectionOrder.length > 0 ? sectionOrder : getOrderedWorks(order.works);
+
+  return new Map(orderedWorks.map((work, index) => [work, index]));
 };
 
 const workOrder = getWorkOrder();
