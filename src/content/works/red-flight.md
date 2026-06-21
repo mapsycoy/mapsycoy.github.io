@@ -4,7 +4,7 @@ year: "2024"
 status: published
 workType: collaborative
 artistOrRole: External Contributor
-venue: Aim Intelligence
+venue: zAIon · Aim Intelligence
 contentBlocks:
   - type: video
     embed: <blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en"
