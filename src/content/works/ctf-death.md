@@ -23,9 +23,9 @@ contentBlocks:
       <https://ctf-death.vercel.app/>
 
 
-      * A brief explanation of the world-building is included in the Intro (※Intro) chapter.
+      * A brief explanation of the world-building is included in the Intro chapter.
 
-      * All credits are listed in the Clear (※Clear) chapter.
+      * All credits are listed in the Clear chapter.
 tags:
   - AI
 thumbnail: /uploads/ctfdeath.jpg
