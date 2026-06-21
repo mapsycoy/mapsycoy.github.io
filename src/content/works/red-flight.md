@@ -6,6 +6,16 @@ workType: collaborative
 artistOrRole: External Contributor
 venue: zAIon · Aim Intelligence
 contentBlocks:
+  - type: text
+    body: >-
+      RED Flight is an AI jailbreaking CTF game that makes AI security
+      approachable through role-play.
+
+
+      Through prompt-based missions, the project turns red-teaming concepts into an interactive challenge where users can test the boundaries of LLMs. I worked on shaping the project’s identity through naming, worldbuilding, and content production.
+
+
+      The project was selected as a finalist at IVS Crypto in 2024 and was later introduced through Kaia Square Lounge.
   - type: embed
     provider: x
     url: https://x.com/akindo_io/status/1805814996166901886
@@ -35,9 +45,15 @@ contentBlocks:
     subtitle: 엠버서더 참여
     title: "Asia’s Gateway to Web3: Kaia Square Lounge에 초대합니다!"
     stats: []
-    body: '![](<iframe
-      src="https://drive.google.com/file/d/1R9q0TlQCP4LWJ_dwXr4rD5SrEi6VO8Tt/preview"
-      width="640" height="480"></iframe>)'
+    body: >-
+      RED Flight is an AI jailbreaking CTF game that makes AI security
+      approachable through role-play.
+
+
+      Through prompt-based missions, the project turns red-teaming concepts into an interactive challenge where users can test the boundaries of LLMs. I worked on shaping the project’s identity through naming, worldbuilding, and content production.
+
+
+      The project was selected as a finalist at IVS Crypto in 2024 and was later introduced through Kaia Square Lounge.
 tags:
   - AI
 thumbnail: /uploads/red-ivs.jpg
