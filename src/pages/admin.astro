@@ -251,16 +251,15 @@
         Boolean(element?.querySelector?.("img, picture, video, canvas, [role='img']")) ||
         mediaFileNameText.test(element?.textContent || "");
 
-      const getMediaAssetRoot = (button) => {
-        let node = button?.parentElement;
+      const getMediaAssetRoot = (element) => {
+        let node = element;
 
-        for (let depth = 0; node && node !== document.body && depth < 8; depth += 1) {
-          if (hasMediaPreview(node)) {
-            const deleteButtons = Array.from(node.querySelectorAll("button, [role='button']")).filter((item) =>
-              /\bdelete\b/i.test(getButtonLabel(item))
-            );
+        for (let depth = 0; node && node !== document.body && depth < 10; depth += 1) {
+          const previewCount = node.querySelectorAll?.("img, picture, video, canvas, [role='img']").length || 0;
+          const buttonCount = node.querySelectorAll?.("button, [role='button']").length || 0;
 
-            if (deleteButtons.length <= 3) return node;
+          if (hasMediaPreview(node) && previewCount <= 3 && buttonCount <= 8) {
+            return node;
           }
 
           node = node.parentElement;
@@ -269,22 +268,99 @@
         return null;
       };
 
-      const getMediaDeleteEntries = () => {
+      const getMediaAssetEntries = () => {
         if (!isLikelyMediaLibrary()) return [];
 
-        return Array.from(document.querySelectorAll("button, [role='button']"))
-          .map((button) => {
-            const label = getButtonLabel(button);
-            const isDeleteMediaAction =
-              /\bdelete\s+(media|asset|file)\b/i.test(label) ||
-              (/^delete$/i.test(label) && hasMediaPreview(button.closest("li, article, figure, div")));
+        const roots = new Set();
+        const previewElements = Array.from(document.querySelectorAll("img, picture, video, canvas, [role='img']"));
+        const fileNameElements = Array.from(document.querySelectorAll("a, button, span, p, div")).filter((element) =>
+          mediaFileNameText.test(element.textContent || "")
+        );
 
-            if (!isDeleteMediaAction || /\bentry\b/i.test(label)) return null;
+        [...previewElements, ...fileNameElements].forEach((element) => {
+          const root = getMediaAssetRoot(element);
+          if (!root || root.closest(".mapsycoy-media-bulk-toolbar")) return;
 
-            const root = getMediaAssetRoot(button);
-            return root ? { button, root } : null;
-          })
-          .filter(Boolean);
+          const text = root.textContent || "";
+          const image = root.querySelector?.("img");
+          const src = image?.getAttribute("src") || "";
+
+          if (mediaFileNameText.test(text) || src.includes("/uploads/") || src.includes("/media/")) {
+            roots.add(root);
+          }
+        });
+
+        return Array.from(roots).map((root) => ({ root }));
+      };
+
+      const findVisibleMediaDeleteButton = () =>
+        Array.from(document.querySelectorAll("button, [role='button']")).find((button) => {
+          const label = getButtonLabel(button);
+          const isDelete =
+            /\bdelete\s+(media|asset|file)\b/i.test(label) ||
+            (/^delete$/i.test(label) && !/\bentry\b/i.test(label));
+
+          if (!isDelete || button.dataset.deleteConfirmed === "true") return false;
+
+          const rect = button.getBoundingClientRect?.();
+          return !rect || (rect.width > 0 && rect.height > 0);
+        });
+
+      const waitForMediaDeleteButton = async () => {
+        for (let attempt = 0; attempt < 12; attempt += 1) {
+          const button = findVisibleMediaDeleteButton();
+          if (button) return button;
+
+          await new Promise((resolve) => window.setTimeout(resolve, 150));
+        }
+
+        return null;
+      };
+
+      const openMediaAsset = async (root) => {
+        const actionTarget = Array.from(root.querySelectorAll?.("button, a, [role='button']") || []).find(
+          (item) => !item.closest(".mapsycoy-media-select-control")
+        );
+        const target =
+          root.querySelector?.("img, picture, video, canvas, [role='img']") ||
+          actionTarget ||
+          root;
+
+        target.dispatchEvent(new MouseEvent("click", { bubbles: true, cancelable: true, view: window }));
+        await new Promise((resolve) => window.setTimeout(resolve, 250));
+      };
+
+      const getSelectedMediaAssetEntries = () =>
+        getMediaAssetEntries().filter(({ root }) => selectedMediaAssets.has(root));
+
+      const clickCloseMediaPreview = () => {
+        const closeButton = Array.from(document.querySelectorAll("button, [role='button']")).find((button) => {
+          const label = getButtonLabel(button);
+          return /^(close|back|cancel)$/i.test(label);
+        });
+
+        if (closeButton) {
+          closeButton.click();
+        } else {
+          document.dispatchEvent(new KeyboardEvent("keydown", { key: "Escape", bubbles: true }));
+        }
+      };
+
+      const runBulkMediaDelete = async (entries) => {
+        for (const { root } of entries) {
+          await openMediaAsset(root);
+
+          const button = await waitForMediaDeleteButton();
+          if (!button) {
+            clickCloseMediaPreview();
+            await new Promise((resolve) => window.setTimeout(resolve, 250));
+            continue;
+          }
+
+          button.dataset.deleteConfirmed = "true";
+          button.click();
+          await new Promise((resolve) => window.setTimeout(resolve, 650));
+        }
       };
 
       const syncMediaBulkToolbar = () => {
@@ -317,7 +393,7 @@
         });
 
         deleteButton.addEventListener("click", async () => {
-          const entries = getMediaDeleteEntries().filter(({ root }) => selectedMediaAssets.has(root));
+          const entries = getSelectedMediaAssetEntries();
 
           if (entries.length === 0) return;
 
@@ -327,11 +403,7 @@
 
           if (confirmation !== "DELETE") return;
 
-          for (const { button } of entries) {
-            button.dataset.deleteConfirmed = "true";
-            button.click();
-            await new Promise((resolve) => window.setTimeout(resolve, 450));
-          }
+          await runBulkMediaDelete(entries);
         });
 
         mediaBulkState.toolbar = toolbar;
@@ -359,7 +431,7 @@
       };
 
       const enhanceMediaBulkSelection = () => {
-        const entries = getMediaDeleteEntries();
+        const entries = getMediaAssetEntries();
 
         if (entries.length === 0) {
           if (mediaBulkState.toolbar) {
