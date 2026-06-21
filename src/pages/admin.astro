@@ -223,6 +223,7 @@
         countNode: null,
         deleteButton: null,
         controls: new Map(),
+        isEnhancing: false,
       };
 
       const getButtonLabel = (button) =>
@@ -251,6 +252,22 @@
       const hasMediaPreview = (element) =>
         Boolean(element?.querySelector?.("img, picture, video, canvas, [role='img']")) ||
         mediaFileNameText.test(element?.textContent || "");
+
+      const isMediaBulkControlMutation = (mutation) => {
+        const target = mutation.target;
+        if (target?.closest?.(".mapsycoy-media-select-control, .mapsycoy-media-bulk-toolbar")) return true;
+
+        const changedNodes = [...Array.from(mutation.addedNodes || []), ...Array.from(mutation.removedNodes || [])];
+        if (changedNodes.length === 0) return false;
+
+        return changedNodes.every((node) => {
+          if (node.nodeType !== Node.ELEMENT_NODE) return true;
+          return (
+            node.matches?.(".mapsycoy-media-select-control, .mapsycoy-media-bulk-toolbar") ||
+            node.querySelector?.(".mapsycoy-media-select-control, .mapsycoy-media-bulk-toolbar")
+          );
+        });
+      };
 
       const getMediaAssetRoot = (element) => {
         let node = element;
@@ -451,47 +468,62 @@
       };
 
       const enhanceMediaBulkSelection = () => {
-        const entries = getMediaAssetEntries();
-        const activeRoots = new Set(entries.map(({ root }) => root));
+        if (mediaBulkState.isEnhancing) return;
+        mediaBulkState.isEnhancing = true;
 
-        mediaBulkState.controls.forEach((control, root) => {
-          if (!activeRoots.has(root) || !document.body.contains(root)) {
-            removeMediaSelectControl(root);
-          }
-        });
+        try {
+          const entries = getMediaAssetEntries();
+          const activeRoots = new Set(entries.map(({ root }) => root));
 
-        if (entries.length === 0) {
-          if (mediaBulkState.toolbar) {
-            mediaBulkState.toolbar.hidden = true;
+          mediaBulkState.controls.forEach((control, root) => {
+            if (!activeRoots.has(root) || !document.body.contains(root)) {
+              removeMediaSelectControl(root);
+            }
+          });
+
+          if (entries.length === 0) {
+            if (mediaBulkState.toolbar) {
+              mediaBulkState.toolbar.hidden = true;
+            }
+            return;
           }
-          return;
+
+          ensureMediaBulkToolbar().hidden = false;
+
+          entries.forEach(({ root }) => {
+            if (mediaBulkState.controls.has(root)) return;
+
+            enhancedMediaAssets.add(root);
+            root.classList.add("mapsycoy-media-selectable");
+
+            const control = document.createElement("label");
+            control.className = "mapsycoy-media-select-control";
+            control.innerHTML = '<input class="mapsycoy-media-select-input" type="checkbox" aria-label="Select media file" /><span>Select</span>';
+
+            ["pointerdown", "mousedown", "mouseup", "click", "dblclick"].forEach((eventName) => {
+              control.addEventListener(eventName, (event) => {
+                event.stopPropagation();
+                event.stopImmediatePropagation();
+              });
+            });
+
+            const input = control.querySelector("input");
+            input.addEventListener("click", (event) => {
+              event.stopPropagation();
+              event.stopImmediatePropagation();
+            });
+            input.addEventListener("change", () => {
+              updateMediaSelection(root, input.checked);
+            });
+
+            root.appendChild(control);
+            mediaBulkState.controls.set(root, control);
+          });
+
+          syncMediaBulkToolbar();
+        } finally {
+          mediaBulkState.isEnhancing = false;
         }
-
-        ensureMediaBulkToolbar().hidden = false;
-
-        entries.forEach(({ root }) => {
-          if (mediaBulkState.controls.has(root)) return;
-
-          enhancedMediaAssets.add(root);
-          root.classList.add("mapsycoy-media-selectable");
-
-          const control = document.createElement("label");
-          control.className = "mapsycoy-media-select-control";
-          control.innerHTML = '<input class="mapsycoy-media-select-input" type="checkbox" aria-label="Select media file" /><span>Select</span>';
-
-          const input = control.querySelector("input");
-          input.addEventListener("click", (event) => {
-            event.stopPropagation();
-          });
-          input.addEventListener("change", () => {
-            updateMediaSelection(root, input.checked);
-          });
-
-          root.appendChild(control);
-          mediaBulkState.controls.set(root, control);
-        });
-
-        syncMediaBulkToolbar();
       };
 
       const injectAdminStyles = () => {
@@ -611,7 +643,9 @@
         true
       );
 
-      const mediaBulkObserver = new MutationObserver(() => {
+      const mediaBulkObserver = new MutationObserver((mutations) => {
+        if (mediaBulkState.isEnhancing || mutations.every(isMediaBulkControlMutation)) return;
+
         window.requestAnimationFrame(enhanceMediaBulkSelection);
       });
 
