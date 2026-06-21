@@ -18,23 +18,14 @@ contentBlocks:
     body: |-
       Concept Art Collection for the 3D Short Film 「*FACES*」 by. AHN Hyoseul
 
-      ![FACES-kitchen](/uploads/faces-kitchen.png)
-
-      ![FACES-room](/uploads/faces-room.png)
-
-      ![FACES-living room](/uploads/faces-livingroom.png)
-
-      ![FACES-bathroom](/uploads/faces-bathroom.png)
-
-      ![FACES-spider](/uploads/faces-spider.png)
-
-      ![FACES-outdoor](/uploads/faces-outdoor.png)
-
-      ![FACES-ending](/uploads/faces-ending.png)
-
       ![FACES-poster concept](/uploads/faces-concept.png)
 
       ![FACES-poster](/uploads/faces-poster.jpg)
+  - type: statsLink
+    ctaLabel: View link
+    url: https://indieground.kr/indie/movieLibraryView.do?seq=6000&type=D
+    subtitle: 독립영화라이브러리
+    title: 페이시스 ∣ indieground
 tags:
   - Illustration
 thumbnail: /uploads/faces.jpg
