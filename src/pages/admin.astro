@@ -292,7 +292,11 @@
           }
         });
 
-        return Array.from(roots).map((root) => ({ root }));
+        const dedupedRoots = Array.from(roots).filter(
+          (root, _, allRoots) => !allRoots.some((otherRoot) => otherRoot !== root && root.contains(otherRoot))
+        );
+
+        return dedupedRoots.map((root) => ({ root }));
       };
 
       const findVisibleMediaDeleteButton = () =>
