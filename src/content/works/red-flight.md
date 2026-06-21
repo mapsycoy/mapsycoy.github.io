@@ -6,8 +6,8 @@ workType: collaborative
 artistOrRole: External Contributor
 venue: zAIon · Aim Intelligence
 contentBlocks:
-  - type: video
-    embed: <blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en"
+  - type: text
+    body: <blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en"
       dir="ltr">【IVS Crypto THE DEMODAY】Finalist Announcement📣<br><br>10
       products were selected as finalists from 99 submissions by a great
       judges🎉<br><br>📍⏰THE DEMODAY will be held at Inamori Hall in the IVS/IVS
