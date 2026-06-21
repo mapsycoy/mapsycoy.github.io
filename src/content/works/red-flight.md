@@ -24,7 +24,7 @@ contentBlocks:
       ew)"
 tags:
   - AI
-thumbnail: https://drive.google.com/file/d/1g_b8AbbfbMXeF7NVpi-eESOp3kJHG8DC/view
-heroImage: https://drive.google.com/file/d/1g_b8AbbfbMXeF7NVpi-eESOp3kJHG8DC/view
+thumbnail: /uploads/station-id.gif
+heroImage: /uploads/station-id.gif
 heroImageDisplay: full
 ---
