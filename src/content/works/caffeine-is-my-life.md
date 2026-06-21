@@ -18,6 +18,6 @@ contentBlocks:
 tags:
   - Animation
 thumbnail: /uploads/caffeine.png
-heroImage: https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmdkeXdyZWw4Ym54c3FrMWdsMWkyeDl5b3Rvd2c2ZW56NThmYnA3diZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/wbUIFk2B1YDMCdEpmv/giphy.gif
+heroImage: https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExaGVqbW1vbDN0a3d2dGxrOWMxc3c5eHY4aGJqaWUxcnZsaTlkdXR0cCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/IpF4yIVZ4qPNDfoLzq/giphy.gif
 heroImageDisplay: contained
 ---
