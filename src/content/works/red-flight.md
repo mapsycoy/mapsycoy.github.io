@@ -31,7 +31,7 @@ contentBlocks:
   - type: statsLink
     ctaLabel: View link
     url: https://medium.com/kaiachain/asias-gateway-to-web3-kaia-square-lounge%EC%97%90-%EC%B4%88%EB%8C%80%ED%95%A9%EB%8B%88%EB%8B%A4-47191393f6bc
-    subtitle: Kaia Foundation
+    subtitle: 엠버서더 참여
     title: "Asia’s Gateway to Web3: Kaia Square Lounge에 초대합니다!"
     stats: []
     body: '![](<iframe
