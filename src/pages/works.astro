@@ -10,13 +10,7 @@ const visibleFilterCount = 5;
 const getTagText = (work: WorkItem) => getTags(work).map(normalizeFilter).join(" ");
 const workSections = [
   {
-    label: "Collaborative",
-    works: works.filter((work) => work.data.workType === "collaborative"),
-  },
-  {
-    label: "Independent",
-    works: works.filter((work) => work.data.workType === "independent"),
-  },
+    label: "Collaborative",`r`n    works: works.filter((work) => work.data.workType === "collaborative"),`r`n  },`r`n  {`r`n    label: "Independent",`r`n    works: works.filter((work) => work.data.workType === "independent"),`r`n  },
 ];
 ---
 
