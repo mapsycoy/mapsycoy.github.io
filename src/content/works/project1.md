@@ -30,8 +30,12 @@ contentBlocks:
       web-share"   allowfullscreen></iframe>
     caption: Henri Matisse part
   - type: text
-    body: " Below is an short interview video conducted by the Kookmin University PR
-      Team."
+    body: >-
+      > Following the 2023 Lee Jung-seop project, I returned to Atelier Gwanghwa
+      as Design Lead for the Henri Matisse segment.
+
+
+      Below is an short interview video conducted by the Kookmin University PR Team.
   - type: video
     embed: <iframe width="560" height="315"
       src="https://www.youtube.com/embed/JXRhq4vxzGY?si=paRJLuYYFp5SK5Dt"
