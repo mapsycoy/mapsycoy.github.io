@@ -64,4 +64,6 @@ tags:
 thumbnail: /uploads/red-ivs.jpg
 heroImage: /uploads/red.png
 heroImageDisplay: full
+heroImageCaption: RED Flight at IVS Crypto THE DEMODAY 2024(Left) ∣ RED Flight
+  showcased at Kaia Square Lounge 2024(Right)
 ---
