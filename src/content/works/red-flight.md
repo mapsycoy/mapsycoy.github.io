@@ -6,13 +6,13 @@ workType: collaborative
 artistOrRole: External Contributor
 venue: zAIon · Aim Intelligence
 contentBlocks:
-  - type: text
-    body: <blockquote class="twitter-tweet" data-media-max-width="560"><p lang="en"
-      dir="ltr">【IVS Crypto THE DEMODAY】Finalist Announcement📣<br><br>10
-      products were selected as finalists from 99 submissions by a great
-      judges🎉<br><br>📍⏰THE DEMODAY will be held at Inamori Hall in the IVS/IVS
-      Crypto venue on Fri July 5th from 15:30-18:30, and the product teams will
-      give demo… <a
+  - type: embed
+    provider: x
+    url: <blockquote class="twitter-tweet"><p lang="en" dir="ltr">【IVS Crypto THE
+      DEMODAY】Finalist Announcement📣<br><br>10 products were selected as
+      finalists from 99 submissions by a great judges🎉<br><br>📍⏰THE DEMODAY
+      will be held at Inamori Hall in the IVS/IVS Crypto venue on Fri July 5th
+      from 15:30-18:30, and the product teams will give demo… <a
       href="https://t.co/2f7tNNHKD2">pic.twitter.com/2f7tNNHKD2</a></p>&mdash;
       AKINDO | The world’s first Buildathon Platform🌊⚒️ (@akindo_io) <a
       href="https://x.com/akindo_io/status/1805814996166901886?ref_src=twsrc%5Etfw">June
