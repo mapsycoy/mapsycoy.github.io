@@ -2,6 +2,7 @@
 title: CTF-DEATH
 year: "2025.05"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: KMU Design
 contentBlocks:

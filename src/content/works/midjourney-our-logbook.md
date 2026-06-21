@@ -2,6 +2,7 @@
 title: "Midjourney: Our Logbook"
 year: "2024"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: Seoul Arts Center
 contentBlocks:

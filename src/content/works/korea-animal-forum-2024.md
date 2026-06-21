@@ -2,6 +2,7 @@
 title: Korea Animal Forum 2024
 year: "2024"
 status: published
+workType: collaborative
 artistOrRole: Concept Artist · Illustrator
 venue: Suwon Messe
 contentBlocks:

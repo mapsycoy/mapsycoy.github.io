@@ -8,6 +8,16 @@ const getTags = (work: WorkItem) => work.data.tags ?? [];
 const filterTags = ["All", ...new Set(works.flatMap(getTags))];
 const visibleFilterCount = 5;
 const getTagText = (work: WorkItem) => getTags(work).map(normalizeFilter).join(" ");
+const workSections = [
+  {
+    label: "Independent",
+    works: works.filter((work) => work.data.workType === "independent"),
+  },
+  {
+    label: "Collaborative",
+    works: works.filter((work) => work.data.workType === "collaborative"),
+  },
+];
 ---
 
 <Layout title="Works" description="Selected projects, visual experiments, and work-in-progress archives.">
@@ -39,37 +49,50 @@ const getTagText = (work: WorkItem) => getTags(work).map(normalizeFilter).join("
     )}
   </section>
 
-  <section class="works-grid" aria-label="Selected work entries">
-    {works.map((work) => (
-      <article class="work-card" data-work-card data-tags={getTagText(work)}>
-        <a class="work-card-link" href={`/works/${work.id}/`} aria-label={`Open ${work.data.title} project detail`}>
-          <div class="work-media" aria-label={`${work.data.title} media preview`}>
-            {work.data.thumbnail ? (
-              <img src={work.data.thumbnail} alt={`${work.data.title} project thumbnail`} loading="lazy" />
-            ) : (
-              <div class="work-media-placeholder" aria-hidden="true">
-              </div>
-            )}
-          </div>
+  <div class="works-sections">
+    {workSections.map((section) => (
+      section.works.length > 0 && (
+        <section class="works-section" data-work-section aria-label={`${section.label} work entries`}>
+          <header class="works-section-header">
+            <h2>{section.label}</h2>
+          </header>
 
-          <div class="work-card-body">
-            <div class="work-card-heading">
-              <h2>{work.data.title}</h2>
-              <span>{work.data.year}</span>
-            </div>
+          <div class="works-grid">
+            {section.works.map((work) => (
+              <article class="work-card" data-work-card data-tags={getTagText(work)}>
+                <a class="work-card-link" href={`/works/${work.id}/`} aria-label={`Open ${work.data.title} project detail`}>
+                  <div class="work-media" aria-label={`${work.data.title} media preview`}>
+                    {work.data.thumbnail ? (
+                      <img src={work.data.thumbnail} alt={`${work.data.title} project thumbnail`} loading="lazy" />
+                    ) : (
+                      <div class="work-media-placeholder" aria-hidden="true">
+                      </div>
+                    )}
+                  </div>
 
-            <ul class="work-tags" aria-label={`${work.data.title} tags`}>
-              {getTags(work).map((tag) => <li>{tag}</li>)}
-            </ul>
+                  <div class="work-card-body">
+                    <div class="work-card-heading">
+                      <h2>{work.data.title}</h2>
+                      <span>{work.data.year}</span>
+                    </div>
+
+                    <ul class="work-tags" aria-label={`${work.data.title} tags`}>
+                      {getTags(work).map((tag) => <li>{tag}</li>)}
+                    </ul>
+                  </div>
+                </a>
+              </article>
+            ))}
           </div>
-        </a>
-      </article>
+        </section>
+      )
     ))}
-  </section>
+  </div>
 
   <script is:inline>
     const filterRoot = document.querySelector("[data-works-filter]");
     const workCards = Array.from(document.querySelectorAll("[data-work-card]"));
+    const workSections = Array.from(document.querySelectorAll("[data-work-section]"));
 
     if (filterRoot instanceof HTMLElement) {
       const buttons = Array.from(filterRoot.querySelectorAll("[data-filter]"));
@@ -90,6 +113,14 @@ const getTagText = (work: WorkItem) => getTags(work).map(normalizeFilter).join("
           const tags = card.dataset.tags ?? "";
           const shouldShow = filter === "all" || tags.split(" ").includes(filter);
           card.hidden = !shouldShow;
+        });
+
+        workSections.forEach((section) => {
+          if (!(section instanceof HTMLElement)) return;
+
+          const cards = Array.from(section.querySelectorAll("[data-work-card]"));
+          const hasVisibleCard = cards.some((card) => card instanceof HTMLElement && !card.hidden);
+          section.hidden = !hasVisibleCard;
         });
       };
 

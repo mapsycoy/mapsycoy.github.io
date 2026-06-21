@@ -2,6 +2,7 @@
 title: "Atelier Gwanghwa: 2024 Invitation to the Square"
 year: "2024"
 status: published
+workType: collaborative
 artistOrRole: Design Lead for Henri Matisse part
 venue: Sejong Center for the Performing Arts
 contentBlocks:

@@ -2,6 +2,7 @@
 title: Station ID
 year: "2023"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: KMU Design
 contentBlocks:

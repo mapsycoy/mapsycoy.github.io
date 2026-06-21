@@ -2,6 +2,7 @@
 title: The 1st Korea Reptile Festival
 year: "2024"
 status: published
+workType: collaborative
 artistOrRole: Maker
 venue: Songdo Convensia
 contentBlocks:

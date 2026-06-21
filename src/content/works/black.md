@@ -2,6 +2,7 @@
 title: 黑(Black)
 year: "2021"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: Seoul
 contentBlocks:

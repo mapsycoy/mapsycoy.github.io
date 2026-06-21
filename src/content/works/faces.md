@@ -2,6 +2,7 @@
 title: FACES
 year: "2024"
 status: published
+workType: collaborative
 artistOrRole: Concept Artist · Illustrator
 venue: KMU Design
 contentBlocks:

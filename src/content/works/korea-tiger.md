@@ -2,6 +2,7 @@
 title: Korea Tiger
 year: "2024"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: Seoul
 contentBlocks:

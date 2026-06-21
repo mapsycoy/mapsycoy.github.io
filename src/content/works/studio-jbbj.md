@@ -2,6 +2,7 @@
 title: Studio JBBJ
 year: 2021 - 2022
 status: published
+workType: collaborative
 artistOrRole: " Animator · Illustrator"
 venue: Studio JBBJ
 contentBlocks:

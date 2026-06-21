@@ -2,6 +2,7 @@
 title: Wavebreaker
 year: "2025"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: Seoul
 contentBlocks:

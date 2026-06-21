@@ -2,6 +2,7 @@
 title: Caffeine is my life
 year: "2021"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: Seoul
 contentBlocks:

@@ -151,6 +151,7 @@ collections:
       - title
       - year
       - status
+      - workType
       - artistOrRole
       - venue
     view_filters:
@@ -160,6 +161,12 @@ collections:
       - label: Drafts
         field: status
         pattern: draft
+      - label: Independent
+        field: workType
+        pattern: independent
+      - label: Collaborative
+        field: workType
+        pattern: collaborative
     fields:
       - label: Title
         name: title
@@ -176,6 +183,15 @@ collections:
             value: published
           - label: Draft
             value: draft
+      - label: Work Type
+        name: workType
+        widget: select
+        default: independent
+        options:
+          - label: Independent
+            value: independent
+          - label: Collaborative
+            value: collaborative
       - label: Role / Artist
         name: artistOrRole
         widget: string

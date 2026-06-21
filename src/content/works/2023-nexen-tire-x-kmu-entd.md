@@ -2,6 +2,7 @@
 title: 2023 NEXEN TIRE X KMU ENTD
 year: "2023"
 status: published
+workType: collaborative
 artistOrRole: Animator
 venue: The Nexen Univer-City
 contentBlocks:

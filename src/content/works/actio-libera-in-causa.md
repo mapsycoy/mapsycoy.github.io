@@ -2,6 +2,7 @@
 title: 原因自由(Actio Libera in Causa)
 year: "2023"
 status: published
+workType: independent
 artistOrRole: Maker
 venue: KMU Design
 contentBlocks:

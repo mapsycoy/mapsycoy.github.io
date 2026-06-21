@@ -2,6 +2,7 @@
 title: "Atelier Gwanghwa: 2023 Invitation to the Square"
 year: "2023"
 status: published
+workType: collaborative
 artistOrRole: Motion Designer
 venue: Sejong Center for the Performing Arts
 contentBlocks:

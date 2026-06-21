@@ -2,6 +2,7 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const statusSchema = z.enum(["draft", "published"]).default("published");
+const workTypeSchema = z.enum(["independent", "collaborative"]).default("independent");
 
 const imagePathSchema = z.string().default("");
 const requiredImagePathSchema = z.string().min(1);
@@ -27,6 +28,7 @@ const works = defineCollection({
     title: z.string(),
     year: z.string(),
     status: statusSchema,
+    workType: workTypeSchema,
     artistOrRole: z.string().optional(),
     venue: z.string().optional(),
     summary: z.string().optional(),
