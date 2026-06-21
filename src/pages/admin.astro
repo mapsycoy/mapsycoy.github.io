@@ -430,14 +430,33 @@
 
       const positionMediaSelectControl = (root, control) => {
         const rect = root.getBoundingClientRect?.();
-        if (!rect || rect.width <= 0 || rect.height <= 0) {
+        const viewportWidth = window.innerWidth || document.documentElement.clientWidth || 0;
+        const viewportHeight = window.innerHeight || document.documentElement.clientHeight || 0;
+
+        if (
+          !rect ||
+          rect.width <= 0 ||
+          rect.height <= 0 ||
+          rect.right <= 0 ||
+          rect.bottom <= 0 ||
+          rect.left >= viewportWidth ||
+          rect.top >= viewportHeight
+        ) {
           control.hidden = true;
           return;
         }
 
         control.hidden = false;
-        control.style.left = `${Math.max(8, rect.left + 8)}px`;
-        control.style.top = `${Math.max(8, rect.top + 8)}px`;
+
+        const controlWidth = control.offsetWidth || 84;
+        const controlHeight = control.offsetHeight || 28;
+        const maxLeft = Math.max(8, viewportWidth - controlWidth - 8);
+        const maxTop = Math.max(8, viewportHeight - controlHeight - 8);
+        const left = Math.min(maxLeft, Math.max(8, rect.left + 8));
+        const top = Math.min(maxTop, Math.max(8, rect.top + 8));
+
+        control.style.left = `${left}px`;
+        control.style.top = `${top}px`;
       };
 
       const removeMediaSelectControl = (root) => {
