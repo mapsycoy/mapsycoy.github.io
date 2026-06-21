@@ -40,7 +40,7 @@ contentBlocks:
       width="640" height="480"></iframe>)'
 tags:
   - AI
-thumbnail: /uploads/ivs.jpg
+thumbnail: /uploads/chi26.png
 heroImage: /uploads/red.png
 heroImageDisplay: full
 ---
