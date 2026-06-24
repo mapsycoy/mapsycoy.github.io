@@ -65,7 +65,7 @@ contentBlocks:
 tags:
   - Animation
   - Illustration
-thumbnail: https://i.namu.wiki/i/FmsQ2T7LZ3B52QJ2pDAeQHwrGxEBjIJtK3VS9jKe_o96K7TmCqktDsbsC_mn6vq3CqmHeoMOocjXKsSscnjQELVhv3KNILS75R6XVqYMHLCPQi2XpckvkXZePSGRMLnvaT_kruUlqYP0Pavm-RH13g.webp
+thumbnail: /uploads/jbbj.png
 heroImage: ""
 heroImageDisplay: full
 heroImageCaption: ""
