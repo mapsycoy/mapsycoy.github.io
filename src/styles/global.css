@@ -2406,15 +2406,9 @@ html[lang="ko"] .cv-page {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: 36px;
-  height: 36px;
-  border: 1px solid currentColor;
-  border-radius: 999px;
   color: var(--text);
   text-decoration: none;
-  transition:
-    border-color 160ms ease,
-    color 160ms ease;
+  transition: color 160ms ease;
 }
 
 .footer-social-link:hover,
