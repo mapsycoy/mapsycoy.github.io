@@ -2406,8 +2406,8 @@ html[lang="ko"] .cv-page {
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  width: 42px;
-  height: 42px;
+  width: 36px;
+  height: 36px;
   border: 1px solid currentColor;
   border-radius: 999px;
   color: var(--text);
