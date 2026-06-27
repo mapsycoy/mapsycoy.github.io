@@ -1,7 +1,7 @@
 ---
 title:
-  ko: ""
-  en: 내가 대학원에서 HCI를 공부하고자 하는 이유
+  ko: 내가 대학원에서 HCI를 공부하고자 하는 이유
+  en: The reasons why I want to study HCI
 publishedAt: 2026-06-14T00:00:00.000Z
 status: published
 pinned: true
@@ -9,107 +9,309 @@ tag: Essay
 thumbnail: /uploads/first.jpg
 heroImage: /uploads/first.jpg
 heroImageCaption:
-  ko: ""
-  en: 「이웃집 토토로」 속 한 장면
+  ko: 「이웃집 토토로」 속 한 장면
+  en: A scene from 'My Neighbor Totoro'
+contentBlocks:
+  - type: text
+    body:
+      ko: >-
+        이 글은 이곳에 남기는 첫 정식 포스팅이다.
+
+
+        새 개인 웹사이트를 만들며, 나는 이전 티스토리에 썼던 모든 글을 옮기지는 않기로 했다. 대신 딱 하나의 글만 아카이빙했는데, 지난 2월 초에 작성한 「**AI 시대에 상상 속 친구는 사라질까?**」라는 글이다.
+
+
+        그 안에, 내가 오래 붙잡고 있었지만 아직까지 제대로 설명하지 못했던 질문이 아주 선명하게 남아 있기 때문이다.
+
+
+        <mark>아이들은 AI와 어떤 관계를 맺게 될까?</mark>
+
+
+        AI가 즉각적으로 답을 주는 시대에, 아이들은 여전히 스스로 상상하고 기다리고 해석하는 법을 배울 수 있을까. 상상 속 친구처럼 조용하고 비어 있는 존재가 사라진 자리에, 너무 빠르게 반응하고 너무 그럴듯하게 말하는 AI가 들어온다면 아이의 내면세계는 어떻게 달라질까.
+
+
+        처음 그 글을 쓸 때만 해도, 나는 그것을 하나의 에세이, 일종의 감상문이라고 생각했다. AI companion과 상상 속 친구의 차이를 다루고, 아이들의 정서 발달과 상상력에 대해 생각해 보는 글. 하지만 시간이 지나 다시 읽어보니, 그 글은 내가 왜 HCI를 공부하고자 하는지에 대한 가장 강력한 단서였다.
+
+
+
+
+        ---
+
+
+
+
+        [2025 AI Index Report 분석하기 (25.08.10)](https://mapsycoy.tistory.com/14)
+
+
+        아이들이 AI와 어떤 관계를 맺게 될지를 생각하다 보니, 자연스럽게 교육 제도 전체를 다시 보게 되었다.
+
+
+        내가 궁금한 것은 단순히 누가 AI 교육을 누릴 수 있느냐의 문제가 아니다. 세상은 애초에 공평하지 않고, 모든 아이가 같은 출발선에 설 수도 없다. 선거철 교육감 공약처럼 모두를 같은 선상에 세우겠다는 말은 몽상, 혹은 사회주의에 가깝다고 생각한다. 내가 더 신경 쓰는 것은 AI가 교육 안으로 들어왔을 때, 아이들을 어떤 방식으로 길러내게 될지에 관한 문제다.
+
+
+        AI 교육은 아이를 입시 환경에 더 적합하게 만들 수도 있다. 생각하기 전에 답이 주어지는 환경에서 아이는 더 빠르게 많은 정보를 습득할 수 있다. 그러나 그 속도 안에서 스스로 길을 잃어볼 시간은 사라질 것이다.
+
+
+        나는 이 지점이 중요하다고 생각한다. AI 시대의 교육 문제는 단순히 기술 보급의 문제가 아니라, 교육이 어떤 인간상을 목표로 삼게 되는가의 문제다.
+
+
+        이 생각은 AGI 이후의 삶에 관한 질문으로도 이어졌다. 만약 AGI가 인간의 노동 시간을 크게 줄인다면, 일부 사람들은 원치 않더라도 더 많은 여가를 갖게 될지도 모른다. 그러나 여가가 곧 자유는 아니다. UBI를 받고 시간이 남아돈다고 해서 모두가 자신의 삶을 생산적으로 사용할 수 있는 것은 아니다. 누군가는 즉각적인 쾌락과 중독적인 소비에 빠질 수도 있다.
+
+
+        결국 우리에게 필요한 것은 건강한 취미생활이다. 특히 예술, 철학과 같은 고차원적 취미는 단순히 시간이 아니라, 그것을 다룰 수 있는 지적 토대를 필요로 한다. 그러니 **노동이 줄어든 시대에도 인간은 여전히 배워야 한다.**
+
+
+        어쩌면 그때의 교육은 생존을 위한 훈련보다, <mark>자기 삶에 의미를 부여하기 위한 기반</mark>에 가까워질 것이다. 그래서 나는 아이들이 어릴 때부터 질문하고, 부딪히고, 실패하고, 다시 도전하는 경험을 가져야 한다고 생각하게 되었다.
+
+
+
+
+        ---
+
+
+
+
+        [AlphaGenome 성과 발표 + 맞춤형 아기 (26.01.29)](https://mapsycoy.tistory.com/40)
+
+
+        반대로 실리콘 밸리에서 이뤄지는 유전자 선별과 맞춤형 아기에 관한 논의는 더 불편한 방향을 보여준다. 기술은 유전병 예방에서 출발하지만, 시장과 만나면 더 높은 우월성을 선택하려는 인간의 욕망으로 쉽게 확장된다. 나는 이것이 두렵다.
+
+
+        물론 자본주의 사회에서 더 많은 자원을 가진 사람들이 더 많은 선택지를 갖는 것은 지극히 자연스러운 일이다만, 여기서 내가 두렵게 느끼는 것은 AGI 시대의 편차가 지금보다 훨씬 더 커질 수 있다는 점이다.
+
+
+        어쩌면 미래는 극소수의 엘리트들이 기술과 자본, 지식의 흐름을 이끌고 가는 세계가 될지도 모른다. 사실 인류의 역사는 늘 그런 방식으로 움직여왔다. 다만 AGI 이후에는 그 격차가 더 빠르고, 회복하기 어려운 형태로 벌어질 가능성이 있다.
+
+
+
+
+        ---
+
+
+
+
+        [AI는 버블인가? (25.10.10)](https://mapsycoy.tistory.com/24)
+
+
+        그런데 동시에 출산 불균형으로, 상대적으로 취약한 양육 환경과 교육 환경에 놓인 아이들의 비중이 커진다면 어떻게 될까. 
+
+
+        세상을 이끄는 소수 집단이 한쪽에 있고, 다른 한쪽에서는 충분한 지적 토대와 문화적 경험을 갖지 못한 아이들이 더 많이 자라나는 구조가 된다면, 그 사회는 장기적으로 어떤 방향으로 흘러가게 될까.
+
+
+
+
+        ---
+
+
+
+
+        [CHI 2025와 CHI EA 25 속 한국팀 (25.12.28)](https://mapsycoy.tistory.com/34)
+
+
+        이 문제의식은 내가 CHI 2025 자료들을 살펴보며 더 선명해졌다. 
+
+
+        국내 여러 기관들이 참여한 디자인 관련 HCI 연구는 적지 않았지만, 만 13세 이하의 일반 아동을 직접 다룬 연구는 거의 보이지 않았다. 아이들을 다룬 연구가 없었던 것은 아니지만, 대부분 자폐와 같은 특정 발달 조건을 다루거나, K-12처럼 18세까지의 넓은 교육 맥락 안에서 아동과 청소년을 포괄적으로 바라보는 연구에 가까웠다.
+
+
+        물론 그런 연구들도 중요하다만 나는 묻고 싶다.
+
+
+        **그렇다면 AI와 함께 자라날 일반 발달 아동은 어디에 있는가.**<mark>**상상력**</mark>**과** <mark>**주체성**</mark>**이 막 형성되는 시기의 아이들을, 우리는 충분히 연구하고 있는가.**
+
+
+        나는 그 빈자리가 마음에 남았다. 그리고 그 빈자리가 내가 HCI를 공부하고자 하는 이유와 맞닿아 있다고 느꼈다.
+
+
+        > 몇몇 주변 사람들, 혹은 나를 처음 보는 사람들은 종종 내게 묻는다. 왜 내 배경과 거리가 멀어 보이는 HCI를 공부하려 하느냐고. 역시나 대학원 면접에서도 그 질문을 받았다.
+
+        >
+
+        > 겉으로 보면 당연하다. 좁혀 말하자면 나는 여전히 그림쟁이에 가깝고, 지금도 어디를 가든 나 자신을 그렇게 소개하는 편이다. 다만 내 경험과 관심이 순수하게 그 안에만 머물러 있었던 것은 아니다.
+
+        >
+
+        > 나는 어릴 때부터 꽤 오랫동안 미술영재 교육을 받았다. 그러나 그 시간이 내게 남긴 것은 거창한 작가주의 같은 것이 아니었다. 오히려 아무것도 없는 백지를 어떻게 나만의 상상으로 채워나갈 것인가에 대한 감각이었다. 
+
+        >
+
+        > 돌아보면 그 감각은 AI 시대의 교육을 생각할 때 더 중요하게 느껴진다. AI가 빠르게 답을 제시하고, 다음 선택지를 보여주는 시대일수록 아이들에게 필요한 것은 정답을 빨리 얻는 능력만은 아닐 것이다. 아무것도 없는 상태에서 자기 생각을 시작하고, 그것을 끝까지 밀고 가보는 경험이 더 중요해질 수 있다.
+
+        >
+
+        > 대학에서 영상디자인을 전공한 것도 그 연장선에 있었다. 정지된 그림을 넘어, 내가 상상한 장면이 프레임 속에서 살아 움직이게 만들고 싶었다. 미디어아트 작업을 하며 단방향 이미지의 힘을 경험했지만, 동시에 그 한계도 느꼈다.
+
+        >
+
+        > 사람은 바라보기만 할 때보다 직접 상호작용할 때 더 깊이 빠져든다. 이후 창업과 직장생활을 거치며 이 생각은 더 분명해졌다. 서비스와 기술은 단순 시각적 결과물로 끝나지 않고, 사람의 사고와 행동을 실제로 바꾼다.
+
+        >
+
+        > 그래서 나는 더 공부해야겠다고 생각했다. 창작과 상호작용의 문제를, 이제는 인간과 AI의 관계 속에서 더 깊이 있게 이해해보고자 한다.
+
+
+        돌아보면 결국 같은 질문이었다.
+
+
+        *사람은 어떻게 자기 생각을 만들고, 그것을 바탕으로 세상과 관계 맺는가.*
+
+
+        **상상력은 자기 앞의 세계가 전부가 아닐 수 있다고 느끼는 힘, 즉 무모해 보일지라도 도전할 수 있게끔 만드는 강력한 힘이다.**
+
+
+        AGI 시대가 정말로 극소수에 의해 움직이는 세계가 된다면, 더더욱 나머지 이들에게 필요한 것은 <mark>자기 생각을 잃지 않는 것</mark>이다.
+
+
+        그것이 내가 HCI를 공부하고자 하는 이유다.
+      en: >-
+        This is my first official post here.
+
+
+        As I built this new personal website, I decided not to transfer all the articles I had previously written on Tistory. Instead, I archived only a single piece—an article titled '***Will Imaginary Friends Disappear in the AI Era?'*** which I wrote in early February of last year.
+
+
+        I kept it because inside that piece lies a question I have long held onto but have not yet been able to properly articulate, preserved in sharp relief:
+
+
+        What kind of relationship will children form with AI?
+
+
+        In an era where AI provides instantaneous answers, can children still learn how to imagine, wait, and interpret on their own? In the space where silent, empty entities like imaginary friends once stood, if an AI that responds too quickly and speaks too plausibly takes over, how will a child’s inner world change?
+
+
+        When I first wrote that article, I thought of it merely as an essay, a collection of personal reflections. A piece comparing AI companions with imaginary friends, pondering children’s emotional development and imagination. Yet, reading it again after some time had passed, I realized that article was the most powerful clue as to why I want to study HCI.
+
+
+
+
+        ---
+
+
+
+
+        [Analyzing the 2025 AI Index Report (Aug 10, 2025)](https://mapsycoy.tistory.com/14)
+
+
+        As I pondered what kind of relationship children would form with AI, my thoughts naturally expanded to a re-evaluation of the entire educational system.
+
+
+        What I am curious about is not simply a matter of who gets to enjoy AI education. The world is inherently unequal, and not all children can stand at the same starting line. To claim that we can place everyone on the same line—like a superintendent’s campaign promise during election season—is a pipedream, or closer to socialism. What concerns me more is the question of what kind of human beings AI will cultivate once it integrates into education.
+
+
+        AI education might make children better suited for highly competitive college entrance environments. In an environment where answers are given before one can even think, a child can acquire vast amounts of information much faster. However, within that speed, the time to willingly get lost on one's own will vanish.
+
+
+        I believe this is a critical point. The issue of education in the AI era is not merely a matter of technological distribution; it is a question of what human archetype education aims to achieve.
+
+
+        This thought naturally led to questions about life after AGI (Artificial General Intelligence). If AGI drastically reduces human labor hours, some people might find themselves with more leisure time, whether they want it or not. However, leisure is not synonymous with freedom. Receiving UBI (Universal Basic Income) and having time to spare does not mean everyone will use their life productively. Some may fall into immediate pleasures and addictive consumption.
+
+
+        Ultimately, what we need are healthy hobbies. In particular, high-level pursuits like art and philosophy require more than just time; they demand the intellectual foundation to engage with them. **Therefore, even in an era of diminished labor, humans must still learn.**
+
+
+        Perhaps education at that point will become less of a survival training and more of a foundation for giving meaning to one's own life. This is why I came to believe that children must have experiences of questioning, colliding, failing, and trying again from an early age.
+
+
+
+
+        ---
+
+
+
+
+        [AlphaGenome Performance Announcement + Designer Babies (Jan 29, 2026)](https://mapsycoy.tistory.com/40)
+
+
+        Conversely, the discussions happening in Silicon Valley regarding genetic screening and designer babies point in a much more unsettling direction. While the technology begins with the prevention of genetic diseases, once it intersects with the market, it easily expands into the human desire to select for superior traits. This is what frightens me.
+
+
+        Of course, in a capitalist society, it is entirely natural for those with more resources to have more options. However, what I find terrifying here is that the disparity in the AGI era could become vastly wider than it is now.
+
+
+        Perhaps the future will be a world driven by a tiny elite steering the flow of technology, capital, and knowledge. In fact, human history has always moved in that manner. Yet, post-AGI, there is a possibility that this gap will widen at a much faster and more irreversible rate.
+
+
+
+
+        ---
+
+
+
+
+        [Is AI a Bubble? (Oct 10, 2025)](https://mapsycoy.tistory.com/24)
+
+
+        At the same time, what happens if birth imbalances lead to a growing proportion of children being placed in relatively vulnerable rearing and educational environments?
+
+
+        If we end up with a structure where a minority elite leads the world on one side, while on the other side, an increasing number of children grow up without sufficient intellectual foundations and cultural experiences, what direction will that society take in the long run?
+
+
+
+
+        ---
+
+
+
+
+        [Korean Teams in CHI 2025 and CHI EA 25 (Dec 28, 2025)](https://mapsycoy.tistory.com/34)
+
+
+        This awareness of the problem became even more vivid as I looked through the materials for CHI 2025.
+
+
+        While there were quite a few design-related HCI studies involving various domestic institutions, I could barely find any research that directly dealt with typically developing children aged 13 and under. It wasn’t that studies on children were entirely non-existent, but most of them focused on specific developmental conditions such as autism, or approached children and adolescents comprehensively within a broad educational context like K-12.
+
+
+        Of course, those studies are important. But I want to ask:
+
+
+        **Where are the typically developing children who will grow up alongside AI? Are we sufficiently studying children during the crucial period when their** <mark>**imagination**</mark> **and** <mark>**agency**</mark> **are just beginning to form?**
+
+
+        That void lingered in my mind. And I felt that this very void aligned with the reason why I want to study HCI.
+
+
+        > Some people around me, or those meeting me for the first time, often ask: Why do I want to study HCI, a field that seems far removed from my background? Unsurprisingly, I faced the same question during my graduate school interview.
+
+        >
+
+        > On the surface, it is a natural question. To put it narrowly, I am still closer to being an artist, and I still introduce myself as such wherever I go. However, my experience and interests have never remained purely confined within that boundary.
+
+        >
+
+        > I received gifted education in fine arts for a quite long time since I was a child. Yet, what that time left me with was not a grandiose sense of auteurism. Rather, it was the sensation of how to fill a completely blank canvas with my own imagination.
+
+        >
+
+        > Looking back, that sensation feels even more vital when thinking about education in the AI era. In a time when AI rapidly suggests answers and shows the next options, what children need will not simply be the ability to get answers quickly. What will matter more is the experience of starting one's own thoughts from a state of absolute nothingness and pushing them through to the very end.
+
+        >
+
+        > Majoring in video design in college was an extension of that journey. Moving beyond static drawings, I wanted to make the scenes I imagined come alive within the frames. While working on media art, I experienced the power of unidirectional images, but I also felt their limitations.
+
+        >
+
+        > People engage far more deeply when they interact directly than when they merely observe. This thought became even clearer through my experiences in starting a business and working in the corporate world. Services and technologies do not end as simple visual outputs; they actually alter human thinking and behavior.
+
+        >
+
+        > That is why I decided I needed to study further. I want to understand the problems of creation and interaction more deeply, now within the context of the relationship between humans and AI.
+
+
+        In retrospect, it has always been the same question:
+
+
+        *How do people form their own thoughts, and how do they build relationships with the world based on those thoughts?*
+
+
+        **Imagination is the power to feel that the world right in front of us might not be everything—a potent force that enables us to challenge things, however reckless it may seem.**
+
+
+        If the AGI era truly becomes a world driven by a select few, what the remaining majority will need more than ever is not to lose their own thoughts.
+
+
+        That is the reason why I want to study HCI.
 ---
-이 글은 이곳에 남기는 첫 정식 포스팅이다. *(아마 처음이자 마지막 한글 포스팅이 아닐까 싶다.)*
-
-새 개인 웹사이트를 만들며, 나는 이전 티스토리에 썼던 모든 글을 옮기지는 않기로 했다. 대신 딱 하나의 글만 아카이빙했는데, 지난 2월 초에 작성한 「**AI 시대에 상상 속 친구는 사라질까?**」라는 글이다.
-
-그 안에, 내가 오래 붙잡고 있었지만 아직까지 제대로 설명하지 못했던 질문이 아주 선명하게 남아 있기 때문이다.
-
-<mark>아이들은 AI와 어떤 관계를 맺게 될까?</mark>
-
-AI가 즉각적으로 답을 주는 시대에, 아이들은 여전히 스스로 상상하고 기다리고 해석하는 법을 배울 수 있을까. 상상 속 친구처럼 조용하고 비어 있는 존재가 사라진 자리에, 너무 빠르게 반응하고 너무 그럴듯하게 말하는 AI가 들어온다면 아이의 내면세계는 어떻게 달라질까.
-
-처음 그 글을 쓸 때만 해도, 나는 그것을 하나의 에세이, 일종의 감상문이라고 생각했다. AI companion과 상상 속 친구의 차이를 다루고, 아이들의 정서 발달과 상상력에 대해 생각해 보는 글. 하지만 시간이 지나 다시 읽어보니, 그 글은 내가 왜 HCI를 공부하고자 하는지에 대한 가장 강력한 단서였다.
-
-
-
----
-
-
-
-[2025 AI Index Report 분석하기 (25.08.10)](https://mapsycoy.tistory.com/14)
-
-아이들이 AI와 어떤 관계를 맺게 될지를 생각하다 보니, 자연스럽게 교육 제도 전체를 다시 보게 되었다.
-
-내가 궁금한 것은 단순히 누가 AI 교육을 누릴 수 있느냐의 문제가 아니다. 세상은 애초에 공평하지 않고, 모든 아이가 같은 출발선에 설 수도 없다. 선거철 교육감 공약처럼 모두를 같은 선상에 세우겠다는 말은 몽상, 혹은 사회주의에 가깝다고 생각한다. 내가 더 신경 쓰는 것은 AI가 교육 안으로 들어왔을 때, 아이들을 어떤 방식으로 길러내게 될지에 관한 문제다.
-
-AI 교육은 아이를 입시 환경에 더 적합하게 만들 수도 있다. 생각하기 전에 답이 주어지는 환경에서 아이는 더 빠르게 많은 정보를 습득할 수 있다. 그러나 그 속도 안에서 스스로 길을 잃어볼 시간은 사라질 것이다.
-
-나는 이 지점이 중요하다고 생각한다. AI 시대의 교육 문제는 단순히 기술 보급의 문제가 아니라, 교육이 어떤 인간상을 목표로 삼게 되는가의 문제다.
-
-이 생각은 AGI 이후의 삶에 관한 질문으로도 이어졌다. 만약 AGI가 인간의 노동 시간을 크게 줄인다면, 일부 사람들은 원치 않더라도 더 많은 여가를 갖게 될지도 모른다. 그러나 여가가 곧 자유는 아니다. UBI를 받고 시간이 남아돈다고 해서 모두가 자신의 삶을 생산적으로 사용할 수 있는 것은 아니다. 누군가는 즉각적인 쾌락과 중독적인 소비에 빠질 수도 있다.
-
-결국 우리에게 필요한 것은 건강한 취미생활이다. 특히 예술, 철학과 같은 고차원적 취미는 단순히 시간이 아니라, 그것을 다룰 수 있는 지적 토대를 필요로 한다. 그러니 **노동이 줄어든 시대에도 인간은 여전히 배워야 한다.**
-
-어쩌면 그때의 교육은 생존을 위한 훈련보다, <mark>자기 삶에 의미를 부여하기 위한 기반</mark>에 가까워질 것이다. 그래서 나는 아이들이 어릴 때부터 질문하고, 부딪히고, 실패하고, 다시 도전하는 경험을 가져야 한다고 생각하게 되었다.
-
-
-
----
-
-
-
-[AlphaGenome 성과 발표 + 맞춤형 아기 (26.01.29)](https://mapsycoy.tistory.com/40)
-
-반대로 실리콘 밸리에서 이뤄지는 유전자 선별과 맞춤형 아기에 관한 논의는 더 불편한 방향을 보여준다. 기술은 유전병 예방에서 출발하지만, 시장과 만나면 더 높은 우월성을 선택하려는 인간의 욕망으로 쉽게 확장된다. 나는 이것이 두렵다.
-
-물론 자본주의 사회에서 더 많은 자원을 가진 사람들이 더 많은 선택지를 갖는 것은 지극히 자연스러운 일이다만, 여기서 내가 두렵게 느끼는 것은 AGI 시대의 편차가 지금보다 훨씬 더 커질 수 있다는 점이다.
-
-어쩌면 미래는 극소수의 엘리트들이 기술과 자본, 지식의 흐름을 이끌고 가는 세계가 될지도 모른다. 사실 인류의 역사는 늘 그런 방식으로 움직여왔다. 다만 AGI 이후에는 그 격차가 더 빠르고, 회복하기 어려운 형태로 벌어질 가능성이 있다.
-
-
-
----
-
-
-
-[AI는 버블인가? (25.10.10)](https://mapsycoy.tistory.com/24)
-
-그런데 동시에 출산 불균형으로, 상대적으로 취약한 양육 환경과 교육 환경에 놓인 아이들의 비중이 커진다면 어떻게 될까. 
-
-세상을 이끄는 소수 집단이 한쪽에 있고, 다른 한쪽에서는 충분한 지적 토대와 문화적 경험을 갖지 못한 아이들이 더 많이 자라나는 구조가 된다면, 그 사회는 장기적으로 어떤 방향으로 흘러가게 될까.
-
-
-
----
-
-
-
-[CHI 2025와 CHI EA 25 속 한국팀 (25.12.28)](https://mapsycoy.tistory.com/34)
-
-이 문제의식은 내가 CHI 2025 자료들을 살펴보며 더 선명해졌다. 
-
-국내 여러 기관들이 참여한 디자인 관련 HCI 연구는 적지 않았지만, 만 13세 이하의 일반 아동을 직접 다룬 연구는 거의 보이지 않았다. 아이들을 다룬 연구가 없었던 것은 아니지만, 대부분 자폐와 같은 특정 발달 조건을 다루거나, K-12처럼 18세까지의 넓은 교육 맥락 안에서 아동과 청소년을 포괄적으로 바라보는 연구에 가까웠다.
-
-물론 그런 연구들도 중요하다만 나는 묻고 싶다.
-
-**그렇다면 AI와 함께 자라날 일반 발달 아동은 어디에 있는가.**
-<mark>**상상력**</mark>**과** <mark>**주체성**</mark>**이 막 형성되는 시기의 아이들을, 우리는 충분히 연구하고 있는가.**
-
-나는 그 빈자리가 마음에 남았다. 그리고 그 빈자리가 내가 HCI를 공부하고자 하는 이유와 맞닿아 있다고 느꼈다.
-
-> 몇몇 주변 사람들, 혹은 나를 처음 보는 사람들은 종종 내게 묻는다. 왜 내 배경과 거리가 멀어 보이는 HCI를 공부하려 하느냐고. 역시나 대학원 면접에서도 그 질문을 받았다.
->
-> 겉으로 보면 당연하다. 좁혀 말하자면 나는 여전히 그림쟁이에 가깝고, 지금도 어디를 가든 나 자신을 그렇게 소개하는 편이다. 다만 내 경험과 관심이 순수하게 그 안에만 머물러 있었던 것은 아니다.
->
-> 나는 어릴 때부터 꽤 오랫동안 미술영재 교육을 받았다. 그러나 그 시간이 내게 남긴 것은 거창한 작가주의 같은 것이 아니었다. 오히려 아무것도 없는 백지를 어떻게 나만의 상상으로 채워나갈 것인가에 대한 감각이었다. 
->
-> 돌아보면 그 감각은 AI 시대의 교육을 생각할 때 더 중요하게 느껴진다. AI가 빠르게 답을 제시하고, 다음 선택지를 보여주는 시대일수록 아이들에게 필요한 것은 정답을 빨리 얻는 능력만은 아닐 것이다. 아무것도 없는 상태에서 자기 생각을 시작하고, 그것을 끝까지 밀고 가보는 경험이 더 중요해질 수 있다.
->
-> 대학에서 영상디자인을 전공한 것도 그 연장선에 있었다. 정지된 그림을 넘어, 내가 상상한 장면이 프레임 속에서 살아 움직이게 만들고 싶었다. 미디어아트 작업을 하며 단방향 이미지의 힘을 경험했지만, 동시에 그 한계도 느꼈다.
->
-> 사람은 바라보기만 할 때보다 직접 상호작용할 때 더 깊이 빠져든다. 이후 창업과 직장생활을 거치며 이 생각은 더 분명해졌다. 서비스와 기술은 단순 시각적 결과물로 끝나지 않고, 사람의 사고와 행동을 실제로 바꾼다.
->
-> 그래서 나는 더 공부해야겠다고 생각했다. 창작과 상호작용의 문제를, 이제는 인간과 AI의 관계 속에서 더 깊이 있게 이해해보고자 한다.
-
-돌아보면 결국 같은 질문이었다.
-사람은 어떻게 자기 생각을 만들고, 그것을 바탕으로 세상과 관계 맺는가.
-
-**상상력은 자기 앞의 세계가 전부가 아닐 수 있다고 느끼는 힘, 즉 무모해 보일지라도 도전할 수 있게끔 만드는 강력한 힘이다.**
-
-AGI 시대가 정말로 극소수에 의해 움직이는 세계가 된다면, 더더욱 나머지 이들에게 필요한 것은 <mark>자기 생각을 잃지 않는 것</mark>이다.
-
-그것이 내가 HCI를 공부하고자 하는 이유다.
