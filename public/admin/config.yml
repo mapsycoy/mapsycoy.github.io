@@ -1009,6 +1009,19 @@ collections:
         file: src/data/home.json
         format: json
         fields:
+          - label: Landing Intro
+            name: intro
+            widget: object
+            required: false
+            fields:
+              - label: Korean
+                name: ko
+                widget: string
+                required: false
+              - label: English
+                name: en
+                widget: string
+                required: false
           - label: Landing Caption
             name: caption
             widget: object
