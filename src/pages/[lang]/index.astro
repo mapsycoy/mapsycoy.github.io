@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getHomeCaption } from "../../data/home";
+import { getHomeCaption, getHomeIntro } from "../../data/home";
 import { getLanguageFromParams, languages, type Language } from "../../utils/i18n";
 
 export function getStaticPaths() {
@@ -10,6 +10,7 @@ export function getStaticPaths() {
 const lang: Language = getLanguageFromParams(Astro.params.lang);
 const contactEmail = "mapsycoy@gmail.com";
 const homeCaption = getHomeCaption(lang);
+const homeIntro = getHomeIntro(lang);
 const homeInstrumentSrc = "/landing/home-instrument.gif";
 const homeInstrumentHalftoneSrc = "/landing/home-instrument-halftone.gif";
 const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.gif";
@@ -24,9 +25,7 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
       <h1 class="title">Welcome to my space.</h1>
     </div>
 
-    <p class="lede">
-      This is an archive of my works, projects, experiments, and the questions that shaped them.
-    </p>
+    <p class="lede">{homeIntro}</p>
 
     <figure class="home-media">
       <div class="home-instrument" data-home-instrument aria-label="Animated visual note">
