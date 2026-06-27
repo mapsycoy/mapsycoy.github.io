@@ -1,42 +1,43 @@
 import cvData from "./cv.json";
+import type { LocalizedText } from "../utils/i18n";
 
 export type MediaItem = {
   type: "image" | "link";
   src?: string;
   href?: string;
-  alt?: string;
-  label?: string;
+  alt?: LocalizedText;
+  label?: LocalizedText;
 };
 
 export type ExperienceItem = {
-  role: string;
-  team?: string;
-  organization: string;
-  employmentType?: string;
+  role: LocalizedText;
+  team?: LocalizedText;
+  organization: LocalizedText;
+  employmentType?: LocalizedText;
   period: string;
-  duration?: string;
-  description?: string[];
+  duration?: LocalizedText;
+  description?: LocalizedText[];
   logo?: string;
   media?: MediaItem[];
   subEntries?: {
-    title: string;
+    title: LocalizedText;
     period: string;
-    duration?: string;
-    description?: string[];
+    duration?: LocalizedText;
+    description?: LocalizedText[];
   }[];
 };
 
 export type EducationItem = {
-  institution: string;
-  degree: string;
+  institution: LocalizedText;
+  degree: LocalizedText;
   period: string;
-  description?: string[];
+  description?: LocalizedText[];
   logo?: string;
   media?: MediaItem[];
 };
 
 export type CertificationItem = {
-  title: string;
+  title: LocalizedText;
   issuer: string;
   issued?: string;
   credentialId?: string;
@@ -49,9 +50,9 @@ export type CertificateLogoItem = {
 };
 
 export type ProjectItem = {
-  title: string;
+  title: LocalizedText;
   period: string;
-  description?: string[];
+  description?: LocalizedText[];
   media?: MediaItem[];
   links?: {
     label: string;
@@ -60,8 +61,8 @@ export type ProjectItem = {
 };
 
 export type SkillGroup = {
-  category: string;
-  items: string[];
+  category: LocalizedText;
+  items: LocalizedText[];
 };
 
 export type ProfileLink = {
@@ -72,7 +73,7 @@ export type ProfileLink = {
 export const profile = cvData.profile;
 export const education = cvData.education as EducationItem[];
 export const artsGiftedEducationCertificate = cvData.artsGiftedEducationCertificate as {
-  title: string;
+  title: LocalizedText;
   logos: CertificateLogoItem[];
 };
 export const experiences = cvData.experiences as ExperienceItem[];

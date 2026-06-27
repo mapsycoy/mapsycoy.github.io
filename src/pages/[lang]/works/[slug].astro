@@ -1,8 +1,8 @@
 ---
-import Layout from "../../layouts/Layout.astro";
-import { getWorks, type WorkItem } from "../../data/works";
-import { getLinkPreviewImage } from "../../utils/linkMetadata";
-import { defaultLanguage, localize, type Language } from "../../utils/i18n";
+import Layout from "../../../layouts/Layout.astro";
+import { getWorks, type WorkItem } from "../../../data/works";
+import { getLinkPreviewImage } from "../../../utils/linkMetadata";
+import { getLanguageFromParams, languages, localize, type Language } from "../../../utils/i18n";
 
 type Props = {
   work: WorkItem;
@@ -11,10 +11,12 @@ type Props = {
 export async function getStaticPaths() {
   const works = await getWorks();
 
-  return works.map((work) => ({
-    params: { slug: work.id },
-    props: { work }
-  }));
+  return languages.flatMap((lang) =>
+    works.map((work) => ({
+      params: { lang, slug: work.id },
+      props: { work, lang: getLanguageFromParams(lang) }
+    }))
+  );
 }
 
 const getVideoSource = (value: string) => {
@@ -376,7 +378,7 @@ const renderTextBlock = (value: string) => {
     .join("");
 };
 
-const { work, lang = defaultLanguage } = Astro.props;
+const { work, lang } = Astro.props;
 const workTitle = localize(work.data.title, lang);
 const tags = work.data.tags ?? [];
 const heroImage = work.data.heroImage?.trim() ?? "";
@@ -442,7 +444,7 @@ const visibleInfoItems = infoItems.filter(
 
 <Layout title={`${workTitle} | Works`} description={workTitle} lang={lang}>
   <article class="work-detail">
-    <a class="work-back-link" href="/works/">&#8592; Works</a>
+    <a class="work-back-link" href={`/${lang}/works/`}>&#8592; Works</a>
 
     <header class="work-detail-header">
       <h1 class="work-detail-title">{workTitle}</h1>

@@ -1,16 +1,18 @@
 ---
-import Layout from "../../layouts/Layout.astro";
+import Layout from "../../../layouts/Layout.astro";
 import { render } from "astro:content";
-import { getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../data/blog";
-import { defaultLanguage, localize, type Language } from "../../utils/i18n";
+import { getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../../data/blog";
+import { getLanguageFromParams, languages, localize, type Language } from "../../../utils/i18n";
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
 
-  return posts.map((post) => ({
-    params: { slug: post.id },
-    props: { post }
-  }));
+  return languages.flatMap((lang) =>
+    posts.map((post) => ({
+      params: { lang, slug: post.id },
+      props: { post, lang: getLanguageFromParams(lang) }
+    }))
+  );
 }
 
 type Props = {
@@ -18,7 +20,7 @@ type Props = {
   lang?: Language;
 };
 
-const { post, lang = defaultLanguage } = Astro.props;
+const { post, lang } = Astro.props;
 const postTitle = localize(post.data.title, lang);
 const { Content } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
@@ -71,7 +73,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
 
 <Layout title={`${postTitle} | Blog`} description={postTitle} lang={lang}>
   <article class="blog-post">
-    <a class="work-back-link" href="/blog/">&#8592; Blog</a>
+    <a class="work-back-link" href={`/${lang}/blog/`}>&#8592; Blog</a>
 
     <header class="blog-post-header">
       <p class="entry-meta blog-entry-meta">

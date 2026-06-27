@@ -6,11 +6,18 @@ const workTypeSchema = z.enum(["independent", "collaborative"]).default("indepen
 
 const imagePathSchema = z.string().default("");
 const requiredImagePathSchema = z.string().min(1);
+const localizedTextSchema = z.union([
+  z.string(),
+  z.object({
+    ko: z.string().default(""),
+    en: z.string().default(""),
+  }),
+]);
 
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: z.object({
-    title: z.string(),
+    title: localizedTextSchema,
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date().optional(),
     status: statusSchema,
@@ -18,31 +25,55 @@ const blog = defineCollection({
     tag: z.enum(["Essay", "AI", "Paper"]),
     thumbnail: imagePathSchema,
     heroImage: imagePathSchema,
-    heroImageCaption: z.string().default(""),
+    heroImageCaption: localizedTextSchema.default(""),
+    contentBlocks: z
+      .array(
+        z.discriminatedUnion("type", [
+          z.object({
+            type: z.literal("text"),
+            body: localizedTextSchema,
+          }),
+          z.object({
+            type: z.literal("image"),
+            src: z.string(),
+            caption: localizedTextSchema.default(""),
+          }),
+          z.object({
+            type: z.literal("link"),
+            title: localizedTextSchema,
+            url: z.string(),
+            subtitle: localizedTextSchema.default(""),
+          }),
+          z.object({
+            type: z.literal("divider"),
+          }),
+        ])
+      )
+      .default([]),
   }),
 });
 
 const works = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/works" }),
   schema: z.object({
-    title: z.string(),
+    title: localizedTextSchema,
     year: z.string(),
     status: statusSchema,
     workType: workTypeSchema,
-    artistOrRole: z.string().optional(),
-    venue: z.string().optional(),
-    summary: z.string().optional(),
+    artistOrRole: localizedTextSchema.optional(),
+    venue: localizedTextSchema.optional(),
+    summary: localizedTextSchema.optional(),
     tags: z.array(z.string()).default([]),
     thumbnail: requiredImagePathSchema,
     heroImage: imagePathSchema,
     heroImageDisplay: z.enum(["full", "contained"]).default("full"),
-    heroImageCaption: z.string().default(""),
+    heroImageCaption: localizedTextSchema.default(""),
     videoUrl: z.string().default(""),
     videos: z
       .array(
         z.object({
           embed: z.string(),
-          caption: z.string().optional(),
+          caption: localizedTextSchema.optional(),
         })
       )
       .default([]),
@@ -51,12 +82,19 @@ const works = defineCollection({
         z.discriminatedUnion("type", [
           z.object({
             type: z.literal("text"),
-            body: z.string(),
+            body: localizedTextSchema,
           }),
           z.object({
             type: z.literal("video"),
             embed: z.string(),
-            caption: z.string().optional(),
+            caption: localizedTextSchema.optional(),
+          }),
+          z.object({
+            type: z.literal("embed"),
+            provider: z.enum(["x", "reddit"]),
+            embedCode: z.string().default(""),
+            url: z.string().default(""),
+            caption: localizedTextSchema.optional(),
           }),
           z.object({
             type: z.literal("embed"),
@@ -67,14 +105,14 @@ const works = defineCollection({
           }),
           z.object({
             type: z.literal("statsLink"),
-            title: z.string(),
+            title: localizedTextSchema,
             url: z.string(),
-            subtitle: z.string().optional(),
-            ctaLabel: z.string().default("View link"),
+            subtitle: localizedTextSchema.optional(),
+            ctaLabel: localizedTextSchema.default("View link"),
             stats: z
               .array(
                 z.object({
-                  label: z.string(),
+                  label: localizedTextSchema,
                   value: z.string(),
                 })
               )

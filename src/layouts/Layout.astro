@@ -1,13 +1,16 @@
 ---
 import "../styles/global.css";
 import LogoMark from "../components/LogoMark.astro";
+import { defaultLanguage, getAlternateLanguage, isLanguage, withLanguage, type Language } from "../utils/i18n";
 
 const {
   title = "mapsycoy",
   description = "Visual Creation, AI Workflows, and Human-Centered Interaction.",
-  previewImage = "/og/site-preview.jpg"
+  previewImage = "/og/site-preview.jpg",
+  lang = defaultLanguage
 } = Astro.props;
 
+const currentLanguage = lang as Language;
 const siteUrl = "https://mapsycoy.github.io";
 const pageTitle = title === "mapsycoy" ? "mapsycoy" : `${title} | mapsycoy`;
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
@@ -24,7 +27,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={currentLanguage}>
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -48,7 +51,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
   <body>
     <div class="site-shell">
       <header class="site-header" aria-label="Site header">
-        <a class="site-title" href="/" aria-label="mapsycoy home">
+        <a class="site-title" href={withLanguage(currentLanguage, "/")} aria-label="mapsycoy home">
           <LogoMark />
         </a>
         <nav class="site-nav" aria-label="Primary navigation">

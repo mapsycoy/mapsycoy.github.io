@@ -1,10 +1,14 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import { getWorks, type WorkItem } from "../data/works";
-import { defaultLanguage, localize, type Language } from "../utils/i18n";
+import Layout from "../../layouts/Layout.astro";
+import { getWorks, type WorkItem } from "../../data/works";
+import { getLanguageFromParams, languages, localize, type Language } from "../../utils/i18n";
 
 const normalizeFilter = (value: string) => value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
-const lang: Language = defaultLanguage;
+export function getStaticPaths() {
+  return languages.map((lang) => ({ params: { lang } }));
+}
+
+const lang: Language = getLanguageFromParams(Astro.params.lang);
 const works = await getWorks();
 const getTags = (work: WorkItem) => work.data.tags ?? [];
 const filterTags = ["All", ...new Set(works.flatMap(getTags))];
@@ -62,7 +66,7 @@ const workSections = [
           <div class="works-grid">
             {section.works.map((work) => (
               <article class="work-card" data-work-card data-tags={getTagText(work)}>
-                <a class="work-card-link" href={`/works/${work.id}/`} aria-label={`Open ${localize(work.data.title, lang)} project detail`}>
+                <a class="work-card-link" href={`/${lang}/works/${work.id}/`} aria-label={`Open ${localize(work.data.title, lang)} project detail`}>
                   <div class="work-media" aria-label={`${localize(work.data.title, lang)} media preview`}>
                     {work.data.thumbnail ? (
                       <img src={work.data.thumbnail} alt={`${localize(work.data.title, lang)} project thumbnail`} loading="lazy" />

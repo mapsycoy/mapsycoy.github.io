@@ -65,7 +65,17 @@ collections:
     fields:
       - label: Title
         name: title
-        widget: string
+        widget: object
+        required: false
+        fields:
+          - label: Korean
+            name: ko
+            widget: string
+            required: false
+          - label: English
+            name: en
+            widget: string
+            required: false
       - label: Published Date
         name: publishedAt
         widget: datetime
@@ -111,30 +121,101 @@ collections:
         required: false
       - label: Hero Image Caption
         name: heroImageCaption
-        widget: string
+        widget: object
         required: false
-      - label: Body
+        fields:
+          - label: Korean
+            name: ko
+            widget: string
+            required: false
+          - label: English
+            name: en
+            widget: string
+            required: false
+      - label: Content Blocks
+        name: contentBlocks
+        widget: list
+        required: false
+        collapsed: true
+        minimize_collapsed: true
+        summary: "{{fields.type}}"
+        types:
+          - label: Text
+            name: text
+            widget: object
+            fields:
+              - label: Body
+                name: body
+                widget: object
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: markdown
+                    required: false
+                  - label: English
+                    name: en
+                    widget: markdown
+                    required: false
+          - label: Image
+            name: image
+            widget: object
+            fields:
+              - label: Source
+                name: src
+                widget: image
+              - label: Caption
+                name: caption
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+          - label: Link
+            name: link
+            widget: object
+            fields:
+              - label: Title
+                name: title
+                widget: object
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: URL
+                name: url
+                widget: string
+              - label: Subtitle
+                name: subtitle
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+          - label: Divider
+            name: divider
+            widget: object
+      - label: Legacy Body
         name: body
         widget: markdown
-        buttons:
-          - bold
-          - italic
-          - code
-          - link
-          - heading-one
-          - heading-two
-          - heading-three
-          - heading-four
-          - heading-five
-          - heading-six
-          - quote
-          - bulleted-list
-          - numbered-list
-        editor_components:
-          - captioned-image
-          - table
-          - divider
-        hint: Use the Image component to add an image with a caption. Use the Table component to add a markdown table. Use <mark>text</mark> to highlight text inline. Uploaded files are stored in the shared uploads folder.
+        required: false
+        hint: Fallback for older posts. Use Content Blocks for new bilingual posts.
 
   - name: works
     label: Works
@@ -170,7 +251,17 @@ collections:
     fields:
       - label: Title
         name: title
-        widget: string
+        widget: object
+        required: false
+        fields:
+          - label: Korean
+            name: ko
+            widget: string
+            required: false
+          - label: English
+            name: en
+            widget: string
+            required: false
       - label: Year
         name: year
         widget: string
@@ -194,12 +285,30 @@ collections:
             value: collaborative
       - label: Role / Artist
         name: artistOrRole
-        widget: string
+        widget: object
         required: false
+        fields:
+          - label: Korean
+            name: ko
+            widget: string
+            required: false
+          - label: English
+            name: en
+            widget: string
+            required: false
       - label: Venue
         name: venue
-        widget: string
+        widget: object
         required: false
+        fields:
+          - label: Korean
+            name: ko
+            widget: string
+            required: false
+          - label: English
+            name: en
+            widget: string
+            required: false
       - label: Content Blocks
         name: contentBlocks
         widget: list
@@ -214,7 +323,17 @@ collections:
             fields:
               - label: Body
                 name: body
-                widget: markdown
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: markdown
+                    required: false
+                  - label: English
+                    name: en
+                    widget: markdown
+                    required: false
                 buttons:
                   - bold
                   - italic
@@ -243,12 +362,21 @@ collections:
                 hint: Paste a YouTube/Vimeo URL or iframe embed code.
               - label: Caption
                 name: caption
-                widget: string
+                widget: object
                 required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
           - label: Embed
             name: embed
             widget: object
-            summary: "{{fields.provider}}"
+            summary: "{{fields.provider}} - {{fields.url}}"
             fields:
               - label: Provider
                 name: provider
@@ -265,8 +393,17 @@ collections:
                 hint: Paste the official embed HTML. Script tags are handled by the site and can be left in or removed.
               - label: Caption
                 name: caption
-                widget: string
+                widget: object
                 required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
           - label: Stats Link
             name: statsLink
             widget: object
@@ -274,7 +411,17 @@ collections:
             fields:
               - label: Title
                 name: title
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
                 hint: Name of the external profile, project, or platform page.
               - label: Subtitle
                 name: subtitle
@@ -286,9 +433,17 @@ collections:
                 widget: string
               - label: Button Label
                 name: ctaLabel
-                widget: string
-                default: View link
+                widget: object
                 required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Stats
                 name: stats
                 widget: list
@@ -302,7 +457,17 @@ collections:
                     hint: Example values - 191.8M, 24, 1.2K
                   - label: Label
                     name: label
-                    widget: string
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
                     hint: Example labels - GIF Views, Uploads, Followers
       - label: Tags
         name: tags
@@ -334,8 +499,17 @@ collections:
         hint: Use Contained for small GIFs, stickers, or transparent images that should not be enlarged to full page width.
       - label: Hero Image Caption
         name: heroImageCaption
-        widget: string
+        widget: object
         required: false
+        fields:
+          - label: Korean
+            name: ko
+            widget: string
+            required: false
+          - label: English
+            name: en
+            widget: string
+            required: false
 
   - name: settings
     label: Settings
@@ -369,11 +543,30 @@ collections:
             fields:
               - label: Institution
                 name: institution
-                widget: string
+                widget: object
                 required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Degree
                 name: degree
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Period
                 name: period
                 widget: string
@@ -391,7 +584,17 @@ collections:
             fields:
               - label: Title
                 name: title
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Logos
                 name: logos
                 widget: list
@@ -404,7 +607,17 @@ collections:
                     widget: string
                   - label: Alt
                     name: alt
-                    widget: string
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
           - label: Experiences
             name: experiences
             widget: list
@@ -414,19 +627,56 @@ collections:
             fields:
               - label: Role
                 name: role
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Team
                 name: team
-                widget: string
+                widget: object
                 required: false
-                hint: Optional team name shown after the role.
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Organization
                 name: organization
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Employment Type
                 name: employmentType
-                widget: string
+                widget: object
                 required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Period
                 name: period
                 widget: string
@@ -456,7 +706,17 @@ collections:
                 fields:
                   - label: Title
                     name: title
-                    widget: string
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
                   - label: Period
                     name: period
                     widget: string
@@ -497,8 +757,17 @@ collections:
                     required: false
                   - label: Alt
                     name: alt
-                    widget: string
+                    widget: object
                     required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
                   - label: Label
                     name: label
                     widget: string
@@ -512,7 +781,17 @@ collections:
             fields:
               - label: Title
                 name: title
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Period
                 name: period
                 widget: string
@@ -549,8 +828,17 @@ collections:
                     required: false
                   - label: Alt
                     name: alt
-                    widget: string
+                    widget: object
                     required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
                   - label: Label
                     name: label
                     widget: string
