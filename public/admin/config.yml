@@ -857,6 +857,35 @@ collections:
                   - label: URL
                     name: href
                     widget: string
+      - label: Landing
+        name: landing
+        file: src/data/home.json
+        format: json
+        fields:
+          - label: Landing Caption
+            name: caption
+            widget: object
+            required: false
+            hint: Supports inline HTML such as <span class="hunmin">맵시</span>.
+            fields:
+              - label: Korean
+                name: ko
+                widget: markdown
+                required: false
+                buttons:
+                  - bold
+                  - italic
+                  - code
+                  - link
+              - label: English
+                name: en
+                widget: markdown
+                required: false
+                buttons:
+                  - bold
+                  - italic
+                  - code
+                  - link
       - label: Works Order
         name: worksOrder
         file: src/data/works-order.json

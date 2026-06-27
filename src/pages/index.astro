@@ -1,7 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { getHomeCaption } from "../data/home";
 
 const contactEmail = "mapsycoy@gmail.com";
+const homeCaption = getHomeCaption();
 const homeInstrumentSrc = "/landing/home-instrument.gif";
 const homeInstrumentHalftoneSrc = "/landing/home-instrument-halftone.gif";
 const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.gif";
@@ -78,13 +80,7 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
       <p class="home-contact-note">Leave your email address.</p>
     </form>
 
-    <p class="home-caption">
-      Hello, I’m Junyeop Kim, working under the name 𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀. 
-      The name began with “<span class="hunmin">맵시</span>,” a native Korean word capturing the essence of form, style, and a quiet yet undeniable presence.
-      To this, “𝑪𝑶𝒀” adds a layer of gentle restraint—a choice to remain reserved, never revealing everything all at once.
-      The landing image reflects the same sensibility: technology with power, held quietly enough to make room for life.
-      Together, 𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀 became a name for visual works, unfinished thoughts, and questions that are still taking shape.
-    </p>
+    <p class="home-caption" set:html={homeCaption} />
   </section>
 
   <script>
