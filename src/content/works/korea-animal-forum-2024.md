@@ -63,6 +63,6 @@ tags:
 thumbnail: /uploads/kaf2024.jpg
 heroImage: /uploads/kaf2024-1.jpg
 heroImageCaption:
-  ko: <2024 KAF> 전시 참가사 포스터 디자인
+  ko: <2024 KAF> 참가사 포스터 디자인
   en: "<2024 KAF> Exhibitor Poster Design "
 ---
