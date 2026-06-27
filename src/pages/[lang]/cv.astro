@@ -26,7 +26,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
       <div class="cv-profile-education" aria-label="Education">
         <div class="cv-profile-heading">
           <div class="cv-profile-name-row">
-            <p class="cv-profile-name">{profile.name}</p>
+            <p class="cv-profile-name">{localize(profile.name, lang)}</p>
             {profile.location && <p class="cv-profile-location">{localize(profile.location, lang)}</p>}
           </div>
           <p class="cv-profile-headline">{localize(profile.headline, lang)}</p>
@@ -37,7 +37,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
               <span>{localize(item.degree, lang)}</span>
               <span>{localize(item.institution, lang)}</span>
             </h2>
-            <p class="cv-entry-period">{item.period}</p>
+            <p class="cv-entry-period">{localize(item.period, lang)}</p>
             {item.description && (
               <ul class="cv-entry-description">
                 {item.description.map((line) => <li>{localize(line, lang)}</li>)}
@@ -81,7 +81,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
                 {localize(item.organization, lang)}{item.employmentType && ` / ${localize(item.employmentType, lang)}`}
               </p>
               <p class="cv-entry-period">
-                {item.period}{item.duration && ` / ${localize(item.duration, lang)}`}
+                {localize(item.period, lang)}{item.duration && ` / ${localize(item.duration, lang)}`}
               </p>
               {item.description && (
                 <ul class="cv-entry-description">
@@ -95,7 +95,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
                     <div class="cv-subentry">
                       <h4>{localize(subEntry.title, lang)}</h4>
                       <p class="cv-entry-period">
-                        {subEntry.period}{subEntry.duration && ` / ${localize(subEntry.duration, lang)}`}
+                        {localize(subEntry.period, lang)}{subEntry.duration && ` / ${localize(subEntry.duration, lang)}`}
                       </p>
                       {subEntry.description && (
                         <ul class="cv-entry-description">
@@ -153,7 +153,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
             <div class="cv-entry-main">
               <div class="cv-project-heading">
                 <h3 class="cv-entry-title">{localize(item.title, lang)}</h3>
-                <p class="cv-entry-period">{item.period}</p>
+                <p class="cv-entry-period">{localize(item.period, lang)}</p>
               </div>
               {item.description && (
                 <ul class="cv-entry-description">

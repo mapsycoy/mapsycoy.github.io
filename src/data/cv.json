@@ -1,7 +1,13 @@
 {
   "profile": {
-    "name": "Kim Junyeop",
-    "location": "Republic of Korea / Seoul",
+    "name": {
+      "ko": "",
+      "en": "Kim Junyeop"
+    },
+    "location": {
+      "ko": "",
+      "en": "Republic of Korea / Seoul"
+    },
     "photo": "/cv/profile.jpg"
   },
   "education": [
@@ -14,10 +20,19 @@
         "ko": "영상디자인학(미술학사)",
         "en": "BFA, Entertainment Design"
       },
-      "period": "Mar 2019 - Feb 2026",
+      "period": {
+        "ko": "",
+        "en": "Mar 2019 - Feb 2026"
+      },
       "description": [
-        "Merit-based Admission(special talent track)",
-        "Minor in Future Technology Convergence Design"
+        {
+          "ko": "",
+          "en": "Merit-based Admission(special talent track)"
+        },
+        {
+          "ko": "",
+          "en": "Minor in Future Technology Convergence Design"
+        }
       ]
     },
     {
@@ -29,7 +44,10 @@
         "ko": "",
         "en": "Incoming Graduate Student focused on HCI"
       },
-      "period": "Sep 2026 -",
+      "period": {
+        "ko": "",
+        "en": "Sep 2026 -"
+      },
       "description": []
     }
   ],
@@ -76,12 +94,16 @@
         "ko": "",
         "en": "Internship"
       },
-      "period": "Dec 2025 - May 2026",
+      "period": {
+        "ko": "",
+        "en": "Dec 2025 - May 2026"
+      },
       "logo": "/cv/logos/nexon.png",
       "team": {
         "ko": "",
         "en": "M-Content Generation AI Team"
-      }
+      },
+      "description": []
     },
     {
       "role": {
@@ -96,12 +118,16 @@
         "ko": "",
         "en": "Contract"
       },
-      "period": "Jul 2025 - Sep 2025",
+      "period": {
+        "ko": "",
+        "en": "Jul 2025 - Sep 2025"
+      },
       "logo": "/cv/logos/enuma.png",
       "team": {
         "ko": "",
         "en": "Content Team"
-      }
+      },
+      "description": []
     },
     {
       "role": {
@@ -112,7 +138,10 @@
         "ko": "",
         "en": "unipus kr"
       },
-      "period": "Feb 2023 - Dec 2023",
+      "period": {
+        "ko": "",
+        "en": "Feb 2023 - Dec 2023"
+      },
       "logo": "/cv/logos/unipuskr.png",
       "description": [],
       "media": [],
@@ -134,8 +163,12 @@
         "ko": "",
         "en": "Freelance"
       },
-      "period": "Oct 2021 - Oct 2022",
-      "logo": "/cv/logos/studio-jbbj.png"
+      "period": {
+        "ko": "",
+        "en": "Oct 2021 - Oct 2022"
+      },
+      "logo": "/cv/logos/studio-jbbj.png",
+      "description": []
     },
     {
       "role": {
@@ -150,7 +183,10 @@
         "ko": "",
         "en": "Part-time"
       },
-      "period": "1 yr 1 mo",
+      "period": {
+        "ko": "",
+        "en": "1 yr 1 mo"
+      },
       "logo": "/cv/logos/snue.png",
       "subEntries": [
         {
@@ -158,16 +194,25 @@
             "ko": "",
             "en": "Administrative Assistant"
           },
-          "period": "Sep 2021 - Feb 2022"
+          "period": {
+            "ko": "",
+            "en": "Sep 2021 - Feb 2022"
+          },
+          "description": []
         },
         {
           "title": {
             "ko": "",
             "en": "Teaching Assistant"
           },
-          "period": "May 2019 - Dec 2019 / Mar 2022 - Sep 2022"
+          "period": {
+            "ko": "",
+            "en": "May 2019 - Dec 2019 / Mar 2022 - Sep 2022"
+          },
+          "description": []
         }
-      ]
+      ],
+      "description": []
     }
   ],
   "projects": [
@@ -176,22 +221,34 @@
         "ko": "",
         "en": "Atelier Gwanghwa: An Invitation to the Square"
       },
-      "period": "2023 / 2024",
+      "period": {
+        "ko": "",
+        "en": "2023 / 2024"
+      },
       "description": [
-        "Selected Motion Designer for 1st & 2nd media facade project"
+        {
+          "ko": "",
+          "en": "Selected Motion Designer for 1st & 2nd media facade project"
+        }
       ],
       "media": [
         {
           "type": "image",
           "src": "/cv/projects/atelier2024.jpg",
           "href": "https://www.youtube.com/watch?v=JXRhq4vxzGY",
-          "label": "Open link"
+          "label": {
+            "ko": "",
+            "en": "Open link"
+          }
         },
         {
           "type": "image",
           "src": "/cv/projects/atelier2023.jpg",
           "href": "https://webzine.kookmin.ac.kr/webzine.php?syear=2023&svolume=4&mcode=31",
-          "label": "Open link"
+          "label": {
+            "ko": "",
+            "en": "Open link"
+          }
         }
       ]
     },
@@ -200,16 +257,25 @@
         "ko": "",
         "en": "RED Flight"
       },
-      "period": "Apr 2024 - Dec 2024",
+      "period": {
+        "ko": "",
+        "en": "Apr 2024 - Dec 2024"
+      },
       "description": [
-        "Aim Intelligence In-house Project(External Contributor)"
+        {
+          "ko": "",
+          "en": "Aim Intelligence In-house Project(External Contributor)"
+        }
       ],
       "media": [
         {
           "type": "image",
           "src": "/cv/projects/redflight.jpg",
           "href": "https://luma.com/ivs-demoday",
-          "label": "Open link"
+          "label": {
+            "ko": "",
+            "en": "Open link"
+          }
         }
       ]
     },
@@ -218,9 +284,15 @@
         "ko": "",
         "en": "Direp"
       },
-      "period": "Sep 2025 - Present",
+      "period": {
+        "ko": "",
+        "en": "Sep 2025 - Present"
+      },
       "description": [
-        "On-going project for the reptile industry"
+        {
+          "ko": "",
+          "en": "On-going project for the reptile industry"
+        }
       ]
     }
   ]

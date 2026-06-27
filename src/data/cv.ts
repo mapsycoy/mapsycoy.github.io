@@ -14,14 +14,14 @@ export type ExperienceItem = {
   team?: LocalizedText;
   organization: LocalizedText;
   employmentType?: LocalizedText;
-  period: string;
+  period: LocalizedText;
   duration?: LocalizedText;
   description?: LocalizedText[];
   logo?: string;
   media?: MediaItem[];
   subEntries?: {
     title: LocalizedText;
-    period: string;
+    period: LocalizedText;
     duration?: LocalizedText;
     description?: LocalizedText[];
   }[];
@@ -30,7 +30,7 @@ export type ExperienceItem = {
 export type EducationItem = {
   institution: LocalizedText;
   degree: LocalizedText;
-  period: string;
+  period: LocalizedText;
   description?: LocalizedText[];
   logo?: string;
   media?: MediaItem[];
@@ -46,16 +46,16 @@ export type CertificationItem = {
 
 export type CertificateLogoItem = {
   src: string;
-  alt: string;
+  alt: LocalizedText;
 };
 
 export type ProjectItem = {
   title: LocalizedText;
-  period: string;
+  period: LocalizedText;
   description?: LocalizedText[];
   media?: MediaItem[];
   links?: {
-    label: string;
+    label: LocalizedText;
     href: string;
   }[];
 };
@@ -66,7 +66,7 @@ export type SkillGroup = {
 };
 
 export type ProfileLink = {
-  label: string;
+  label: LocalizedText;
   href: string;
 };
 

@@ -525,11 +525,30 @@ collections:
             fields:
               - label: Name
                 name: name
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Location
                 name: location
-                widget: string
+                widget: object
                 required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Photo
                 name: photo
                 widget: string
@@ -539,7 +558,7 @@ collections:
             widget: list
             collapsed: true
             minimize_collapsed: true
-            summary: "{{fields.degree}}"
+            summary: "{{fields.degree.en}}"
             fields:
               - label: Institution
                 name: institution
@@ -569,7 +588,17 @@ collections:
                     required: false
               - label: Period
                 name: period
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Description
                 name: description
                 widget: list
@@ -577,7 +606,17 @@ collections:
                 field:
                   label: Line
                   name: line
-                  widget: string
+                  widget: object
+                  required: false
+                  fields:
+                    - label: Korean
+                      name: ko
+                      widget: string
+                      required: false
+                    - label: English
+                      name: en
+                      widget: string
+                      required: false
           - label: Arts Gifted Education Certificate
             name: artsGiftedEducationCertificate
             widget: object
@@ -600,7 +639,7 @@ collections:
                 widget: list
                 collapsed: true
                 minimize_collapsed: true
-                summary: "{{fields.alt}}"
+                summary: "{{fields.alt.en}}"
                 fields:
                   - label: Source
                     name: src
@@ -623,7 +662,7 @@ collections:
             widget: list
             collapsed: true
             minimize_collapsed: true
-            summary: "{{fields.role}}"
+            summary: "{{fields.role.en}}"
             fields:
               - label: Role
                 name: role
@@ -679,11 +718,30 @@ collections:
                     required: false
               - label: Period
                 name: period
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Duration
                 name: duration
-                widget: string
+                widget: object
                 required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Logo
                 name: logo
                 widget: string
@@ -695,14 +753,24 @@ collections:
                 field:
                   label: Line
                   name: line
-                  widget: string
+                  widget: object
+                  required: false
+                  fields:
+                    - label: Korean
+                      name: ko
+                      widget: string
+                      required: false
+                    - label: English
+                      name: en
+                      widget: string
+                      required: false
               - label: Sub Entries
                 name: subEntries
                 widget: list
                 required: false
                 collapsed: true
                 minimize_collapsed: true
-                summary: "{{fields.title}}"
+                summary: "{{fields.title.en}}"
                 fields:
                   - label: Title
                     name: title
@@ -719,11 +787,30 @@ collections:
                         required: false
                   - label: Period
                     name: period
-                    widget: string
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
                   - label: Duration
                     name: duration
-                    widget: string
+                    widget: object
                     required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
                   - label: Description
                     name: description
                     widget: list
@@ -731,14 +818,24 @@ collections:
                     field:
                       label: Line
                       name: line
-                      widget: string
+                      widget: object
+                      required: false
+                      fields:
+                        - label: Korean
+                          name: ko
+                          widget: string
+                          required: false
+                        - label: English
+                          name: en
+                          widget: string
+                          required: false
               - label: Media
                 name: media
                 widget: list
                 required: false
                 collapsed: true
                 minimize_collapsed: true
-                summary: "{{fields.label}}"
+                summary: "{{fields.label.en}}"
                 fields:
                   - label: Type
                     name: type
@@ -770,14 +867,23 @@ collections:
                         required: false
                   - label: Label
                     name: label
-                    widget: string
+                    widget: object
                     required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
           - label: Projects
             name: projects
             widget: list
             collapsed: true
             minimize_collapsed: true
-            summary: "{{fields.title}}"
+            summary: "{{fields.title.en}}"
             fields:
               - label: Title
                 name: title
@@ -794,7 +900,17 @@ collections:
                     required: false
               - label: Period
                 name: period
-                widget: string
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Description
                 name: description
                 widget: list
@@ -802,14 +918,24 @@ collections:
                 field:
                   label: Line
                   name: line
-                  widget: string
+                  widget: object
+                  required: false
+                  fields:
+                    - label: Korean
+                      name: ko
+                      widget: string
+                      required: false
+                    - label: English
+                      name: en
+                      widget: string
+                      required: false
               - label: Media
                 name: media
                 widget: list
                 required: false
                 collapsed: true
                 minimize_collapsed: true
-                summary: "{{fields.label}}"
+                summary: "{{fields.label.en}}"
                 fields:
                   - label: Type
                     name: type
@@ -841,19 +967,38 @@ collections:
                         required: false
                   - label: Label
                     name: label
-                    widget: string
+                    widget: object
                     required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
               - label: Links
                 name: links
                 widget: list
                 required: false
                 collapsed: true
                 minimize_collapsed: true
-                summary: "{{fields.label}}"
+                summary: "{{fields.label.en}}"
                 fields:
                   - label: Label
                     name: label
-                    widget: string
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
                   - label: URL
                     name: href
                     widget: string
