@@ -417,10 +417,15 @@ const blockItems = await Promise.all((work.data.contentBlocks ?? []).map(async (
 
   return block;
 }));
-const blockVideos = blockItems.filter(
-  (block): block is { type: "video"; embed: string; embedUrl: string; caption?: string } =>
-    block.type === "video" && Boolean(block.embedUrl)
-);
+const blockVideos = blockItems
+  .filter(
+    (block): block is { type: "video"; embed: string; embedUrl: string; caption?: string } =>
+      block.type === "video" && Boolean(block.embedUrl)
+  )
+  .map((video) => ({
+    ...video,
+    caption: localize(video.caption, lang),
+  }));
 const hasXEmbed = blockItems.some((block) => block.type === "embed" && block.provider === "x");
 const hasRedditEmbed = blockItems.some((block) => block.type === "embed" && block.provider === "reddit");
 const hasContentBlocks = blockItems.length > 0;
