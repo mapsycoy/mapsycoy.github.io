@@ -42,13 +42,42 @@ const renderInlineMarkdown = (value: string) =>
     .replace(/\[((?:[^\[\]]|\[[^\]]*\])+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
     .replace(/&lt;mark&gt;([\s\S]+?)&lt;\/mark&gt;/g, "<mark>$1</mark>");
 
+const splitTableLine = (line: string) =>
+  line
+    .trim()
+    .replace(/^\|/, "")
+    .replace(/\|$/, "")
+    .split("|")
+    .map((cell) => cell.trim());
+
+const isTableSeparator = (line: string) =>
+  splitTableLine(line).every((cell) => /^:?-{3,}:?$/.test(cell));
+
+const renderMarkdownTable = (lines: string[]) => {
+  const headers = splitTableLine(lines[0]).filter(Boolean);
+  const rows = lines.slice(2).map(splitTableLine).filter((cells) => cells.some(Boolean));
+
+  if (!headers.length) return "";
+
+  return [
+    "<table>",
+    `<thead><tr>${headers.map((cell) => `<th>${renderInlineMarkdown(cell)}</th>`).join("")}</tr></thead>`,
+    `<tbody>${rows
+      .map((cells) => `<tr>${headers.map((_, index) => `<td>${renderInlineMarkdown(cells[index] ?? "")}</td>`).join("")}</tr>`)
+      .join("")}</tbody>`,
+    "</table>",
+  ].join("");
+};
+
 const renderMarkdownBlock = (value: string) =>
   value
     .trim()
     .split(/\n{2,}/)
     .map((block) => {
       const trimmed = block.trim();
+      const lines = trimmed.split("\n").map((line) => line.trim());
       if (!trimmed) return "";
+      if (lines.length >= 2 && lines[0].includes("|") && isTableSeparator(lines[1])) return renderMarkdownTable(lines);
       if (/^ {0,3}([-*_])(?:\s*\1){2,}\s*$/.test(trimmed)) return "<hr>";
       const heading = trimmed.match(/^(#{1,6})\s+(.+)$/);
       if (heading) return `<h${heading[1].length}>${renderInlineMarkdown(heading[2].trim())}</h${heading[1].length}>`;
