@@ -6,8 +6,14 @@
   },
   "education": [
     {
-      "institution": "Kookmin University, College of Design",
-      "degree": "BFA, Entertainment Design",
+      "institution": {
+        "ko": "",
+        "en": "Kookmin University, College of Design"
+      },
+      "degree": {
+        "ko": "",
+        "en": "BFA, Entertainment Design"
+      },
       "period": "Mar 2019 - Feb 2026",
       "description": [
         "Merit-based Admission(special talent track)",
@@ -15,75 +21,150 @@
       ]
     },
     {
-      "institution": "",
-      "degree": "Incoming Graduate Student focused on HCI",
+      "institution": {
+        "ko": "",
+        "en": ""
+      },
+      "degree": {
+        "ko": "",
+        "en": "Incoming Graduate Student focused on HCI"
+      },
       "period": "Sep 2026 -",
       "description": []
     }
   ],
   "artsGiftedEducationCertificate": {
-    "title": "Certificate in Art Gifted Education",
+    "title": {
+      "ko": "",
+      "en": "Certificate in Art Gifted Education"
+    },
     "logos": [
       {
         "src": "/cv/logos/SAC.svg",
-        "alt": "Certificate logo 1"
+        "alt": {
+          "ko": "",
+          "en": "Certificate logo 1"
+        }
       },
       {
         "src": "/cv/logos/snue.png",
-        "alt": "Certificate logo 2"
+        "alt": {
+          "ko": "",
+          "en": "Certificate logo 2"
+        }
       },
       {
         "src": "/cv/logos/SEN.svg",
-        "alt": "Certificate logo 3"
+        "alt": {
+          "ko": "",
+          "en": "Certificate logo 3"
+        }
       }
     ]
   },
   "experiences": [
     {
-      "role": "Concept Artist · Illustrator",
-      "organization": "NEXON KOREA",
-      "employmentType": "Internship",
+      "role": {
+        "ko": "",
+        "en": "Concept Artist · Illustrator"
+      },
+      "organization": {
+        "ko": "",
+        "en": "NEXON KOREA"
+      },
+      "employmentType": {
+        "ko": "",
+        "en": "Internship"
+      },
       "period": "Dec 2025 - May 2026",
       "logo": "/cv/logos/nexon.png",
-      "team": "M-Content Generation AI Team"
+      "team": {
+        "ko": "",
+        "en": "M-Content Generation AI Team"
+      }
     },
     {
-      "role": "AI Illustrator",
-      "organization": "Enuma Inc.",
-      "employmentType": "Contract",
+      "role": {
+        "ko": "",
+        "en": "AI Illustrator"
+      },
+      "organization": {
+        "ko": "",
+        "en": "Enuma Inc."
+      },
+      "employmentType": {
+        "ko": "",
+        "en": "Contract"
+      },
       "period": "Jul 2025 - Sep 2025",
       "logo": "/cv/logos/enuma.png",
-      "team": "Content Team"
+      "team": {
+        "ko": "",
+        "en": "Content Team"
+      }
     },
     {
-      "role": "CDO",
-      "organization": "unipus kr",
+      "role": {
+        "ko": "",
+        "en": "CDO"
+      },
+      "organization": {
+        "ko": "",
+        "en": "unipus kr"
+      },
       "period": "Feb 2023 - Dec 2023",
       "logo": "/cv/logos/unipuskr.png",
       "description": [],
       "media": [],
-      "employmentType": "Self-employed"
+      "employmentType": {
+        "ko": "",
+        "en": "Self-employed"
+      }
     },
     {
-      "role": "Animator · Illustrator",
-      "organization": "Studio JBBJ",
-      "employmentType": "Freelance",
+      "role": {
+        "ko": "",
+        "en": "Animator · Illustrator"
+      },
+      "organization": {
+        "ko": "",
+        "en": "Studio JBBJ"
+      },
+      "employmentType": {
+        "ko": "",
+        "en": "Freelance"
+      },
       "period": "Oct 2021 - Oct 2022",
       "logo": "/cv/logos/studio-jbbj.png"
     },
     {
-      "role": "Seoul National University of Education",
-      "organization": "Gifted in Art Center",
-      "employmentType": "Part-time",
+      "role": {
+        "ko": "",
+        "en": "Seoul National University of Education"
+      },
+      "organization": {
+        "ko": "",
+        "en": "Gifted in Art Center"
+      },
+      "employmentType": {
+        "ko": "",
+        "en": "Part-time"
+      },
       "period": "1 yr 1 mo",
       "logo": "/cv/logos/snue.png",
       "subEntries": [
         {
-          "title": "Administrative Assistant",
+          "title": {
+            "ko": "",
+            "en": "Administrative Assistant"
+          },
           "period": "Sep 2021 - Feb 2022"
         },
         {
-          "title": "Teaching Assistant",
+          "title": {
+            "ko": "",
+            "en": "Teaching Assistant"
+          },
           "period": "May 2019 - Dec 2019 / Mar 2022 - Sep 2022"
         }
       ]
@@ -91,7 +172,10 @@
   ],
   "projects": [
     {
-      "title": "Atelier Gwanghwa: An Invitation to the Square",
+      "title": {
+        "ko": "",
+        "en": "Atelier Gwanghwa: An Invitation to the Square"
+      },
       "period": "2023 / 2024",
       "description": [
         "Selected Motion Designer for 1st & 2nd media facade project"
@@ -112,7 +196,10 @@
       ]
     },
     {
-      "title": "RED Flight",
+      "title": {
+        "ko": "",
+        "en": "RED Flight"
+      },
       "period": "Apr 2024 - Dec 2024",
       "description": [
         "Aim Intelligence In-house Project(External Contributor)"
@@ -127,7 +214,10 @@
       ]
     },
     {
-      "title": "Direp",
+      "title": {
+        "ko": "",
+        "en": "Direp"
+      },
       "period": "Sep 2025 - Present",
       "description": [
         "On-going project for the reptile industry"
