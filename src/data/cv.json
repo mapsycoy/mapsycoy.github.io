@@ -26,20 +26,12 @@
       },
       "description": [
         {
-          "ko": "",
-          "en": "Merit-based Admission(special talent track)",
-          "line": {
-            "en": "Merit-based Admission(special talent track)",
-            "ko": "특기자전형 입학"
-          }
+          "ko": "특기자전형 입학",
+          "en": "Merit-based Admission(special talent track)"
         },
         {
-          "ko": "",
-          "en": "Minor in Future Technology Convergence Design",
-          "line": {
-            "en": "Minor in Future Technology Convergence Design",
-            "ko": "미래기술융합디자인 부전공"
-          }
+          "ko": "미래기술융합디자인 부전공",
+          "en": "Minor in Future Technology Convergence Design"
         }
       ]
     },
@@ -235,12 +227,8 @@
       },
       "description": [
         {
-          "ko": "",
-          "en": "Selected Motion Designer for 1st & 2nd media facade project",
-          "line": {
-            "en": "Selected Motion Designer for 1st & 2nd media facade project",
-            "ko": "제 1회, 2회 미디어파사드 프로젝트 선정 모션 디자이너"
-          }
+          "ko": "제 1회, 2회 미디어파사드 프로젝트 선정 모션 디자이너",
+          "en": "Selected Motion Designer for 1st & 2nd media facade project"
         }
       ],
       "media": [
@@ -275,12 +263,8 @@
       },
       "description": [
         {
-          "ko": "",
-          "en": "Aim Intelligence In-house Project(External Contributor)",
-          "line": {
-            "en": "Aim Intelligence In-house Project(External Contributor)",
-            "ko": "에임인텔리전스 인하우스 프로젝트 외부 참여"
-          }
+          "ko": "에임인텔리전스 인하우스 프로젝트 외부 참여",
+          "en": "Aim Intelligence In-house Project(External Contributor)"
         }
       ],
       "media": [
@@ -306,12 +290,8 @@
       },
       "description": [
         {
-          "ko": "",
-          "en": "On-going project for the reptile industry",
-          "line": {
-            "en": "On-going project for the reptile industry",
-            "ko": "국내 파충류 시장 타깃 프로젝트"
-          }
+          "ko": "국내 파충류 시장 타깃 프로젝트",
+          "en": "On-going project for the reptile industry"
         }
       ]
     }

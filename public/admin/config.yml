@@ -603,20 +603,15 @@ collections:
                 name: description
                 widget: list
                 required: false
-                field:
-                  label: Line
-                  name: line
-                  widget: object
-                  required: false
-                  fields:
-                    - label: Korean
-                      name: ko
-                      widget: string
-                      required: false
-                    - label: English
-                      name: en
-                      widget: string
-                      required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
           - label: Arts Gifted Education Certificate
             name: artsGiftedEducationCertificate
             widget: object
@@ -750,20 +745,15 @@ collections:
                 name: description
                 widget: list
                 required: false
-                field:
-                  label: Line
-                  name: line
-                  widget: object
-                  required: false
-                  fields:
-                    - label: Korean
-                      name: ko
-                      widget: string
-                      required: false
-                    - label: English
-                      name: en
-                      widget: string
-                      required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Sub Entries
                 name: subEntries
                 widget: list
@@ -815,20 +805,15 @@ collections:
                     name: description
                     widget: list
                     required: false
-                    field:
-                      label: Line
-                      name: line
-                      widget: object
-                      required: false
-                      fields:
-                        - label: Korean
-                          name: ko
-                          widget: string
-                          required: false
-                        - label: English
-                          name: en
-                          widget: string
-                          required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
               - label: Media
                 name: media
                 widget: list
@@ -915,20 +900,15 @@ collections:
                 name: description
                 widget: list
                 required: false
-                field:
-                  label: Line
-                  name: line
-                  widget: object
-                  required: false
-                  fields:
-                    - label: Korean
-                      name: ko
-                      widget: string
-                      required: false
-                    - label: English
-                      name: en
-                      widget: string
-                      required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Media
                 name: media
                 widget: list

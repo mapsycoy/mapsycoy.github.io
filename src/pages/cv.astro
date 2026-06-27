@@ -9,6 +9,7 @@ const projectInitialCount = 4;
 
 const mediaItems = (items: MediaItem[] | undefined) => items?.filter((item) => item.src || item.href) ?? [];
 const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items).filter((item) => item.src);
+const localizedDescriptionLine = (line: any) => localize(line?.line ?? line, lang);
 ---
 
 <Layout title="CV" description="Kim Junyeop's curriculum vitae, including education, experience, and selected projects." lang={lang}>
@@ -36,7 +37,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
             <p class="cv-entry-period">{localize(item.period, lang)}</p>
             {item.description && (
               <ul class="cv-entry-description">
-                {item.description.map((line) => <li>{localize(line, lang)}</li>)}
+                {item.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
               </ul>
             )}
           </article>
@@ -81,7 +82,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
               </p>
               {item.description && (
                 <ul class="cv-entry-description">
-                  {item.description.map((line) => <li>{localize(line, lang)}</li>)}
+                  {item.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
                 </ul>
               )}
 
@@ -95,7 +96,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
                       </p>
                       {subEntry.description && (
                         <ul class="cv-entry-description">
-                          {subEntry.description.map((line) => <li>{localize(line, lang)}</li>)}
+                          {subEntry.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
                         </ul>
                       )}
                     </div>
@@ -153,7 +154,7 @@ const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items
               </div>
               {item.description && (
                 <ul class="cv-entry-description">
-                  {item.description.map((line) => <li>{localize(line, lang)}</li>)}
+                  {item.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
                 </ul>
               )}
               {thumbnailMediaItems(item.media).length > 0 && (

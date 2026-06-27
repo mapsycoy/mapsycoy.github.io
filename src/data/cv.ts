@@ -1,6 +1,8 @@
 import cvData from "./cv.json";
 import type { LocalizedText } from "../utils/i18n";
 
+export type LocalizedTextLine = LocalizedText | { line?: LocalizedText };
+
 export type MediaItem = {
   type: "image" | "link";
   src?: string;
@@ -16,14 +18,14 @@ export type ExperienceItem = {
   employmentType?: LocalizedText;
   period: LocalizedText;
   duration?: LocalizedText;
-  description?: LocalizedText[];
+  description?: LocalizedTextLine[];
   logo?: string;
   media?: MediaItem[];
   subEntries?: {
     title: LocalizedText;
     period: LocalizedText;
     duration?: LocalizedText;
-    description?: LocalizedText[];
+    description?: LocalizedTextLine[];
   }[];
 };
 
@@ -31,7 +33,7 @@ export type EducationItem = {
   institution: LocalizedText;
   degree: LocalizedText;
   period: LocalizedText;
-  description?: LocalizedText[];
+  description?: LocalizedTextLine[];
   logo?: string;
   media?: MediaItem[];
 };
@@ -52,7 +54,7 @@ export type CertificateLogoItem = {
 export type ProjectItem = {
   title: LocalizedText;
   period: LocalizedText;
-  description?: LocalizedText[];
+  description?: LocalizedTextLine[];
   media?: MediaItem[];
   links?: {
     label: LocalizedText;
