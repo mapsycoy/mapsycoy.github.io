@@ -97,13 +97,6 @@ const works = defineCollection({
             caption: localizedTextSchema.optional(),
           }),
           z.object({
-            type: z.literal("embed"),
-            provider: z.enum(["x", "reddit"]),
-            embedCode: z.string().default(""),
-            url: z.string().default(""),
-            caption: z.string().optional(),
-          }),
-          z.object({
             type: z.literal("statsLink"),
             title: localizedTextSchema,
             url: z.string(),
