@@ -37,7 +37,7 @@ contentBlocks:
       fullscreen; picture-in-picture; clipboard-write; encrypted-media;
       web-share"   allowfullscreen></iframe>
     caption:
-      ko: ""
+      ko: 앙리 마티스 파트
       en: Henri Matisse part
   - type: text
     body:
@@ -61,8 +61,9 @@ contentBlocks:
       web-share" referrerpolicy="strict-origin-when-cross-origin"
       allowfullscreen></iframe>
     caption:
-      ko: ""
-      en: '2024 아뜰리에 광화 "2024 광장으로의 초대" ㅣ 국민대학교 영상디자인학과 '
+      ko: '2024 아뜰리에 광화 "2024 광장으로의 초대" ㅣ 국민대학교 영상디자인학과 '
+      en: 2024 Atelier Gwanghwa 'Invitation to the Square' | Kookmin University
+        Entertainment Design
   - type: text
     body:
       ko: "*도움주신 **하준수** 교수님께 감사의 말씀드립니다.*"
