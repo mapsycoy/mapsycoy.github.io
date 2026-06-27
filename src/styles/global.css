@@ -2529,9 +2529,13 @@ html[lang="ko"] .cv-page {
   }
 
   .site-nav {
-    width: auto;
+    width: 100%;
     justify-content: flex-start;
     gap: 18px;
+  }
+
+  .language-toggle {
+    margin-left: auto;
   }
 
   main {
