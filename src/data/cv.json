@@ -7,11 +7,11 @@
   "education": [
     {
       "institution": {
-        "ko": "",
+        "ko": "국민대학교 조형대학",
         "en": "Kookmin University, College of Design"
       },
       "degree": {
-        "ko": "",
+        "ko": "영상디자인학(미술학사)",
         "en": "BFA, Entertainment Design"
       },
       "period": "Mar 2019 - Feb 2026",
@@ -35,7 +35,7 @@
   ],
   "artsGiftedEducationCertificate": {
     "title": {
-      "ko": "",
+      "ko": "미술영재교육 수료",
       "en": "Certificate in Art Gifted Education"
     },
     "logos": [
