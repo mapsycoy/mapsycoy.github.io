@@ -19,7 +19,7 @@
   --max-width: 960px;
   --dot-rule: radial-gradient(circle, var(--line) 0 1.25px, transparent 1.45px) left center / 7px 2px repeat-x;
   font-family:
-   "Space Grotesk", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+   "Space Grotesk", "Pretendard", "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
     sans-serif;
 }
 
