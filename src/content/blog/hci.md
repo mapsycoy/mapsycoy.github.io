@@ -174,7 +174,7 @@ contentBlocks:
         I kept it because inside that piece lies a question I have long held onto but have not yet been able to properly articulate, preserved in sharp relief:
 
 
-        What kind of relationship will children form with AI?
+        <mark>What kind of relationship will children form with AI?</mark>
 
 
         In an era where AI provides instantaneous answers, can children still learn how to imagine, wait, and interpret on their own? In the space where silent, empty entities like imaginary friends once stood, if an AI that responds too quickly and speaks too plausibly takes over, how will a child’s inner world change?
