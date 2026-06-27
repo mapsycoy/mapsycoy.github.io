@@ -239,12 +239,6 @@ collections:
           - label: Divider
             name: divider
             widget: object
-      - label: Legacy Body
-        name: body
-        widget: markdown
-        required: false
-        hint: Fallback for older posts. Use Content Blocks for new bilingual posts.
-
   - name: works
     label: Works
     label_singular: Work
