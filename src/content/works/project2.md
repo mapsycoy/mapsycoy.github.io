@@ -20,8 +20,8 @@ contentBlocks:
       fullscreen; picture-in-picture; clipboard-write; encrypted-media;
       web-share"   allowfullscreen></iframe>
     caption:
-      ko: ""
-      en: 2023 아뜰리에 광화 [광장으로의 초대 제 1회]
+      ko: 2023 아뜰리에 광화 [광장으로의 초대 제 1회]
+      en: "Atelier Gwanghwa: 2023 Invitation to the Square [The 1st Edition]"
   - type: text
     body:
       ko: <편지화, 그릴 수 없는 사랑의 빛깔>, <은지화에 담긴 예술혼>, <가족, 마음으로 그린 그림> 모션 작업
