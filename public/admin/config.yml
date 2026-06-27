@@ -49,7 +49,7 @@ collections:
     format: frontmatter
     slug: "{{slug}}"
     preview_path: blog/{{slug}}
-    summary: "{{title}} - {{publishedAt}}"
+    summary: "{{title.en}} - {{publishedAt}}"
     sortable_fields:
       - title
       - publishedAt
@@ -227,7 +227,7 @@ collections:
     format: frontmatter
     slug: "{{slug}}"
     preview_path: works/{{slug}}
-    summary: "{{title}} - {{year}}"
+    summary: "{{title.en}} - {{year}}"
     sortable_fields:
       - title
       - year
@@ -407,7 +407,7 @@ collections:
           - label: Stats Link
             name: statsLink
             widget: object
-            summary: "{{fields.title}}"
+            summary: "{{fields.title.en}}"
             fields:
               - label: Title
                 name: title
@@ -449,7 +449,7 @@ collections:
                 widget: list
                 collapsed: false
                 minimize_collapsed: true
-                summary: "{{fields.value}} {{fields.label}}"
+                summary: "{{fields.value}} {{fields.label.en}}"
                 fields:
                   - label: Value
                     name: value

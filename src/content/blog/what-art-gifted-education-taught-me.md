@@ -1,12 +1,16 @@
 ---
-title: What Art Gifted Education Taught Me
-publishedAt: 2026-06-19
+title:
+  ko: ""
+  en: What Art Gifted Education Taught Me
+publishedAt: 2026-06-19T00:00:00.000Z
 status: published
 pinned: false
 tag: Essay
 thumbnail: /uploads/sac-class.jpg
 heroImage: /uploads/sac-class.jpg
-heroImageCaption: Scene from my Seoul Arts Center documentary
+heroImageCaption:
+  ko: ""
+  en: Scene from my Seoul Arts Center documentary
 ---
 In 2024, while filming a documentary on the Seoul Arts Center, I discovered a strange void. There were almost no meaningful records of its Art Gifted Education program. The curriculum, pedagogy, and its historical significance had largely disappeared, leaving only dead web pages.
 

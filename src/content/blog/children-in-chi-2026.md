@@ -1,12 +1,16 @@
 ---
-title: Children in CHI 2026
-publishedAt: 2026-06-16
+title:
+  ko: ""
+  en: Children in CHI 2026
+publishedAt: 2026-06-16T00:00:00.000Z
 status: published
 pinned: false
 tag: Paper
 thumbnail: /uploads/chi26.png
 heroImage: /uploads/chi26.png
-heroImageCaption: ACM CHI 2026
+heroImageCaption:
+  ko: ""
+  en: ACM CHI 2026
 ---
 > Since I've recently revamped my website, I'd like to cover CHI 2026 papers as the first post in the 'paper' category.
 

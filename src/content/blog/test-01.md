@@ -1,12 +1,16 @@
 ---
-title: Will Imaginary Friends Disappear in the Age of AI?
-publishedAt: 2026-02-10
-updatedAt: 2026-06-14
+title:
+  ko: ""
+  en: Will Imaginary Friends Disappear in the Age of AI?
+publishedAt: 2026-02-10T00:00:00.000Z
+updatedAt: 2026-06-14T00:00:00.000Z
 status: published
 tag: Essay
 thumbnail: /uploads/imaginary.jpg
 heroImage: /uploads/imaginary-hero.jpg
-heroImageCaption: 맵시's AI 잡지식 저장소
+heroImageCaption:
+  ko: ""
+  en: 맵시's AI 잡지식 저장소
 ---
 [AI 시대에 상상 속 친구는 사라질까? (26.02.10)](https://mapsycoy.tistory.com/42)
 

@@ -1,12 +1,16 @@
 ---
-title: 내가 대학원에서 HCI를 공부하고자 하는 이유
-publishedAt: 2026-06-14
+title:
+  ko: ""
+  en: 내가 대학원에서 HCI를 공부하고자 하는 이유
+publishedAt: 2026-06-14T00:00:00.000Z
 status: published
 pinned: true
 tag: Essay
 thumbnail: /uploads/first.jpg
 heroImage: /uploads/first.jpg
-heroImageCaption: 「이웃집 토토로」 속 한 장면
+heroImageCaption:
+  ko: ""
+  en: 「이웃집 토토로」 속 한 장면
 ---
 이 글은 이곳에 남기는 첫 정식 포스팅이다. *(아마 처음이자 마지막 한글 포스팅이 아닐까 싶다.)*
 
