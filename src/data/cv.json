@@ -27,11 +27,19 @@
       "description": [
         {
           "ko": "",
-          "en": "Merit-based Admission(special talent track)"
+          "en": "Merit-based Admission(special talent track)",
+          "line": {
+            "en": "Merit-based Admission(special talent track)",
+            "ko": "특기자전형 입학"
+          }
         },
         {
           "ko": "",
-          "en": "Minor in Future Technology Convergence Design"
+          "en": "Minor in Future Technology Convergence Design",
+          "line": {
+            "en": "Minor in Future Technology Convergence Design",
+            "ko": "미래기술융합디자인 부전공"
+          }
         }
       ]
     },
