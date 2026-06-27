@@ -152,10 +152,38 @@ collections:
                     name: ko
                     widget: markdown
                     required: false
+                    buttons:
+                      - bold
+                      - italic
+                      - code
+                      - link
+                      - heading-one
+                      - heading-two
+                      - heading-three
+                      - quote
+                      - bulleted-list
+                      - numbered-list
+                    editor_components:
+                      - captioned-image
+                      - divider
                   - label: English
                     name: en
                     widget: markdown
                     required: false
+                    buttons:
+                      - bold
+                      - italic
+                      - code
+                      - link
+                      - heading-one
+                      - heading-two
+                      - heading-three
+                      - quote
+                      - bulleted-list
+                      - numbered-list
+                    editor_components:
+                      - captioned-image
+                      - divider
           - label: Image
             name: image
             widget: object

@@ -39,7 +39,8 @@ const renderInlineMarkdown = (value: string) =>
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
-    .replace(/\[((?:[^\[\]]|\[[^\]]*\])+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    .replace(/\[((?:[^\[\]]|\[[^\]]*\])+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>')
+    .replace(/&lt;mark&gt;([\s\S]+?)&lt;\/mark&gt;/g, "<mark>$1</mark>");
 
 const renderMarkdownBlock = (value: string) =>
   value
@@ -51,6 +52,14 @@ const renderMarkdownBlock = (value: string) =>
       if (/^ {0,3}([-*_])(?:\s*\1){2,}\s*$/.test(trimmed)) return "<hr>";
       const heading = trimmed.match(/^(#{1,6})\s+(.+)$/);
       if (heading) return `<h${heading[1].length}>${renderInlineMarkdown(heading[2].trim())}</h${heading[1].length}>`;
+      if (trimmed.split("\n").every((line) => /^>\s?/.test(line.trim()))) {
+        const quote = trimmed
+          .split("\n")
+          .map((line) => line.trim().replace(/^>\s?/, ""))
+          .join("\n");
+
+        return `<blockquote>${renderMarkdownBlock(quote)}</blockquote>`;
+      }
       return `<p>${renderInlineMarkdown(trimmed).replace(/\n/g, "<br>")}</p>`;
     })
     .join("");
