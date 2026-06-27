@@ -1,6 +1,6 @@
 ---
 title:
-  ko: ""
+  ko: "아뜰리에 광화: 2024 광장으로의 초대"
   en: "Atelier Gwanghwa: 2024 Invitation to the Square"
 year: "2024"
 status: published
