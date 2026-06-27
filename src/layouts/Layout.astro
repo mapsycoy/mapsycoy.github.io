@@ -17,10 +17,16 @@ const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const previewImageUrl = new URL(previewImage, siteUrl).toString();
 
 const navItems = [
-  { href: "/works", label: "Works" },
-  { href: "/blog", label: "Blog" },
-  { href: "/cv", label: "CV" }
+  { href: withLanguage(currentLanguage, "/works"), label: "Works" },
+  { href: withLanguage(currentLanguage, "/blog"), label: "Blog" },
+  { href: withLanguage(currentLanguage, "/cv"), label: "CV" }
 ];
+const pathParts = Astro.url.pathname.split("/").filter(Boolean);
+const hasLanguagePrefix = isLanguage(pathParts[0]);
+const alternateLanguage = getAlternateLanguage(currentLanguage);
+const alternatePath = hasLanguagePrefix
+  ? `/${[alternateLanguage, ...pathParts.slice(1)].join("/")}`
+  : withLanguage(alternateLanguage, Astro.url.pathname);
 
 const linkedInUrl = "https://www.linkedin.com/in/mapsycoy/";
 const instagramUrl = "https://www.instagram.com/mapsycoy/";
@@ -58,6 +64,9 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
           {navItems.map((item) => (
             <a href={item.href}>{item.label}</a>
           ))}
+          <a class="language-toggle" href={alternatePath} aria-label={`Switch to ${alternateLanguage.toUpperCase()}`}>
+            {alternateLanguage.toUpperCase()}
+          </a>
         </nav>
       </header>
 

@@ -140,6 +140,21 @@ a {
   text-decoration: none;
 }
 
+.language-toggle {
+  justify-content: center;
+  min-width: 42px;
+  padding: 0 10px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+}
+
+.site-nav a.language-toggle {
+  border-bottom: 1px solid currentColor;
+}
 .site-nav a:hover,
 .link-row a:hover {
   color: var(--accent);
