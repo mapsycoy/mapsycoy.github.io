@@ -227,8 +227,8 @@ main {
   position: relative;
   flex: 0 0 auto;
   width: 100%;
-  height: auto;
-  aspect-ratio: 1 / 1;
+  height: 100%;
+  aspect-ratio: auto;
   min-height: 0;
   overflow: hidden;
   border: 1px solid var(--line);
