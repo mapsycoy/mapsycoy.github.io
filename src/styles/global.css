@@ -212,12 +212,13 @@ main {
 .home-media {
   grid-area: media;
   display: grid;
-  grid-template-rows: auto auto;
+  grid-template-rows: minmax(clamp(260px, 32vw, 420px), 1fr) auto;
   gap: 0;
   align-self: stretch;
   align-items: stretch;
   align-content: stretch;
   min-width: 0;
+  height: 100%;
   margin: 0;
   padding: 28px 0 0 36px;
   border-left: 1px solid var(--line);
@@ -2674,6 +2675,7 @@ html[lang="ko"] .cv-page {
   .home-media {
     grid-template-rows: auto auto;
     width: 100%;
+    height: auto;
     padding: 20px 0 0;
     border-left: 0;
   }
