@@ -239,7 +239,7 @@ main {
 
 .home-media-meta {
   display: grid;
-  grid-template-rows: 46px 64px;
+  grid-template-rows: 46px 58px 64px;
   row-gap: 12px;
   align-self: start;
   margin-top: 0;
@@ -276,6 +276,77 @@ main {
   text-transform: uppercase;
 }
 
+.home-music-row {
+  grid-template-columns: 58px minmax(0, 1fr);
+}
+
+.home-music-link {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 8px;
+  align-items: center;
+  min-width: 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+.home-music-link:hover,
+.home-music-link:focus-visible {
+  color: var(--accent);
+}
+
+.home-music-link:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 3px;
+}
+
+.home-music-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  color: var(--text);
+}
+
+.home-music-link:hover .home-music-icon,
+.home-music-link:focus-visible .home-music-icon {
+  color: var(--accent);
+}
+
+.home-music-icon svg {
+  display: block;
+  width: 12px;
+  height: 12px;
+  margin-left: 1px;
+  fill: currentColor;
+}
+
+.home-music-copy {
+  display: grid;
+  min-width: 0;
+  line-height: 1.25;
+}
+
+.home-music-title,
+.home-music-artist {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.home-music-title {
+  color: var(--text);
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.home-music-artist {
+  color: var(--muted);
+  font-size: 0.7rem;
+}
 .home-media-meta-icon {
   display: inline-flex;
   width: 14px;

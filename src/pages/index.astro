@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getHomeCaption, getHomeGreeting, getHomeIntro, getHomeMedia } from "../data/home";
+import { getHomeCaption, getHomeGreeting, getHomeIntro, getHomeMedia, getHomeMusic } from "../data/home";
 
 const contactEmail = "mapsycoy@gmail.com";
 const homeGreeting = getHomeGreeting();
@@ -8,6 +8,7 @@ const homeGreetingLines = homeGreeting.split(/\r?\n/).filter(Boolean);
 const homeCaption = getHomeCaption();
 const homeIntro = getHomeIntro();
 const homeMedia = getHomeMedia();
+const homeMusic = getHomeMusic();
 ---
 
 <Layout>
@@ -49,6 +50,26 @@ const homeMedia = getHomeMedia();
         <div class="home-media-meta-row">
           <span class="home-media-meta-label">Source</span>
           <span>{homeMedia.source}</span>
+        </div>
+        <div class="home-media-meta-row home-music-row">
+          <span class="home-media-meta-label">Listen</span>
+          <a
+            class="home-music-link"
+            href={homeMusic.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={`Play ${homeMusic.title} on YouTube`}
+          >
+            <span class="home-music-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+              </svg>
+            </span>
+            <span class="home-music-copy">
+              <span class="home-music-title">{homeMusic.title}</span>
+              <span class="home-music-artist">{homeMusic.artist}</span>
+            </span>
+          </a>
         </div>
         <div class="home-media-meta-row">
           <span class="home-media-meta-icon" aria-label="Location">

@@ -1055,7 +1055,42 @@ collections:
                     name: en
                     widget: string
                     required: false
-          - label: Landing Greeting
+          - label: Landing Music
+            name: music
+            widget: object
+            required: false
+            fields:
+              - label: Title
+                name: title
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: Artist / Source
+                name: artist
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: YouTube URL
+                name: url
+                widget: string
+                required: false
+                hint: Paste a YouTube video, playlist, or search URL. The landing page opens it in a new tab.          - label: Landing Greeting
             name: greeting
             widget: object
             required: false
