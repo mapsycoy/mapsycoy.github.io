@@ -27,13 +27,13 @@
   "music": {
     "title": {
       "ko": "",
-      "en": "Indigo"
+      "en": "test"
     },
     "artist": {
-      "ko": "이루마 / 멜론",
-      "en": "Yiruma / Melon"
+      "ko": "test",
+      "en": "test"
     },
     "url": "",
-    "audioFile": "/uploads/이루마-10-indigo.mp3"
+    "audioFile": ""
   }
 }
