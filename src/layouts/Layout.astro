@@ -1,5 +1,6 @@
 ---
 import "../styles/global.css";
+import ClientRouter from "astro/components/ClientRouter.astro";
 import LogoMark from "../components/LogoMark.astro";
 import { defaultLanguage, getAlternateLanguage, isLanguage, withLanguage, type Language } from "../utils/i18n";
 
@@ -50,6 +51,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={previewImageUrl} />
     <title>{pageTitle}</title>
+    <ClientRouter fallback="swap" />
     <style is:inline>
       html { overflow-y: scroll; }
     </style>
@@ -104,6 +106,169 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     </div>
 
     <script is:inline>
+      const createMusicSystem = () => {
+        const storageKey = "mapsycoy:music";
+        const audio = new Audio();
+        audio.preload = "metadata";
+        let controls = [];
+
+        const readState = () => {
+          try {
+            return JSON.parse(window.localStorage.getItem(storageKey) || "{}");
+          } catch {
+            return {};
+          }
+        };
+
+        const writeState = () => {
+          try {
+            window.localStorage.setItem(storageKey, JSON.stringify({
+              src: audio.currentSrc || audio.src,
+              currentTime: audio.currentTime || 0,
+              wasPlaying: !audio.paused && !audio.ended
+            }));
+          } catch {
+            // Storage can be unavailable in private browsing modes.
+          }
+        };
+
+        const formatTime = (value) => {
+          if (!Number.isFinite(value) || value <= 0) return "00:00";
+
+          const minutes = Math.floor(value / 60);
+          const seconds = Math.floor(value % 60);
+          return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
+        };
+
+        const normalizeSrc = (src) => {
+          if (!src) return "";
+          return new URL(src, window.location.href).href;
+        };
+
+        const updateControls = () => {
+          const duration = audio.duration || 0;
+          const currentTime = audio.currentTime || 0;
+          const isPlaying = !audio.paused && !audio.ended;
+
+          controls.forEach(({ root, button, progress, time }) => {
+            progress.value = duration ? String((currentTime / duration) * 100) : "0";
+            time.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+            root.classList.toggle("is-playing", isPlaying);
+            button.setAttribute("aria-pressed", String(isPlaying));
+            button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${root.dataset.title || "music"}`);
+          });
+        };
+
+        const setSource = (src) => {
+          const nextSrc = normalizeSrc(src);
+          if (!nextSrc || normalizeSrc(audio.src) === nextSrc) return;
+          audio.src = nextSrc;
+          audio.load();
+        };
+
+        const bind = () => {
+          controls = [];
+
+          document.querySelectorAll("[data-home-music]").forEach((root) => {
+            if (!(root instanceof HTMLElement)) return;
+
+            const button = root.querySelector(".home-music-toggle");
+            const progress = root.querySelector(".home-music-progress");
+            const time = root.querySelector("[data-home-music-time]");
+            const audioFile = root.dataset.audioFile || "";
+
+            if (
+              !(button instanceof HTMLButtonElement) ||
+              !(progress instanceof HTMLInputElement) ||
+              !(time instanceof HTMLElement)
+            ) return;
+
+            if (!audioFile) {
+              button.disabled = true;
+              progress.disabled = true;
+              root.classList.add("is-unavailable");
+              return;
+            }
+
+            root.classList.remove("is-unavailable");
+            button.disabled = false;
+            progress.disabled = false;
+
+            if (!audio.src) {
+              setSource(audioFile);
+            }
+
+            controls.push({ root, button, progress, time });
+
+            if (root.dataset.musicBound === "true") return;
+            root.dataset.musicBound = "true";
+
+            button.addEventListener("click", async () => {
+              setSource(audioFile);
+
+              if (audio.paused || audio.ended) {
+                try {
+                  await audio.play();
+                } catch {
+                  updateControls();
+                }
+                return;
+              }
+
+              audio.pause();
+            });
+
+            progress.addEventListener("input", () => {
+              const duration = audio.duration || 0;
+              if (!duration) return;
+              audio.currentTime = (Number(progress.value) / 100) * duration;
+              updateControls();
+              writeState();
+            });
+          });
+
+          updateControls();
+        };
+
+        const restore = () => {
+          const state = readState();
+          if (!state.src) return;
+
+          setSource(state.src);
+
+          audio.addEventListener("loadedmetadata", () => {
+            if (Number.isFinite(state.currentTime)) {
+              audio.currentTime = Math.min(state.currentTime, audio.duration || state.currentTime);
+            }
+
+            if (state.wasPlaying) {
+              audio.play().catch(() => updateControls());
+            }
+          }, { once: true });
+        };
+
+        ["loadedmetadata", "timeupdate", "play", "pause", "ended", "durationchange"].forEach((eventName) => {
+          audio.addEventListener(eventName, () => {
+            updateControls();
+            writeState();
+          });
+        });
+
+        window.addEventListener("pagehide", writeState);
+        document.addEventListener("astro:page-load", bind);
+        document.addEventListener("DOMContentLoaded", bind);
+
+        restore();
+        bind();
+
+        return { audio, bind };
+      };
+
+      if (!window.__mapsycoyMusicSystem) {
+        window.__mapsycoyMusicSystem = createMusicSystem();
+      } else {
+        window.__mapsycoyMusicSystem.bind();
+      }
       const protectImages = () => {
         document.querySelectorAll("img").forEach((image) => {
           image.setAttribute("draggable", "false");

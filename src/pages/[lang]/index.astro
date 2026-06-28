@@ -103,7 +103,6 @@ const homeMusic = getHomeMusic(lang);
               />
               <span class="home-music-time" data-home-music-time>00:00 / 00:00</span>
             </div>
-            <audio data-home-music-audio preload="metadata" src={homeMusic.audioFile}></audio>
           </div>
         </div>
         <div class="home-media-meta-row">
@@ -482,85 +481,6 @@ const homeMusic = getHomeMusic(lang);
 
         window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
       });
-    });
-
-
-    const formatMusicTime = (value) => {
-      if (!Number.isFinite(value) || value <= 0) return "00:00";
-
-      const minutes = Math.floor(value / 60);
-      const seconds = Math.floor(value % 60);
-      return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
-    };
-
-    document.querySelectorAll("[data-home-music]").forEach((root) => {
-      if (!(root instanceof HTMLElement)) return;
-
-      const button = root.querySelector(".home-music-toggle");
-      const progress = root.querySelector(".home-music-progress");
-      const time = root.querySelector("[data-home-music-time]");
-      const audio = root.querySelector("[data-home-music-audio]");
-      const audioFile = root.dataset.audioFile || "";
-
-      if (
-        !(button instanceof HTMLButtonElement) ||
-        !(progress instanceof HTMLInputElement) ||
-        !(time instanceof HTMLElement) ||
-        !(audio instanceof HTMLAudioElement)
-      ) return;
-
-      if (!audioFile) {
-        button.disabled = true;
-        progress.disabled = true;
-        root.classList.add("is-unavailable");
-        return;
-      }
-
-      const updateProgress = () => {
-        const duration = audio.duration || 0;
-        const currentTime = audio.currentTime || 0;
-        progress.value = duration ? String((currentTime / duration) * 100) : "0";
-        time.textContent = `${formatMusicTime(currentTime)} / ${formatMusicTime(duration)}`;
-      };
-
-      const syncPlayingState = () => {
-        const isPlaying = !audio.paused && !audio.ended;
-        root.classList.toggle("is-playing", isPlaying);
-        button.setAttribute("aria-pressed", String(isPlaying));
-        button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${root.dataset.title || "music"}`);
-      };
-
-      button.addEventListener("click", async () => {
-        if (audio.paused || audio.ended) {
-          try {
-            await audio.play();
-          } catch {
-            syncPlayingState();
-          }
-          return;
-        }
-
-        audio.pause();
-      });
-
-      progress.addEventListener("input", () => {
-        const duration = audio.duration || 0;
-        if (!duration) return;
-        audio.currentTime = (Number(progress.value) / 100) * duration;
-        updateProgress();
-      });
-
-      audio.addEventListener("loadedmetadata", updateProgress);
-      audio.addEventListener("timeupdate", updateProgress);
-      audio.addEventListener("play", syncPlayingState);
-      audio.addEventListener("pause", syncPlayingState);
-      audio.addEventListener("ended", () => {
-        updateProgress();
-        syncPlayingState();
-      });
-
-      updateProgress();
-      syncPlayingState();
     });
     document.querySelectorAll("[data-seoul-time]").forEach((timeElement) => {
       if (!(timeElement instanceof HTMLTimeElement)) return;
