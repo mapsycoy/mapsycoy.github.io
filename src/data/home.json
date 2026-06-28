@@ -26,14 +26,14 @@
   },
   "music": {
     "title": {
-      "ko": "Castle In The Sky",
-      "en": "Castle In The Sky"
+      "ko": "",
+      "en": "Indigo"
     },
     "artist": {
-      "ko": "Joe Hisaishi / YouTube",
-      "en": "Joe Hisaishi / YouTube"
+      "ko": "이루마 / 멜론",
+      "en": "Yiruma / Melon"
     },
-    "url": "https://www.youtube.com/results?search_query=Castle+In+The+Sky+Joe+Hisaishi",
-    "audioFile": ""
+    "url": "",
+    "audioFile": "/uploads/이루마-10-indigo.mp3"
   }
 }
