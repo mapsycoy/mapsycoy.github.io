@@ -96,7 +96,7 @@ contentBlocks:
 tags:
   - AI
 thumbnail: /uploads/red-ivs.jpg
-heroImage: /uploads/red.png
+heroImage: /uploads/red.jpg
 heroImageDisplay: full
 heroImageCaption:
   ko: IVS Crypto THE DEMODAY 2024(좌) ∣ 카이아 스퀘어 라운지 2024(우)
