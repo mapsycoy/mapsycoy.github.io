@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { getHomeCaption, getHomeIntro } from "../../data/home";
+import { getHomeCaption, getHomeGreeting, getHomeIntro } from "../../data/home";
 import { getLanguageFromParams, languages, type Language } from "../../utils/i18n";
 
 export function getStaticPaths() {
@@ -9,6 +9,7 @@ export function getStaticPaths() {
 
 const lang: Language = getLanguageFromParams(Astro.params.lang);
 const contactEmail = "mapsycoy@gmail.com";
+const homeGreeting = getHomeGreeting(lang);
 const homeCaption = getHomeCaption(lang);
 const homeIntro = getHomeIntro(lang);
 const homeInstrumentSrc = "/landing/home-instrument.gif";
@@ -21,8 +22,7 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
     <div class="home-kicker">Greeting</div>
 
     <div class="home-copy">
-      <h1 class="ko-title">안녕하세요.</h1>
-      <h1 class="title">Welcome to my space.</h1>
+      <h1 class={lang === "ko" ? "ko-title" : "title"}>{homeGreeting}</h1>
     </div>
 
     <p class="lede">{homeIntro}</p>

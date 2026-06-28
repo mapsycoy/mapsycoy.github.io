@@ -2,8 +2,14 @@ import homeData from "./home.json";
 import { defaultLanguage, localize, type Language, type LocalizedText } from "../utils/i18n";
 
 type HomeData = {
+  greeting?: LocalizedText;
   intro?: LocalizedText;
   caption?: LocalizedText;
+};
+
+const fallbackHomeGreeting: Record<Language, string> = {
+  ko: "\uC548\uB155\uD558\uC138\uC694.",
+  en: "Welcome to my space.",
 };
 
 const fallbackHomeIntro: Record<Language, string> = {
@@ -12,6 +18,9 @@ const fallbackHomeIntro: Record<Language, string> = {
 };
 
 const home = homeData as HomeData;
+
+export const getHomeGreeting = (lang: Language = defaultLanguage) =>
+  localize(home.greeting, lang) || fallbackHomeGreeting[lang] || fallbackHomeGreeting[defaultLanguage];
 
 export const getHomeCaption = (lang: Language = defaultLanguage) => localize(home.caption, lang);
 
