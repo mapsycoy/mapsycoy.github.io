@@ -1,6 +1,6 @@
 {
   "greeting": {
-    "ko": "안녕하세요. 제 공간에 방문해주셔서 감사합니다.",
+    "ko": "<p>안녕하세요.</p> <p>방문해주셔서 감사합니다.</p>",
     "en": "Welcome to my space."
   },
   "caption": {
