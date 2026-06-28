@@ -26,14 +26,14 @@
   },
   "music": {
     "title": {
-      "ko": "",
-      "en": "test"
+      "ko": "꿈",
+      "en": "Rêverie"
     },
     "artist": {
-      "ko": "test",
-      "en": "test"
+      "ko": "클로드 드뷔시",
+      "en": "Claude Debussy"
     },
     "url": "",
-    "audioFile": ""
+    "audioFile": "/uploads/reverie.ogg"
   }
 }
