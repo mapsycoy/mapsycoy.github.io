@@ -57,25 +57,36 @@ const homeMusic = getHomeMusic(lang);
           <span class="home-media-meta-label">Source</span>
           <span>{homeMedia.source}</span>
         </div>
-        <div class="home-media-meta-row home-music-row">
-          <span class="home-media-meta-label">Listen</span>
-          <a
-            class="home-music-link"
-            href={homeMusic.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={`Play ${homeMusic.title} on YouTube`}
-          >
-            <span class="home-music-icon" aria-hidden="true">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M8 5.5v13l11-6.5-11-6.5Z" />
-              </svg>
-            </span>
-            <span class="home-music-copy">
-              <span class="home-music-title">{homeMusic.title}</span>
-              <span class="home-music-artist">{homeMusic.artist}</span>
-            </span>
-          </a>
+        <div
+          class="home-media-meta-row home-music-row"
+          data-home-music
+          data-youtube-url={homeMusic.url}
+          data-title={homeMusic.title}
+        >
+          <span class="home-music-mark" aria-label="Music">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M15.5 3.5v11.2a3.2 3.2 0 1 1-1.5-2.7V6.4l6-1.4v8.2a3.2 3.2 0 1 1-1.5-2.7V3l-3 .5Z" />
+            </svg>
+          </span>
+          <div class="home-music-panel">
+            <button
+              class="home-music-button"
+              type="button"
+              aria-expanded="false"
+              aria-label={`Play ${homeMusic.title}`}
+            >
+              <span class="home-music-play-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+                </svg>
+              </span>
+              <span class="home-music-copy">
+                <span class="home-music-title">{homeMusic.title}</span>
+                <span class="home-music-artist">{homeMusic.artist}</span>
+              </span>
+            </button>
+            <div class="home-music-frame" data-home-music-frame hidden></div>
+          </div>
         </div>
         <div class="home-media-meta-row">
           <span class="home-media-meta-icon" aria-label="Location">
@@ -455,6 +466,70 @@ const homeMusic = getHomeMusic(lang);
       });
     });
 
+
+    const getYouTubeEmbedUrl = (value) => {
+      if (!value) return "";
+
+      try {
+        const url = new URL(value, window.location.href);
+        const host = url.hostname.replace(/^www\./, "");
+        const params = new URLSearchParams({ autoplay: "1", rel: "0" });
+        let videoId = "";
+
+        if (host === "youtu.be") {
+          videoId = url.pathname.split("/").filter(Boolean)[0] || "";
+        } else if (host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com")) {
+          if (url.pathname === "/watch") videoId = url.searchParams.get("v") || "";
+          if (url.pathname.startsWith("/shorts/")) videoId = url.pathname.split("/")[2] || "";
+          if (url.pathname.startsWith("/embed/")) videoId = url.pathname.split("/")[2] || "";
+
+          const list = url.searchParams.get("list");
+          if (list) params.set("list", list);
+
+          const search = url.searchParams.get("search_query");
+          if (!videoId && search) {
+            params.set("listType", "search");
+            params.set("list", search);
+            return `https://www.youtube-nocookie.com/embed?${params.toString()}`;
+          }
+        }
+
+        if (!videoId && url.searchParams.get("list")) {
+          params.set("list", url.searchParams.get("list"));
+          return `https://www.youtube-nocookie.com/embed/videoseries?${params.toString()}`;
+        }
+
+        return videoId ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?${params.toString()}` : "";
+      } catch {
+        return "";
+      }
+    };
+
+    document.querySelectorAll("[data-home-music]").forEach((root) => {
+      if (!(root instanceof HTMLElement)) return;
+
+      const button = root.querySelector(".home-music-button");
+      const frame = root.querySelector("[data-home-music-frame]");
+      if (!(button instanceof HTMLButtonElement) || !(frame instanceof HTMLElement)) return;
+
+      button.addEventListener("click", () => {
+        const embedUrl = getYouTubeEmbedUrl(root.dataset.youtubeUrl || "");
+        if (!embedUrl) return;
+
+        if (!frame.querySelector("iframe")) {
+          const iframe = document.createElement("iframe");
+          iframe.src = embedUrl;
+          iframe.title = root.dataset.title || "YouTube music player";
+          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+          iframe.allowFullscreen = true;
+          frame.appendChild(iframe);
+        }
+
+        frame.hidden = false;
+        root.classList.add("is-playing");
+        button.setAttribute("aria-expanded", "true");
+      });
+    });
     document.querySelectorAll("[data-seoul-time]").forEach((timeElement) => {
       if (!(timeElement instanceof HTMLTimeElement)) return;
 
