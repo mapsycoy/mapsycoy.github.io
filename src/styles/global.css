@@ -212,7 +212,7 @@ main {
 .home-media {
   grid-area: media;
   display: grid;
-  grid-template-rows: minmax(clamp(260px, 32vw, 420px), 1fr) auto;
+  grid-template-rows: minmax(0, 1fr) auto;
   gap: 0;
   align-self: stretch;
   align-items: stretch;
