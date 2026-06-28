@@ -556,8 +556,13 @@ h3 {
 }
 
 .works-section-header h2 {
+  display: inline-flex;
+  align-items: center;
+  width: fit-content;
   margin: 0;
-  color: var(--muted);
+  padding: 3px 8px 4px;
+  background: var(--soft);
+  color: var(--text);
   font-size: 0.82rem;
   font-weight: 600;
   letter-spacing: 0.08em;
@@ -610,7 +615,7 @@ h3 {
   min-width: 0;
   flex-direction: column;
   border: 1px solid var(--line);
-  background: transparent;
+  background: color-mix(in srgb, var(--soft) 42%, transparent);
   transition:
     border-color 160ms ease,
     background-color 160ms ease;
@@ -618,7 +623,7 @@ h3 {
 
 .work-card:hover {
   border-color: var(--text);
-  background: rgba(255, 255, 255, 0.18);
+  background: color-mix(in srgb, var(--soft) 72%, #fff);
 }
 
 .work-card-link {
