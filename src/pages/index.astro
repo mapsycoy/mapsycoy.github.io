@@ -146,7 +146,10 @@ const homeMusic = getHomeMusic();
       ink: "#171717"
     };
 
-    document.querySelectorAll("[data-home-instrument]").forEach((root) => {
+    const initializeHomeInstruments = () => {
+      document.querySelectorAll("[data-home-instrument]").forEach((root) => {
+      if (!(root instanceof HTMLElement) || root.dataset.instrumentBound === "true") return;
+      root.dataset.instrumentBound = "true";
       if (!(root instanceof HTMLElement)) return;
 
       const image = root.querySelector(".home-instrument-source");
@@ -456,9 +459,13 @@ const homeMusic = getHomeMusic();
         resizeObserver.observe(root);
       }
       start();
-    });
+      });
+    };
 
-    document.querySelectorAll("[data-home-contact]").forEach((form) => {
+    const initializeHomeContactForms = () => {
+      document.querySelectorAll("[data-home-contact]").forEach((form) => {
+      if (!(form instanceof HTMLFormElement) || form.dataset.contactBound === "true") return;
+      form.dataset.contactBound = "true";
       if (!(form instanceof HTMLFormElement)) return;
 
       form.addEventListener("submit", (event) => {
@@ -475,8 +482,12 @@ const homeMusic = getHomeMusic();
 
         window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
       });
-    });
-    document.querySelectorAll("[data-seoul-time]").forEach((timeElement) => {
+      });
+    };
+    const initializeSeoulTime = () => {
+      document.querySelectorAll("[data-seoul-time]").forEach((timeElement) => {
+      if (!(timeElement instanceof HTMLTimeElement) || timeElement.dataset.timeBound === "true") return;
+      timeElement.dataset.timeBound = "true";
       if (!(timeElement instanceof HTMLTimeElement)) return;
 
       const formatter = new Intl.DateTimeFormat("en-GB", {
@@ -498,6 +509,23 @@ const homeMusic = getHomeMusic();
 
       updateSeoulTime();
       window.setInterval(updateSeoulTime, 1000);
-    });
+      });
+    };
+
+    const initializeHomeLanding = () => {
+      initializeHomeInstruments();
+      initializeHomeContactForms();
+      initializeSeoulTime();
+    };
+
+    window.__mapsycoyInitializeHomeLanding = initializeHomeLanding;
+
+    if (!window.__mapsycoyHomeLandingEventsBound) {
+      window.__mapsycoyHomeLandingEventsBound = true;
+      document.addEventListener("astro:page-load", () => window.__mapsycoyInitializeHomeLanding?.());
+      document.addEventListener("DOMContentLoaded", () => window.__mapsycoyInitializeHomeLanding?.());
+    }
+
+    initializeHomeLanding();
   </script>
 </Layout>
