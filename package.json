@@ -7,7 +7,7 @@
     "dev": "astro dev",
     "generate:halftone": "node scripts/generate-halftone-fallback.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
-    "build": "npm run optimize:images && astro build",
+    "build": "node scripts/build-optimized.mjs",
     "preview": "astro preview"
   },
   "dependencies": {

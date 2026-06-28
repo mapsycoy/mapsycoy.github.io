@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -29,6 +29,17 @@ jobs:
         run: npm install
       - name: Build
         run: npm run build
+      - name: Commit optimized images
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add src public scripts package.json .github/workflows/deploy.yml
+            git commit -m "Optimize uploaded images [skip ci]"
+            git push origin HEAD:${GITHUB_REF_NAME}
+          else
+            echo "No optimized image changes to commit."
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
@@ -44,3 +55,4 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+

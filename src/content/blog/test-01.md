@@ -6,8 +6,8 @@ publishedAt: 2026-02-10T00:00:00.000Z
 updatedAt: 2026-06-14T00:00:00.000Z
 status: published
 tag: Essay
-thumbnail: /uploads/imaginary.jpg
-heroImage: /uploads/imaginary-hero.jpg
+thumbnail: /uploads/imaginary.webp
+heroImage: /uploads/imaginary-hero.webp
 heroImageCaption:
   ko: 맵시's AI 잡지식 저장소
   en: Mapsy's AI Tidbits Storage

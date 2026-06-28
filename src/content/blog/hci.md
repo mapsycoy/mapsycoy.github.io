@@ -6,8 +6,8 @@ publishedAt: 2026-06-14T00:00:00.000Z
 status: published
 pinned: true
 tag: Essay
-thumbnail: /uploads/first.jpg
-heroImage: /uploads/first.jpg
+thumbnail: /uploads/first.webp
+heroImage: /uploads/first.webp
 heroImageCaption:
   ko: 「이웃집 토토로」 속 한 장면
   en: A scene from 'My Neighbor Totoro'

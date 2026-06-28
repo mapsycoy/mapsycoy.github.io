@@ -6,8 +6,8 @@ publishedAt: 2026-06-19T00:00:00.000Z
 status: published
 pinned: false
 tag: Essay
-thumbnail: /uploads/sac-class.jpg
-heroImage: /uploads/sac-class.jpg
+thumbnail: /uploads/sac-class.webp
+heroImage: /uploads/sac-class.webp
 heroImageCaption:
   ko: 예술의전당 다큐멘터리 속 한 장면
   en: Scene from my Seoul Arts Center documentary

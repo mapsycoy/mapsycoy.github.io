@@ -40,5 +40,5 @@ contentBlocks:
 tags:
   - Media Art
   - AI
-thumbnail: /uploads/wavebreaker.jpg
+thumbnail: /uploads/wavebreaker.webp
 ---

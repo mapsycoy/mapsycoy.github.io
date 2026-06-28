@@ -6,8 +6,8 @@ publishedAt: 2026-06-16T00:00:00.000Z
 status: published
 pinned: false
 tag: Paper
-thumbnail: /uploads/chi26.png
-heroImage: /uploads/chi26.png
+thumbnail: /uploads/chi26.webp
+heroImage: /uploads/chi26.webp
 heroImageCaption:
   ko: ""
   en: ACM CHI 2026

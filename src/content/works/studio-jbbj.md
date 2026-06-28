@@ -102,7 +102,7 @@ contentBlocks:
 tags:
   - Animation
   - Illustration
-thumbnail: /uploads/jbbj.png
+thumbnail: /uploads/jbbj.webp
 heroImage: ""
 heroImageDisplay: full
 heroImageCaption:

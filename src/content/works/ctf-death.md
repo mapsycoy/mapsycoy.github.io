@@ -54,5 +54,5 @@ contentBlocks:
       en: Simulation for the New Humanity
 tags:
   - AI
-thumbnail: /uploads/ctfdeath.jpg
+thumbnail: /uploads/ctfdeath.webp
 ---

@@ -8,7 +8,7 @@
       "ko": "대한민국 / 서울",
       "en": "Republic of Korea / Seoul"
     },
-    "photo": "/cv/profile.jpg"
+    "photo": "/cv/profile.webp"
   },
   "education": [
     {
@@ -65,7 +65,7 @@
         }
       },
       {
-        "src": "/cv/logos/snue.png",
+        "src": "/cv/logos/snue.webp",
         "alt": {
           "ko": "",
           "en": "SNUE"
@@ -98,7 +98,7 @@
         "ko": "2025.12 - 2026.05",
         "en": "Dec 2025 - May 2026"
       },
-      "logo": "/cv/logos/nexon.png",
+      "logo": "/cv/logos/nexon.webp",
       "team": {
         "ko": "M콘텐츠생성AI팀",
         "en": "M-Content Generation AI Team"
@@ -122,7 +122,7 @@
         "ko": "2025.07 - 2025.09",
         "en": "Jul 2025 - Sep 2025"
       },
-      "logo": "/cv/logos/enuma.png",
+      "logo": "/cv/logos/enuma.webp",
       "team": {
         "ko": "콘텐츠팀",
         "en": "Content Team"
@@ -142,7 +142,7 @@
         "ko": "2023.02 - 2023.12",
         "en": "Feb 2023 - Dec 2023"
       },
-      "logo": "/cv/logos/unipuskr.png",
+      "logo": "/cv/logos/unipuskr.webp",
       "description": [],
       "media": [],
       "employmentType": {
@@ -167,7 +167,7 @@
         "ko": "2021.10 - 2022.10",
         "en": "Oct 2021 - Oct 2022"
       },
-      "logo": "/cv/logos/studio-jbbj.png",
+      "logo": "/cv/logos/studio-jbbj.webp",
       "description": []
     },
     {
@@ -187,7 +187,7 @@
         "ko": "1년 1개월",
         "en": "1 yr 1 mo"
       },
-      "logo": "/cv/logos/snue.png",
+      "logo": "/cv/logos/snue.webp",
       "subEntries": [
         {
           "title": {
@@ -234,7 +234,7 @@
       "media": [
         {
           "type": "image",
-          "src": "/cv/projects/atelier2024.jpg",
+          "src": "/cv/projects/atelier2024.webp",
           "href": "https://www.youtube.com/watch?v=JXRhq4vxzGY",
           "label": {
             "ko": "",
@@ -243,7 +243,7 @@
         },
         {
           "type": "image",
-          "src": "/cv/projects/atelier2023.jpg",
+          "src": "/cv/projects/atelier2023.webp",
           "href": "https://webzine.kookmin.ac.kr/webzine.php?syear=2023&svolume=4&mcode=31",
           "label": {
             "ko": "",
@@ -270,7 +270,7 @@
       "media": [
         {
           "type": "image",
-          "src": "/cv/projects/redflight.jpg",
+          "src": "/cv/projects/redflight.webp",
           "href": "https://luma.com/ivs-demoday",
           "label": {
             "ko": "",

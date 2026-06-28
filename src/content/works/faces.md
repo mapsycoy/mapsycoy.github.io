@@ -28,54 +28,54 @@ contentBlocks:
         3D 단편 영화 「FACES」(안효슬 연출) 컨셉 아트 컬렉션
 
         {{image-grid columns="2"}}
-        ![주방](/uploads/faces-kitchen.jpg)
-        ![거실](/uploads/faces-living-room.jpg)
+        ![주방](/uploads/faces-kitchen.webp)
+        ![거실](/uploads/faces-living-room.webp)
         {{/image-grid}}
 
         {{image-grid columns="2"}}
-        ![방](/uploads/faces-room.jpg)
-        ![욕실](/uploads/faces-bathroom.jpg)
+        ![방](/uploads/faces-room.webp)
+        ![욕실](/uploads/faces-bathroom.webp)
         {{/image-grid}}
 
         {{image-grid columns="2"}}
-        ![엔딩](/uploads/faces-ending.jpg)
-        ![야외](/uploads/faces-outdoor.jpg)
+        ![엔딩](/uploads/faces-ending.webp)
+        ![야외](/uploads/faces-outdoor.webp)
         {{/image-grid}}
 
         {{image-grid columns="2"}}
-        ![거미](/uploads/faces-spider.jpg)
-        ![포스터 컨셉](/uploads/faces-poster-concept.jpg)
+        ![거미](/uploads/faces-spider.webp)
+        ![포스터 컨셉](/uploads/faces-poster-concept.webp)
         {{/image-grid}}
 
-        ![포스터](/uploads/faces-poster.jpg)
+        ![포스터](/uploads/faces-poster.webp)
       en: |-
         Concept Art Collection for the 3D Short Film 「*FACES*」 by. *AHN Hyoseul*
 
         {{image-grid columns="2"}}
-        ![Kitchen](/uploads/faces-kitchen.jpg)
-        ![Living room](/uploads/faces-living-room.jpg)
+        ![Kitchen](/uploads/faces-kitchen.webp)
+        ![Living room](/uploads/faces-living-room.webp)
         {{/image-grid}}
 
         {{image-grid columns="2"}}
-        ![Room](/uploads/faces-room.jpg)
-        ![Bathroom](/uploads/faces-bathroom.jpg)
-        {{/image-grid}}
-
-
-
-        {{image-grid columns="2"}}
-        ![Ending](/uploads/faces-ending.jpg)
-        ![Outdoor](/uploads/faces-outdoor.jpg)
+        ![Room](/uploads/faces-room.webp)
+        ![Bathroom](/uploads/faces-bathroom.webp)
         {{/image-grid}}
 
 
 
         {{image-grid columns="2"}}
-        ![Spider](/uploads/faces-spider.jpg)
-        ![Poster concept](/uploads/faces-poster-concept.jpg)
+        ![Ending](/uploads/faces-ending.webp)
+        ![Outdoor](/uploads/faces-outdoor.webp)
         {{/image-grid}}
 
-        ![Poster](/uploads/faces-poster.jpg)
+
+
+        {{image-grid columns="2"}}
+        ![Spider](/uploads/faces-spider.webp)
+        ![Poster concept](/uploads/faces-poster-concept.webp)
+        {{/image-grid}}
+
+        ![Poster](/uploads/faces-poster.webp)
   - type: statsLink
     ctaLabel:
       ko: ""
@@ -91,28 +91,28 @@ contentBlocks:
       Concept Art Collection for the 3D Short Film 「*FACES*」 by. *AHN Hyoseul*
 
       {{image-grid columns="2"}}
-      ![Kitchen](/uploads/faces-kitchen.jpg)
-      ![Living room](/uploads/faces-living-room.jpg)
+      ![Kitchen](/uploads/faces-kitchen.webp)
+      ![Living room](/uploads/faces-living-room.webp)
       {{/image-grid}}
 
       {{image-grid columns="2"}}
-      ![Room](/uploads/faces-room.jpg)
-      ![Bathroom](/uploads/faces-bathroom.jpg)
+      ![Room](/uploads/faces-room.webp)
+      ![Bathroom](/uploads/faces-bathroom.webp)
       {{/image-grid}}
 
       {{image-grid columns="2"}}
-      ![Ending](/uploads/faces-ending.jpg)
-      ![Outdoor](/uploads/faces-outdoor.jpg)
+      ![Ending](/uploads/faces-ending.webp)
+      ![Outdoor](/uploads/faces-outdoor.webp)
       {{/image-grid}}
 
       {{image-grid columns="2"}}
-      ![Spider](/uploads/faces-spider.jpg)
-      ![Poster concept](/uploads/faces-poster-concept.jpg)
+      ![Spider](/uploads/faces-spider.webp)
+      ![Poster concept](/uploads/faces-poster-concept.webp)
       {{/image-grid}}
 
-      ![Poster](/uploads/faces-poster.jpg)
+      ![Poster](/uploads/faces-poster.webp)
 tags:
   - Illustration
-thumbnail: /uploads/faces.jpg
+thumbnail: /uploads/faces.webp
 heroImage: ""
 ---
