@@ -1,15 +1,13 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import { getHomeCaption, getHomeGreeting, getHomeIntro } from "../data/home";
+import { getHomeCaption, getHomeGreeting, getHomeIntro, getHomeMedia } from "../data/home";
 
 const contactEmail = "mapsycoy@gmail.com";
 const homeGreeting = getHomeGreeting();
 const homeGreetingLines = homeGreeting.split(/\r?\n/).filter(Boolean);
 const homeCaption = getHomeCaption();
 const homeIntro = getHomeIntro();
-const homeInstrumentSrc = "/landing/home-instrument.gif";
-const homeInstrumentHalftoneSrc = "/landing/home-instrument-halftone.gif";
-const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.gif";
+const homeMedia = getHomeMedia();
 ---
 
 <Layout>
@@ -25,19 +23,19 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
     <p class="lede">{homeIntro}</p>
 
     <figure class="home-media">
-      <div class="home-instrument" data-home-instrument aria-label="Animated visual note">
+      <div class="home-instrument" data-home-instrument aria-label={homeMedia.alt}>
         <img
           class="home-instrument-source"
-          src={homeInstrumentSrc}
-          alt="Animated visual note"
+          src={homeMedia.image}
+          alt={homeMedia.alt}
           loading="eager"
           decoding="async"
         />
         <canvas class="home-instrument-canvas" aria-hidden="true"></canvas>
         <img
           class="home-instrument-halftone-fallback"
-          data-src={homeInstrumentHalftoneSrc}
-          data-srcset={`${homeInstrumentHalftoneSrc} 390w, ${homeInstrumentHalftoneLargeSrc} 728w`}
+          data-src={homeMedia.halftoneFallback}
+          data-srcset={`${homeMedia.halftoneFallback} 390w, ${homeMedia.halftoneLargeFallback} 728w`}
           sizes="(max-width: 780px) calc(100vw - 40px), 390px"
           alt=""
           loading="eager"
@@ -50,7 +48,7 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
       <figcaption class="home-media-meta">
         <div class="home-media-meta-row">
           <span class="home-media-meta-label">Source</span>
-          <span>Castle In The Sky | Studio Ghibli</span>
+          <span>{homeMedia.source}</span>
         </div>
         <div class="home-media-meta-row">
           <span class="home-media-meta-icon" aria-label="Location">

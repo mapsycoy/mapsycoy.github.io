@@ -1,4 +1,17 @@
 {
+  "media": {
+    "image": "/landing/home-instrument.gif",
+    "halftoneFallback": "/landing/home-instrument-halftone.gif",
+    "halftoneLargeFallback": "/landing/home-instrument-halftone-large.gif",
+    "source": {
+      "ko": "Castle In The Sky | Studio Ghibli",
+      "en": "Castle In The Sky | Studio Ghibli"
+    },
+    "alt": {
+      "ko": "Animated visual note",
+      "en": "Animated visual note"
+    }
+  },
   "greeting": {
     "ko": "안녕하세요.\n제 공간에 방문해주셔서 감사합니다.",
     "en": "Hello.\nWelcome to my space."

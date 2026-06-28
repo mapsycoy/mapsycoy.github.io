@@ -1009,6 +1009,52 @@ collections:
         file: src/data/home.json
         format: json
         fields:
+          - label: Landing Media
+            name: media
+            widget: object
+            required: false
+            fields:
+              - label: GIF Image
+                name: image
+                widget: image
+                required: false
+                hint: Current default is /landing/home-instrument.gif. New uploads will be stored in /uploads.
+              - label: Halftone Fallback GIF
+                name: halftoneFallback
+                widget: string
+                required: false
+                hint: Optional fallback image path. Keep /landing/home-instrument-halftone.gif for the current GIF.
+              - label: Large Halftone Fallback GIF
+                name: halftoneLargeFallback
+                widget: string
+                required: false
+                hint: Optional large fallback image path. Keep /landing/home-instrument-halftone-large.gif for the current GIF.
+              - label: Source Name
+                name: source
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: Alt Text
+                name: alt
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
           - label: Landing Greeting
             name: greeting
             widget: object
