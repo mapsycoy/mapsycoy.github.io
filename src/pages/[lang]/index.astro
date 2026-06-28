@@ -70,23 +70,40 @@ const homeMusic = getHomeMusic(lang);
             </svg>
           </span>
           <div class="home-music-panel">
-            <button
-              class="home-music-button"
-              type="button"
-              aria-expanded="false"
-              aria-label={`Play ${homeMusic.title}`}
-            >
-              <span class="home-music-play-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M8 5.5v13l11-6.5-11-6.5Z" />
-                </svg>
-              </span>
+            <div class="home-music-head">
+              <button
+                class="home-music-toggle"
+                type="button"
+                aria-pressed="false"
+                aria-label={`Play ${homeMusic.title}`}
+              >
+                <span class="home-music-play-icon" aria-hidden="true">
+                  <svg class="home-music-play-symbol" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+                  </svg>
+                  <svg class="home-music-pause-symbol" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M7 5.5h3.5v13H7v-13Zm6.5 0H17v13h-3.5v-13Z" />
+                  </svg>
+                </span>
+              </button>
               <span class="home-music-copy">
                 <span class="home-music-title">{homeMusic.title}</span>
                 <span class="home-music-artist">{homeMusic.artist}</span>
               </span>
-            </button>
-            <div class="home-music-frame" data-home-music-frame hidden></div>
+            </div>
+            <div class="home-music-progress-row">
+              <input
+                class="home-music-progress"
+                type="range"
+                min="0"
+                max="100"
+                value="0"
+                step="0.1"
+                aria-label={`Seek ${homeMusic.title}`}
+              />
+              <span class="home-music-time" data-home-music-time>00:00 / 00:00</span>
+            </div>
+            <audio data-home-music-audio preload="metadata" src={homeMusic.audioFile}></audio>
           </div>
         </div>
         <div class="home-media-meta-row">
@@ -468,85 +485,82 @@ const homeMusic = getHomeMusic(lang);
     });
 
 
-    const getYouTubeEmbedUrl = (value) => {
-      if (!value) return "";
+    const formatMusicTime = (value) => {
+      if (!Number.isFinite(value) || value <= 0) return "00:00";
 
-      try {
-        const url = new URL(value, window.location.href);
-        const host = url.hostname.replace(/^www\./, "");
-        const params = new URLSearchParams({ autoplay: "1", rel: "0" });
-        let videoId = "";
-
-        if (host === "youtu.be") {
-          videoId = url.pathname.split("/").filter(Boolean)[0] || "";
-        } else if (host.endsWith("youtube.com") || host.endsWith("youtube-nocookie.com")) {
-          if (url.pathname === "/watch") videoId = url.searchParams.get("v") || "";
-          if (url.pathname.startsWith("/shorts/")) videoId = url.pathname.split("/")[2] || "";
-          if (url.pathname.startsWith("/embed/")) videoId = url.pathname.split("/")[2] || "";
-
-          const list = url.searchParams.get("list");
-          if (list) params.set("list", list);
-
-          const search = url.searchParams.get("search_query");
-          if (!videoId && search) {
-            params.set("listType", "search");
-            params.set("list", search);
-            return `https://www.youtube-nocookie.com/embed?${params.toString()}`;
-          }
-        }
-
-        if (!videoId && url.searchParams.get("list")) {
-          params.set("list", url.searchParams.get("list"));
-          return `https://www.youtube-nocookie.com/embed/videoseries?${params.toString()}`;
-        }
-
-        return videoId ? `https://www.youtube-nocookie.com/embed/${encodeURIComponent(videoId)}?${params.toString()}` : "";
-      } catch {
-        return "";
-      }
+      const minutes = Math.floor(value / 60);
+      const seconds = Math.floor(value % 60);
+      return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
     };
 
     document.querySelectorAll("[data-home-music]").forEach((root) => {
       if (!(root instanceof HTMLElement)) return;
 
-      const button = root.querySelector(".home-music-button");
-      const frame = root.querySelector("[data-home-music-frame]");
-      if (!(button instanceof HTMLButtonElement) || !(frame instanceof HTMLElement)) return;
+      const button = root.querySelector(".home-music-toggle");
+      const progress = root.querySelector(".home-music-progress");
+      const time = root.querySelector("[data-home-music-time]");
+      const audio = root.querySelector("[data-home-music-audio]");
+      const audioFile = root.dataset.audioFile || "";
 
-      button.addEventListener("click", () => {
-        const audioFile = root.dataset.audioFile || "";
-        const embedUrl = getYouTubeEmbedUrl(root.dataset.youtubeUrl || "");
+      if (
+        !(button instanceof HTMLButtonElement) ||
+        !(progress instanceof HTMLInputElement) ||
+        !(time instanceof HTMLElement) ||
+        !(audio instanceof HTMLAudioElement)
+      ) return;
 
-        if (audioFile) {
-          if (!frame.querySelector("audio")) {
-            frame.textContent = "";
-            frame.classList.add("is-audio");
-            const audio = document.createElement("audio");
-            audio.src = audioFile;
-            audio.controls = true;
-            audio.autoplay = true;
-            audio.preload = "metadata";
-            frame.appendChild(audio);
+      if (!audioFile) {
+        button.disabled = true;
+        progress.disabled = true;
+        root.classList.add("is-unavailable");
+        return;
+      }
+
+      const updateProgress = () => {
+        const duration = audio.duration || 0;
+        const currentTime = audio.currentTime || 0;
+        progress.value = duration ? String((currentTime / duration) * 100) : "0";
+        time.textContent = `${formatMusicTime(currentTime)} / ${formatMusicTime(duration)}`;
+      };
+
+      const syncPlayingState = () => {
+        const isPlaying = !audio.paused && !audio.ended;
+        root.classList.toggle("is-playing", isPlaying);
+        button.setAttribute("aria-pressed", String(isPlaying));
+        button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${root.dataset.title || "music"}`);
+      };
+
+      button.addEventListener("click", async () => {
+        if (audio.paused || audio.ended) {
+          try {
+            await audio.play();
+          } catch {
+            syncPlayingState();
           }
-        } else {
-          if (!embedUrl) return;
-
-          if (!frame.querySelector("iframe")) {
-            frame.textContent = "";
-            frame.classList.remove("is-audio");
-            const iframe = document.createElement("iframe");
-            iframe.src = embedUrl;
-            iframe.title = root.dataset.title || "YouTube music player";
-            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-            iframe.allowFullscreen = true;
-            frame.appendChild(iframe);
-          }
+          return;
         }
 
-        frame.hidden = false;
-        root.classList.add("is-playing");
-        button.setAttribute("aria-expanded", "true");
+        audio.pause();
       });
+
+      progress.addEventListener("input", () => {
+        const duration = audio.duration || 0;
+        if (!duration) return;
+        audio.currentTime = (Number(progress.value) / 100) * duration;
+        updateProgress();
+      });
+
+      audio.addEventListener("loadedmetadata", updateProgress);
+      audio.addEventListener("timeupdate", updateProgress);
+      audio.addEventListener("play", syncPlayingState);
+      audio.addEventListener("pause", syncPlayingState);
+      audio.addEventListener("ended", () => {
+        updateProgress();
+        syncPlayingState();
+      });
+
+      updateProgress();
+      syncPlayingState();
     });
     document.querySelectorAll("[data-seoul-time]").forEach((timeElement) => {
       if (!(timeElement instanceof HTMLTimeElement)) return;
