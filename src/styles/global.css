@@ -372,9 +372,10 @@ main {
 }
 
 .home-music-copy {
-  display: grid;
+  display: flex;
+  align-items: baseline;
   min-width: 0;
-  line-height: 1.25;
+  line-height: 1.15;
 }
 
 .home-music-title,
@@ -385,12 +386,15 @@ main {
 }
 
 .home-music-title {
+  min-width: 0;
   color: var(--text);
   font-size: 0.78rem;
   font-weight: 600;
 }
 
 .home-music-artist {
+  flex: 0 1 auto;
+  margin-left: 6px;
   color: var(--muted);
   font-size: 0.7rem;
 }
