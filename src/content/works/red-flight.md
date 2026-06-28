@@ -34,13 +34,13 @@ contentBlocks:
   - type: embed
     provider: x
     url: https://x.com/akindo_io/status/1805814996166901886
-    embedCode: <blockquote class="twitter-tweet"><p lang="en" dir="ltr">?�IVS Crypto
-      THE DEMODAY?�Finalist Announcement?��<br><br>10 products were selected as
-      finalists from 99 submissions by a great judges?��<br><br>?��?�THE DEMODAY
+    embedCode: <blockquote class="twitter-tweet"><p lang="en" dir="ltr">【IVS Crypto
+      THE DEMODAY】Finalist Announcement📣<br><br>10 products were selected as
+      finalists from 99 submissions by a great judges🎉<br><br>📍⏰THE DEMODAY
       will be held at Inamori Hall in the IVS/IVS Crypto venue on Fri July 5th
-      from 15:30-18:30, and the product teams will give demo??<a
+      from 15:30-18:30, and the product teams will give demo… <a
       href="https://t.co/2f7tNNHKD2">pic.twitter.com/2f7tNNHKD2</a></p>&mdash;
-      AKINDO | The world?�s first Buildathon Platform?��?�️ (@akindo_io) <a
+      AKINDO | The world’s first Buildathon Platform🌊⚒️ (@akindo_io) <a
       href="https://x.com/akindo_io/status/1805814996166901886?ref_src=twsrc%5Etfw">June
       26, 2024</a></blockquote> <script async
       src="https://platform.x.com/widgets.js" charset="utf-8"></script>
@@ -61,18 +61,14 @@ contentBlocks:
     title:
       ko: ""
       en: RED Flight
-    subtitle:
-      ko: ""
-      en: AI Jailbreaking CTF Game
+    subtitle: AI Jailbreaking CTF Game
     url: https://www.redflight.ai/
   - type: statsLink
     ctaLabel:
       ko: ""
       en: View link
     url: https://app.akindo.io/communities/1PEkRnLZPtqA74d7k
-    subtitle:
-      ko: ""
-      en: About Team
+    subtitle: About Team
     title:
       ko: ""
       en: zAIon ∣ AKINDO
@@ -81,7 +77,7 @@ contentBlocks:
       ko: ""
       en: View link
     url: https://medium.com/kaiachain/asias-gateway-to-web3-kaia-square-lounge%EC%97%90-%EC%B4%88%EB%8C%80%ED%95%A9%EB%8B%88%EB%8B%A4-47191393f6bc
-    subtitle: 'Map { "ko": "", "en": "엠버서더 참여" }'
+    subtitle: 엠버서더 참여
     title:
       ko: ""
       en: "Asia's Gateway to Web3: Kaia Square Lounge에 초대합니다!"
@@ -101,6 +97,6 @@ thumbnail: /uploads/red-ivs.webp
 heroImage: /uploads/red.webp
 heroImageDisplay: full
 heroImageCaption:
-  ko: IVS Crypto THE DEMODAY 2024(��? ??카이???�퀘어 ?�운지 2024(??
-  en: IVS Crypto THE DEMODAY 2024(Left) ??Kaia Square Lounge 2024(Right)
+  ko: IVS Crypto THE DEMODAY 2024(좌) ∣ 카이아 스퀘어 라운지 2024(우)
+  en: IVS Crypto THE DEMODAY 2024(Left) ∣ Kaia Square Lounge 2024(Right)
 ---
