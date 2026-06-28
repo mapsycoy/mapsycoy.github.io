@@ -17,7 +17,7 @@ contentBlocks:
       ko: |-
         '비비드 포토그래피' (이색 반려동물 전문 스튜디오) 커미션 일러스트레이션
 
-        ![Concept Design](/uploads/kaf-concept.png)
+        ![캐릭터 컨셉](/uploads/kaf-concept.png)
 
 
 
