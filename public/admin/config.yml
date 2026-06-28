@@ -1090,7 +1090,13 @@ collections:
                 name: url
                 widget: string
                 required: false
-                hint: Paste a YouTube video, playlist, or search URL. The landing page opens it in a new tab.          - label: Landing Greeting
+                hint: Paste a YouTube video, playlist, or search URL. Used only when no audio file is set.
+              - label: Audio File
+                name: audioFile
+                widget: file
+                required: false
+                hint: Upload an MP3, M4A, OGG, or WAV file. This takes priority over the YouTube URL.
+          - label: Landing Greeting
             name: greeting
             widget: object
             required: false

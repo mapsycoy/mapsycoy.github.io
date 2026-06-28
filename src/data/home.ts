@@ -13,6 +13,7 @@ type HomeMusic = {
   title?: LocalizedText;
   artist?: LocalizedText;
   url?: string;
+  audioFile?: string;
 };
 
 type HomeData = {
@@ -40,6 +41,7 @@ const fallbackHomeMusic: Required<HomeMusic> = {
   title: "Castle In The Sky",
   artist: "Joe Hisaishi / YouTube",
   url: "https://www.youtube.com/results?search_query=Castle+In+The+Sky+Joe+Hisaishi",
+  audioFile: "",
 };
 
 const fallbackHomeIntro: Record<Language, string> = {
@@ -64,6 +66,7 @@ export const getHomeMusic = (lang: Language = defaultLanguage) => ({
   title: localize(home.music?.title, lang) || localize(fallbackHomeMusic.title, lang),
   artist: localize(home.music?.artist, lang) || localize(fallbackHomeMusic.artist, lang),
   url: home.music?.url || fallbackHomeMusic.url,
+  audioFile: home.music?.audioFile || fallbackHomeMusic.audioFile,
 });
 
 export const getHomeCaption = (lang: Language = defaultLanguage) => localize(home.caption, lang);

@@ -1,38 +1,39 @@
-{
-  "media": {
-    "image": "/landing/home-instrument.gif",
-    "halftoneFallback": "/landing/home-instrument-halftone.gif",
-    "halftoneLargeFallback": "/landing/home-instrument-halftone-large.gif",
-    "source": {
-      "ko": "천공의 성 라퓨타 | 스튜디오 지브리",
-      "en": "Castle In The Sky | Studio Ghibli"
-    },
-    "alt": {
-      "ko": "Animated visual note",
-      "en": "Animated visual note"
-    }
-  },
-  "greeting": {
-    "ko": "안녕하세요.\n제 공간에 방문해주셔서 감사합니다.",
-    "en": "Hello.\nWelcome to my space."
-  },
-  "caption": {
-    "ko": "안녕하세요. 𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀라는 이름으로 활동하고 있는 김준엽입니다.\n이 이름은 형태와 스타일, 그리고 은은하지만 분명한 존재감을 뜻하는 순우리말 “<span class=\"hunmin\">맵시</span>”에서 출발했습니다.\n여기에 수줍음을 뜻하는 라틴어 “𝑪𝑶𝒀”가 붙으며 절제의 결이 한 겹 더해졌습니다.\n랜딩 이미지도 같은 감각을 담고 있습니다: 힘을 지녔지만, 삶이 들어설 자리를 내어줄 만큼 조용히 머무는 기술.\n그렇게 완성된 𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀는 시각 작업들, 아직 끝맺지 못한 생각들, 그리고 여전히 형태를 찾아가는 질문들을 위한 이름이 되었습니다.",
-    "en": "Hello, I’m Junyeop Kim, working under the name 𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀.\nThe name began with “<span class=\"hunmin\">맵시</span>,” a native Korean word capturing the essence of form, style, and a quiet yet undeniable presence.\nTo this, “𝑪𝑶𝒀” adds a layer of gentle restraint—a choice to remain reserved, never revealing everything all at once.\nThe landing image reflects the same sensibility: technology with power, held quietly enough to make room for life.\nTogether, 𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀 became a name for visual works, unfinished thoughts, and questions that are still taking shape."
-  },
-  "intro": {
-    "ko": "이곳에는 그동안 제가 해 온 작업과 프로젝트, 그리고 앞으로 나아갈 길에 관한 질문들이 담겨 있습니다.",
-    "en": "This space holds the works and projects I have built over time, alongside the questions that guide my path forward."
-  },
-  "music": {
-    "title": {
-      "ko": "Castle In The Sky",
-      "en": "Castle In The Sky"
-    },
-    "artist": {
-      "ko": "Joe Hisaishi / YouTube",
-      "en": "Joe Hisaishi / YouTube"
-    },
-    "url": "https://www.youtube.com/results?search_query=Castle+In+The+Sky+Joe+Hisaishi"
-  }
+﻿{
+    "media":  {
+                  "image":  "/landing/home-instrument.gif",
+                  "halftoneFallback":  "/landing/home-instrument-halftone.gif",
+                  "halftoneLargeFallback":  "/landing/home-instrument-halftone-large.gif",
+                  "source":  {
+                                 "ko":  "泥쒓났?????쇳벂? | ?ㅽ뒠?붿삤 吏釉뚮━",
+                                 "en":  "Castle In The Sky | Studio Ghibli"
+                             },
+                  "alt":  {
+                              "ko":  "Animated visual note",
+                              "en":  "Animated visual note"
+                          }
+              },
+    "greeting":  {
+                     "ko":  "?덈뀞?섏꽭??\n??怨듦컙??諛⑸Ц?댁＜?붿꽌 媛먯궗?⑸땲??",
+                     "en":  "Hello.\nWelcome to my space."
+                 },
+    "caption":  {
+                    "ko":  "?덈뀞?섏꽭?? ?뫒?뫅?뫕?뫚???뫇?뫔???쇰뒗 ?대쫫?쇰줈 ?쒕룞?섍퀬 ?덈뒗 源以?쎌엯?덈떎.\n???대쫫? ?뺥깭? ?ㅽ??? 洹몃━怨????섏?留?遺꾨챸??議댁옱媛먯쓣 ?삵븯???쒖슦由щ쭚 ??span class=\"hunmin\"\u003e留듭떆\u003c/span\u003e?앹뿉??異쒕컻?덉뒿?덈떎.\n?ш린???섏쨳?뚯쓣 ?삵븯???쇳떞???쒚쓳ゐ쓳띱쓵?앷? 遺숈쑝硫??덉젣??寃곗씠 ??寃??뷀빐議뚯뒿?덈떎.\n?쒕뵫 ?대?吏??媛숈? 媛먭컖???닿퀬 ?덉뒿?덈떎: ?섏쓣 吏?붿?留? ?띠씠 ?ㅼ뼱???먮━瑜??댁뼱以?留뚰겮 議곗슜??癒몃Т??湲곗닠.\n洹몃젃寃??꾩꽦???뫒?뫅?뫕?뫚???뫇?뫔?????쒓컖 ?묒뾽?? ?꾩쭅 ?앸㎈吏 紐삵븳 ?앷컖?? 洹몃━怨??ъ쟾???뺥깭瑜?李얠븘媛??吏덈Ц?ㅼ쓣 ?꾪븳 ?대쫫???섏뿀?듬땲??",
+                    "en":  "Hello, I?셫 Junyeop Kim, working under the name ?뫒?뫅?뫕?뫚???뫇?뫔??.\nThe name began with ??span class=\"hunmin\"\u003e留듭떆\u003c/span\u003e,??a native Korean word capturing the essence of form, style, and a quiet yet undeniable presence.\nTo this, ?쒚쓳ゐ쓳띱쓵??adds a layer of gentle restraint?봞 choice to remain reserved, never revealing everything all at once.\nThe landing image reflects the same sensibility: technology with power, held quietly enough to make room for life.\nTogether, ?뫒?뫅?뫕?뫚???뫇?뫔?? became a name for visual works, unfinished thoughts, and questions that are still taking shape."
+                },
+    "intro":  {
+                  "ko":  "?닿납?먮뒗 洹몃룞???쒓? ?????묒뾽怨??꾨줈?앺듃, 洹몃━怨??욎쑝濡??섏븘媛?湲몄뿉 愿??吏덈Ц?ㅼ씠 ?닿꺼 ?덉뒿?덈떎.",
+                  "en":  "This space holds the works and projects I have built over time, alongside the questions that guide my path forward."
+              },
+    "music":  {
+                  "title":  {
+                                "ko":  "Castle In The Sky",
+                                "en":  "Castle In The Sky"
+                            },
+                  "artist":  {
+                                 "ko":  "Joe Hisaishi / YouTube",
+                                 "en":  "Joe Hisaishi / YouTube"
+                             },
+                  "url":  "https://www.youtube.com/results?search_query=Castle+In+The+Sky+Joe+Hisaishi",
+                  "audioFile":  ""
+              }
 }

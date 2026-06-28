@@ -61,11 +61,12 @@ const homeMusic = getHomeMusic(lang);
           class="home-media-meta-row home-music-row"
           data-home-music
           data-youtube-url={homeMusic.url}
+          data-audio-file={homeMusic.audioFile}
           data-title={homeMusic.title}
         >
           <span class="home-music-mark" aria-label="Music">
             <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M15.5 3.5v11.2a3.2 3.2 0 1 1-1.5-2.7V6.4l6-1.4v8.2a3.2 3.2 0 1 1-1.5-2.7V3l-3 .5Z" />
+              <path d="M12 3.25A8.25 8.25 0 0 0 3.75 11.5v3.35A2.65 2.65 0 0 0 6.4 17.5h1.25V11H6.4c-.38 0-.74.08-1.07.22A6.68 6.68 0 0 1 12 4.75a6.68 6.68 0 0 1 6.67 6.47 2.65 2.65 0 0 0-1.07-.22h-1.25v6.5h1.25a2.65 2.65 0 0 0 2.65-2.65V11.5A8.25 8.25 0 0 0 12 3.25Zm-5.6 9.25h-.02a1.15 1.15 0 0 0-1.13 1.15v1.2A1.15 1.15 0 0 0 6.4 16h.75v-3.5H6.4Zm10.45 3.5h.75a1.15 1.15 0 0 0 1.15-1.15v-1.2a1.15 1.15 0 0 0-1.13-1.15h-.77V16Z" />
             </svg>
           </span>
           <div class="home-music-panel">
@@ -513,16 +514,33 @@ const homeMusic = getHomeMusic(lang);
       if (!(button instanceof HTMLButtonElement) || !(frame instanceof HTMLElement)) return;
 
       button.addEventListener("click", () => {
+        const audioFile = root.dataset.audioFile || "";
         const embedUrl = getYouTubeEmbedUrl(root.dataset.youtubeUrl || "");
-        if (!embedUrl) return;
 
-        if (!frame.querySelector("iframe")) {
-          const iframe = document.createElement("iframe");
-          iframe.src = embedUrl;
-          iframe.title = root.dataset.title || "YouTube music player";
-          iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-          iframe.allowFullscreen = true;
-          frame.appendChild(iframe);
+        if (audioFile) {
+          if (!frame.querySelector("audio")) {
+            frame.textContent = "";
+            frame.classList.add("is-audio");
+            const audio = document.createElement("audio");
+            audio.src = audioFile;
+            audio.controls = true;
+            audio.autoplay = true;
+            audio.preload = "metadata";
+            frame.appendChild(audio);
+          }
+        } else {
+          if (!embedUrl) return;
+
+          if (!frame.querySelector("iframe")) {
+            frame.textContent = "";
+            frame.classList.remove("is-audio");
+            const iframe = document.createElement("iframe");
+            iframe.src = embedUrl;
+            iframe.title = root.dataset.title || "YouTube music player";
+            iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+            iframe.allowFullscreen = true;
+            frame.appendChild(iframe);
+          }
         }
 
         frame.hidden = false;
