@@ -4,6 +4,7 @@ import { getHomeCaption, getHomeGreeting, getHomeIntro } from "../data/home";
 
 const contactEmail = "mapsycoy@gmail.com";
 const homeGreeting = getHomeGreeting();
+const homeGreetingLines = homeGreeting.split(/\r?\n/).filter(Boolean);
 const homeCaption = getHomeCaption();
 const homeIntro = getHomeIntro();
 const homeInstrumentSrc = "/landing/home-instrument.gif";
@@ -16,7 +17,9 @@ const homeInstrumentHalftoneLargeSrc = "/landing/home-instrument-halftone-large.
     <div class="home-kicker">Greeting</div>
 
     <div class="home-copy">
-      <h1 class="title">{homeGreeting}</h1>
+      <h1 class="title">
+        {homeGreetingLines.map((line) => <span>{line}</span>)}
+      </h1>
     </div>
 
     <p class="lede">{homeIntro}</p>

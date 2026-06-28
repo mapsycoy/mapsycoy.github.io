@@ -205,6 +205,10 @@ main {
   margin: 0;
 }
 
+.home-copy h1 span {
+  display: block;
+}
+
 .home-media {
   grid-area: media;
   display: grid;
