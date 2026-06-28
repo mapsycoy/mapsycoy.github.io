@@ -573,7 +573,7 @@ collections:
                     required: false
               - label: Photo
                 name: photo
-                widget: string
+                widget: image
                 required: false
           - label: Education
             name: education
@@ -660,7 +660,7 @@ collections:
                 fields:
                   - label: Source
                     name: src
-                    widget: string
+                    widget: image
                   - label: Alt
                     name: alt
                     widget: object
@@ -761,7 +761,7 @@ collections:
                     required: false
               - label: Logo
                 name: logo
-                widget: string
+                widget: image
                 required: false
               - label: Description
                 name: description
@@ -853,7 +853,7 @@ collections:
                       - link
                   - label: Source
                     name: src
-                    widget: string
+                    widget: image
                     required: false
                   - label: URL
                     name: href
@@ -948,7 +948,7 @@ collections:
                       - link
                   - label: Source
                     name: src
-                    widget: string
+                    widget: image
                     required: false
                   - label: URL
                     name: href
