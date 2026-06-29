@@ -478,6 +478,70 @@ main {
 .home-music-row.is-unavailable .home-music-time {
   opacity: 0.58;
 }
+
+.site-music-float {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  z-index: 40;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid var(--text);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--bg) 94%, transparent);
+  color: var(--text);
+  box-shadow: 0 10px 26px rgba(23, 23, 23, 0.12);
+  cursor: pointer;
+}
+
+.site-music-float[hidden] {
+  display: none;
+}
+
+.site-music-float:hover,
+.site-music-float:focus-visible,
+.site-music-float.is-playing {
+  color: var(--accent);
+}
+
+.site-music-float:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+.site-music-float-icon {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+}
+
+.site-music-float svg {
+  grid-area: 1 / 1;
+  width: 18px;
+  height: 18px;
+  fill: currentColor;
+}
+
+.site-music-float-play {
+  display: block;
+}
+
+.site-music-float-pause {
+  display: none;
+}
+
+.site-music-float.is-playing .site-music-float-play {
+  display: none;
+}
+
+.site-music-float.is-playing .site-music-float-pause {
+  display: block;
+}
 .home-media-meta-icon {
   display: inline-flex;
   width: 14px;

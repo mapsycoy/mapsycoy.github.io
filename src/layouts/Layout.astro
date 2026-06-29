@@ -75,7 +75,24 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
       <main>
         <slot />
       </main>
-
+      <button
+        class="site-music-float"
+        type="button"
+        aria-pressed="false"
+        aria-label="Play music"
+        data-site-music-control
+        hidden
+      >
+        <span class="site-music-float-icon" aria-hidden="true">
+          <svg class="site-music-float-play" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+          </svg>
+          <svg class="site-music-float-pause" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 5.5h3.5v13H7v-13Zm6.5 0H17v13h-3.5v-13Z" />
+          </svg>
+        </span>
+        <span class="sr-only" data-site-music-label>Music</span>
+      </button>
       <footer class="site-footer">
         <p>&copy; Kim Junyeop. All rights reserved.</p>
         <div class="footer-social-links">
@@ -111,6 +128,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         const audio = new Audio();
         audio.preload = "metadata";
         let controls = [];
+        let floatingControl = null;
 
         const readState = () => {
           try {
@@ -121,11 +139,13 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         };
 
         const writeState = () => {
+          const activeControl = controls.find(({ root }) => root.dataset.title);
           try {
             window.localStorage.setItem(storageKey, JSON.stringify({
               src: audio.currentSrc || audio.src,
               currentTime: audio.currentTime || 0,
-              wasPlaying: !audio.paused && !audio.ended
+              wasPlaying: !audio.paused && !audio.ended,
+              title: activeControl?.root.dataset.title || readState().title || ""
             }));
           } catch {
             // Storage can be unavailable in private browsing modes.
@@ -149,14 +169,27 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
           const duration = audio.duration || 0;
           const currentTime = audio.currentTime || 0;
           const isPlaying = !audio.paused && !audio.ended;
+          const state = readState();
+          const hasMusic = Boolean(audio.currentSrc || audio.src || state.src);
+          const isHomePage = Boolean(document.querySelector("[data-home-music]"));
 
           controls.forEach(({ root, button, progress, time }) => {
-            progress.value = duration ? String((currentTime / duration) * 100) : "0";
-            time.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
+            if (progress) progress.value = duration ? String((currentTime / duration) * 100) : "0";
+            if (time) time.textContent = `${formatTime(currentTime)} / ${formatTime(duration)}`;
             root.classList.toggle("is-playing", isPlaying);
             button.setAttribute("aria-pressed", String(isPlaying));
             button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${root.dataset.title || "music"}`);
           });
+
+          if (floatingControl) {
+            const { button, label } = floatingControl;
+            const title = controls.find(({ root }) => root.dataset.title)?.root.dataset.title || state.title || "music";
+            button.hidden = isHomePage || !hasMusic;
+            button.classList.toggle("is-playing", isPlaying);
+            button.setAttribute("aria-pressed", String(isPlaying));
+            button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${title}`);
+            if (label) label.textContent = title;
+          }
         };
 
         const setSource = (src) => {
@@ -168,6 +201,33 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
 
         const bind = () => {
           controls = [];
+          const floatingButton = document.querySelector("[data-site-music-control]");
+          if (floatingButton instanceof HTMLButtonElement) {
+            floatingControl = {
+              button: floatingButton,
+              label: floatingButton.querySelector("[data-site-music-label]")
+            };
+
+            if (floatingButton.dataset.musicBound !== "true") {
+              floatingButton.dataset.musicBound = "true";
+              floatingButton.addEventListener("click", async () => {
+                const state = readState();
+                if (!audio.src && state.src) setSource(state.src);
+                if (!audio.src) return;
+
+                if (audio.paused || audio.ended) {
+                  try {
+                    await audio.play();
+                  } catch {
+                    updateControls();
+                  }
+                  return;
+                }
+
+                audio.pause();
+              });
+            }
+          }
 
           document.querySelectorAll("[data-home-music]").forEach((root) => {
             if (!(root instanceof HTMLElement)) return;
@@ -225,6 +285,16 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
               updateControls();
               writeState();
             });
+          });
+
+          document.querySelectorAll(".work-video-embed").forEach((videoEmbed) => {
+            if (!(videoEmbed instanceof HTMLElement) || videoEmbed.dataset.musicPauseBound === "true") return;
+            videoEmbed.dataset.musicPauseBound = "true";
+            const pauseMusic = () => {
+              if (!audio.paused && !audio.ended) audio.pause();
+            };
+            videoEmbed.addEventListener("pointerdown", pauseMusic, { passive: true });
+            videoEmbed.addEventListener("focusin", pauseMusic);
           });
 
           updateControls();
