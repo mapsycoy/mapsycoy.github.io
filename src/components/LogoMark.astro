@@ -267,91 +267,100 @@ const { class: className = "" } = Astro.props;
   const RESTORE_DURATION = 760;
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  document.querySelectorAll("[data-logo-mark]").forEach((logo) => {
-    const svg = logo.querySelector("svg");
-    if (!(svg instanceof SVGSVGElement)) return;
+  const initializeLogoMarks = () => {
+    document.querySelectorAll("[data-logo-mark]").forEach((logo) => {
+      if (!(logo instanceof HTMLElement) || logo.dataset.logoMarkInitialized === "true") return;
 
-    let frame = 0;
-    let currentRestState = "latin";
+      const svg = logo.querySelector("svg");
+      if (!(svg instanceof SVGSVGElement)) return;
 
-    const stopScrub = () => {
-      if (frame) {
-        cancelAnimationFrame(frame);
-        frame = 0;
+      logo.dataset.logoMarkInitialized = "true";
+
+      let frame = 0;
+      let currentRestState = "latin";
+
+      const stopScrub = () => {
+        if (frame) {
+          cancelAnimationFrame(frame);
+          frame = 0;
+        }
+      };
+
+      const setTimeline = (time) => {
+        svg.setCurrentTime(Math.max(HANGUL_TIME, Math.min(LATIN_TIME, time)));
+      };
+
+      const scrubTo = (target, duration, onComplete) => {
+        stopScrub();
+        svg.pauseAnimations();
+
+        const start = svg.getCurrentTime();
+        const change = target - start;
+        const startedAt = performance.now();
+
+        const step = (now) => {
+          const progress = Math.min((now - startedAt) / duration, 1);
+          const eased = 1 - Math.pow(1 - progress, 3);
+          setTimeline(start + change * eased);
+
+          if (progress < 1) {
+            frame = requestAnimationFrame(step);
+            return;
+          }
+
+          frame = 0;
+          onComplete?.();
+        };
+
+        frame = requestAnimationFrame(step);
+      };
+
+      const showCompleted = () => {
+        stopScrub();
+        svg.pauseAnimations();
+        svg.setCurrentTime(INTRO_END);
+      };
+
+      if (reducedMotion.matches) {
+        showCompleted();
+        return;
       }
-    };
 
-    const setTimeline = (time) => {
-      svg.setCurrentTime(Math.max(HANGUL_TIME, Math.min(LATIN_TIME, time)));
-    };
-
-    const scrubTo = (target, duration, onComplete) => {
-      stopScrub();
-      svg.pauseAnimations();
-
-      const start = svg.getCurrentTime();
-      const change = target - start;
-      const startedAt = performance.now();
-
-      const step = (now) => {
-        const progress = Math.min((now - startedAt) / duration, 1);
-        const eased = 1 - Math.pow(1 - progress, 3);
-        setTimeline(start + change * eased);
-
-        if (progress < 1) {
-          frame = requestAnimationFrame(step);
+      logo.addEventListener("pointerenter", () => {
+        if (reducedMotion.matches) {
+          showCompleted();
           return;
         }
 
-        frame = 0;
-        onComplete?.();
-      };
+        scrubTo(DECOMPOSED_HOLD, REVERSE_DURATION);
+      });
 
-      frame = requestAnimationFrame(step);
-    };
+      logo.addEventListener("pointerleave", () => {
+        if (reducedMotion.matches) {
+          showCompleted();
+          return;
+        }
 
-    const showCompleted = () => {
-      stopScrub();
-      svg.pauseAnimations();
-      svg.setCurrentTime(INTRO_END);
-    };
+        const nextRestState = currentRestState === "latin" ? "hangul" : "latin";
+        const nextTime = nextRestState === "hangul" ? HANGUL_TIME : LATIN_TIME;
 
-    if (reducedMotion.matches) {
-      showCompleted();
-      return;
-    }
+        scrubTo(nextTime, RESTORE_DURATION, () => {
+          currentRestState = nextRestState;
+        });
+      });
 
-    logo.addEventListener("pointerenter", () => {
-      if (reducedMotion.matches) {
-        showCompleted();
-        return;
+      if ("addEventListener" in reducedMotion) {
+        reducedMotion.addEventListener("change", (event) => {
+          if (event.matches) showCompleted();
+        });
+      } else {
+        reducedMotion.addListener((event) => {
+          if (event.matches) showCompleted();
+        });
       }
-
-      scrubTo(DECOMPOSED_HOLD, REVERSE_DURATION);
     });
+  };
 
-    logo.addEventListener("pointerleave", () => {
-      if (reducedMotion.matches) {
-        showCompleted();
-        return;
-      }
-
-      const nextRestState = currentRestState === "latin" ? "hangul" : "latin";
-      const nextTime = nextRestState === "hangul" ? HANGUL_TIME : LATIN_TIME;
-
-      scrubTo(nextTime, RESTORE_DURATION, () => {
-        currentRestState = nextRestState;
-      });
-    });
-
-    if ("addEventListener" in reducedMotion) {
-      reducedMotion.addEventListener("change", (event) => {
-        if (event.matches) showCompleted();
-      });
-    } else {
-      reducedMotion.addListener((event) => {
-        if (event.matches) showCompleted();
-      });
-    }
-  });
+  initializeLogoMarks();
+  document.addEventListener("astro:page-load", initializeLogoMarks);
 </script>
