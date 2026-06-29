@@ -97,7 +97,8 @@ const workSections = [
     const workCards = Array.from(document.querySelectorAll("[data-work-card]"));
     const workSections = Array.from(document.querySelectorAll("[data-work-section]"));
 
-    if (filterRoot instanceof HTMLElement) {
+    if (filterRoot instanceof HTMLElement && filterRoot.dataset.filterBound !== "true") {
+      filterRoot.dataset.filterBound = "true";
       const buttons = Array.from(filterRoot.querySelectorAll("[data-filter]"));
       const toggleButton = filterRoot.querySelector("[data-filter-toggle]");
 

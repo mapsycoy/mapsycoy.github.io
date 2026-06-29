@@ -405,6 +405,151 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
       } else {
         window.__mapsycoyMusicSystem.bind();
       }
+      const initializeWorksFilters = () => {
+        document.querySelectorAll("[data-works-filter]").forEach((filterRoot) => {
+          if (!(filterRoot instanceof HTMLElement) || filterRoot.dataset.filterBound === "true") return;
+          filterRoot.dataset.filterBound = "true";
+
+          const buttons = Array.from(filterRoot.querySelectorAll("[data-filter]"));
+          const toggleButton = filterRoot.querySelector("[data-filter-toggle]");
+          const workCards = Array.from(document.querySelectorAll("[data-work-card]"));
+          const workSections = Array.from(document.querySelectorAll("[data-work-section]"));
+
+          const applyFilter = (activeButton) => {
+            const filter = activeButton.dataset.filter ?? "all";
+
+            buttons.forEach((button) => {
+              const isActive = button === activeButton;
+              button.classList.toggle("is-active", isActive);
+              button.setAttribute("aria-pressed", isActive ? "true" : "false");
+            });
+
+            workCards.forEach((card) => {
+              if (!(card instanceof HTMLElement)) return;
+              const tags = card.dataset.tags ?? "";
+              const shouldShow = filter === "all" || tags.split(" ").includes(filter);
+              card.hidden = !shouldShow;
+            });
+
+            workSections.forEach((section) => {
+              if (!(section instanceof HTMLElement)) return;
+              const cards = Array.from(section.querySelectorAll("[data-work-card]"));
+              const hasVisibleCard = cards.some((card) => card instanceof HTMLElement && !card.hidden);
+              section.hidden = !hasVisibleCard;
+            });
+          };
+
+          buttons.forEach((button) => {
+            button.addEventListener("click", () => applyFilter(button));
+          });
+
+          if (toggleButton instanceof HTMLButtonElement) {
+            toggleButton.addEventListener("click", () => {
+              const willExpand = !filterRoot.classList.contains("is-expanded");
+              filterRoot.classList.toggle("is-expanded", willExpand);
+              toggleButton.textContent = willExpand ? "\u00d7" : "\u00b7\u00b7\u00b7";
+              toggleButton.setAttribute("aria-expanded", willExpand ? "true" : "false");
+              toggleButton.setAttribute("aria-label", willExpand ? "Show fewer categories" : "Show more categories");
+
+              if (!willExpand) {
+                const allButton = buttons.find((button) => button.dataset.filter === "all");
+                if (allButton instanceof HTMLButtonElement) applyFilter(allButton);
+              }
+            });
+          }
+        });
+      };
+
+      const initializeBlogFilters = () => {
+        document.querySelectorAll("[data-blog-filter]").forEach((filterRoot) => {
+          if (!(filterRoot instanceof HTMLElement) || filterRoot.dataset.filterBound === "true") return;
+          filterRoot.dataset.filterBound = "true";
+
+          const entries = Array.from(document.querySelectorAll("[data-blog-entry]"));
+          const pagination = document.querySelector("[data-blog-pagination]");
+          const pageSize = pagination instanceof HTMLElement ? Number(pagination.dataset.pageSize ?? "8") : 8;
+          const pageNumbers = pagination?.querySelector("[data-page-numbers]");
+          let currentFilter = "all";
+          let currentPage = 1;
+
+          const getFilteredEntries = () => entries.filter((entry) => {
+            if (!(entry instanceof HTMLElement)) return false;
+            const tags = entry.dataset.tags ?? "";
+            return currentFilter === "all" || tags.split(" ").includes(currentFilter);
+          });
+
+          const renderEntries = () => {
+            const filteredEntries = getFilteredEntries();
+            const pageCount = Math.max(1, Math.ceil(filteredEntries.length / pageSize));
+            currentPage = Math.min(currentPage, pageCount);
+            const startIndex = (currentPage - 1) * pageSize;
+            const visibleEntries = filteredEntries.slice(startIndex, startIndex + pageSize);
+
+            entries.forEach((entry) => {
+              if (!(entry instanceof HTMLElement)) return;
+              entry.classList.remove("is-first-visible", "is-last-visible");
+              entry.hidden = !visibleEntries.includes(entry);
+            });
+
+            visibleEntries[0]?.classList.add("is-first-visible");
+            visibleEntries[visibleEntries.length - 1]?.classList.add("is-last-visible");
+
+            if (pagination instanceof HTMLElement) pagination.hidden = false;
+
+            if (pageNumbers instanceof HTMLElement) {
+              Array.from(pageNumbers.querySelectorAll("[data-page-number]")).forEach((button) => {
+                if (!(button instanceof HTMLButtonElement)) return;
+                const page = Number(button.dataset.pageNumber ?? "1");
+                const isVisiblePage = page <= pageCount;
+                const isActivePage = page === currentPage;
+                button.hidden = !isVisiblePage;
+                button.classList.toggle("is-active", isActivePage);
+                if (isActivePage) {
+                  button.setAttribute("aria-current", "page");
+                } else {
+                  button.removeAttribute("aria-current");
+                }
+              });
+            }
+          };
+
+          const buttons = Array.from(filterRoot.querySelectorAll("[data-filter]"));
+          buttons.forEach((button) => {
+            button.addEventListener("click", () => {
+              currentFilter = button.dataset.filter ?? "all";
+              currentPage = 1;
+
+              buttons.forEach((item) => {
+                const isActive = item === button;
+                item.classList.toggle("is-active", isActive);
+                item.setAttribute("aria-pressed", isActive ? "true" : "false");
+              });
+
+              renderEntries();
+            });
+          });
+
+          if (pageNumbers instanceof HTMLElement) {
+            pageNumbers.addEventListener("click", (event) => {
+              const target = event.target;
+              if (!(target instanceof HTMLButtonElement)) return;
+              currentPage = Number(target.dataset.pageNumber ?? "1");
+              renderEntries();
+            });
+          }
+
+          renderEntries();
+        });
+      };
+
+      const initializePageInteractions = () => {
+        initializeWorksFilters();
+        initializeBlogFilters();
+      };
+
+      document.addEventListener("astro:page-load", initializePageInteractions);
+      document.addEventListener("DOMContentLoaded", initializePageInteractions);
+      initializePageInteractions();
       const protectImages = () => {
         document.querySelectorAll("img").forEach((image) => {
           image.setAttribute("draggable", "false");

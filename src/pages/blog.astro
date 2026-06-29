@@ -130,7 +130,8 @@ const posts = await getBlogPosts();
       }
     };
 
-    if (filterRoot instanceof HTMLElement) {
+    if (filterRoot instanceof HTMLElement && filterRoot.dataset.filterBound !== "true") {
+      filterRoot.dataset.filterBound = "true";
       const buttons = Array.from(filterRoot.querySelectorAll("[data-filter]"));
 
       const applyFilter = (activeButton) => {
