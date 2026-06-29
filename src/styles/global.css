@@ -2780,6 +2780,10 @@ html[lang="ko"] .cv-page {
     display: none;
   }
 
+  .home-contact {
+    display: none;
+  }
+
   .home-instrument {
     width: 100%;
     height: auto;
