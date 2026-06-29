@@ -8,7 +8,8 @@ const lang: Language = defaultLanguage;
 const works = await getWorks();
 const getTags = (work: WorkItem) => work.data.tags ?? [];
 const filterTags = ["All", ...new Set(works.flatMap(getTags))];
-const visibleFilterCount = 5;
+const desktopVisibleFilterCount = 5;
+const mobileVisibleFilterCount = 4;
 const getTagText = (work: WorkItem) => getTags(work).map(normalizeFilter).join(" ");
 const workSections = [
   {
@@ -29,7 +30,8 @@ const workSections = [
         class:list={[
           "work-filter-button",
           tag === "All" && "is-active",
-          index >= visibleFilterCount && "is-extra"
+          index >= desktopVisibleFilterCount && "is-extra",
+          index >= mobileVisibleFilterCount && "is-mobile-extra"
         ]}
         type="button"
         data-filter={normalizeFilter(tag)}
@@ -38,7 +40,7 @@ const workSections = [
         {tag}
       </button>
     ))}
-    {filterTags.length > visibleFilterCount && (
+    {filterTags.length > mobileVisibleFilterCount && (
       <button
         class="works-filter-toggle"
         type="button"

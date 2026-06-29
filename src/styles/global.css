@@ -2949,6 +2949,10 @@ html[lang="ko"] .cv-page {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .works-filter:not(.is-expanded) .work-filter-button.is-mobile-extra {
+    display: none;
+  }
+
   .work-card-body {
     padding: 12px;
   }
