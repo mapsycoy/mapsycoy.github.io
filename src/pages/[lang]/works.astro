@@ -96,6 +96,7 @@ const workSections = [
   </div>
 
   <script is:inline>
+    (() => {
     const filterRoot = document.querySelector("[data-works-filter]");
     const workCards = Array.from(document.querySelectorAll("[data-work-card]"));
     const workSections = Array.from(document.querySelectorAll("[data-work-section]"));
@@ -156,5 +157,6 @@ const workSections = [
         });
       }
     }
+    })();
   </script>
 </Layout>

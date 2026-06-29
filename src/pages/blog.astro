@@ -73,6 +73,7 @@ const posts = await getBlogPosts();
   </nav>
 
   <script is:inline>
+    (() => {
     const filterRoot = document.querySelector("[data-blog-filter]");
     const entries = Array.from(document.querySelectorAll("[data-blog-entry]"));
     const pagination = document.querySelector("[data-blog-pagination]");
@@ -161,5 +162,6 @@ const posts = await getBlogPosts();
     }
 
     renderEntries();
+    })();
   </script>
 </Layout>
