@@ -2772,6 +2772,14 @@ html[lang="ko"] .cv-page {
     border-left: 0;
   }
 
+  .home-media-meta {
+    grid-template-rows: 46px auto;
+  }
+
+  .home-location-row {
+    display: none;
+  }
+
   .home-instrument {
     width: 100%;
     height: auto;
