@@ -75,24 +75,35 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
       <main>
         <slot />
       </main>
-      <button
-        class="site-music-float"
-        type="button"
-        aria-pressed="false"
-        aria-label="Play music"
-        data-site-music-control
-        hidden
-      >
-        <span class="site-music-float-icon" aria-hidden="true">
-          <svg class="site-music-float-play" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+      <div class="site-music-float" data-site-music-float hidden>
+        <button
+          class="site-music-float-toggle"
+          type="button"
+          aria-pressed="false"
+          aria-label="Play music"
+          data-site-music-control
+        >
+          <span class="site-music-float-icon" aria-hidden="true">
+            <svg class="site-music-float-play" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5.5v13l11-6.5-11-6.5Z" />
+            </svg>
+            <svg class="site-music-float-pause" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M7 5.5h3.5v13H7v-13Zm6.5 0H17v13h-3.5v-13Z" />
+            </svg>
+          </span>
+          <span class="sr-only" data-site-music-label>Music</span>
+        </button>
+        <button
+          class="site-music-float-dismiss"
+          type="button"
+          aria-label="Hide music control"
+          data-site-music-dismiss
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="m6.7 5.65 5.3 5.3 5.3-5.3 1.05 1.05-5.3 5.3 5.3 5.3-1.05 1.05-5.3-5.3-5.3 5.3-1.05-1.05 5.3-5.3-5.3-5.3 1.05-1.05Z" />
           </svg>
-          <svg class="site-music-float-pause" viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M7 5.5h3.5v13H7v-13Zm6.5 0H17v13h-3.5v-13Z" />
-          </svg>
-        </span>
-        <span class="sr-only" data-site-music-label>Music</span>
-      </button>
+        </button>
+      </div>
       <footer class="site-footer">
         <p>&copy; Kim Junyeop. All rights reserved.</p>
         <div class="footer-social-links">
@@ -125,6 +136,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     <script is:inline>
       const createMusicSystem = () => {
         const storageKey = "mapsycoy:music";
+        const floatHiddenKey = "mapsycoy:music-float-hidden";
         const audio = new Audio();
         audio.preload = "metadata";
         let controls = [];
@@ -165,6 +177,38 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
           return new URL(src, window.location.href).href;
         };
 
+        const isFloatingHidden = () => {
+          try {
+            return window.localStorage.getItem(floatHiddenKey) === "true";
+          } catch {
+            return false;
+          }
+        };
+
+        const showFloatingControl = () => {
+          try {
+            window.localStorage.removeItem(floatHiddenKey);
+          } catch {
+            // Storage can be unavailable in private browsing modes.
+          }
+        };
+
+        const updateFloatingPosition = () => {
+          if (!floatingControl?.root) return;
+          const footer = document.querySelector(".site-footer");
+          const baseOffset = 18;
+          let bottomOffset = baseOffset;
+
+          if (footer instanceof HTMLElement) {
+            const footerRect = footer.getBoundingClientRect();
+            if (footerRect.top < window.innerHeight) {
+              bottomOffset = Math.max(baseOffset, window.innerHeight - footerRect.top + baseOffset);
+            }
+          }
+
+          floatingControl.root.style.setProperty("--site-music-float-bottom", `${Math.round(bottomOffset)}px`);
+        };
+
         const updateControls = () => {
           const duration = audio.duration || 0;
           const currentTime = audio.currentTime || 0;
@@ -182,13 +226,14 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
           });
 
           if (floatingControl) {
-            const { button, label } = floatingControl;
+            const { root, button, label } = floatingControl;
             const title = controls.find(({ root }) => root.dataset.title)?.root.dataset.title || state.title || "music";
-            button.hidden = isHomePage || !hasMusic;
-            button.classList.toggle("is-playing", isPlaying);
+            root.hidden = isHomePage || !hasMusic || isFloatingHidden();
+            root.classList.toggle("is-playing", isPlaying);
             button.setAttribute("aria-pressed", String(isPlaying));
             button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${title}`);
             if (label) label.textContent = title;
+            updateFloatingPosition();
           }
         };
 
@@ -201,10 +246,14 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
 
         const bind = () => {
           controls = [];
+          const floatingRoot = document.querySelector("[data-site-music-float]");
           const floatingButton = document.querySelector("[data-site-music-control]");
-          if (floatingButton instanceof HTMLButtonElement) {
+          const floatingDismiss = document.querySelector("[data-site-music-dismiss]");
+          if (floatingRoot instanceof HTMLElement && floatingButton instanceof HTMLButtonElement) {
             floatingControl = {
+              root: floatingRoot,
               button: floatingButton,
+              dismiss: floatingDismiss instanceof HTMLButtonElement ? floatingDismiss : null,
               label: floatingButton.querySelector("[data-site-music-label]")
             };
 
@@ -216,6 +265,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
                 if (!audio.src) return;
 
                 if (audio.paused || audio.ended) {
+                  showFloatingControl();
                   try {
                     await audio.play();
                   } catch {
@@ -225,6 +275,19 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
                 }
 
                 audio.pause();
+              });
+            }
+
+            if (floatingControl.dismiss && floatingControl.dismiss.dataset.musicBound !== "true") {
+              floatingControl.dismiss.dataset.musicBound = "true";
+              floatingControl.dismiss.addEventListener("click", () => {
+                audio.pause();
+                try {
+                  window.localStorage.setItem(floatHiddenKey, "true");
+                } catch {
+                  // Storage can be unavailable in private browsing modes.
+                }
+                updateControls();
               });
             }
           }
@@ -265,6 +328,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
 
             button.addEventListener("click", async () => {
               setSource(audioFile);
+              showFloatingControl();
 
               if (audio.paused || audio.ended) {
                 try {
@@ -325,6 +389,8 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         });
 
         window.addEventListener("pagehide", writeState);
+        window.addEventListener("scroll", updateFloatingPosition, { passive: true });
+        window.addEventListener("resize", updateFloatingPosition, { passive: true });
         document.addEventListener("astro:page-load", bind);
         document.addEventListener("DOMContentLoaded", bind);
 
