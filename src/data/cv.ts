@@ -51,6 +51,13 @@ export type CertificateLogoItem = {
   alt: LocalizedText;
 };
 
+export type CertificateCompletionItem = {
+  institution: LocalizedText;
+  period?: LocalizedText;
+  logo?: string;
+  alt?: LocalizedText;
+};
+
 export type ProjectItem = {
   title: LocalizedText;
   period: LocalizedText;
@@ -77,6 +84,7 @@ export const education = cvData.education as EducationItem[];
 export const artsGiftedEducationCertificate = cvData.artsGiftedEducationCertificate as {
   title: LocalizedText;
   logos: CertificateLogoItem[];
+  items?: CertificateCompletionItem[];
 };
 export const experiences = cvData.experiences as ExperienceItem[];
 export const projects = cvData.projects as ProjectItem[];

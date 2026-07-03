@@ -54,7 +54,7 @@
   "artsGiftedEducationCertificate": {
     "title": {
       "ko": "미술영재교육 수료",
-      "en": "Certificate of Completion ─ Art Gifted Education"
+      "en": "Art Gifted Education"
     },
     "logos": [
       {
@@ -75,6 +75,53 @@
         "src": "/cv/logos/SEN.svg",
         "alt": {
           "ko": "",
+          "en": "SMOE"
+        }
+      }
+    ],
+    "items": [
+      {
+        "institution": {
+          "ko": "예술의전당",
+          "en": "Seoul Arts Center"
+        },
+        "period": {
+          "ko": "",
+          "en": ""
+        },
+        "logo": "/cv/logos/SAC.svg",
+        "alt": {
+          "ko": "SAC",
+          "en": "SAC"
+        }
+      },
+      {
+        "institution": {
+          "ko": "서울교육대학교",
+          "en": "Seoul National University of Education"
+        },
+        "period": {
+          "ko": "",
+          "en": ""
+        },
+        "logo": "/cv/logos/snue.webp",
+        "alt": {
+          "ko": "SNUE",
+          "en": "SNUE"
+        }
+      },
+      {
+        "institution": {
+          "ko": "서울특별시교육청",
+          "en": "Seoul Metropolitan Office of Education"
+        },
+        "period": {
+          "ko": "",
+          "en": ""
+        },
+        "logo": "/cv/logos/SEN.svg",
+        "alt": {
+          "ko": "SMOE",
           "en": "SMOE"
         }
       }

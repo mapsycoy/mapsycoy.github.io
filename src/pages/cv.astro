@@ -10,6 +10,12 @@ const projectInitialCount = 4;
 const mediaItems = (items: MediaItem[] | undefined) => items?.filter((item) => item.src || item.href) ?? [];
 const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items).filter((item) => item.src);
 const localizedDescriptionLine = (line: any) => localize(line?.line ?? line, lang);
+const certificateItems = artsGiftedEducationCertificate.items ?? artsGiftedEducationCertificate.logos.map((logo) => ({
+  institution: logo.alt,
+  period: undefined,
+  logo: logo.src,
+  alt: logo.alt,
+}));
 ---
 
 <Layout title="CV" description="Kim Junyeop's curriculum vitae, including education, experience, and selected projects." lang={lang}>
@@ -46,14 +52,20 @@ const localizedDescriptionLine = (line: any) => localize(line?.line ?? line, lan
           <h2 class="cv-profile-education-title">
             <span>{localize(artsGiftedEducationCertificate.title, lang)}</span>
           </h2>
-          <div class="cv-certificate-logos" aria-label={`${localize(artsGiftedEducationCertificate.title, lang)} logos`}>
-            {artsGiftedEducationCertificate.logos.map((logo, index) => (
-              <div class="cv-certificate-logo" aria-label={localize(logo.alt, lang) || `Certificate logo ${index + 1}`}>
-                {logo.src ? (
-                  <img src={logo.src} alt={localize(logo.alt, lang)} loading="lazy" onerror="this.hidden=true" />
-                ) : (
-                  <span>Logo {index + 1}</span>
-                )}
+          <div class="cv-certificate-list" aria-label={`${localize(artsGiftedEducationCertificate.title, lang)} certificates`}>
+            {certificateItems.map((item, index) => (
+              <div class="cv-certificate-entry">
+                <div class="cv-certificate-logo" aria-hidden="true">
+                  {item.logo ? (
+                    <img src={item.logo} alt="" loading="lazy" onerror="this.hidden=true" />
+                  ) : (
+                    <span>Logo {index + 1}</span>
+                  )}
+                </div>
+                <p class="cv-certificate-meta">
+                  <span>{localize(item.institution, lang) || localize(item.alt, lang)}</span>
+                  {item.period && localize(item.period, lang) && <span>{localize(item.period, lang)}</span>}
+                </p>
               </div>
             ))}
           </div>
