@@ -30,9 +30,9 @@ const fallbackHomeGreeting: Record<Language, string> = {
 };
 
 const fallbackHomeMedia: Required<HomeMedia> = {
-  image: "/uploads/landing/home-instrument.gif",
-  halftoneFallback: "/uploads/landing/home-instrument-halftone.gif",
-  halftoneLargeFallback: "/uploads/landing/home-instrument-halftone-large.gif",
+  image: "/uploads/home-instrument.gif",
+  halftoneFallback: "/uploads/home-instrument-halftone.gif",
+  halftoneLargeFallback: "/uploads/home-instrument-halftone-large.gif",
   source: "Castle In The Sky | Studio Ghibli",
   alt: "Animated visual note",
 };

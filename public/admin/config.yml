@@ -27,7 +27,7 @@ site_url: https://mapsycoy.github.io
 display_url: https://mapsycoy.github.io
 logo_url: https://decapbridge.com/decapcms-with-bridge.svg
 logo:
-  src: /uploads/logo/mapsycoy-title.svg
+  src: /uploads/logo-mapsycoy-title.svg
   show_in_header: true
 
 media_folder: public/uploads
@@ -1068,17 +1068,17 @@ collections:
                 name: image
                 widget: image
                 required: false
-                hint: Current default is /uploads/landing/home-instrument.gif. New uploads will be stored in /uploads.
+                hint: Current default is /uploads/home-instrument.gif. New uploads will be stored in /uploads.
               - label: Halftone Fallback GIF
                 name: halftoneFallback
                 widget: string
                 required: false
-                hint: Optional fallback image path. Keep /uploads/landing/home-instrument-halftone.gif for the current GIF.
+                hint: Optional fallback image path. Keep /uploads/home-instrument-halftone.gif for the current GIF.
               - label: Large Halftone Fallback GIF
                 name: halftoneLargeFallback
                 widget: string
                 required: false
-                hint: Optional large fallback image path. Keep /uploads/landing/home-instrument-halftone-large.gif for the current GIF.
+                hint: Optional large fallback image path. Keep /uploads/home-instrument-halftone-large.gif for the current GIF.
               - label: Source Name
                 name: source
                 widget: object
