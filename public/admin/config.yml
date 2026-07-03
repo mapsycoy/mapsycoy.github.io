@@ -674,6 +674,56 @@ collections:
                         name: en
                         widget: string
                         required: false
+              - label: Certificate Items
+                name: items
+                widget: list
+                collapsed: true
+                minimize_collapsed: true
+                summary: "{{fields.institution.en}} {{fields.period.en}}"
+                fields:
+                  - label: Institution
+                    name: institution
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
+                  - label: Period
+                    name: period
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
+                  - label: Logo
+                    name: logo
+                    widget: image
+                    required: false
+                  - label: Alt
+                    name: alt
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
           - label: Experiences
             name: experiences
             widget: list
