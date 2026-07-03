@@ -2512,7 +2512,7 @@ html[lang="ko"] .cv-page {
 
 .cv-entry-team::before {
   content: "/";
-  margin: 0 10px;
+  margin: 0 5px;
 }
 
 .cv-entry-meta,
