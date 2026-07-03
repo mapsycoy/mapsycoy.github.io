@@ -210,33 +210,4 @@ const certificateItems = artsGiftedEducationCertificate.items ?? artsGiftedEduca
     </section>
   </div>
 
-  <script is:inline>
-    document.querySelectorAll("[data-cv-section]").forEach((section) => {
-      if (!(section instanceof HTMLElement)) return;
-
-      const toggle = section.querySelector("[data-cv-toggle]");
-      if (!(toggle instanceof HTMLButtonElement)) return;
-
-      const items = Array.from(section.querySelectorAll("[data-cv-item]"));
-      const initialCount = Number(toggle.dataset.initialCount ?? items.length);
-      const totalCount = Number(toggle.dataset.totalCount ?? items.length);
-      const label = toggle.dataset.label ?? "items";
-
-      const setExpanded = (isExpanded) => {
-        items.forEach((item, index) => {
-          if (!(item instanceof HTMLElement)) return;
-          item.hidden = !isExpanded && index >= initialCount;
-        });
-
-        toggle.setAttribute("aria-expanded", isExpanded ? "true" : "false");
-        toggle.textContent = isExpanded
-          ? "Show fewer"
-          : `Show all ${totalCount} ${label}`;
-      };
-
-      toggle.addEventListener("click", () => {
-        setExpanded(toggle.getAttribute("aria-expanded") !== "true");
-      });
-    });
-  </script>
 </Layout>
