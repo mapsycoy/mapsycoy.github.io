@@ -15,8 +15,8 @@ const SCREENTONE = {
   ink: { r: 23, g: 23, b: 23, a: 255 }
 };
 
-const sourcePath = "public/landing/home-instrument.gif";
-const outputDir = "public/landing";
+const sourcePath = "public/uploads/landing/home-instrument.gif";
+const outputDir = "public/uploads/landing";
 const targets = [
   {
     width: 390,

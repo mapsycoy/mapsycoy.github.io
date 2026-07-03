@@ -1,8 +1,8 @@
 {
   "media": {
-    "image": "/landing/home-instrument.gif",
-    "halftoneFallback": "/landing/home-instrument-halftone.gif",
-    "halftoneLargeFallback": "/landing/home-instrument-halftone-large.gif",
+    "image": "/uploads/landing/home-instrument.gif",
+    "halftoneFallback": "/uploads/landing/home-instrument-halftone.gif",
+    "halftoneLargeFallback": "/uploads/landing/home-instrument-halftone-large.gif",
     "source": {
       "ko": "천공의 성 라퓨타 | 스튜디오 지브리",
       "en": "Castle In The Sky | Studio Ghibli"
