@@ -2313,24 +2313,19 @@ html[lang="ko"] .cv-page {
 }
 
 .cv-certificate-meta {
-  display: inline-flex;
-  flex-wrap: wrap;
-  gap: 0 6px;
+  display: grid;
+  gap: 1px;
   margin: 0;
   color: var(--muted);
-  font-size: 0.64rem;
-  font-weight: 550;
-  line-height: 1.18;
+  font-size: 0.62rem;
+  font-weight: 500;
+  line-height: 1.16;
 }
 
 .cv-certificate-meta span:first-child {
   color: var(--text);
-}
-
-.cv-certificate-meta span + span::before {
-  color: var(--muted);
-  content: "/";
-  margin-right: 6px;
+  font-size: 0.64rem;
+  font-weight: 550;
 }
 .cv-certificate-logos {
   display: flex;
