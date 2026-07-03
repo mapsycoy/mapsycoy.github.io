@@ -17,6 +17,9 @@ type HomeMusic = {
 };
 
 type HomeData = {
+  site?: {
+    previewImage?: string;
+  };
   media?: HomeMedia;
   music?: HomeMusic;
   greeting?: LocalizedText;
@@ -50,6 +53,8 @@ const fallbackHomeIntro: Record<Language, string> = {
 };
 
 const home = homeData as HomeData;
+
+export const getSitePreviewImage = () => home.site?.previewImage || "/uploads/og-site-preview.webp";
 
 export const getHomeGreeting = (lang: Language = defaultLanguage) =>
   localize(home.greeting, lang) || fallbackHomeGreeting[lang] || fallbackHomeGreeting[defaultLanguage];

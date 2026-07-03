@@ -1059,6 +1059,16 @@ collections:
         file: src/data/home.json
         format: json
         fields:
+          - label: Site Metadata
+            name: site
+            widget: object
+            required: false
+            fields:
+              - label: OG / Social Preview Image
+                name: previewImage
+                widget: image
+                required: false
+                hint: Use a 1200x630 image. Upload with an og- prefix, for example /uploads/og-site-preview-202607.webp.
           - label: Landing Media
             name: media
             widget: object

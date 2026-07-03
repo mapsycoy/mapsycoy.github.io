@@ -1,4 +1,7 @@
 {
+  "site": {
+    "previewImage": "/uploads/og-site-preview.webp"
+  },
   "media": {
     "image": "/uploads/home-instrument.gif",
     "halftoneFallback": "/uploads/home-instrument-halftone.gif",
