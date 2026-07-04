@@ -1,4 +1,4 @@
----
+﻿---
 import Layout from "../../layouts/Layout.astro";
 import { render } from "astro:content";
 import { getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../data/blog";
@@ -73,29 +73,105 @@ const renderMarkdownTable = (lines: string[]) => {
   ].join("");
 };
 
-const renderMarkdownBlock = (value: string) =>
-  value
-    .trim()
-    .split(/\n{2,}/)
-    .map((block) => {
-      const trimmed = block.trim();
-      const lines = trimmed.split("\n").map((line) => line.trim());
-      if (!trimmed) return "";
-      if (lines.length >= 2 && lines[0].includes("|") && isTableSeparator(lines[1])) return renderMarkdownTable(lines);
-      if (/^ {0,3}([-*_])(?:\s*\1){2,}\s*$/.test(trimmed)) return "<hr>";
-      const heading = trimmed.match(/^(#{1,6})\s+(.+)$/);
-      if (heading) return `<h${heading[1].length}>${renderInlineMarkdown(heading[2].trim())}</h${heading[1].length}>`;
-      if (trimmed.split("\n").every((line) => /^>\s?/.test(line.trim()))) {
-        const quote = trimmed
-          .split("\n")
-          .map((line) => line.trim().replace(/^>\s?/, ""))
-          .join("\n");
+const getListItems = (block: string) => {
+  const lines = block.trim().split("\n").map((line) => line.trim()).filter(Boolean);
+  const items = lines.map((line) => {
+    const unordered = line.match(/^[-*+]\s+(.+)$/);
+    const ordered = line.match(/^(\d+)\.\s+(.+)$/);
 
-        return `<blockquote>${renderMarkdownBlock(quote)}</blockquote>`;
-      }
-      return `<p>${renderInlineMarkdown(trimmed).replace(/\n/g, "<br>")}</p>`;
-    })
-    .join("");
+    if (!unordered && !ordered) return null;
+
+    return {
+      type: unordered ? "ul" : "ol",
+      start: ordered ? Number(ordered[1]) : undefined,
+      content: unordered?.[1] ?? ordered?.[2] ?? "",
+    };
+  });
+
+  if (items.length > 0 && items.every(Boolean)) {
+    return items as NonNullable<(typeof items)[number]>[];
+  }
+
+  const firstLine = lines[0] ?? "";
+  const unordered = firstLine.match(/^[-*+]\s+(.+)$/);
+  const ordered = firstLine.match(/^(\d+)\.\s+(.+)$/);
+
+  if (!unordered && !ordered) return [];
+
+  return [{
+    type: unordered ? "ul" : "ol",
+    start: ordered ? Number(ordered[1]) : undefined,
+    content: [unordered?.[1] ?? ordered?.[2] ?? "", ...lines.slice(1)].join("\n").trim(),
+  }];
+};
+
+const renderMarkdownList = (items: ReturnType<typeof getListItems>) => {
+  const type = items[0]?.type ?? "ul";
+  const start = type === "ol" && items[0]?.start && items[0].start !== 1 ? ` start="${items[0].start}"` : "";
+
+  return `<${type}${start}>${items
+    .map((item) => `<li>${renderInlineMarkdown(item.content).replace(/\n/g, "<br>")}</li>`)
+    .join("")}</${type}>`;
+};
+
+const renderMarkdownBlock = (value: string) => {
+  const blocks = value.trim().split(/\n{2,}/);
+  const html: string[] = [];
+  let listItems: ReturnType<typeof getListItems> = [];
+
+  const flushList = () => {
+    if (!listItems.length) return;
+    html.push(renderMarkdownList(listItems));
+    listItems = [];
+  };
+
+  blocks.forEach((block) => {
+    const trimmed = block.trim();
+    const lines = trimmed.split("\n").map((line) => line.trim());
+    if (!trimmed) return;
+
+    const blockListItems = getListItems(trimmed);
+    if (blockListItems.length) {
+      if (listItems.length && listItems[0].type !== blockListItems[0].type) flushList();
+      listItems.push(...blockListItems);
+      return;
+    }
+
+    flushList();
+
+    if (lines.length >= 2 && lines[0].includes("|") && isTableSeparator(lines[1])) {
+      html.push(renderMarkdownTable(lines));
+      return;
+    }
+
+    if (/^ {0,3}([-*_])(?:\s*\1){2,}\s*$/.test(trimmed)) {
+      html.push("<hr>");
+      return;
+    }
+
+    const heading = trimmed.match(/^(#{1,6})\s+(.+)$/);
+    if (heading) {
+      html.push(`<h${heading[1].length}>${renderInlineMarkdown(heading[2].trim())}</h${heading[1].length}>`);
+      return;
+    }
+
+    if (trimmed.split("\n").every((line) => /^>\s?/.test(line.trim()))) {
+      const quote = trimmed
+        .split("\n")
+        .map((line) => line.trim().replace(/^>\s?/, ""))
+        .join("\n");
+
+      html.push(`<blockquote>${renderMarkdownBlock(quote)}</blockquote>`);
+      return;
+    }
+
+    html.push(`<p>${renderInlineMarkdown(trimmed).replace(/\n/g, "<br>")}</p>`);
+  });
+
+  flushList();
+
+  return html.join("");
+};
 
 const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   if (block.type === "text") return renderMarkdownBlock(localize(block.body, lang));
