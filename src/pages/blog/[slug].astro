@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import { render } from "astro:content";
 import { getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../data/blog";
 import { defaultLanguage, localize, type Language } from "../../utils/i18n";
+import { smartenText } from "../../utils/smartTypography.mjs";
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
@@ -24,14 +25,19 @@ const { Content } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
 const contentBlocks = post.data.contentBlocks ?? [];
 const escapeHtml = (value: string) =>
-  value
+  smartenText(value)
     .replaceAll("&", "&amp;")
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
 
-const escapeAttribute = (value: string) => escapeHtml(value).replaceAll("'", "&#39;");
-
+const escapeAttribute = (value: string) =>
+  value
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#39;");
 const renderInlineMarkdown = (value: string) =>
   escapeHtml(value)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
