@@ -29,11 +29,11 @@ contentBlocks:
         그는 아동용 대화형 AI 설계에서 반복적으로 나타나는 세 가지 딜레마를 제시한다. 
 
 
-        * **안전 vs 참여**
+        * 안전 vs 참여
 
-        * **개인화 vs 프라이버시**
+        * 개인화 vs 프라이버시
 
-        * **자율성 vs 보호** 
+        * 자율성 vs 보호 
 
 
         이 세 가지 문제는 하나를 택하면 다른 하나를 버리는 단순한 이분법적 선택지가 아니라, 맥락적 판단과 아이의 발달 단계에 따라 계속 조율해야 하는 문제다.
@@ -221,11 +221,11 @@ contentBlocks:
         She presents three recurring dilemmas in designing conversational AI for children:
 
 
-        * **Safety vs. Engagement**
+        * Safety vs. Engagement
 
-        * **Personalization vs. Privacy**
+        * Personalization vs. Privacy
 
-        * **Autonomy vs. Protection**
+        * Autonomy vs. Protection
 
 
         These three issues are not simple dichotomous choices where choosing one means abandoning the other, but rather issues that require continuous calibration based on contextual judgment and the child's developmental stage.
