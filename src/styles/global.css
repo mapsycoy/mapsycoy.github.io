@@ -1916,6 +1916,12 @@ h3 {
   color: var(--accent);
 }
 
+.blog-entry h2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .blog-entry-copy {
   min-width: 0;
 }
