@@ -1,0 +1,159 @@
+---
+title:
+  ko: 스토리형 게임이 주는 신기함
+publishedAt: 2026-07-05
+status: draft
+pinned: false
+tag: Essay
+contentBlocks:
+  - type: text
+    body:
+      ko: >-
+        흔히 명작, 갓겜이라 불리는 게임 중 스토리 서사가 메인이 되는 게임들이 있다. 
+
+
+        생각해보면 이런 게임은 정해진 스토리 속에 플레이어가 들어가서 그 흐름대로 움직이는 구조다. 우리가 직접 마우스와 키보드로 컨트롤하고 있지만 정해진 서사에서 벗어날 수는 없고, 엔딩 또한 정해져 있다.
+
+
+        그렇다면 플레이어는 수동적인 위치에 있는 것처럼 보이는데, 이상하게도 이런 게임일수록 몰입은 더 깊어지고 엔딩에서는 유독 강한 전율과 여운이 남는다.  
+
+
+        결과가 이미 정해진 이야기인데 왜 플레이어는 그 결말 앞에서 그렇게까지 벅차오르는 것일까?
+
+
+
+
+        ---
+
+
+
+
+        [「Cybertext: Perspectives on Ergodic Literature」(1997)](https://archive.org/details/cybertextperspec0000aars)
+
+
+        Espen Aarseth의 「Cybertext: Perspectives on Ergodic Literature」(1997) 속 "non-trivial effort" 개념을 게임 경험에 적용해보면, 영화와 스토리형 게임의 차이는 단순히 결말이 달라지느냐가 아니라, 그 결말에 도달하기 위해 플레이어가 비자명한 노력을 투입하느냐에 있다.
+
+
+        흔히 말하는 스토리형 게임에서 엔딩은 하나지만, 거기 도달하는 '과정의 궤적'은 전적으로 플레이어의 것이다. 몇 번을 죽었고, 어떤 전략으로 진행했는지—이것은 서사가 바뀌는 게 아니라 수행이 유일무이하다는 뜻이며, 이것이 영화와 본질적으로 다른 지점이다.
+
+
+        그런데 Aarseth의 개념은 '노력을 투입했다'는 구조적 조건을 설명해줄 뿐, 왜 그 노력이 '내가 한 일'로 느껴지는지까지는 답해주지 않는다. 이 지점에서 필요한 게 심리학 쪽 설명이다.
+
+
+
+
+        ---
+
+
+
+
+        [「The Illusion of Conscious Will」(2002)](https://archive.org/details/illusionofconsci0000wegn)
+
+
+        Daniel Wegner의 「The Illusion of Conscious Will」(2002) 속 "apparent mental causation" 이론에 따르면, 행위 주체감이라는 것은 애초에 실제 인과관계를 직접 지각하는 게 아니라 사후적으로 추론되는 것이다. 이 이론이 제시하는 세 가지 원칙은 다음과 같다.
+
+
+        * 선행성(priority): 내 의도가 행동보다 먼저 있었고
+
+        * 일관성(consistency): 행동과 결과 사이 시간차가 적절하고
+
+        * 배타성(exclusivity): 다른 설명이 없을 것
+
+
+        이 세 가지 조건이 충족될수록 실제 인과 기여도와 별개로 플레이어는 강한 행위 주체감(sense of agency)을 느낀다.
+
+
+        게임에서 전투 피드백이 즉각적일수록 서사 분기가 없어도 강한 자극을 주는 이유가 바로 이 때문이다. 애초에 서사적 분기와 행위 주체감은 다른 메커니즘으로 작동한다는 것이다.
+
+
+        결국 플레이어가 엔딩에서 느끼는 전율은, 정해진 결말 그 자체가 아니라 거기 도달하기까지 쌓아온 자신만의 수행이 마지막 순간 하나로 응축되어 돌아온 것이다.
+
+
+
+
+        ---
+
+
+
+
+        여기서 한 가지 흥미로운 함의가 나온다. LLM 기반 인터랙션 설계에서 흔한 함정은 "선택지 분기"를 늘리면 주체성도 늘 것이라는 착각인데, 적어도 행위 주체감의 관점에서 보면, 선택지 분기는 필요조건조차 아닐 수 있다. 
+
+
+        **오히려 입력과 출력 사이의 시간적 결합, 피드백의 가시성, 사용자의 개입이 결과에 반영되는 방식이 내용의 다양성만큼이나 중요할 수 있다.** 최종 도달점이 고정되어 있더라도, 그 과정에서 사용자의 개입이 '비자명한 노력'으로 인식되도록 시스템이 설계된다면 실질적인 서사 분기 없이도 주체성을 강화할 수 있다는 뜻이다. 반대로 선택지를 여러 개 줘도 결과에 미치는 영향이 미미하다면 주체성은 오히려 무너진다. 결국 핵심은 '실제 영향력'과 '지각된 영향력'을 일치시키는 것이다.
+
+
+        스토리형 게임이 보여주는 가능성은 여기서 중요하다. 좋은 인터랙션은 반드시 모든 결말을 열어둘 필요가 없다. 중요한 것은 사용자가 그 결과에 도달하는 과정에서 비자명한 노력을 투입하고, 그 노력이 시스템의 반응 속에서 의미 있는 값으로 되돌아오는 구조다. **즉, 주체성은 무한한 자유도에서만 생기는 것이 아니라, 제한된 구조 안에서도 자신의 수행이 축적되고 반영된다고 느낄 때 생긴다.**
+      en: >-
+        Among the games we call "masterpieces" or "god-tier," there is a
+        specific genre where the narrative does all the heavy lifting. 
+
+
+        When you think about it, these games are structured so that the player is dropped into a predetermined story, moving firmly along its rails. We might be the ones clicking the mouse and pressing the keys, but we can't escape the scripted plot, and the ending is already set in stone.
+
+
+        On paper, this puts the player in a completely passive position. Yet, paradoxically, it is precisely these games that pull us into the deepest states of immersion, leaving us with a profound chill and a lingering emotional echo when the curtains fall.
+
+
+        If the destination is already fixed, why does the player feel such an overwhelming rush of emotion at the finish line?
+
+
+
+
+        ---
+
+
+
+
+        [「Cybertext: Perspectives on Ergodic Literature」(1997)](https://archive.org/details/cybertextperspec0000aars)
+
+
+        If we apply Espen Aarseth’s concept of "non-trivial effort" from his 1997 book *Cybertext* to the gaming experience, the real difference between a movie and a story-driven game isn't about whether you can change the ending. It’s about whether the player has to invest genuine, non-trivial effort to get there.
+
+
+        In a typical story-driven game, the ending is singular, but the "trajectory of the journey" belongs entirely to the player. How many times you died, what specific strategies you cooked up—this doesn't mean the narrative changes, but it means your *performance* was entirely unique. This is where gaming fundamentally parts ways with cinema.
+
+
+        However, Aarseth’s concept only explains the structural condition—the fact that "effort was spent." It doesn't quite explain *why* that effort feels so deeply personal, like something "I actually achieved." To understand that, we need a psychological perspective.
+
+
+
+
+        ---
+
+
+
+
+        [「The Illusion of Conscious Will」(2002)](https://archive.org/details/illusionofconsci0000wegn)
+
+
+        According to Daniel Wegner’s theory of "apparent mental causation" in *The Illusion of Conscious Will* (2002), our sense of agency isn't a direct perception of cause and effect. Instead, it’s something our brains infer after the fact. This theory hinges on three core principles:
+
+
+        * Priority: Your intention must come before the action.
+
+        * Consistency: The action and the outcome must align logically.
+
+        * Exclusivity: There shouldn't be an obvious alternative explanation for what happened.
+
+
+        When these three conditions are met, the player feels a powerful sense of agency—regardless of how much they actually altered the overarching plot. This is why tight, snappy combat feedback gives such a rush, even in a game with zero narrative choices. Narrative branching and the sense of agency simply run on entirely different tracks.
+
+
+        Ultimately, the thrill a player experiences at the ending isn't triggered by the fixed conclusion itself. It is the weight of their own unique performance, built up step by step over hours of play, finally condensing and hitting them all at once in the final moment.
+
+
+
+
+        ---
+
+
+
+
+        This drops a fascinating hint for LLM-based interaction design. A common trap here is assuming that piling on "branching choices" will automatically make the user feel more in control. But looking at it through the lens of agency, branching choices might not even be a prerequisite.
+
+
+        **Instead, the tight timing between input and output, the visibility of feedback, and how clearly the user's presence is reflected in the system matter just as much as—if not more than—giving them a buffet of content choices.** Even if the final destination is fixed, a system can sharply reinforce a user's sense of agency without any narrative branching, as long as the experience is designed so that their input feels like "non-trivial effort." Conversely, if you give a user ten different options but the actual impact feels hollow, their sense of agency collapses entirely. At the end of the day, the secret lies in aligning "actual influence" with "perceived influence."
+
+
+        This is the invaluable lesson story-driven games teach us. Great interaction design doesn't need to leave every door open. What really matters is creating a structure where the user invests genuine effort into the process, and where that effort echoes back to them as a meaningful response from the system. **True agency doesn't require boundless, chaotic freedom; it thrives within a restricted structure, as long as the user can feel the weight of their own choices accumulating and leaving a mark.**
+---
