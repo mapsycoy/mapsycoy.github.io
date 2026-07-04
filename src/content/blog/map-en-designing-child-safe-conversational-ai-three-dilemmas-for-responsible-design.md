@@ -221,11 +221,11 @@ contentBlocks:
         She presents three recurring dilemmas in designing conversational AI for children:
 
 
-        * Safety vs. Engagement
+        * Safety vs Engagement
 
-        * Personalization vs. Privacy
+        * Personalization vs Privacy
 
-        * Autonomy vs. Protection
+        * Autonomy vs Protection
 
 
         These three issues are not simple dichotomous choices where choosing one means abandoning the other, but rather issues that require continuous calibration based on contextual judgment and the child's developmental stage.
