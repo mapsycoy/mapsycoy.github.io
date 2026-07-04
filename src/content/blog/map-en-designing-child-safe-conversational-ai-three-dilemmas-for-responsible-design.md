@@ -6,8 +6,8 @@ publishedAt: 2026-07-04
 status: published
 pinned: false
 tag: Paper
-thumbnail: /uploads/dilemmas.webp
-heroImage: /uploads/dilemmas.webp
+thumbnail: /uploads/dilemmas.jpg
+heroImage: /uploads/dilemmas.jpg
 heroImageCaption:
   en: "@IESE Business School"
 contentBlocks:
@@ -99,7 +99,7 @@ contentBlocks:
         미국의 COPPA는 13세 미만 아동의 개인정보 수집에 검증 가능한 부모 동의를 요구하고, GDPR은 16세 미만 사용자에게 추가 보호를 제공한다.
 
 
-        하지만 실제 설계에서는 이 원칙들이 사용성과 충돌한다. 데이터를 적게 모을수록 AI는 덜 개인적이고, 덜 개인적인 AI는 아이에게 덜 유용하거나 덜 흥미롭게 느껴질 수 있다.
+        하지만 실제 설계에서는 이 원칙들이 사용성과 충돌한다. 데이터를 적게 모을수록 AI는 덜 개인친화적이고, 덜 개인친화적인 AI는 아이에게 덜 유용하거나 덜 흥미롭게 느껴질 수 있다.
 
 
         또 논문에서는 어린 사용자가 대화형 에이전트에 생명체 같은 특성을 부여하고, 가족·학교·감정에 관한 민감한 정보를 쉽게 말할 수 있다고 지적한다. (이것은 내가 이전까지 지속적으로 언급해 온 ‘상상 속 친구’의 부작용와 같은 맥락이다.)
