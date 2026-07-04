@@ -6,8 +6,8 @@ publishedAt: 2026-07-04
 status: published
 pinned: false
 tag: Paper
-thumbnail: /uploads/dilemmas.webp
-heroImage: /uploads/dilemmas.webp
+thumbnail: /uploads/dilemmas.jpg
+heroImage: /uploads/dilemmas.jpg
 heroImageCaption:
   en: "@IESE Business School"
 contentBlocks:
@@ -90,7 +90,7 @@ contentBlocks:
 
 
 
-        ## **두 번째 딜레마: 아이에게 맞춘 AI는 그 아이에 대해 많은 것을 알게 된다.**
+        ## **두 번째 딜레마: 맞춤형 AI는 너무 많은 것을 알게 된다.**
 
 
         두 번째 딜레마는 개인화 vs 프라이버시다. 교육적 효과와 몰입을 높이기 위해 개인화는 매우 강력한 도구가 될 수 있다. 하지만 개인화가 가능하려면 대개 아이의 이름, 선호, 읽기 수준, 학습 이력 같은 개인 데이터를 수집하고 분석해야한다. 바로 여기서 개인화와 프라이버시의 충돌이 발생한다
