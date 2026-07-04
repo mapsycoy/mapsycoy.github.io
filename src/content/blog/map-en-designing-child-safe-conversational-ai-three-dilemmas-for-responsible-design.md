@@ -3,9 +3,13 @@ title:
   en: "Designing Child-Safe Conversational AI: Three Dilemmas for Responsible
     Design"
 publishedAt: 2026-07-04
-status: draft
+status: published
 pinned: false
 tag: Paper
+thumbnail: /uploads/dilemmas.jpg
+heroImage: /uploads/dilemmas.jpg
+heroImageCaption:
+  en: "@IESE Business School"
 contentBlocks:
   - type: text
     body:
@@ -73,7 +77,7 @@ contentBlocks:
         반대로 안전을 위해 키워드를 엄격하게 필터링하고 질문을 차단하면, 대화의 흐름이 끊기고 AI가 딱딱하게 느껴져 아이는 시스템을 회피적이며 개인 친화적이지 않다고 느낄 수 있다.
 
 
-        특히 상업적 CAI 환경에서는 사용자의 체류 시간과 몰입이 중요한 지표가 되기 때문에, 안전장치는 종종 제품의 매력과 충돌한다.
+        특히 상업적 CAI(Conversational AI) 환경에서는 사용자의 체류 시간과 몰입이 중요한 지표가 되기 때문에, 안전장치는 종종 제품의 매력과 충돌한다.
 
 
         여기서 우리는 아이에게 좋은 AI를 만들려면 “어떻게 하면 더 오래 대화하게 만들까?”가 아니라 “어디에서 대화를 멈추거나 전환해야 아이에게 더 안전한가?”를 물어야 한다.
@@ -265,7 +269,7 @@ contentBlocks:
         Conversely, if keywords are strictly filtered and questions blocked for safety, the flow of the conversation is broken, and the AI feels rigid, causing the child to feel the system is evasive and not personalized.
 
 
-        Especially in commercial CAI (Conversational AI) environments, user dwell time and immersion are crucial metrics, so safety measures often clash with the product's appeal.
+        Especially in commercial CAI(Conversational AI) environments, user dwell time and immersion are crucial metrics, so safety measures often clash with the product's appeal.
 
 
         Here, to create good AI for children, we must ask not "How do we make them talk longer?" but rather "Where should we stop or redirect the conversation to make it safer for the child?"
