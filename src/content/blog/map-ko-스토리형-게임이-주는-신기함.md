@@ -6,8 +6,8 @@ publishedAt: 2026-07-05
 status: published
 pinned: false
 tag: Essay
-thumbnail: /uploads/mapleds.jpg
-heroImage: /uploads/mapleds.jpg
+thumbnail: /uploads/mapleds.webp
+heroImage: /uploads/mapleds.webp
 heroImageCaption:
   ko: " 메이플스토리DS TV CM"
   en: MaplestoryDS TV CM
