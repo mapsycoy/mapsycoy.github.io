@@ -6,8 +6,8 @@ publishedAt: 2026-07-04
 status: published
 pinned: false
 tag: Paper
-thumbnail: /uploads/dilemmas.webp
-heroImage: /uploads/dilemmas.webp
+thumbnail: /uploads/dilemmas.jpg
+heroImage: /uploads/dilemmas.jpg
 heroImageCaption:
   en: "@IESE Business School"
 contentBlocks:
