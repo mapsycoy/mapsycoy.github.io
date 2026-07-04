@@ -116,7 +116,7 @@ contentBlocks:
         [FutureMe / “I Can Be Anything!”](https://dl.acm.org/doi/10.1145/3772318.3790985)
 
 
-        **｢*FutureMe*｣helps children aged 7–11 connect their current selves with future career possibilities through generative AI. This paper is a rare example where domestic researchers simultaneously addressed children under 13, generative AI, agency, and imagination.** 
+        *｢***FutureMe***｣helps children aged 7–11 connect their current selves with future career possibilities through generative AI. This paper is a rare example where domestic researchers simultaneously addressed children under 13, generative AI, agency, and imagination.*
 
 
         However, this paper did not win an award.
@@ -258,7 +258,7 @@ contentBlocks:
         [FutureMe / “I Can Be Anything!”](https://dl.acm.org/doi/10.1145/3772318.3790985)
 
 
-        **｢*FutureMe*｣는 만 7~11세 아동이 생성형 AI를 통해 현재의 자신과 미래의 진로 가능성을 연결할 수 있도록 돕는다. 이 논문은 국내 연구진이 만 13세 이하 아동, 생성형 AI, 주체성(Agency), 그리고 상상력을 동시에 다룬 보기 드문 연구 사례다.**
+        *｢***FutureMe***｣는 만 7~11세 아동이 생성형 AI를 통해 현재의 자신과 미래의 진로 가능성을 연결할 수 있도록 돕는다. 이 논문은 국내 연구진이 만 13세 이하 아동, 생성형 AI, 주체성(Agency), 그리고 상상력을 동시에 다룬 보기 드문 연구 사례다.*
 
 
         하지만 이 논문은 수상 명단에 이름을 올리지 못했다.
