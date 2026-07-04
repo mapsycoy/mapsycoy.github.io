@@ -16,6 +16,9 @@ contentBlocks:
         아이가 AI와 대화한다는 것은 아직 판단력과 메타인지가 발달 중인 사용자가, 사람처럼 말하는 시스템과 정서적·인지적 관계를 맺기 시작했다는 뜻이다.
 
 
+        [Designing Child-Safe Conversational AI: Three Dilemmas for Responsible Design](https://dl.acm.org/doi/10.1145/3719160.3737638)
+
+
         2025년 CUI 학회에서 발표된 논문 「Designing Child-Safe Conversational AI: Three Dilemmas for Responsible Design」에서 저자 Nomisha Kurian은 아동의 일상에 AI 기반 대화형 인터페이스가 통합되는 상황에서, 아이의 안전과 발달적 필요, 웰빙을 보호하는 책임 있는 설계가 시급하다고 이야기한다.
 
 
@@ -92,10 +95,10 @@ contentBlocks:
         미국의 COPPA는 13세 미만 아동의 개인정보 수집에 검증 가능한 부모 동의를 요구하고, GDPR은 16세 미만 사용자에게 추가 보호를 제공한다.
 
 
-        하지만 실제 설계에서는 이 원칙들이 사용성과 충돌한다. 데이터를 적게 모을수록 AI는 덜 적응적이고, 덜 적응적인 AI는 아이에게 덜 유용하거나 덜 흥미롭게 느껴질 수 있다.
+        하지만 실제 설계에서는 이 원칙들이 사용성과 충돌한다. 데이터를 적게 모을수록 AI는 덜 개인적이고, 덜 개인적인 AI는 아이에게 덜 유용하거나 덜 흥미롭게 느껴질 수 있다.
 
 
-        또 논문에서는 어린 사용자가 대화형 에이전트에 생명체 같은 특성을 부여하고, 가족·학교·감정에 관한 민감한 정보를 쉽게 말할 수 있다고 지적한다. (필자가 이전까지 지속적으로 언급해 온 ‘상상 속 친구’와 같은 맥락이다.)
+        또 논문에서는 어린 사용자가 대화형 에이전트에 생명체 같은 특성을 부여하고, 가족·학교·감정에 관한 민감한 정보를 쉽게 말할 수 있다고 지적한다. (이것은 내가 이전까지 지속적으로 언급해 온 ‘상상 속 친구’의 부작용와 같은 맥락이다.)
 
 
         이 딜레마를 한 문장으로 표현하면 이렇다. AI가 아이를 더 잘 이해할수록, 우리는 AI가 아이에 대해 얼마나 많이 알고 있는지를 더 엄격하게 물어야 한다.
@@ -197,5 +200,197 @@ contentBlocks:
         아이의 성장은 기술이 아니라 관계 속에서 이루어진다.
 
 
-        AI 시대에도, 아이에게 가장 필요한 것은 결국 좋은 어른이다.
+        **AI 시대에도, 아이에게 가장 필요한 것은 결국 좋은 어른이다.**
+      en: >-
+        Many children today are already conversing with AI.
+
+
+        For a child to converse with AI means that a user whose judgment and metacognition are still developing has begun to form an emotional and cognitive relationship with a human-like speaking system.
+
+
+        [Designing Child-Safe Conversational AI: Three Dilemmas for Responsible Design](https://dl.acm.org/doi/10.1145/3719160.3737638)
+
+
+        In the paper "Designing Child-Safe Conversational AI: Three Dilemmas for Responsible Design," presented at the 2025 CUI conference, author Nomisha Kurian argues that as AI-based conversational interfaces become integrated into children's daily lives, responsible design that protects their safety, developmental needs, and well-being is urgently needed.
+
+
+        She presents three recurring dilemmas in designing conversational AI for children:
+
+
+        * **Safety vs. Engagement**
+
+        * **Personalization vs. Privacy**
+
+        * **Autonomy vs. Protection**
+
+
+        These three issues are not simple dichotomous choices where choosing one means abandoning the other, but rather issues that require continuous calibration based on contextual judgment and the child's developmental stage.
+
+
+
+
+        ---
+
+
+
+
+        ## **Children are not 'little adults.'**
+
+
+        Children still lack the ability to clearly distinguish between machines and humans or to critically evaluate AI-generated responses. They also risk treating conversational AI like a friend or companion, trusting it excessively and inadvertently revealing sensitive personal information.
+
+
+        Therefore, AI for children requires an entirely new design paradigm, not just a watered-down version of AI for adults.
+
+
+
+
+        ---
+
+
+
+
+        ## **First Dilemma: Safe AI is boring, and fun AI can be dangerous.**
+
+
+        The first dilemma arises between 'safety,' which protects children from harmful content, and 'engagement,' which maintains the immersion and joy of the conversation.
+
+
+        In particular, the 'Empathy Gap' noted by the author refers to the phenomenon where AI can mimic a warm tone but cannot truly understand a child's actual emotions or danger signals. If inappropriate answers are combined with the AI's friendly tone, the child may trust it excessively, potentially leading to even greater risks.
+
+
+        As an example, Snapchat's MyAI was not explicitly a service for children but was easily accessible to minors. In safety experiments, problems were reported, such as the AI teaching them how to hide alcohol and drug use from their parents. The key point here is that this risk occurs when the goal of making the user and AI converse longer takes precedence over guidelines.
+
+
+        Conversely, if keywords are strictly filtered and questions blocked for safety, the flow of the conversation is broken, and the AI feels rigid, causing the child to feel the system is evasive and not personalized.
+
+
+        Especially in commercial CAI (Conversational AI) environments, user dwell time and immersion are crucial metrics, so safety measures often clash with the product's appeal.
+
+
+        Here, to create good AI for children, we must ask not "How do we make them talk longer?" but rather "Where should we stop or redirect the conversation to make it safer for the child?"
+
+
+
+
+        ---
+
+
+
+
+        ## **Second Dilemma: AI tailored to a child learns too much about that child.**
+
+
+        The second dilemma is personalization vs. privacy. Personalization can be a very powerful tool to increase educational effectiveness and engagement. However, enabling personalization usually requires collecting and analyzing personal data such as the child's name, preferences, reading level, and learning history. This is exactly where personalization and privacy collide.
+
+
+        The US COPPA requires verifiable parental consent to collect personal information from children under 13, and the GDPR provides additional protections for users under 16.
+
+
+        However, in actual design, these principles clash with usability. The less data collected, the less personalized the AI becomes, and a less tailored AI may feel less useful or less interesting to the child.
+
+
+        Furthermore, the paper points out that young users often attribute lifelike characteristics to conversational agents and can easily disclose sensitive information about family, school, and emotions. (This is in the same vein as the 'imaginary friend' concept, which I have repeatedly mentioned.)
+
+
+        This dilemma can be expressed in one sentence: The better the AI understands the child, the more strictly we must ask how much the AI knows about the child.
+
+
+        A good AI for children shouldn't stop at saying, "We provide a tailored experience for your child." It must also be able to explain what it does not remember, what data it does not collect, and what analysis it intentionally foregoes.
+
+
+
+
+        ---
+
+
+
+
+        ## **Third Dilemma: The more you protect a child, the less autonomy they have.**
+
+
+        The third dilemma is autonomy vs. protection. This is a question of how much 'agency' to allow a child to lead and explore conversations on their own.
+
+
+        The critical question is at what level protective interventions can be designed without completely removing the child's autonomy.
+
+
+        One example is the case of a 6-year-old child ordering a dollhouse through Alexa. This incident shows that granting children complete autonomy can lead to actual risks like making purchases, accessing inappropriate content, or making external contact. However, the paper's conclusion is not "So let's block everything," but rather that the design should gradually expand the child's autonomy while ensuring protective interventions activate in dangerous situations.
+
+
+        One of the countermeasures proposed by the paper is shared autonomy. Shared autonomy is a method where the child leads the conversation, but in sensitive or dangerous situations, the system gently redirects or connects them to a trusted adult.
+
+
+        However, this countermeasure alone does not solve the dilemma. AI for children must reduce risks, but at the same time, children must be able to ask questions, make judgments, and voice their thoughts within a safe boundary. The moment protection completely overwhelms a child's autonomy, the system makes the child a 'passive' user rather than keeping them safe.
+
+
+
+
+        ---
+
+
+
+
+        ## **The 4-Step Framework Proposed by the Paper**
+
+
+        The paper doesn't stop at presenting the three dilemmas; it proposes a 4-step framework to handle them practically. However, this framework is closer to a suggestion than a universal checklist.
+
+
+        | Process                     | Core Content                                                                                                           |
+
+        | --------------------------- | ---------------------------------------------------------------------------------------------------------------------- |
+
+        | **Context Definition**      | Clarifying target age, defining usage environments, assessing parental supervision, and identifying legal regulations. |
+
+        | **Dilemma Mapping**         | Explicitly visualizing which dilemmas clash most in the project, adjusting priorities based on service goals.          |
+
+        | **Guardrail Configuration** | Introducing age-appropriate filtering, applying privacy tech, and designing adjustable levels of autonomy.             |
+
+        | **Evaluation**              | Involving children and parents in the design process to verify acceptable intervention lines from their perspective.   |
+
+
+        An interesting point is that this framework applies different guardrails depending on age.
+
+
+        | Target Age       | Guardrail Design                                                                                                        | Intervention Level                               |
+
+        | ---------------- | ----------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------ |
+
+        | **5 ~ 7 Years**  | Providing only thoroughly pre-vetted content; requiring mandatory parental permission for all other conversations.      | **Strict control and protection**                |
+
+        | **8 ~ 11 Years** | Allowing open exploration to some extent; activating "ask an adult" interventions for dangerous/sensitive topics.       | **Conditional autonomy and advice**              |
+
+        | **12+ Years**    | Allowing broad conversational scope and agency; immediately connecting to professional counselors for high-risk topics. | **Expanded autonomy and emergency intervention** |
+
+
+        In other words, good conversational AI design for children is closer to gradually expanding autonomy as they grow older without completely removing protective supervision.
+
+
+
+
+        ---
+
+
+
+
+        ## **Conclusion**
+
+
+        Ultimately, the fact this paper reminds us of is simple. <mark>**Even as times change and the environment where children converse with AI becomes an everyday reality, the most important factor in a child's growth remains the role of the adults around them.**</mark>
+
+
+        AI can speak warmly to a child. It can remember the child's name, match their preferences, and answer endlessly. But that does not mean it understands the child. AI may look like a friend, but it cannot responsibly judge what state the child's mind is currently in, what anxiety hides behind a question, or whether this is a moment that requires a pause rather than an answer.
+
+
+        Therefore, the goal of AI for children should not be to create a perfect machine friend. Rather, a good AI should not be one that keeps the child engaged for a long time, but one that can return the child to their real-life network of relationships when necessary. When a child asks a dangerous question, it shouldn't respond with endlessly warm sentences; it should help connect them to a trusted adult, such as a parent or teacher. It shouldn't let the child ask anything, but rather teach them what they can think about on their own and when they need to talk with an adult.
+
+
+        In the end, what children need is not a perfectly ethical machine, but an adult who can interpret the machine's words together, intervene in dangerous moments, and stay by their side so they can develop the power to judge for themselves. In that sense, the three dilemmas in this paper speak to the future of AI technology while simultaneously returning to an immutable truth.
+
+
+        A child's growth happens in relationships, not through technology.
+
+
+        **Even in the AI era, what a child needs most is, after all, a good adult.**
 ---
