@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import { artsGiftedEducationCertificate, education, experiences, profile, projects, type MediaItem } from "../../data/cv";
+import { artsGiftedEducationCertificate, education, experiences, profile, projects, publications, type MediaItem } from "../../data/cv";
 import { getLanguageFromParams, languages, localize, type Language } from "../../utils/i18n";
 
 export function getStaticPaths() {
@@ -20,6 +20,17 @@ const certificateItems = artsGiftedEducationCertificate.items ?? artsGiftedEduca
   logo: logo.src,
   alt: logo.alt,
 }));
+const publicationEmptyText = {
+  ko: "Manuscripts in preparation.",
+  en: "Manuscripts in preparation.",
+};
+const publicationVenueLine = (item: any) => {
+  const venue = localize(item.venue, lang);
+  const year = item.year ?? "";
+  if (!venue) return year;
+  if (!year || venue.includes(year)) return venue;
+  return `${venue} ${year}`;
+};
 ---
 
 <Layout title="CV" description="Kim Junyeop's curriculum vitae, including education, experience, and selected projects." lang={lang}>
@@ -210,6 +221,35 @@ const certificateItems = artsGiftedEducationCertificate.items ?? artsGiftedEduca
         >
           Show all {projects.length} projects
         </button>
+      )}
+    </section>
+
+    <section class="cv-section-block cv-section-block-no-rule" aria-labelledby="publications-heading">
+      <h2 class="cv-section-header" id="publications-heading">Publications</h2>
+      {publications.length > 0 ? (
+        <div class="cv-list">
+          {publications.map((item) => (
+            <article class="cv-entry cv-publication-entry">
+              <div class="cv-entry-main">
+                <h3 class="cv-entry-title">{localize(item.title, lang)}</h3>
+                <p class="cv-publication-authors">{item.authors.map((author) => localize(author, lang)).join(", ")}</p>
+                {(publicationVenueLine(item) || item.status || (item.links && item.links.length > 0)) && (
+                  <p class="cv-publication-meta-line">
+                    {publicationVenueLine(item) && <span class="cv-publication-venue">{publicationVenueLine(item)}</span>}
+                    {item.status && <span class="cv-publication-status">{localize(item.status, lang)}</span>}
+                    {item.links?.map((link) => (
+                      <a href={link.href} target={link.href.startsWith("http") ? "_blank" : undefined} rel={link.href.startsWith("http") ? "noreferrer" : undefined}>
+                        {localize(link.label, lang)}
+                      </a>
+                    ))}
+                  </p>
+                )}
+              </div>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <p class="cv-empty-note">{localize(publicationEmptyText, lang)}</p>
       )}
     </section>
   </div>

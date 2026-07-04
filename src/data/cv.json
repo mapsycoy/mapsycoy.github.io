@@ -1,346 +1,367 @@
-{
-  "profile": {
-    "name": {
-      "ko": "김준엽",
-      "en": "Kim Junyeop"
-    },
-    "location": {
-      "ko": "대한민국 / 서울",
-      "en": "Republic of Korea / Seoul"
-    },
-    "photo": "/uploads/cv-profile.webp"
-  },
-  "education": [
-    {
-      "institution": {
-        "ko": "국민대학교 조형대학",
-        "en": "Kookmin University, College of Design"
-      },
-      "degree": {
-        "ko": "영상디자인학(미술학사)",
-        "en": "BFA, Entertainment Design"
-      },
-      "period": {
-        "ko": "2019.03 - 2026.02",
-        "en": "Mar 2019 - Feb 2026"
-      },
-      "description": [
-        {
-          "ko": "특기자전형 입학",
-          "en": "Merit-based Admission(special talent track)"
-        },
-        {
-          "ko": "미래기술융합디자인 부전공",
-          "en": "Minor in Future Technology Convergence Design"
-        }
-      ]
-    },
-    {
-      "institution": {
-        "ko": "연세대학교 커뮤니케이션대학원",
-        "en": "YONSEI Graduate School of Communication & Arts"
-      },
-      "degree": {
-        "ko": "입학 예정 · 공학석사과정(HCI디자인)",
-        "en": "Incoming MS Student(HCI Design)"
-      },
-      "period": {
-        "ko": "2026.09 -",
-        "en": "Sep 2026 -"
-      },
-      "description": []
-    }
-  ],
-  "artsGiftedEducationCertificate": {
-    "title": {
-      "ko": "미술영재교육 수료",
-      "en": "Certificate of Completion ─ Art Gifted Education"
-    },
-    "logos": [
-      {
-        "src": "/uploads/cv-logo-sac.svg",
-        "alt": {
-          "ko": "",
-          "en": "SAC"
-        }
-      },
-      {
-        "src": "/uploads/cv-logo-snue.webp",
-        "alt": {
-          "ko": "",
-          "en": "SNUE"
-        }
-      },
-      {
-        "src": "/uploads/cv-logo-sen.svg",
-        "alt": {
-          "ko": "",
-          "en": "SMOE"
-        }
-      }
-    ],
-    "items": [
-      {
-        "institution": {
-          "ko": "예술의전당",
-          "en": "SAC"
-        },
-        "period": {
-          "ko": "",
-          "en": "2008 - 2012"
-        },
-        "logo": "/uploads/cv-logo-sac.svg",
-        "alt": {
-          "ko": "SAC",
-          "en": "SAC"
-        }
-      },
-      {
-        "institution": {
-          "ko": "서울교육대학교",
-          "en": "SNUE"
-        },
-        "period": {
-          "ko": "",
-          "en": "2010 / 2012 - 2013 / 2016 - 2017 "
-        },
-        "logo": "/uploads/cv-logo-snue.webp",
-        "alt": {
-          "ko": "SNUE",
-          "en": "SNUE"
-        }
-      },
-      {
-        "institution": {
-          "ko": "서울특별시교육청",
-          "en": "SMOE"
-        },
-        "period": {
-          "ko": "",
-          "en": "2011"
-        },
-        "logo": "/uploads/cv-logo-sen.svg",
-        "alt": {
-          "ko": "SMOE",
-          "en": "SMOE"
-        }
-      }
-    ]
-  },
-  "experiences": [
-    {
-      "role": {
-        "ko": "컨셉아티스트 · 일러스트레이터",
-        "en": "Concept Artist · Illustrator"
-      },
-      "organization": {
-        "ko": "넥슨코리아",
-        "en": "NEXON KOREA"
-      },
-      "employmentType": {
-        "ko": "인턴십",
-        "en": "Internship"
-      },
-      "period": {
-        "ko": "2025.12 - 2026.05",
-        "en": "Dec 2025 - May 2026"
-      },
-      "logo": "/uploads/cv-logo-nexon.webp",
-      "team": {
-        "ko": "M콘텐츠생성AI팀",
-        "en": "M-Content Generation AI Team"
-      },
-      "description": []
-    },
-    {
-      "role": {
-        "ko": "AI 일러스트레이터",
-        "en": "AI Illustrator"
-      },
-      "organization": {
-        "ko": "에누마코리아",
-        "en": "Enuma Inc."
-      },
-      "employmentType": {
-        "ko": "계약직",
-        "en": "Contract"
-      },
-      "period": {
-        "ko": "2025.07 - 2025.09",
-        "en": "Jul 2025 - Sep 2025"
-      },
-      "logo": "/uploads/cv-logo-enuma.webp",
-      "team": {
-        "ko": "콘텐츠팀",
-        "en": "Content Team"
-      },
-      "description": []
-    },
-    {
-      "role": {
-        "ko": "",
-        "en": "CDO"
-      },
-      "organization": {
-        "ko": "유니퍼스",
-        "en": "unipus kr"
-      },
-      "period": {
-        "ko": "2023.02 - 2023.12",
-        "en": "Feb 2023 - Dec 2023"
-      },
-      "logo": "/uploads/cv-logo-unipuskr.webp",
-      "description": [],
-      "media": [],
-      "employmentType": {
-        "ko": "자영업",
-        "en": "Self-employed"
-      }
-    },
-    {
-      "role": {
-        "ko": "애니메이터 · 일러스트레이터",
-        "en": "Animator · Illustrator"
-      },
-      "organization": {
-        "ko": "스튜디오 장삐쭈",
-        "en": "Studio JBBJ"
-      },
-      "employmentType": {
-        "ko": "프리랜서",
-        "en": "Freelance"
-      },
-      "period": {
-        "ko": "2021.10 - 2022.10",
-        "en": "Oct 2021 - Oct 2022"
-      },
-      "logo": "/uploads/cv-logo-studio-jbbj.webp",
-      "description": []
-    },
-    {
-      "role": {
-        "ko": "서울교육대학교",
-        "en": "Seoul National University of Education"
-      },
-      "organization": {
-        "ko": "미술영재교육원",
-        "en": "Gifted in Art Center"
-      },
-      "employmentType": {
-        "ko": "아르바이트",
-        "en": "Part-time"
-      },
-      "period": {
-        "ko": "1년 1개월",
-        "en": "1 yr 1 mo"
-      },
-      "logo": "/uploads/cv-logo-snue.webp",
-      "subEntries": [
-        {
-          "title": {
-            "ko": "행정 조교",
-            "en": "Administrative Assistant"
-          },
-          "period": {
-            "ko": "2021.11 - 2022.02",
-            "en": "Sep 2021 - Feb 2022"
-          },
-          "description": []
-        },
-        {
-          "title": {
-            "ko": "담임 조교",
-            "en": "Teaching Assistant"
-          },
-          "period": {
-            "ko": "2019.05 - 2019.12 / 2022.03 - 2022.09",
-            "en": "May 2019 - Dec 2019 / Mar 2022 - Sep 2022"
-          },
-          "description": []
-        }
-      ],
-      "description": []
-    }
-  ],
-  "projects": [
-    {
-      "title": {
-        "ko": "아뜰리에 광화: 광장으로의 초대",
-        "en": "Atelier Gwanghwa: An Invitation to the Square"
-      },
-      "period": {
-        "ko": "",
-        "en": "2023 / 2024"
-      },
-      "description": [
-        {
-          "ko": "제 1회, 2회 미디어파사드 프로젝트 선정 모션 디자이너",
-          "en": "Selected Motion Designer for 1st & 2nd media facade project"
-        }
-      ],
-      "media": [
-        {
-          "type": "image",
-          "src": "/uploads/cv-project-atelier2024.webp",
-          "href": "https://www.youtube.com/watch?v=JXRhq4vxzGY",
-          "label": {
-            "ko": "",
-            "en": "Open link"
-          }
-        },
-        {
-          "type": "image",
-          "src": "/uploads/cv-project-atelier2023.webp",
-          "href": "https://webzine.kookmin.ac.kr/webzine.php?syear=2023&svolume=4&mcode=31",
-          "label": {
-            "ko": "",
-            "en": "Open link"
-          }
-        }
-      ]
-    },
-    {
-      "title": {
-        "ko": "",
-        "en": "RED Flight"
-      },
-      "period": {
-        "ko": "2024.04 - 2024.12",
-        "en": "Apr 2024 - Dec 2024"
-      },
-      "description": [
-        {
-          "ko": "에임인텔리전스 인하우스 프로젝트 외부 참여",
-          "en": "Aim Intelligence In-house Project(External Contributor)"
-        }
-      ],
-      "media": [
-        {
-          "type": "image",
-          "src": "/uploads/cv-project-redflight.webp",
-          "href": "https://luma.com/ivs-demoday",
-          "label": {
-            "ko": "",
-            "en": "Open link"
-          }
-        }
-      ]
-    },
-    {
-      "title": {
-        "ko": "",
-        "en": "Direp"
-      },
-      "period": {
-        "ko": "2025.11 - 현재",
-        "en": "Sep 2025 - Present"
-      },
-      "description": [
-        {
-          "ko": "국내 파충류 시장 타깃 프로젝트",
-          "en": "On-going project for the reptile industry"
-        }
-      ]
-    }
-  ]
+﻿{
+    "profile":  {
+                    "name":  {
+                                 "ko":  "김준엽",
+                                 "en":  "Kim Junyeop"
+                             },
+                    "location":  {
+                                     "ko":  "대한민국 / 서울",
+                                     "en":  "Republic of Korea / Seoul"
+                                 },
+                    "photo":  "/uploads/cv-profile.webp"
+                },
+    "education":  [
+                      {
+                          "institution":  {
+                                              "ko":  "국민대학교 조형대학",
+                                              "en":  "Kookmin University, College of Design"
+                                          },
+                          "degree":  {
+                                         "ko":  "영상디자인학(미술학사)",
+                                         "en":  "BFA, Entertainment Design"
+                                     },
+                          "period":  {
+                                         "ko":  "2019.03 - 2026.02",
+                                         "en":  "Mar 2019 - Feb 2026"
+                                     },
+                          "description":  [
+                                              {
+                                                  "ko":  "특기자전형 입학",
+                                                  "en":  "Merit-based Admission(special talent track)"
+                                              },
+                                              {
+                                                  "ko":  "미래기술융합디자인 부전공",
+                                                  "en":  "Minor in Future Technology Convergence Design"
+                                              }
+                                          ]
+                      },
+                      {
+                          "institution":  {
+                                              "ko":  "연세대학교 커뮤니케이션대학원",
+                                              "en":  "YONSEI Graduate School of Communication \u0026 Arts"
+                                          },
+                          "degree":  {
+                                         "ko":  "입학 예정 · 공학석사과정(HCI디자인)",
+                                         "en":  "Incoming MS Student(HCI Design)"
+                                     },
+                          "period":  {
+                                         "ko":  "2026.09 -",
+                                         "en":  "Sep 2026 -"
+                                     },
+                          "description":  [
+
+                                          ]
+                      }
+                  ],
+    "artsGiftedEducationCertificate":  {
+                                           "title":  {
+                                                         "ko":  "미술영재교육 수료",
+                                                         "en":  "Certificate of Completion ─ Art Gifted Education"
+                                                     },
+                                           "logos":  [
+                                                         {
+                                                             "src":  "/uploads/cv-logo-sac.svg",
+                                                             "alt":  {
+                                                                         "ko":  "",
+                                                                         "en":  "SAC"
+                                                                     }
+                                                         },
+                                                         {
+                                                             "src":  "/uploads/cv-logo-snue.webp",
+                                                             "alt":  {
+                                                                         "ko":  "",
+                                                                         "en":  "SNUE"
+                                                                     }
+                                                         },
+                                                         {
+                                                             "src":  "/uploads/cv-logo-sen.svg",
+                                                             "alt":  {
+                                                                         "ko":  "",
+                                                                         "en":  "SMOE"
+                                                                     }
+                                                         }
+                                                     ],
+                                           "items":  [
+                                                         {
+                                                             "institution":  {
+                                                                                 "ko":  "예술의전당",
+                                                                                 "en":  "SAC"
+                                                                             },
+                                                             "period":  {
+                                                                            "ko":  "",
+                                                                            "en":  "2008 - 2012"
+                                                                        },
+                                                             "logo":  "/uploads/cv-logo-sac.svg",
+                                                             "alt":  {
+                                                                         "ko":  "SAC",
+                                                                         "en":  "SAC"
+                                                                     }
+                                                         },
+                                                         {
+                                                             "institution":  {
+                                                                                 "ko":  "서울교육대학교",
+                                                                                 "en":  "SNUE"
+                                                                             },
+                                                             "period":  {
+                                                                            "ko":  "",
+                                                                            "en":  "2010 / 2012 - 2013 / 2016 - 2017 "
+                                                                        },
+                                                             "logo":  "/uploads/cv-logo-snue.webp",
+                                                             "alt":  {
+                                                                         "ko":  "SNUE",
+                                                                         "en":  "SNUE"
+                                                                     }
+                                                         },
+                                                         {
+                                                             "institution":  {
+                                                                                 "ko":  "서울특별시교육청",
+                                                                                 "en":  "SMOE"
+                                                                             },
+                                                             "period":  {
+                                                                            "ko":  "",
+                                                                            "en":  "2011"
+                                                                        },
+                                                             "logo":  "/uploads/cv-logo-sen.svg",
+                                                             "alt":  {
+                                                                         "ko":  "SMOE",
+                                                                         "en":  "SMOE"
+                                                                     }
+                                                         }
+                                                     ]
+                                       },
+    "experiences":  [
+                        {
+                            "role":  {
+                                         "ko":  "컨셉아티스트 · 일러스트레이터",
+                                         "en":  "Concept Artist · Illustrator"
+                                     },
+                            "organization":  {
+                                                 "ko":  "넥슨코리아",
+                                                 "en":  "NEXON KOREA"
+                                             },
+                            "employmentType":  {
+                                                   "ko":  "인턴십",
+                                                   "en":  "Internship"
+                                               },
+                            "period":  {
+                                           "ko":  "2025.12 - 2026.05",
+                                           "en":  "Dec 2025 - May 2026"
+                                       },
+                            "logo":  "/uploads/cv-logo-nexon.webp",
+                            "team":  {
+                                         "ko":  "M콘텐츠생성AI팀",
+                                         "en":  "M-Content Generation AI Team"
+                                     },
+                            "description":  [
+
+                                            ]
+                        },
+                        {
+                            "role":  {
+                                         "ko":  "AI 일러스트레이터",
+                                         "en":  "AI Illustrator"
+                                     },
+                            "organization":  {
+                                                 "ko":  "에누마코리아",
+                                                 "en":  "Enuma Inc."
+                                             },
+                            "employmentType":  {
+                                                   "ko":  "계약직",
+                                                   "en":  "Contract"
+                                               },
+                            "period":  {
+                                           "ko":  "2025.07 - 2025.09",
+                                           "en":  "Jul 2025 - Sep 2025"
+                                       },
+                            "logo":  "/uploads/cv-logo-enuma.webp",
+                            "team":  {
+                                         "ko":  "콘텐츠팀",
+                                         "en":  "Content Team"
+                                     },
+                            "description":  [
+
+                                            ]
+                        },
+                        {
+                            "role":  {
+                                         "ko":  "",
+                                         "en":  "CDO"
+                                     },
+                            "organization":  {
+                                                 "ko":  "유니퍼스",
+                                                 "en":  "unipus kr"
+                                             },
+                            "period":  {
+                                           "ko":  "2023.02 - 2023.12",
+                                           "en":  "Feb 2023 - Dec 2023"
+                                       },
+                            "logo":  "/uploads/cv-logo-unipuskr.webp",
+                            "description":  [
+
+                                            ],
+                            "media":  [
+
+                                      ],
+                            "employmentType":  {
+                                                   "ko":  "자영업",
+                                                   "en":  "Self-employed"
+                                               }
+                        },
+                        {
+                            "role":  {
+                                         "ko":  "애니메이터 · 일러스트레이터",
+                                         "en":  "Animator · Illustrator"
+                                     },
+                            "organization":  {
+                                                 "ko":  "스튜디오 장삐쭈",
+                                                 "en":  "Studio JBBJ"
+                                             },
+                            "employmentType":  {
+                                                   "ko":  "프리랜서",
+                                                   "en":  "Freelance"
+                                               },
+                            "period":  {
+                                           "ko":  "2021.10 - 2022.10",
+                                           "en":  "Oct 2021 - Oct 2022"
+                                       },
+                            "logo":  "/uploads/cv-logo-studio-jbbj.webp",
+                            "description":  [
+
+                                            ]
+                        },
+                        {
+                            "role":  {
+                                         "ko":  "서울교육대학교",
+                                         "en":  "Seoul National University of Education"
+                                     },
+                            "organization":  {
+                                                 "ko":  "미술영재교육원",
+                                                 "en":  "Gifted in Art Center"
+                                             },
+                            "employmentType":  {
+                                                   "ko":  "아르바이트",
+                                                   "en":  "Part-time"
+                                               },
+                            "period":  {
+                                           "ko":  "1년 1개월",
+                                           "en":  "1 yr 1 mo"
+                                       },
+                            "logo":  "/uploads/cv-logo-snue.webp",
+                            "subEntries":  [
+                                               {
+                                                   "title":  {
+                                                                 "ko":  "행정 조교",
+                                                                 "en":  "Administrative Assistant"
+                                                             },
+                                                   "period":  {
+                                                                  "ko":  "2021.11 - 2022.02",
+                                                                  "en":  "Sep 2021 - Feb 2022"
+                                                              },
+                                                   "description":  [
+
+                                                                   ]
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "ko":  "담임 조교",
+                                                                 "en":  "Teaching Assistant"
+                                                             },
+                                                   "period":  {
+                                                                  "ko":  "2019.05 - 2019.12 / 2022.03 - 2022.09",
+                                                                  "en":  "May 2019 - Dec 2019 / Mar 2022 - Sep 2022"
+                                                              },
+                                                   "description":  [
+
+                                                                   ]
+                                               }
+                                           ],
+                            "description":  [
+
+                                            ]
+                        }
+                    ],
+    "projects":  [
+                     {
+                         "title":  {
+                                       "ko":  "아뜰리에 광화: 광장으로의 초대",
+                                       "en":  "Atelier Gwanghwa: An Invitation to the Square"
+                                   },
+                         "period":  {
+                                        "ko":  "",
+                                        "en":  "2023 / 2024"
+                                    },
+                         "description":  [
+                                             {
+                                                 "ko":  "제 1회, 2회 미디어파사드 프로젝트 선정 모션 디자이너",
+                                                 "en":  "Selected Motion Designer for 1st \u0026 2nd media facade project"
+                                             }
+                                         ],
+                         "media":  [
+                                       {
+                                           "type":  "image",
+                                           "src":  "/uploads/cv-project-atelier2024.webp",
+                                           "href":  "https://www.youtube.com/watch?v=JXRhq4vxzGY",
+                                           "label":  {
+                                                         "ko":  "",
+                                                         "en":  "Open link"
+                                                     }
+                                       },
+                                       {
+                                           "type":  "image",
+                                           "src":  "/uploads/cv-project-atelier2023.webp",
+                                           "href":  "https://webzine.kookmin.ac.kr/webzine.php?syear=2023\u0026svolume=4\u0026mcode=31",
+                                           "label":  {
+                                                         "ko":  "",
+                                                         "en":  "Open link"
+                                                     }
+                                       }
+                                   ]
+                     },
+                     {
+                         "title":  {
+                                       "ko":  "",
+                                       "en":  "RED Flight"
+                                   },
+                         "period":  {
+                                        "ko":  "2024.04 - 2024.12",
+                                        "en":  "Apr 2024 - Dec 2024"
+                                    },
+                         "description":  [
+                                             {
+                                                 "ko":  "에임인텔리전스 인하우스 프로젝트 외부 참여",
+                                                 "en":  "Aim Intelligence In-house Project(External Contributor)"
+                                             }
+                                         ],
+                         "media":  [
+                                       {
+                                           "type":  "image",
+                                           "src":  "/uploads/cv-project-redflight.webp",
+                                           "href":  "https://luma.com/ivs-demoday",
+                                           "label":  {
+                                                         "ko":  "",
+                                                         "en":  "Open link"
+                                                     }
+                                       }
+                                   ]
+                     },
+                     {
+                         "title":  {
+                                       "ko":  "",
+                                       "en":  "Direp"
+                                   },
+                         "period":  {
+                                        "ko":  "2025.11 - 현재",
+                                        "en":  "Sep 2025 - Present"
+                                    },
+                         "description":  [
+                                             {
+                                                 "ko":  "국내 파충류 시장 타깃 프로젝트",
+                                                 "en":  "On-going project for the reptile industry"
+                                             }
+                                         ]
+                     }
+                 ],
+    "publications":  [
+
+                     ]
 }

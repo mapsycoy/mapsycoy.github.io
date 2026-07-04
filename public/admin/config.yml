@@ -1054,6 +1054,110 @@ collections:
                   - label: URL
                     name: href
                     widget: string
+          - label: Publications
+            name: publications
+            widget: list
+            required: false
+            collapsed: true
+            minimize_collapsed: true
+            summary: "{{fields.title.en}}"
+            fields:
+              - label: Title
+                name: title
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: Authors
+                name: authors
+                widget: list
+                required: false
+                collapsed: false
+                minimize_collapsed: true
+                summary: "{{fields.en}}"
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: Year
+                name: year
+                widget: string
+                required: false
+              - label: Venue
+                name: venue
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: Status
+                name: status
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: Description
+                name: description
+                widget: list
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
+              - label: Links
+                name: links
+                widget: list
+                required: false
+                collapsed: true
+                minimize_collapsed: true
+                summary: "{{fields.label.en}}"
+                fields:
+                  - label: Label
+                    name: label
+                    widget: object
+                    required: false
+                    fields:
+                      - label: Korean
+                        name: ko
+                        widget: string
+                        required: false
+                      - label: English
+                        name: en
+                        widget: string
+                        required: false
+                  - label: URL
+                    name: href
+                    widget: string
       - label: Landing
         name: landing
         file: src/data/home.json

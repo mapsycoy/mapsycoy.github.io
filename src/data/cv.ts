@@ -69,6 +69,19 @@ export type ProjectItem = {
   }[];
 };
 
+export type PublicationItem = {
+  title: LocalizedText;
+  authors: LocalizedText[];
+  year?: string;
+  venue?: LocalizedText;
+  status?: LocalizedText;
+  description?: LocalizedTextLine[];
+  links?: {
+    label: LocalizedText;
+    href: string;
+  }[];
+};
+
 export type SkillGroup = {
   category: LocalizedText;
   items: LocalizedText[];
@@ -88,3 +101,4 @@ export const artsGiftedEducationCertificate = cvData.artsGiftedEducationCertific
 };
 export const experiences = cvData.experiences as ExperienceItem[];
 export const projects = cvData.projects as ProjectItem[];
+export const publications = (cvData.publications ?? []) as PublicationItem[];
