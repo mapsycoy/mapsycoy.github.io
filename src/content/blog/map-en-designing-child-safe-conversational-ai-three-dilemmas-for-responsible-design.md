@@ -6,8 +6,8 @@ publishedAt: 2026-07-04
 status: published
 pinned: false
 tag: Paper
-thumbnail: /uploads/dilemmas.webp
-heroImage: /uploads/dilemmas.webp
+thumbnail: /uploads/dilemmas.jpg
+heroImage: /uploads/dilemmas.jpg
 heroImageCaption:
   en: "@IESE Business School"
 contentBlocks:
@@ -282,7 +282,7 @@ contentBlocks:
 
 
 
-        ## **Second Dilemma: AI tailored to a child learns too much about that child.**
+        ## **Second Dilemma: A personalized AI learns too much about the user.**
 
 
         The second dilemma is personalization vs. privacy. Personalization can be a very powerful tool to increase educational effectiveness and engagement. However, enabling personalization usually requires collecting and analyzing personal data such as the child's name, preferences, reading level, and learning history. This is exactly where personalization and privacy collide.
