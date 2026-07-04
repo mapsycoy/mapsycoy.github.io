@@ -1,10 +1,16 @@
 ---
 title:
   ko: 스토리형 게임이 주는 신기함
+  en: The Magic of Story-Driven Games
 publishedAt: 2026-07-05
-status: draft
+status: published
 pinned: false
 tag: Essay
+thumbnail: /uploads/mapleds.jpg
+heroImage: /uploads/mapleds.jpg
+heroImageCaption:
+  ko: " 메이플스토리DS TV CM"
+  en: MaplestoryDS TV CM
 contentBlocks:
   - type: text
     body:
@@ -82,7 +88,7 @@ contentBlocks:
         **오히려 입력과 출력 사이의 시간적 결합, 피드백의 가시성, 사용자의 개입이 결과에 반영되는 방식이 내용의 다양성만큼이나 중요할 수 있다.** 최종 도달점이 고정되어 있더라도, 그 과정에서 사용자의 개입이 '비자명한 노력'으로 인식되도록 시스템이 설계된다면 실질적인 서사 분기 없이도 주체성을 강화할 수 있다는 뜻이다. 반대로 선택지를 여러 개 줘도 결과에 미치는 영향이 미미하다면 주체성은 오히려 무너진다. 결국 핵심은 '실제 영향력'과 '지각된 영향력'을 일치시키는 것이다.
 
 
-        스토리형 게임이 보여주는 가능성은 여기서 중요하다. 좋은 인터랙션은 반드시 모든 결말을 열어둘 필요가 없다. 중요한 것은 사용자가 그 결과에 도달하는 과정에서 비자명한 노력을 투입하고, 그 노력이 시스템의 반응 속에서 의미 있는 값으로 되돌아오는 구조다. **즉, 주체성은 무한한 자유도에서만 생기는 것이 아니라, 제한된 구조 안에서도 자신의 수행이 축적되고 반영된다고 느낄 때 생긴다.**
+        스토리형 게임이 보여주는 가능성은 여기서 중요하다. 좋은 인터랙션은 반드시 모든 결말을 열어둘 필요가 없다. 중요한 것은 사용자가 그 결과에 도달하는 과정에서 비자명한 노력을 투입하고, 그 노력이 시스템의 반응 속에서 의미 있는 값으로 되돌아오는 구조다. <mark>**즉, 주체성은 무한한 자유도에서만 생기는 것이 아니라, 제한된 구조 안에서도 자신의 수행이 축적되고 반영된다고 느낄 때 생긴다.**</mark>
       en: >-
         Among the games we call "masterpieces" or "god-tier," there is a
         specific genre where the narrative does all the heavy lifting. 
@@ -155,5 +161,5 @@ contentBlocks:
         **Instead, the tight timing between input and output, the visibility of feedback, and how clearly the user's presence is reflected in the system matter just as much as—if not more than—giving them a buffet of content choices.** Even if the final destination is fixed, a system can sharply reinforce a user's sense of agency without any narrative branching, as long as the experience is designed so that their input feels like "non-trivial effort." Conversely, if you give a user ten different options but the actual impact feels hollow, their sense of agency collapses entirely. At the end of the day, the secret lies in aligning "actual influence" with "perceived influence."
 
 
-        This is the invaluable lesson story-driven games teach us. Great interaction design doesn't need to leave every door open. What really matters is creating a structure where the user invests genuine effort into the process, and where that effort echoes back to them as a meaningful response from the system. **True agency doesn't require boundless, chaotic freedom; it thrives within a restricted structure, as long as the user can feel the weight of their own choices accumulating and leaving a mark.**
+        This is the invaluable lesson story-driven games teach us. Great interaction design doesn't need to leave every door open. What really matters is creating a structure where the user invests genuine effort into the process, and where that effort echoes back to them as a meaningful response from the system. <mark>**True agency doesn't require boundless, chaotic freedom; it thrives within a restricted structure, as long as the user can feel the weight of their own choices accumulating and leaving a mark.**</mark>
 ---
