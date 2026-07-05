@@ -4,7 +4,7 @@ title:
   en: The reasons why I want to study HCI
 publishedAt: 2026-06-14T00:00:00.000Z
 status: published
-pinned: true
+pinned: false
 tag: Essay
 thumbnail: /uploads/first.webp
 heroImage: /uploads/first.webp
