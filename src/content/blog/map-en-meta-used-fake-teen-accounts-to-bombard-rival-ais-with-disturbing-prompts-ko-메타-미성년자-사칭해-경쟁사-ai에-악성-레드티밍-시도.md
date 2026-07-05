@@ -16,16 +16,17 @@ heroImageCaption:
 contentBlocks:
   - type: text
     body:
-      en: "## Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide,
-        Sex, and Drugs"
-      ko: "## 메타 하청업체 직원들, 10대로 위장해 경쟁사 챗봇에 자살·성·마약 유도 질문 던졌다"
-  - type: link
-    url: https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/
-    title:
-      en: Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide, Sex,
-        and Drugs
-    subtitle:
-      en: WIRED
+      en: >-
+        ## Meta Contractors Posed as Teens to Prompt Rival Chatbots About
+        Suicide, Sex, and Drugs
+
+
+        [Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide, Sex, and Drugs](https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/)
+      ko: >-
+        ## 메타 하청업체 직원들, 10대로 위장해 경쟁사 챗봇에 자살·성·마약 유도 질문 던졌다
+
+
+        [Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide, Sex, and Drugs](https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/)
   - type: text
     body:
       ko: >-
@@ -125,13 +126,13 @@ contentBlocks:
         즉, 자사 시스템의 청소년 안전 실패로 소송과 규제 압박을 받고 있는 회사가, 같은 시기에 경쟁사의 실패를 몰래 문서화하는 데 자원을 투입했다는 모순점이 발견되었다.
 
 
-        [^1]: FTC Launches Inquiry into AI Chatbots Acting as Companions \[Federal Trade Commission]
+        [^1]: FTC Launches Inquiry into AI Chatbots Acting as Companions\[Federal Trade Commission]
 
 
-        [^2]: Unreleased Meta product didn't protect kids from exploitation, tests found \[Axios]
+        [^2]: Unreleased Meta product didn't protect kids from exploitation, tests found\[Axios]
 
 
-        [^3]: Meta pauses teen access to AI characters ahead of new version \[TechCrunch]
+        [^3]: Meta pauses teen access to AI characters ahead of new version\[TechCrunch]
       en: >-
         Exclusive reporting by WIRED has revealed that Meta utilized a
         third-party agency to conduct a covert 'red-teaming' operation targeting
@@ -230,11 +231,11 @@ contentBlocks:
         In short, a contradiction has come to light: while facing lawsuits and regulatory pressure over its own system's failures regarding youth safety, the company was simultaneously funneling resources into covertly documenting the failures of its competitors.
 
 
-        [^1]: FTC Launches Inquiry into AI Chatbots Acting as Companions \[Federal Trade Commission]
+        [^1]: FTC Launches Inquiry into AI Chatbots Acting as Companions\[Federal Trade Commission]
 
 
-        [^2]: Unreleased Meta product didn't protect kids from exploitation, tests found \[Axios]
+        [^2]: Unreleased Meta product didn't protect kids from exploitation, tests found\[Axios]
 
 
-        [^3]: Meta pauses teen access to AI characters ahead of new version \[TechCrunch]
+        [^3]: Meta pauses teen access to AI characters ahead of new version\[TechCrunch]
 ---
