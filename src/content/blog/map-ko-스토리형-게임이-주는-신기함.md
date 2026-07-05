@@ -34,7 +34,7 @@ contentBlocks:
 
 
 
-        [「Cybertext: Perspectives on Ergodic Literature」(1997)](https://archive.org/details/cybertextperspec0000aars)
+        [「Cybertext: Perspectives on Ergodic Literature」(1997)](https://dl.acm.org/doi/10.5555/265941)
 
 
         Espen Aarseth의 「Cybertext: Perspectives on Ergodic Literature」(1997) 속 "non-trivial effort" 개념을 게임 경험에 적용해보면, 영화와 스토리형 게임의 차이는 단순히 결말이 달라지느냐가 아니라, 그 결말에 도달하기 위해 플레이어가 비자명(非自明)한[^1] 노력을 투입하느냐에 있다.
@@ -53,7 +53,7 @@ contentBlocks:
 
 
 
-        [「The Illusion of Conscious Will」(2002)](https://archive.org/details/illusionofconsci0000wegn)
+        [「The Illusion of Conscious Will」(2002)](https://mitpress.mit.edu/9780262731621/the-illusion-of-conscious-will/)
 
 
         Daniel Wegner의 「The Illusion of Conscious Will」(2002) 속 "apparent mental causation" 이론에 따르면, 행위 주체감이라는 것은 애초에 실제 인과관계를 직접 지각하는 게 아니라 사후적으로 추론되는 것이다. 이 이론이 제시하는 세 가지 원칙은 다음과 같다.
@@ -116,7 +116,7 @@ contentBlocks:
 
 
 
-        [「Cybertext: Perspectives on Ergodic Literature」(1997)](https://archive.org/details/cybertextperspec0000aars)
+        [「Cybertext: Perspectives on Ergodic Literature」(1997)](https://dl.acm.org/doi/10.5555/265941)
 
 
         If we apply Espen Aarseth’s concept of "non-trivial effort" from his 1997 book *Cybertext* to the gaming experience, the real difference between a movie and a story-driven game isn't about whether you can change the ending. It’s about whether the player has to invest genuine, non-trivial effort to get there.
@@ -135,7 +135,7 @@ contentBlocks:
 
 
 
-        [「The Illusion of Conscious Will」(2002)](https://archive.org/details/illusionofconsci0000wegn)
+        [「The Illusion of Conscious Will」(2002)](https://mitpress.mit.edu/9780262731621/the-illusion-of-conscious-will/)
 
 
         According to Daniel Wegner’s theory of "apparent mental causation" in *The Illusion of Conscious Will* (2002), our sense of agency isn't a direct perception of cause and effect. Instead, it’s something our brains infer after the fact. This theory hinges on three core principles:
