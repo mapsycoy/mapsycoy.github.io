@@ -22,7 +22,7 @@ contentBlocks:
         Drugs](https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/)
 
 
-        메타(Meta)가 대행업체를 동원해 오픈AI의 ChatGPT, 구글의 Gemini, 그리고 Character.AI를 상대로 은밀한 '레드티밍'을 벌였다는 사실이 WIRED의 단독 보도로 드러났다.
+        메타(Meta)가 대행업체를 동원해 오픈AI의 ChatGPT, 구글의 Gemini, 그리고 Character.AI를 상대로 은밀한 '레드티밍'을 벌였다는 사실이 지난 6월 29일 WIRED의 단독 보도로 드러났다.
 
 
         내부 프로젝트명은 'Cannes'. 
@@ -152,7 +152,7 @@ contentBlocks:
         Drugs](https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/)
 
 
-        Exclusive reporting by WIRED has revealed that Meta utilized a third-party agency to conduct a covert 'red-teaming' operation targeting OpenAI's ChatGPT, Google's Gemini, and Character.AI.
+        An exclusive report by *WIRED* on June 29 revealed that Meta had mobilized a third-party agency to conduct covert "red-teaming" operations against OpenAI's ChatGPT, Google's Gemini, and Character.AI.
 
 
         The internal project was codenamed 'Cannes.'
