@@ -25,7 +25,7 @@ contentBlocks:
 
 
 
-        ## The 1st Korea Reptile Festival
+        ## 제1회 대한민국 파충류 페스티벌
       en: >-
         Commissioned Illustration for 'Vivid Photography' (Exotic Pet
         Photography Studio)
