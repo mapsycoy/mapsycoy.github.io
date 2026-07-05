@@ -1,7 +1,8 @@
 ---
 title:
-  en: Meta Used Fake Teen Accounts to Bombard Rival AIs with Disturbing Prompts
-  ko: 메타, 미성년자 사칭해 경쟁사 AI에 악성 레드티밍 시도
+  en: Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide, Sex,
+    and Drugs
+  ko: 메타 하청업체 직원들, 10대로 위장해 경쟁사 챗봇에 자살·성·마약 유도 질문 던졌다
 publishedAt: 2026-07-04
 status: published
 pinned: false
