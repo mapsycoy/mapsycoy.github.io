@@ -5,6 +5,7 @@ title:
 publishedAt: 2026-02-10T00:00:00.000Z
 updatedAt: 2026-06-14T00:00:00.000Z
 status: published
+pinned: true
 tag: Essay
 thumbnail: /uploads/imaginary.webp
 heroImage: /uploads/imaginary-hero.webp
