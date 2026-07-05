@@ -1670,31 +1670,45 @@ h3 {
   color: var(--accent);
 }
 
-.blog-post-body .footnote-ref,
-.blog-post-body .footnote-label,
-.blog-post-body .footnote-backref {
+.blog-post-body .footnote-ref-wrap {
+  position: relative;
+  white-space: nowrap;
+}
+
+.blog-post-body .footnote-ref {
+  border: 0;
+  padding: 0 0.08em;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
   text-decoration: none;
 }
 
-.blog-post-body .footnotes {
-  margin-top: 2rem;
-  font-size: 0.82em;
+.blog-post-body .footnote-popover {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.45rem);
+  z-index: 20;
+  display: none;
+  width: max-content;
+  max-width: min(18rem, 78vw);
+  padding: 0.55rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  background: var(--bg);
+  box-shadow: 0 0.5rem 1.5rem color-mix(in srgb, var(--text) 16%, transparent);
+  color: var(--text);
+  font-size: 0.82rem;
   line-height: 1.45;
-  color: var(--muted);
+  text-align: left;
+  white-space: normal;
+  transform: translateX(-50%);
 }
 
-.blog-post-body .footnotes ol {
-  list-style: none;
-  padding-left: 0;
-}
-
-.blog-post-body .footnotes li {
-  padding-left: 1.2em;
-  text-indent: -1.2em;
-}
-
-.blog-post-body .footnote-label {
-  margin-right: 0.28em;
+.blog-post-body .footnote-ref-wrap:hover .footnote-popover,
+.blog-post-body .footnote-ref-wrap:focus-within .footnote-popover {
+  display: block;
 }
 
 .work-text-block p:not(.text-link-preview):has(> a:only-child),
