@@ -1,4 +1,4 @@
-﻿---
+---
 import Layout from "../../layouts/Layout.astro";
 import { render } from "astro:content";
 import { getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../data/blog";
@@ -213,6 +213,17 @@ const renderMarkdownBlock = (value: string) => {
   return html.join("");
 };
 
+const renderFootnotes = () => {
+  if (!footnoteOrder.length) return "";
+
+  return `<section class="footnotes" aria-label="Footnotes"><ol>${footnoteOrder
+    .map((id, index) => {
+      const slug = getFootnoteSlug(id);
+      const content = footnoteDefinitions.get(id) ?? "";
+      return `<li id="fn-${slug}"><span class="footnote-label">${toSuperscriptNumber(index + 1)}</span> ${renderInlineMarkdown(content)}</li>`;
+    })
+    .join("")}</ol></section>`;
+};
 const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   if (block.type === "text") return renderMarkdownBlock(localize(block.body, lang));
   if (block.type === "image") {
@@ -270,6 +281,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
       {contentBlocks.length > 0 ? (
         <>
           {contentBlocks.map((block) => <Fragment set:html={renderBlogBlock(block)} />)}
+          <Fragment set:html={renderFootnotes()} />
         </>
       ) : (
         <Content />

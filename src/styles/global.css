@@ -1710,6 +1710,27 @@ h3 {
 .blog-post-body .footnote-ref-wrap:focus-within .footnote-popover {
   display: block;
 }
+.blog-post-body .footnotes {
+  margin-top: 2rem;
+  font-size: 0.82em;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.blog-post-body .footnotes ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+.blog-post-body .footnotes li {
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+
+.blog-post-body .footnote-label {
+  margin-right: 0.28em;
+  text-decoration: none;
+}
 
 .work-text-block p:not(.text-link-preview):has(> a:only-child),
 .blog-post-body p:not(.text-link-preview):has(> a:only-child),
