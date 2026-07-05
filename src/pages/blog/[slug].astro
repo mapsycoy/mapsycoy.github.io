@@ -47,6 +47,8 @@ const getFootnoteSlug = (id: string) =>
     .replace(/[^a-z0-9_-]+/g, "-")
     .replace(/^-+|-+$/g, "") || "note";
 
+const toSuperscriptNumber = (value: number) =>
+  String(value).replace(/[0-9]/g, (digit) => ["\u2070", "\u00b9", "\u00b2", "\u00b3", "\u2074", "\u2075", "\u2076", "\u2077", "\u2078", "\u2079"][Number(digit)]);
 const renderFootnoteReference = (match: string, id: string) => {
   if (!footnoteDefinitions.has(id)) return match;
 
@@ -58,7 +60,7 @@ const renderFootnoteReference = (match: string, id: string) => {
 
   const number = index + 1;
   const slug = getFootnoteSlug(id);
-  return `<sup id="fnref-${slug}"><a href="#fn-${slug}" class="footnote-ref" aria-label="Footnote ${number}">${number}</a></sup>`;
+  return `<sup id="fnref-${slug}"><a href="#fn-${slug}" class="footnote-ref" aria-label="Footnote ${number}">${toSuperscriptNumber(number)}</a></sup>`;
 };
 const escapeHtml = (value: string) =>
   smartenText(value)
