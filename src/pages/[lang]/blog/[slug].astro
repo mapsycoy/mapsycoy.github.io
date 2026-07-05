@@ -26,6 +26,42 @@ const postTitle = localize(post.data.title, lang);
 const { Content } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
 const contentBlocks = post.data.contentBlocks ?? [];
+const footnoteDefinitions = new Map<string, string>();
+const footnoteOrder: string[] = [];
+
+contentBlocks
+  .filter((block) => block.type === "text")
+  .map((block) => localize(block.body, lang))
+  .forEach((body) => {
+    body
+      .trim()
+      .split(/\n{2,}/)
+      .forEach((block) => {
+        const definition = block.trim().match(/^\[\^([^\]]+)\]:\s*([\s\S]*)$/);
+        if (definition) footnoteDefinitions.set(definition[1], definition[2].trim());
+      });
+  });
+
+const getFootnoteSlug = (id: string) =>
+  id
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9_-]+/g, "-")
+    .replace(/^-+|-+$/g, "") || "note";
+
+const renderFootnoteReference = (match: string, id: string) => {
+  if (!footnoteDefinitions.has(id)) return match;
+
+  let index = footnoteOrder.indexOf(id);
+  if (index === -1) {
+    footnoteOrder.push(id);
+    index = footnoteOrder.length - 1;
+  }
+
+  const number = index + 1;
+  const slug = getFootnoteSlug(id);
+  return `<sup id="fnref-${slug}"><a href="#fn-${slug}" class="footnote-ref" aria-label="Footnote ${number}">${number}</a></sup>`;
+};
 const escapeHtml = (value: string) =>
   smartenText(value)
     .replaceAll("&", "&amp;")
@@ -42,6 +78,7 @@ const escapeAttribute = (value: string) =>
     .replaceAll("'", "&#39;");
 const renderInlineMarkdown = (value: string) =>
   escapeHtml(value)
+    .replace(/\[\^([^\]]+)\]/g, renderFootnoteReference)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
@@ -130,7 +167,7 @@ const renderMarkdownBlock = (value: string) => {
   blocks.forEach((block) => {
     const trimmed = block.trim();
     const lines = trimmed.split("\n").map((line) => line.trim());
-    if (!trimmed) return;
+    if (!trimmed || /^\[\^([^\]]+)\]:\s*[\s\S]*$/.test(trimmed)) return;
 
     const blockListItems = getListItems(trimmed);
     if (blockListItems.length) {
@@ -175,6 +212,17 @@ const renderMarkdownBlock = (value: string) => {
   return html.join("");
 };
 
+const renderFootnotes = () => {
+  if (!footnoteOrder.length) return "";
+
+  return `<section class="footnotes" aria-label="Footnotes"><ol>${footnoteOrder
+    .map((id) => {
+      const slug = getFootnoteSlug(id);
+      const content = footnoteDefinitions.get(id) ?? "";
+      return `<li id="fn-${slug}">${renderInlineMarkdown(content)} <a href="#fnref-${slug}" class="footnote-backref" aria-label="Back to content">&#8617;</a></li>`;
+    })
+    .join("")}</ol></section>`;
+};
 const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   if (block.type === "text") return renderMarkdownBlock(localize(block.body, lang));
   if (block.type === "image") {
@@ -230,7 +278,10 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
 
     <div class="blog-post-body">
       {contentBlocks.length > 0 ? (
-        contentBlocks.map((block) => <Fragment set:html={renderBlogBlock(block)} />)
+        <>
+          {contentBlocks.map((block) => <Fragment set:html={renderBlogBlock(block)} />)}
+          <Fragment set:html={renderFootnotes()} />
+        </>
       ) : (
         <Content />
       )}
