@@ -6,7 +6,7 @@ title:
 publishedAt: 2026-07-04
 status: published
 pinned: false
-tag: AI
+tag: AI News
 thumbnail: https://s.yimg.com/lo/mysterio/api/42ac87c9b4a89fd65bb1d984de30b7497d5b91da4dee1c88243722fa3ff01099/lightyear_networkapi/resizefill_w1200;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Ffuturism_981%2F575f2fe2c43a9960bdd6bca89e112aee
 heroImage: https://s.yimg.com/lo/mysterio/api/42ac87c9b4a89fd65bb1d984de30b7497d5b91da4dee1c88243722fa3ff01099/lightyear_networkapi/resizefill_w1200;quality_80;format_webp/https:%2F%2Fmedia.zenfs.com%2Fen%2Ffuturism_981%2F575f2fe2c43a9960bdd6bca89e112aee
 heroImageCaption:

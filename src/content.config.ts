@@ -22,7 +22,7 @@ const blog = defineCollection({
     updatedAt: z.coerce.date().optional(),
     status: statusSchema,
     pinned: z.boolean().default(false),
-    tag: z.enum(["Essay", "AI", "Paper"]),
+    tag: z.enum(["Essay", "AI News", "Paper"]),
     thumbnail: imagePathSchema,
     heroImage: imagePathSchema,
     heroImageCaption: localizedTextSchema.default(""),

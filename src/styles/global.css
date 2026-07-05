@@ -883,6 +883,7 @@ h3 {
   font: inherit;
   font-size: 0.95rem;
   cursor: pointer;
+  text-decoration: none;
 }
 
 .work-filter-button:hover,
@@ -3084,6 +3085,24 @@ html[lang="ko"] .cv-page {
 
   .blog-post-title {
     font-size: 2.35rem;
+  }
+
+  .blog-post-body .footnote-popover {
+    width: max-content;
+    max-width: min(20rem, calc(100vw - 40px));
+    max-height: min(42vh, 18rem);
+    overflow: auto;
+    padding: 0.7rem 0.8rem;
+    font-size: 0.86rem;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .blog-post-body .footnote-popover.is-positioned {
+    position: fixed;
+    top: var(--footnote-popover-top, 20px);
+    left: var(--footnote-popover-left, 20px);
+    bottom: auto;
+    transform: none;
   }
 
   .cv-profile {

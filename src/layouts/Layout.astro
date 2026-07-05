@@ -573,10 +573,61 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
           });
         });
       };
+
+      const positionFootnotePopover = (wrap) => {
+        const trigger = wrap.querySelector(".footnote-ref");
+        const popover = wrap.querySelector(".footnote-popover");
+        if (!(trigger instanceof HTMLElement) || !(popover instanceof HTMLElement)) return;
+
+        popover.classList.remove("is-positioned");
+        if (!window.matchMedia("(max-width: 680px)").matches) return;
+
+        requestAnimationFrame(() => {
+          const margin = 20;
+          const gap = 8;
+          const triggerRect = trigger.getBoundingClientRect();
+          const popoverRect = popover.getBoundingClientRect();
+          const left = Math.min(
+            window.innerWidth - margin - popoverRect.width,
+            Math.max(margin, triggerRect.left + (triggerRect.width / 2) - (popoverRect.width / 2))
+          );
+          const top = Math.max(margin, triggerRect.top - popoverRect.height - gap);
+
+          popover.style.setProperty("--footnote-popover-left", `${Math.round(left)}px`);
+          popover.style.setProperty("--footnote-popover-top", `${Math.round(top)}px`);
+          popover.classList.add("is-positioned");
+        });
+      };
+
+      const initializeFootnotePopovers = () => {
+        document.querySelectorAll(".footnote-ref-wrap").forEach((wrap) => {
+          if (!(wrap instanceof HTMLElement) || wrap.dataset.footnoteBound === "true") return;
+          wrap.dataset.footnoteBound = "true";
+
+          const update = () => positionFootnotePopover(wrap);
+          const clear = () => {
+            const popover = wrap.querySelector(".footnote-popover");
+            if (popover instanceof HTMLElement) popover.classList.remove("is-positioned");
+          };
+
+          wrap.addEventListener("pointerenter", update);
+          wrap.addEventListener("focusin", update);
+          wrap.addEventListener("click", update);
+          wrap.addEventListener("pointerleave", clear);
+          wrap.addEventListener("focusout", clear);
+        });
+      };
+
+      window.addEventListener("resize", () => {
+        document.querySelectorAll(".footnote-ref-wrap:focus-within, .footnote-ref-wrap:hover").forEach((wrap) => {
+          if (wrap instanceof HTMLElement) positionFootnotePopover(wrap);
+        });
+      }, { passive: true });
       const initializePageInteractions = () => {
         initializeWorksFilters();
         initializeBlogFilters();
         initializeCvToggles();
+        initializeFootnotePopovers();
       };
 
       document.addEventListener("astro:page-load", initializePageInteractions);

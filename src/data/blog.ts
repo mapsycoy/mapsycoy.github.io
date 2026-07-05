@@ -1,9 +1,9 @@
 ﻿import { getCollection, type CollectionEntry } from "astro:content";
 
-export type BlogTag = "Essay" | "AI" | "Paper";
+export type BlogTag = "Essay" | "AI News" | "Paper";
 export type BlogPost = CollectionEntry<"blog">;
 
-export const blogTags: BlogTag[] = ["Essay", "AI", "Paper"];
+export const blogTags: BlogTag[] = ["Essay", "AI News", "Paper"];
 export const blogPostsPerPage = 8;
 
 export const normalizeBlogTag = (value: string) =>

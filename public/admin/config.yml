@@ -109,7 +109,7 @@ collections:
         widget: select
         options:
           - Essay
-          - AI
+          - AI News
           - Paper
       - label: Thumbnail
         name: thumbnail
