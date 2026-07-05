@@ -1,0 +1,27 @@
+---
+import BlogIndex from "../../../components/BlogIndex.astro";
+import Layout from "../../../layouts/Layout.astro";
+import { blogTags, getBlogPagePosts, getBlogPosts, normalizeBlogTag } from "../../../data/blog";
+import { defaultLanguage } from "../../../utils/i18n";
+
+export async function getStaticPaths() {
+  const allPosts = await getBlogPosts();
+
+  return blogTags.map((tag) => ({
+    params: { tag: normalizeBlogTag(tag) },
+    props: {
+      tag,
+      allPosts: allPosts.filter((post) => post.data.tag === tag),
+    },
+  }));
+}
+
+const lang = defaultLanguage;
+const { tag, allPosts } = Astro.props;
+const posts = getBlogPagePosts(allPosts, 1);
+const basePath = `/blog/tag/${normalizeBlogTag(tag)}`;
+---
+
+<Layout title={`${tag} Blog`} description={`${tag} essays, technical notes, and archived writings by mapsycoy.`} lang={lang}>
+  <BlogIndex posts={posts} allPosts={allPosts} lang={lang} currentPage={1} basePath={basePath} activeTag={tag} />
+</Layout>

@@ -1,0 +1,27 @@
+---
+import BlogIndex from "../../../components/BlogIndex.astro";
+import Layout from "../../../layouts/Layout.astro";
+import { getBlogPageCount, getBlogPagePosts, getBlogPosts } from "../../../data/blog";
+import { defaultLanguage } from "../../../utils/i18n";
+
+export async function getStaticPaths() {
+  const allPosts = await getBlogPosts();
+  const pageCount = getBlogPageCount(allPosts);
+
+  return Array.from({ length: Math.max(0, pageCount - 1) }, (_, index) => {
+    const page = index + 2;
+    return {
+      params: { page: String(page) },
+      props: { allPosts, page },
+    };
+  });
+}
+
+const lang = defaultLanguage;
+const { allPosts, page } = Astro.props;
+const posts = getBlogPagePosts(allPosts, page);
+---
+
+<Layout title={`Blog Page ${page}`} description="Essays, technical notes, and archived writings by mapsycoy." lang={lang}>
+  <BlogIndex posts={posts} allPosts={allPosts} lang={lang} currentPage={page} basePath="/blog" />
+</Layout>

@@ -1,0 +1,140 @@
+---
+import {
+  blogTags,
+  getBlogPageCount,
+  getPostDateLabel,
+  hasKoreanText,
+  normalizeBlogTag,
+  type BlogPost,
+  type BlogTag,
+} from "../data/blog";
+import { defaultLanguage, localize, type Language } from "../utils/i18n";
+
+type Props = {
+  posts: BlogPost[];
+  allPosts: BlogPost[];
+  lang?: Language;
+  currentPage?: number;
+  basePath?: string;
+  activeTag?: BlogTag;
+};
+
+const {
+  posts,
+  allPosts,
+  lang = defaultLanguage,
+  currentPage = 1,
+  basePath = "/blog",
+  activeTag,
+} = Astro.props;
+
+const normalizedBasePath = `/${basePath.replace(/^\/+|\/+$/g, "")}`;
+const pageCount = getBlogPageCount(allPosts);
+const toPagePath = (page: number) => {
+  if (page <= 1) return `${normalizedBasePath}/`;
+  return `${normalizedBasePath}/page/${page}/`;
+};
+const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
+const allPath = `${languagePrefix}/blog/`;
+const tagPath = (tag: BlogTag) => `${languagePrefix}/blog/tag/${normalizeBlogTag(tag)}/`;
+const paginationItems = (() => {
+  const pages = new Set([1, pageCount, currentPage - 1, currentPage, currentPage + 1]);
+  const sortedPages = [...pages]
+    .filter((page) => page >= 1 && page <= pageCount)
+    .sort((a, b) => a - b);
+  const items: Array<number | "ellipsis"> = [];
+
+  sortedPages.forEach((page) => {
+    const previous = items[items.length - 1];
+    if (typeof previous === "number" && page - previous > 1) items.push("ellipsis");
+    items.push(page);
+  });
+
+  return items;
+})();
+---
+
+<section class="works-filter" aria-label="Filter blog entries by tag">
+  <a class:list={["work-filter-button", !activeTag && "is-active"]} href={allPath} aria-current={!activeTag ? "page" : undefined}>
+    All
+  </a>
+  {blogTags.map((tag) => (
+    <a
+      class:list={["work-filter-button", activeTag === tag && "is-active"]}
+      href={tagPath(tag)}
+      aria-current={activeTag === tag ? "page" : undefined}
+    >
+      {tag}
+    </a>
+  ))}
+</section>
+
+<section class="entry-list blog-entry-list" aria-label="Blog entries">
+  {posts.map((post, index) => (
+    <article
+      class:list={[
+        "blog-entry",
+        index === 0 && "is-first-visible",
+        index === posts.length - 1 && "is-last-visible"
+      ]}
+    >
+      <a class="blog-entry-link" href={`${languagePrefix}/blog/${post.id}/`} aria-label={`Open ${localize(post.data.title, lang)} post`}>
+        <div class="blog-entry-copy">
+          <p class="entry-meta blog-entry-meta">
+            {post.data.pinned && (
+              <span class="pin-icon" aria-label="Pinned post">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M14.7 3.3 20.7 9.3 18.6 11.4 17.2 10 13 14.2V18L11.7 19.3 8.8 16.4 4.4 20.8 3.2 19.6 7.6 15.2 4.7 12.3 6 11H9.8L14 6.8 12.6 5.4 14.7 3.3Z" />
+                </svg>
+              </span>
+            )}
+            <span>{post.data.tag}</span>
+          </p>
+          <h2 class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</h2>
+          <p class="blog-entry-date">
+            {getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}
+          </p>
+        </div>
+        <div class="blog-entry-thumb" aria-label={`${localize(post.data.title, lang)} thumbnail`}>
+          {post.data.thumbnail ? (
+            <img src={post.data.thumbnail} alt="" loading="lazy" />
+          ) : (
+            <div class="blog-entry-thumb-placeholder" aria-hidden="true"></div>
+          )}
+        </div>
+      </a>
+    </article>
+  ))}
+</section>
+
+{pageCount > 1 && (
+  <nav class="blog-pagination" aria-label="Blog pagination">
+    <div class="blog-page-numbers">
+      {currentPage > 1 && (
+        <a class="blog-page-button" href={toPagePath(currentPage - 1)} aria-label="Previous page">
+          Previous
+        </a>
+      )}
+      {paginationItems.map((item) => {
+        if (item === "ellipsis") {
+          return <span class="blog-page-ellipsis" aria-hidden="true">...</span>;
+        }
+
+        return (
+          <a
+            class:list={["blog-page-button", item === currentPage && "is-active"]}
+            href={toPagePath(item)}
+            aria-current={item === currentPage ? "page" : undefined}
+          >
+            {item}
+          </a>
+        );
+      })}
+      {currentPage < pageCount && (
+        <a class="blog-page-button" href={toPagePath(currentPage + 1)} aria-label="Next page">
+          Next
+        </a>
+      )}
+    </div>
+  </nav>
+)}

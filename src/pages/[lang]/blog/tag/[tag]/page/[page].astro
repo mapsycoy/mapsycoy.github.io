@@ -1,0 +1,38 @@
+---
+import BlogIndex from "../../../../../../components/BlogIndex.astro";
+import Layout from "../../../../../../layouts/Layout.astro";
+import { blogTags, getBlogPageCount, getBlogPagePosts, getBlogPosts, normalizeBlogTag } from "../../../../../../data/blog";
+import { languages, type Language } from "../../../../../../utils/i18n";
+
+export async function getStaticPaths() {
+  const allPosts = await getBlogPosts();
+
+  return languages.flatMap((lang) =>
+    blogTags.flatMap((tag) => {
+      const tagPosts = allPosts.filter((post) => post.data.tag === tag);
+      const pageCount = getBlogPageCount(tagPosts);
+
+      return Array.from({ length: Math.max(0, pageCount - 1) }, (_, index) => {
+        const page = index + 2;
+        return {
+          params: { lang, tag: normalizeBlogTag(tag), page: String(page) },
+          props: { lang, tag, allPosts: tagPosts, page },
+        };
+      });
+    })
+  );
+}
+
+const { lang, tag, allPosts, page } = Astro.props as {
+  lang: Language;
+  tag: typeof blogTags[number];
+  allPosts: Awaited<ReturnType<typeof getBlogPosts>>;
+  page: number;
+};
+const posts = getBlogPagePosts(allPosts, page);
+const basePath = `/${lang}/blog/tag/${normalizeBlogTag(tag)}`;
+---
+
+<Layout title={`${tag} Blog Page ${page}`} description={`${tag} essays, technical notes, and archived writings by mapsycoy.`} lang={lang}>
+  <BlogIndex posts={posts} allPosts={allPosts} lang={lang} currentPage={page} basePath={basePath} activeTag={tag} />
+</Layout>

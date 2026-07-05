@@ -3241,3 +3241,13 @@ html[lang="ko"] .cv-page {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
+
+.blog-page-ellipsis {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  min-height: 32px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}

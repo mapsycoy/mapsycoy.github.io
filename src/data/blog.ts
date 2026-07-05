@@ -1,11 +1,18 @@
-import { getCollection, type CollectionEntry } from "astro:content";
+﻿import { getCollection, type CollectionEntry } from "astro:content";
 
 export type BlogTag = "Essay" | "AI" | "Paper";
 export type BlogPost = CollectionEntry<"blog">;
 
 export const blogTags: BlogTag[] = ["Essay", "AI", "Paper"];
+export const blogPostsPerPage = 8;
 
-export const hasKoreanText = (value: string) => /[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(value);
+export const normalizeBlogTag = (value: string) =>
+  value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+export const getBlogTagBySlug = (slug: string | undefined) =>
+  blogTags.find((tag) => normalizeBlogTag(tag) === slug);
+
+export const hasKoreanText = (value: string) => /[\uac00-\ud7a3]/.test(value);
 
 export const formatPostDate = (date: Date) =>
   new Intl.DateTimeFormat("en", {
@@ -36,4 +43,12 @@ export const getBlogPosts = async ({ includeDrafts = false } = {}) => {
   const visiblePosts = includeDrafts ? posts : posts.filter((post) => post.data.status === "published");
 
   return sortBlogPosts(visiblePosts);
+};
+
+export const getBlogPageCount = (posts: BlogPost[], pageSize = blogPostsPerPage) =>
+  Math.max(1, Math.ceil(posts.length / pageSize));
+
+export const getBlogPagePosts = (posts: BlogPost[], page: number, pageSize = blogPostsPerPage) => {
+  const startIndex = (page - 1) * pageSize;
+  return posts.slice(startIndex, startIndex + pageSize);
 };
