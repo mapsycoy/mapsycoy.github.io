@@ -15,7 +15,7 @@ contentBlocks:
   - type: text
     body:
       ko: >-
-        흔히 명작, 갓겜이라 불리는 게임 중 스토리 서사가 메인이 되는 게임들이 있다. 
+        흔히 갓겜이라 불리는 게임 중 스토리 서사가 메인이 되는 게임들이 있다. 
 
 
         생각해보면 이런 게임은 정해진 스토리 속에 플레이어가 들어가서 그 흐름대로 움직이는 구조다. 우리가 직접 마우스와 키보드 등으로 컨트롤하고 있지만 정해진 서사에서 벗어날 수는 없고, 엔딩 또한 정해져 있다.
@@ -90,8 +90,8 @@ contentBlocks:
 
         스토리형 게임이 보여주는 가능성은 여기서 중요하다. 좋은 인터랙션은 반드시 모든 결말을 열어둘 필요가 없다. 중요한 것은 사용자가 그 결과에 도달하는 과정에서 비자명한 노력을 투입하고, 그 노력이 시스템의 반응 속에서 의미 있는 값으로 되돌아오는 구조다. <mark>**즉, 주체성은 무한한 자유도에서만 생기는 것이 아니라, 제한된 구조 안에서도 자신의 수행이 축적되고 반영된다고 느낄 때 생긴다.**</mark>
       en: >-
-        Among the games we call "masterpieces" or "god-tier," there is a
-        specific genre where the narrative does all the heavy lifting. 
+        Among the games we call "GOAT," there is a specific genre where the
+        narrative does all the heavy lifting. 
 
 
         When you think about it, these games are structured so that the player is dropped into a predetermined story, moving firmly along its rails. We might be the ones clicking the mouse and pressing the keys, but we can't escape the scripted plot, and the ending is already set in stone.
