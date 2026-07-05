@@ -1670,6 +1670,33 @@ h3 {
   color: var(--accent);
 }
 
+.blog-post-body .footnote-ref,
+.blog-post-body .footnote-label,
+.blog-post-body .footnote-backref {
+  text-decoration: none;
+}
+
+.blog-post-body .footnotes {
+  margin-top: 2rem;
+  font-size: 0.82em;
+  line-height: 1.45;
+  color: var(--muted);
+}
+
+.blog-post-body .footnotes ol {
+  list-style: none;
+  padding-left: 0;
+}
+
+.blog-post-body .footnotes li {
+  padding-left: 1.2em;
+  text-indent: -1.2em;
+}
+
+.blog-post-body .footnote-label {
+  margin-right: 0.28em;
+}
+
 .work-text-block p:not(.text-link-preview):has(> a:only-child),
 .blog-post-body p:not(.text-link-preview):has(> a:only-child),
 .text-link-preview {
