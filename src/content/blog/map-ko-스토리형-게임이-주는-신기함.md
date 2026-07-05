@@ -6,8 +6,8 @@ publishedAt: 2026-07-05
 status: published
 pinned: false
 tag: Essay
-thumbnail: /uploads/pragmata.jpg
-heroImage: /uploads/pragmata.jpg
+thumbnail: /uploads/pragmata.webp
+heroImage: /uploads/pragmata.webp
 heroImageCaption:
   ko: 프래그마타
   en: PRAGMATA
