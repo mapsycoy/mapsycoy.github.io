@@ -21,7 +21,7 @@ const textExtensions = new Set([
   ".yml",
 ]);
 const referenceRoots = ["src", "public/admin", "scripts"];
-const maxWidth = 2400;
+const maxWidth = 1080;
 const webpQuality = 82;
 
 const formatBytes = (bytes) => `${(bytes / 1024).toFixed(bytes > 1024 * 1024 ? 1 : 0)} KB`;
@@ -120,6 +120,61 @@ const convertToWebp = async ({ sourcePath, webpPath }) => {
   };
 };
 
+const optimizeExistingWebp = async (filePath) => {
+  const original = await fs.readFile(filePath);
+  const metadata = await sharp(original).metadata();
+  const shouldResize = metadata.width && metadata.width > maxWidth;
+
+  if (!shouldResize) {
+    return {
+      originalSize: original.length,
+      optimizedSize: original.length,
+      changed: false,
+      reason: metadata.width ? `already ${metadata.width}px wide` : "width unavailable",
+    };
+  }
+
+  const optimized = await sharp(original)
+    .rotate()
+    .resize({ width: maxWidth, withoutEnlargement: true })
+    .webp({ quality: webpQuality })
+    .toBuffer();
+  const tempPath = `${filePath}.tmp`;
+  await fs.writeFile(tempPath, optimized);
+  await fs.rename(tempPath, filePath);
+
+  return {
+    originalSize: original.length,
+    optimizedSize: optimized.length,
+    changed: true,
+    reason: `resized to ${maxWidth}px wide`,
+  };
+};
+
+const optimizeExistingWebps = async () => {
+  const webpFiles = await collectFiles(publicDir, (filePath) => path.extname(filePath).toLowerCase() === ".webp");
+  let changedCount = 0;
+  let savedBytes = 0;
+
+  for (const filePath of webpFiles) {
+    const result = await optimizeExistingWebp(filePath);
+    const relativePath = path.relative(rootDir, filePath);
+
+    savedBytes += Math.max(0, result.originalSize - result.optimizedSize);
+    if (result.changed) changedCount += 1;
+
+    console.log(
+      `${result.changed ? "updated" : "verified"} ${relativePath}: ${formatBytes(result.originalSize)} -> ${formatBytes(result.optimizedSize)} (${result.reason})`
+    );
+  }
+
+  console.log(
+    `Existing WebP optimization complete: ${changedCount}/${webpFiles.length} files updated, ${formatBytes(savedBytes)} saved.`
+  );
+
+  return { changedCount, fileCount: webpFiles.length, savedBytes };
+};
+
 const collectReferenceFiles = async () => {
   const files = await Promise.all(
     referenceRoots.map((dir) =>
@@ -173,11 +228,12 @@ export const prepareWebpImages = async () => {
   }
 
   const references = await updateReferences(plan);
+  const existingWebps = await optimizeExistingWebps();
   console.log(
     `WebP preparation complete: ${changedCount}/${plan.length} files written, ${formatBytes(savedBytes)} potential savings, ${references.changedFiles} reference files updated.`
   );
 
-  return { plan, references };
+  return { plan, references, existingWebps };
 };
 
 export const deleteOriginalImages = async (plan, { distDir } = {}) => {
