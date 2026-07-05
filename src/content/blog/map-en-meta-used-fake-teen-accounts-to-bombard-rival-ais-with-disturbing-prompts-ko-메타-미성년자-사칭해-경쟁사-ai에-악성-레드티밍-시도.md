@@ -17,22 +17,13 @@ heroImageCaption:
 contentBlocks:
   - type: text
     body:
-      en: >-
-        ## Meta Contractors Posed as Teens to Prompt Rival Chatbots About
-        Suicide, Sex, and Drugs
-
-
-        [Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide, Sex, and Drugs](https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/)
       ko: >-
-        ## 메타 하청업체 직원들, 10대로 위장해 경쟁사 챗봇에 자살·성·마약 유도 질문 던졌다
+        [Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide,
+        Sex, and
+        Drugs](https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/)
 
 
-        [Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide, Sex, and Drugs](https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/)
-  - type: text
-    body:
-      ko: >-
-        메타(Meta)가 대행업체를 동원해 오픈AI의 ChatGPT, 구글의 Gemini, 그리고 Character.AI를 상대로 은밀한
-        '레드티밍'을 벌였다는 사실이 WIRED의 단독 보도로 드러났다.
+        메타(Meta)가 대행업체를 동원해 오픈AI의 ChatGPT, 구글의 Gemini, 그리고 Character.AI를 상대로 은밀한 '레드티밍'을 벌였다는 사실이 WIRED의 단독 보도로 드러났다.
 
 
         내부 프로젝트명은 'Cannes'. 
@@ -135,9 +126,12 @@ contentBlocks:
 
         [^3]: Meta pauses teen access to AI characters ahead of new version\[TechCrunch]
       en: >-
-        Exclusive reporting by WIRED has revealed that Meta utilized a
-        third-party agency to conduct a covert 'red-teaming' operation targeting
-        OpenAI's ChatGPT, Google's Gemini, and Character.AI.
+        [Meta Contractors Posed as Teens to Prompt Rival Chatbots About Suicide,
+        Sex, and
+        Drugs](https://www.wired.com/story/meta-contractors-pretending-to-be-teens-chatbot-testing/)
+
+
+        Exclusive reporting by WIRED has revealed that Meta utilized a third-party agency to conduct a covert 'red-teaming' operation targeting OpenAI's ChatGPT, Google's Gemini, and Character.AI.
 
 
         The internal project was codenamed 'Cannes.'
