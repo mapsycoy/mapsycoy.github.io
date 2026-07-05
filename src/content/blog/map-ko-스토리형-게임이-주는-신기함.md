@@ -6,11 +6,11 @@ publishedAt: 2026-07-05
 status: published
 pinned: false
 tag: Essay
-thumbnail: /uploads/mapleds.webp
-heroImage: /uploads/mapleds.webp
+thumbnail: /uploads/pragmata.jpg
+heroImage: /uploads/pragmata.jpg
 heroImageCaption:
-  ko: " 메이플스토리DS TV CM(2010)"
-  en: MaplestoryDS TV CM(2010)
+  ko: 프래그마타
+  en: PRAGMATA
 contentBlocks:
   - type: text
     body:
