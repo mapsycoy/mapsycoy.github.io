@@ -1,4 +1,4 @@
-﻿import { getCollection, type CollectionEntry } from "astro:content";
+import { getCollection, type CollectionEntry } from "astro:content";
 
 export type BlogTag = "Essay" | "AI News" | "Paper";
 export type BlogPost = CollectionEntry<"blog">;
@@ -8,6 +8,8 @@ export const blogPostsPerPage = 8;
 
 export const normalizeBlogTag = (value: string) =>
   value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+export const getBlogPostSlug = (post: BlogPost) => post.data.slug;
 
 export const getBlogTagBySlug = (slug: string | undefined) =>
   blogTags.find((tag) => normalizeBlogTag(tag) === slug);

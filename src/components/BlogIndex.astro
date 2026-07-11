@@ -1,6 +1,7 @@
 ---
 import {
   blogTags,
+  getBlogPostSlug,
   getBlogPageCount,
   getPostDateLabel,
   hasKoreanText,
@@ -78,7 +79,7 @@ const paginationItems = (() => {
         index === posts.length - 1 && "is-last-visible"
       ]}
     >
-      <a class="blog-entry-link" href={`${languagePrefix}/blog/${post.id}/`} aria-label={`Open ${localize(post.data.title, lang)} post`}>
+      <a class="blog-entry-link" href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`} aria-label={`Open ${localize(post.data.title, lang)} post`}>
         <div class="blog-entry-copy">
           <p class="entry-meta blog-entry-meta">
             {post.data.pinned && (

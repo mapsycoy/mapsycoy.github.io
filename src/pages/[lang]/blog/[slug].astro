@@ -1,7 +1,7 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
 import { render } from "astro:content";
-import { getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../../data/blog";
+import { getBlogPostSlug, getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../../data/blog";
 import { getLanguageFromParams, languages, localize, type Language } from "../../../utils/i18n";
 import { smartenText } from "../../../utils/smartTypography.mjs";
 
@@ -10,7 +10,7 @@ export async function getStaticPaths() {
 
   return languages.flatMap((lang) =>
     posts.map((post) => ({
-      params: { lang, slug: post.id },
+      params: { lang, slug: getBlogPostSlug(post) },
       props: { post, lang: getLanguageFromParams(lang) }
     }))
   );

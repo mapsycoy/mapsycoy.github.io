@@ -18,6 +18,7 @@ const blog = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/blog" }),
   schema: z.object({
     title: localizedTextSchema,
+    slug: z.string().regex(/^\d+$/),
     publishedAt: z.coerce.date(),
     updatedAt: z.coerce.date().optional(),
     status: statusSchema,
