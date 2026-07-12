@@ -110,12 +110,16 @@ const paginationItems = (() => {
 
 {pageCount > 1 && (
   <nav class="blog-pagination" aria-label="Blog pagination">
-    <div class="blog-page-numbers">
+    <div class="blog-pagination-side blog-pagination-previous">
       {currentPage > 1 && (
-        <a class="blog-page-button" href={toPagePath(currentPage - 1)} aria-label="Previous page">
-          Previous
+        <a class="blog-page-button blog-page-arrow" href={toPagePath(currentPage - 1)} aria-label="Previous page">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m14.5 5-7 7 7 7" />
+          </svg>
         </a>
       )}
+    </div>
+    <div class="blog-page-numbers">
       {paginationItems.map((item) => {
         if (item === "ellipsis") {
           return <span class="blog-page-ellipsis" aria-hidden="true">...</span>;
@@ -131,9 +135,13 @@ const paginationItems = (() => {
           </a>
         );
       })}
+    </div>
+    <div class="blog-pagination-side blog-pagination-next">
       {currentPage < pageCount && (
-        <a class="blog-page-button" href={toPagePath(currentPage + 1)} aria-label="Next page">
-          Next
+        <a class="blog-page-button blog-page-arrow" href={toPagePath(currentPage + 1)} aria-label="Next page">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m9.5 5 7 7-7 7" />
+          </svg>
         </a>
       )}
     </div>
