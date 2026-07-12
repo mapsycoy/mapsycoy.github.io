@@ -4,13 +4,18 @@ const leftDoubleQuote = "“";
 const rightDoubleQuote = "”";
 
 const isWordCharacter = (value) => /[A-Za-z0-9]/.test(value ?? "");
-const isOpeningContext = (value) => !value || /[\s([{<]/.test(value);
+const isOpeningContext = (value) => !value || /[\s([{<*_~`\u2026\u2014\u2013,:;!?]/.test(value);
+
+const hasClosingQuote = (chars, startIndex, quote) =>
+  chars.slice(startIndex + 1).includes(quote);
 
 export const smartenText = (value) => {
   if (!value) return "";
 
   const chars = Array.from(value);
   let result = "";
+  let doubleQuoteOpen = false;
+  let singleQuoteOpen = false;
 
   for (let index = 0; index < chars.length; index += 1) {
     const char = chars[index];
@@ -18,7 +23,9 @@ export const smartenText = (value) => {
     const next = chars[index + 1] ?? "";
 
     if (char === '"') {
-      result += isOpeningContext(previous) ? leftDoubleQuote : rightDoubleQuote;
+      const opens = !doubleQuoteOpen && (hasClosingQuote(chars, index, char) || isOpeningContext(previous));
+      result += opens ? leftDoubleQuote : rightDoubleQuote;
+      doubleQuoteOpen = opens;
       continue;
     }
 
@@ -28,7 +35,9 @@ export const smartenText = (value) => {
       } else if (/\d/.test(next) && isOpeningContext(previous)) {
         result += rightSingleQuote;
       } else {
-        result += isOpeningContext(previous) ? leftSingleQuote : rightSingleQuote;
+        const opens = !singleQuoteOpen && (hasClosingQuote(chars, index, char) || isOpeningContext(previous));
+        result += opens ? leftSingleQuote : rightSingleQuote;
+        singleQuoteOpen = opens;
       }
       continue;
     }
