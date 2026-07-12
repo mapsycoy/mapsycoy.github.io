@@ -76,6 +76,13 @@ collections:
             name: en
             widget: string
             required: false
+      - label: Post ID
+        name: slug
+        widget: string
+        pattern:
+          - "^[0-9]+$"
+          - Enter a unique numeric post ID (for example, 8).
+        hint: This is the numeric URL ID used for the post (for example, 8).
       - label: Published Date
         name: publishedAt
         widget: datetime

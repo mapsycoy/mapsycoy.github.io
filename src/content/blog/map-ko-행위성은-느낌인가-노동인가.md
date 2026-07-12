@@ -2,12 +2,13 @@
 title:
   ko: 행위성은 느낌인가, 노동인가
   en: "Agency: A Sense or a Labor?"
+slug: "8"
 publishedAt: 2026-07-12
 status: published
 pinned: false
 tag: Paper
-thumbnail: /uploads/boden-1978-.jpg
-heroImage: /uploads/boden-1978-.jpg
+thumbnail: /uploads/boden-1978-.webp
+heroImage: /uploads/boden-1978-.webp
 heroImageCaption:
   en: Boden (1978)
 contentBlocks:
