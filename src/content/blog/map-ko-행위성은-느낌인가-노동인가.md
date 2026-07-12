@@ -441,5 +441,6 @@ contentBlocks:
 
         [^1]: Through the 'I Spy' experiment, Wegner & Wheatley (1999) demonstrated that conscious intention might not be the actual cause of action, but rather the result of a post-hoc causal inference. According to the study, when a specific thought was presented just prior to an action (meeting the conditions of priority, consistency, and exclusivity), subjects tended to mistake the action—even when forced by another person—as a voluntary action driven by their own intention (an increase in perceived intentionality).
 
+
         [^2]: In the late 1960s, MIT mathematician and educator Seymour Papert developed a programming language called 'LOGO' so that children could develop logical thinking while interacting with computers. In this language, the subject (agent) that received the children's coding commands and executed them visually was the 'Turtle'.
 ---
