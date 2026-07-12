@@ -24,7 +24,7 @@ contentBlocks:
         [*스토리형 게임이 주는 신기함*]에서는 고정된 서사 구조 안에서도 플레이어가 강렬한 행위성을 경험하는 이유를 분석하고, 그로부터 하나의 설계 원칙을 끌어냈다. 
 
 
-        **'분기를 늘리는 대신, 사용자의 노력이 인정되고 되돌아오는 구조'** 
+        ***분기를 늘리는 대신, 사용자의 노력이 인정되고 되돌아오는 구조***
 
 
         그런데 이 두 글을 나란히 놓고 다시 읽다가, 나는 한 가지 불편한 사실을 발견했다. 내가 좋은 설계라고 믿었던 것이, 이론적으로는 내가 비판하던 AI 컴패니언도 똑같이 정당화해버린다는 점이다.
@@ -235,7 +235,7 @@ contentBlocks:
         In [*The Magic of Story-Driven Games*], I analyzed why players experience intense agency even within fixed narrative structures, deriving a single design principle from it: 
 
 
-        **'A structure where the user's effort is acknowledged and reciprocated, rather than merely increasing narrative branches.'** 
+        ***A structure where the user's effort is acknowledged and reciprocated, rather than merely increasing narrative branches.***
 
 
         However, reading these two pieces side by side again, I discovered an uncomfortable truth. The very thing I believed to be good design theoretically justified the exact AI companions I had been criticizing.
