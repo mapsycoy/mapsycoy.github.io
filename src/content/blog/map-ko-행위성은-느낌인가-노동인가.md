@@ -5,6 +5,8 @@ publishedAt: 2026-07-12
 status: draft
 pinned: false
 tag: Paper
+thumbnail: /uploads/boden-1978-.jpg
+heroImage: /uploads/boden-1978-.jpg
 contentBlocks:
   - type: text
     body:
@@ -53,10 +55,10 @@ contentBlocks:
         여기서 문제가 생긴다. 이 세 조건을 가장 완벽하게 충족할 수 있는 시스템이 무엇인지 생각해 보라.
 
 
-        아동용 AI 컴패니언이다. 좁은 시간 창 안의 즉각적 응답(priority), 아이가 의도한 바에 의미적으로 부합하는 출력(consistency), 다른 원인이 끼어들 여지가 없는 일대일 대화(exclusivity). 토토로도 이 조건들을 전혀 채우지 못하는 것은 아니다 — 아이는 침묵하는 상대 앞에서도 "내가 말을 걸었고, 토토로가 이에 반응했다"는 귀속을 만들어낸다. 
+        아동용 AI 컴패니언이다. 좁은 타임라인 안의 즉각적 응답(선행성), 아이가 의도한 바에 의미적으로 부합하는 출력(일관성), 다른 원인이 끼어들 여지가 없는 일대일 대화(배타성). 토토로도 이 조건들을 전혀 채우지 못하는 것은 아니다. 아이는 침묵하는 상대 앞에서도 "내가 말을 걸었고, 토토로가 이에 반응했다"는 귀속을 만들어낸다. 
 
 
-        차이는 보장의 주체다. AI는 세 조건의 충족을 시스템이 안정적으로 보장하고, 토토로 앞에서는 아이가 그 충족을 스스로 제조해야 한다. Wegner의 틀 안에서라면, 아이의 해석을 대신해주는 유창한 컴패니언이 상상 속 친구보다 더 강하고 안정적인 행위성 경험을 제공하는 우월한 시스템으로 판정된다.
+        차이는 '보장의 주체'다. AI는 세 조건의 충족을 시스템이 안정적으로 보장하고, 토토로 앞에서는 아이가 그 충족을 스스로 제조해야 한다. Wegner의 틀 안에서라면, 아이의 해석을 대신해주는 유창한 컴패니언이 상상 속 친구보다 더 강하고 안정적인 행위성 경험을 제공하는 우월한 시스템으로 판정된다.
 
 
         물론 내 의도는 그런 것이 아니었다. [*스토리형 게임이 주는 신기함*] 글의 핵심은 노력이 인정되는 구조였지, 노력 없이 느낌만 산출하는 구조가 아니었다. 하지만 그 차이를 Wegner의 세 조건은 구별하지 못한다. 두 설계 모두 세 조건을 충족하기 때문이다. 즉 내 입장의 결정적 기준은 아직 이론화되기에 한참 부족하다. 명시되지 않은 기준은 방어되지 않기에 이 글은 그 기준을 명시하고 정초하는 작업이 될 것이다.
@@ -72,7 +74,7 @@ contentBlocks:
         ## **Boden (1978), Artificial Intelligence and Piagetian Theory, Synthese 38**
 
 
-        이 문제를 어떻게 다뤄야할까 고민하던 중, 일주일 전 고려대 학술도서관에 요청한 논문 한 편이 도착했다. 
+        이 문제를 어떻게 다뤄야할까 고민하던 중, 일주일 전 고려대 중앙도서관에 요청한 논문 한 편이 도착했다. 
 
 
         Margaret Boden의 「*Artificial Intelligence and Piagetian Theory*」(1978). 
@@ -219,4 +221,221 @@ contentBlocks:
 
 
         [^2] MIT의 수학자이자 교육학자인 시모어 페퍼트(Seymour Papert)는 1960년대 후반, 아이들이 컴퓨터와 상호작용하며 논리적 사고를 기를 수 있도록 '로고(LOGO)'라는 프로그래밍 언어를 개발했다. 이 언어에서 아이들의 코딩 명령을 받아 시각적으로 수행하는 주체(에이전트)가 바로 '거북이(Turtle)'였다.
+      en: >-
+        In my previous two articles, I addressed the same phenomenon twice. 
+
+
+        In [*Will Imaginary Friends Disappear in the Age of AI?*], I asked why a child becomes active in front of a silent Totoro, cautioning against AI companions that strip away the child's share of interpretation.
+
+
+        In [*The Magic of Story-Driven Games*], I analyzed why players experience intense agency even within fixed narrative structures, deriving a single design principle from it: 
+
+
+        **'A structure where the user's effort is acknowledged and reciprocated, rather than merely increasing narrative branches.'** 
+
+
+        However, reading these two pieces side by side again, I discovered an uncomfortable truth. The very thing I believed to be good design theoretically justified the exact AI companions I had been criticizing.
+
+
+
+
+        ---
+
+
+
+
+        ## **Wegner Alone Cannot Distinguish Between Good and Bad Design**
+
+
+        In the story-driven game article, I borrowed Wegner's concept of apparent mental causation. 
+
+
+        I argued that agency is not the direct perception of causality but an inferred feeling, and that it occurs even without narrative branching if three conditions are met. To write it a bit more accurately than before: 
+
+
+        * **Priority**: The thought must appear within a narrow timeline just before the action.
+
+        * **Consistency**: The content of the thought must semantically align with the actual action.
+
+        * **Exclusivity**: There must be no other salient, plausible causes for the action.
+
+
+        Wegner & Wheatley's (1999) 'I Spy' experiment[^1] demonstrates that the 'Conscious Will' we consciously perceive may not be the direct cause of our actions, but rather a post-hoc interpretation (illusion) created by the brain.
+
+
+        Herein lies the problem. Consider what system can most perfectly satisfy these three conditions.
+
+
+        It is the AI companion for children. Immediate responses within a narrow timeline (priority), outputs that semantically match the child's intentions (consistency), and one-on-one conversations with no room for other causes to intervene (exclusivity). Totoro does not entirely fail to meet these conditions either—even in front of a silent counterpart, the child constructs the attribution: "I spoke to it, and Totoro reacted." 
+
+
+        The difference lies in *'who guarantees'* this. The AI system stably guarantees the fulfillment of these three conditions, whereas, in front of Totoro, the child must manufacture that fulfillment themselves. Within Wegner's framework, a fluent companion that interprets on behalf of the child is judged as a superior system, providing a stronger, more stable experience of agency than an imaginary friend.
+
+
+        Of course, that was not my intention. The core of [*The Novelty of Story-Driven Games*] was a structure that acknowledges effort, not one that merely produces feelings without effort. However, Wegner's three conditions fail to distinguish between the two. Both designs meet the three conditions. In other words, the crucial criterion of my stance is still far from being sufficiently theorized. Since an unstated criterion cannot be defended, this article will be the task of articulating and grounding that criterion.
+
+
+
+
+        ---
+
+
+
+
+        ## **Boden (1978), Artificial Intelligence and Piagetian Theory, Synthese 38**
+
+
+        While pondering how to address this issue, a paper I requested from the Korea University Academic Library a week ago has arrived:
+
+
+        Margaret Boden's "*Artificial Intelligence and Piagetian Theory*" (1978). 
+
+
+        Looking solely at the title, I expected this paper to serve as a theoretical bridge for my hypothesis. What it actually gave me, however, was not a bridge, but an 'objection' I had to overcome.
+
+
+        In Section 4 of the paper, Boden introduces R. A. Young's study on seriation. Young describes and predicts a child's behavior of arranging blocks in order of size—the very behavior Piaget used as evidence for developmental stages—as a list of condition-action rules (PRules). A gesture selecting a specific block, a missed reach toward an unselected block, scanning the stairs with a finger before tapping a specific block twice. And he declares:
+
+
+        > His statement that PSystems are in no sense plans, rules of thumb, principles, recipes, laws, or guidelines for action, and that running a PSystem is not an activity that the child performs... (p.412)
+
+
+        It should be noted that Young's position is not that "the child is a machine executing rules." He denies that the child even *uses* rules. His argument is that the PSystem is merely a theoretical tool for predicting behavior, and there is no need to attribute any rich internal structure—whether rules, plans, or strategies—to the child.
+
+
+        Now, the counterargument to my hypothesis operates on two levels. Wegner states that the feeling of agency is an inferred attribution, and Young argues there is no need to place internal processes like interpretation or planning behind an action. 
+
+
+        The 'actual effort' I value so highly is under a double threat. On the level of feeling, agency is merely a post-hoc attribution; on the level of process, internal plans and strategies become superfluous redundancies in the explanatory model.
+
+
+        If I cannot pass through these two gates, there are no practical grounds to distinguish a "design where effort is actually acknowledged" from a "design that merely produces the feeling that effort was acknowledged."
+
+
+
+
+        ---
+
+
+
+
+        ## **Young**
+
+
+        Yet, Boden herself left the tools for refutation within this very paper.
+
+
+        **First, description is not explanation.** 
+
+
+        Using a Teletype analogy, Boden points out the limitations of R. A. Young's Production System (PSystem) framework. Even if the terminal screen outputs the exact same "Fine, thanks!", there is a difference in intelligence between a program that internally represents the pragmatics of conversation and one that automatically reacts to "Hello!". A perfect reproduction of behavior does not prove the absence of a process. In other words, Young's PSystem merely lists the execution order of apparent rules (description); it fails to fully capture the rich internal representations or movements of the mind of the subject that make the behavior possible.
+
+
+        **Second, Young's denial denies too much.** 
+
+
+        As Boden points out, Young's declaration 'denying that the child uses embedded strategies or overall plans' questions not only Piaget but psychological theories in general that attribute structured representations to knowing subjects. The defense that "the explanatory model is different from the explanandum" remains open to Young, but where to draw that line is an open question requiring separate justification. Furthermore, according to Boden, designers of PSystems for complex tasks inevitably end up implicitly embedding goal-subgoal structures within the 'Order' or conditions of the rules. Thus, the cognitive deep structures and plans that Young theoretically denied quietly sneak back in during the design phase (arranging rule sequences) to actually run the system.
+
+
+        **Third, the crucial loophole of S2.** 
+
+
+        In Young's own data, the subject Alf initially just picks up the 'closest visible block (S1)'. But midway through the task, he acquires and begins to maintain a 'rule for finding a block of appropriate size (S2)' on his own. Regarding this, Boden writes:
+
+
+        > The addition — and consequent retention — of S2 by Young implies that Alf somehow learned this rule... The 'how' in that 'somehow' is still computationally obscure... (p.408)
+
+
+        Young's framework elaborately describes 'how' existing rules are executed (Description), but fails to explain 'how' those rules arise (Genesis). And Boden stops at noting that this 'how' is computationally obscure. 
+
+
+        It is precisely that void that I focus on. The very moment a child encounters a structure and generates something on their own. Young's framework left the moment of genesis within its own data unexplained, and my argument stands exactly in that space.
+
+
+
+
+        ---
+
+
+
+
+        ## **Not a Feeling, but Labor (Play)**
+
+
+        Now I can articulate the previously implicit criterion. The key is to separate the concepts that were lumped together under the single word "agency" in my previous two articles.
+
+
+        * **Sense of agency**: An inferred attribution, capable of being engineered.
+
+        * **Labor of agency**: The share of meaning that the structure leaves unfilled, which the subject must generate themselves. Here, labor does not merely mean the input of time or energy, but refers to the entire generative cognitive activity of constructing meaning, formulating hypotheses, and forming rules. For a child, this labor is not a forced toil, but is performed in the form of play.
+
+
+        Both systems can produce the same feeling. However, the silent Totoro hands the entire burden of meaning generation over to the child, while the fluent AI companion shoulders that burden on the child's behalf. Even if the feeling is identical, the distribution of labor is entirely reversed.
+
+
+        Then, Totoro's passivity and silence become functional requirements rather than sentimental aesthetics. Because the counterpart does not speak, the sisters must project meaning, and that labor of projection leads to developmental outcomes like creative thinking and perspective-taking. This overlaps not with literary impressions, but with findings in developmental psychology. 
+
+
+        Paul Harris (2000) treats imagination not as a passive fantasy, but as an active cognitive process performed by the child. Marjorie Taylor's (1999) empirical studies report a correlation where children who create and maintain imaginary friends on their own excel in skills like perspective-taking. 
+
+
+        A situation where the child must play both sides because the counterpart does not exist. That dual labor can be interpreted as a compelling mechanism explaining this development. The same applies to the "aesthetics of waiting." The value of waiting lies not in romance, but in the labor of anticipation, interpretation, and emotional processing the child performs during that time.
+
+
+        And the 'imaginary friend' demands a similar reformulation. A child's imaginative agency is not a metaphysical entity. It is a developmental process that arises from an encounter with a structure passive enough to demand interpretation and responsive enough to acknowledge effort. 
+
+
+        Even if Young is right—even if a child's behavior can be described by rules—the question remains: what kind of environment provokes the generation of rule sets? And Alf's S2 demonstrates that such generation actually occurs during the course of performance.
+
+
+
+
+        ---
+
+
+
+
+        ## **Preserve the Labor, Rather Than Enhancing the Feeling**
+
+
+        This separation redefines the danger of AI for children.
+
+
+        The danger is not that AI provides "fake agency." According to Wegner, since every feeling of agency is an attribution anyway, the accusation of it being 'fake' does not hold. The real danger is optimizing the feeling of agency while eliminating the labor of agency. That is, the decoupling of feeling and labor. Immediate, fluent, and affectionate responses perfectly fulfill Wegner's three conditions while the system absorbs the share of meaning the child ought to generate themselves.
+
+
+        The final sentence of the story-driven game article now takes on its full meaning. When I wrote "align actual influence with perceived influence," the substance of 'actual influence' is not the input values registered in the system, but the interpretive and constructive labor performed by the user. This doesn't mean the system's state changes are unimportant. It means that only when the user's interpretation and construction act as actual constraints on the system's subsequent unfolding does it truly become actual influence. 
+
+
+        This is the premise that underlay that article, only now made explicit. <mark>**The norm for designing interactions for children is not "Enhance the feeling of agency," but rather "Preserve the labor of agency."**</mark> And this is exactly where the line dividing a good companion from a bad one is drawn. From this perspective, a designer is not someone who provides an experience, but someone who decides how to distribute the cognitive labor the user will perform.
+
+
+        Does this mean AI is inevitably a hostile technology that hijacks a child's agency? Not at all. The danger lies not in the medium of AI itself, but in a design direction that solely pursues 'fluency' and 'clarity'. Conversely, if AI is designed to possess **'intentional ambiguity'** internally, the story changes. A ping-pong structure that leaves room for interpretation instead of smoothly explaining everything, and returns the child's question instead of providing the right answer. In this case, AI does not reduce the child to a passive consumer; rather, it can function as a 'mirror for imagination' that helps the child fill in the meaning themselves without losing their initiative. The key is not to hide information, but to intervene only to the extent that it leaves the generation of meaning to the user.
+
+
+        This norm is actually not new. Within the very paper that handed me the counterargument lay its lineage as well. In the same article, Boden introduces an experiment by Papert.
+
+
+        In an environment where the child writes a program themselves, and its structure and effects are immediately revealed, the child reaches general problem-solving strategies through the experience of understanding their own bugs. What mattered to Papert was not that the child coded more, but the cycle where their hypotheses returned as actual results, reading those results to correct themselves, and new rules emerging from that process. This shares the exact same principle as what I called "a structure where the user's effort is acknowledged and reciprocated" in the story-driven game article.
+
+
+        Here, we discover an intriguing link. The silent 'Totoro' mentioned in the introduction and Papert's 'Turtle (LOGO program)'[^2] appear completely different on the surface, but **they share exactly the same structure in that they leave a share for the child and demand cognitive labor.** An environment where the child's trial and error is acknowledged and reciprocated instead of the system giving the correct answer—the archetype of a design that preserves labor—had already been sketched out half a century ago.
+
+
+        In 1978, the intersection of AI and Piaget split between a philosophical question and an engineering question, and as engineering triumphed, the question was left incomplete. Half a century later, when children routinely converse with AI, that unfinished question has returned to me.
+
+
+        **"Not what we will make the child feel, but what we will leave for the child to do."**
+
+
+
+
+        ---
+
+
+
+
+        [^1]: Through the 'I Spy' experiment, Wegner & Wheatley (1999) demonstrated that conscious intention might not be the actual cause of action, but rather the result of a post-hoc causal inference. According to the study, when a specific thought was presented just prior to an action (meeting the conditions of priority, consistency, and exclusivity), subjects tended to mistake the action—even when forced by another person—as a voluntary action driven by their own intention (an increase in perceived intentionality).
+
+        [^2]: In the late 1960s, MIT mathematician and educator Seymour Papert developed a programming language called 'LOGO' so that children could develop logical thinking while interacting with computers. In this language, the subject (agent) that received the children's coding commands and executed them visually was the 'Turtle'.
 ---
