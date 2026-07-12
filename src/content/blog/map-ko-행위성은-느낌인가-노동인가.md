@@ -432,13 +432,6 @@ contentBlocks:
         **"Not what we will make the child feel, but what we will leave for the child to do."**
 
 
-
-
-        ---
-
-
-
-
         [^1]: Through the 'I Spy' experiment, Wegner & Wheatley (1999) demonstrated that conscious intention might not be the actual cause of action, but rather the result of a post-hoc causal inference. According to the study, when a specific thought was presented just prior to an action (meeting the conditions of priority, consistency, and exclusivity), subjects tended to mistake the action—even when forced by another person—as a voluntary action driven by their own intention (an increase in perceived intentionality).
 
 
