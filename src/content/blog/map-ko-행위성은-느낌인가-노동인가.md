@@ -296,7 +296,7 @@ contentBlocks:
         As I was wrestling with this problem, a paper I had requested a week ago from the central library at Korea University finally arrived:
 
 
-        Margaret Boden's "*Artificial Intelligence and Piagetian Theory*" (1978). 
+        Margaret Boden's 「*Artificial Intelligence and Piagetian Theory*」 (1978). 
 
 
         I expected the title to indicate a theoretical bridge for my hypothesis, but it instead presented a critical counterargument.
