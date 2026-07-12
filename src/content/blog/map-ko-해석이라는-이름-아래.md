@@ -22,7 +22,7 @@ contentBlocks:
         ***“아이에게 무엇을 느끼게 할 것인가가 아니라, 아이에게 무엇을 하도록 남겨둘 것인가.”***
 
 
-        그런데 이 문장을 쓰고 나서, 나는 스스로에게 물어야 했다. 이 규범이 요구하는 "의도적 모호성"이란 정확히 무엇의 모호성인가. 침묵하는 상상 속 친구도, 유창한 AI 컴패니언도 어떤 의미에서는 모두 모호하다. 모호성이라는 말만으로는 좋은 설계와 나쁜 설계가 다시 한번 구별되지 않는다.
+        그런데 이 문장을 쓰고 나서, 나는 스스로에게 물어야 했다. 이 규범이 요구하는 **"의도적 모호성"**이란 정확히 무엇의 모호성인가. 침묵하는 상상 속 친구도, 유창한 AI 컴패니언도 어떤 의미에서는 모두 모호하다. 모호성이라는 말만으로는 좋은 설계와 나쁜 설계가 다시 한번 구별되지 않는다.
 
 
         이 문제를 이론화한 논문이 있다. 
@@ -44,13 +44,13 @@ contentBlocks:
         ## 모호성은 사물이 아니라 관계다
 
 
-        Gaver 등이 가장 먼저 못박는 것은, 모호성이 사물의 속성이 아니라는 것이다.
+        Gaver 등이 가장 먼저 못박는 것은, 모호성이 사물[^1]의 속성이 아니라는 것이다.
 
 
         > ambiguity is an attribute of our interpretation of them
 
 
-        부정확함(fuzziness)이나 불일치는 대상 자체의 속성이지만, 모호성은 그 대상을 해석하는 사람과 대상 사이의 관계에서만 발생한다. 같은 인공물이라도 보는 사람의 기대와 정체성에 따라 모호할 수도, 명료할 수도 있다는 것이다.
+        부정확함(fuzziness)이나 불일치는 대상 자체의 속성이지만, **모호성은 그 대상을 해석하는 사람과 대상 사이의 관계에서만 발생한다.** 같은 인공물이라도 보는 사람의 기대와 정체성에 따라 모호할 수도, 명료할 수도 있다는 것이다.
 
 
         이 이동은 낯설지 않다. Wegner가 행위성을 "행동에 내재한 사실"이 아니라 "사후적으로 추론된 귀속"이라 말했을 때와 같은 구조를 하고 있기 때문이다. 두 이론 모두, 겉보기에 대상 쪽에 있는 것 같은 성질을 관찰자와 대상의 관계 쪽으로 옮겨놓는다. Gaver의 모호성과 Wegner의 행위성은, 서로 다른 학문에서 같은 인식론을 공유하는 셈이다.
@@ -79,10 +79,10 @@ contentBlocks:
         이 세 유형은 서로 다른 해석 작업을 요구한다. 정보의 모호성은 진위를 스스로 판단하도록, 맥락의 모호성은 상충하는 의미를 통합하도록, 관계의 모호성은 자신의 가치관을 성찰하도록 만든다.
 
 
-        논문은 마지막에 이렇게 정리한다. 모호성은 설계자에게 영감을 주는 자원이자, 사용자에 대한 깊은 존중의 표현이라는 것이다.
+        논문은 마지막에 이렇게 정리한다. **모호성은 설계자에게 영감을 주는 자원이자, 사용자에 대한 깊은 존중의 표현이라는 것이다.**
 
 
-        해법을 부과하지 않고 쟁점만 제시하는 것, 그것이 사용자에 대한 존중이라는 것. 이 문장은 지난 글의 규범과 표면적으로 거의 겹친다.
+        해법을 부과하지 않고 쟁점만 제시하는 것, 그것이 사용자에 대한 존중이라는 것. 이 문장은 지난 글의 규범과 표면적으로는 거의 겹친다.
 
 
 
@@ -95,13 +95,13 @@ contentBlocks:
         ## 아쉬웠던 점
 
 
-        문제는 이 "존중"이 정확히 무엇을 가리키는가이다.
+        문제는 이 **"존중"**이 정확히 무엇을 가리키는가이다.
 
 
         Gaver 등이 다루는 사례들은 반복해서 사용될 수 있다. 논문이 이를 부정하지는 않는다. 다만 논문의 관심은 반복 속에서 사용자의 해석이 누적되어 시스템을 다시 구성하는가가 아니라, 한 순간에 발생하는 해석의 가능성 자체에 있다. 즉 반복적 상호작용을 전제로 한 설계는 이 논문의 분석 범위 밖에 남아 있다.
 
 
-        이 공백은 논문 안에서 뜻밖에도 스스로 예고되어 있다. Home Health Monitor의 별자리 운세를 다루며, Gaver 등은 과잉해석이 아무 근거 없는 헛소리여서는 안 된다고 스스로 경고한다. 믿음을 유보하기 어려울 만큼은 그럴듯해야 한다는 것이다.
+        뜻밖에도 이 공백은 논문 안에서 스스로 예견되어 있다. Home Health Monitor의 별자리 운세를 다루며, Gaver 등은 과잉해석이 아무 근거 없는 헛소리여서는 안 된다고 스스로 경고한다. 믿음을 유보하기 어려울 만큼은 그럴듯해야 한다는 것이다.
 
 
         과잉해석이 성공하려면 "믿을 수 있는 그럴듯함"의 문턱을 넘어야 한다는 것. 이들이 실패 사례로 든 것은 새의 지저귐이나 반려동물의 울음소리를 기계적으로 변환해 말하게 하려던 동물 언어 번역(Tweet-to-Text) 시스템 제안이었다. 흥미로운 것은, 이 경고가 오직 한 번의 마주침에서의 그럴듯함만을 다룬다는 점이다. "반복된 관계 속에서 그 해석이 정말로 무언가를 바꾸는가"는 다루지 않는다.
@@ -159,7 +159,7 @@ contentBlocks:
         DIS 2006 속 「*Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation*」에서 Gaver는 이미 이 문제의 한 축을 정확히 알고 있었다. (2006년의 Bill Gaver와 2003년의 William W. Gaver는 동일인이 공식 이름과 통칭을 혼용해 표기한 것뿐이다.) 
 
 
-        이 논문에서 그는 전통적 HCI가 디자이너의 의도대로 사용자가 시스템을 이해하는 '단일하고 권위 있는 해석'에 집착해온 것을 비판하며, 시스템과 사용자가 얽혀 들어가는 상호작용의 불확실성을 인정하고, 불완전함과 모호성을 디자인의 전략적 도구로 삼아야 한다고 주장했다.
+        **이 논문에서 그는 전통적 HCI가 디자이너의 의도대로 사용자가 시스템을 이해하는 '단일하고 권위 있는 해석'에 집착해온 것을 비판하며, 시스템과 사용자가 얽혀 들어가는 상호작용의 불확실성을 인정하고, 불완전함과 모호성을 디자인의 전략적 도구로 삼아야 한다고 주장했다.**
 
 
         더 나아가 그는 시스템이 여러 해석을 제안하는 것만으로는 부족하다고 말한다. 사용자가 "내가 해석해도 된다"는 허가(license)를 느껴야 한다는 것이다. 그 허가가 없다면 모호성은 풍부함이 아니라 혼란으로 읽힌다.
@@ -189,7 +189,7 @@ contentBlocks:
 
         1. 시스템의 오차와 한계를 감추지 말고 드러낼 것(seamfulness)
 
-        2. **스스로를 똑똑한(intelligent) 존재가 아니라 낯선(alien) 존재로 제시할 것(alien presence)**
+        2. **스스로를 똑똑한 존재가 아니라 '낯선' 존재로 제시할 것(alien presence)**
 
 
         시스템이 "내 해석이 유일한 정답"이라고 주장하지 않을 때, 비로소 사람은 자기 해석을 만들어도 된다고 느낀다는 것이다.
@@ -211,6 +211,9 @@ contentBlocks:
 
 
         아마 다음 글은 이 질문에서 시작해야 할 것 같다.
+
+
+        [^1]: 물질세계에 있는 모든 구체적이며 개별적인 존재를 통틀어 이르는 말' 등을 의미
       en: >-
         In my previous writing, I arrived at a certain norm:
 
@@ -218,7 +221,7 @@ contentBlocks:
         ***"Not what to make the child feel, but what to leave for the child to do."***
 
 
-        Yet, having written this sentence, I had to ask myself: what exactly is the ambiguity of this "intentional ambiguity" demanded by this norm? Both a silent imaginary friend and a fluent AI companion are ambiguous in some sense. The term *ambiguity* alone fails to distinguish good design from bad design once again.
+        Yet, having written this sentence, I had to ask myself: what exactly is the ambiguity of this **"intentional ambiguity"** demanded by this norm? Both a silent imaginary friend and a fluent AI companion are ambiguous in some sense. The term *ambiguity* alone fails to distinguish good design from bad design once again.
 
 
         There is a paper that theorized this very problem:
@@ -246,7 +249,7 @@ contentBlocks:
         > ambiguity is an attribute of our interpretation of them
 
 
-        While fuzziness or inconsistency may be properties of the object itself, ambiguity arises solely from the relationship between the object and the person interpreting it. The exact same artifact can be ambiguous or clear, depending on the viewer's expectations and identity.
+        While fuzziness or inconsistency may be properties of the object itself, **ambiguity arises solely from the relationship between the object and the person interpreting it.** The exact same artifact can be ambiguous or clear, depending on the viewer's expectations and identity.
 
 
         This shift feels familiar. It shares the same structural logic as when Wegner described agency not as a "fact inherent in action" but as an "authorship ascribed after the fact." Both theories displace a property that seemingly belongs to the object, relocating it into the relationship between the observer and the object. Gaver’s ambiguity and Wegner’s agency share the same epistemology, albeit in different disciplines.
@@ -275,7 +278,7 @@ contentBlocks:
         These three types demand different interpretive work. Ambiguity of information prompts users to judge truth for themselves; ambiguity of context urges them to integrate conflicting meanings; and ambiguity of relationship forces them to reflect on their own values.
 
 
-        The paper concludes with this summary: ambiguity is a resource that inspires designers and serves as an expression of deep respect for users.
+        The paper concludes with this summary: **ambiguity is a resource that inspires designers and serves as an expression of deep respect for users.**
 
 
         Presenting issues rather than imposing solutions, and recognizing that very act as respect for the user—this sentence almost perfectly overlaps on the surface with the norm from my previous writing.
@@ -291,7 +294,7 @@ contentBlocks:
         ## Limitations
 
 
-        The problem lies in what exactly this "respect" refers to.
+        The problem lies in what exactly this **"respect"** refers to.
 
 
         The examples discussed by Gaver et al. can be used repeatedly. The paper does not deny this. However, their focus is not on whether the user's interpretation accumulates over repeated interactions to reconfigure the system, but rather on the very possibility of interpretation arising in a single moment. In other words, design that presupposes iterative relationships remains outside the analytical scope of this paper.
@@ -355,7 +358,7 @@ contentBlocks:
         In 「*Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation*」 at DIS 2006, Gaver was already keenly aware of one axis of this problem. (The Bill Gaver of 2006 and the William W. Gaver of 2003 are the same person, simply alternating between his official name and colloquial name.)
 
 
-        In this paper, he critiqued traditional HCI's obsession with a 'single, authoritative interpretation' where users understand the system exactly as the designer intended. Instead, he argued for acknowledging the uncertainty of interactions where system and user become entangled, advocating for incompleteness and ambiguity as strategic design tools.
+        **In this paper, he critiqued traditional HCI's obsession with a 'single, authoritative interpretation' where users understand the system exactly as the designer intended. Instead, he argued for acknowledging the uncertainty of interactions where system and user become entangled, advocating for incompleteness and ambiguity as strategic design tools.**
 
 
         Furthermore, he stated that it is not enough for a system to merely suggest multiple interpretations. The user must feel a "license" to interpret. Without that license, ambiguity is read not as richness, but as confusion.
