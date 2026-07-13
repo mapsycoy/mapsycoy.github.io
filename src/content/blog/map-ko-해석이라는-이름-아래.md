@@ -7,8 +7,8 @@ publishedAt: 2026-07-13
 status: published
 pinned: false
 tag: Paper
-thumbnail: https://winterparkmag.com/wp-content/uploads/2019/07/duck-rabbit.jpg
-heroImage: https://winterparkmag.com/wp-content/uploads/2019/07/duck-rabbit.jpg
+thumbnail: /uploads/lepetitprince.jpg
+heroImage: /uploads/lepetitprince.jpg
 heroImageCaption:
   en: Winter Park Magazine, "Duck/Rabbit" by Billy Collins
   ko: 빌리 콜린스 '오리/토끼' (Winter Park Magazine)
