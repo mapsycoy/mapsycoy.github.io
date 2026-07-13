@@ -10,8 +10,8 @@ tag: Paper
 thumbnail: /uploads/lepetitprince.webp
 heroImage: /uploads/lepetitprince.webp
 heroImageCaption:
-  en: Winter Park Magazine, "Duck/Rabbit" by Billy Collins
-  ko: 빌리 콜린스 '오리/토끼' (Winter Park Magazine)
+  en: www.lepetitprince.com
+  ko: ""
 contentBlocks:
   - type: text
     body:
