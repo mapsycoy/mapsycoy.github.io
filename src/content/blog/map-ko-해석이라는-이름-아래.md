@@ -7,8 +7,8 @@ publishedAt: 2026-07-13
 status: published
 pinned: false
 tag: Paper
-thumbnail: /uploads/lepetitprince.jpg
-heroImage: /uploads/lepetitprince.jpg
+thumbnail: /uploads/lepetitprince.webp
+heroImage: /uploads/lepetitprince.webp
 heroImageCaption:
   en: Winter Park Magazine, "Duck/Rabbit" by Billy Collins
   ko: 빌리 콜린스 '오리/토끼' (Winter Park Magazine)
