@@ -23,7 +23,8 @@
     sans-serif;
 }
 
-html[data-theme="dark"] {
+@media (prefers-color-scheme: dark) {
+  :root {
   color-scheme: dark;
   --bg: #171817;
   --text: #f2f1eb;
@@ -31,6 +32,7 @@ html[data-theme="dark"] {
   --line: #3d3e39;
   --soft: #242622;
   --accent: #9cc8ba;
+  }
 }
 
 * {

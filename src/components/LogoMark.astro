@@ -16,6 +16,18 @@ const { class: className = "" } = Astro.props;
       }
       #dot-to-o { fill: #0a0a0a; stroke: none; }
 
+      @media (prefers-color-scheme: dark) {
+        #initial-rounded-hangul,
+        #initial-rounded-hangul *,
+        #marks,
+        #marks *,
+        #final-rounded-wordmark,
+        #final-rounded-wordmark * { stroke: #f2f1eb; }
+
+        #initial-rounded-hangul circle,
+        #dot-to-o { fill: #f2f1eb; }
+      }
+
       @media (prefers-reduced-motion: reduce) {
         #initial-rounded-hangul,
         #marks,

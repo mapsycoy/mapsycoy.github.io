@@ -154,7 +154,19 @@ const renderMarkdownList = (items: ReturnType<typeof getListItems>) => {
     .join("")}</${type}>`;
 };
 
+const getMermaidSource = (value: string) => {
+  const trimmed = value.trim();
+  const match = trimmed.match(/^(?:`{4}\s*)?`{3}mermaid\s*([\s\S]*?)`{3}(?:\s*`{4})?$/i);
+  if (!match) return "";
+
+  return match[1]
+    .replace(/^%%\{init:[\s\S]*?\}%%\s*/i, "")
+    .trim();
+};
+
 const renderMarkdownBlock = (value: string) => {
+  const mermaidSource = getMermaidSource(value);
+  if (mermaidSource) return `<pre class="mermaid">${escapeHtml(mermaidSource)}</pre>`;
   const blocks = value.trim().split(/\n{2,}/);
   const html: string[] = [];
   let listItems: ReturnType<typeof getListItems> = [];
