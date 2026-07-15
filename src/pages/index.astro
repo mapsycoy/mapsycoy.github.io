@@ -175,23 +175,29 @@ const homeMusic = getHomeMusic();
 
       const setFallback = () => {
         cancelAnimationFrame(rafId);
-        canvas.hidden = true;
 
-        if (halftoneFallback instanceof HTMLImageElement) {
-          if (!halftoneFallback.currentSrc) {
-            halftoneFallback.srcset = halftoneFallback.dataset.srcset || "";
-            halftoneFallback.src = halftoneFallback.dataset.src || "";
-          }
+        if (image.complete && image.naturalWidth > 0) {
           root.classList.remove("is-raw-fallback");
-          root.classList.add("is-preprocessed-fallback");
-          halftoneFallback.hidden = false;
+          root.classList.remove("is-preprocessed-fallback");
+          canvas.hidden = false;
+          if (halftoneFallback instanceof HTMLImageElement) halftoneFallback.hidden = true;
           if (placeholder instanceof HTMLElement) placeholder.hidden = true;
+
+          const renderFromImage = (time) => {
+            if (time - lastFrameTime >= 1000 / SCREENTONE.fps) {
+              lastFrameTime = time;
+              renderScreentone(image);
+            }
+            rafId = requestAnimationFrame(renderFromImage);
+          };
+
+          rafId = requestAnimationFrame(renderFromImage);
           return;
         }
 
-        root.classList.remove("is-preprocessed-fallback");
-        root.classList.add("is-raw-fallback");
-        if (placeholder instanceof HTMLElement) placeholder.hidden = image.complete && image.naturalWidth > 0;
+        canvas.hidden = true;
+        if (halftoneFallback instanceof HTMLImageElement) halftoneFallback.hidden = true;
+        if (placeholder instanceof HTMLElement) placeholder.hidden = false;
       };
 
       const resize = () => {
