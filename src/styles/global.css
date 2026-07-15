@@ -3314,13 +3314,3 @@ html[lang="ko"] .cv-page {
   color: var(--muted);
   font-size: 0.9rem;
 }
-@media (prefers-color-scheme: dark) {
-  .home-instrument-canvas,
-  .home-instrument-halftone-fallback {
-    filter: invert(1);
-  }
-
-  .home-instrument.is-raw-fallback .home-instrument-source {
-    filter: invert(1) saturate(0) contrast(1.08);
-  }
-}

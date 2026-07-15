@@ -242,6 +242,7 @@ const homeMusic = getHomeMusic();
         drawCoverFrame(source);
 
         const { cellSize, contrast, gamma, minDotRadius, maxDotRadius, paper, ink } = SCREENTONE;
+        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
         const frame = sampleContext.getImageData(0, 0, width, height);
         const pixels = frame.data;
 
@@ -266,7 +267,7 @@ const homeMusic = getHomeMusic();
 
             const average = count ? luminance / count / 255 : 1;
             const contrasted = Math.min(1, Math.max(0, (average - 0.5) * contrast + 0.5));
-            const inkAmount = Math.pow(1 - contrasted, gamma);
+            const inkAmount = Math.pow(isDark ? contrasted : 1 - contrasted, gamma);
             const radius = minDotRadius + inkAmount * (maxDotRadius - minDotRadius);
 
             if (radius < 0.12) continue;
