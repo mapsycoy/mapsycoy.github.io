@@ -171,6 +171,7 @@ collections:
                       - bulleted-list
                       - numbered-list
                     editor_components:
+                      - code-block
                       - captioned-image
                       - divider
                   - label: English
@@ -189,6 +190,7 @@ collections:
                       - bulleted-list
                       - numbered-list
                     editor_components:
+                      - code-block
                       - captioned-image
                       - divider
           - label: Image
