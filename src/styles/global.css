@@ -3319,3 +3319,10 @@ pre.mermaid,
 pre.mermaid[data-processed] {
   background: transparent !important;
 }
+
+@media (prefers-color-scheme: dark) {
+  .blog-post-body mark {
+    background: color-mix(in srgb, var(--accent) 45%, var(--bg));
+    color: var(--text);
+  }
+}
