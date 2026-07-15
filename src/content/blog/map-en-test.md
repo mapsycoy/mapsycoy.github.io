@@ -22,6 +22,8 @@ contentBlocks:
         flowchart LR
             A["허가"] --> B["노동"] --> C["반영 · 상태"] --> D["간극"]
             D -->|"다시, 허가"| A
+
+            classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
         ````
       en: |-
@@ -37,6 +39,8 @@ contentBlocks:
         flowchart LR
             A["허가"] --> B["노동"] --> C["반영 · 상태"] --> D["간극"]
             D -->|"다시, 허가"| A
+
+            classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
         ````
 ---
