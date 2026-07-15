@@ -52,6 +52,15 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={previewImageUrl} />
     <title>{pageTitle}</title>
+    <script is:inline>
+      const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+      const setColorTheme = () => {
+        document.documentElement.dataset.theme = colorSchemeQuery.matches ? "dark" : "light";
+      };
+
+      setColorTheme();
+      colorSchemeQuery.addEventListener("change", setColorTheme);
+    </script>
     <ClientRouter fallback="swap" />
     <style is:inline>
       html { overflow-y: scroll; }

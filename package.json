@@ -12,6 +12,8 @@
   },
   "dependencies": {
     "astro": "^6.4.5",
+    "astro-mermaid": "^2.1.0",
+    "mermaid": "^11.16.0",
     "remark-gfm": "^4.0.1",
     "sharp": "^0.34.5"
   },

@@ -23,6 +23,16 @@
     sans-serif;
 }
 
+html[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #171817;
+  --text: #f2f1eb;
+  --muted: #b3b1a9;
+  --line: #3d3e39;
+  --soft: #242622;
+  --accent: #9cc8ba;
+}
+
 * {
   box-sizing: border-box;
 }
