@@ -11,6 +11,9 @@ export default defineConfig({
     mermaid({
       autoTheme: true,
       enableLog: false,
+      mermaidConfig: {
+        themeVariables: { background: "transparent" },
+      },
     }),
   ],
   markdown: unified({

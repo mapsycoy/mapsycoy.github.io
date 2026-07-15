@@ -3314,3 +3314,8 @@ html[lang="ko"] .cv-page {
   color: var(--muted);
   font-size: 0.9rem;
 }
+
+pre.mermaid,
+pre.mermaid[data-processed] {
+  background: transparent !important;
+}
