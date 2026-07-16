@@ -480,7 +480,7 @@ const visibleInfoItems = infoItems.filter(
       </dl>
     )}
 
-    <section class="work-media-carousel" data-work-carousel aria-label={`${workTitle} media`}>
+    <section class:list={["work-media-carousel", (leadVideo || heroImage) && "work-media-carousel-unframed"]} data-work-carousel aria-label={`${workTitle} media`}>
       {leadVideo ? (
         <div class="work-video-item">
           <div class="work-video-embed">
