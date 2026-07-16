@@ -9,7 +9,7 @@
 }
 
 :root {
-  color-scheme: only light;
+  color-scheme: light dark;
   --bg: #f8f8f5;
   --text: #171717;
   --muted: #66645f;
@@ -25,7 +25,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-  color-scheme: only light;
+  color-scheme: light dark;
   --bg: #171817;
   --text: #f2f1eb;
   --muted: #b3b1a9;
@@ -35,7 +35,7 @@
   }
 }
 :root[data-theme="dark"] {
-  color-scheme: only light;
+  color-scheme: light dark;
   --bg: #171817;
   --text: #f2f1eb;
   --muted: #b3b1a9;
@@ -49,7 +49,7 @@
 }
 
 html {
-  color-scheme: only light !important;
+  color-scheme: light dark;
   min-height: 100%;
   overflow-y: scroll;
 }
