@@ -3,16 +3,16 @@
     "previewImage": "/uploads/og-site-preview.webp"
   },
   "media": {
-    "image": "/uploads/home-instrument.gif",
-    "halftoneFallback": "/uploads/home-instrument-halftone.gif",
-    "halftoneLargeFallback": "/uploads/home-instrument-halftone-large.gif",
+    "image": "/uploads/home.gif",
+    "halftoneFallback": "",
+    "halftoneLargeFallback": "",
     "source": {
       "ko": "천공의 성 라퓨타 | 스튜디오 지브리",
       "en": "Castle In The Sky | Studio Ghibli"
     },
     "alt": {
-      "ko": "Animated visual note",
-      "en": "Animated visual note"
+      "ko": "",
+      "en": ""
     }
   },
   "greeting": {
