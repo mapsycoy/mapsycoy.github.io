@@ -248,7 +248,7 @@ const homeMusic = getHomeMusic();
         drawCoverFrame(source);
 
         const { cellSize, contrast, gamma, minDotRadius, maxDotRadius, paper, ink } = SCREENTONE;
-        const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const isDark = document.documentElement.dataset.theme === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches;
         const frame = sampleContext.getImageData(0, 0, width, height);
         const pixels = frame.data;
 

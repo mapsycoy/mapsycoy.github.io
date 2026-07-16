@@ -39,6 +39,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="light dark" />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={pageTitle} />
@@ -55,15 +56,22 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     <script is:inline>
       (() => {
         const colorSchemeQuery = window.matchMedia("(prefers-color-scheme: dark)");
+        const getTheme = () => colorSchemeQuery.matches ? "dark" : "light";
         const setColorTheme = (root = document.documentElement) => {
-          root.dataset.theme = colorSchemeQuery.matches ? "dark" : "light";
+          root.dataset.theme = getTheme();
         };
 
         setColorTheme();
         if (window.__mapsycoyThemeSync) return;
         window.__mapsycoyThemeSync = true;
 
-        colorSchemeQuery.addEventListener("change", () => setColorTheme());
+        const handleThemeChange = () => setColorTheme();
+        if (typeof colorSchemeQuery.addEventListener === "function") {
+          colorSchemeQuery.addEventListener("change", handleThemeChange);
+        } else if (typeof colorSchemeQuery.addListener === "function") {
+          colorSchemeQuery.addListener(handleThemeChange);
+        }
+
         document.addEventListener("astro:before-swap", (event) => {
           setColorTheme(event.newDocument.documentElement);
         });

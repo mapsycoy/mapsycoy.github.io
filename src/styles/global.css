@@ -34,6 +34,15 @@
   --accent: #9cc8ba;
   }
 }
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #171817;
+  --text: #f2f1eb;
+  --muted: #b3b1a9;
+  --line: #3d3e39;
+  --soft: #242622;
+  --accent: #9cc8ba;
+}
 
 * {
   box-sizing: border-box;
@@ -129,6 +138,25 @@ a {
   height: 60px;
   flex: 0 0 auto;
   margin-left: -115px;
+}
+.logo-mark {
+  color: var(--text);
+  forced-color-adjust: none;
+}
+
+.logo-mark #initial-rounded-hangul,
+.logo-mark #initial-rounded-hangul *,
+.logo-mark #marks,
+.logo-mark #marks *,
+.logo-mark #final-rounded-wordmark,
+.logo-mark #final-rounded-wordmark * {
+  stroke: currentColor !important;
+}
+
+.logo-mark #initial-rounded-hangul circle,
+.logo-mark #dot-to-o {
+  fill: currentColor !important;
+  stroke: none !important;
 }
 
 .site-title:hover .logo-mark {
@@ -236,6 +264,25 @@ main {
   border-left: 1px solid var(--line);
 }
 
+
+.home-instrument,
+.home-instrument-canvas,
+.home-instrument-halftone-fallback,
+.home-instrument-source {
+  forced-color-adjust: none;
+}
+
+:root[data-theme="dark"] .home-instrument.is-raw-fallback .home-instrument-source {
+  filter: saturate(0) contrast(1.08) invert(1);
+}
+
+:root[data-theme="dark"] .home-instrument.is-raw-fallback::after {
+  background:
+    radial-gradient(circle, rgba(242, 241, 235, 0.68) 0 1.05px, transparent 1.28px)
+    center / 4px 4px;
+  mix-blend-mode: screen;
+  opacity: 0.45;
+}
 .home-instrument {
   position: relative;
   flex: 0 0 auto;
