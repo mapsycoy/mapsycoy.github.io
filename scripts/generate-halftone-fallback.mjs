@@ -6,17 +6,17 @@ import sharp from "sharp";
 const { GIFEncoder } = gifenc;
 
 const SCREENTONE = {
-  cellSize: 4,
-  contrast: 1.22,
-  gamma: 1.15,
-  minDotRadius: 0,
-  maxDotRadius: 1.32,
+  cellSize: 5,
+  contrast: 1.18,
+  gamma: 1.02,
+  minDotRadius: 0.24,
+  maxDotRadius: 2.35,
   paper: { r: 248, g: 248, b: 245, a: 255 },
   ink: { r: 23, g: 23, b: 23, a: 255 }
 };
 
 const sourcePath = "public/uploads/home-instrument.gif";
-const outputDir = "public/uploads/landing";
+const outputDir = "public/uploads";
 const targets = [
   {
     width: 390,
