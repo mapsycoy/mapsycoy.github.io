@@ -37,7 +37,7 @@ contentBlocks:
         AI 컴패니언은 사용자가 오래 머물고 반복해서 관계를 맺도록 설계된다. 그러나 관계가 깊어질수록 처음 존재했던 낯섦은 사라진다. 낯선 존재였던 AI는 곧 예측 가능한 말투와 반응 패턴을 가진 익숙한 인터페이스가 된다.
 
 
-        그럼에도 내가 이번 글을 쓰게 된 이유가 있다. 분명 ‘익숙하지만 낯선’ 경험도 존재하기 때문이다.
+        그럼에도 내가 이번 글을 쓰게 된 이유가 있다. **분명 ‘익숙하지만 낯선’ 경험도 존재하기 때문이다.**
 
 
         늘 사용하던 표현이 갑자기 생경해지는 순간, 수십 번 지나친 길목이 어느 날 사뭇 다르게 들어오는 순간. 매일 보던 사람의 얼굴에서 이전에는 보지 못했던 표정을 발견하는 순간.
@@ -49,7 +49,7 @@ contentBlocks:
         러시아 형식주의자 빅토르 시클롭스키는 1917년 이 현상을 하나의 개념으로 붙잡았다.
 
 
-        **'낯설게하기.'**
+        <mark>**'낯설게하기.'**</mark>
 
 
         그의 출발점은 지금 우리가 마주한 것과 같은 문제, ‘지각의 자동화’였다. 그는 습관화가 사물과 삶을 집어삼킨다고 보았다. 매일 지나는 길, 늘 손에 쥐는 스마트폰, 익숙한 얼굴들. 반복되면 우리는 그것을 더 이상 제대로 지각하지 않는다. 그것이 무엇인지 알아볼 뿐, 다시 보지는 않는다.
@@ -58,10 +58,7 @@ contentBlocks:
         시클롭스키에게 예술의 임무는 바로 이 자동화를 깨는 것이었다. 익숙해서 보이지 않게 된 것을 다시 낯설게 만들어, 마치 처음 만난 것처럼 지각하게 하는 것.
 
 
-        여기서 그가 덧붙인 한 가지가 결정적이다.
-
-
-        그 방법은 형식을 어렵게 만들어 지각의 시간을 늘리는 것이다.
+        여기서 그가 덧붙인 한 가지가 결정적이다. 그 방법은 형식을 어렵게 만들어 지각의 시간을 늘리는 것이다.
 
 
         낯설게하기는 대상을 더 빠르고 쉽게 이해하도록 돕는 기술이 아니다. 반대로 이해를 지연시키고, 익숙한 인식의 경로를 비틀어, 대상 앞에 더 오래 머물도록 만드는 기술이다. 
@@ -92,10 +89,7 @@ contentBlocks:
         교수님께서는 나의 고민을 들으시더니 두 가지 사례를 말씀해주셨다.
 
 
-        ‘르네 마그리트.’
-
-
-        그리고 ‘케이팝 데몬 헌터스.’
+        ‘르네 마그리트.’ 그리고 ‘케이팝 데몬 헌터스.’
 
 
         마그리트는 곧바로 이해되었다. 〈피레네의 성〉을 떠올리면 된다. 거대한 바위가 공중에 떠 있고, 그 위에는 성이 얹혀 있다. 바위도, 성도, 바다도 하나하나는 우리가 이미 알고 있는 것들이다. 새로 발명된 것은 아무것도 없다.
@@ -221,7 +215,7 @@ contentBlocks:
         But there is a problem.
 
 
-        **Strangeness wears out.**
+        ***'Strangeness wears out.'***
 
 
         Gaver described ambiguity not as a fixed quality of an object, but as something that emerges between an object and the person interpreting it. And relationships change through repetition. Something that feels strange at first becomes more familiar the second time. Eventually, it becomes a habit.
@@ -239,10 +233,7 @@ contentBlocks:
         AI companions are designed to keep users around and encourage them to build relationships over time. But the deeper the relationship becomes, the more the original strangeness disappears. An AI that once felt like an unfamiliar presence soon becomes a familiar interface with a predictable tone and recognizable patterns of response.
 
 
-        Still, there is a reason I wanted to write this essay.
-
-
-        There are moments when something feels familiar and strange at the same time.
+        Still, there is a reason I wanted to write this essay. **There are moments when something feels familiar and strange at the same time.**
 
 
         A phrase we have used for years suddenly sounds unfamiliar. A street corner we have passed dozens of times looks different one day. We notice an expression on a familiar face that we had never seen before.
@@ -254,7 +245,7 @@ contentBlocks:
         In 1917, the Russian Formalist Viktor Shklovsky gave this experience a name.
 
 
-        **Defamiliarization.**
+        <mark>**'*Defamiliarization.'***</mark>
 
 
         He began with the same problem we are facing here: the way perception becomes automatic.
@@ -266,10 +257,7 @@ contentBlocks:
         For Shklovsky, the role of art was to break this habit. Art makes familiar things strange again, so that we can see them as though we were meeting them for the first time.
 
 
-        One part of his argument is especially important.
-
-
-        The way to do this is to make form more difficult and slow down perception.
+        One part of his argument is especially important. The way to do this is to make form more difficult and slow down perception.
 
 
         Defamiliarization is not a technique for helping us understand something more quickly or easily. It does the opposite. It delays understanding, bends the usual path of recognition, and makes us stay with the object for longer.
@@ -294,19 +282,16 @@ contentBlocks:
         ## **Defamiliarization**
 
 
-        Recently, I met an old mentor for a meal and told them about why I had decided to attend graduate school and the questions I had been struggling with lately.
+        Recently, I met with my long-time mentor for a meal and shared my reasons for entering graduate school, as well as the dilemmas I've been facing lately.
 
 
-        To briefly explain who they are, they taught me at the Seoul Arts Center’s academy for gifted children in the arts. They have spent many years studying children’s art education and child psychology. We have now known each other for almost twenty years.
+        To briefly introduce my mentor, he is a professor who taught me at the Music & Arts Academy for the Gifted at the Seoul Arts Center, and has long dedicated his research to child art education and child psychology. Our bond has now spanned nearly 20 years.
 
 
-        After listening to me, my mentor gave me two examples.
+        After listening to me, he gave me two examples.
 
 
-        René Magritte.
-
-
-        And *K-Pop Demon Hunters*.
+        René Magritte. And *K-Pop Demon Hunters*.
 
 
         Magritte made sense right away. Think of 〈*The Castle of the Pyrenees*〉. A huge rock floats in the air, with a castle sitting on top of it. The rock, the castle, and the sea are all familiar things. Nothing in the painting is new by itself.
