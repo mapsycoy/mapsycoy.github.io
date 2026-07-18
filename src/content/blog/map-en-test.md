@@ -4,7 +4,7 @@ title:
   ko: 낯섦은 어디서 다시 오는가
 slug: "10"
 publishedAt: 2026-07-18
-status: draft
+status: published
 pinned: false
 tag: Essay
 thumbnail: ""
@@ -216,8 +216,6 @@ contentBlocks:
         내가 세운 가설은 우선 그림 하나로만 남겨두고, 잠시 보류하는 편이 좋을 것 같다.
 
 
-        ````
-
         ```mermaid
 
         %%{init: {'theme':'base','themeVariables':{
@@ -234,8 +232,6 @@ contentBlocks:
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
-
-        ````
 
 
         요지는 이렇다.
