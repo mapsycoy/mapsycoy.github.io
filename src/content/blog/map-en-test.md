@@ -22,7 +22,7 @@ contentBlocks:
         지난 글에서 Gaver와 Sengers의 ‘낯선 존재(alien presence)’는 해석 가능성을 열어두는 것, 다시 말해 사용자에게 해석할 수 있다는 허가를 건네는 방식 중 하나였다. 그러나 여기에는 한 가지 문제가 있다.
 
 
-        **'낯섦은 소진된다.'**
+        ***'낯섦은 소진된다.'***
 
 
         Gaver 자신이 모호성을 사물의 고정된 속성이 아니라 해석자와 대상 사이에서 생겨나는 관계로 정의했다. 관계는 반복 속에서 변한다. 처음에는 낯설었던 것도 두 번째부터 점차 익숙해지고, 나중에는 하나의 습관이 된다.
@@ -49,7 +49,7 @@ contentBlocks:
         러시아 형식주의자 빅토르 시클롭스키는 1917년 이 현상을 하나의 개념으로 붙잡았다.
 
 
-        <mark>**'낯설게하기.'**</mark>
+        <mark>***'낯설게하기.'***</mark>
 
 
         그의 출발점은 지금 우리가 마주한 것과 같은 문제, ‘지각의 자동화’였다. 그는 습관화가 사물과 삶을 집어삼킨다고 보았다. 매일 지나는 길, 늘 손에 쥐는 스마트폰, 익숙한 얼굴들. 반복되면 우리는 그것을 더 이상 제대로 지각하지 않는다. 그것이 무엇인지 알아볼 뿐, 다시 보지는 않는다.
@@ -92,13 +92,13 @@ contentBlocks:
         **'르네 마그리트.'** 그리고 **'케이팝 데몬 헌터스.'**
 
 
-        마그리트는 곧바로 이해되었다. 〈*피레네의 성*〉을 떠올리면 된다. 거대한 바위가 공중에 떠 있고, 그 위에는 성이 얹혀 있다. 바위도, 성도, 바다도 하나하나는 우리가 이미 알고 있는 것들이다. 새로 발명된 것은 아무것도 없다. 다만 바위가 있어야 할 자리에 있지 않을 뿐이다.
+        마그리트는 곧바로 이해되었다. *〈피레네의 성〉*을 떠올리면 된다. 거대한 바위가 공중에 떠 있고, 그 위에는 성이 얹혀 있다. 바위도, 성도, 바다도 하나하나는 우리가 이미 알고 있는 것들이다. 새로 발명된 것은 아무것도 없다. 다만 바위가 있어야 할 자리에 있지 않을 뿐이다.
 
 
         그 하나의 이동으로 우리는 바위를 다시 보게 된다. 무겁다는 것은 무엇인지, 땅에 붙어 있다는 것은 무엇인지, 중력에 속한다는 것은 무엇인지를 다시 생각하게 된다. 시클롭스키가 글로 설명한 것을 마그리트는 그림으로 보여준 셈이다.
 
 
-        그런데 〈*케이팝 데몬 헌터스*〉에 대해서는 처음에 조금 의아했다.
+        그런데 *〈케이팝 데몬 헌터스〉*에 대해서는 처음에 조금 의아했다.
 
 
         "케데헌이 낯설다고?"
@@ -125,7 +125,7 @@ contentBlocks:
         그리고 호랑이가 있다. 케데헌의 호랑이는 파랗다.
 
 
-        왜 파랑일까. 전통 민화 〈*호작도*〉에서도 볼 수 없는 색이다. 바로 그 어긋남 때문에 우리는 호랑이를 다시 바라보게 된다.
+        왜 파랑일까. 전통 민화 *〈호작도〉*에서도 볼 수 없는 색이다. 바로 그 어긋남 때문에 우리는 호랑이를 다시 바라보게 된다.
 
 
         파랑이라는 물리적 사실이 특별해서가 아니다. 익숙한 호랑이의 자리에 놓이지 않을 색이 놓였기 때문이다. 모호성은 사물의 속성이 아니라 관계 속에서 발생한다는 Gaver의 정의가 여기서 다시 확인된다.
@@ -134,13 +134,13 @@ contentBlocks:
         이 대화에서 내가 얻은 것은 두 가지였다.
 
 
-        * 낯섦은 대상 자체보다 대상이 놓인 자리에서 나온다.
+        * **낯섦은 대상 자체보다 대상이 놓인 자리에서 나온다.**
 
 
-        〈*피레네의 성*〉의 바위도, 케데헌 호랑이의 파랑도 새로 발명된 것은 아니다. 익숙한 것이 원래 있던 관계에서 벗어나 다른 자리에 놓였을 뿐이다.
+        *〈피레네의 성〉*의 바위도, 케데헌 호랑이의 파랑도 새로 발명된 것은 아니다. 익숙한 것이 원래 있던 관계에서 벗어나 다른 자리에 놓였을 뿐이다.
 
 
-        * 낯섦은 관계이기 때문에 나는 나 자신의 낯섦을 완전히 판정할 수 없다.
+        * **낯섦은 관계이기 때문에 나는 나 자신의 낯섦을 완전히 판정할 수 없다.**
 
 
         나는 케데헌이 낯설다는 것을 알아보지 못했다. 그 세계 안에 살고 있었기 때문이다. 은사님이 다른 위치에서 짚어주시고서야 비로소 보였다.
@@ -149,10 +149,10 @@ contentBlocks:
         그리고 이 지점에서, 지난 글들에서 세워온 개념 하나가 다시 돌아온다.
 
 
-        **'목격자.'**
+        ***'목격자.'***
 
 
-        나는 목격자를 아이의 행위를 지켜보고 되비추는 존재로 그려왔다. 그런데 은사님과의 대화는 목격자의 다른 역할 하나를 보여주었다. 목격자는 단지 아이가 한 일을 기억하고 반영하는 존재가 아니다. **아이가 스스로 지각하지 못하는 익숙함을, 다른 자리에서 짚어줄 수 있는 존재다.**
+        나는 목격자를 아이의 행위를 지켜보고 되비추는 존재로 그려왔다. 그런데 은사님과의 대화는 목격자의 다른 역할 하나를 보여주었다. 목격자는 단지 아이가 한 일을 기억하고 반영하는 존재가 아니다. <mark>**아이가 스스로 지각하지 못하는 익숙함을, 다른 자리에서 짚어줄 수 있는 존재다.**</mark>
 
 
         낯설게하기의 주체는 지금까지 대체로 만드는 쪽이었다. 마그리트도, 케데헌의 제작진도, 익숙한 것을 낯선 자리로 옮기는 일은 작품 바깥에서 미리 이루어졌다. 그러나 앞에서 말했듯, 미리 옮겨놓은 자리는 언젠가 새로운 익숙함이 된다. 낯섦은 소진된다.
@@ -312,13 +312,13 @@ contentBlocks:
         From this conversation, I gained two insights:
 
 
-        * Strangeness comes less from the object itself than from where the object is placed.
+        * **Strangeness comes less from the object itself than from where the object is placed.**
 
 
         Neither the rock in <*The Castle of the Pyrenees*> nor the blue of the tiger in K-Pop Demon Hunters was newly invented. Familiar things were simply detached from their original relationships and placed in a different position.
 
 
-        * Because strangeness is relational, I cannot fully decide what is strange from my own position.
+        * **Because strangeness is relational, I cannot fully decide what is strange from my own position.**
 
 
         I failed to recognize that K-Pop Demon Hunters was defamiliarizing. This was because I was living inside that world. It only became visible to me after my mentor pointed it out from a different vantage point.
@@ -330,7 +330,7 @@ contentBlocks:
         ***'The Witness.'***
 
 
-        I have previously depicted the witness as an entity that observes and reflects back a child’s actions. However, the conversation with my mentor revealed another role for the witness. A witness is not merely someone who remembers and reflects what a child has done. The witness is an entity capable of pointing out, from a different position, the familiarity that the child cannot perceive on their own.
+        I have previously depicted the witness as an entity that observes and reflects back a child’s actions. However, the conversation with my mentor revealed another role for the witness. A witness is not merely someone who remembers and reflects what a child has done. <mark>**The witness is an entity capable of pointing out, from a different position, the familiarity that the child cannot perceive on their own.**</mark>
 
 
         Until now, the agent of defamiliarization was largely seen as the creator. For both Magritte and the creators of K-Pop Demon Hunters, the act of shifting the familiar into an unfamiliar place was carried out in advance, outside the artwork. However, as mentioned earlier, a pre-displaced space eventually becomes a new familiarity. Unfamiliarity depletes.
@@ -444,7 +444,7 @@ contentBlocks:
         [「Making by Making Strange: Defamiliarization and the Design of Domestic Technologies」](https://dl.acm.org/doi/10.1145/1067860.1067862)
 
 
-        Genevieve Bell, Mark Blythe, Phoebe Sengers가 2005년 발표한 「Making by Making Strange: Defamiliarization and the Design of Domestic Technologies」는 낯설게하기를 가정용 기술 설계의 방법론으로 가져온 논문이다. 
+        Genevieve Bell, Mark Blythe, Phoebe Sengers가 2005년 발표한 「*Making by Making Strange: Defamiliarization and the Design of Domestic Technologies*」는 낯설게하기를 가정용 기술 설계의 방법론으로 가져온 논문이다. 
 
 
         이들은 가정이 너무 익숙한 공간이기 때문에, 오히려 그것을 낯설게 만들어야 그 안에 감춰진 문화적 전제와 설계 가능성을 발견할 수 있다고 주장했다.
@@ -453,10 +453,10 @@ contentBlocks:
         그리고 세 번째 저자의 이름을 보라.
 
 
-        Phoebe Sengers.
+        *Phoebe Sengers.*
 
 
-        내가 지난 글의 후반부에서 다룬 「Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation」의 제1저자다.
+        내가 지난 글의 후반부에서 다룬 「*Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation*」의 제1저자다.
 
 
         1917년의 문예 이론이 2005년의 가정용 기술 설계로 들어왔고, 그 연구자가 다시 2006년 해석의 개방성을 이야기했다. 그리고 20년 뒤 나는 그 논문들을 역순으로 읽다가 다시 시클롭스키에게 돌아왔다.
@@ -556,7 +556,7 @@ contentBlocks:
         [「Making by Making Strange: Defamiliarization and the Design of Domestic Technologies」](https://dl.acm.org/doi/10.1145/1067860.1067862)
 
 
-        Published in 2005 by Genevieve Bell, Mark Blythe, and Phoebe Sengers, 「Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation」 brought defamiliarization into the design of domestic technologies.
+        Published in 2005 by Genevieve Bell, Mark Blythe, and Phoebe Sengers, 「*Making by Making Strange: Defamiliarization and the Design of Domestic Technologies*」 brought defamiliarization into the design of domestic technologies.
 
 
         The authors argued that the home is so familiar that we need to make it strange again. Only then can we notice the cultural assumptions and design possibilities hidden inside it.
@@ -565,10 +565,10 @@ contentBlocks:
         And look at the name of the third author.
 
 
-        Phoebe Sengers.
+        *Phoebe Sengers.*
 
 
-        She is the first author of “Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation,” the paper I discussed in the second half of my previous essay.
+        She is the first author of 「*Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation*」, the paper I discussed in the second half of my previous essay.
 
 
         A literary idea from 1917 entered the design of domestic technologies in 2005. The same researcher then wrote about openness to interpretation in 2006. Twenty years later, I read those papers in reverse order and found my way back to Shklovsky.
