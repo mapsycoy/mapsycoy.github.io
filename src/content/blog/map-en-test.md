@@ -158,10 +158,16 @@ contentBlocks:
         낯설게하기의 주체는 지금까지 대체로 만드는 쪽이었다. 마그리트도, 케데헌의 제작진도, 익숙한 것을 낯선 자리로 옮기는 일은 작품 바깥에서 미리 이루어졌다. 그러나 앞에서 말했듯, 미리 옮겨놓은 자리는 언젠가 새로운 익숙함이 된다. 낯섦은 소진된다.
 
 
-        관계 안에 있는 목격자는 다르다. 목격자는 아이가 무엇에 익숙해졌는지를 아이보다 먼저 볼 수 있는 위치에 있다. 내가 케데헌의 낯섦을 보지 못했듯, 아이도 자신이 시스템 안에서 무엇을 습관처럼 지나치고 있는지 알지 못한다. 그것을 짚어주는 일은 시스템 바깥의 시선이 아니라, 관계 안의 다른 위치에서만 가능하다.
+        관계 안에 있는 목격자는 다르다. 목격자는 아이가 무엇에 익숙해졌는지를 아이보다 먼저 볼 수 있는 위치에 있다. 내가 케데헌의 낯섦을 보지 못했듯, 아이도 자신이 시스템 안에서 무엇을 습관처럼 지나치고 있는지 알지 못한다. 그것을 짚어주는 일은 시스템 바깥의 시선이 아니라, 관계 안의 다른 위치에서만 가능하다. 은사님이 나에게 하신 일이 정확히 그것이었다.
 
 
-        은사님이 나에게 하신 일이 정확히 그것이었다.
+        그리고 생각해보면, 케데헌이라는 작품 자체가 그런 위치에서 탄생했다.
+
+
+        감독 매기 강(Maggie Kang)은 서울에서 태어나 어린 시절 캐나다로 이주한 한국계 캐나다인이다. 그에게 한국 문화는 완전히 안쪽의 것도, 완전히 바깥쪽의 것도 아니었을 것이다. 익숙하지만 동시에 설명하고 번역해야 하는 것. 자신의 일부이면서도 다른 시선으로 다시 바라볼 수 있는 것.
+
+
+        물론 디아스포라(Diaspora)[^1]의 경험만이 문화적 재해석을 가능하게 한다고 말할 수는 없다. 다만 그가 선 자리는 은사님이 나에게 서 주셨던 자리와 닮아 있다. 대상과의 관계를 유지하면서도, 그 관계에 완전히 잠기지는 않는 위치. 어떤 익숙함은 그 경계에서만 보인다.
 
 
 
@@ -330,10 +336,16 @@ contentBlocks:
         Until now, the agent of defamiliarization was largely seen as the creator. For both Magritte and the creators of K-Pop Demon Hunters, the act of shifting the familiar into an unfamiliar place was carried out in advance, outside the artwork. However, as mentioned earlier, a pre-displaced space eventually becomes a new familiarity. Unfamiliarity depletes.
 
 
-        A witness within a relationship is different. The witness is positioned to see what the child has grown accustomed to, even before the child does. Just as I could not see the unfamiliarity of K-Pop Demon Hunters, a child does not know what they are habitually passing over within a system. Pointing that out is impossible from a perspective outside the system; it is only possible from a different position within the relationship.
+        A witness within a relationship is different. The witness is positioned to see what the child has grown accustomed to, even before the child does. Just as I could not see the unfamiliarity of K-Pop Demon Hunters, a child does not know what they are habitually passing over within a system. Pointing that out is impossible from a perspective outside the system; it is only possible from a different position within the relationship. That was precisely what my mentor did for me.
 
 
-        That was precisely what my mentor did for me.
+        And come to think of it, the work *K-Pop Demon Hunters* itself was born from precisely that kind of positioning.
+
+
+        The director, Maggie Kang, is a Korean-Canadian who was born in Seoul and moved to Canada during her childhood. To her, Korean culture was likely neither entirely on the inside nor completely on the outside. It was something familiar, yet simultaneously something that had to be explained and translated. It was a part of herself, yet also something she could look back upon through a different lens.
+
+
+        Of course, one cannot say that the diaspora experience is the only thing that enables cultural reinterpretation. However, the place where she stood closely resembles the position my mentor took for me—a position that maintains a relationship with the subject, yet does not become completely submerged within that relationship. Certain familiarities become visible only from that very boundary.
 
 
 
@@ -362,13 +374,14 @@ contentBlocks:
           'fontSize':'15px'
         }}}%%
         flowchart LR
-            A[허가] --> B[노동] --> C[목격] --> D[간극]
+            A[허가] --> B[노동(상태)] --> C[목격] --> D[비틀기(간극)]
             D --> A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
-      en: |-
+      en: >-
         ```mermaid
+
         %%{init: {'theme':'base','themeVariables':{
           'primaryColor':'#ffffff',
           'primaryBorderColor':'#0a0a0a',
@@ -376,8 +389,9 @@ contentBlocks:
           'lineColor':'#0a0a0a',
           'fontSize':'15px'
         }}}%%
+
         flowchart LR
-            A[Permission] --> B[Labor] --> C[Witness] --> D[Gap]
+            A[Permission] --> B[Labor(State)] --> C[Witness] --> D[Twisting(Gap)]
             D --> A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
@@ -483,10 +497,10 @@ contentBlocks:
         그러나 이 글의 출발점에서 말했듯, 옮겨진 자리는 언젠가 다시 익숙해진다. 은사님과의 대화가 보여준 것은 다른 종류의 가능성이었다.
 
 
-        소진되지 않는 낯섦의 구조는 HCI의 언어 안에서만 찾기보다, 문예 이론과 미학, 아동 심리와 예술 교육처럼 서로 다른 분야의 관점을 같은 문제 옆에 놓을 때 조금씩 모습을 드러낼지도 모른다. 서로 다른 분야가 서로의 익숙함을 짚어주는 목격자가 되게 하는 일이기도 하다. 
+        소진되지 않는 낯섦의 구조는 HCI의 언어 안에서만 찾기보다, 문예 이론과 미학, 아동 심리와 예술 교육처럼 서로 다른 분야의 관점을 같은 문제 옆에 놓을 때 조금씩 모습을 드러낼지도 모른다. **서로 다른 분야를 나란히 놓는 일은, 각 분야가 서로의 익숙함을 짚어주는 목격자가 되게 하는 일이기도 하다.**
 
 
-        마그리트가 바위를 허공에 옮겨놓음으로써 우리에게 중력을 다시 지각하게 했듯, 나 역시 익숙해진 개념들을 다른 자리에 놓아보려 한다.
+        나 역시 익숙해진 개념들을 다른 자리에 놓아보려 한다.
 
 
         처음의 질문은 그대로 남아 있다.
@@ -608,13 +622,13 @@ contentBlocks:
         As I realized through my conversation with my mentor, <mark>**strangeness begins when something familiar is moved away from its usual place.**</mark>
 
 
-        However, as stated at the starting point of this essay, a displaced space eventually becomes familiar once again. What the conversation with my mentor revealed was a different kind of possibility.
+        However, as stated at the starting point of this article, a displaced space eventually becomes familiar once again. What the conversation with my mentor revealed was a different kind of possibility.
 
 
-        Rather than searching solely within the language of HCI, a structure of strangeness that does not deplete might gradually reveal itself when we place perspectives from entirely different fields—such as literary theory, aesthetics, child psychology, and art education—alongside the same problem. It is also a way of allowing different fields to serve as witnesses that point out one another’s familiarities.
+        Rather than searching solely within the language of HCI, a structure of unfamiliarity that does not deplete might gradually reveal itself when we place perspectives from entirely different fields—such as literary theory, aesthetics, child psychology, and art education—alongside the same problem. **Placing these different fields side by side is also a way of allowing each field to serve as a witness that points out one another’s familiarities.**
 
 
-        Just as Magritte allowed us to perceive gravity anew by displacing a rock into mid-air, I, too, intend to try placing familiar concepts into different spaces.
+        I, too, intend to try placing familiar concepts into different spaces.
 
 
         The initial question remains exactly as it was.
