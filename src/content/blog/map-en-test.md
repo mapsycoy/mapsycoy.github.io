@@ -83,7 +83,7 @@ contentBlocks:
         나는 최근 오랜 은사님을 뵙고 함께 식사를 하며 대학원 진학의 배경과 요즘 이어지고 있는 고민을 털어놓았다.
 
 
-        은사님에 대해 잠시 소개하자면, 서울 예술의전당 미술영재아카데미에서 나를 지도해주셨던 교수님으로, 아동 미술교육과 아동 심리 분야를 오랫동안 연구해오신 분이다. 어느덧 나와 교수님의 인연도 20년 가까이 이어지고 있다.
+        은사님에 대해 잠시 소개하자면, 과거 미술영재아카데미에서 나를 지도해주셨던 교수님으로, 아동 미술교육과 아동 심리 분야를 오랫동안 연구해오신 분이다. 어느덧 나와 교수님의 인연도 20년 가까이 이어지고 있다.
 
 
         교수님께서는 나의 고민을 들으시더니 두 가지 사례를 말씀해주셨다.
@@ -264,7 +264,7 @@ contentBlocks:
         Recently, I met with my long-time mentor for a meal and shared my reasons for entering graduate school, as well as the dilemmas I've been facing lately.
 
 
-        To briefly introduce my mentor, he is a professor who taught me at the Music & Arts Academy for the Gifted at the Seoul Arts Center, and has long dedicated his research to child art education and child psychology. Our bond has now spanned nearly 20 years.
+        To briefly introduce my mentor, he is a professor who taught me at the Arts Gifted Academy, and has long dedicated his research to child art education and child psychology. Our bond has now spanned nearly 20 years.
 
 
         After listening to me, he gave me two examples.
