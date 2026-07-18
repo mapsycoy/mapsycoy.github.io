@@ -4,7 +4,7 @@ title:
   ko: 낯섦은 어디서 다시 오는가
 slug: "10"
 publishedAt: 2026-07-18
-status: draft
+status: published
 pinned: false
 tag: Essay
 thumbnail: /uploads/10.webp
@@ -89,7 +89,7 @@ contentBlocks:
         교수님께서는 나의 고민을 들으시더니 두 가지 사례를 말씀해주셨다.
 
 
-        **‘르네 마그리트.’** 그리고 **‘케이팝 데몬 헌터스.’**
+        **'르네 마그리트.'** 그리고 **'케이팝 데몬 헌터스.'**
 
 
         마그리트는 곧바로 이해되었다. 〈*피레네의 성*〉을 떠올리면 된다. 거대한 바위가 공중에 떠 있고, 그 위에는 성이 얹혀 있다. 바위도, 성도, 바다도 하나하나는 우리가 이미 알고 있는 것들이다. 새로 발명된 것은 아무것도 없다. 다만 바위가 있어야 할 자리에 있지 않을 뿐이다.
@@ -107,16 +107,7 @@ contentBlocks:
         그러나 이내 깨달았다. 나는 줄곧 한국인의 시선에서만 그것을 보고 있었다.
 
 
-        이 영화는 한국의 무속과 설화, 전통 회화에서 여러 모티프를 가져온다. 주인공들은 노래를 통해 악귀를 막는 결계를 유지하고, 악귀들은 인간의 혼을 노린다. 죽은 자와 산 자의 세계, 풀리지 않은 원한, 노래와 춤을 통한 퇴마라는 설정이 이야기의 중심을 이룬다.
-
-
-        나에게 이러한 개념은 어릴 때부터 여러 매체를 통해 반복해서 접해온 것들이다. 그래서 나는 지각하지 않고 인지만 했다. 하지만 이 개념을 처음 접하는 사람에게는 어떨까.
-
-
-        죽은 자를 데려가는 존재가 검은 갓을 쓴 젊은 남성의 모습을 하고 있다는 것. 노래가 공연이면서 동시에 악귀를 물리치는 힘이라는 것. 원한이 풀리지 않은 혼이 이승에 남아 사람들에게 영향을 미친다는 것.
-
-
-        그들에게는 이 모든 것이 생경할 수 있다. 그리고 생경하기 때문에, 그들은 그것을 새로운 시선으로 본다.
+        이 영화는 한국의 무속과 설화, 전통 회화에서 여러 모티프를 가져온다. 죽은 자와 산 자의 세계, 풀리지 않은 원한, 노래와 춤을 통한 퇴마. 나에게 이러한 개념은 어릴 때부터 여러 매체를 통해 반복해서 접해온 것들이라, 나는 지각하지 않고 인지만 했다. 하지만 이 개념을 처음 접하는 사람에게는 어떨까. 죽은 자를 데려가는 존재가 검은 갓을 쓴 젊은 남성의 모습을 하고 있다는 것부터가 그들에게는 생경할 수 있다. 그리고 생경하기 때문에, 그들은 그것을 새로운 시선으로 본다.
 
 
         케이팝이라는 형식도 마찬가지다. 나는 아이돌이 무대에서 칼군무를 추고, 팬덤이 응원봉을 흔들며 같은 노래를 부르는 풍경을 조금도 낯설게 여기지 않는다.
@@ -137,25 +128,7 @@ contentBlocks:
         왜 파랑일까. 전통 민화 〈*호작도*〉에서도 볼 수 없는 색이다. 바로 그 어긋남 때문에 우리는 호랑이를 다시 바라보게 된다.
 
 
-        파랑은 반 고흐나 피카소 등 다른 작품과 맥락에서 우울이나 상실, 가난과 고독의 정서를 불러오기도 했다. 그러나 케데헌의 호랑이 위에 놓인 파랑은 다르게 읽힌다. 이 세계에 완전히 속하지 않은 존재, 인간과 초월적 세계의 경계를 오가는 존재가 가진 신비로움에 가깝다. 
-
-
-        같은 파랑인데 전혀 다른 것을 말한다. 색 자체에 하나의 의미가 고정되어 있는 것이 아니라는 뜻이다. 파랑이라는 물리적 사실은 같지만, 그 의미는 색이 놓인 관계에서 생겨난다. 슬픔에 잠긴 인물의 어깨에 놓이면 우울이 되고, 현실에 존재하지 않는 호랑이의 털가죽에 놓이면 신비가 된다.
-
-
-        모호성은 사물의 속성이 아니라 관계 속에서 발생한다는 Gaver의 정의가 여기서 다시 확인된다.
-
-
-        그렇다면 이 세계관을 처음 구상한 사람은 누구인가. 감독 매기 강(Maggie Kang)은 서울에서 태어나 어린 시절 캐나다로 이주한 한국계 캐나다인이다. 나는 이 배경이 작품과 전혀 무관하지는 않다고 생각한다.
-
-
-        물론 한국에서 계속 살았던 사람도 한국의 무속과 설화를 새로운 방식으로 다룰 수 있다. 디아스포라(Diaspora)[^1]의 경험만이 문화적 재해석을 가능하게 한다고 말할 수는 없다.
-
-
-        다만 매기 강에게 한국 문화는 완전히 안쪽의 것도, 완전히 바깥쪽의 것도 아니었을 것이다. 익숙하지만 동시에 설명하고 번역해야 하는 것. 자신의 일부이면서도 다른 문화의 시선으로 다시 바라볼 수 있는 것.
-
-
-        그는 안과 밖의 경계에 서 있었다. 그 자리에서 한국의 문화와 전통은 단순한 배경이 아니라 다시 발견할 수 있는 대상이 된다. 한국에서 익숙하게 지나칠 수 있는 것들이 북미 애니메이션과 케이팝이라는 다른 자리로 이동하면서 새로운 형식으로 드러난다.
+        파랑이라는 물리적 사실이 특별해서가 아니다. 익숙한 호랑이의 자리에 놓이지 않을 색이 놓였기 때문이다. 모호성은 사물의 속성이 아니라 관계 속에서 발생한다는 Gaver의 정의가 여기서 다시 확인된다.
 
 
         이 대화에서 내가 얻은 것은 두 가지였다.
@@ -164,13 +137,31 @@ contentBlocks:
         * 낯섦은 대상 자체보다 대상이 놓인 자리에서 나온다.
 
 
-        〈피레네의 성〉의 바위도, 케데헌 호랑이의 파랑도 새로 발명된 것은 아니다. 익숙한 것이 원래 있던 관계에서 벗어나 다른 자리에 놓였을 뿐이다.
+        〈*피레네의 성*〉의 바위도, 케데헌 호랑이의 파랑도 새로 발명된 것은 아니다. 익숙한 것이 원래 있던 관계에서 벗어나 다른 자리에 놓였을 뿐이다.
 
 
         * 낯섦은 관계이기 때문에 나는 나 자신의 낯섦을 완전히 판정할 수 없다.
 
 
         나는 케데헌이 낯설다는 것을 알아보지 못했다. 그 세계 안에 살고 있었기 때문이다. 은사님이 다른 위치에서 짚어주시고서야 비로소 보였다.
+
+
+        그리고 이 지점에서, 지난 글들에서 세워온 개념 하나가 다시 돌아온다.
+
+
+        **'목격자.'**
+
+
+        나는 목격자를 아이의 행위를 지켜보고 되비추는 존재로 그려왔다. 그런데 은사님과의 대화는 목격자의 다른 역할 하나를 보여주었다. 목격자는 단지 아이가 한 일을 기억하고 반영하는 존재가 아니다. **아이가 스스로 지각하지 못하는 익숙함을, 다른 자리에서 짚어줄 수 있는 존재다.**
+
+
+        낯설게하기의 주체는 지금까지 대체로 만드는 쪽이었다. 마그리트도, 케데헌의 제작진도, 익숙한 것을 낯선 자리로 옮기는 일은 작품 바깥에서 미리 이루어졌다. 그러나 앞에서 말했듯, 미리 옮겨놓은 자리는 언젠가 새로운 익숙함이 된다. 낯섦은 소진된다.
+
+
+        관계 안에 있는 목격자는 다르다. 목격자는 아이가 무엇에 익숙해졌는지를 아이보다 먼저 볼 수 있는 위치에 있다. 내가 케데헌의 낯섦을 보지 못했듯, 아이도 자신이 시스템 안에서 무엇을 습관처럼 지나치고 있는지 알지 못한다. 그것을 짚어주는 일은 시스템 바깥의 시선이 아니라, 관계 안의 다른 위치에서만 가능하다.
+
+
+        은사님이 나에게 하신 일이 정확히 그것이었다.
 
 
 
@@ -288,76 +279,61 @@ contentBlocks:
         Then I realized that I had only been looking at it from the perspective of a Korean viewer.
 
 
-        The film draws many of its ideas from Korean shamanism, folklore, and traditional painting. Its main characters use song to maintain a barrier against demons, while the demons try to take human souls. The worlds of the living and the dead, unresolved resentment, and exorcism through song and dance all sit at the center of the story.
+        This film draws various motifs from Korean shamanism, folklore, and traditional paintings. The realms of the living and the dead, unresolved grudges (*wonhan*), and exorcism through song and dance. To me, these concepts were things I had repeatedly encountered through various media since childhood, so I merely recognized them without actively perceiving them. But what would it be like for someone encountering these concepts for the very first time? Even the fact that the entity taking away the dead takes the form of a young man wearing a black traditional hat (*gat*) could feel exotic and strange to them. And precisely because it is unfamiliar, they view it with fresh eyes.
 
 
-        These ideas were already familiar to me. I had seen them again and again in different forms of media since childhood. So I moved past them without resistance. 
+        The format of K-Pop is no different. I do not find it the least bit strange to see idols performing perfectly synchronized choreography on stage, or fandoms chanting the same song while waving lightsticks.
 
 
-        I recognized them, but I did not really perceive them. But what would they look like to someone seeing these ideas for the first time?
+        Yet, this film overlays that familiar stage onto a space of shamanistic ritual. The concert becomes a form of *gut* (a shamanic ritual), and the fandom’s roaring cheers become the power that sustains a sacred barrier.
 
 
-        A being who guides the dead appears as a young man wearing a black *gat*. A song is both a performance and a force that can drive away demons. A spirit with unresolved resentment stays in the world of the living and affects human lives.
+        Come to think of it, it isn't an entirely disparate combination. Seen from the outside, the scene of thousands of people facing one direction, waving lights, and repeating the same songs and chants already looks sufficiently ritualistic.
 
 
-        To someone unfamiliar with these ideas, all of this may feel strange. And because it feels strange, they look at it more closely.
+        Because I was inside the K-Pop culture, I failed to perceive that it resembled a ritual. By displacing K-Pop into a different domain—shamanism—the film brought to light the ritualistic nature that was already inherently present within it.
 
 
-        The same is true of K-pop. I do not find it strange to see idols performing perfectly synchronized choreography onstage, or fans waving light sticks and singing the same song together. But the film places this familiar stage on top of a shamanic ritual. The concert becomes a kind of *gut*, and the voices of the fans become the force that keeps the barrier alive.
+        And then there is the tiger. The tiger in K-Pop Demon Hunters is blue.
 
 
-        When I think about it, the two are not completely unrelated. Thousands of people face the same direction. They wave lights together and repeat the same songs and chants. From the outside, the whole scene can already look deeply ritualistic. Because I was inside K-pop culture, I did not notice how much it resembled a ritual. By moving K-pop into the setting of shamanism, the film reveals something that was already there.
+        Why blue? It is a color not found even in traditional folk paintings of tigers (*Hojakdo*). It is precisely because of this misalignment that we look at the tiger once more.
 
 
-        And then there is the tiger. The tiger in *K-Pop Demon Hunters* is blue.
+        It is not because the physical reality of the color blue is extraordinary. It is because a color has been placed where a familiar tiger would never be. Here, Gaver’s definition—that ambiguity is not an intrinsic property of things, but rather arises within relationships—is reaffirmed.
 
 
-        Why blue? It is not a color we would normally find even in a traditional folk painting such as 〈*Hojakdo*〉. That small mismatch makes us look at the tiger again.
-
-
-        In other works and settings, including paintings by Van Gogh and Picasso, blue can suggest sadness, loss, poverty, or loneliness.
-
-
-        But on the tiger in *K-Pop Demon Hunters*, blue feels different. It suggests the mystery of a being that does not fully belong to this world—a creature that moves between the human world and something beyond it.
-
-
-        The same blue says something completely different. This tells us that color does not carry one fixed meaning. The physical color may be the same, but its meaning changes depending on where it appears and what surrounds it.
-
-
-        Placed on the shoulders of a grieving figure, blue becomes sadness. Placed on the fur of a tiger that could not exist in reality, it becomes mystery. Here, Gaver’s idea returns once again: ambiguity is not a property of the object itself. It emerges through relationships.
-
-
-        So who first imagined this world? Director Maggie Kang was born in Seoul and moved to Canada as a child. I do not think that background is completely separate from the work.
-
-
-        Of course, someone who had lived in Korea their whole life could also reinterpret Korean shamanism and folklore in a new way. The experience of diaspora is not the only thing that makes cultural reinterpretation possible.
-
-
-        But for Maggie Kang, Korean culture may have been neither fully inside nor fully outside. It was familiar, but it was also something she had to explain and translate. It was part of her, but also something she could look at again through another culture’s eyes.
-
-
-        She stood somewhere between inside and outside. From that position, Korean culture and tradition could become more than a background. They could become things to discover again.
-
-
-        Elements that might be easily overlooked in Korea were moved into North American animation and K-pop, where they appeared in a different form.
-
-
-        I took two things away from this conversation.
+        From this conversation, I gained two insights:
 
 
         * Strangeness comes less from the object itself than from where the object is placed.
 
 
-        Neither the rock in *The Castle of the Pyrenees* nor the blue of the tiger in *K-Pop Demon Hunters* was newly invented. Something familiar was simply taken out of its usual relationship and placed somewhere else.
+        Neither the rock in <*The Castle of the Pyrenees*> nor the blue of the tiger in K-Pop Demon Hunters was newly invented. Familiar things were simply detached from their original relationships and placed in a different position.
 
 
         * Because strangeness is relational, I cannot fully decide what is strange from my own position.
 
 
-        I did not notice the strangeness of *K-Pop Demon Hunters* because I was living inside the culture it came from.
+        I failed to recognize that K-Pop Demon Hunters was defamiliarizing. This was because I was living inside that world. It only became visible to me after my mentor pointed it out from a different vantage point.
 
 
-        I only began to see it after my mentor pointed it out from somewhere else.
+        And at this juncture, a concept I have been building across my previous writings returns.
+
+
+        ***'The Witness.'***
+
+
+        I have previously depicted the witness as an entity that observes and reflects back a child’s actions. However, the conversation with my mentor revealed another role for the witness. A witness is not merely someone who remembers and reflects what a child has done. The witness is an entity capable of pointing out, from a different position, the familiarity that the child cannot perceive on their own.
+
+
+        Until now, the agent of defamiliarization was largely seen as the creator. For both Magritte and the creators of K-Pop Demon Hunters, the act of shifting the familiar into an unfamiliar place was carried out in advance, outside the artwork. However, as mentioned earlier, a pre-displaced space eventually becomes a new familiarity. Unfamiliarity depletes.
+
+
+        A witness within a relationship is different. The witness is positioned to see what the child has grown accustomed to, even before the child does. Just as I could not see the unfamiliarity of K-Pop Demon Hunters, a child does not know what they are habitually passing over within a system. Pointing that out is impossible from a perspective outside the system; it is only possible from a different position within the relationship.
+
+
+        That was precisely what my mentor did for me.
 
 
 
@@ -386,7 +362,7 @@ contentBlocks:
           'fontSize':'15px'
         }}}%%
         flowchart LR
-            A[허가] --> B[노동] --> C[반영 · 상태] --> D[간극]
+            A[허가] --> B[노동] --> C[목격] --> D[간극]
             D --> A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
@@ -401,7 +377,7 @@ contentBlocks:
           'fontSize':'15px'
         }}}%%
         flowchart LR
-            A[Permission] --> B[Labor] --> C[Response · State] --> D[Gap]
+            A[Permission] --> B[Labor] --> C[Witness] --> D[Gap]
             D --> A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
@@ -504,7 +480,10 @@ contentBlocks:
         은사님과의 대화에서 깨달았듯, <mark>**낯섦은 익숙한 것이 원래 있던 자리에서 벗어날 때 시작된다.**</mark>
 
 
-        소진되지 않는 낯섦의 구조는 HCI의 언어 안에서만 찾기보다, 문예 이론과 미학, 아동 심리와 예술 교육처럼 서로 다른 분야의 관점을 같은 문제 옆에 놓을 때 조금씩 모습을 드러낼지도 모른다.
+        그러나 이 글의 출발점에서 말했듯, 옮겨진 자리는 언젠가 다시 익숙해진다. 은사님과의 대화가 보여준 것은 다른 종류의 가능성이었다.
+
+
+        소진되지 않는 낯섦의 구조는 HCI의 언어 안에서만 찾기보다, 문예 이론과 미학, 아동 심리와 예술 교육처럼 서로 다른 분야의 관점을 같은 문제 옆에 놓을 때 조금씩 모습을 드러낼지도 모른다. 서로 다른 분야가 서로의 익숙함을 짚어주는 목격자가 되게 하는 일이기도 하다. 
 
 
         마그리트가 바위를 허공에 옮겨놓음으로써 우리에게 중력을 다시 지각하게 했듯, 나 역시 익숙해진 개념들을 다른 자리에 놓아보려 한다.
@@ -629,13 +608,16 @@ contentBlocks:
         As I realized through my conversation with my mentor, <mark>**strangeness begins when something familiar is moved away from its usual place.**</mark>
 
 
-        Perhaps a structure that can keep creating strangeness will not be found within the language of HCI alone. It may begin to appear when we place different fields beside the same question: literary theory and aesthetics, child psychology and arts education.
+        However, as stated at the starting point of this essay, a displaced space eventually becomes familiar once again. What the conversation with my mentor revealed was a different kind of possibility.
 
 
-        Magritte made us notice gravity again by moving a rock into the air. In the same way, I want to move the ideas that have become familiar to me into different places and see what they reveal.
+        Rather than searching solely within the language of HCI, a structure of strangeness that does not deplete might gradually reveal itself when we place perspectives from entirely different fields—such as literary theory, aesthetics, child psychology, and art education—alongside the same problem. It is also a way of allowing different fields to serve as witnesses that point out one another’s familiarities.
 
 
-        The original question remains.
+        Just as Magritte allowed us to perceive gravity anew by displacing a rock into mid-air, I, too, intend to try placing familiar concepts into different spaces.
+
+
+        The initial question remains exactly as it was.
 
 
         But I no longer plan to look for the answer in the same place.
