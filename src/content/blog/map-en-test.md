@@ -417,7 +417,7 @@ contentBlocks:
         }}}%%
         flowchart LR
             A[허가] --> B[노동] --> C[반영 · 상태] --> D[간극]
-            D -->|다시, 허가| A
+            D --> A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
@@ -432,7 +432,7 @@ contentBlocks:
         }}}%%
         flowchart LR
             A[Permission] --> B[Labor] --> C[Response · State] --> D[Gap]
-            D -->|Permission, again| A
+            D --> A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
