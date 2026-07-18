@@ -500,14 +500,13 @@ contentBlocks:
           'fontSize':'15px'
         }}}%%
         flowchart LR
-            A["허가"] --> B["노동"] --> C["반영 · 상태"] --> D["간극"]
-            D -->|"다시, 허가"| A
+            A[허가] --> B[노동] --> C[반영 · 상태] --> D[간극]
+            D -->|다시, 허가| A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
-      en: >-
+      en: |-
         ```mermaid
-
         %%{init: {'theme':'base','themeVariables':{
           'primaryColor':'#ffffff',
           'primaryBorderColor':'#0a0a0a',
@@ -515,10 +514,9 @@ contentBlocks:
           'lineColor':'#0a0a0a',
           'fontSize':'15px'
         }}}%%
-
         flowchart LR
-            A["Permission"] --> B["Labor"] --> C["Response · State"] --> D["Gap"]
-            D -->|"Permission, again"| A
+            A[Permission] --> B[Labor] --> C[Response · State] --> D[Gap]
+            D -->|Permission, again| A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
