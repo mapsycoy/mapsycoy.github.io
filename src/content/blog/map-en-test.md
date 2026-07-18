@@ -146,10 +146,7 @@ contentBlocks:
         나는 케이팝 문화의 안쪽에 있었기 때문에 그것이 제의를 닮았다는 사실을 지각하지 못했다. 영화는 케이팝을 무속이라는 다른 자리에 옮겨놓음으로써, 그 안에 이미 존재하던 제의성을 보이게 만들었다.
 
 
-        그리고 호랑이가 있다.
-
-
-        케데헌의 호랑이는 파랗다.
+        그리고 호랑이가 있다. 케데헌의 호랑이는 파랗다.
 
 
         왜 파랑일까. 전통 민화 〈호작도〉에서도 볼 수 없는 색이다. 바로 그 어긋남 때문에 우리는 호랑이를 다시 바라보게 된다.
@@ -281,16 +278,10 @@ contentBlocks:
         The question, then, changes.
 
 
-        It is no longer:
+        It is no longer: **How can we place strangeness into something from the beginning?**
 
 
-        How can we place strangeness into something from the beginning?
-
-
-        It becomes:
-
-
-        How can we make something strange again after it has already become familiar?
+        It becomes: **How can we make something strange again after it has already become familiar?**
 
 
 
@@ -318,19 +309,10 @@ contentBlocks:
         And *K-Pop Demon Hunters*.
 
 
-        Magritte made sense right away.
+        Magritte made sense right away. Think of 〈*The Castle of the Pyrenees*〉. A huge rock floats in the air, with a castle sitting on top of it. The rock, the castle, and the sea are all familiar things. Nothing in the painting is new by itself.
 
 
-        Think of 〈*The Castle of the Pyrenees*〉. A huge rock floats in the air, with a castle sitting on top of it. The rock, the castle, and the sea are all familiar things. Nothing in the painting is new by itself.
-
-
-        The rock is simply not where it is supposed to be.
-
-
-        That single change makes us look at the rock again. We begin to think about what it means for something to be heavy, to stay on the ground, and to belong to gravity.
-
-
-        What Shklovsky explained in writing, Magritte showed in an image.
+        The rock is simply not where it is supposed to be. That single change makes us look at the rock again. We begin to think about what it means for something to be heavy, to stay on the ground, and to belong to gravity. What Shklovsky explained in writing, Magritte showed in an image.
 
 
         But *K-Pop Demon Hunters* confused me at first.
@@ -345,85 +327,40 @@ contentBlocks:
         The film draws many of its ideas from Korean shamanism, folklore, and traditional painting. Its main characters use song to maintain a barrier against demons, while the demons try to take human souls. The worlds of the living and the dead, unresolved resentment, and exorcism through song and dance all sit at the center of the story.
 
 
-        These ideas were already familiar to me. I had seen them again and again in different forms of media since childhood.
+        These ideas were already familiar to me. I had seen them again and again in different forms of media since childhood. So I moved past them without resistance. 
 
 
-        So I moved past them without resistance.
-
-
-        I recognized them, but I did not really perceive them.
-
-
-        But what would they look like to someone seeing these ideas for the first time?
+        I recognized them, but I did not really perceive them. But what would they look like to someone seeing these ideas for the first time?
 
 
         A being who guides the dead appears as a young man wearing a black *gat*. A song is both a performance and a force that can drive away demons. A spirit with unresolved resentment stays in the world of the living and affects human lives.
 
 
-        To someone unfamiliar with these ideas, all of this may feel strange.
+        To someone unfamiliar with these ideas, all of this may feel strange. And because it feels strange, they look at it more closely.
 
 
-        And because it feels strange, they look at it more closely.
+        The same is true of K-pop. I do not find it strange to see idols performing perfectly synchronized choreography onstage, or fans waving light sticks and singing the same song together. But the film places this familiar stage on top of a shamanic ritual. The concert becomes a kind of *gut*, and the voices of the fans become the force that keeps the barrier alive.
 
 
-        The same is true of K-pop.
+        When I think about it, the two are not completely unrelated. Thousands of people face the same direction. They wave lights together and repeat the same songs and chants. From the outside, the whole scene can already look deeply ritualistic. Because I was inside K-pop culture, I did not notice how much it resembled a ritual. By moving K-pop into the setting of shamanism, the film reveals something that was already there.
 
 
-        I do not find it strange to see idols performing perfectly synchronized choreography onstage, or fans waving light sticks and singing the same song together.
+        And then there is the tiger. The tiger in *K-Pop Demon Hunters* is blue.
 
 
-        But the film places this familiar stage on top of a shamanic ritual.
-
-
-        The concert becomes a kind of *gut*, and the voices of the fans become the force that keeps the barrier alive.
-
-
-        When I think about it, the two are not completely unrelated.
-
-
-        Thousands of people face the same direction. They wave lights together and repeat the same songs and chants. From the outside, the whole scene can already look deeply ritualistic.
-
-
-        Because I was inside K-pop culture, I did not notice how much it resembled a ritual.
-
-
-        By moving K-pop into the setting of shamanism, the film reveals something that was already there.
-
-
-        And then there is the tiger.
-
-
-        The tiger in *K-Pop Demon Hunters* is blue.
-
-
-        Why blue?
-
-
-        It is not a color we would normally find even in a traditional folk painting such as 〈*Hojakdo*〉. That small mismatch makes us look at the tiger again.
+        Why blue? It is not a color we would normally find even in a traditional folk painting such as 〈*Hojakdo*〉. That small mismatch makes us look at the tiger again.
 
 
         In other works and settings, including paintings by Van Gogh and Picasso, blue can suggest sadness, loss, poverty, or loneliness.
 
 
-        But on the tiger in *K-Pop Demon Hunters*, blue feels different.
+        But on the tiger in *K-Pop Demon Hunters*, blue feels different. It suggests the mystery of a being that does not fully belong to this world—a creature that moves between the human world and something beyond it.
 
 
-        It suggests the mystery of a being that does not fully belong to this world—a creature that moves between the human world and something beyond it.
+        The same blue says something completely different. This tells us that color does not carry one fixed meaning. The physical color may be the same, but its meaning changes depending on where it appears and what surrounds it.
 
 
-        The same blue says something completely different.
-
-
-        This tells us that color does not carry one fixed meaning. The physical color may be the same, but its meaning changes depending on where it appears and what surrounds it.
-
-
-        Placed on the shoulders of a grieving figure, blue becomes sadness.
-
-
-        Placed on the fur of a tiger that could not exist in reality, it becomes mystery.
-
-
-        Here, Gaver’s idea returns once again: ambiguity is not a property of the object itself. It emerges through relationships.
+        Placed on the shoulders of a grieving figure, blue becomes sadness. Placed on the fur of a tiger that could not exist in reality, it becomes mystery. Here, Gaver’s idea returns once again: ambiguity is not a property of the object itself. It emerges through relationships.
 
 
         So who first imagined this world?
@@ -435,16 +372,10 @@ contentBlocks:
         Of course, someone who had lived in Korea their whole life could also reinterpret Korean shamanism and folklore in a new way. The experience of diaspora is not the only thing that makes cultural reinterpretation possible.
 
 
-        But for Maggie Kang, Korean culture may have been neither fully inside nor fully outside.
+        But for Maggie Kang, Korean culture may have been neither fully inside nor fully outside. It was familiar, but it was also something she had to explain and translate. It was part of her, but also something she could look at again through another culture’s eyes.
 
 
-        It was familiar, but it was also something she had to explain and translate. It was part of her, but also something she could look at again through another culture’s eyes.
-
-
-        She stood somewhere between inside and outside.
-
-
-        From that position, Korean culture and tradition could become more than a background. They could become things to discover again.
+        She stood somewhere between inside and outside. From that position, Korean culture and tradition could become more than a background. They could become things to discover again.
 
 
         Elements that might be easily overlooked in Korea were moved into North American animation and K-pop, where they appeared in a different form.
@@ -635,10 +566,7 @@ contentBlocks:
         The basic idea is simple.
 
 
-        The system’s main rules do not change. What changes is the state the child has created within it.
-
-
-        When the same fixed rules act on a new state made by the child, the system may return a result the child could not fully predict.
+        The system’s main rules do not change. What changes is the state the child has created within it. When the same fixed rules act on a new state made by the child, the system may return a result the child could not fully predict.
 
 
         That is the “gap.”
@@ -647,13 +575,7 @@ contentBlocks:
         The gap then gives the child permission to try another interpretation. The child interprets the result, acts again, and changes the state of the system.
 
 
-        The same rules now meet a different state, so they produce a different result.
-
-
-        Any strangeness placed into the system by a designer will eventually wear out.
-
-
-        But the strangeness created through this cycle may continue for as long as the child keeps making new states.
+        The same rules now meet a different state, so they produce a different result. Any strangeness placed into the system by a designer will eventually wear out. But the strangeness created through this cycle may continue for as long as the child keeps making new states.
 
 
         Instead of storing strangeness like a supply of content, the structure allows it to appear again through changes in the relationship.
@@ -681,19 +603,13 @@ contentBlocks:
         When I follow papers through ACM, it is fairly easy to find other work by the same researcher, published at different times or at different conferences.
 
 
-        These connections are useful.
+        These connections are useful. They let me see how a researcher’s questions change over time. They also show how one idea is carried forward and reshaped within HCI. Then, after writing this paragraph, I searched again to check a few details and found something interesting.
 
 
-        They let me see how a researcher’s questions change over time. They also show how one idea is carried forward and reshaped within HCI.
+        The theories of Shklovsky introduced at the beginning of this essay have long been integrated into the field of HCI.
 
 
-        Then, after writing this paragraph, I searched again to check a few details and found something interesting.
-
-
-        Shklovsky, whom I had discussed at the beginning of this essay, had already entered HCI a long time ago.
-
-
-        「[Making by Making Strange: Defamiliarization and the Design of Domestic Technologies](https://dl.acm.org/doi/10.1145/1067860.1067862)」
+        [「Making by Making Strange: Defamiliarization and the Design of Domestic Technologies」](https://dl.acm.org/doi/10.1145/1067860.1067862)
 
 
         Published in 2005 by Genevieve Bell, Mark Blythe, and Phoebe Sengers, 「Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation」 brought defamiliarization into the design of domestic technologies.
@@ -711,22 +627,17 @@ contentBlocks:
         She is the first author of “Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation,” the paper I discussed in the second half of my previous essay.
 
 
-        A literary idea from 1917 entered the design of domestic technologies in 2005. The same researcher then wrote about openness to interpretation in 2006.
-
-
-        Twenty years later, I read those papers in reverse order and found my way back to Shklovsky.
+        A literary idea from 1917 entered the design of domestic technologies in 2005. The same researcher then wrote about openness to interpretation in 2006. Twenty years later, I read those papers in reverse order and found my way back to Shklovsky.
 
 
         Several of the smart-home design ideas in the paper stood out to me.
 
 
-        Do not value efficiency too highly.
+        * Do not value efficiency too highly.
 
+        * Ask again who holds control between technology and the user.
 
-        Ask again who holds control between technology and the user.
-
-
-        And do not confuse play with entertainment that is simply consumed.
+        * And do not confuse play with entertainment that is simply consumed.
 
 
         The authors argue that we should not remove domestic rituals in the name of efficiency. Technology should support what people do without placing unnecessary limits on them.
@@ -763,16 +674,10 @@ contentBlocks:
         As I realized through my conversation with my mentor, <mark>**strangeness begins when something familiar is moved away from its usual place.**</mark>
 
 
-        Perhaps a structure that can keep creating strangeness will not be found within the language of HCI alone.
+        Perhaps a structure that can keep creating strangeness will not be found within the language of HCI alone. It may begin to appear when we place different fields beside the same question: literary theory and aesthetics, child psychology and arts education.
 
 
-        It may begin to appear when we place different fields beside the same question: literary theory and aesthetics, child psychology and arts education.
-
-
-        Magritte made us notice gravity again by moving a rock into the air.
-
-
-        In the same way, I want to move the ideas that have become familiar to me into different places and see what they reveal.
+        Magritte made us notice gravity again by moving a rock into the air. In the same way, I want to move the ideas that have become familiar to me into different places and see what they reveal.
 
 
         The original question remains.
