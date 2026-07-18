@@ -408,7 +408,7 @@ contentBlocks:
     body:
       ko: |-
         ```mermaid
-        %%{init: {'theme':'base','themeVariables':{
+        %%{init: {'theme':'base':{
           'primaryColor':'#ffffff',
           'primaryBorderColor':'#0a0a0a',
           'primaryTextColor':'#0a0a0a',
@@ -423,7 +423,7 @@ contentBlocks:
         ```
       en: |-
         ```mermaid
-        %%{init: {'theme':'base','themeVariables':{
+        %%{init: {'theme':'base':{
           'primaryColor':'#ffffff',
           'primaryBorderColor':'#0a0a0a',
           'primaryTextColor':'#0a0a0a',
