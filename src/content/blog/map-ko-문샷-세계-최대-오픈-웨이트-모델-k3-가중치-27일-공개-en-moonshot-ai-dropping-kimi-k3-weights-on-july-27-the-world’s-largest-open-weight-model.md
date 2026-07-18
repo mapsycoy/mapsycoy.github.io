@@ -8,11 +8,11 @@ publishedAt: 2026-07-19
 status: published
 pinned: false
 tag: AI News
-thumbnail: https://venturebeat.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjdtwqhzvc2n1%2FlrqUsUJocTIEaPB4SrQse%2Fe8773a218e398efc6759ca6044672f81%2FNuneybits_Vector_art_of_red_code_tsunami_over_servers_fear_of_C_1894f89b-b074-4e21-a0de-2f9a46cfdd32.webp%3Fw%3D1000%26q%3D100&w=2048&q=85
-heroImage: https://venturebeat.com/_next/image?url=https%3A%2F%2Fimages.ctfassets.net%2Fjdtwqhzvc2n1%2FlrqUsUJocTIEaPB4SrQse%2Fe8773a218e398efc6759ca6044672f81%2FNuneybits_Vector_art_of_red_code_tsunami_over_servers_fear_of_C_1894f89b-b074-4e21-a0de-2f9a46cfdd32.webp%3Fw%3D1000%26q%3D100&w=2048&q=85
+thumbnail: https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/2/2026-07-17/d9cs7176rtp4tqfofnsg?x-tos-process=image%2Fauto-orient%2C1%2Fstrip%2Fignore-error%2C1%2Fformat%2Cwebp%2Fresize%2Cw_1040
+heroImage: https://kimi-file.moonshot.cn/prod-chat-kimi/kfs/4/2/2026-07-17/d9cs7176rtp4tqfofnsg?x-tos-process=image%2Fauto-orient%2C1%2Fstrip%2Fignore-error%2C1%2Fformat%2Cwebp%2Fresize%2Cw_1040
 heroImageCaption:
-  en: "Credit: VentureBeat made with Midjourney"
-  ko: "크레딧: VentureBeat (Midjourney 활용 이미지)"
+  en: "Kimi K3 Tech Blog: Open Frontier Intelligence"
+  ko: "Kimi K3 기술 블로그: 오픈 프론티어 인텔리전스"
 contentBlocks:
   - type: text
     body:
@@ -42,13 +42,13 @@ contentBlocks:
         ## **이전에 K2를 다뤄본 입장에서는**
 
 
-        [Grok4 vs KIMI K2 (六小虎) **∣** 맵시's AI 잡지식 저장소:티스토리](https://mapsycoy.tistory.com/7)
+        [Grok4 vs KIMI K2 (六小虎) | 맵시's AI 잡지식 저장소:티스토리](https://mapsycoy.tistory.com/7)
 
 
         정확히 1년 전, 나는 K2를 직접 테스트했었다. 당시 내 평가는 '불만족'이었다. 크롬 다이노 게임 하나 제대로 못 만들었고, 한국어는 어색했고, 출처는 죄다 중국 커뮤니티였으며, 중국 정부에 대해 물었을 때 "중립적"이라던 자기 소개와 달리 답을 회피했다. "개발분야에서 Claude를 뛰어넘었다"는 평가에 대해서도, 자국 내 사용자 통계로 부풀려진 것 아니냐고 의심했다.
 
 
-        [중국의 "The Good-Enough" 전략, 그 안에 숨겨진 진짜 목적은? ∣ 맵시's AI 잡지식 저장소:티스토리](https://mapsycoy.tistory.com/38)
+        [중국의 "The Good-Enough" 전략, 그 안에 숨겨진 진짜 목적은? | 맵시's AI 잡지식 저장소:티스토리](https://mapsycoy.tistory.com/38)
 
 
         그리고 지난 1월, 나는 이러한 중국의 행보를 "Good-Enough 전략"으로 정리했었다. 최고의 모델이 아닌 '준수한' 모델을 오픈 소스로 풀어 대규모 채택을 유도하고, 미국 기업들의 수익 구조 자체를 무너뜨리는 전략 말이다.
@@ -107,13 +107,13 @@ contentBlocks:
         ## **From the Perspective of Someone Who Tried K2**
 
 
-        [Grok4 vs KIMI K2 (六小虎) **∣** 맵시's AI 잡지식 저장소: Tistory](https://mapsycoy.tistory.com/7)
+        [Grok4 vs KIMI K2 (六小虎) | 맵시's AI 잡지식 저장소: Tistory](https://mapsycoy.tistory.com/7)
 
 
         Exactly one year ago, I tested K2 myself. My assessment at the time was "unsatisfactory." It couldn't even build a proper Chrome Dino game, its Korean phrasing was awkward, its sources were heavily drawn from Chinese online communities, and despite introducing itself as "neutral," it dodged questions regarding the Chinese government. I also suspected that the claims of it "surpassing Claude in development tasks" were likely inflated by domestic user statistics.
 
 
-        [China's "The Good-Enough" Strategy: What is the Real Purpose Behind It? ∣ 맵시's AI 잡지식 저장소: Tistory](https://mapsycoy.tistory.com/38)
+        [China's "The Good-Enough" Strategy: What is the Real Purpose Behind It? | 맵시's AI 잡지식 저장소: Tistory](https://mapsycoy.tistory.com/38)
 
 
         Then this past January, I framed China's approach as a "Good-Enough Strategy"—releasing 'decent' models as open source to drive mass adoption and undermine the revenue structures of U.S. tech giants.
