@@ -4,7 +4,7 @@ title:
   ko: 낯섦은 어디서 다시 오는가
 slug: "10"
 publishedAt: 2026-07-18
-status: published
+status: draft
 pinned: false
 tag: Essay
 thumbnail: /uploads/10.webp
