@@ -245,7 +245,7 @@ contentBlocks:
         In 1917, the Russian Formalist Viktor Shklovsky gave this experience a name.
 
 
-        <mark>**'*Defamiliarization.'***</mark>
+        <mark>***'Defamiliarization.'***</mark>
 
 
         He began with the same problem we are facing here: the way perception becomes automatic.
