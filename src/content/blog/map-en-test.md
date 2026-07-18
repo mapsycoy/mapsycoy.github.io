@@ -374,13 +374,14 @@ contentBlocks:
           'fontSize':'15px'
         }}}%%
         flowchart LR
-            A[허가] --> B[노동·상태] --> C[목격] --> D[비틀기·간극]
+            A[허가·해석] --> B[노동·상태] --> C[목격] --> D[비틀기·간극]
             D --> A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
         ```
-      en: |-
+      en: >-
         ```mermaid
+
         %%{init: {'theme':'base','themeVariables':{
           'primaryColor':'#ffffff',
           'primaryBorderColor':'#0a0a0a',
@@ -388,8 +389,9 @@ contentBlocks:
           'lineColor':'#0a0a0a',
           'fontSize':'15px'
         }}}%%
+
         flowchart LR
-            A[Permission] --> B[Labor·State] --> C[Witness] --> D[Twisting·Gap]
+            A[Permission·Interpretation] --> B[Labor·State] --> C[Witness] --> D[Twisting·Gap]
             D --> A
 
             classDef default fill:#ffffff,stroke:#0a0a0a,color:#0a0a0a;
