@@ -405,7 +405,7 @@ contentBlocks:
         그것이 '간극'이다.
 
 
-        다만 간극은 발생하는 것만으로는 충분하지 않다. 아이가 스스로 알아차리는 간극도 물론 있다. 예상하지 못한 결과 앞에서 아이가 혼자 "어?" 하고 멈추는 순간은 분명 존재한다. 그러나 익숙함이 깊어질수록, 그렇게 스스로 지각되는 간극의 영향은 줄어든다. 내가 케데헌의 낯섦을 스스로 판정하지 못했듯, 관계가 깊어진 아이일수록 자신의 간극을 습관처럼 지나치기 쉽다. 바로 그 지점에서, 아이의 궤적을 지켜봐온 목격이 결과를 비틀어 보일 때, 지나칠 뻔했던 간극이 간극으로 경험된다. <mark>**목격은 모든 간극의 관문이 아니라, 아이의 자기지각이 익숙함에 잠식되는 자리를 보완하는 위치다.**</mark>
+        다만 간극은 발생하는 것만으로는 충분하지 않다. 아이가 스스로 알아차리는 간극도 물론 있다. 예상하지 못한 결과 앞에서 아이가 혼자 "어?" 하고 멈추는 순간은 분명 존재한다. 그러나 익숙함이 깊어질수록, 그렇게 스스로 지각되는 간극의 몫은 줄어든다. 내가 케데헌의 낯섦을 스스로 판정하지 못했듯, 관계가 깊어진 아이일수록 자신의 간극을 습관처럼 지나치기 쉽다. 바로 그 지점에서, 아이의 궤적을 지켜봐온 목격이 결과를 비틀어 보일 때, 지나칠 뻔했던 간극이 간극으로 경험된다. <mark>**목격은 모든 간극의 관문이 아니라, 아이의 자기지각이 익숙함에 잠식되는 자리를 보완하는 위치다.**</mark>
 
 
         그리고 경험된 간극은 아이에게 다음 해석을 시도해도 된다는 허가가 된다. 아이는 돌아온 결과를 해석하고, 다시 행동하며, 시스템 안의 상태를 바꾼다. 그러면 같은 규칙도 달라진 상태와 만나 이전과 다른 결과를 만든다.
@@ -523,7 +523,7 @@ contentBlocks:
         That is the 'gap.'
 
 
-        However, the mere occurrence of a gap is not enough. Of course, there are gaps that a child notices on their own. There certainly are moments when a child stops and goes, "Huh?" by themselves in front of an unexpected result. Yet, as familiarity deepens, the impact of such self-perceived gaps diminishes. Just as I could not judge the unfamiliarity of *K-Pop Demon Hunters* on my own, a child whose relationship with the system has deepened is more likely to pass over their own gaps out of habit. At that very juncture, when the act of witnessing—which has closely followed the child’s trajectory—skews and twists the result, the gap that might otherwise have been passed over is finally experienced as a gap. <mark>**Witnessing is not the gateway to all gaps, but rather a position that compensates for the spaces where the child’s self-perception is submerged by familiarity.**</mark>
+        However, the mere occurrence of a gap is not enough. Of course, there are gaps that a child notices on their own. There certainly are moments when a child stops and goes, "Huh?" by themselves in front of an unexpected result. Yet, as familiarity deepens, the role of such self-perceived gaps diminishes. Just as I could not judge the unfamiliarity of *K-Pop Demon Hunters* on my own, a child whose relationship with the system has deepened is more likely to pass over their own gaps out of habit. At that very juncture, when the act of witnessing—which has closely followed the child’s trajectory—skews and twists the result, the gap that might otherwise have been passed over is finally experienced as a gap. <mark>**Witnessing is not the gateway to all gaps, but rather a position that compensates for the spaces where the child’s self-perception is submerged by familiarity.**</mark>
 
 
         And an experienced gap becomes a permission for the child to attempt the next interpretation. The child interprets the returned result, acts again, and alters the state within the system. Then, the same rules encounter the changed state and produce a result different from before.
