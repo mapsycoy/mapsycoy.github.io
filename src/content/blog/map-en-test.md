@@ -146,22 +146,16 @@ contentBlocks:
         왜 파랑일까. 전통 민화 〈호작도〉에서도 볼 수 없는 색이다. 바로 그 어긋남 때문에 우리는 호랑이를 다시 바라보게 된다.
 
 
-        파랑은 반 고흐나 피카소 등 다른 작품과 맥락에서 우울이나 상실, 가난과 고독의 정서를 불러오기도 했다. 그러나 케데헌의 호랑이 위에 놓인 파랑은 다르게 읽힌다. 이 세계에 완전히 속하지 않은 존재, 인간과 초월적 세계의 경계를 오가는 존재가 가진 신비로움에 가깝다.
+        파랑은 반 고흐나 피카소 등 다른 작품과 맥락에서 우울이나 상실, 가난과 고독의 정서를 불러오기도 했다. 그러나 케데헌의 호랑이 위에 놓인 파랑은 다르게 읽힌다. 이 세계에 완전히 속하지 않은 존재, 인간과 초월적 세계의 경계를 오가는 존재가 가진 신비로움에 가깝다. 
 
 
-        같은 파랑인데 전혀 다른 것을 말한다.
-
-
-        색 자체에 하나의 의미가 고정되어 있는 것이 아니라는 뜻이다. 파랑이라는 물리적 사실은 같지만, 그 의미는 색이 놓인 관계에서 생겨난다. 슬픔에 잠긴 인물의 어깨에 놓이면 우울이 되고, 현실에 존재하지 않는 호랑이의 털가죽에 놓이면 신비가 된다.
+        같은 파랑인데 전혀 다른 것을 말한다. 색 자체에 하나의 의미가 고정되어 있는 것이 아니라는 뜻이다. 파랑이라는 물리적 사실은 같지만, 그 의미는 색이 놓인 관계에서 생겨난다. 슬픔에 잠긴 인물의 어깨에 놓이면 우울이 되고, 현실에 존재하지 않는 호랑이의 털가죽에 놓이면 신비가 된다.
 
 
         모호성은 사물의 속성이 아니라 관계 속에서 발생한다는 Gaver의 정의가 여기서 다시 확인된다.
 
 
-        그렇다면 이 세계관을 처음 구상한 사람은 누구인가.
-
-
-        감독 매기 강(Maggie Kang)은 서울에서 태어나 어린 시절 캐나다로 이주한 한국계 캐나다인이다. 나는 이 배경이 작품과 전혀 무관하지는 않다고 생각한다.
+        그렇다면 이 세계관을 처음 구상한 사람은 누구인가. 감독 매기 강(Maggie Kang)은 서울에서 태어나 어린 시절 캐나다로 이주한 한국계 캐나다인이다. 나는 이 배경이 작품과 전혀 무관하지는 않다고 생각한다.
 
 
         물론 한국에서 계속 살았던 사람도 한국의 무속과 설화를 새로운 방식으로 다룰 수 있다. 디아스포라(Diaspora)[^1]의 경험만이 문화적 재해석을 가능하게 한다고 말할 수는 없다.
@@ -170,10 +164,7 @@ contentBlocks:
         다만 매기 강에게 한국 문화는 완전히 안쪽의 것도, 완전히 바깥쪽의 것도 아니었을 것이다. 익숙하지만 동시에 설명하고 번역해야 하는 것. 자신의 일부이면서도 다른 문화의 시선으로 다시 바라볼 수 있는 것.
 
 
-        그는 안과 밖의 경계에 서 있었다.
-
-
-        그 자리에서 한국의 문화와 전통은 단순한 배경이 아니라 다시 발견할 수 있는 대상이 된다. 한국에서 익숙하게 지나칠 수 있는 것들이 북미 애니메이션과 케이팝이라는 다른 자리로 이동하면서 새로운 형식으로 드러난다.
+        그는 안과 밖의 경계에 서 있었다. 그 자리에서 한국의 문화와 전통은 단순한 배경이 아니라 다시 발견할 수 있는 대상이 된다. 한국에서 익숙하게 지나칠 수 있는 것들이 북미 애니메이션과 케이팝이라는 다른 자리로 이동하면서 새로운 형식으로 드러난다.
 
 
         이 대화에서 내가 얻은 것은 두 가지였다.
@@ -201,10 +192,7 @@ contentBlocks:
         원래 이 글의 후반부에는 지난 글들을 종합해 만든 구조를 길게 풀어놓을 생각이었다. 낯섦이 소진된다면 어디에서 다시 공급될 수 있는지, 그 답을 시스템과 상태와 노동의 관계로 정리한 것이었다.
 
 
-        그런데 케데헌에 관한 이야기를 쓰고 나니 생각이 달라졌다.
-
-
-        내가 세운 가설은 우선 그림 하나로만 남겨두고, 잠시 보류하는 편이 좋을 것 같다.
+        그런데 케데헌에 관한 이야기를 쓰고 나니 생각이 달라졌다. 내가 세운 가설은 우선 그림 하나로만 남겨두고, 잠시 보류하는 편이 좋을 것 같다.
       en: >-
         ## **Strangeness Wears Out**
 
@@ -348,10 +336,7 @@ contentBlocks:
         Placed on the shoulders of a grieving figure, blue becomes sadness. Placed on the fur of a tiger that could not exist in reality, it becomes mystery. Here, Gaver’s idea returns once again: ambiguity is not a property of the object itself. It emerges through relationships.
 
 
-        So who first imagined this world?
-
-
-        Director Maggie Kang was born in Seoul and moved to Canada as a child. I do not think that background is completely separate from the work.
+        So who first imagined this world? Director Maggie Kang was born in Seoul and moved to Canada as a child. I do not think that background is completely separate from the work.
 
 
         Of course, someone who had lived in Korea their whole life could also reinterpret Korean shamanism and folklore in a new way. The experience of diaspora is not the only thing that makes cultural reinterpretation possible.
@@ -391,19 +376,13 @@ contentBlocks:
 
 
 
-        I had originally planned to use the second half of this essay to explain a structure I had built from my previous writings.
-
-
-        If strangeness wears out, where can it come from again?
+        I had originally planned to use the second half of this essay to explain a structure I had built from my previous writings: If strangeness wears out, where can it come from again?
 
 
         I had tried to answer that question through the relationship between the system, its state, and the child’s labor.
 
 
-        But after writing about *K-Pop Demon Hunters*, I began to think differently.
-
-
-        For now, it may be better to leave the hypothesis as a single diagram and put it aside.
+        But after writing about *K-Pop Demon Hunters*, I began to think differently. For now, it may be better to leave the hypothesis as a single diagram and put it aside.
   - type: text
     body:
       ko: |-
