@@ -4,11 +4,11 @@ title:
   ko: 낯섦은 어디서 다시 오는가
 slug: "10"
 publishedAt: 2026-07-18
-status: published
+status: draft
 pinned: false
 tag: Essay
-thumbnail: /uploads/kdh.webp
-heroImage: /uploads/kdh.webp
+thumbnail: ""
+heroImage: ""
 heroImageCaption:
   ko: 〈케이팝 데몬 헌터스〉 속 한 장면
   en: A Scene from 〈K-Pop Demon Hunters〉
