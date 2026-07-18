@@ -7,8 +7,8 @@ publishedAt: 2026-07-18
 status: published
 pinned: false
 tag: Essay
-thumbnail: /uploads/10.jpg
-heroImage: /uploads/10.jpg
+thumbnail: /uploads/10.webp
+heroImage: /uploads/10.webp
 heroImageCaption:
   ko: 〈케이팝 데몬 헌터스〉 속 한 장면
   en: A Scene from 〈K-Pop Demon Hunters〉
