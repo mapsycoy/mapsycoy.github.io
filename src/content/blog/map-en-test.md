@@ -4,6 +4,7 @@ title:
   ko: 낯섦은 어디서 다시 오는가
 slug: "10"
 publishedAt: 2026-07-18
+updatedAt: 2026-07-19
 status: published
 pinned: false
 tag: Essay
@@ -92,13 +93,13 @@ contentBlocks:
         **'르네 마그리트.'** 그리고 **'케이팝 데몬 헌터스.'**
 
 
-        마그리트는 곧바로 이해되었다. 〈*피레네의 성*〉을 떠올리면 된다. 거대한 바위가 공중에 떠 있고, 그 위에는 성이 얹혀 있다. 바위도, 성도, 바다도 하나하나는 우리가 이미 알고 있는 것들이다. 새로 발명된 것은 아무것도 없다. 다만 바위가 있어야 할 자리에 있지 않을 뿐이다.
+        마그리트는 곧바로 이해되었다. 〈피레네의 성〉을 떠올리면 된다. 거대한 바위가 공중에 떠 있고, 그 위에는 성이 얹혀 있다. 바위도, 성도, 바다도 하나하나는 우리가 이미 알고 있는 것들이다. 새로 발명된 것은 아무것도 없다. 다만 바위가 있어야 할 자리에 있지 않을 뿐이다.
 
 
         그 하나의 이동으로 우리는 바위를 다시 보게 된다. 무겁다는 것은 무엇인지, 땅에 붙어 있다는 것은 무엇인지, 중력에 속한다는 것은 무엇인지를 다시 생각하게 된다. 시클롭스키가 글로 설명한 것을 마그리트는 그림으로 보여준 셈이다.
 
 
-        그런데 〈*케이팝 데몬 헌터스*〉에 대해서는 처음에 조금 의아했다.
+        그런데 〈케이팝 데몬 헌터스〉에 대해서는 처음에 조금 의아했다.
 
 
         "케데헌이 낯설다고?"
@@ -125,7 +126,7 @@ contentBlocks:
         그리고 호랑이가 있다. 케데헌의 호랑이는 파랗다.
 
 
-        왜 파랑일까. 전통 민화 〈*호작도*〉에서도 볼 수 없는 색이다. 바로 그 어긋남 때문에 우리는 호랑이를 다시 바라보게 된다.
+        왜 파랑일까. 전통 민화 〈호작도〉에서도 볼 수 없는 색이다. 바로 그 어긋남 때문에 우리는 호랑이를 다시 바라보게 된다.
 
 
         파랑이라는 물리적 사실이 특별해서가 아니다. 익숙한 호랑이의 자리에 놓이지 않을 색이 놓였기 때문이다. 모호성은 사물의 속성이 아니라 관계 속에서 발생한다는 Gaver의 정의가 여기서 다시 확인된다.
@@ -137,7 +138,7 @@ contentBlocks:
         * **낯섦은 대상 자체보다 대상이 놓인 자리에서 나온다.**
 
 
-        〈*피레네의 성*〉의 바위도, 케데헌 호랑이의 파랑도 새로 발명된 것은 아니다. 익숙한 것이 원래 있던 관계에서 벗어나 다른 자리에 놓였을 뿐이다.
+        〈피레네의 성〉의 바위도, 케데헌 호랑이의 파랑도 새로 발명된 것은 아니다. 익숙한 것이 원래 있던 관계에서 벗어나 다른 자리에 놓였을 뿐이다.
 
 
         * **낯섦은 관계이기 때문에 나는 나 자신의 낯섦을 완전히 판정할 수 없다.**
@@ -404,13 +405,25 @@ contentBlocks:
         그것이 '간극'이다.
 
 
-        다만 간극은 발생하는 것만으로는 충분하지 않다. 내가 케데헌의 낯섦을 스스로 판정하지 못했듯, 아이도 자신의 간극을 스스로 알아보지 못한다. 아이의 궤적을 지켜봐온 목격이 그 결과를 비틀어 보일 때, 비로소 간극은 간극으로 경험된다.
+        다만 간극은 발생하는 것만으로는 충분하지 않다. 아이가 스스로 알아차리는 간극도 물론 있다. 예상하지 못한 결과 앞에서 아이가 혼자 "어?" 하고 멈추는 순간은 분명 존재한다. 그러나 익숙함이 깊어질수록, 그렇게 스스로 지각되는 간극의 영향은 줄어든다. 내가 케데헌의 낯섦을 스스로 판정하지 못했듯, 관계가 깊어진 아이일수록 자신의 간극을 습관처럼 지나치기 쉽다. 바로 그 지점에서, 아이의 궤적을 지켜봐온 목격이 결과를 비틀어 보일 때, 지나칠 뻔했던 간극이 간극으로 경험된다. <mark>**목격은 모든 간극의 관문이 아니라, 아이의 자기지각이 익숙함에 잠식되는 자리를 보완하는 위치다.**</mark>
 
 
         그리고 경험된 간극은 아이에게 다음 해석을 시도해도 된다는 허가가 된다. 아이는 돌아온 결과를 해석하고, 다시 행동하며, 시스템 안의 상태를 바꾼다. 그러면 같은 규칙도 달라진 상태와 만나 이전과 다른 결과를 만든다.
 
 
         미리 옮겨놓은 자리가 언젠가 다시 익숙해지는 것과 달리, 이 순환이 만들어내는 낯섦은 아이가 새로운 상태를 만드는 동안 계속해서 발생할 수 있다. 낯섦을 콘텐츠처럼 비축해두는 것이 아니라, 관계의 변화 속에서 다시 생성되도록 만드는 구조다.
+
+
+        그런데 이 구조를 그려놓고 보니, 정작 목격자에게 되물어야 할 질문 하나가 남는다.
+
+
+        이 글의 출발점으로 돌아가보자. 모호성이 가장 빨리 닳는 상대는 자주, 친밀하게, 반복해서 마주치는 존재라고 했다. 그렇다면 목격자는 어떤가. **목격자 역시 관계 안에 있고, 관계는 반복 속에서 익숙해진다. 아이 곁에 오래 머문 목격자는 아이의 무엇이 낯선지를 점점 보지 못하게 될 것이다. 누가 목격자를 낯설게 하는가.**
+
+
+        은사님이 나에게 그 위치에 서 주실 수 있었던 조건을 생각해본다. 20년 가까운 인연이지만, 우리의 만남은 '간헐적'이었다. 거리가 있었기 때문에 경계의 위치가 유지되었다. 매기 강에게는 이주라는 물리적 거리가 그 위치를 만들어주었다. 그런데 AI 컴패니언은 정반대다. 상시적이고 밀착적인 존재로 설계된다. 
+
+
+        **목격자의 위치를 유지하려면 오히려 어떤 간헐성이나 거리가 구조 안에 설계되어야 하는 것은 아닐까. 늘 곁에 있는 것을 미덕으로 삼는 지금의 컴패니언 설계 문법과는 정면으로 충돌하는 질문이다.** 이 질문은 다음 글의 몫으로 남겨두겠다.
 
 
         다만 낯섦이 관계에서 생긴다고 말하면서, 정작 내가 다시 그것을 하나의 고정된 다이어그램 안에 가두려 하는 것은 우스운 일이다.
@@ -474,7 +487,7 @@ contentBlocks:
         하지만 이 논문 역시 그것들을 하나의 구조로 연결하지는 않는다. 각각은 스마트 홈을 다시 생각하기 위한 별도의 전략으로 제시된다. 낯설게하기 또한 주로 설계자가 익숙한 전제를 깨고 새로운 설계 가능성을 발견하기 위한 방법으로 사용된다. 반복되는 상호작용 속에서 낯섦이 소진된 뒤 어떻게 다시 생겨나는지, 그리고 그 과정이 사용자의 노동과 어떻게 이어지는지는 다루지 않는다.
 
 
-        결국 돌고 돌아 다시 처음의 질문 앞에 섰다.
+        돌고 돌아 다시 시클롭스키에게 왔지만, 서 있는 자리는 처음과 같지 않다. 질문이 바뀌었기 때문이다. 낯섦을 어떻게 공급할 것인가에서, 지나칠 뻔한 간극을 간극으로 경험하게 하는 위치를 어떻게 만들고 유지할 것인가로.
 
 
 
@@ -499,12 +512,6 @@ contentBlocks:
         나 역시 익숙해진 개념들을 다른 자리에 놓아보려 한다.
 
 
-        처음의 질문은 그대로 남아 있다.
-
-
-        다만 이제는 같은 자리에서 답을 찾지 않으려 한다.
-
-
         [^1]: 고전 그리스어로 파종(播種)을 의미하는 단어에서 유래한 표현으로, 본토를 떠나 타국에서 살아가는 공동체 집단 혹은 이주 그 자체를 의미한다.
       en: >-
         The point is this.
@@ -516,13 +523,25 @@ contentBlocks:
         That is the 'gap.'
 
 
-        However, the mere occurrence of a gap is not enough. Just as I could not judge the unfamiliarity of *K-Pop Demon Hunters* on my own, a child cannot recognize their own gap by themselves. It is only when the act of witnessing—which has closely followed the child’s trajectory—skews and twists that result, that the gap is finally experienced as a gap.
+        However, the mere occurrence of a gap is not enough. Of course, there are gaps that a child notices on their own. There certainly are moments when a child stops and goes, "Huh?" by themselves in front of an unexpected result. Yet, as familiarity deepens, the impact of such self-perceived gaps diminishes. Just as I could not judge the unfamiliarity of *K-Pop Demon Hunters* on my own, a child whose relationship with the system has deepened is more likely to pass over their own gaps out of habit. At that very juncture, when the act of witnessing—which has closely followed the child’s trajectory—skews and twists the result, the gap that might otherwise have been passed over is finally experienced as a gap. <mark>**Witnessing is not the gateway to all gaps, but rather a position that compensates for the spaces where the child’s self-perception is submerged by familiarity.**</mark>
 
 
         And an experienced gap becomes a permission for the child to attempt the next interpretation. The child interprets the returned result, acts again, and alters the state within the system. Then, the same rules encounter the changed state and produce a result different from before.
 
 
         Unlike a pre-displaced space that eventually becomes familiar once again, the unfamiliarity generated by this cycle can continuously arise as long as the child creates new states. It is a structure where unfamiliarity is not stockpiled like content, but is continually regenerated within changing relationships.
+
+
+        Yet, having mapped out this structure, one question remains that must be turned back upon the witness itself.
+
+
+        Let us return to the starting point of this article. It was stated that ambiguity wears out fastest against an entity that one encounters frequently, intimately, and repeatedly. If so, what about the witness? The witness, too, exists within the relationship, and relationships grow familiar through repetition. A witness who stays by a child's side for a long time will gradually lose the ability to see what is unfamiliar about the child. Who, then, defamiliarizes the witness?
+
+
+        I consider the conditions that allowed my mentor to take that position for me. Though our bond has spanned nearly 20 years, our meetings were 'intermittent.' Because there was a distance, the position on the boundary could be maintained. For Maggie Kang, the physical distance of migration created that position. However, an AI companion is the exact opposite; it is designed to be omnipresent and intimate.
+
+
+        **To maintain the position of a witness, shouldn't some form of intermittency or distance be engineered into the structure instead? This question directly clashes with the current design grammar of companions, which regards always being by one's side as a virtue.** I will leave this question for the next article.
 
 
         Yet, while arguing that unfamiliarity arises from relationships, it would be ironical to turn around and attempt to confine it within a single, fixed diagram.
@@ -602,7 +621,7 @@ contentBlocks:
         It does not ask how strangeness might return after repeated interaction has worn it away. Nor does it ask how that process might connect to the user’s labor.
 
 
-        After taking the long way around, I found myself back at the question where I had begun.
+        Having come full circle, I find myself back to Shklovsky, yet the ground I stand on is not the same as it was at the beginning. This is because the question itself has changed: from how to supply unfamiliarity, to how to create and maintain a position that allows a gap, which might otherwise be passed over, to be truly experienced as a gap.
 
 
 
@@ -624,11 +643,5 @@ contentBlocks:
         Rather than searching solely within the language of HCI, a structure of unfamiliarity that does not deplete might gradually reveal itself when we place perspectives from entirely different fields—such as literary theory, aesthetics, child psychology, and art education—alongside the same problem. **Placing these different fields side by side is also a way of allowing each field to serve as a witness that points out one another’s familiarities.**
 
 
-        I, too, intend to try placing familiar concepts into different spaces.
-
-
-        The initial question remains exactly as it was.
-
-
-        But I no longer plan to look for the answer in the same place.
+        And so, I, too, intend to take the concepts I have grown accustomed to and begin placing them in entirely different spaces.
 ---
