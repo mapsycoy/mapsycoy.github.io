@@ -30,6 +30,9 @@ logo:
   src: /uploads/logo-mapsycoy-title.svg
   show_in_header: true
 
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
 # Media lives in mapsycoy/mapsycoy-assets, which Decap cannot target as a
 # second Git repository. Upload new images there manually, then paste the
 # immutable jsDelivr URL into the string image fields below.
