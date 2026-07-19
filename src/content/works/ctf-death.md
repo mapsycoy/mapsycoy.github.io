@@ -54,5 +54,5 @@ contentBlocks:
       en: Simulation for the New Humanity
 tags:
   - AI
-thumbnail: /uploads/ctfdeath.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/ctfdeath.webp
 ---

@@ -8,7 +8,7 @@
       "ko": "대한민국 / 서울",
       "en": "Republic of Korea / Seoul"
     },
-    "photo": "/uploads/cv-profile.webp"
+    "photo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-profile.webp"
   },
   "education": [
     {
@@ -65,7 +65,7 @@
         }
       },
       {
-        "src": "/uploads/cv-logo-snue.webp",
+        "src": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-logo-snue.webp",
         "alt": {
           "ko": "",
           "en": "SNUE"
@@ -104,7 +104,7 @@
           "ko": "",
           "en": "2010 / 2012 - 2013 / 2016 - 2017 "
         },
-        "logo": "/uploads/cv-logo-snue.webp",
+        "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-logo-snue.webp",
         "alt": {
           "ko": "SNUE",
           "en": "SNUE"
@@ -145,7 +145,7 @@
         "ko": "2025.12 - 2026.05",
         "en": "Dec 2025 - May 2026"
       },
-      "logo": "/uploads/cv-logo-nexon.webp",
+      "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-logo-nexon.webp",
       "team": {
         "ko": "M콘텐츠생성AI팀",
         "en": "M-Content Generation AI Team"
@@ -169,7 +169,7 @@
         "ko": "2025.07 - 2025.09",
         "en": "Jul 2025 - Sep 2025"
       },
-      "logo": "/uploads/cv-logo-enuma.webp",
+      "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-logo-enuma.webp",
       "team": {
         "ko": "콘텐츠팀",
         "en": "Content Team"
@@ -189,7 +189,7 @@
         "ko": "2023.02 - 2023.12",
         "en": "Feb 2023 - Dec 2023"
       },
-      "logo": "/uploads/cv-logo-unipuskr.webp",
+      "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-logo-unipuskr.webp",
       "description": [],
       "media": [],
       "employmentType": {
@@ -214,7 +214,7 @@
         "ko": "2021.10 - 2022.10",
         "en": "Oct 2021 - Oct 2022"
       },
-      "logo": "/uploads/cv-logo-studio-jbbj.webp",
+      "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-logo-studio-jbbj.webp",
       "description": []
     },
     {
@@ -234,7 +234,7 @@
         "ko": "1년 1개월",
         "en": "1 yr 1 mo"
       },
-      "logo": "/uploads/cv-logo-snue.webp",
+      "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-logo-snue.webp",
       "subEntries": [
         {
           "title": {
@@ -281,7 +281,7 @@
       "media": [
         {
           "type": "image",
-          "src": "/uploads/cv-project-atelier2024.webp",
+          "src": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-project-atelier2024.webp",
           "href": "https://www.youtube.com/watch?v=JXRhq4vxzGY",
           "label": {
             "ko": "",
@@ -290,7 +290,7 @@
         },
         {
           "type": "image",
-          "src": "/uploads/cv-project-atelier2023.webp",
+          "src": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-project-atelier2023.webp",
           "href": "https://webzine.kookmin.ac.kr/webzine.php?syear=2023&svolume=4&mcode=31",
           "label": {
             "ko": "",
@@ -317,7 +317,7 @@
       "media": [
         {
           "type": "image",
-          "src": "/uploads/cv-project-redflight.webp",
+          "src": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/cv-project-redflight.webp",
           "href": "https://luma.com/ivs-demoday",
           "label": {
             "ko": "",

@@ -33,9 +33,9 @@ const fallbackHomeGreeting: Record<Language, string> = {
 };
 
 const fallbackHomeMedia: Required<HomeMedia> = {
-  image: "/uploads/home-instrument.gif",
-  halftoneFallback: "/uploads/home-instrument-halftone.gif",
-  halftoneLargeFallback: "/uploads/home-instrument-halftone-large.gif",
+  image: "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument.gif",
+  halftoneFallback: "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone.gif",
+  halftoneLargeFallback: "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone-large.gif",
   source: "Castle In The Sky | Studio Ghibli",
   alt: "Animated visual note",
 };
@@ -54,7 +54,7 @@ const fallbackHomeIntro: Record<Language, string> = {
 
 const home = homeData as HomeData;
 
-export const getSitePreviewImage = () => home.site?.previewImage || "/uploads/og-site-preview.webp";
+export const getSitePreviewImage = () => home.site?.previewImage || "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/og-site-preview.webp";
 
 export const getHomeGreeting = (lang: Language = defaultLanguage) =>
   localize(home.greeting, lang) || fallbackHomeGreeting[lang] || fallbackHomeGreeting[defaultLanguage];

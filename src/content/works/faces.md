@@ -28,54 +28,54 @@ contentBlocks:
         3D 단편 영화 「FACES」(안효슬 연출) 컨셉 아트 컬렉션
 
         {{image-grid columns="2"}}
-        ![주방](/uploads/faces-kitchen.webp)
-        ![거실](/uploads/faces-living-room.webp)
+        ![주방](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-kitchen.webp)
+        ![거실](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-living-room.webp)
         {{/image-grid}}
 
         {{image-grid columns="2"}}
-        ![방](/uploads/faces-room.webp)
-        ![욕실](/uploads/faces-bathroom.webp)
+        ![방](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-room.webp)
+        ![욕실](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-bathroom.webp)
         {{/image-grid}}
 
         {{image-grid columns="2"}}
-        ![엔딩](/uploads/faces-ending.webp)
-        ![야외](/uploads/faces-outdoor.webp)
+        ![엔딩](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-ending.webp)
+        ![야외](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-outdoor.webp)
         {{/image-grid}}
 
         {{image-grid columns="2"}}
-        ![거미](/uploads/faces-spider.webp)
-        ![포스터 컨셉](/uploads/faces-poster-concept.webp)
+        ![거미](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-spider.webp)
+        ![포스터 컨셉](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-poster-concept.webp)
         {{/image-grid}}
 
-        ![포스터](/uploads/faces-poster.webp)
+        ![포스터](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-poster.webp)
       en: |-
         Concept Art Collection for the 3D Short Film 「*FACES*」 by. *AHN Hyoseul*
 
         {{image-grid columns="2"}}
-        ![Kitchen](/uploads/faces-kitchen.webp)
-        ![Living room](/uploads/faces-living-room.webp)
+        ![Kitchen](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-kitchen.webp)
+        ![Living room](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-living-room.webp)
         {{/image-grid}}
 
         {{image-grid columns="2"}}
-        ![Room](/uploads/faces-room.webp)
-        ![Bathroom](/uploads/faces-bathroom.webp)
-        {{/image-grid}}
-
-
-
-        {{image-grid columns="2"}}
-        ![Ending](/uploads/faces-ending.webp)
-        ![Outdoor](/uploads/faces-outdoor.webp)
+        ![Room](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-room.webp)
+        ![Bathroom](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-bathroom.webp)
         {{/image-grid}}
 
 
 
         {{image-grid columns="2"}}
-        ![Spider](/uploads/faces-spider.webp)
-        ![Poster concept](/uploads/faces-poster-concept.webp)
+        ![Ending](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-ending.webp)
+        ![Outdoor](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-outdoor.webp)
         {{/image-grid}}
 
-        ![Poster](/uploads/faces-poster.webp)
+
+
+        {{image-grid columns="2"}}
+        ![Spider](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-spider.webp)
+        ![Poster concept](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-poster-concept.webp)
+        {{/image-grid}}
+
+        ![Poster](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-poster.webp)
   - type: statsLink
     ctaLabel:
       ko: ""
@@ -91,28 +91,28 @@ contentBlocks:
       Concept Art Collection for the 3D Short Film 「*FACES*」 by. *AHN Hyoseul*
 
       {{image-grid columns="2"}}
-      ![Kitchen](/uploads/faces-kitchen.webp)
-      ![Living room](/uploads/faces-living-room.webp)
+      ![Kitchen](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-kitchen.webp)
+      ![Living room](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-living-room.webp)
       {{/image-grid}}
 
       {{image-grid columns="2"}}
-      ![Room](/uploads/faces-room.webp)
-      ![Bathroom](/uploads/faces-bathroom.webp)
+      ![Room](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-room.webp)
+      ![Bathroom](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-bathroom.webp)
       {{/image-grid}}
 
       {{image-grid columns="2"}}
-      ![Ending](/uploads/faces-ending.webp)
-      ![Outdoor](/uploads/faces-outdoor.webp)
+      ![Ending](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-ending.webp)
+      ![Outdoor](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-outdoor.webp)
       {{/image-grid}}
 
       {{image-grid columns="2"}}
-      ![Spider](/uploads/faces-spider.webp)
-      ![Poster concept](/uploads/faces-poster-concept.webp)
+      ![Spider](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-spider.webp)
+      ![Poster concept](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-poster-concept.webp)
       {{/image-grid}}
 
-      ![Poster](/uploads/faces-poster.webp)
+      ![Poster](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces-poster.webp)
 tags:
   - Illustration
-thumbnail: /uploads/faces.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/faces.webp
 heroImage: ""
 ---

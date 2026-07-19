@@ -93,8 +93,8 @@ contentBlocks:
       The project was selected as a finalist at IVS Crypto in 2024 and was later introduced through Kaia Square Lounge.
 tags:
   - AI
-thumbnail: /uploads/red-ivs.webp
-heroImage: /uploads/red.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/red-ivs.webp
+heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/red.webp
 heroImageDisplay: full
 heroImageCaption:
   ko: IVS Crypto THE DEMODAY 2024(좌) ∣ 카이아 스퀘어 라운지 2024(우)

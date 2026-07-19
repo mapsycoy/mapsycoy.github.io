@@ -7,8 +7,8 @@ publishedAt: 2026-07-12
 status: published
 pinned: false
 tag: Paper
-thumbnail: /uploads/boden-1978-.webp
-heroImage: /uploads/boden-1978-.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/boden-1978-.webp
+heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/boden-1978-.webp
 heroImageCaption:
   en: Boden (1978)
 contentBlocks:

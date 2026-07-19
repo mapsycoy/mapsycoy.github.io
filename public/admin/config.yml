@@ -30,8 +30,10 @@ logo:
   src: /uploads/logo-mapsycoy-title.svg
   show_in_header: true
 
-media_folder: public/uploads
-public_folder: /uploads
+# Media lives in mapsycoy/mapsycoy-assets, which Decap cannot target as a
+# second Git repository. Upload new images there manually, then paste the
+# immutable jsDelivr URL into the string image fields below.
+# URL format: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@COMMIT/uploads/FILE
 
 slug:
   encoding: unicode
@@ -120,11 +122,11 @@ collections:
           - Paper
       - label: Thumbnail
         name: thumbnail
-        widget: image
+        widget: string
         required: false
       - label: Hero Image
         name: heroImage
-        widget: image
+        widget: string
         required: false
       - label: Hero Image Caption
         name: heroImageCaption
@@ -199,7 +201,7 @@ collections:
             fields:
               - label: Source
                 name: src
-                widget: image
+                widget: string
               - label: Caption
                 name: caption
                 widget: object
@@ -512,10 +514,10 @@ collections:
           widget: string
       - label: Thumbnail
         name: thumbnail
-        widget: image
+        widget: string
       - label: Hero Image
         name: heroImage
-        widget: image
+        widget: string
         required: false
       - label: Hero Image Display
         name: heroImageDisplay
@@ -582,7 +584,7 @@ collections:
                     required: false
               - label: Photo
                 name: photo
-                widget: image
+                widget: string
                 required: false
           - label: Education
             name: education
@@ -669,7 +671,7 @@ collections:
                 fields:
                   - label: Source
                     name: src
-                    widget: image
+                    widget: string
                   - label: Alt
                     name: alt
                     widget: object
@@ -718,7 +720,7 @@ collections:
                         required: false
                   - label: Logo
                     name: logo
-                    widget: image
+                    widget: string
                     required: false
                   - label: Alt
                     name: alt
@@ -820,7 +822,7 @@ collections:
                     required: false
               - label: Logo
                 name: logo
-                widget: image
+                widget: string
                 required: false
               - label: Description
                 name: description
@@ -912,7 +914,7 @@ collections:
                       - link
                   - label: Source
                     name: src
-                    widget: image
+                    widget: string
                     required: false
                   - label: URL
                     name: href
@@ -1007,7 +1009,7 @@ collections:
                       - link
                   - label: Source
                     name: src
-                    widget: image
+                    widget: string
                     required: false
                   - label: URL
                     name: href
@@ -1179,9 +1181,9 @@ collections:
             fields:
               - label: OG / Social Preview Image
                 name: previewImage
-                widget: image
+                widget: string
                 required: false
-                hint: Use a 1200x630 image. Upload with an og- prefix, for example /uploads/og-site-preview-202607.webp.
+                hint: Use a 1200x630 image. Upload with an og- prefix, for example https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/og-site-preview-202607.webp.
           - label: Landing Media
             name: media
             widget: object
@@ -1189,19 +1191,19 @@ collections:
             fields:
               - label: GIF Image
                 name: image
-                widget: image
+                widget: string
                 required: false
-                hint: Current default is /uploads/home-instrument.gif. New uploads will be stored in /uploads.
+                hint: Upload replacements to mapsycoy-assets and paste a commit-pinned jsDelivr URL.
               - label: Halftone Fallback GIF
                 name: halftoneFallback
                 widget: string
                 required: false
-                hint: Optional fallback image path. Keep /uploads/home-instrument-halftone.gif for the current GIF.
+                hint: Optional fallback image path. Keep https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone.gif for the current GIF.
               - label: Large Halftone Fallback GIF
                 name: halftoneLargeFallback
                 widget: string
                 required: false
-                hint: Optional large fallback image path. Keep /uploads/home-instrument-halftone-large.gif for the current GIF.
+                hint: Optional large fallback image path. Keep https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone-large.gif for the current GIF.
               - label: Source Name
                 name: source
                 widget: object

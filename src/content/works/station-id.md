@@ -42,5 +42,5 @@ contentBlocks:
         Frame-by-frame scans of acrylic on an actual canvas, physically capturing the tactile texture of raw brushstrokes.
 tags:
   - Animation
-thumbnail: /uploads/stationid.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/stationid.webp
 ---

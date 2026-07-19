@@ -39,5 +39,5 @@ contentBlocks:
       en: "*Special Thanks to Prof. **Baek Jungyeol***"
 tags:
   - Documentary
-thumbnail: /uploads/midjourney.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/midjourney.webp
 ---
