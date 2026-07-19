@@ -7,8 +7,8 @@ publishedAt: 2026-07-13
 status: published
 pinned: false
 tag: Essay
-thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/lepetitprince.webp
-heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/lepetitprince.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/lepetitprince.webp
+heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/lepetitprince.webp
 heroImageCaption:
   en: www.lepetitprince.com
   ko: ""

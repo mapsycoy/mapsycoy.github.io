@@ -78,5 +78,5 @@ contentBlocks:
         The closer A draws to the coldly extinguished Superego, the more a tidal wave of suppressed emotions and jagged shards of memory surges forward to swallow them whole. Ultimately, losing even the final vestige of conscious will that held them together, A abandons their own existence (the Ego) and sinks into an eternal, indivisible dissolution with the planet of the Id.
 tags:
   - Animation
-thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/actfree.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/actfree.webp
 ---

@@ -33,17 +33,6 @@ const homeMusic = getHomeMusic();
           decoding="async"
         />
         <canvas class="home-instrument-canvas" aria-hidden="true"></canvas>
-        <img
-          class="home-instrument-halftone-fallback"
-          data-src={homeMedia.halftoneFallback}
-          data-srcset={`${homeMedia.halftoneFallback} 390w, ${homeMedia.halftoneLargeFallback} 728w`}
-          sizes="(max-width: 780px) calc(100vw - 40px), 390px"
-          alt=""
-          loading="eager"
-          decoding="async"
-          hidden
-          aria-hidden="true"
-        />
         <div class="home-instrument-placeholder" hidden aria-hidden="true"></div>
       </div>
       <figcaption class="home-media-meta">
@@ -153,9 +142,7 @@ const homeMusic = getHomeMusic();
       if (!(root instanceof HTMLElement)) return;
 
       const image = root.querySelector(".home-instrument-source");
-      const canvas = root.querySelector(".home-instrument-canvas");
-      const halftoneFallback = root.querySelector(".home-instrument-halftone-fallback");
-      const placeholder = root.querySelector(".home-instrument-placeholder");
+      const canvas = root.querySelector(".home-instrument-canvas");      const placeholder = root.querySelector(".home-instrument-placeholder");
 
       if (!(image instanceof HTMLImageElement) || !(canvas instanceof HTMLCanvasElement)) return;
 
@@ -179,9 +166,7 @@ const homeMusic = getHomeMusic();
         if (image.complete && image.naturalWidth > 0) {
           root.classList.remove("is-raw-fallback");
           root.classList.remove("is-preprocessed-fallback");
-          canvas.hidden = false;
-          if (halftoneFallback instanceof HTMLImageElement) halftoneFallback.hidden = true;
-          if (placeholder instanceof HTMLElement) placeholder.hidden = true;
+          canvas.hidden = false;          if (placeholder instanceof HTMLElement) placeholder.hidden = true;
 
           const renderFromImage = (time) => {
             if (time - lastFrameTime >= 1000 / SCREENTONE.fps) {
@@ -195,9 +180,7 @@ const homeMusic = getHomeMusic();
           return;
         }
 
-        canvas.hidden = true;
-        if (halftoneFallback instanceof HTMLImageElement) halftoneFallback.hidden = true;
-        if (placeholder instanceof HTMLElement) placeholder.hidden = false;
+        canvas.hidden = true;        if (placeholder instanceof HTMLElement) placeholder.hidden = false;
       };
 
       const resize = () => {
@@ -448,9 +431,7 @@ const homeMusic = getHomeMusic();
 
         root.classList.remove("is-raw-fallback");
         root.classList.remove("is-preprocessed-fallback");
-        canvas.hidden = false;
-        if (halftoneFallback instanceof HTMLImageElement) halftoneFallback.hidden = true;
-        if (placeholder instanceof HTMLElement) placeholder.hidden = true;
+        canvas.hidden = false;        if (placeholder instanceof HTMLElement) placeholder.hidden = true;
         cancelAnimationFrame(rafId);
         resize();
         animationStartedAt = performance.now();

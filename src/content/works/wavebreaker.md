@@ -40,5 +40,5 @@ contentBlocks:
 tags:
   - Media Art
   - AI
-thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/wavebreaker.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/wavebreaker.webp
 ---

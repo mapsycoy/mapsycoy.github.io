@@ -17,7 +17,7 @@ contentBlocks:
       ko: |-
         '비비드 포토그래피' (이색 반려동물 전문 스튜디오) 커미션 일러스트레이션
 
-        ![캐릭터 컨셉](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/kaf-concept.webp)
+        ![캐릭터 컨셉](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/kaf-concept.webp)
 
 
 
@@ -31,7 +31,7 @@ contentBlocks:
         Photography Studio)
 
 
-        ![Concept Design](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/kaf-concept.webp)
+        ![Concept Design](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/kaf-concept.webp)
 
 
 
@@ -60,8 +60,8 @@ contentBlocks:
 tags:
   - Illustration
   - Animation
-thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/kaf2024.webp
-heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/kaf2024-1.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/kaf2024.webp
+heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/kaf2024-1.webp
 heroImageCaption:
   ko: <2024 KAF> 참가사 포스터 디자인
   en: "<2024 KAF> Exhibitor Poster Design "

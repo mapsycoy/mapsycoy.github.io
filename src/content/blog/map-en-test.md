@@ -8,8 +8,8 @@ updatedAt: 2026-07-19
 status: published
 pinned: false
 tag: Essay
-thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@86f3545e7e8df032124c0dbfac1f8d3a06eaa5d7/uploads/10.webp
-heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@86f3545e7e8df032124c0dbfac1f8d3a06eaa5d7/uploads/10.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/10.webp
+heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/10.webp
 heroImageCaption:
   ko: 〈케이팝 데몬 헌터스〉 속 한 장면
   en: A Scene from 〈K-Pop Demon Hunters〉

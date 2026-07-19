@@ -1,12 +1,9 @@
 {
   "site": {
-    "previewImage": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/og-site-preview.webp"
+    "previewImage": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/site/og-site-preview.webp"
   },
   "media": {
-    "image": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument.gif",
-    "halftoneFallback": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone.gif",
-    "halftoneLargeFallback": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone-large.gif",
-    "source": {
+    "image": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/site/home-instrument.gif",    "source": {
       "ko": "천공의 성 라퓨타 | 스튜디오 지브리",
       "en": "Castle In The Sky | Studio Ghibli"
     },

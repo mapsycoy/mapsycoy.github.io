@@ -2,10 +2,7 @@ import homeData from "./home.json";
 import { defaultLanguage, localize, type Language, type LocalizedText } from "../utils/i18n";
 
 type HomeMedia = {
-  image?: string;
-  halftoneFallback?: string;
-  halftoneLargeFallback?: string;
-  source?: LocalizedText;
+  image?: string;  source?: LocalizedText;
   alt?: LocalizedText;
 };
 
@@ -33,10 +30,7 @@ const fallbackHomeGreeting: Record<Language, string> = {
 };
 
 const fallbackHomeMedia: Required<HomeMedia> = {
-  image: "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument.gif",
-  halftoneFallback: "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone.gif",
-  halftoneLargeFallback: "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone-large.gif",
-  source: "Castle In The Sky | Studio Ghibli",
+  image: "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/site/home-instrument.gif",  source: "Castle In The Sky | Studio Ghibli",
   alt: "Animated visual note",
 };
 
@@ -54,16 +48,13 @@ const fallbackHomeIntro: Record<Language, string> = {
 
 const home = homeData as HomeData;
 
-export const getSitePreviewImage = () => home.site?.previewImage || "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/og-site-preview.webp";
+export const getSitePreviewImage = () => home.site?.previewImage || "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/site/og-site-preview.webp";
 
 export const getHomeGreeting = (lang: Language = defaultLanguage) =>
   localize(home.greeting, lang) || fallbackHomeGreeting[lang] || fallbackHomeGreeting[defaultLanguage];
 
 export const getHomeMedia = (lang: Language = defaultLanguage) => ({
-  image: home.media?.image || fallbackHomeMedia.image,
-  halftoneFallback: home.media?.halftoneFallback || fallbackHomeMedia.halftoneFallback,
-  halftoneLargeFallback: home.media?.halftoneLargeFallback || fallbackHomeMedia.halftoneLargeFallback,
-  source: localize(home.media?.source, lang) || localize(fallbackHomeMedia.source, lang),
+  image: home.media?.image || fallbackHomeMedia.image,  source: localize(home.media?.source, lang) || localize(fallbackHomeMedia.source, lang),
   alt: localize(home.media?.alt, lang) || localize(fallbackHomeMedia.alt, lang),
 });
 

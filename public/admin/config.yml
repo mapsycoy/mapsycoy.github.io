@@ -36,7 +36,7 @@ public_folder: "/uploads"
 # Media lives in mapsycoy/mapsycoy-assets, which Decap cannot target as a
 # second Git repository. Upload new images there manually, then paste the
 # immutable jsDelivr URL into the string image fields below.
-# URL format: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@COMMIT/uploads/FILE
+# URL format: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@COMMIT7/uploads/CATEGORY/FILE
 
 slug:
   encoding: unicode
@@ -1186,7 +1186,7 @@ collections:
                 name: previewImage
                 widget: string
                 required: false
-                hint: Use a 1200x630 image. Upload with an og- prefix, for example https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/og-site-preview-202607.webp.
+                hint: Use the current commit-pinned site preview URL, or upload a replacement to uploads/site/.
           - label: Landing Media
             name: media
             widget: object
@@ -1197,16 +1197,6 @@ collections:
                 widget: string
                 required: false
                 hint: Upload replacements to mapsycoy-assets and paste a commit-pinned jsDelivr URL.
-              - label: Halftone Fallback GIF
-                name: halftoneFallback
-                widget: string
-                required: false
-                hint: Optional fallback image path. Keep https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone.gif for the current GIF.
-              - label: Large Halftone Fallback GIF
-                name: halftoneLargeFallback
-                widget: string
-                required: false
-                hint: Optional large fallback image path. Keep https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/home-instrument-halftone-large.gif for the current GIF.
               - label: Source Name
                 name: source
                 widget: object

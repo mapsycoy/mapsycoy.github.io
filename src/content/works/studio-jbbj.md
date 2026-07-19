@@ -102,7 +102,7 @@ contentBlocks:
 tags:
   - Animation
   - Illustration
-thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9ed2ab5/uploads/jbbj.webp
+thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/jbbj.webp
 heroImage: ""
 heroImageDisplay: full
 heroImageCaption:
