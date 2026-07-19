@@ -1,0 +1,115 @@
+﻿name: Sync uploaded media to assets repository
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "public/uploads/**"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: media-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site
+        uses: actions/checkout@v4
+        with:
+          path: site
+
+      - name: Collect files to migrate
+        id: collect
+        shell: bash
+        run: |
+          mapfile -d '' files < <(
+            find site/public/uploads -maxdepth 1 -type f \
+              ! -name 'logo-mapsycoy-title.svg' \
+              ! -name 'reverie.ogg' -print0
+          )
+          if (( ${#files[@]} == 0 )); then
+            echo "has_files=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          printf '%s\0' "${files[@]}" > "$RUNNER_TEMP/media-files"
+          echo "has_files=true" >> "$GITHUB_OUTPUT"
+
+      - name: Checkout assets
+        if: steps.collect.outputs.has_files == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: mapsycoy/mapsycoy-assets
+          path: assets
+          token: ${{ secrets.MEDIA_SYNC_TOKEN }}
+
+      - name: Copy files to assets
+        if: steps.collect.outputs.has_files == 'true'
+        shell: bash
+        run: |
+          while IFS= read -r -d '' file; do
+            cp "$file" assets/uploads/
+          done < "$RUNNER_TEMP/media-files"
+
+      - name: Commit assets
+        if: steps.collect.outputs.has_files == 'true'
+        id: assets
+        working-directory: assets
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add uploads
+          if ! git diff --cached --quiet; then
+            git commit -m "Sync uploaded site media"
+            git push
+          fi
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Replace references and remove migrated files
+        if: steps.collect.outputs.has_files == 'true'
+        env:
+          ASSET_SHA: ${{ steps.assets.outputs.sha }}
+        shell: python
+        run: |
+          import os
+          from pathlib import Path
+
+          site = Path("site")
+          files = Path(os.environ["RUNNER_TEMP"]).joinpath("media-files").read_bytes().split(b"\0")
+          names = [Path(item.decode()).name for item in files if item]
+          roots = [site / "src", site / "public"]
+          for root in roots:
+            for path in root.rglob("*"):
+              if not path.is_file() or path.parent == site / "public" / "uploads":
+                continue
+              try:
+                text = path.read_text(encoding="utf-8")
+              except UnicodeDecodeError:
+                continue
+              updated = text
+              for name in names:
+                local = f"/uploads/{name}"
+                cdn = f"https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@{os.environ['ASSET_SHA']}/uploads/{name}"
+                updated = updated.replace(local, cdn)
+              if updated != text:
+                path.write_text(updated, encoding="utf-8")
+          for name in names:
+            (site / "public" / "uploads" / name).unlink()
+
+      - name: Commit site updates
+        if: steps.collect.outputs.has_files == 'true'
+        working-directory: site
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add src public
+          if ! git diff --cached --quiet; then
+            git commit -m "Migrate uploaded media to assets [skip ci]"
+            git push
+          fi
