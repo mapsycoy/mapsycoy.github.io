@@ -123,6 +123,28 @@ collections:
           - Essay
           - AI News
           - Paper
+      - label: Series
+        name: series
+        widget: string
+        required: false
+      - label: Series Order
+        name: seriesOrder
+        widget: number
+        required: false
+        value_type: int
+      - label: Summary
+        name: summary
+        widget: object
+        required: false
+        fields:
+          - label: Korean
+            name: ko
+            widget: string
+            required: false
+          - label: English
+            name: en
+            widget: string
+            required: false
       - label: Thumbnail
         name: thumbnail
         widget: string
