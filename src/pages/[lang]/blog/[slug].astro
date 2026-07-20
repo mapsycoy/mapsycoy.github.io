@@ -1,7 +1,8 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import BlogSeriesNav from "../../../components/BlogSeriesNav.astro";
 import { render } from "astro:content";
-import { getBlogPostSlug, getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../../data/blog";
+import { getBlogPostSlug, getBlogPosts, getPostDateLabel, getSeriesPosition, hasKoreanText, type BlogPost } from "../../../data/blog";
 import { getLanguageFromParams, languages, localize, type Language } from "../../../utils/i18n";
 import { smartenText } from "../../../utils/smartTypography.mjs";
 
@@ -11,17 +12,19 @@ export async function getStaticPaths() {
   return languages.flatMap((lang) =>
     posts.map((post) => ({
       params: { lang, slug: getBlogPostSlug(post) },
-      props: { post, lang: getLanguageFromParams(lang) }
+      props: { post, allPosts: posts, lang: getLanguageFromParams(lang) }
     }))
   );
 }
 
 type Props = {
   post: BlogPost;
+  allPosts: BlogPost[];
   lang?: Language;
 };
 
-const { post, lang } = Astro.props;
+const { post, allPosts, lang } = Astro.props;
+const seriesPosition = getSeriesPosition(allPosts, post);
 const postTitle = localize(post.data.title, lang);
 const { Content } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
@@ -270,6 +273,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
         <span>{post.data.tag}</span>
       </p>
       <h1 class:list={["blog-post-title", hasKoreanText(postTitle) && "ko-title"]}>{postTitle}</h1>
+      {seriesPosition && post.data.series === "child-ai" && <BlogSeriesNav posts={seriesPosition.posts} index={seriesPosition.index} seriesId="child-ai" lang={lang} placement="header" />}
 
       <div class="blog-post-byline" aria-label="Post information">
         <span>{getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}</span>
@@ -301,5 +305,6 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
         <Content />
       )}
     </div>
+    {seriesPosition && post.data.series === "child-ai" && <BlogSeriesNav posts={seriesPosition.posts} index={seriesPosition.index} seriesId="child-ai" lang={lang} placement="footer" />}
   </article>
 </Layout>

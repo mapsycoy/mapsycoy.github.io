@@ -1,0 +1,33 @@
+---
+import { getBlogPostSlug, type BlogPost } from "../data/blog";
+import { series, type SeriesId } from "../data/series";
+import { defaultLanguage, localize, type Language } from "../utils/i18n";
+
+type Props = {
+  posts: BlogPost[];
+  index: number;
+  seriesId: SeriesId;
+  lang?: Language;
+  placement: "header" | "footer";
+};
+
+const { posts, index, seriesId, lang = defaultLanguage, placement } = Astro.props;
+const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
+const previous = posts[index - 1];
+const next = posts[index + 1];
+const meta = series[seriesId];
+const postPath = (post: BlogPost) => `${languagePrefix}/blog/${getBlogPostSlug(post)}/`;
+---
+
+{placement === "header" ? (
+  <p class="blog-series-context">
+    <a href={`${languagePrefix}/blog/#series-${seriesId}`}>{localize(meta.title, lang)}</a>
+    <span aria-hidden="true"> · </span>
+    <span>{index + 1}/{posts.length}</span>
+  </p>
+) : (
+  <nav class="blog-series-navigation" aria-label={lang === "ko" ? "시리즈 글 탐색" : "Series navigation"}>
+    {previous ? <a href={postPath(previous)}>&larr; {lang === "ko" ? "이전 편" : "Previous"}: {localize(previous.data.title, lang)}</a> : <span></span>}
+    {next && <a href={postPath(next)}>{lang === "ko" ? "다음 편" : "Next"}: {localize(next.data.title, lang)} &rarr;</a>}
+  </nav>
+)}

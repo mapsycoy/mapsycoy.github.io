@@ -40,6 +40,36 @@ export const sortBlogPosts = (posts: BlogPost[]) =>
     return b.data.publishedAt.getTime() - a.data.publishedAt.getTime();
   });
 
+export const sortSeriesPosts = (posts: BlogPost[]) =>
+  [...posts].sort((a, b) =>
+    (a.data.seriesOrder ?? Number.POSITIVE_INFINITY) -
+    (b.data.seriesOrder ?? Number.POSITIVE_INFINITY)
+  );
+
+export const getSeriesPosts = (posts: BlogPost[], seriesId: string) =>
+  sortSeriesPosts(posts.filter((post) => post.data.series === seriesId));
+
+export const getNewsPosts = (posts: BlogPost[]) =>
+  sortBlogPosts(posts.filter((post) => post.data.tag === "AI News"));
+
+export const getNonSeriesPosts = (posts: BlogPost[]) =>
+  sortBlogPosts(posts.filter((post) => !post.data.series && post.data.tag !== "AI News"));
+
+export const getSeriesPosition = (posts: BlogPost[], post: BlogPost) => {
+  if (!post.data.series) return undefined;
+
+  const seriesPosts = getSeriesPosts(posts, post.data.series);
+  const index = seriesPosts.findIndex((candidate) => getBlogPostSlug(candidate) === getBlogPostSlug(post));
+  if (index < 0) return undefined;
+
+  return {
+    posts: seriesPosts,
+    index,
+    previous: seriesPosts[index - 1],
+    next: seriesPosts[index + 1],
+  };
+};
+
 export const getBlogPosts = async ({ includeDrafts = false } = {}) => {
   const posts = await getCollection("blog");
   const visiblePosts = includeDrafts ? posts : posts.filter((post) => post.data.status === "published");

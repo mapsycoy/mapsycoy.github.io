@@ -1,14 +1,18 @@
 ---
 import {
   blogTags,
+  getNonSeriesPosts,
   getBlogPostSlug,
   getBlogPageCount,
+  getSeriesPosts,
+  formatPostDate,
   getPostDateLabel,
   hasKoreanText,
   normalizeBlogTag,
   type BlogPost,
   type BlogTag,
 } from "../data/blog";
+import { series } from "../data/series";
 import { defaultLanguage, localize, type Language } from "../utils/i18n";
 
 type Props = {
@@ -18,6 +22,9 @@ type Props = {
   currentPage?: number;
   basePath?: string;
   activeTag?: BlogTag;
+  hub?: boolean;
+  hubPosts?: BlogPost[];
+  pageCountOverride?: number;
 };
 
 const {
@@ -27,10 +34,13 @@ const {
   currentPage = 1,
   basePath = "/blog",
   activeTag,
+  hub = false,
+  hubPosts = allPosts,
+  pageCountOverride,
 } = Astro.props;
 
 const normalizedBasePath = `/${basePath.replace(/^\/+|\/+$/g, "")}`;
-const pageCount = getBlogPageCount(allPosts);
+const pageCount = pageCountOverride ?? getBlogPageCount(allPosts);
 const toPagePath = (page: number) => {
   if (page <= 1) return `${normalizedBasePath}/`;
   return `${normalizedBasePath}/page/${page}/`;
@@ -38,6 +48,9 @@ const toPagePath = (page: number) => {
 const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
 const allPath = `${languagePrefix}/blog/`;
 const tagPath = (tag: BlogTag) => `${languagePrefix}/blog/tag/${normalizeBlogTag(tag)}/`;
+const seriesPosts = hub ? getSeriesPosts(hubPosts, "child-ai") : [];
+const nonSeriesPosts = hub ? getNonSeriesPosts(hubPosts) : [];
+const seriesMeta = series["child-ai"];
 const paginationItems = (() => {
   const pages = new Set([1, pageCount, currentPage - 1, currentPage, currentPage + 1]);
   const sortedPages = [...pages]
@@ -70,6 +83,59 @@ const paginationItems = (() => {
   ))}
 </section>
 
+{hub && currentPage === 1 ? (
+  <div class="blog-hub">
+    <section id="series-child-ai" class="blog-text-section" aria-labelledby="series-child-ai-title">
+      <h1 id="series-child-ai-title">{localize(seriesMeta.title, lang)}</h1>
+      <p class="blog-series-description">{localize(seriesMeta.description, lang)}</p>
+      <ol class="blog-text-list">
+        {seriesPosts.map((post) => (
+          <li value={post.data.seriesOrder}>
+            <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
+              <span class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</span>
+              {post.data.summary && localize(post.data.summary, lang).trim() && (
+                <span class="blog-list-summary"> — {localize(post.data.summary, lang)}</span>
+              )}
+              <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    {nonSeriesPosts.length > 0 && (
+      <section class="blog-text-section" aria-labelledby="other-posts-title">
+        <h2 id="other-posts-title">{lang === "ko" ? "시리즈 외 글" : "Other writing"}</h2>
+        <ul class="blog-text-list">
+          {nonSeriesPosts.map((post) => (
+            <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <section class="blog-text-section" aria-labelledby="news-archive-title">
+      <h2 id="news-archive-title">News / Archive</h2>
+      <ul class="blog-text-list">
+        {posts.map((post) => (
+          <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+) : hub ? (
+  <div class="blog-hub">
+    <a class="blog-series-return" href={`${languagePrefix}/blog/#series-child-ai`}>&larr; {lang === "ko" ? "시리즈 목록으로" : "Back to the series"}</a>
+    <section class="blog-text-section" aria-labelledby="news-archive-title">
+      <h1 id="news-archive-title">News / Archive</h1>
+      <ul class="blog-text-list">
+        {posts.map((post) => (
+          <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
+        ))}
+      </ul>
+    </section>
+  </div>
+) : (
 <section class="entry-list blog-entry-list" aria-label="Blog entries">
   {posts.map((post, index) => (
     <article
@@ -107,6 +173,7 @@ const paginationItems = (() => {
     </article>
   ))}
 </section>
+)}
 
 {pageCount > 1 && (
   <nav class="blog-pagination" aria-label="Blog pagination">

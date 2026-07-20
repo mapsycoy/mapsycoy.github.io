@@ -7,6 +7,8 @@ publishedAt: 2026-07-12
 status: published
 pinned: false
 tag: Paper
+series: child-ai
+seriesOrder: 8
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/boden-1978-.webp
 heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/boden-1978-.webp
 heroImageCaption:

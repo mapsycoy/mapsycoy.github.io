@@ -1,28 +1,29 @@
 ---
 import BlogIndex from "../../../../components/BlogIndex.astro";
 import Layout from "../../../../layouts/Layout.astro";
-import { getBlogPageCount, getBlogPagePosts, getBlogPosts } from "../../../../data/blog";
+import { getBlogPageCount, getBlogPagePosts, getBlogPosts, getNewsPosts } from "../../../../data/blog";
 import { languages, type Language } from "../../../../utils/i18n";
 
 export async function getStaticPaths() {
   const allPosts = await getBlogPosts();
-  const pageCount = getBlogPageCount(allPosts);
+  const newsPosts = getNewsPosts(allPosts);
+  const pageCount = Math.max(2, getBlogPageCount(newsPosts));
 
   return languages.flatMap((lang) =>
     Array.from({ length: Math.max(0, pageCount - 1) }, (_, index) => {
       const page = index + 2;
       return {
         params: { lang, page: String(page) },
-        props: { allPosts, lang, page },
+        props: { allPosts, newsPosts, lang, page },
       };
     })
   );
 }
 
-const { allPosts, lang, page } = Astro.props as { allPosts: Awaited<ReturnType<typeof getBlogPosts>>; lang: Language; page: number };
-const posts = getBlogPagePosts(allPosts, page);
+const { allPosts, newsPosts, lang, page } = Astro.props as { allPosts: Awaited<ReturnType<typeof getBlogPosts>>; newsPosts: Awaited<ReturnType<typeof getBlogPosts>>; lang: Language; page: number };
+const posts = getBlogPagePosts(newsPosts, page);
 ---
 
 <Layout title={`Blog Page ${page}`} description="Essays, technical notes, and archived writings by mapsycoy." lang={lang}>
-  <BlogIndex posts={posts} allPosts={allPosts} lang={lang} currentPage={page} basePath={`/${lang}/blog`} />
+  <BlogIndex posts={posts} allPosts={newsPosts} hubPosts={allPosts} hub pageCountOverride={Math.max(2, getBlogPageCount(newsPosts))} lang={lang} currentPage={page} basePath={`/${lang}/blog`} />
 </Layout>

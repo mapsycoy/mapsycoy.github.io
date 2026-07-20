@@ -8,6 +8,8 @@ updatedAt: 2026-07-19
 status: published
 pinned: false
 tag: Essay
+series: child-ai
+seriesOrder: 10
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/10.webp
 heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/10.webp
 heroImageCaption:
