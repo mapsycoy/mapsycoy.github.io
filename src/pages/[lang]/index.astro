@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import RecentPosts from "../../components/RecentPosts.astro";
-import { getHomeCaption, getHomeGreeting, getHomeIntro, getHomeMedia, getHomeMusic } from "../../data/home";
+import { getHomeCaption, getHomeGreeting, getHomeMedia, getHomeMusic } from "../../data/home";
 import { getLanguageFromParams, languages, type Language } from "../../utils/i18n";
 
 export function getStaticPaths() {
@@ -13,7 +13,6 @@ const contactEmail = "mapsycoy@gmail.com";
 const homeGreeting = getHomeGreeting(lang);
 const homeGreetingLines = homeGreeting.split(/\r?\n/).filter(Boolean);
 const homeCaption = getHomeCaption(lang);
-const homeIntro = getHomeIntro(lang);
 const homeMedia = getHomeMedia(lang);
 const homeMusic = getHomeMusic(lang);
 ---
@@ -28,7 +27,7 @@ const homeMusic = getHomeMusic(lang);
       </h1>
     </div>
 
-    <p class="lede">{homeIntro}</p>
+    <RecentPosts lang={lang} />
 
     <figure class="home-media">
       <div class="home-instrument" data-home-instrument aria-label={homeMedia.alt}>
@@ -126,7 +125,6 @@ const homeMusic = getHomeMusic(lang);
     </form>
 
     <p class="home-caption" set:html={homeCaption} />
-    <RecentPosts lang={lang} />
   </section>
 
   <script>

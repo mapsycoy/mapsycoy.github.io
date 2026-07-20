@@ -9,6 +9,9 @@ pinned: false
 tag: Essay
 series: child-ai
 seriesOrder: 9
+summary:
+  ko: 모호성을 사물의 속성이 아닌 아이와 시스템의 관계로 보고, 아이에게 해석할 수 있다는 허가를 남기는 상호작용의 조건을 탐색합니다.
+  en: Treating ambiguity as a relationship rather than an object, this essay asks how interaction can leave children with permission to interpret.
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/lepetitprince.webp
 heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/lepetitprince.webp
 heroImageCaption:

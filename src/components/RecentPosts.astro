@@ -22,10 +22,43 @@ const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
           <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
             <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
             <span aria-hidden="true"> — </span>
-            <span>{localize(post.data.title, lang)}</span>
+            <span class="home-recent-title">{localize(post.data.title, lang)}</span>
           </a>
         </li>
       ))}
     </ul>
   </section>
 )}
+
+<style is:inline>
+  .home-recent {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .home-recent ul,
+  .home-recent li {
+    min-width: 0;
+  }
+
+  .home-recent a {
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+    align-items: baseline;
+  }
+
+  .home-recent a > time,
+  .home-recent a > span:not(.home-recent-title) {
+    flex: 0 0 auto;
+  }
+
+  .home-recent-title {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+</style>

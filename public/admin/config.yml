@@ -572,6 +572,40 @@ collections:
   - name: settings
     label: Settings
     files:
+      - label: Blog Series
+        name: series
+        file: src/data/series.json
+        format: json
+        fields:
+          - label: Child AI
+            name: child-ai
+            widget: object
+            fields:
+              - label: Series Number
+                name: number
+                widget: number
+                value_type: int
+                min: 1
+              - label: Title
+                name: title
+                widget: object
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                  - label: English
+                    name: en
+                    widget: string
+              - label: Description
+                name: description
+                widget: object
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: text
+                  - label: English
+                    name: en
+                    widget: text
       - label: CV
         name: cv
         file: src/data/cv.json
@@ -1301,19 +1335,6 @@ collections:
                 widget: text
                 required: false
                 hint: Use line breaks to split the greeting into multiple lines.
-          - label: Landing Intro
-            name: intro
-            widget: object
-            required: false
-            fields:
-              - label: Korean
-                name: ko
-                widget: string
-                required: false
-              - label: English
-                name: en
-                widget: string
-                required: false
           - label: Landing Caption
             name: caption
             widget: object

@@ -1,13 +1,12 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import RecentPosts from "../components/RecentPosts.astro";
-import { getHomeCaption, getHomeGreeting, getHomeIntro, getHomeMedia, getHomeMusic } from "../data/home";
+import { getHomeCaption, getHomeGreeting, getHomeMedia, getHomeMusic } from "../data/home";
 
 const contactEmail = "mapsycoy@gmail.com";
 const homeGreeting = getHomeGreeting();
 const homeGreetingLines = homeGreeting.split(/\r?\n/).filter(Boolean);
 const homeCaption = getHomeCaption();
-const homeIntro = getHomeIntro();
 const homeMedia = getHomeMedia();
 const homeMusic = getHomeMusic();
 ---
@@ -22,7 +21,7 @@ const homeMusic = getHomeMusic();
       </h1>
     </div>
 
-    <p class="lede">{homeIntro}</p>
+    <RecentPosts />
 
     <figure class="home-media">
       <div class="home-instrument" data-home-instrument aria-label={homeMedia.alt}>
@@ -120,7 +119,6 @@ const homeMusic = getHomeMusic();
     </form>
 
     <p class="home-caption" set:html={homeCaption} />
-    <RecentPosts />
   </section>
 
   <script>

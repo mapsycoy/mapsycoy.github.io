@@ -9,6 +9,9 @@ pinned: false
 tag: Paper
 series: child-ai
 seriesOrder: 8
+summary:
+  ko: 행위성을 단순한 느낌이 아니라 아이가 의미를 생성하는 노동으로 다시 정의하고, 좋은 AI 설계는 그 노동을 대신하지 않고 보존해야 한다고 주장합니다.
+  en: Reframing agency as the labor of making meaning, this essay argues that good AI should preserve that labor rather than merely manufacture the feeling of agency.
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/boden-1978-.webp
 heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/boden-1978-.webp
 heroImageCaption:

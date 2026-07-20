@@ -1,0 +1,13 @@
+{
+  "child-ai": {
+    "number": 1,
+    "title": {
+      "ko": "아이 곁의 AI, 무엇을 남겨둘 것인가",
+      "en": "AI Beside the Child: What Should Be Left Open?"
+    },
+    "description": {
+      "ko": "AI가 아이의 곁에서 답하고 반응할 때, 아이에게는 무엇이 남아야 할까.\n\n상상력과 주체성, 의미를 만드는 노동, 모호성과 낯섦을 따라가며 아동을 위한 AI가 의미 생성을 대신하지 않고 지지하는 조건을 탐색합니다.",
+      "en": "When AI responds from beside a child, what should remain for the child to do?\n\nFollowing imagination and agency, the labor of meaning-making, ambiguity, and strangeness, this series explores how AI for children might support rather than replace their work of making meaning."
+    }
+  }
+}

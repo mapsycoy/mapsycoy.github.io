@@ -4,7 +4,8 @@ import {
   getNonSeriesPosts,
   getBlogPostSlug,
   getBlogPageCount,
-  getSeriesPosts,
+  getPostSeriesMetadata,
+  getSeriesGroups,
   formatPostDate,
   getPostDateLabel,
   hasKoreanText,
@@ -12,7 +13,6 @@ import {
   type BlogPost,
   type BlogTag,
 } from "../data/blog";
-import { series } from "../data/series";
 import { defaultLanguage, localize, type Language } from "../utils/i18n";
 
 type Props = {
@@ -48,9 +48,8 @@ const toPagePath = (page: number) => {
 const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
 const allPath = `${languagePrefix}/blog/`;
 const tagPath = (tag: BlogTag) => `${languagePrefix}/blog/tag/${normalizeBlogTag(tag)}/`;
-const seriesPosts = hub ? getSeriesPosts(hubPosts, "child-ai") : [];
+const seriesGroups = hub ? getSeriesGroups(hubPosts) : [];
 const nonSeriesPosts = hub ? getNonSeriesPosts(hubPosts) : [];
-const seriesMeta = series["child-ai"];
 const paginationItems = (() => {
   const pages = new Set([1, pageCount, currentPage - 1, currentPage, currentPage + 1]);
   const sortedPages = [...pages]
@@ -85,23 +84,35 @@ const paginationItems = (() => {
 
 {hub && currentPage === 1 ? (
   <div class="blog-hub">
-    <section id="series-child-ai" class="blog-text-section" aria-labelledby="series-child-ai-title">
-      <h1 id="series-child-ai-title">{localize(seriesMeta.title, lang)}</h1>
-      <p class="blog-series-description">{localize(seriesMeta.description, lang)}</p>
-      <ol class="blog-text-list">
-        {seriesPosts.map((post) => (
-          <li value={post.data.seriesOrder}>
-            <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
-              <span class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</span>
-              {post.data.summary && localize(post.data.summary, lang).trim() && (
-                <span class="blog-list-summary"> — {localize(post.data.summary, lang)}</span>
-              )}
-              <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
-            </a>
-          </li>
-        ))}
-      </ol>
-    </section>
+    {seriesGroups.map((group) => (
+      <section id={`series-${group.id}`} class="blog-text-section blog-series-block" aria-labelledby={`series-${group.id}-title`}>
+        <p class="blog-series-label">Series</p>
+        <div class="blog-series-panel">
+          <div class="blog-series-heading">
+            <span class="blog-series-number" aria-label={`Series ${group.metadata.number}`}>
+              {String(group.metadata.number).padStart(2, "0")}
+            </span>
+            <h1 id={`series-${group.id}-title`}>{localize(group.metadata.title, lang)}</h1>
+          </div>
+          <p class="blog-series-description">{localize(group.metadata.description, lang)}</p>
+          <ol class="blog-text-list blog-series-list">
+            {group.posts.map((post) => (
+              <li>
+                <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
+                  <span class="blog-list-copy">
+                    <span class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</span>
+                    {post.data.summary && localize(post.data.summary, lang).trim() && (
+                      <span class:list={["blog-list-summary", lang === "ko" && "is-korean"]}>{localize(post.data.summary, lang)}</span>
+                    )}
+                  </span>
+                  <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
+                </a>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+    ))}
 
     {nonSeriesPosts.length > 0 && (
       <section class="blog-text-section" aria-labelledby="other-posts-title">
@@ -115,7 +126,7 @@ const paginationItems = (() => {
     )}
 
     <section class="blog-text-section" aria-labelledby="news-archive-title">
-      <h2 id="news-archive-title">News / Archive</h2>
+      <h2 id="news-archive-title" class="blog-section-label">News / Archive</h2>
       <ul class="blog-text-list">
         {posts.map((post) => (
           <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
@@ -125,9 +136,14 @@ const paginationItems = (() => {
   </div>
 ) : hub ? (
   <div class="blog-hub">
-    <a class="blog-series-return" href={`${languagePrefix}/blog/#series-child-ai`}>&larr; {lang === "ko" ? "시리즈 목록으로" : "Back to the series"}</a>
+    <a class="work-back-link blog-series-return" href={`${languagePrefix}/blog/`}>
+      <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="margin-right: 6px">
+        <path d="m14.5 5-7 7 7 7" />
+      </svg>
+      <span>{lang === "ko" ? "시리즈 목록으로" : "Back to the series"}</span>
+    </a>
     <section class="blog-text-section" aria-labelledby="news-archive-title">
-      <h1 id="news-archive-title">News / Archive</h1>
+      <h1 id="news-archive-title" class="blog-section-label">News / Archive</h1>
       <ul class="blog-text-list">
         {posts.map((post) => (
           <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
@@ -147,16 +163,25 @@ const paginationItems = (() => {
     >
       <a class="blog-entry-link" href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`} aria-label={`Open ${localize(post.data.title, lang)} post`}>
         <div class="blog-entry-copy">
-          <p class="entry-meta blog-entry-meta">
-            {post.data.pinned && (
-              <span class="pin-icon" aria-label="Pinned post">
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M14.7 3.3 20.7 9.3 18.6 11.4 17.2 10 13 14.2V18L11.7 19.3 8.8 16.4 4.4 20.8 3.2 19.6 7.6 15.2 4.7 12.3 6 11H9.8L14 6.8 12.6 5.4 14.7 3.3Z" />
-                </svg>
-              </span>
-            )}
-            <span>{post.data.tag}</span>
-          </p>
+          {(!activeTag || post.data.pinned || getPostSeriesMetadata(post)) && (
+            <p class="entry-meta blog-entry-meta">
+              {post.data.pinned && (
+                <span class="pin-icon" aria-label="Pinned post">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M14.7 3.3 20.7 9.3 18.6 11.4 17.2 10 13 14.2V18L11.7 19.3 8.8 16.4 4.4 20.8 3.2 19.6 7.6 15.2 4.7 12.3 6 11H9.8L14 6.8 12.6 5.4 14.7 3.3Z" />
+                  </svg>
+                </span>
+              )}
+              {!activeTag && <span>{post.data.tag}</span>}
+              {activeTag && getPostSeriesMetadata(post) && (
+                <span class="blog-entry-series-meta">
+                  Series {String(getPostSeriesMetadata(post)?.number).padStart(2, "0")}
+                  {" · "}
+                  {localize(getPostSeriesMetadata(post)!.title, lang)}
+                </span>
+              )}
+            </p>
+          )}
           <h2 class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</h2>
           <p class="blog-entry-date">
             {getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}

@@ -1,4 +1,5 @@
 import { getCollection, type CollectionEntry } from "astro:content";
+import { series, type SeriesId } from "./series";
 
 export type BlogTag = "Essay" | "AI News" | "Paper";
 export type BlogPost = CollectionEntry<"blog">;
@@ -48,6 +49,27 @@ export const sortSeriesPosts = (posts: BlogPost[]) =>
 
 export const getSeriesPosts = (posts: BlogPost[], seriesId: string) =>
   sortSeriesPosts(posts.filter((post) => post.data.series === seriesId));
+
+export const getPostSeriesMetadata = (post: BlogPost) => {
+  if (!post.data.series || !(post.data.series in series)) return undefined;
+
+  return series[post.data.series as SeriesId];
+};
+
+export const getSeriesGroups = (posts: BlogPost[]) =>
+  (Object.entries(series) as Array<[SeriesId, (typeof series)[SeriesId]]>)
+    .map(([id, metadata]) => {
+      const seriesPosts = getSeriesPosts(posts, id);
+      const latestPublishedAt = seriesPosts.reduce(
+        (latest, post) => Math.max(latest, post.data.publishedAt.getTime()),
+        0
+      );
+
+      return { id, metadata, posts: seriesPosts, latestPublishedAt };
+    })
+    .sort((a, b) =>
+      b.latestPublishedAt - a.latestPublishedAt || a.id.localeCompare(b.id)
+    );
 
 export const getNewsPosts = (posts: BlogPost[]) =>
   sortBlogPosts(posts.filter((post) => post.data.tag === "AI News"));
