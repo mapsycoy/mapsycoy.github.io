@@ -1,0 +1,31 @@
+---
+import { formatPostDate, getBlogPostSlug, getBlogPosts, getNewsPosts, sortBlogPosts } from "../data/blog";
+import { defaultLanguage, localize, type Language } from "../utils/i18n";
+
+type Props = { lang?: Language };
+
+const { lang = defaultLanguage } = Astro.props;
+const posts = await getBlogPosts();
+const recentPosts = [
+  ...sortBlogPosts(posts.filter((post) => post.data.tag !== "AI News")).slice(0, 2),
+  ...getNewsPosts(posts).slice(0, 1),
+];
+const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
+---
+
+{recentPosts.length > 0 && (
+  <section class="home-recent" aria-labelledby="home-recent-title">
+    <div id="home-recent-title" class="home-kicker">Recent</div>
+    <ul>
+      {recentPosts.map((post) => (
+        <li>
+          <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
+            <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
+            <span aria-hidden="true"> — </span>
+            <span>{localize(post.data.title, lang)}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+)}

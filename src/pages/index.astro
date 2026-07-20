@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import RecentPosts from "../components/RecentPosts.astro";
 import { getHomeCaption, getHomeGreeting, getHomeIntro, getHomeMedia, getHomeMusic } from "../data/home";
 
 const contactEmail = "mapsycoy@gmail.com";
@@ -119,6 +120,7 @@ const homeMusic = getHomeMusic();
     </form>
 
     <p class="home-caption" set:html={homeCaption} />
+    <RecentPosts />
   </section>
 
   <script>

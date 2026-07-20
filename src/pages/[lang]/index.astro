@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import RecentPosts from "../../components/RecentPosts.astro";
 import { getHomeCaption, getHomeGreeting, getHomeIntro, getHomeMedia, getHomeMusic } from "../../data/home";
 import { getLanguageFromParams, languages, type Language } from "../../utils/i18n";
 
@@ -125,6 +126,7 @@ const homeMusic = getHomeMusic(lang);
     </form>
 
     <p class="home-caption" set:html={homeCaption} />
+    <RecentPosts lang={lang} />
   </section>
 
   <script>
