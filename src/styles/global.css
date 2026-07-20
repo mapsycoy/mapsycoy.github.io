@@ -2247,6 +2247,50 @@ h3 {
   list-style-type: upper-roman;
 }
 
+.blog-series-contents summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.82rem;
+  cursor: pointer;
+  list-style: none;
+}
+
+.blog-series-contents summary::-webkit-details-marker {
+  display: none;
+}
+
+.blog-series-contents summary svg {
+  width: 14px;
+  height: 14px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.25;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.blog-series-contents[open] summary {
+  margin-bottom: 24px;
+}
+
+.blog-series-contents[open] summary svg {
+  transform: rotate(180deg);
+}
+
+.blog-series-collapse-label {
+  display: none;
+}
+
+.blog-series-contents[open] .blog-series-expand-label {
+  display: none;
+}
+
+.blog-series-contents[open] .blog-series-collapse-label {
+  display: inline;
+}
+
 .blog-series-list > li::marker {
   color: var(--muted);
   font-size: 0.82rem;
@@ -2266,7 +2310,6 @@ ul.blog-text-list {
 }
 
 .blog-text-list a:hover > span:first-child,
-.blog-series-return:hover,
 .blog-series-context a:hover,
 .blog-series-navigation a:hover {
   color: var(--accent);
@@ -2274,7 +2317,6 @@ ul.blog-text-list {
 
 .blog-list-summary,
 .blog-text-list time,
-.blog-series-return,
 .blog-series-context {
   color: var(--muted);
 }
@@ -2300,7 +2342,6 @@ ul.blog-text-list {
   white-space: nowrap;
 }
 
-.blog-series-return,
 .blog-series-context a,
 .blog-series-navigation a {
   color: inherit;

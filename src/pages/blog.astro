@@ -1,15 +1,15 @@
 ---
 import BlogIndex from "../components/BlogIndex.astro";
 import Layout from "../layouts/Layout.astro";
-import { getBlogPagePosts, getBlogPosts, getNewsPosts } from "../data/blog";
+import { getBlogPosts, getNewsPosts } from "../data/blog";
 import { defaultLanguage } from "../utils/i18n";
 
 const lang = defaultLanguage;
 const allPosts = await getBlogPosts();
 const newsPosts = getNewsPosts(allPosts);
-const posts = getBlogPagePosts(newsPosts, 1);
+const posts = newsPosts;
 ---
 
 <Layout title="Blog" description="Essays, technical notes, and archived writings by mapsycoy." lang={lang}>
-  <BlogIndex posts={posts} allPosts={newsPosts} hubPosts={allPosts} hub pageCountOverride={Math.max(2, Math.ceil(newsPosts.length / 8))} lang={lang} currentPage={1} basePath="/blog" />
+  <BlogIndex posts={posts} allPosts={newsPosts} hubPosts={allPosts} hub pageCountOverride={1} lang={lang} currentPage={1} basePath="/blog" />
 </Layout>

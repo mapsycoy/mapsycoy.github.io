@@ -1,7 +1,7 @@
 ---
 import BlogIndex from "../../components/BlogIndex.astro";
 import Layout from "../../layouts/Layout.astro";
-import { getBlogPagePosts, getBlogPosts, getNewsPosts } from "../../data/blog";
+import { getBlogPosts, getNewsPosts } from "../../data/blog";
 import { getLanguageFromParams, languages, type Language } from "../../utils/i18n";
 
 export function getStaticPaths() {
@@ -11,9 +11,9 @@ export function getStaticPaths() {
 const lang: Language = getLanguageFromParams(Astro.params.lang);
 const allPosts = await getBlogPosts();
 const newsPosts = getNewsPosts(allPosts);
-const posts = getBlogPagePosts(newsPosts, 1);
+const posts = newsPosts;
 ---
 
 <Layout title="Blog" description="Essays, technical notes, and archived writings by mapsycoy." lang={lang}>
-  <BlogIndex posts={posts} allPosts={newsPosts} hubPosts={allPosts} hub pageCountOverride={Math.max(2, Math.ceil(newsPosts.length / 8))} lang={lang} currentPage={1} basePath={`/${lang}/blog`} />
+  <BlogIndex posts={posts} allPosts={newsPosts} hubPosts={allPosts} hub pageCountOverride={1} lang={lang} currentPage={1} basePath={`/${lang}/blog`} />
 </Layout>

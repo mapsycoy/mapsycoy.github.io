@@ -95,21 +95,34 @@ const paginationItems = (() => {
             <h1 id={`series-${group.id}-title`}>{localize(group.metadata.title, lang)}</h1>
           </div>
           <p class="blog-series-description">{localize(group.metadata.description, lang)}</p>
-          <ol class="blog-text-list blog-series-list">
-            {group.posts.map((post) => (
-              <li>
-                <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
-                  <span class="blog-list-copy">
-                    <span class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</span>
-                    {post.data.summary && localize(post.data.summary, lang).trim() && (
-                      <span class:list={["blog-list-summary", lang === "ko" && "is-korean"]}>{localize(post.data.summary, lang)}</span>
-                    )}
-                  </span>
-                  <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
-                </a>
-              </li>
-            ))}
-          </ol>
+          <details class="blog-series-contents">
+            <summary>
+              <span class="blog-series-expand-label">
+                {lang === "ko" ? `${group.posts.length}편 펼쳐보기` : `Show ${group.posts.length} entries`}
+              </span>
+              <span class="blog-series-collapse-label">
+                {lang === "ko" ? "목차 접기" : "Hide entries"}
+              </span>
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="m5 9 7 7 7-7" />
+              </svg>
+            </summary>
+            <ol class="blog-text-list blog-series-list">
+              {group.posts.map((post) => (
+                <li>
+                  <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
+                    <span class="blog-list-copy">
+                      <span class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</span>
+                      {post.data.summary && localize(post.data.summary, lang).trim() && (
+                        <span class:list={["blog-list-summary", lang === "ko" && "is-korean"]}>{localize(post.data.summary, lang)}</span>
+                      )}
+                    </span>
+                    <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </details>
         </div>
       </section>
     ))}
@@ -127,20 +140,6 @@ const paginationItems = (() => {
 
     <section class="blog-text-section" aria-labelledby="news-archive-title">
       <h2 id="news-archive-title" class="blog-section-label">News / Archive</h2>
-      <ul class="blog-text-list">
-        {posts.map((post) => (
-          <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
-        ))}
-      </ul>
-    </section>
-  </div>
-) : hub ? (
-  <div class="blog-hub">
-    <a class="work-back-link blog-series-return" href={`${languagePrefix}/blog/`}>
-      &#8592;&nbsp;<span>{lang === "ko" ? "시리즈 목록으로" : "Back to the series"}</span>
-    </a>
-    <section class="blog-text-section" aria-labelledby="news-archive-title">
-      <h1 id="news-archive-title" class="blog-section-label">News / Archive</h1>
       <ul class="blog-text-list">
         {posts.map((post) => (
           <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
@@ -236,3 +235,19 @@ const paginationItems = (() => {
     </div>
   </nav>
 )}
+
+<script is:inline>
+  (() => {
+    const openLinkedSeries = () => {
+      if (!window.location.hash.startsWith("#series-")) return;
+      const section = document.querySelector(window.location.hash);
+      section?.querySelector("details.blog-series-contents")?.setAttribute("open", "");
+    };
+
+    openLinkedSeries();
+    if (window.__mapsycoySeriesHashNavigation) return;
+    window.__mapsycoySeriesHashNavigation = true;
+    document.addEventListener("astro:page-load", openLinkedSeries);
+    window.addEventListener("hashchange", openLinkedSeries);
+  })();
+</script>
