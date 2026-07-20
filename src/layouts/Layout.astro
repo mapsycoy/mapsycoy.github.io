@@ -13,7 +13,7 @@ const {
 } = Astro.props;
 
 const currentLanguage = lang as Language;
-const siteUrl = "https://mapsycoy.github.io";
+const siteUrl = Astro.site ?? Astro.url.origin;
 const pageTitle = title === "mapsycoy" ? "mapsycoy" : `${title} | mapsycoy`;
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const previewImageUrl = new URL(previewImage, siteUrl).toString();
@@ -54,9 +54,9 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={previewImageUrl} />
-    <link rel="alternate" type="application/rss+xml" title="mapsycoy — Blog" href="/rss.xml" />
-    <link rel="alternate" type="application/rss+xml" title="mapsycoy — AI News" href="/rss-news.xml" />
+    <link rel="alternate" type="application/rss+xml" title="mapsycoy — All" href="/rss.xml" />
     <link rel="alternate" type="application/rss+xml" title="mapsycoy — Essays & Papers" href="/rss-essays.xml" />
+    <link rel="alternate" type="application/rss+xml" title="mapsycoy — News" href="/rss-news.xml" />
     <title>{pageTitle}</title>
     <script is:inline>
       (() => {

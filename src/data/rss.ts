@@ -1,8 +1,6 @@
 import type { BlogPost } from "./blog";
 import { localize } from "../utils/i18n";
 
-export const canonicalSite = "https://mapsycoy.com";
-
 export const localizeKoreanFirst = (value: BlogPost["data"]["title"] | BlogPost["data"]["summary"]) =>
   localize(value, "ko", "en").trim();
 
@@ -31,10 +29,10 @@ export const getRssDescription = (post: BlogPost, maxLength = 220) => {
   return `${plainText.slice(0, maxLength).trimEnd()}…`;
 };
 
-export const toRssItems = (posts: BlogPost[]) =>
+export const toRssItems = (posts: BlogPost[], site: URL) =>
   posts.map((post) => ({
     title: localizeKoreanFirst(post.data.title),
     description: getRssDescription(post),
     pubDate: post.data.publishedAt,
-    link: `${canonicalSite}/blog/${post.data.slug}`,
+    link: new URL(`/blog/${post.data.slug}`, site).toString(),
   }));

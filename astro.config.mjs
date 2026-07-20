@@ -6,7 +6,7 @@ import rehypeLinkPreviews from "./src/utils/rehypeLinkPreviews.mjs";
 import rehypeSmartTypography from "./src/utils/smartTypography.mjs";
 
 export default defineConfig({
-  site: "https://mapsycoy.github.io",
+  site: "https://mapsycoy.com",
   integrations: [
     mermaid({
       autoTheme: true,
