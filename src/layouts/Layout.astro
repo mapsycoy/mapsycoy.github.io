@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import ClientRouter from "astro/components/ClientRouter.astro";
 import LogoMark from "../components/LogoMark.astro";
 import { getSitePreviewImage } from "../data/home";
 import { defaultLanguage, getAlternateLanguage, isLanguage, withLanguage, type Language } from "../utils/i18n";
@@ -82,7 +81,6 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         });
       })();
     </script>
-    <ClientRouter fallback="swap" />
     <style is:inline>
       html { overflow-y: scroll; }
     </style>

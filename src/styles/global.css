@@ -905,6 +905,20 @@ h3 {
   gap: 18px;
 }
 
+.works-section + .works-section {
+  position: relative;
+}
+
+.works-section + .works-section::before {
+  position: absolute;
+  top: -25px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--dot-rule);
+  content: "";
+}
+
 .works-section[hidden] {
   display: none;
 }
@@ -2192,6 +2206,20 @@ h3 {
   gap: 52px;
 }
 
+.blog-hub > .blog-news-archive {
+  position: relative;
+}
+
+.blog-hub > .blog-news-archive::before {
+  position: absolute;
+  top: -27px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--dot-rule);
+  content: "";
+}
+
 .blog-text-section h1,
 .blog-text-section h2 {
   margin: 0 0 12px;
@@ -2605,7 +2633,7 @@ html[lang="ko"] .cv-page {
   grid-template-columns: 220px minmax(0, 1fr);
   gap: 42px;
   align-items: stretch;
-  padding: 0 0 36px;
+  padding: 0 0 32px;
 }
 
 .cv-profile-identity {
@@ -2657,7 +2685,7 @@ html[lang="ko"] .cv-page {
 
 .cv-profile-name {
   margin: 0;
-  font-size: 1.38rem;
+  font-size: 1.6rem;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -2682,7 +2710,7 @@ html[lang="ko"] .cv-page {
 }
 
 .cv-profile-heading {
-  padding-bottom: 2px;
+  padding-bottom: 18px;
 }
 
 .cv-profile-education-item {
@@ -2696,11 +2724,12 @@ html[lang="ko"] .cv-page {
 }
 
 
+
 .cv-profile-education-title {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
-  gap: 6px 10px;
+  gap: 6px 0;
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
@@ -2717,9 +2746,13 @@ html[lang="ko"] .cv-page {
 }
 
 .cv-profile-education-title span + span::before {
-  color: var(--muted);
-  content: "/";
-  margin-right: 10px;
+  display: inline-block;
+  width: 1px;
+  height: 0.8em;
+  margin: 0 7px;
+  background: currentColor;
+  content: "";
+  vertical-align: -0.05em;
 }
 
 .cv-certificate {
@@ -2824,6 +2857,17 @@ html[lang="ko"] .cv-page {
 .cv-profile-main + .cv-section-block {
   padding-top: 32px;
   border-top: 0;
+}
+
+.cv-profile-main + .cv-section-block::before,
+.cv-section-block + .cv-section-block::before {
+  position: absolute;
+  top: -1px;
+  right: 0;
+  left: 0;
+  height: 2px;
+  background: var(--dot-rule);
+  content: "";
 }
 
 
@@ -3477,7 +3521,7 @@ html[lang="ko"] .cv-page {
     grid-template-columns: 1fr;
     gap: 20px;
     align-items: start;
-    padding-bottom: 20px;
+    padding-bottom: 32px;
   }
 
   .cv-profile-identity {
