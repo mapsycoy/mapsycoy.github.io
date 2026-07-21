@@ -4,7 +4,6 @@ import { artsGiftedEducationCertificate, education, experiences, profile, projec
 import { defaultLanguage, localize, type Language } from "../utils/i18n";
 
 const lang: Language = defaultLanguage;
-const experienceInitialCount = 4;
 const projectInitialCount = 4;
 
 const mediaItems = (items: MediaItem[] | undefined) => items?.filter((item) => item.src || item.href) ?? [];
@@ -84,11 +83,11 @@ const publicationVenueLine = (item: any) => {
       </div>
     </section>
 
-    <section class="cv-section-block" aria-labelledby="experience-heading" data-cv-section>
+    <section class="cv-section-block" aria-labelledby="experience-heading">
       <h2 class="cv-section-header" id="experience-heading">Experience</h2>
       <div class="cv-list">
-        {experiences.map((item, index) => (
-          <article class="cv-entry" data-cv-item hidden={index >= experienceInitialCount}>
+        {experiences.map((item) => (
+          <article class="cv-entry">
             <div class="cv-entry-logo" aria-hidden="true">
               {item.logo && <img src={item.logo} alt="" loading="lazy" onerror="this.hidden=true" />}
             </div>
@@ -150,19 +149,7 @@ const publicationVenueLine = (item: any) => {
           </article>
         ))}
       </div>
-      {experiences.length > experienceInitialCount && (
-        <button
-          class="cv-show-toggle"
-          type="button"
-          data-cv-toggle
-          data-initial-count={experienceInitialCount}
-          data-total-count={experiences.length}
-          data-label="experiences"
-          aria-expanded="false"
-        >
-          Show all {experiences.length} experiences
-        </button>
-      )}
+
     </section>
 
     <section class="cv-section-block cv-section-block-no-rule" aria-labelledby="projects-heading" data-cv-section>

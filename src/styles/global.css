@@ -2690,23 +2690,11 @@ html[lang="ko"] .cv-page {
   padding-top: 12px;
 }
 
-.cv-profile-education-item::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--dot-rule);
-  content: "";
-}
 
 .cv-profile-education-item:first-of-type {
   padding-top: 0;
 }
 
-.cv-profile-education-item:first-of-type::before {
-  display: none;
-}
 
 .cv-profile-education-title {
   display: flex;
@@ -2827,32 +2815,17 @@ html[lang="ko"] .cv-page {
   padding: 24px 0;
 }
 
-.cv-section-block::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--dot-rule);
-  content: "";
-}
 
 .cv-section-block-no-rule {
   border-top: 0;
 }
 
-.cv-section-block-no-rule::before {
-  display: none;
-}
 
 .cv-profile-main + .cv-section-block {
   padding-top: 32px;
   border-top: 0;
 }
 
-.cv-profile-main + .cv-section-block::before {
-  display: none;
-}
 
 .cv-section-header {
   display: inline-flex;
@@ -2881,23 +2854,11 @@ html[lang="ko"] .cv-page {
   padding: 16px 0;
 }
 
-.cv-entry::before {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: var(--dot-rule);
-  content: "";
-}
 
 .cv-entry:first-child {
   padding-top: 0;
 }
 
-.cv-entry:first-child::before {
-  display: none;
-}
 
 .cv-entry[hidden] {
   display: none;
@@ -3036,8 +2997,13 @@ html[lang="ko"] .cv-page {
 }
 
 .cv-entry-team::before {
-  content: "/";
-  margin: 0 5px;
+  display: inline-block;
+  width: 1px;
+  height: 0.8em;
+  margin: 0 7px;
+  background: currentColor;
+  content: "";
+  vertical-align: -0.05em;
 }
 
 .cv-entry-meta,
@@ -3172,7 +3138,7 @@ html[lang="ko"] .cv-page {
   gap: 12px;
   margin-top: 12px;
   padding-left: 14px;
-  background: radial-gradient(circle, var(--line) 0 1.25px, transparent 1.45px) left top / 2px 7px repeat-y;
+  border-left: 1px solid var(--line);
 }
 
 .cv-subentry {
@@ -3181,8 +3147,8 @@ html[lang="ko"] .cv-page {
 
 .cv-subentry::before {
   position: absolute;
-  top: 0.55rem;
-  left: -17px;
+  top: 0.41rem;
+  left: -18px;
   width: 5px;
   height: 5px;
   border: 1px solid var(--line);
