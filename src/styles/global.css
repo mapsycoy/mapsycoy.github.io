@@ -2196,11 +2196,6 @@ h3 {
   color: var(--accent);
 }
 
-.home-recent time {
-  color: var(--muted);
-  font-size: 0.82rem;
-}
-
 .blog-hub {
   display: grid;
   gap: 52px;
