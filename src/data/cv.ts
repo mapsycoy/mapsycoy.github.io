@@ -20,6 +20,7 @@ export type ExperienceItem = {
   duration?: LocalizedText;
   description?: LocalizedTextLine[];
   logo?: string;
+  logoDark?: string;
   media?: MediaItem[];
   subEntries?: {
     title: LocalizedText;

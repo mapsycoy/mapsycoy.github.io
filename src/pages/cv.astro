@@ -89,7 +89,12 @@ const publicationVenueLine = (item: any) => {
         {experiences.map((item) => (
           <article class="cv-entry">
             <div class="cv-entry-logo" aria-hidden="true">
-              {item.logo && <img src={item.logo} alt="" loading="lazy" onerror="this.hidden=true" />}
+              {item.logo && (
+                <picture>
+                  {item.logoDark && <source media="(prefers-color-scheme: dark)" srcset={item.logoDark} />}
+                  <img src={item.logo} alt="" loading="lazy" onerror="this.hidden=true" />
+                </picture>
+              )}
             </div>
             <div class="cv-entry-main">
               <h3 class="cv-entry-title">

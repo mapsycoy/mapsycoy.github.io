@@ -2968,6 +2968,12 @@ html[lang="ko"] .cv-page {
   isolation: isolate;
 }
 
+.cv-entry-logo picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .cv-entry-logo img {
   display: block;
   width: 100%;
