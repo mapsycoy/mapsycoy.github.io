@@ -94,7 +94,7 @@ const paginationItems = (() => {
             </span>
             <h1 id={`series-${group.id}-title`}>{localize(group.metadata.title, lang)}</h1>
           </div>
-          <p class="blog-series-description">{localize(group.metadata.description, lang)}</p>
+          <p class="blog-series-description"><span>{localize(group.metadata.description, lang)}</span></p>
           <details class="blog-series-contents">
             <summary>
               <span class="blog-series-expand-label">
@@ -111,13 +111,11 @@ const paginationItems = (() => {
               {group.posts.map((post) => (
                 <li>
                   <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
-                    <span class="blog-list-copy">
-                      <span class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</span>
-                      {post.data.summary && localize(post.data.summary, lang).trim() && (
-                        <span class:list={["blog-list-summary", lang === "ko" && "is-korean"]}>{localize(post.data.summary, lang)}</span>
-                      )}
-                    </span>
+                    <span class:list={["blog-list-title", hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</span>
                     <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
+                    {post.data.summary && localize(post.data.summary, lang).trim() && (
+                      <span class:list={["blog-list-summary", lang === "ko" && "is-korean"]}>{localize(post.data.summary, lang)}</span>
+                    )}
                   </a>
                 </li>
               ))}
@@ -138,7 +136,7 @@ const paginationItems = (() => {
       </section>
     )}
 
-    <section class="blog-text-section" aria-labelledby="news-archive-title">
+    <section class="blog-text-section blog-news-archive" aria-labelledby="news-archive-title">
       <h2 id="news-archive-title" class="blog-section-label">News / Archive</h2>
       <ul class="blog-text-list">
         {posts.map((post) => (

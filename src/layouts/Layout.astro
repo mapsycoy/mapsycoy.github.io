@@ -653,6 +653,63 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
           if (wrap instanceof HTMLElement) positionFootnotePopover(wrap);
         });
       }, { passive: true });
+      const initializeAdaptiveHeader = () => {
+        if (window.__mapsycoyAdaptiveHeaderBound) return;
+        window.__mapsycoyAdaptiveHeaderBound = true;
+
+        let lastScrollY = window.scrollY;
+        let idleTimer;
+
+        const getHeader = () => document.querySelector(".site-header");
+        const showHeader = () => getHeader()?.classList.remove("is-hidden");
+        const hideHeader = () => {
+          if (window.scrollY > 8 && !getHeader()?.matches(":focus-within")) {
+            getHeader()?.classList.add("is-hidden");
+          }
+        };
+        const scheduleIdleHide = () => {
+          window.clearTimeout(idleTimer);
+          if (window.scrollY > 8) idleTimer = window.setTimeout(hideHeader, 1400);
+        };
+        const resetHeader = () => {
+          window.clearTimeout(idleTimer);
+          lastScrollY = window.scrollY;
+          showHeader();
+          scheduleIdleHide();
+        };
+
+        window.addEventListener("scroll", () => {
+          const currentScrollY = window.scrollY;
+          const delta = currentScrollY - lastScrollY;
+
+          if (currentScrollY <= 8) {
+            window.clearTimeout(idleTimer);
+            showHeader();
+          } else if (delta > 3) {
+            window.clearTimeout(idleTimer);
+            hideHeader();
+          } else if (delta < -3) {
+            showHeader();
+            scheduleIdleHide();
+          }
+
+          lastScrollY = currentScrollY;
+        }, { passive: true });
+
+        document.addEventListener("focusin", (event) => {
+          if (event.target instanceof Element && event.target.closest(".site-header")) {
+            window.clearTimeout(idleTimer);
+            showHeader();
+          }
+        });
+        document.addEventListener("focusout", (event) => {
+          if (event.target instanceof Element && event.target.closest(".site-header")) scheduleIdleHide();
+        });
+        document.addEventListener("astro:page-load", resetHeader);
+        resetHeader();
+      };
+
+      initializeAdaptiveHeader();
       const initializePageInteractions = () => {
         initializeWorksFilters();
         initializeBlogFilters();
