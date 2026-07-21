@@ -11,8 +11,9 @@ tag: Essay
 series: child-ai
 seriesOrder: 10
 summary:
-  ko: 반복 속에서 소진되는 낯섦을 다시 불러오는 목격자의 위치를 따라가며, 서로 다른 분야를 나란히 놓는 일이 각자의 익숙함을 흔드는 방법이 될 수 있음을 살펴봅니다.
-  en: Following the position of a witness that can renew strangeness after repetition wears it away, this essay considers how placing different fields side by side can unsettle what each takes for granted.
+  ko: 반복 속에서 낯섦이 소진되는 문제를 붙잡고, 그 간극을 다시 열어주는 목격자의 자리를 탐색합니다.
+  en: Confronting how repetition wears strangeness away, this essay searches for
+    the position of a witness that can reopen the gap.
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/10.webp
 heroImage: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/blog/10.webp
 heroImageCaption:
