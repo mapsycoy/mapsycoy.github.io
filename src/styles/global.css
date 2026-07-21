@@ -2645,7 +2645,8 @@ html[lang="ko"] .cv-page {
 .cv-profile-photo {
   position: relative;
   width: 220px;
-  min-height: 293px;
+  height: 100%;
+  min-height: 0;
   overflow: hidden;
   border: 1px solid var(--line);
   background:
@@ -2706,21 +2707,26 @@ html[lang="ko"] .cv-page {
 
 .cv-profile-education {
   display: grid;
-  gap: 14px;
+  gap: 0;
 }
 
 .cv-profile-heading {
   padding-bottom: 18px;
+  margin-bottom: 14px;
 }
 
 .cv-profile-education-item {
   position: relative;
-  padding-top: 12px;
+  padding-top: 0;
 }
 
 
 .cv-profile-education-item:first-of-type {
   padding-top: 0;
+}
+
+.cv-profile-education-item + .cv-profile-education-item {
+  margin-top: 10px;
 }
 
 
@@ -2757,7 +2763,7 @@ html[lang="ko"] .cv-page {
 
 .cv-certificate {
   display: grid;
-  gap: 12px;
+  gap: 6px;
 }
 
 .cv-certificate-list {
@@ -3530,10 +3536,14 @@ html[lang="ko"] .cv-page {
   }
 
   .cv-profile-photo {
-    width: min(210px, 72vw);
+    width: 100%;
     height: auto;
     min-height: 0;
-    aspect-ratio: 3 / 4;
+    aspect-ratio: 1;
+  }
+
+  .cv-profile-photo img {
+    object-position: center top;
   }
 
   .cv-entry {
