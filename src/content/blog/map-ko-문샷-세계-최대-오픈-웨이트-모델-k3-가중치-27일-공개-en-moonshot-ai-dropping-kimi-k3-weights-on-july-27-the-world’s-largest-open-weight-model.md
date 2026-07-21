@@ -1,10 +1,10 @@
 ---
 title:
-  ko: 문샷, 세계 최대 오픈 웨이트 모델 K3 가중치 27일 공개
-  en: "Moonshot AI Dropping Kimi K3 Weights on July 27: The World’s Largest
-    Open-Weight Model"
+  ko: 문샷, K3 가중치 27일 공개, 그리고 알리바바의 맞불
+  en: Moonshot Sets K3 Weights Release for Nov 27—Alibaba Strikes Back
 slug: "11"
 publishedAt: 2026-07-19
+updatedAt: 2026-07-21
 status: published
 pinned: false
 tag: AI News
@@ -80,6 +80,28 @@ contentBlocks:
         에 있다고 보는 것이 타당하다.
 
 
+
+
+        ---
+
+
+
+
+        ## **그리고 알리바바의 Qwen3.8**
+
+
+        [Alibaba Previews Qwen3.8-Max, a 2.4 Trillion-Parameter Multimodal Model, Days After Moonshot’s Kimi K3 Open-Weight Launch | MarkTechPost](https://www.marktechpost.com/2026/07/19/alibaba-previews-qwen3-8-max-a-2-4-trillion-parameter-multimodal-model-days-after-moonshots-kimi-k3-open-weight-launch/)
+
+
+        K3 출시 사흘 뒤인 19일, 상하이 WAIC 기간에 맞춰 알리바바 Qwen 팀이 X를 통해 Qwen3.8-Max 프리뷰를 공개했다. 회사 발표 기준 2.4조 매개변수의 멀티모달 모델로, 알리바바는 종합 성능이 "Claude Fable 5 바로 다음"이라고 주장했으며, 역시 오픈 웨이트 공개를 예고했다.
+
+
+        다만 Max 계열은 지금까지 줄곧 폐쇄형으로 유지돼 온 라인이다. 따라서 오픈 웨이트 약속이 관행의 전환인지, K3 발표에 맞불을 놓기 위한 수사인지는 실제 가중치가 나와봐야 안다.
+
+
+        한 가지 더 흥미로운 지점은 자본 관계다. 알리바바는 2024년 연차보고서에서 Moonshot AI 지분 약 36% 취득을 공시했다. 이후 여러 차례 후속 투자 라운드가 있었던 만큼 현재 지분율은 희석됐을 수 있으나, 주요 주주라는 사실 자체는 변함이 없다. 즉 K3와 Qwen3.8은 한 자본 아래에서 벌어지는 규모 경쟁에 가깝다.
+
+
         결국 관건은 검증이다. 만약 27일 가중치 공개 후에도 벤치마크 성능이 재현된다면, 고비용 API 구조를 유지해온 미국 AI 기업들은 "왜 이 가격을 내야 하는가"라는 유저들의 질문에 다시 답해야 할 것이다.
       en: >-
         ## **Briefing**
@@ -140,6 +162,28 @@ contentBlocks:
         * Providing verification so users can "verify the benchmarks themselves"
 
         * Expanding the ecosystem through hosting by third-party cloud providers
+
+
+
+
+        ---
+
+
+
+
+        ## **And Alibaba's Qwen3.8**
+
+
+        [Alibaba Previews Qwen3.8-Max, a 2.4 Trillion-Parameter Multimodal Model, Days After Moonshot’s Kimi K3 Open-Weight Launch | MarkTechPost](https://www.marktechpost.com/2026/07/19/alibaba-previews-qwen3-8-max-a-2-4-trillion-parameter-multimodal-model-days-after-moonshots-kimi-k3-open-weight-launch/)
+
+
+        On July 19, just three days after the K3 launch and coinciding with the World Artificial Intelligence Conference (WAIC) in Shanghai, Alibaba's Qwen team unveiled a preview of Qwen3.8-Max via X. According to the company's announcement, it is a 2.4-trillion-parameter multimodal model. Alibaba claimed its overall performance ranks "right behind Claude Fable 5" and promised that it will also be released as an open-weight model.
+
+
+        However, the Max series has historically been kept as a closed-source lineup. Therefore, whether this open-weight commitment represents a genuine shift in practice or merely counter-rhetoric to offset Moonshot's K3 announcement remains to be seen until the actual weights are released.
+
+
+        Another intriguing aspect lies in their corporate capital relationship. Alibaba disclosed in its 2024 annual report that it had acquired roughly a 36% stake in Moonshot AI. Although its ownership percentage may have been diluted following subsequent investment rounds, Alibaba remains a major shareholder. In essence, the competition between K3 and Qwen3.8 is akin to a race for scale taking place under the umbrella of a single backer.
 
 
         Verification remains the critical hurdle. If K3's benchmark performance is successfully replicated after the weights are released on the 27th, U.S. AI companies—which have maintained high-cost API structures—will once again face tough questions from users demanding to know exactly what they are paying for.
