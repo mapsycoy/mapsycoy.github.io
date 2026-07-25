@@ -221,19 +221,19 @@ contentBlocks:
 
         [^1]: 물질세계에 있는 모든 구체적이며 개별적인 존재를 통틀어 이르는 말' 등을 의미
       en: >-
-        In my previous writing, I arrived at a certain norm:
+        In the previous post, I arrived at a certain norm:
 
 
         ***"Not what to make the child feel, but what to leave for the child to do."***
 
 
-        Yet, having written this sentence, I had to ask myself: what exactly is the ambiguity of this **"intentional ambiguity"** demanded by this norm? Both a silent imaginary friend and a fluent AI companion are ambiguous in some sense. The term *ambiguity* alone fails to distinguish good design from bad design once again.
+        Yet after writing this sentence, I had to ask myself: what exactly is the ambiguity in the **"intentional ambiguity"** demanded by this norm? A silent imaginary friend and a fluent AI companion are both, in a sense, ambiguous. The word ambiguity alone fails once again to distinguish good design from bad. 
 
 
-        There is a paper that theorized this very problem:
+        There is a paper that theorized this problem.
 
 
-        Gaver, Beaver, and Benford’s 「*Ambiguity as a Resource for Design*」 in CHI 2003.
+        *"Ambiguity as a Resource for Design"* by Gaver, Beaver, and Benford at CHI 2003.
 
 
         [Ambiguity as a Resource for Design](https://dl.acm.org/doi/10.1145/642611.642653)
@@ -246,48 +246,19 @@ contentBlocks:
 
 
 
-        ## Ambiguity is a Relationship, Not an Object
+        ## **Ambiguity Is Not an Object, But a Relationship**
 
 
-        The very first point Gaver et al. firmly establish is that ambiguity is not an inherent property of things.
+        The first thing Gaver and colleagues establish is that ambiguity is not an attribute of the object itself.
 
 
         > ambiguity is an attribute of our interpretation of them
 
 
-        While fuzziness or inconsistency may be properties of the object itself, **ambiguity arises solely from the relationship between the object and the person interpreting it.** The exact same artifact can be ambiguous or clear, depending on the viewer's expectations and identity.
+        While fuzziness or inconsistency are properties of the subject itself, **ambiguity arises only in the relationship between the subject and the person interpreting it.** The same artifact can be ambiguous or clear depending on the viewer's expectations and identity.
 
 
-        This shift feels familiar. It shares the same structural logic as when Wegner described agency not as a "fact inherent in action" but as an "authorship ascribed after the fact." Both theories displace a property that seemingly belongs to the object, relocating it into the relationship between the observer and the object. Gaver’s ambiguity and Wegner’s agency share the same epistemology, albeit in different disciplines.
-
-
-
-
-        ---
-
-
-
-
-        ## Three Ambiguities, Three Demands
-
-
-        Gaver et al. classify ambiguity into three distinct levels:
-
-
-        * **Ambiguity of information**: Arises when the information itself is incomplete or overly precise. Just as the *sfumato* technique in the *Mona Lisa* blurs the edges of the mouth, preventing the expression from being definitively fixed.
-
-        * **Ambiguity of context**: Arises when a single object spans incompatible interpretative frameworks simultaneously. Just as Duchamp’s *Fountain* in postmodernism is a urinal yet concurrently a work of art.
-
-        * **Ambiguity of relationship**: Arises when the interpreter’s own values and stances are put to the test. Just as a viewer standing before *La Bais-ô-Drôme*—a functional space perfectly fulfilling the most private human sexual desires—is compelled to ask themselves, "Would I want to live here?"
-
-
-        These three types demand different interpretive work. Ambiguity of information prompts users to judge truth for themselves; ambiguity of context urges them to integrate conflicting meanings; and ambiguity of relationship forces them to reflect on their own values.
-
-
-        The paper concludes with this summary: **ambiguity is a resource that inspires designers and serves as an expression of deep respect for users.**
-
-
-        Presenting issues rather than imposing solutions, and recognizing that very act as respect for the user—this sentence almost perfectly overlaps on the surface with the norm from my previous writing.
+        This shift is familiar. It shares the same structure as when Wegner described agency not as an "inherent fact of action," but as a "retrospectively inferred attribution." Both theories relocate a quality that seemingly belongs to the object over to the relationship between the observer and the object. Gaver's ambiguity and Wegner's agency share an epistemology across different disciplines.
 
 
 
@@ -297,25 +268,54 @@ contentBlocks:
 
 
 
-        ## Limitations
+        ## **Three Ambiguities, Three Demands**
 
 
-        The problem lies in what exactly this **"respect"** refers to.
+        Gaver and colleagues divide ambiguity into three levels:
 
 
-        The examples discussed by Gaver et al. can be used repeatedly. The paper does not deny this. However, their focus is not on whether the user's interpretation accumulates over repeated interactions to reconfigure the system, but rather on the very possibility of interpretation arising in a single moment. In other words, design that presupposes iterative relationships remains outside the analytical scope of this paper.
+        * **Ambiguity of information**: Arises when information itself is incomplete or overly definite. Much like how Leonardo's sfumato technique in the *Mona Lisa* blurs the contours of the mouth, leaving the expression undetermined.
+
+        * **Ambiguity of context**: Arises when a single object spans incompatible frames of interpretation simultaneously. Like Duchamp's *Fountain* in postmodernism, existing as a urinal and a work of art at once.
+
+        * **Ambiguity of relationship**: Arises when the interpreter's own values and stance are put to the test. As when a viewer stands before *La Bais-ô-Drôme*—a functional space designed to satisfy private human sexual desire—and asks themselves, "Would I want to live here?"
 
 
-        This gap is, unexpectedly, foreshadowed within the paper itself. Discussing the horoscopes of the Home Health Monitor, Gaver et al. warn that over-interpretation must not be groundless nonsense. It must be plausible enough to suspend disbelief.
+        These three types demand different interpretive work. Information ambiguity prompts one to judge truth for oneself; context ambiguity calls for integrating conflicting meanings; relationship ambiguity prompts reflection on one's own values.
 
 
-        For over-interpretation to succeed, it must cross the threshold of "credible plausibility." The failure case they cite was a proposed animal language translation (Tweet-to-Text) system that attempted to mechanically convert bird chirps or pet cries into human speech. What is intriguing is that this warning only addresses plausibility during a single encounter. It does not address whether that interpretation truly alters anything within a sustained, repeated relationship.
+        The paper concludes with this summary: **Ambiguity is a resource that inspires designers, and an expression of deep respect for the user.**
 
 
-        This omission is likely not unrelated to the level of AI implementation back in 2003 when the paper was written. Considering the technological environment of the time, interactions where a user's interpretation alters the system's state over the long term could hardly be the centerpiece of design.
+        Presenting issues rather than imposing solutions—that this constitutes respect for the user. Surface-wise, this sentence nearly overlaps with the norm from my previous post.
 
 
-        Therefore, interaction design in the era of generative AI, which learns from user text in real-time and stitches contexts together, must be viewed differently from this point onward.
+
+
+        ---
+
+
+
+
+        ## **What Was Unfortunate**
+
+
+        The question is what this **"respect"** precisely points to. 
+
+
+        The examples handled by Gaver and colleagues can be used repeatedly. The paper does not deny this. Yet the paper's interest lies not in whether user interpretations accumulate over repetition to reconfigure the system, but in the possibility of interpretation arising at a single moment. That is, design premised on repeated interaction remains outside the scope of its analysis.
+
+
+        Unexpectedly, the authors anticipate this gap within the paper itself. Discussing horoscopes in the Home Health Monitor, Gaver and colleagues warn that over-interpretation must not be groundless nonsense. It must be plausible enough that suspending belief is difficult.
+
+
+        For over-interpretation to succeed, it must cross the threshold of "credible plausibility." What they cited as a failure was a proposed animal language translation system (Tweet-to-Text) that attempted to mechanically convert bird chirps or pet cries into speech. What is interesting is that this warning addresses plausibility only in a single encounter. Whether that interpretation truly changes something within a repeated relationship is not addressed.
+
+
+        This gap is likely not unrelated to the level of AI implementation in 2003, when the paper was written. Considering the technological landscape of the time, interaction where user interpretation alters system states over the long term could hardly serve as the center of design.
+
+
+        Thus, interaction design in the era of generative AI—which learns from user text in real time and stitches contexts together—must be viewed differently at this juncture.
 
 
 
@@ -328,52 +328,52 @@ contentBlocks:
         ## **21 Years Later**
 
 
-        If this gap was due to the technological limitations of 2003, it should have been filled by now, given the advent of generative AI.
+        If this gap was due to technological limits in 2003, it ought to have been filled now that generative AI has emerged.
 
 
-        Indeed, 21 years later, Steve Benford—one of Gaver's co-authors—updated his own theory alongside Sivertsen and other researchers. (While Benford is not the primary author, I will refer to it as Benford et al. for convenience.)
+        Indeed, Steve Benford, one of Gaver's co-authors, renewed his own theory 21 years later alongside Sivertsen and fellow researchers. (Though Benford is not the first author, his name will be used here for convenience.)
 
 
         [Machine Learning Processes as Sources of Ambiguity: Insights from AI Art](https://dl.acm.org/doi/10.1145/3613904.3642855)
 
 
-        In 「*Machine Learning Processes as Sources of Ambiguity: Insights from AI Art*」 at CHI 2024, Benford et al. analyze nine AI art pieces and argue that Gaver’s three ambiguities (information, context, relationship) are insufficient for dealing with machine learning. They propose a fourth type: 'ambiguity of process'—the idea that the ML pipeline itself, consisting of dataset curation, model training, and deployment, is ambiguous. Furthermore, they explicitly state that this ambiguity applies not only to the audience but to the artists themselves. The creators do not fully know how the systems they built will operate.
+        Analyzing nine works of AI art in "*Machine Learning Processes as Sources of Ambiguity: Insights from AI Art*" at CHI 2024, Benford and colleagues state that Gaver's three ambiguities (information, context, relationship) are insufficient for dealing with machine learning. The fourth type they propose is 'ambiguity of process'—the ambiguity inherent in the ML pipeline itself, from dataset construction to model training and application. And they explicitly note that this ambiguity applies not only to the audience, but to the artists who built it. Even the creators do not fully know how the systems they built will operate.
 
 
-        This paper goes a step further, directly challenging the notions of 'trustworthiness' and 'explainability' that HCI has traditionally demanded of AI.
+        This paper goes a step further, directly questioning the 'trustworthiness' and 'explainability' that HCI has demanded of AI.
 
 
-        They argue that rather than hiding uncertainty, revealing it is precisely what leads users to reflection. This argument seems to point in the same direction as the path this text has trodden—namely, not to eradicate ambiguity.
+        They argue that rather than concealing uncertainty, one should reveal it, as that is what leads the user toward reflection. At a glance, this argument seems to point in the same direction as the path this writing has taken—since it advises against eliminating ambiguity.
 
 
-        Even more fascinating is the introduction of this paper:
+        Even more interesting is the opening of the paper:
 
 
         > With a few exceptions, Gaver and colleagues' framework has not been applied to AI or challenged in substantial ways.
 
 
-        The authors themselves admit that, save for a few exceptions, Gaver’s framework has rarely been applied to or substantially challenged by AI.
+        The authors themselves acknowledge that, save for a few exceptions, Gaver's framework had rarely been applied to AI or challenged in substantial ways.
 
 
-        However, there is a point here that must be scrutinized.
+        Yet there is a point to be examined here.
 
 
         [Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation](https://dl.acm.org/doi/10.1145/1142405.1142422)
 
 
-        In 「*Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation*」 at DIS 2006, Gaver was already keenly aware of one axis of this problem. (The Bill Gaver of 2006 and the William W. Gaver of 2003 are the same person, simply alternating between his official name and colloquial name.)
+        In "*Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation*" at DIS 2006, Gaver was already aware of one side of this issue. (Bill Gaver in 2006 and William W. Gaver in 2003 are the same person, using official and common name variations.)
 
 
-        **In this paper, he critiqued traditional HCI's obsession with a 'single, authoritative interpretation' where users understand the system exactly as the designer intended. Instead, he argued for acknowledging the uncertainty of interactions where system and user become entangled, advocating for incompleteness and ambiguity as strategic design tools.**
+        **In this paper, he criticized traditional HCI's obsession with a 'single, authoritative interpretation' where users understand the system according to designer intent, arguing instead for acknowledging the uncertainty of interaction where system and user entangle, making imperfection and ambiguity strategic tools of design.**
 
 
-        Furthermore, he stated that it is not enough for a system to merely suggest multiple interpretations. The user must feel a "license" to interpret. Without that license, ambiguity is read not as richness, but as confusion.
+        Furthermore, he states that it is not enough for a system merely to suggest multiple interpretations. The user must feel a "license" that says, "I am allowed to interpret." Without that license, ambiguity is read not as richness, but as confusion.
 
 
-        In short, he noted the necessity of systems that explicitly allow for multiple interpretations.
+        That is, he noted the need for systems that explicitly grant multiple interpretations.
 
 
-        Ultimately, the 'ambiguity of process, unknown even to the creator' captured by Benford et al. in 2024 can be seen as the technological manifestation of the 'uncertainty beyond the designer's control' that Gaver spoke of back in 2006, now realized as a technical inevitability in the age of AI.
+        In the end, the 'ambiguity of process unknown even to the creator' captured by Benford and colleagues in 2024 might be seen as the 'uncertainty beyond designer control' spoken of by Gaver back in 2006, manifesting as a technological necessity in the AI era.
 
 
 
@@ -383,37 +383,37 @@ contentBlocks:
 
 
 
-        ## **In Conclusion**
+        ## **Closing Notes**
 
 
-        Until my previous text, I considered the conditions rather simply: that the child's labor must be reflected in the system. However, reading through Gaver’s two papers reveals a prerequisite condition: if the child does not feel the license to interpret in the first place, the very labor to be reflected will never emerge. License comes first, labor follows, and reflection comes last.
+        Until my previous post, I had considered the conditions somewhat simply: that the child's labor must be reflected in the system. Reading through Gaver's two papers, however, I found another condition preceding it. If a child does not feel "I am allowed to interpret" in the first place, the labor to be reflected never arises. License first, labor next, reflection last.  
 
 
-        The paper offers two strategies for constructing that license:
+        This paper offers two methods for creating that license:
 
 
-        1. Do not hide the system's errors and limitations; reveal them (seamfulness)
+        1. Reveal the system's errors and limits rather than concealing them (seamfulness).
 
-        2. **Present the system not as an intelligent entity, but as an alien presence**
-
-
-        Only when a system refrains from claiming "my interpretation is the sole correct answer" do people finally feel they are allowed to construct their own interpretations.
+        2. **Present oneself not as a smart entity, but as an 'alien presence.'**
 
 
-        What is intriguing is the starting point of this second strategy. The paper notes that while *seamfulness* works for devices that sense and display data, it is difficult to apply directly to systems that perform complex reasoning and respond based on that data. An *alien presence* was a strategy conceived precisely for such reasoning systems—namely, AI.
+        Only when the system refrains from claiming "my interpretation is the sole right answer" does a person feel they may construct their own interpretation.
+
+
+        What is interesting is the origin of this second strategy. The paper states that while seamfulness works for devices that sense and display data, it is difficult to apply directly to systems that make complex inferences and respond from data. An alien presence was a strategy devised precisely for such inference systems—that is, AI.
 
 
         <mark>**An alien presence.**</mark>
 
 
-        This aligns with the approach I previously explored regarding imaginary friends.
+        It is the same approach I previously examined with imaginary friends.
 
 
-        The direction of the answer was already presented 20 years ago. Yet, the generative AIs placed before children today seem to move in the exact opposite direction. They have evolved to respond as seamlessly as possible, rather than leaving room for the user to interpret.
+        The direction of the answer was already offered twenty years ago. Yet the generative AIs placed before children today seem to move in the opposite direction. They have developed toward responding as seamlessly as possible, rather than leaving room for the user to interpret.
 
 
-        **"If so, where does the license to interpret emerge most powerfully for a child?"**
+        ***"Where, then, does the license that says 'you may interpret' arise most powerfully for a child?"***
 
 
-        Perhaps the next piece of writing should begin with this question.
+        Perhaps the next post should begin with this question.
 ---
