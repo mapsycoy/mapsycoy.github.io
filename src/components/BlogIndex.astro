@@ -111,7 +111,10 @@ const paginationItems = (() => {
               {group.posts.map((post) => (
                 <li>
                   <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
-                    <span class:list={["blog-list-title", hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</span>
+                    <span class:list={["blog-list-title", hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>
+                      {localize(post.data.title, lang)}
+                      {post.data.tag !== "Essay" && <small class="blog-series-tag">{post.data.tag}</small>}
+                    </span>
                     <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
                     {post.data.summary && localize(post.data.summary, lang).trim() && (
                       <span class:list={["blog-list-summary", lang === "ko" && "is-korean"]}>{localize(post.data.summary, lang)}</span>

@@ -2344,6 +2344,16 @@ h3 {
   font-size: 0.82rem;
 }
 
+.blog-series-tag {
+  margin-left: 0.6em;
+  color: var(--muted);
+  font-size: 0.68rem;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.35;
+  white-space: nowrap;
+}
+
 ul.blog-text-list {
   padding-left: 0;
   list-style: none;
