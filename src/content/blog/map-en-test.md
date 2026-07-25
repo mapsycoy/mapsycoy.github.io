@@ -343,7 +343,7 @@ contentBlocks:
         Director Maggie Kang is a Korean-Canadian who was born in Seoul and emigrated to Canada as a child. To her, Korean culture was likely neither entirely inside nor entirely outside. Something familiar, yet simultaneously something to be explained and translated. A part of oneself, yet something that can be looked at again through a different gaze.
 
 
-        Of course, one cannot say that only the experience of diaspora[^1] enables cultural reinterpretation. Yet the position she stood in resembles the position my mentor took for me. A position where one maintains a relationship with the object, yet without being fully submerged in that relationship. Certain familiarities become visible only at that boundary.
+        Of course, one cannot say that only the experience of diaspora enables cultural reinterpretation. Yet the position she stood in resembles the position my mentor took for me. A position where one maintains a relationship with the object, yet without being fully submerged in that relationship. Certain familiarities become visible only at that boundary.
 
 
 
@@ -618,7 +618,7 @@ contentBlocks:
         Yet as stated at the start of this post, a shifted place eventually grows familiar again. What the conversation with my mentor showed was a different kind of possibility.
 
 
-        A structure of unexpiring strangeness might reveal its form little by little when perspectives from different fields—such as literary theory, aesthetics, child psychology, and art education—are placed beside the same problem, rather than seeking it solely within the language of HCI. Placing different fields side by side is also a way to let each field become a witness pointing out the other's familiarity.
+        A structure of strangeness that does not wear down might reveal its form little by little when perspectives from different fields—such as literary theory, aesthetics, child psychology, and art education—are placed beside the same problem, rather than seeking it solely within the language of HCI. Placing different fields side by side is also a way to let each field become a witness pointing out the other's familiarity.
 
 
         I, too, want to try placing familiar concepts in a different place.
