@@ -189,43 +189,37 @@ contentBlocks:
 
         그런데 케데헌에 관한 이야기를 쓰고 나니 생각이 달라졌다. 내가 세운 가설은 우선 그림 하나로만 남겨두고, 잠시 보류하는 편이 좋을 것 같다.
       en: >-
-        ## **Strangeness Wears Out**
+        ## **Strangeness Wears Down**
 
 
-        In the previous essay, I wrote about Gaver and Sengers’ idea of an “alien presence.” It was one way of leaving interpretation open—or, put differently, of giving the user permission to interpret.
+        In the previous post, Gaver and Sengers’ concept of "alien presence" served as a way to leave room for interpretation—in other words, a manner of handing the user permission to interpret. Yet there is a single problem here.
 
 
-        But there is a problem.
+        ***'Strangeness wears down.'***
 
 
-        ***'Strangeness wears out.'***
+        Gaver himself defined ambiguity not as a fixed property of an object, but as a relationship that emerges between the interpreter and the subject. Relationships change through repetition. What was strange at first grows gradually familiar by the second time, eventually becoming a habit.
 
 
-        Gaver described ambiguity not as a fixed quality of an object, but as something that emerges between an object and the person interpreting it. And relationships change through repetition. Something that feels strange at first becomes more familiar the second time. Eventually, it becomes a habit.
+        In my last post, I found it unfortunate that Gaver did not sufficiently address the problem of repetition in his 2003 paper. Because he defined ambiguity as a relationship yet analyzed mostly the initial moment of encountering an object, the process through which ambiguity diminishes within repeated relationships remained outside the discussion.
 
 
-        In my previous essay, I wrote that Gaver’s 2003 paper did not say enough about repetition. Although he defined ambiguity as relational, he mainly focused on the first encounter between a user and an object. What happens to ambiguity after that encounter—how it fades through repeated contact—was left mostly unexplored.
+        The partner against whom ambiguity wears down fastest is an entity encountered frequently, intimately, and repeatedly. With repetition, human perception becomes automated, and at a certain point, the cognitive effort spent on the object drops close to zero. And this is precisely one of the paradoxes of AI interaction.
 
 
-        Strangeness wears away fastest in things we meet often, closely, and repeatedly. With repetition, perception becomes automatic. At some point, the mental effort we give to an object becomes almost zero.
+        AI companions are designed so that users remain long and engage in repeated relationships. Yet as the relationship deepens, the initial strangeness disappears. The AI that was once an alien presence soon becomes a familiar interface with predictable speech and response patterns.
 
 
-        This is one of the paradoxes of interacting with AI.
+        Even so, I have a reason for writing this post. **Because an "at once familiar yet strange" experience surely exists.**
 
 
-        AI companions are designed to keep users around and encourage them to build relationships over time. But the deeper the relationship becomes, the more the original strangeness disappears. An AI that once felt like an unfamiliar presence soon becomes a familiar interface with a predictable tone and recognizable patterns of response.
+        A moment when an expression used every day suddenly turns strange. A moment when an alleyway passed dozens of times strikes one quite differently on a certain day. A moment when one discovers a facial expression never seen before on a face looked upon every day.
 
 
-        Still, there is a reason I wanted to write this essay. **There are moments when something feels familiar and strange at the same time.**
+        Familiarity does not necessarily exclude strangeness. Rather, certain strangeness reveals itself only after growing thoroughly familiar.
 
 
-        A phrase we have used for years suddenly sounds unfamiliar. A street corner we have passed dozens of times looks different one day. We notice an expression on a familiar face that we had never seen before.
-
-
-        Familiarity does not always remove strangeness. Sometimes, strangeness appears only after something has become deeply familiar.
-
-
-        In 1917, the Russian Formalist Viktor Shklovsky gave this experience a name.
+        Russian Formalist Viktor Shklovsky captured this phenomenon as a concept in 1917.
 
 
         <mark>***'Defamiliarization.'***</mark>
@@ -234,25 +228,22 @@ contentBlocks:
         He began with the same problem we are facing here: the way perception becomes automatic.
 
 
-        Shklovsky believed that habit consumes both objects and life itself. The road we walk every day, the smartphone we always hold, the faces we know well—after enough repetition, we stop truly seeing them. We recognize what they are, but we no longer look at them again.
+        His starting point was the very problem we face now: the "automation of perception." He viewed habitualization as devouring objects and life. The path walked every day, the smartphone held constantly in hand, the familiar faces. Upon repetition, we no longer truly perceive them. We merely recognize what they are; we do not look at them again.
 
 
-        For Shklovsky, the role of art was to break this habit. Art makes familiar things strange again, so that we can see them as though we were meeting them for the first time.
+        To Shklovsky, the task of art was to break this automation. To make what became invisible through familiarity strange once more, causing it to be perceived as though met for the first time.
 
 
-        One part of his argument is especially important. The way to do this is to make form more difficult and slow down perception.
+        Here, one thing he added is decisive. The method is to make form difficult, thereby lengthening the duration of perception.
 
 
-        Defamiliarization is not a technique for helping us understand something more quickly or easily. It does the opposite. It delays understanding, bends the usual path of recognition, and makes us stay with the object for longer.
+        Defamiliarization is not a technique that helps one understand an object faster and easier. On the contrary, it is a technique that delays understanding, twists familiar paths of cognition, and causes one to linger longer before the object.
 
 
-        The question, then, changes.
+        Then the question changes.
 
 
-        It is no longer: **How can we place strangeness into something from the beginning?**
-
-
-        It becomes: **How can we make something strange again after it has already become familiar?**
+        ***It is not how to inject strangeness from the start, but how to make what has already grown familiar feel strange again.***
 
 
 
@@ -265,94 +256,94 @@ contentBlocks:
         ## **Defamiliarization**
 
 
-        Recently, I met with my long-time mentor for a meal and shared my reasons for entering graduate school, as well as the dilemmas I've been facing lately.
+        I recently met with an old mentor over a meal and shared the background behind my graduate school preparations along with my ongoing thoughts.
 
 
-        To briefly introduce my mentor, he is a professor who taught me at the Arts Gifted Academy, and has long dedicated his research to child art education and child psychology. Our bond has now spanned nearly 20 years.
+        To briefly introduce my mentor, he is a professor who taught me at the Academy for Art Gifted Children in the past and has long researched child art education and child psychology. Before I knew it, our connection has spanned nearly twenty years.
 
 
-        After listening, he gave me two examples.
+        Upon hearing my concerns, the professor offered two examples.
 
 
         **René Magritte.** And ***K-Pop Demon Hunters*.**
 
 
-        Magritte made sense right away. Think of 〈*The Castle of the Pyrenees*〉. A huge rock floats in the air, with a castle sitting on top of it. The rock, the castle, and the sea are all familiar things. Nothing in the painting is new by itself.
+        Magritte was immediately understood. One can recall *The Castle of the Pyrenees*. A massive rock floats in midair, topped by a castle. The rock, the castle, the sea—each in itself is something we already know. Nothing new has been invented. The rock simply does not rest where it ought to be.
 
 
-        The rock is simply not where it is supposed to be. That single change makes us look at the rock again. We begin to think about what it means for something to be heavy, to stay on the ground, and to belong to gravity. What Shklovsky explained in writing, Magritte showed in an image.
+        Through that single shift, we look at the rock again. We think again about what it means to be heavy, what it means to be anchored to the ground, what it means to belong to gravity. What Shklovsky explained in words, Magritte showed through painting.
 
 
-        But *K-Pop Demon Hunters* confused me at first.
+        Yet regarding *K-Pop: Demon Hunters*, I was a bit puzzled at first.
 
 
         “Is *K-Pop Demon Hunters* really strange?”
 
 
-        Then I realized that I had only been looking at it from the perspective of a Korean viewer.
+        But I soon realized. I had been looking at it solely through Korean eyes.
 
 
-        This film draws various motifs from Korean shamanism, folklore, and traditional paintings. The realms of the living and the dead, unresolved grudges (*wonhan*), and exorcism through song and dance. To me, these concepts were things I had repeatedly encountered through various media since childhood, so I merely recognized them without actively perceiving them. But what would it be like for someone encountering these concepts for the very first time? Even the fact that the entity taking away the dead takes the form of a young man wearing a black traditional hat (*gat*) could feel exotic and strange to them. And precisely because it is unfamiliar, they view it with fresh eyes.
+        The movie draws various motifs from Korean shamanism, folklore, and traditional painting. The realms of the dead and the living, unresolved rancor, exorcism through song and dance. To me, these concepts were things encountered repeatedly across media since childhood, so I merely recognized them without active perception. But how would it feel to someone encountering them for the first time? Even the fact that the entity leading away the deceased takes the form of a young man wearing a black horsehair hat might strike them as strange. And because it is strange, they see it with a fresh gaze.
 
 
-        The format of K-Pop is no different. I do not find it the least bit strange to see idols performing perfectly synchronized choreography on stage, or fandoms chanting the same song while waving lightsticks.
+        The format of K-Pop is the same. I do not find it in the least strange when idols perform perfectly synchronized choreography on stage or when fans chant in unison while waving lightsticks.
 
 
-        Yet, this film overlays that familiar stage onto a space of shamanistic ritual. The concert becomes a form of *gut* (a shamanic ritual), and the fandom’s roaring cheers become the power that sustains a sacred barrier.
+        Yet the movie overlays that familiar stage onto the ground of shamanic ritual. A concert becomes a kind of *gut* (shamanic ritual), and the chants of the fandom become a force maintaining a barrier.
 
 
-        Come to think of it, it isn't an entirely disparate combination. Seen from the outside, the scene of thousands of people facing one direction, waving lights, and repeating the same songs and chants already looks sufficiently ritualistic.
+        Thinking about it, it is not an entirely distant pairing. The sight of thousands facing a single direction, waving lights, and repeating identical songs and chants can already look sufficiently ritualistic from the outside.
 
 
-        Because I was inside the K-Pop culture, I failed to perceive that it resembled a ritual. By displacing K-Pop into a different domain—shamanism—the film brought to light the ritualistic nature that was already inherently present within it.
+        Because I was on the inside of K-Pop culture, I did not perceive that it resembled ritual. By placing K-Pop into a different spot called shamanism, the movie rendered visible the ritual quality already existing within it.
 
 
-        And then there is the tiger. The tiger in K-Pop Demon Hunters is blue.
+        And then there is the tiger. The tiger in *K-Pop: Demon Hunters* is blue.
 
 
-        Why blue? It is a color not found even in traditional folk paintings of tigers (*Hojakdo*). It is precisely because of this misalignment that we look at the tiger once more.
+        Why blue? It is a color unseen even in traditional *Hojak-do* (tiger and magpie folk paintings). Precisely because of that mismatch, we look at the tiger once more.
 
 
-        It is not because the physical reality of the color blue is extraordinary. It is because a color has been placed where a familiar tiger would never be. Here, Gaver’s definition—that ambiguity is not an intrinsic property of things, but rather arises within relationships—is reaffirmed.
+        It is not that the physical fact of blue is special. It is because a color that would not sit in the tiger's familiar place has been placed there. Gaver’s definition—that ambiguity arises not from the properties of an object, but within relationships—is reconfirmed here.
 
 
-        From this conversation, I gained two insights:
+        What I gained from this conversation was two things:
 
 
-        * **Strangeness comes less from the object itself than from where the object is placed.**
+        * **Strangeness stems less from the object itself than from the place where the object is set.**
 
 
-        Neither the rock in <*The Castle of the Pyrenees*> nor the blue of the tiger in K-Pop Demon Hunters was newly invented. Familiar things were simply detached from their original relationships and placed in a different position.
+        Neither the rock in *The Castle of the Pyrenees* nor the blue of the tiger in *K-Pop: Demon Hunters* was newly invented. A familiar thing merely departed from its original relationship and was set in a different place.
 
 
-        * **Because strangeness is relational, I cannot fully decide what is strange from my own position.**
+        * **Because strangeness is a relationship, I cannot fully judge my own strangeness.**
 
 
-        I failed to recognize that K-Pop Demon Hunters was defamiliarizing. This was because I was living inside that world. It only became visible to me after my mentor pointed it out from a different vantage point.
+        I failed to recognize that *K-Pop: Demon Hunters* was strange. Because I was living inside that world. It became visible only after my mentor pointed it out from a different position.
 
 
-        And at this juncture, a concept I have been building across my previous writings returns.
+        And at this point, a concept built up across previous writings returns.
 
 
         ***'The Witness.'***
 
 
-        I have previously depicted the witness as an entity that observes and reflects back a child’s actions. However, the conversation with my mentor revealed another role for the witness. A witness is not merely someone who remembers and reflects what a child has done. <mark>**The witness is an entity capable of pointing out, from a different position, the familiarity that the child cannot perceive on their own.**</mark>
+        I have drawn the witness as an entity that observes and reflects the child's actions. Yet the conversation with my mentor revealed another role for the witness. A witness is not merely an entity that remembers and reflects what a child has done. <mark>**It is an entity capable of pointing out, from a different position, the familiarity that the child cannot perceive on their own.**</mark>
 
 
-        Until now, the agent of defamiliarization was largely seen as the creator. For both Magritte and the creators of K-Pop Demon Hunters, the act of shifting the familiar into an unfamiliar place was carried out in advance, outside the artwork. However, as mentioned earlier, a pre-displaced space eventually becomes a new familiarity. Unfamiliarity depletes.
+        The agent of defamiliarization has mostly been the creator until now. For Magritte, and for the creators of *K-Pop: Demon Hunters*, the act of moving the familiar into a strange place occurred beforehand, outside the work. Yet as stated earlier, a place prepared in advance eventually becomes a new familiarity. Strangeness wears down.
 
 
-        A witness within a relationship is different. The witness is positioned to see what the child has grown accustomed to, even before the child does. Just as I could not see the unfamiliarity of K-Pop Demon Hunters, a child does not know what they are habitually passing over within a system. Pointing that out is impossible from a perspective outside the system; it is only possible from a different position within the relationship. That was precisely what my mentor did for me.
+        A witness within a relationship is different. A witness stands in a position to see what the child has grown accustomed to, sooner than the child. Just as I failed to see the strangeness of *K-Pop: Demon Hunters*, a child does not know what they pass by like habit within the system. Pointing that out is possible not from a gaze outside the system, but only from a different position within the relationship. What my mentor did for me was precisely that.
 
 
-        And come to think of it, the work *K-Pop Demon Hunters* itself was born from precisely that kind of positioning.
+        And thinking about it, the work *K-Pop: Demon Hunters* itself was born from such a position.
 
 
-        The director, Maggie Kang, is a Korean-Canadian who was born in Seoul and moved to Canada during her childhood. To her, Korean culture was likely neither entirely on the inside nor completely on the outside. It was something familiar, yet simultaneously something that had to be explained and translated. It was a part of herself, yet also something she could look back upon through a different lens.
+        Director Maggie Kang is a Korean-Canadian who was born in Seoul and emigrated to Canada as a child. To her, Korean culture was likely neither entirely inside nor entirely outside. Something familiar, yet simultaneously something to be explained and translated. A part of oneself, yet something that can be looked at again through a different gaze.
 
 
-        Of course, one cannot say that the diaspora experience is the only thing that enables cultural reinterpretation. However, the place where she stood closely resembles the position my mentor took for me—a position that maintains a relationship with the subject, yet does not become completely submerged within that relationship. Certain familiarities become visible only from that very boundary.
+        Of course, one cannot say that only the experience of diaspora[^1] enables cultural reinterpretation. Yet the position she stood in resembles the position my mentor took for me. A position where one maintains a relationship with the object, yet without being fully submerged in that relationship. Certain familiarities become visible only at that boundary.
 
 
 
@@ -362,13 +353,10 @@ contentBlocks:
 
 
 
-        I had originally planned to use the second half of this essay to explain a structure I had built from my previous writings: If strangeness wears out, where can it come from again?
+        Originally, in the latter half of this post, I intended to lay out at length a framework built by integrating my past writings. Summarizing the relationship between system, state, and labor to answer where strangeness can be replenished once it wears down.
 
 
-        I had tried to answer that question through the relationship between the system, its state, and the child’s labor.
-
-
-        But after writing about *K-Pop Demon Hunters*, I began to think differently. For now, it may be better to leave the hypothesis as a single diagram and put it aside.
+        Yet after writing the story about *K-Pop: Demon Hunters*, my thoughts changed. It seems better to leave the hypothesis I built as a single diagram for now, and hold off for a moment.
   - type: text
     body:
       ko: |-
@@ -523,37 +511,37 @@ contentBlocks:
         The point is this.
 
 
-        The core rules of the system do not change. What changes is the state that the child has created within it. When fixed rules act upon the new state created by the child, a result returns that the child could not have predicted precisely.
+        The basic rules of the system do not change. What changes is the state that the child has built within it. When fixed rules act upon the new state created by the child, a result returns that the child did not precisely predict.
 
 
         That is the 'gap.'
 
 
-        However, the mere occurrence of a gap is not enough. Of course, there are gaps that a child notices on their own. There certainly are moments when a child stops and goes, "Huh?" by themselves in front of an unexpected result. Yet, as familiarity deepens, the role of such self-perceived gaps diminishes. Just as I could not judge the unfamiliarity of *K-Pop Demon Hunters* on my own, a child whose relationship with the system has deepened is more likely to pass over their own gaps out of habit. At that very juncture, when the act of witnessing—which has closely followed the child’s trajectory—skews and twists the result, the gap that might otherwise have been passed over is finally experienced as a gap. <mark>**Witnessing is not the gateway to all gaps, but rather a position that compensates for the spaces where the child’s self-perception is submerged by familiarity.**</mark>
+        However, the occurrence of a gap alone is not enough. There are, of course, gaps that a child notices on their own. Moments when a child pauses before an unexpected result, thinking "Huh?", certainly exist. Yet as familiarity deepens, the portion of gaps self-perceived in this manner diminishes. Just as I could not judge the strangeness of *K-Pop: Demon Hunters* on my own, a child in a deepening relationship is prone to passing by their own gaps like habit. At that very point, when witnessing that has watched the child's trajectory refracts the result into view, a gap that was about to be passed over is experienced as a gap. <mark>**Witnessing is not a gateway to all gaps, but a position that complements the place where a child's self-perception is submerged by familiarity.**</mark>
 
 
-        And an experienced gap becomes a permission for the child to attempt the next interpretation. The child interprets the returned result, acts again, and alters the state within the system. Then, the same rules encounter the changed state and produce a result different from before.
+        And an experienced gap becomes permission for the child to attempt the next interpretation. The child interprets the returned result, acts again, and alters the state within the system. Then, the same rules meet a changed state, creating a result different from before.
 
 
-        Unlike a pre-displaced space that eventually becomes familiar once again, the unfamiliarity generated by this cycle can continuously arise as long as the child creates new states. It is a structure where unfamiliarity is not stockpiled like content, but is continually regenerated within changing relationships.
+        Unlike a pre-arranged place that eventually grows familiar again, the strangeness generated by this loop can continuously occur as long as the child creates new states. It is a structure where strangeness is not stockpiled like content, but generated anew within the shifting relationship.
 
 
-        Yet, having mapped out this structure, one question remains that must be turned back upon the witness itself.
+        Yet having drawn this structure, one question remains to be asked of the witness itself.
 
 
-        Let us return to the starting point of this article. It was stated that ambiguity wears out fastest against an entity that one encounters frequently, intimately, and repeatedly. If so, what about the witness? The witness, too, exists within the relationship, and relationships grow familiar through repetition. A witness who stays by a child's side for a long time will gradually lose the ability to see what is unfamiliar about the child. Who, then, defamiliarizes the witness?
+        Let us return to the starting point of this post. It was said that the partner against whom ambiguity wears down fastest is an entity encountered frequently, intimately, and repeatedly. What, then, of the witness? The witness is also within the relationship, and relationships grow familiar through repetition. A witness remaining long beside the child will gradually fail to see what about the child is strange. Who makes the witness strange?
 
 
-        I consider the conditions that allowed my mentor to take that position for me. Though our bond has spanned nearly 20 years, our meetings were 'intermittent.' Because there was a distance, the position on the boundary could be maintained. For Maggie Kang, the physical distance of migration created that position. However, an AI companion is the exact opposite; it is designed to be omnipresent and intimate.
+        I think about the conditions that allowed my mentor to stand in that position for me. Though a relationship spanning nearly twenty years, our meetings were 'intermittent.' Because there was distance, the boundary position was maintained. For Maggie Kang, the physical distance of migration created that position. Yet AI companions are the exact opposite. They are designed to be constant, close presences.
 
 
-        **To maintain the position of a witness, shouldn't some form of intermittency or distance be engineered into the structure instead? This question directly clashes with the current design grammar of companions, which regards always being by one's side as a virtue.** I will leave this question for the next article.
+        **To maintain the position of a witness, shouldn't some intermittency or distance be designed into the structure instead? It is a question that collides head-on with the current companion design grammar, which takes being constantly by one's side as a virtue.** I will leave this question for the next post.
 
 
-        Yet, while arguing that unfamiliarity arises from relationships, it would be ironical to turn around and attempt to confine it within a single, fixed diagram.
+        Still, saying that strangeness arises from relationships while attempting to trap it once more inside a fixed diagram is a comical thing.
 
 
-        Before explaining what kind of unfamiliarity arises between the child and the system, I must first reflect on what I myself have been habitually passing over as familiar.
+        Before explaining what kind of strangeness arises between the child and the system, I need to look back at what I myself was passing by out of familiarity.
 
 
 
@@ -566,68 +554,52 @@ contentBlocks:
         ## **A Long Way Back**
 
 
-        As I prepared for graduate school, my reading naturally began to revolve around the ACM Digital Library.
+        Preparing for graduate school, my reading naturally revolved around the ACM Digital Library. Following papers in ACM, one can relatively easily find studies published by the same researcher across different times and conferences within the topic I seek.
 
 
-        When I follow papers through ACM, it is fairly easy to find other work by the same researcher, published at different times or at different conferences.
+        These connections are certainly useful. One can see how a researcher’s problem statement developed over time, and trace how a concept was inherited and transformed within HCI.
 
 
-        These connections are useful. They let me see how a researcher’s questions change over time. They also show how one idea is carried forward and reshaped within HCI. Then, after writing this paragraph, I searched again to check a few details and found something interesting.
+        And searching to verify after writing this paragraph, a fact was discovered.
 
 
-        The theories of Shklovsky introduced at the beginning of this essay have long been integrated into the field of HCI.
+        Shklovsky, whom I addressed in the introduction of this post, had already entered HCI long ago.
 
 
         [「Making by Making Strange: Defamiliarization and the Design of Domestic Technologies」](https://dl.acm.org/doi/10.1145/1067860.1067862)
 
 
-        Published in 2005 by Genevieve Bell, Mark Blythe, and Phoebe Sengers, 「*Making by Making Strange: Defamiliarization and the Design of Domestic Technologies*」 brought defamiliarization into the design of domestic technologies.
+        Published in 2005 by Genevieve Bell, Mark Blythe, and Phoebe Sengers, "*Making by Making Strange: Defamiliarization and the Design of Domestic Technologies*" is a paper that brought defamiliarization in as a methodology for domestic technology design.
 
 
-        The authors argued that the home is so familiar that we need to make it strange again. Only then can we notice the cultural assumptions and design possibilities hidden inside it.
+        They argued that because the home is too familiar a space, one must make it strange to discover the hidden cultural assumptions and design possibilities within it.
 
 
-        And look at the name of the third author.
+        And look at the third author's name.
 
 
         *Phoebe Sengers.*
 
 
-        She is the first author of 「*Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation*」, the paper I discussed in the second half of my previous essay.
+        The first author of "*Staying Open to Interpretation: Engaging Multiple Meanings in Design and Evaluation*," which I discussed in the latter half of my previous post.
 
 
-        A literary idea from 1917 entered the design of domestic technologies in 2005. The same researcher then wrote about openness to interpretation in 2006. Twenty years later, I read those papers in reverse order and found my way back to Shklovsky.
+        Literary theory from 1917 entered domestic technology design in 2005, and that researcher spoke of openness to interpretation again in 2006. And twenty years later, reading those papers in reverse order, I returned to Shklovsky.
 
 
-        Several of the smart-home design ideas in the paper stood out to me.
+        Among the smart home design strategies presented in that paper, what particularly caught my eye was not overestimating efficiency, re-questioning the initiative between technology and user, and separating play from passively consumed entertainment.
 
 
-        * Do not value efficiency too highly.
-
-        * Ask again who holds control between technology and the user.
-
-        * And do not confuse play with entertainment that is simply consumed.
+        The authors state that home rituals should not be eliminated in the name of efficiency, and that technology should support user activity without imposing unnecessary constraints. They also argue for leaving space for 'serious play' as distinct from passively consumed entertainment.
 
 
-        The authors argue that we should not remove domestic rituals in the name of efficiency. Technology should support what people do without placing unnecessary limits on them.
+        Things I had grasped in past posts as questions of labor, initiative, and play were already placed side by side within this paper.
 
 
-        They also argue that we should leave room for “serious play,” something different from entertainment that people only consume passively.
+        Yet this paper does not connect them into a single structure either. Each is presented as a separate strategy for rethinking the smart home. Defamiliarization is also used primarily as a method for designers to break familiar assumptions and discover new design possibilities. It does not address how strangeness is regenerated after wearing down within repeated interaction, or how that process connects to user labor.
 
 
-        Labor, agency, and play—the questions I had been following separately in my recent essays—were already sitting beside one another in this paper.
-
-
-        But the paper does not connect them into one structure.
-
-
-        Each appears as a separate way of rethinking the smart home. Defamiliarization is mainly used as a method for helping designers break familiar assumptions and find new possibilities.
-
-
-        It does not ask how strangeness might return after repeated interaction has worn it away. Nor does it ask how that process might connect to the user’s labor.
-
-
-        Having come full circle, I find myself back to Shklovsky, yet the ground I stand on is not the same as it was at the beginning. This is because the question itself has changed: from how to supply unfamiliarity, to how to create and maintain a position that allows a gap, which might otherwise be passed over, to be truly experienced as a gap.
+        Having come full circle back to Shklovsky, the spot I stand on is not the same as the beginning. Because the question has changed. From how to supply strangeness, to how to create and maintain a position that lets a gap about to be passed over be experienced as a gap.
 
 
 
@@ -637,17 +609,17 @@ contentBlocks:
 
 
 
-        ## **Closing Thoughts**
+        ## **Closing Notes**
 
 
-        As I realized through my conversation with my mentor, <mark>**strangeness begins when something familiar is moved away from its usual place.**</mark>
+        As realized in the conversation with my mentor, <mark>**strangeness begins when a familiar thing departs from its original place.**</mark>
 
 
-        However, as stated at the starting point of this article, a displaced space eventually becomes familiar once again. What the conversation with my mentor revealed was a different kind of possibility.
+        Yet as stated at the start of this post, a shifted place eventually grows familiar again. What the conversation with my mentor showed was a different kind of possibility.
 
 
-        Rather than searching solely within the language of HCI, a structure of unfamiliarity that does not deplete might gradually reveal itself when we place perspectives from entirely different fields—such as literary theory, aesthetics, child psychology, and art education—alongside the same problem. **Placing these different fields side by side is also a way of allowing each field to serve as a witness that points out one another’s familiarities.**
+        A structure of unexpiring strangeness might reveal its form little by little when perspectives from different fields—such as literary theory, aesthetics, child psychology, and art education—are placed beside the same problem, rather than seeking it solely within the language of HCI. Placing different fields side by side is also a way to let each field become a witness pointing out the other's familiarity.
 
 
-        And so, I, too, intend to take the concepts I have grown accustomed to and begin placing them in entirely different spaces.
+        I, too, want to try placing familiar concepts in a different place.
 ---
