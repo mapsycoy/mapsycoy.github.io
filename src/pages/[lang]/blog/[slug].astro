@@ -2,7 +2,7 @@
 import Layout from "../../../layouts/Layout.astro";
 import BlogSeriesNav from "../../../components/BlogSeriesNav.astro";
 import { render } from "astro:content";
-import { getBlogPostSlug, getBlogPosts, getPostDateLabel, getSeriesPosition, hasKoreanText, type BlogPost } from "../../../data/blog";
+import { formatTitlePunctuation, getBlogPostSlug, getBlogPosts, getPostDateLabel, getSeriesPosition, hasKoreanText, type BlogPost } from "../../../data/blog";
 import { getLanguageFromParams, languages, localize, type Language } from "../../../utils/i18n";
 import { smartenText } from "../../../utils/smartTypography.mjs";
 
@@ -25,7 +25,7 @@ type Props = {
 
 const { post, allPosts, lang } = Astro.props;
 const seriesPosition = getSeriesPosition(allPosts, post);
-const postTitle = localize(post.data.title, lang);
+const postTitle = formatTitlePunctuation(localize(post.data.title, lang));
 const { Content } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
 const contentBlocks = post.data.contentBlocks ?? [];

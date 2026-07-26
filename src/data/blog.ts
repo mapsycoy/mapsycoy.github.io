@@ -17,6 +17,11 @@ export const getBlogTagBySlug = (slug: string | undefined) =>
 
 export const hasKoreanText = (value: string) => /[\uac00-\ud7a3]/.test(value);
 
+export const formatTitlePunctuation = (value: string) =>
+  value
+    .replace(/"([^"\n]+)"/g, "“$1”")
+    .replace(/'([^'\n]+)'/g, "‘$1’");
+
 export const formatPostDate = (date: Date) =>
   new Intl.DateTimeFormat("en", {
     month: "short",

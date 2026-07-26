@@ -7,6 +7,7 @@ import {
   getPostSeriesMetadata,
   getSeriesGroups,
   formatPostDate,
+  formatTitlePunctuation,
   getPostDateLabel,
   hasKoreanText,
   normalizeBlogTag,
@@ -50,6 +51,7 @@ const allPath = `${languagePrefix}/blog/`;
 const tagPath = (tag: BlogTag) => `${languagePrefix}/blog/tag/${normalizeBlogTag(tag)}/`;
 const seriesGroups = hub ? getSeriesGroups(hubPosts) : [];
 const nonSeriesPosts = hub ? getNonSeriesPosts(hubPosts) : [];
+const getPostTitle = (post: BlogPost) => formatTitlePunctuation(localize(post.data.title, lang));
 const paginationItems = (() => {
   const pages = new Set([1, pageCount, currentPage - 1, currentPage, currentPage + 1]);
   const sortedPages = [...pages]
@@ -111,8 +113,8 @@ const paginationItems = (() => {
               {group.posts.map((post) => (
                 <li>
                   <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
-                    <span class:list={["blog-list-title", hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>
-                      {localize(post.data.title, lang)}
+                    <span class:list={["blog-list-title", hasKoreanText(getPostTitle(post)) && "ko-title"]}>
+                      {getPostTitle(post)}
                       {post.data.tag !== "Essay" && <small class="blog-series-tag">{post.data.tag}</small>}
                     </span>
                     <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
@@ -133,7 +135,7 @@ const paginationItems = (() => {
         <h2 id="other-posts-title">{lang === "ko" ? "시리즈 외 글" : "Other writing"}</h2>
         <ul class="blog-text-list">
           {nonSeriesPosts.map((post) => (
-            <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
+            <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{getPostTitle(post)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
           ))}
         </ul>
       </section>
@@ -143,7 +145,7 @@ const paginationItems = (() => {
       <h2 id="news-archive-title" class="blog-section-label">News / Archive</h2>
       <ul class="blog-text-list">
         {posts.map((post) => (
-          <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{localize(post.data.title, lang)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
+          <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{getPostTitle(post)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
         ))}
       </ul>
     </section>
@@ -158,7 +160,7 @@ const paginationItems = (() => {
         index === posts.length - 1 && "is-last-visible"
       ]}
     >
-      <a class="blog-entry-link" href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`} aria-label={`Open ${localize(post.data.title, lang)} post`}>
+      <a class="blog-entry-link" href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`} aria-label={`Open ${getPostTitle(post)} post`}>
         <div class="blog-entry-copy">
           {(!activeTag || post.data.pinned || getPostSeriesMetadata(post)) && (
             <p class="entry-meta blog-entry-meta">
@@ -179,12 +181,12 @@ const paginationItems = (() => {
               )}
             </p>
           )}
-          <h2 class:list={[hasKoreanText(localize(post.data.title, lang)) && "ko-title"]}>{localize(post.data.title, lang)}</h2>
+          <h2 class:list={[hasKoreanText(getPostTitle(post)) && "ko-title"]}>{getPostTitle(post)}</h2>
           <p class="blog-entry-date">
             {getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}
           </p>
         </div>
-        <div class="blog-entry-thumb" aria-label={`${localize(post.data.title, lang)} thumbnail`}>
+        <div class="blog-entry-thumb" aria-label={`${getPostTitle(post)} thumbnail`}>
           {post.data.thumbnail ? (
             <img src={post.data.thumbnail} alt="" loading="lazy" />
           ) : (
