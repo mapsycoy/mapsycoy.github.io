@@ -125,7 +125,7 @@ contentBlocks:
 
         * **자연인의 인격 특성·사고방식·소통 방식을 모사할 것**
 
-        * **지속적인 정서적 상호작용을 제공할 것.** 
+        * **지속적인 정서적 상호작용을 제공할 것** 
 
 
         반대로 스마트 고객센터, 지식 문답, 업무 보조, 학습·교육, 과학 연구 서비스는 지속적 정서 상호작용이 없으면 명시적으로 제외된다.
@@ -198,9 +198,9 @@ contentBlocks:
 
         * **AI임을 알리는 조치(제18조):** 생성 콘텐츠 표시 의무를 이행하고, 사용자가 자연인이 아니라 AI 서비스와 상호작용하고 있음을 효과적으로 알려야 한다. 과도한 의존·중독 경향이 발견되면 팝업 등 눈에 띄는 방식으로 상호작용 내용이 AI 생성물임을 동적으로 재고지해야 하며, 연속 사용 시간이 2시간을 초과할 때마다 사용 시간을 알려야 한다.
 
-        * **미성년자 보호(제14조):** 아래 4절에서 상술
+        * **미성년자 보호(제14조):** 아래 절에서 상술
 
-        * **위기 개입(제13조):** 위 2절에서 인용
+        * **위기 개입(제13조):** 위 절에서 인용
 
         * **데이터 학습 제한(제16조):** 사용자의 민감 개인정보에 해당하는 상호작용 데이터는, 법률·행정법규에 별도 근거가 있거나 사용자가 별도로 동의한 경우가 아니면 모델 학습에 사용할 수 없다.
 
@@ -264,9 +264,9 @@ contentBlocks:
         제14조와 제18조는 전혀 다른 동기에서 출발한다. 아이의 상상력을 지키려는 것이 아니라 심신 건강에 대한 위해를 막으려는 것이다. 그런데 도착한 자리가 묘하게 겹친다. 
 
 
-        * 매끄러운 몰입에 주기적으로 개입할 것, 
+        * 매끄러운 몰입에 주기적으로 개입할 것 
 
-        * 기계임을 잊게 하지 말 것.
+        * 기계임을 잊게 하지 말 것
 
 
         둘 다 AI가 완벽한 동반자가 되는 것을 법으로 막는다. 이 내용는 제14조와 제18조만의 것이 아니다. 규정은 과도한 영합과 정서적 의존·중독 유도(제8조)를 금지하고, 사회적 교류의 대체나 사용자 심리 통제, 중독·의존 유도를 서비스 목표로 삼는 것(제10조)도 허용하지 않는다. CAC의 공식 해설 역시 <mark>**의인화 AI가 현실의 인간관계를 대체하는 가상의 ‘완벽한 관계’를 형성할 위험을 직접 언급한다.**</mark>
@@ -365,7 +365,7 @@ contentBlocks:
 
         * **Simulating a natural person's personality traits, thought processes, and communication styles**
 
-        * **Providing continuous emotional interaction.**
+        * **Providing continuous emotional interaction**
 
 
         Conversely, smart customer service, knowledge Q&A, work assistance, learning and education, and scientific research services are explicitly excluded, provided they lack continuous emotional interaction.
@@ -438,9 +438,9 @@ contentBlocks:
 
         * **AI Disclosure Measures (Article 18):** Fulfill obligations to mark generated content and effectively inform users that they are interacting with an AI service rather than a natural person. When tendencies toward excessive reliance or addiction are detected, dynamically re-notify users through prominent means (such as pop-ups) that the interaction content is AI-generated, and notify users of their elapsed time every 2 hours of continuous use.
 
-        * **Protection of Minors (Article 14):** Detailed in Section 4 below.
+        * **Protection of Minors (Article 14):** Detailed in Section below.
 
-        * **Crisis Intervention (Article 13):** Cited in Section 2 above.
+        * **Crisis Intervention (Article 13):** Cited in Section above.
 
         * **Data Training Restrictions (Article 16):** Interaction data containing sensitive personal information must not be used for model training unless specifically authorized by laws and administrative regulations or explicitly consented to by the user.
 
@@ -504,9 +504,9 @@ contentBlocks:
         Article 14 and Article 18 stem from entirely different motivations. They do not aim to protect a child's imagination, but to prevent harm to physical and mental health. Yet the place where they land strangely overlaps:
 
 
-        * Periodically intervene in seamless immersion;
+        * Periodically intervene in seamless immersion
 
-        * Do not allow the machine to be forgotten as a machine.
+        * Do not allow the machine to be forgotten as a machine
 
 
         Both legally prohibit AI from becoming a perfect companion. This theme extends beyond Articles 14 and 18. The regulation also forbids excessive pandering or inducing emotional dependence and addiction (Article 8), and disallows making the replacement of social interaction, psychological control over users, or inducement of addiction and reliance the goals of a service (Article 10). Official commentary from the CAC also **explicitly mentions the risk of anthropomorphic AI forming a virtual "perfect relationship" that replaces real human ties.**
