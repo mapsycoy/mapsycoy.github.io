@@ -1,7 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import RecentPosts from "../../components/RecentPosts.astro";
-import { getHomeCaption, getHomeGreeting, getHomeMedia, getHomeMusic } from "../../data/home";
+import { getHomeCaption, getHomeContact, getHomeGreeting, getHomeMedia, getHomeMusic } from "../../data/home";
 import { getLanguageFromParams, languages, type Language } from "../../utils/i18n";
 
 export function getStaticPaths() {
@@ -9,7 +9,7 @@ export function getStaticPaths() {
 }
 
 const lang: Language = getLanguageFromParams(Astro.params.lang);
-const contactEmail = "mapsycoy@gmail.com";
+const homeContact = getHomeContact(lang);
 const homeGreeting = getHomeGreeting(lang);
 const homeGreetingLines = homeGreeting.split(/\r?\n/).filter(Boolean);
 const homeCaption = getHomeCaption(lang);
@@ -106,23 +106,22 @@ const homeMusic = getHomeMusic(lang);
       </figcaption>
     </figure>
 
-    <form class="home-contact" data-home-contact data-contact-email={contactEmail}>
-      <label class="sr-only" for="home-email">Email</label>
+    <div class="home-contact">
       <div class="home-contact-row">
-        <span class="home-contact-label" aria-hidden="true">Contact</span>
-        <input
-          id="home-email"
-          type="email"
-          name="email"
-          aria-label="email"
-          required
-          autocomplete="email"
-          placeholder="▛▚▞▜ ▞▚ █ ▙"
-        />
-        <button type="submit" aria-label="Start contact">&#8599;</button>
+        <span class="home-contact-label" aria-hidden="true">{homeContact.label}</span>
+        <button
+          type="button"
+          class="home-contact-address"
+          data-home-contact-copy
+          data-contact-email={homeContact.email}
+          data-contact-copied={homeContact.copied}
+          aria-label={`이메일 주소 ${homeContact.email} 복사`}
+        >
+          <span class="home-contact-glyph" aria-hidden="true">▛▚▞▜ ▞▚ █ ▙</span>
+          <span class="home-contact-real" aria-hidden="true">{homeContact.email}</span>
+        </button>
       </div>
-      <p class="home-contact-note">Leave your email address.</p>
-    </form>
+    </div>
 
     <p class="home-caption" set:html={homeCaption} />
   </section>
@@ -148,7 +147,8 @@ const homeMusic = getHomeMusic(lang);
       if (!(root instanceof HTMLElement)) return;
 
       const image = root.querySelector(".home-instrument-source");
-      const canvas = root.querySelector(".home-instrument-canvas");      const placeholder = root.querySelector(".home-instrument-placeholder");
+      const canvas = root.querySelector(".home-instrument-canvas");
+      const placeholder = root.querySelector(".home-instrument-placeholder");
 
       if (!(image instanceof HTMLImageElement) || !(canvas instanceof HTMLCanvasElement)) return;
 
@@ -172,7 +172,8 @@ const homeMusic = getHomeMusic(lang);
         if (image.complete && image.naturalWidth > 0) {
           root.classList.remove("is-raw-fallback");
           root.classList.remove("is-preprocessed-fallback");
-          canvas.hidden = false;          if (placeholder instanceof HTMLElement) placeholder.hidden = true;
+          canvas.hidden = false;
+          if (placeholder instanceof HTMLElement) placeholder.hidden = true;
 
           const renderFromImage = (time) => {
             if (time - lastFrameTime >= 1000 / SCREENTONE.fps) {
@@ -186,7 +187,8 @@ const homeMusic = getHomeMusic(lang);
           return;
         }
 
-        canvas.hidden = true;        if (placeholder instanceof HTMLElement) placeholder.hidden = false;
+        canvas.hidden = true;
+        if (placeholder instanceof HTMLElement) placeholder.hidden = false;
       };
 
       const resize = () => {
@@ -437,7 +439,8 @@ const homeMusic = getHomeMusic(lang);
 
         root.classList.remove("is-raw-fallback");
         root.classList.remove("is-preprocessed-fallback");
-        canvas.hidden = false;        if (placeholder instanceof HTMLElement) placeholder.hidden = true;
+        canvas.hidden = false;
+        if (placeholder instanceof HTMLElement) placeholder.hidden = true;
         cancelAnimationFrame(rafId);
         resize();
         animationStartedAt = performance.now();
@@ -456,25 +459,45 @@ const homeMusic = getHomeMusic(lang);
       });
     };
 
-    const initializeHomeContactForms = () => {
-      document.querySelectorAll("[data-home-contact]").forEach((form) => {
-      if (!(form instanceof HTMLFormElement) || form.dataset.contactBound === "true") return;
-      form.dataset.contactBound = "true";
-      if (!(form instanceof HTMLFormElement)) return;
+    const initializeHomeContactCopy = () => {
+      document.querySelectorAll("[data-home-contact-copy]").forEach((button) => {
+      if (!(button instanceof HTMLButtonElement) || button.dataset.contactBound === "true") return;
+      button.dataset.contactBound = "true";
+      let copyFeedbackTimeout = 0;
 
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
+      button.addEventListener("click", async () => {
+        const address = button.dataset.contactEmail || "mapsycoy@gmail.com";
+        let copied = false;
 
-        if (!form.reportValidity()) return;
+        try {
+          if (!navigator.clipboard?.writeText) throw new Error("Clipboard API unavailable");
+          await navigator.clipboard.writeText(address);
+          copied = true;
+        } catch {
+          const textarea = document.createElement("textarea");
+          textarea.value = address;
+          textarea.setAttribute("readonly", "");
+          textarea.style.position = "fixed";
+          textarea.style.opacity = "0";
+          document.body.appendChild(textarea);
+          textarea.select();
+          try {
+            copied = document.execCommand("copy");
+          } catch {
+            copied = false;
+          } finally {
+            textarea.remove();
+          }
+        }
 
-        const emailInput = form.querySelector('input[type="email"]');
-        if (!(emailInput instanceof HTMLInputElement)) return;
+        if (copied) {
+          button.classList.add("is-copied");
+          window.clearTimeout(copyFeedbackTimeout);
+          copyFeedbackTimeout = window.setTimeout(() => {
+            button.classList.remove("is-copied");
+          }, 1600);
+        }
 
-        const recipient = form.dataset.contactEmail || "mapsycoy@gmail.com";
-        const subject = encodeURIComponent("Hello from mapsycoy.com");
-        const body = encodeURIComponent(`My email is: ${emailInput.value}`);
-
-        window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
       });
       });
     };
@@ -508,7 +531,7 @@ const homeMusic = getHomeMusic(lang);
 
     const initializeHomeLanding = () => {
       initializeHomeInstruments();
-      initializeHomeContactForms();
+      initializeHomeContactCopy();
       initializeSeoulTime();
     };
 

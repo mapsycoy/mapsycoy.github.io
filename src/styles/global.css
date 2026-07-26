@@ -744,8 +744,7 @@ main {
 .home-contact {
   grid-area: contact;
   display: grid;
-  grid-template-rows: 42px 1.4em;
-  gap: 8px;
+  grid-template-rows: 42px;
   align-self: end;
   width: 100%;
   padding: 18px 0 20px;
@@ -754,7 +753,7 @@ main {
 
 .home-contact-row {
   display: grid;
-  grid-template-columns: auto minmax(0, 1fr) auto;
+  grid-template-columns: auto minmax(0, 1fr);
   align-items: center;
   gap: 16px;
   height: 42px;
@@ -770,7 +769,10 @@ main {
   text-transform: uppercase;
 }
 
-.home-contact input {
+.home-contact-address {
+  display: grid;
+  align-items: center;
+  justify-items: start;
   width: 100%;
   height: 42px;
   min-width: 0;
@@ -781,34 +783,55 @@ main {
   background: transparent;
   color: var(--text);
   font: inherit;
+  line-height: 1.4;
+  text-align: left;
+  cursor: pointer;
 }
 
-.home-contact input:focus {
+.home-contact-address > span,
+.home-contact-address::after {
+  grid-area: 1 / 1;
+  transition: opacity 0.18s ease;
+}
+
+.home-contact-address::after {
+  content: attr(data-contact-copied);
+  opacity: 0;
+}
+
+.home-contact-glyph {
+  opacity: 1;
+}
+
+.home-contact-real {
+  opacity: 0;
+}
+
+.home-contact-address:hover,
+.home-contact-address:focus-visible {
+  color: var(--accent);
   outline: none;
   border-bottom-color: var(--accent);
 }
 
-.home-contact button {
-  height: 42px;
-  padding: 0;
-  border: 0;
-  border-bottom: 1px solid currentColor;
-  background: transparent;
-  color: var(--text);
-  font: inherit;
-  line-height: 1.4;
-  cursor: pointer;
+.home-contact-address:hover .home-contact-glyph,
+.home-contact-address:focus-visible .home-contact-glyph {
+  opacity: 0;
 }
 
-.home-contact button:hover {
-  color: var(--accent);
+.home-contact-address:hover .home-contact-real,
+.home-contact-address:focus-visible .home-contact-real {
+  opacity: 1;
 }
 
-.home-contact-note {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.84rem;
-  line-height: 1.4;
+
+.home-contact-address.is-copied .home-contact-glyph,
+.home-contact-address.is-copied .home-contact-real {
+  opacity: 0;
+}
+
+.home-contact-address.is-copied::after {
+  opacity: 1;
 }
 
 .home-caption {
@@ -3375,10 +3398,6 @@ html[lang="ko"] .cv-page {
   }
 
   .home-location-row {
-    display: none;
-  }
-
-  .home-contact {
     display: none;
   }
 
