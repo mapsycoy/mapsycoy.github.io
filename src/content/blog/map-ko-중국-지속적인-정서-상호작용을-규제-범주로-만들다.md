@@ -96,8 +96,9 @@ contentBlocks:
   - type: text
     body:
       ko: >-
-        즉 초안은 작년 문서지만 전문(확정본)은 올해 4월 10일자이며, 둘은 내용이 다르다. 초안이 미성년자 대상 정서적 동반 서비스에
-        보호자 동의를 요구하는 구조였다면, 확정본은 가상 친밀관계 서비스를 모든 미성년자에게 금지하는 방향으로 강화됐다.
+        즉 초안은 작년 문서지만 전문(확정본)은 올해 4월 10일자이며, 둘은 내용이 다르다. <mark>**초안이 미성년자 대상 정서적
+        동반 서비스에 보호자 동의를 요구하는 구조였다면, 확정본은 가상 친밀관계 서비스를 모든 미성년자에게 금지하는 방향으로
+        강화됐다.**</mark>
 
 
         이 규제를 다룬 WSJ등 일부 주요 영어권 보도는 출산율 우려와 연결해 해석하거나, 특정 앱의 기능 중단 속보에 집중했다. 그런데 규제 문서 자체를 보면, 이 조치가 실제로 한 일은 단속에 그치지 않는다.
@@ -328,10 +329,10 @@ contentBlocks:
         * **조문 정리(영문 대역, 아카이브 보유):** https://comparativeai.org/rules/china/anthropomorphic-interaction-services/
       en: >-
         The draft was published last year, but the final text belongs to April
-        10 of this year—and the two differ. While the draft required guardian
-        consent for emotional companionship services targeting minors, the final
-        text tightened this in the direction of prohibiting virtual intimacy
-        services for all minors.
+        10 of this year—and the two differ. <mark>**While the draft required
+        guardian consent for emotional companionship services targeting minors,
+        the final text tightened this in the direction of prohibiting virtual
+        intimacy services for all minors.**</mark>
 
 
         Some major English-language media coverage, such as the *Wall Street Journal*, interpreted this regulation through concerns over falling birth rates, or focused on news of specific apps suspending features. Looking at the regulatory text itself, however, reveals that this measure does more than merely crack down.
