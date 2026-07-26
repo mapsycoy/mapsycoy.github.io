@@ -26,7 +26,7 @@ contentBlocks:
         연혁을 정확히 적어두면 다음과 같다. 
 
 
-        1. 2025년 12월 27일, 국가인터넷정보판공실(CAC)이 초안(征求意见稿)을 공개해 의견수렴을 시작
+        1. 2025년 12월 27일, 국가인터넷정보판공실(CAC)이 초안을 공개해 의견수렴을 시작
 
         2. 2026년 1월 25일, 수렴 종료 
 
@@ -40,7 +40,7 @@ contentBlocks:
         즉 초안은 작년 문서지만 전문(확정본)은 올해 4월 10일자이며, 둘은 내용이 다르다. 초안이 미성년자 대상 정서적 동반 서비스에 보호자 동의를 요구하는 구조였다면, 확정본은 가상 친밀관계 서비스를 모든 미성년자에게 금지하는 방향으로 강화됐다.
 
 
-        이 규제를 다룬 일부 주요 영어권 보도는 출산율 우려와 연결해 해석하거나, 특정 앱의 기능 중단 속보에 집중했다. 그런데 규제 문서 자체를 보면, 이 조치가 실제로 한 일은 단속에 그치지 않는다.
+        이 규제를 다룬 WSJ등 일부 주요 영어권 보도는 출산율 우려와 연결해 해석하거나, 특정 앱의 기능 중단 속보에 집중했다. 그런데 규제 문서 자체를 보면, 이 조치가 실제로 한 일은 단속에 그치지 않는다.
 
 
         하나의 규제 범주를 새로 만든 것이다.
@@ -179,11 +179,11 @@ contentBlocks:
         제2항과 제3항은 금지 바깥의 영역을 다룬다. 
 
 
-        > **제14조. 제 2항** 의인화된 상호작용 서비스 제공업체는 **미성년자 모드를 구축**하고, 미성년자 모드 전환, 정기적인 실시간 알림, 이용 시간 제한 등의 **개인 맞춤형 안전 설정 옵션을 제공**해야 합니다. 또한 보호자가 안전 위험 알림을 받고, 미성년자의 서비스 이용 현황을 파악하고, 특정 역할을 차단하고, 충전 및 이용을 제한하는 등의 기능을 지원하여 다양한 연령대의 미성년자 보호 요구를 충족해야 합니다.
+        > **제14조. 제 2항** 의인화된 상호작용 서비스 제공업체는 미성년자 모드를 구축하고, 미성년자 모드 전환, 정기적인 현실 알림, 이용 시간 제한 등의 개인 맞춤형 안전 설정 옵션을 제공해야 합니다. 또한 보호자가 안전 위험 알림을 받고, 미성년자의 서비스 이용 현황을 파악하고, 특정 역할을 차단하고, 충전 및 이용을 제한하는 등의 기능을 지원하여 다양한 연령대의 미성년자 보호 요구를 충족해야 합니다.
 
         >
 
-        > **제14조. 제 3항** 의인화된 상호작용 서비스를 제공하는 사업자는 이용자의 사생활 및 개인 정보 보호를 전제로 **미성년 이용자의 신원을 확인하기 위한 효과적인 조치**를 취해야 합니다. 이용자가 미성년자로 확인된 경우, 사업자는 관련 서비스를 미성년자 전용 모드로 전환하거나 관련 국가 규정에 따라 기타 조치를 취하고, 이의를 제기할 수 있는 채널을 제공해야 합니다.
+        > **제14조. 제 3항** 의인화된 상호작용 서비스를 제공하는 사업자는 이용자의 사생활 및 개인 정보 보호를 전제로 미성년 이용자의 신원을 확인하기 위한 효과적인 조치를 취해야 합니다. 이용자가 미성년자로 확인된 경우, 사업자는 관련 서비스를 미성년자 전용 모드로 전환하거나 관련 국가 규정에 따라 기타 조치를 취하고, 이의를 제기할 수 있는 채널을 제공해야 합니다.
 
 
         여기서 주목할 것이 두 가지다.
@@ -266,4 +266,258 @@ contentBlocks:
         * **China Law Translate 전문 페이지:** https://www.chinalawtranslate.com/human-like-ai/
 
         * **조문 정리(영문 대역, 아카이브 보유):** https://comparativeai.org/rules/china/anthropomorphic-interaction-services/
+      en: >-
+        ## **「人工智能拟人化互动服务管理暂行办法: Provisional Measures for the Management of AI
+        Anthropomorphic Interaction Services」**
+
+
+        [「人工智能拟人化互动服务管理暂行办法: Provisional Measures for the Management of AI Anthropomorphic Interaction Services」](https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm)
+
+
+        On July 15, the "Provisional Measures for the Management of AI Anthropomorphic Interaction Services" came into effect in China.
+
+
+        The exact timeline is as follows:
+
+
+        1. December 27, 2025: The Cyberspace Administration of China (CAC) released the draft for public comment.
+
+        2. January 25, 2026: Public comment period ended.
+
+        3. February 2, 2026: The final text was deliberated and passed at the CAC's 3rd office affairs meeting.
+
+        4. April 10, 2026: Jointly promulgated (Order No. 21) with approval from the National Development and Reform Commission, Ministry of Industry and Information Technology, Ministry of Public Security, and State Administration for Market Regulation.
+
+        5. July 15, 2026: Effective date.
+
+
+        The draft was published last year, but the final text belongs to April 10 of this year—and the two differ. While the draft required guardian consent for emotional companionship services targeting minors, the final text tightened this in the direction of prohibiting virtual intimacy services for all minors.
+
+
+        Some major English-language media coverage, such as the *Wall Street Journal*, interpreted this regulation through concerns over falling birth rates, or focused on news of specific apps suspending features. Looking at the regulatory text itself, however, reveals that this measure does more than merely crack down.
+
+
+        It creates a new regulatory category altogether.
+
+
+
+
+        ---
+
+
+
+
+        ## **What Has Been Regulated**
+
+
+        Existing AI regulations generally divided targets along two axes: what is generated (the 2023 Interim Measures for Generative AI), or where it is applied (sector-specific rules for healthcare, finance, and so on). This measure establishes a third axis.
+
+
+        The exact name of this axis is found in Article 2. The scope applies to services meeting two conditions simultaneously:
+
+
+        * **Simulating a natural person's personality traits, thought processes, and communication styles**
+
+        * **Providing continuous emotional interaction.**
+
+
+        Conversely, smart customer service, knowledge Q&A, work assistance, learning and education, and scientific research services are explicitly excluded, provided they lack continuous emotional interaction.
+
+
+        Even when using the same underlying LLM, if a service simulates a natural person's personality and communication style to offer continuous emotional interaction, it falls under this rule. Non-emotional tool-based services, on the other hand, are in principle exempt. The benchmark for regulation is not the underlying technology, but the form of relationship—what the law calls "continuous emotional interaction." This fills the space left open by the 2023 Generative AI Measures: a dedicated rule for the emotional dimension of human-machine interaction.
+
+
+        In a Q&A session, the CAC enumerated four risks behind the legislation: harm to the physical and mental health of minors, impacts on online information security, threats to public life and health, and the deepening of ethical bias. Birth rates are nowhere on this list. The birth-rate hypothesis was an interpretation offered by some English-language media like the WSJ, not the language of the regulation itself.
+
+
+        The problem I have explored across nine essays in this series sits precisely in the space occupied by this regulation.
+
+
+
+
+        ---
+
+
+
+
+        ## **Legal Standing: Avoiding Overestimation**
+
+
+        We should carefully weigh the actual legal standing of this measure.
+
+
+        This is a departmental regulation (部门规章) jointly issued by five ministries. It ranks lower than laws enacted by the National People's Congress and its Standing Committee, or administrative regulations issued by the State Council.
+
+
+        The penalty structure set by the regulation itself is also worth examining. Where separate penalty provisions do not exist in relevant laws or administrative regulations, general violations are subject to warnings, public reprimands, rectification orders, and temporary suspension of account registration or related services. Refusal to rectify or severe violations may result in service suspension alongside fines between 10,000 and 100,000 yuan. In cases where actual harm results from endangering public life and health, fines range from 100,000 to 200,000 yuan. The fine ceiling set by this measure itself is 200,000 yuan. However, if the same conduct also violates superior laws such as the Personal Information Protection Law or the Cybersecurity Law, separate penalties may apply. One should not read 200,000 yuan as the overall cap on an operator's legal liability.
+
+
+        The inclusion of "Provisional" (暂行) in its title, combined with Article 28's explicit call to build an "AI Sandbox Safety Service Platform," suggests a framework designed to adapt based on operational experience. The CAC Network Rule of Law Bureau views Article 28 as the first introduction of a regulatory sandbox mechanism into Chinese AI rules. This experimental character is what matters most. It is the first written answer sheet offered by China in a domain where no settled answers yet exist.
+
+
+        One notable detail is the tiered structure of penalties. The explicit inclusion of a category for "cases where actual harm results from endangering life and health safety" shows that the regulation explicitly contemplates extreme scenarios. Article 13 requires:
+
+
+        > **Article 13.** Providers of anthropomorphic interaction services shall protect user privacy and personal information while promptly identifying potential security risks and taking corresponding emergency measures.
+
+        >
+
+        > When service providers discover that a user is experiencing extreme emotional distress, they must immediately provide relevant content to offer emotional stabilization or encourage seeking assistance. Furthermore, if providers discover that a user faces or has suffered significant property loss, has clearly expressed intent for self-harm or suicide, or is in other extreme situations threatening life and health, they must take necessary intervention measures, such as providing appropriate assistance, and immediately contact the user's guardian or emergency contact.
+
+
+
+
+        ---
+
+
+
+
+        ## **What the Regulation Requires**
+
+
+        The obligations confirmed in the official text published by the CAC are as follows:
+
+
+        **\[Procedural Obligations]**
+
+
+        * **Algorithm Filing (Article 26):** Application of filing, modification, and cancellation procedures under the existing *Internet Information Service Algorithm Recommendation Administrative Provisions*.
+
+        * **Security Assessment (Article 22):** Required for launching new services or adding features, significant changes from introducing new technologies, reaching 1 million registered users or 100,000 monthly active users, or when safety risks impacting national security or public interest exist.
+
+
+        **\[Design Obligations]**
+
+
+        * **AI Disclosure Measures (Article 18):** Fulfill obligations to mark generated content and effectively inform users that they are interacting with an AI service rather than a natural person. When tendencies toward excessive reliance or addiction are detected, dynamically re-notify users through prominent means (such as pop-ups) that the interaction content is AI-generated, and notify users of their elapsed time every 2 hours of continuous use.
+
+        * **Protection of Minors (Article 14):** Detailed in Section 4 below.
+
+        * **Crisis Intervention (Article 13):** Cited in Section 2 above.
+
+        * **Data Training Restrictions (Article 16):** Interaction data containing sensitive personal information must not be used for model training unless specifically authorized by laws and administrative regulations or explicitly consented to by the user.
+
+        * **Guidance, Risk Notification, and Support Services for Elderly Users (Article 15)**
+
+        * **Guardian Consent for Processing Personal Data of Children Under 14 (Article 17, linked to Article 31 of the Personal Information Protection Law)**
+
+
+        Looking over this list, the nature of these obligations divides clearly. The former are administrative procedures, but the latter prescribe how the product itself must function.
+
+
+        Grouping these obligations reveals a shift: **China does not treat anthropomorphic AI as merely another software category; it treats continuous emotional interaction itself as a matter of governance. Once AI begins to compete with real social ties, authority structures, and psychological development, regulation shifts from content management to system design.**
+
+
+        It is worth noting that around the same time, the CAC was separately advancing the draft *Administrative Measures for Digital Virtual Human Information Services* (released April 3). The fact that anthropomorphic interaction and digital virtual humans are separated into distinct regulations demonstrates how granularly China is approaching this field.
+
+
+
+
+        ---
+
+
+
+
+        ## **Article 14: Do Not Sell "Virtual Intimacy" to Children**
+
+
+        The core provision of this regulation is Article 14. It consists of three paragraphs, with the first stating:
+
+
+        > **Article 14, Paragraph 1.** Providers of anthropomorphic interaction services shall not provide services acting as virtual relatives or virtual partners to minors. Where other anthropomorphic interaction services are provided to minors under the age of 14, consent shall be obtained from the minor's parents or other guardians.
+
+
+        The structure is two-tiered: **"Virtual intimacy" services are strictly prohibited for all minors (under 18), while other anthropomorphic services require guardian consent only for those under 14.** It is a rare national-level departmental regulation that targets anthropomorphic emotional interaction as an independent subject of regulation and explicitly bans minors from using virtual intimacy services.
+
+
+        Paragraphs 2 and 3 address the domain outside the prohibition:
+
+
+        > **Article 14, Paragraph 2.** **Providers of anthropomorphic interaction services shall establish a minor mode and provide customized safety setting options, such as minor mode switching, periodic reality reminders, and usage time limits. They shall also support features that allow guardians to receive safety risk notifications, monitor minor service usage, block specific personas, and restrict recharges and usage, thereby meeting the protection needs of minors across different age groups.**
+
+        >
+
+        > **Article 14, Paragraph 3.** Subject to protecting user privacy and personal information, service providers shall take effective measures to verify the identity of minor users. When a user is confirmed to be a minor, the provider shall switch the service to minor mode or take other measures in accordance with relevant national regulations, and provide channels for filing objections.
+
+
+        Two aspects stand out here:
+
+
+        1. **The list of prohibited relationships.** Banned alongside virtual romantic partners are virtual relatives: AI acting as parents, siblings, or family members. The regulation targets not merely sexual or romantic bonds, but the simulation of intimacy itself.
+
+        2. **The concept of "periodic reality reminders."** The text specifies that minor mode must periodically remind the child of reality. That the law demands periodic intervention in immersion rather than simple content filtering exposes most clearly what this regulation perceives as dangerous.
+
+
+        Inverting the logic of this clause yields a specific reading: China did not ban children from conversing with AI altogether. What it prohibited was the AI stepping into the position of a child's intimate other, and the child forgetting reality within that relationship.
+
+
+        In a previous essay, I spoke of an "alien presence" as a necessary condition for AI beside a child—not pretending to be a friend, not claiming its interpretation as the sole truth. I wrote that such a structure restores the labor of interpretation back to the child.
+
+
+        Article 14 and Article 18 stem from entirely different motivations. They do not aim to protect a child's imagination, but to prevent harm to physical and mental health. Yet the place where they land strangely overlaps:
+
+
+        * Periodically intervene in seamless immersion;
+
+        * Do not allow the machine to be forgotten as a machine.
+
+
+        Both legally prohibit AI from becoming a perfect companion. This theme extends beyond Articles 14 and 18. The regulation also forbids excessive pandering or inducing emotional dependence and addiction (Article 8), and disallows making the replacement of social interaction, psychological control over users, or inducement of addiction and reliance the goals of a service (Article 10). Official commentary from the CAC also **explicitly mentions the risk of anthropomorphic AI forming a virtual "perfect relationship" that replaces real human ties.**
+
+
+        Prohibition and design, of course, are not identical. The alien presence I spoke of is a position that exists within a relationship without completing it. The regulation's reminders are an interruption applied from the outside. Whether a reminder shown after two hours of continuous use genuinely alters the density of a relationship remains an unverified question—one that this regulation, as an experiment, will have to answer.
+
+
+
+
+        ---
+
+
+
+
+        ## **Dilemmas from Previous Writing, the State's Answer**
+
+
+        In a previous essay under the Paper category, drawing on a paper by Nomisha Kurian, I summarized three dilemmas in AI services for children: Safety vs. Immersion, Personalization vs. Privacy, and Autonomy vs. Protection.
+
+
+        Kurian noted that these three are not binary choices, but matters requiring continuous adjustment according to context and developmental stages. The responsibility for that adjustment rested on the designer.
+
+
+        China's measure can be read as a case where the state has submitted its own answer sheet to that adjustment:
+
+
+        * **Safety vs Engagement** → Prohibition of intimate relationship services (Art. 14(1)) + Reality reminders & time limits (Art. 14(2)) + 2-hour reminders & dependency re-notifications (Art. 18)
+
+        * **Personalization vs. Privacy** → Guardian consent for processing personal data of children under 14 (Art. 17) + Training limits on sensitive data (Art. 16)
+
+        * **Autonomy vs. Protection** → Virtual intimacy services banned under 18 + Other anthropomorphic services requiring guardian consent under 14 + Guardian controls
+
+
+        What is interesting is the final item. The principle of "adjustment according to developmental stages" advocated by Kurian is materialized in Article 14 through two specific age thresholds: 18 and 14. Where the paper left an open question for designers to balance, a departmental regulation has stepped in. Whether this is a positive development is hard to say. What is certain, however, is that the stage where these dilemmas remained academic proposals has passed.
+
+
+
+
+        ---
+
+
+
+
+        ### **Original Links**
+
+
+        * **CAC Full Text:** https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm
+
+        * **CAC Q&A:** https://www.cac.gov.cn/2026-04/10/c_1777558395284407.htm
+
+        * **CAC Commentary (Legislative Assessment):** https://www.cac.gov.cn/2026-06/03/c_1782142434783056.htm
+
+        * **Digital Virtual Human Draft:** https://www.cac.gov.cn/2026-04/03/c_1776952992709096.htm
+
+        * **WSJ Report:** https://www.wsj.com/tech/ai/china-wants-more-babiesso-its-cracking-down-on-chatbot-love-affairs-65cd6c82
+
+        * **China Law Translate Full Page:** https://www.chinalawtranslate.com/human-like-ai/
+
+        * **Clause Summary (English Dual Text, Archived):** https://comparativeai.org/rules/china/anthropomorphic-interaction-services/
 ---
