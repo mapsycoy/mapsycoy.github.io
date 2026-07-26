@@ -134,12 +134,7 @@
         "en": "Dec 2025 - May 2026"
       },
       "logoDark": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@7823ba1ceb5680ddd15ddaf0831dfb1b78aaabd2/uploads/cv/cv-logo-nexon-dark.svg",
-      "media": [
-        {
-          "type": "link",
-          "href": "https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114"
-        }
-      ],
+      "media": [],
       "employmentType": {
         "ko": "인턴십",
         "en": "Internship"
@@ -206,7 +201,12 @@
         "en": "Feb 2023 - Dec 2023"
       },
       "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-logo-unipuskr.webp",
-      "description": [],
+      "description": [
+        {
+          "en": "Played a key role in the initial launch and first main update of [NETY]",
+          "ko": "[NETY] 서비스의 최초 론칭 및 1차 메인 업데이트 전 과정 기여"
+        }
+      ],
       "media": [],
       "employmentType": {
         "ko": "자영업",
