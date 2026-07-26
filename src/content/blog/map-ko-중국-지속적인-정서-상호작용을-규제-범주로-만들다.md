@@ -24,7 +24,7 @@ contentBlocks:
         지난 7월 15일, 중국에서 「인공지능 기반 인간 중심 상호작용 서비스 운영을 위한 잠정 조치」가 시행됐다.
 
 
-        연혁을 정확히 적어두면 다음과 같다. 
+        그 타임라인을 정확히 적어두면 다음과 같다.
       en: >-
         ## **「人工智能拟人化互动服务管理暂行办法: Provisional Measures for the Management of AI
         Anthropomorphic Interaction Services」**
