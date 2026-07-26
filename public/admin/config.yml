@@ -52,9 +52,9 @@ collections:
     delete: true
     extension: md
     format: frontmatter
-    slug: "{{slug}}"
+    slug: "{{fields.slug}}"
     preview_path: blog/{{slug}}
-    summary: "{{title.en}} - {{publishedAt}}"
+    summary: "{{title.en}} - {{publishedAt | date('YYYY-MM-DD')}}"
     sortable_fields:
       - title
       - publishedAt
