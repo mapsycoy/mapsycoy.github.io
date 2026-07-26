@@ -1,6 +1,7 @@
 ---
 title:
-  ko: 중국, '지속적인 정서 상호작용'을 규제 범주로 만들다.
+  ko: 중국, '지속적인 정서 상호작용'을 규제 범주로 만들다
+  en: China Regulates 'Continuous Emotional Interaction' as New Category
 slug: "12"
 publishedAt: 2026-07-26
 status: draft
