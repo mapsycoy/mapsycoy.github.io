@@ -129,29 +129,44 @@
   },
   "experiences": [
     {
-      "role": {
-        "ko": "컨셉아티스트 · 일러스트레이터",
-        "en": "Concept Artist · Illustrator"
-      },
-      "organization": {
-        "ko": "넥슨코리아",
-        "en": "NEXON KOREA"
-      },
-      "employmentType": {
-        "ko": "인턴십",
-        "en": "Internship"
-      },
       "period": {
         "ko": "2025.12 - 2026.05",
         "en": "Dec 2025 - May 2026"
       },
-      "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-logo-nexon.webp",
       "logoDark": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@7823ba1ceb5680ddd15ddaf0831dfb1b78aaabd2/uploads/cv/cv-logo-nexon-dark.svg",
+      "media": [
+        {
+          "type": "link",
+          "href": "https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114"
+        }
+      ],
+      "employmentType": {
+        "ko": "인턴십",
+        "en": "Internship"
+      },
+      "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-logo-nexon.webp",
+      "organization": {
+        "ko": "넥슨코리아",
+        "en": "NEXON KOREA"
+      },
+      "duration": {
+        "en": "",
+        "ko": ""
+      },
+      "role": {
+        "ko": "컨셉아티스트 · 일러스트레이터",
+        "en": "Concept Artist · Illustrator"
+      },
+      "description": [
+        {
+          "ko": "주요 게임 IP(메이플스토리, 던전앤파이터) AI 서비스 적용을 위한 수작업 리소스 제작 및 LoRA 데이터셋 고도화",
+          "en": "Manual drawing and LoRA dataset refinement for implementing AI services in major game IPs (MapleStory, DNF)"
+        }
+      ],
       "team": {
         "ko": "M콘텐츠생성AI팀",
         "en": "M-Content Gen AI Team"
-      },
-      "description": []
+      }
     },
     {
       "role": {
