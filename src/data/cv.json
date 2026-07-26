@@ -13,6 +13,21 @@
   "education": [
     {
       "institution": {
+        "ko": "연세대학교 커뮤니케이션대학원",
+        "en": "YONSEI Graduate School of Communication & Arts"
+      },
+      "degree": {
+        "ko": "입학 예정 · 공학석사과정(HCI디자인)",
+        "en": "Incoming MS Student (HCI Design)"
+      },
+      "period": {
+        "ko": "2026.09 -",
+        "en": "Sep 2026 -"
+      },
+      "description": []
+    },
+    {
+      "institution": {
         "ko": "국민대학교 조형대학",
         "en": "Kookmin University, College of Design"
       },
@@ -27,28 +42,13 @@
       "description": [
         {
           "ko": "특기자전형 입학",
-          "en": "Merit-based Admission(special talent track)"
+          "en": "Merit-based Admission (special talent track)"
         },
         {
           "ko": "미래기술융합디자인 부전공",
           "en": "Minor in Future Technology Convergence Design"
         }
       ]
-    },
-    {
-      "institution": {
-        "ko": "연세대학교 커뮤니케이션대학원",
-        "en": "YONSEI Graduate School of Communication & Arts"
-      },
-      "degree": {
-        "ko": "입학 예정 · 공학석사과정(HCI디자인)",
-        "en": "Incoming MS Student(HCI Design)"
-      },
-      "period": {
-        "ko": "2026.09 -",
-        "en": "Sep 2026 -"
-      },
-      "description": []
     }
   ],
   "artsGiftedEducationCertificate": {
@@ -102,7 +102,7 @@
         },
         "period": {
           "ko": "",
-          "en": "2010 / 2012 - 2013 / 2016 - 2017 "
+          "en": "2010 / 2012 - 2013 / 2016 - 2017"
         },
         "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-logo-snue.webp",
         "alt": {
@@ -212,7 +212,7 @@
       "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-logo-unipuskr.webp",
       "description": [
         {
-          "en": "Played a key role in the initial launch and first main update of [NETY]",
+          "en": "Led design across the initial launch and first major update of NETY",
           "ko": "[NETY] 서비스의 최초 론칭 및 1차 메인 업데이트 전 과정 기여"
         }
       ],
@@ -354,7 +354,7 @@
       "description": [
         {
           "ko": "에임인텔리전스 인하우스 프로젝트 외부 참여",
-          "en": "Aim Intelligence In-house Project(External Contributor)"
+          "en": "Aim Intelligence In-house Project (External Contributor)"
         }
       ],
       "media": [
