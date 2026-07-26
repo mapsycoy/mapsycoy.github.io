@@ -185,7 +185,12 @@
         "ko": "콘텐츠팀",
         "en": "Content Team"
       },
-      "description": []
+      "description": [
+        {
+          "ko": "아동 맞춤형 AI 교육 콘텐츠 시각 리소스 제작",
+          "en": "Visual Resource Creation for Child-Centered AI Educational Content"
+        }
+      ]
     },
     {
       "role": {
