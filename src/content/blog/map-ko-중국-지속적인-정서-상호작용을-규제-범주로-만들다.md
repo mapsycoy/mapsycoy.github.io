@@ -285,7 +285,7 @@ contentBlocks:
         ## **이전 글의 딜레마, 국가의 답안**
 
 
-        나는 시리즈 속 Paper 카테고리에서 Nomisha Kurian의 논문을 다루며 아동 대상 AI 서비스의 세 가지 딜레마를 정리한 적이 있다. 안전 VS 몰입, 개인화 VS 프라이버시, 그리고 자율성 VS 보호.
+        나는 시리즈 속 Paper Review 카테고리에서 Nomisha Kurian의 논문을 다루며 아동 대상 AI 서비스의 세 가지 딜레마를 정리한 적이 있다. 안전 VS 몰입, 개인화 VS 프라이버시, 그리고 자율성 VS 보호.
 
 
         Kurian은 이 셋이 양자택일이 아니라 맥락과 발달 단계에 따라 계속 조율해야 하는 문제라고 했다. 조율의 책임은 설계자에게 있었다.
@@ -525,7 +525,7 @@ contentBlocks:
         ## **Dilemmas from Previous Writing, the State's Answer**
 
 
-        In a previous essay under the Paper category, drawing on a paper by Nomisha Kurian, I summarized three dilemmas in AI services for children: Safety vs. Immersion, Personalization vs. Privacy, and Autonomy vs. Protection.
+        In a previous essay under the Paper Review category, drawing on a paper by Nomisha Kurian, I summarized three dilemmas in AI services for children: Safety vs. Immersion, Personalization vs. Privacy, and Autonomy vs. Protection.
 
 
         Kurian noted that these three are not binary choices, but matters requiring continuous adjustment according to context and developmental stages. The responsibility for that adjustment rested on the designer.

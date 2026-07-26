@@ -6,7 +6,7 @@ slug: "8"
 publishedAt: 2026-07-12
 status: published
 pinned: false
-tag: Paper
+tag: Paper Review
 series: child-ai
 seriesOrder: 8
 summary:

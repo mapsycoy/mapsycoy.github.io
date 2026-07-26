@@ -122,7 +122,7 @@ collections:
         options:
           - Essay
           - AI News
-          - Paper
+          - Paper Review
       - label: Series
         name: series
         widget: string
@@ -1382,11 +1382,13 @@ collections:
                 widget: relation
                 collection: works
                 search_fields:
-                  - title
+                  - title.ko
+                  - title.en
                   - year
                 value_field: "{{slug}}"
                 display_fields:
-                  - title
+                  - title.ko
+                  - title.en
                   - year
           - label: Independent Works Order
             name: independent
@@ -1401,9 +1403,11 @@ collections:
                 widget: relation
                 collection: works
                 search_fields:
-                  - title
+                  - title.ko
+                  - title.en
                   - year
                 value_field: "{{slug}}"
                 display_fields:
-                  - title
+                  - title.ko
+                  - title.en
                   - year

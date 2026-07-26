@@ -8,7 +8,7 @@ const { lang = defaultLanguage } = Astro.props;
 const posts = await getBlogPosts();
 const recentPosts = [
   ...sortBlogPosts(posts.filter((post) => post.data.tag === "Essay")).slice(0, 1),
-  ...sortBlogPosts(posts.filter((post) => post.data.tag === "Paper")).slice(0, 1),
+  ...sortBlogPosts(posts.filter((post) => post.data.tag === "Paper Review")).slice(0, 1),
   ...getNewsPosts(posts).slice(0, 1),
 ];
 const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
