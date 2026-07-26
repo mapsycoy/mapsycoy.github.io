@@ -4,7 +4,7 @@ title:
   en: China Regulates 'Continuous Emotional Interaction' as New Category
 slug: "12"
 publishedAt: 2026-07-26
-status: draft
+status: published
 pinned: false
 tag: AI News
 thumbnail: https://wp.technologyreview.com/wp-content/uploads/2019/03/chinaai-12.jpg?fit=1064,598
@@ -25,20 +25,79 @@ contentBlocks:
 
 
         연혁을 정확히 적어두면 다음과 같다. 
+      en: >-
+        ## **「人工智能拟人化互动服务管理暂行办法: Provisional Measures for the Management of AI
+        Anthropomorphic Interaction Services」**
 
 
-        1. 2025년 12월 27일, 국가인터넷정보판공실(CAC)이 초안을 공개해 의견수렴을 시작
-
-        2. 2026년 1월 25일, 수렴 종료 
-
-        3. 2026년 2월 2일, CAC 제3차 실무회의에서 확정본 심의·통과
-
-        4. 국가발전개혁위원회·공업정보화부·공안부·시장감독총국의 동의를 거쳐 4월 10일 공동 공포(제21호령)
-
-        5. 시행일: 7월 15일
+        [「人工智能拟人化互动服务管理暂行办法: Provisional Measures for the Management of AI Anthropomorphic Interaction Services」](https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm)
 
 
-        즉 초안은 작년 문서지만 전문(확정본)은 올해 4월 10일자이며, 둘은 내용이 다르다. 초안이 미성년자 대상 정서적 동반 서비스에 보호자 동의를 요구하는 구조였다면, 확정본은 가상 친밀관계 서비스를 모든 미성년자에게 금지하는 방향으로 강화됐다.
+        On July 15, the "Provisional Measures for the Management of AI Anthropomorphic Interaction Services" came into effect in China.
+
+
+        The exact timeline is as follows:
+  - type: text
+    body:
+      ko: |-
+        ````
+        ```mermaid
+        %%{init: {'theme':'base','themeVariables':{
+          'primaryColor':'#ffffff',
+          'primaryBorderColor':'#0a0a0a',
+          'primaryTextColor':'#0a0a0a',
+          'lineColor':'#0a0a0a',
+          'fontSize':'15px'
+        }}}%%
+        flowchart TD
+            A["2025.12.27 · 초안 공개"] --> B["2026.01.25 · 수렴 종료"]
+            B --> C["2026.02.02 · 확정본 통과"]
+            C --> E["2026.04.10 · 공동 공포 · 제21호령"]
+            E --> F["2026.07.15 · 시행"]
+
+            M["발개위 · 공신부 · 공안부 · 시감총국"] -.동의.-> C
+
+            A -.-> D1["초안 방향<br/>정서적 동반 = 보호자 동의"]
+            D1 == 강화 ==> D2["확정본 방향<br/>가상 친밀관계 = 전면 금지"]
+            D2 --> E
+
+            style D2 stroke-width:2px
+        ```
+        ````
+      en: >-
+        ````
+
+        ```mermaid
+
+        %%{init: {'theme':'base','themeVariables':{
+          'primaryColor':'#ffffff',
+          'primaryBorderColor':'#0a0a0a',
+          'primaryTextColor':'#0a0a0a',
+          'lineColor':'#0a0a0a',
+          'fontSize':'15px'
+        }}}%%
+
+        flowchart TD
+            A["2025.12.27 · Draft released"] --> B["2026.01.25 · Comment period ends"]
+            B --> C["2026.02.02 · Final text passed"]
+            C --> E["2026.04.10 · Promulgated · Order No. 21"]
+            E --> F["2026.07.15 · Effective"]
+
+            M["NDRC · MIIT · MPS · SAMR"] -.consent.-> C
+
+            A -.-> D1["Draft approach<br/>Emotional companionship = guardian consent"]
+            D1 == tightened ==> D2["Final approach<br/>Virtual intimacy = total ban"]
+            D2 --> E
+
+            style D2 stroke-width:2px
+        ```
+
+        ````
+  - type: text
+    body:
+      ko: >-
+        즉 초안은 작년 문서지만 전문(확정본)은 올해 4월 10일자이며, 둘은 내용이 다르다. 초안이 미성년자 대상 정서적 동반 서비스에
+        보호자 동의를 요구하는 구조였다면, 확정본은 가상 친밀관계 서비스를 모든 미성년자에게 금지하는 방향으로 강화됐다.
 
 
         이 규제를 다룬 WSJ등 일부 주요 영어권 보도는 출산율 우려와 연결해 해석하거나, 특정 앱의 기능 중단 속보에 집중했다. 그런데 규제 문서 자체를 보면, 이 조치가 실제로 한 일은 단속에 그치지 않는다.
@@ -268,31 +327,11 @@ contentBlocks:
 
         * **조문 정리(영문 대역, 아카이브 보유):** https://comparativeai.org/rules/china/anthropomorphic-interaction-services/
       en: >-
-        ## **「人工智能拟人化互动服务管理暂行办法: Provisional Measures for the Management of AI
-        Anthropomorphic Interaction Services」**
-
-
-        [「人工智能拟人化互动服务管理暂行办法: Provisional Measures for the Management of AI Anthropomorphic Interaction Services」](https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm)
-
-
-        On July 15, the "Provisional Measures for the Management of AI Anthropomorphic Interaction Services" came into effect in China.
-
-
-        The exact timeline is as follows:
-
-
-        1. December 27, 2025: The Cyberspace Administration of China (CAC) released the draft for public comment.
-
-        2. January 25, 2026: Public comment period ended.
-
-        3. February 2, 2026: The final text was deliberated and passed at the CAC's 3rd office affairs meeting.
-
-        4. April 10, 2026: Jointly promulgated (Order No. 21) with approval from the National Development and Reform Commission, Ministry of Industry and Information Technology, Ministry of Public Security, and State Administration for Market Regulation.
-
-        5. July 15, 2026: Effective date.
-
-
-        The draft was published last year, but the final text belongs to April 10 of this year—and the two differ. While the draft required guardian consent for emotional companionship services targeting minors, the final text tightened this in the direction of prohibiting virtual intimacy services for all minors.
+        The draft was published last year, but the final text belongs to April
+        10 of this year—and the two differ. While the draft required guardian
+        consent for emotional companionship services targeting minors, the final
+        text tightened this in the direction of prohibiting virtual intimacy
+        services for all minors.
 
 
         Some major English-language media coverage, such as the *Wall Street Journal*, interpreted this regulation through concerns over falling birth rates, or focused on news of specific apps suspending features. Looking at the regulatory text itself, however, reveals that this measure does more than merely crack down.
