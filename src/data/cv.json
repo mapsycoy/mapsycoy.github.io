@@ -278,7 +278,12 @@
             "ko": "2021.11 - 2022.02",
             "en": "Nov 2021 - Feb 2022"
           },
-          "description": []
+          "description": [
+            {
+              "ko": "영재교육원 입학 전형 서류 접수 및 관리",
+              "en": "Processed and managed admissions documentation for the gifted education program"
+            }
+          ]
         },
         {
           "title": {
@@ -289,7 +294,12 @@
             "ko": "2019.05 - 2019.12 / 2022.03 - 2022.09",
             "en": "May 2019 - Dec 2019 / Mar 2022 - Sep 2022"
           },
-          "description": []
+          "description": [
+            {
+              "ko": "수업 준비 및 보조, 출결 관리, 학생 작업 기록 및 포트폴리오 아카이빙, 방학 특강 그림책 편집, 성과 전시 설치 및 철거",
+              "en": "Class preparation & instruction support, attendance management, documentation & portfolio archiving of student work, editing student-made picture books from the vacation intensive, exhibition install & deinstall"
+            }
+          ]
         }
       ],
       "description": []
