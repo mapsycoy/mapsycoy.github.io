@@ -50,15 +50,15 @@ contentBlocks:
           'fontSize':'15px'
         }}}%%
         flowchart TD
-            A["2025.12.27 · 초안 공개"] --> B["2026.01.25 · 수렴 종료"]
-            B --> C["2026.02.02 · 확정본 통과"]
-            C --> E["2026.04.10 · 공동 공포 · 제21호령"]
-            E --> F["2026.07.15 · 시행"]
+            A[2025.12.27 · 초안 공개] --> B[2026.01.25 · 수렴 종료]
+            B --> C[2026.02.02 · 확정본 통과]
+            C --> E[2026.04.10 · 공동 공포 · 제21호령]
+            E --> F[2026.07.15 · 시행]
 
-            M["발개위 · 공신부 · 공안부 · 시감총국"] -.동의.-> C
+            M[발개위 · 공신부 · 공안부 · 시감총국] -.동의.-> C
 
-            A -.-> D1["초안 방향<br/>정서적 동반 = 보호자 동의"]
-            D1 == 강화 ==> D2["확정본 방향<br/>가상 친밀관계 = 전면 금지"]
+            A -.-> D1[초안 방향<br/>정서적 동반 = 보호자 동의]
+            D1 == 강화 ==> D2[확정본 방향<br/>가상 친밀관계 = 전면 금지]
             D2 --> E
 
             style D2 stroke-width:2px
@@ -78,15 +78,15 @@ contentBlocks:
         }}}%%
 
         flowchart TD
-            A["2025.12.27 · Draft released"] --> B["2026.01.25 · Comment period ends"]
-            B --> C["2026.02.02 · Final text passed"]
-            C --> E["2026.04.10 · Promulgated · Order No. 21"]
-            E --> F["2026.07.15 · Effective"]
+            A[2025.12.27 · Draft released] --> B[2026.01.25 · Comment period ends]
+            B --> C[2026.02.02 · Final text passed]
+            C --> E[2026.04.10 · Promulgated · Order No. 21]
+            E --> F[2026.07.15 · Effective]
 
             M["NDRC · MIIT · MPS · SAMR"] -.consent.-> C
 
-            A -.-> D1["Draft approach<br/>Emotional companionship = guardian consent"]
-            D1 == tightened ==> D2["Final approach<br/>Virtual intimacy = total ban"]
+            A -.-> D1[Draft approach<br/>Emotional companionship = guardian consent]
+            D1 == tightened ==> D2[Final approach<br/>Virtual intimacy = total ban]
             D2 --> E
 
             style D2 stroke-width:2px
