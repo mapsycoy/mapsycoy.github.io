@@ -17,6 +17,9 @@ contentBlocks:
         ## **「人工智能拟人化互动服务管理暂行办法: 인공지능 기반 인간 중심 상호작용 서비스 운영을 위한 잠정 조치」**
 
 
+        [「人工智能拟人化互动服务管理暂行办法: 인공지능 기반 인간 중심 상호작용 서비스 운영을 위한 잠정 조치」](https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm)
+
+
         지난 7월 15일, 중국에서 「인공지능 기반 인간 중심 상호작용 서비스 운영을 위한 잠정 조치」가 시행됐다.
 
 
@@ -221,7 +224,7 @@ contentBlocks:
         ## **이전 글의 딜레마, 국가의 답안**
 
 
-        나는 시리즈에서 Nomisha Kurian의 논문을 다루며 아동 대상 AI 서비스의 세 가지 딜레마를 정리한 적이 있다. 안전 VS 몰입, 개인화 VS 프라이버시, 그리고 자율성 VS 보호.
+        나는 시리즈 속 Paper 카테고리에서 Nomisha Kurian의 논문을 다루며 아동 대상 AI 서비스의 세 가지 딜레마를 정리한 적이 있다. 안전 VS 몰입, 개인화 VS 프라이버시, 그리고 자율성 VS 보호.
 
 
         Kurian은 이 셋이 양자택일이 아니라 맥락과 발달 단계에 따라 계속 조율해야 하는 문제라고 했다. 조율의 책임은 설계자에게 있었다.
@@ -243,4 +246,24 @@ contentBlocks:
 
 
         ---
+
+
+
+
+        ### **원문 링크**
+
+
+        * **CAC 전문:** https://www.cac.gov.cn/2026-04/10/c_1777558395078289.htm
+
+        * **CAC 기자문답:** https://www.cac.gov.cn/2026-04/10/c_1777558395284407.htm
+
+        * **CAC 해설(입법 평가):** https://www.cac.gov.cn/2026-06/03/c_1782142434783056.htm
+
+        * **디지털 가상인 초안:** https://www.cac.gov.cn/2026-04/03/c_1776952992709096.htm
+
+        * **WSJ 보도:** https://www.wsj.com/tech/ai/china-wants-more-babiesso-its-cracking-down-on-chatbot-love-affairs-65cd6c82
+
+        * **China Law Translate 전문 페이지:** https://www.chinalawtranslate.com/human-like-ai/
+
+        * **조문 정리(영문 대역, 아카이브 보유):** https://comparativeai.org/rules/china/anthropomorphic-interaction-services/
 ---
