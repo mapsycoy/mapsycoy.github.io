@@ -425,7 +425,7 @@ contentBlocks:
         The obligations confirmed in the official text published by the CAC are as follows:
 
 
-        **\[Procedural Obligations]**
+        **[Procedural Obligations]**
 
 
         * **Algorithm Filing (Article 26):** Application of filing, modification, and cancellation procedures under the existing *Internet Information Service Algorithm Recommendation Administrative Provisions*.
@@ -433,7 +433,7 @@ contentBlocks:
         * **Security Assessment (Article 22):** Required for launching new services or adding features, significant changes from introducing new technologies, reaching 1 million registered users or 100,000 monthly active users, or when safety risks impacting national security or public interest exist.
 
 
-        **\[Design Obligations]**
+        **[Design Obligations]**
 
 
         * **AI Disclosure Measures (Article 18):** Fulfill obligations to mark generated content and effectively inform users that they are interacting with an AI service rather than a natural person. When tendencies toward excessive reliance or addiction are detected, dynamically re-notify users through prominent means (such as pop-ups) that the interaction content is AI-generated, and notify users of their elapsed time every 2 hours of continuous use.
