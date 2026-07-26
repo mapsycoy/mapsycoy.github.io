@@ -145,8 +145,8 @@
         "en": "NEXON KOREA"
       },
       "duration": {
-        "en": "",
-        "ko": ""
+        "en": "6 mos",
+        "ko": "6개월"
       },
       "role": {
         "ko": "컨셉아티스트 · 일러스트레이터",
@@ -190,7 +190,11 @@
           "ko": "아동 맞춤형 AI 교육 콘텐츠 시각 리소스 제작",
           "en": "Visual Resource Creation for Child-Centered AI Educational Content"
         }
-      ]
+      ],
+      "duration": {
+        "en": "3 mos",
+        "ko": "3개월"
+      }
     },
     {
       "role": {
@@ -216,6 +220,10 @@
       "employmentType": {
         "ko": "자영업",
         "en": "Self-employed"
+      },
+      "duration": {
+        "ko": "11개월",
+        "en": "11 mos"
       }
     },
     {
@@ -236,7 +244,11 @@
         "en": "Oct 2021 - Oct 2022"
       },
       "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-logo-studio-jbbj.webp",
-      "description": []
+      "description": [],
+      "duration": {
+        "en": "1 yr 1 mo",
+        "ko": "1년 1개월"
+      }
     },
     {
       "role": {
