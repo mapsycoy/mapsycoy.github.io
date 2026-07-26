@@ -2606,7 +2606,9 @@ ul.blog-text-list {
 
 .blog-post-body {
   max-width: none;
+  min-width: 0;
   margin: 0;
+  overflow-wrap: anywhere;
 }
 
 .blog-post-body figure,
@@ -3719,7 +3721,15 @@ html[lang="ko"] .cv-page {
 
 pre.mermaid,
 pre.mermaid[data-processed] {
+  max-width: 100%;
+  overflow-x: auto;
   background: transparent !important;
+}
+
+pre.mermaid svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }
 
 @media (prefers-color-scheme: dark) {
