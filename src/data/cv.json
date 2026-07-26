@@ -244,7 +244,12 @@
         "en": "Oct 2021 - Oct 2022"
       },
       "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-logo-studio-jbbj.webp",
-      "description": [],
+      "description": [
+        {
+          "ko": "채널 애니메이션 콘텐츠 컷·씬 단위 작업, 프로덕션 에셋 제작, 굿즈 컨셉 시안",
+          "en": "Cut- and scene-level animation & illustration work for channel content, production asset creation, and exploratory merchandise concepts"
+        }
+      ],
       "duration": {
         "en": "1 yr 1 mo",
         "ko": "1년 1개월"
