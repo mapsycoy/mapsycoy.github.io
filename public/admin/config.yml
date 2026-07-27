@@ -717,11 +717,11 @@ collections:
                     name: en
                     widget: string
                     required: false
-                    - label: Link URL
-                      name: href
-                      widget: string
-                      required: false
-                      hint: Optional URL applied to this description text.
+                  - label: Link URL
+                    name: href
+                    widget: string
+                    required: false
+                    hint: Optional URL applied to this description text.
           - label: Arts Gifted Education Certificate
             name: artsGiftedEducationCertificate
             widget: object
@@ -919,11 +919,11 @@ collections:
                     name: en
                     widget: string
                     required: false
-                    - label: Link URL
-                      name: href
-                      widget: string
-                      required: false
-                      hint: Optional URL applied to this description text.
+                  - label: Link URL
+                    name: href
+                    widget: string
+                    required: false
+                    hint: Optional URL applied to this description text.
               - label: Sub Entries
                 name: subEntries
                 widget: list
@@ -984,11 +984,11 @@ collections:
                         name: en
                         widget: string
                         required: false
-                        - label: Link URL
-                          name: href
-                          widget: string
-                          required: false
-                          hint: Optional URL applied to this description text.
+                      - label: Link URL
+                        name: href
+                        widget: string
+                        required: false
+                        hint: Optional URL applied to this description text.
               - label: Media
                 name: media
                 widget: list
@@ -1084,11 +1084,11 @@ collections:
                     name: en
                     widget: string
                     required: false
-                    - label: Link URL
-                      name: href
-                      widget: string
-                      required: false
-                      hint: Optional URL applied to this description text.
+                  - label: Link URL
+                    name: href
+                    widget: string
+                    required: false
+                    hint: Optional URL applied to this description text.
               - label: Media
                 name: media
                 widget: list
@@ -1242,11 +1242,11 @@ collections:
                     name: en
                     widget: string
                     required: false
-                    - label: Link URL
-                      name: href
-                      widget: string
-                      required: false
-                      hint: Optional URL applied to this description text.
+                  - label: Link URL
+                    name: href
+                    widget: string
+                    required: false
+                    hint: Optional URL applied to this description text.
               - label: Links
                 name: links
                 widget: list
