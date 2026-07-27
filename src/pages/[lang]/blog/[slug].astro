@@ -257,7 +257,14 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
 };
 ---
 
-<Layout title={`${postTitle} | Blog`} description={postTitle} lang={lang}>
+<Layout
+  title={`${postTitle} | Blog`}
+  description={postTitle}
+  lang={lang}
+  ogType="article"
+  publishedTime={new Date(post.data.publishedAt).toISOString()}
+  modifiedTime={post.data.updatedAt ? new Date(post.data.updatedAt).toISOString() : undefined}
+>
   <article class="blog-post">
     <a class="work-back-link" href={`/${lang}/blog/`}>&#8592; Blog</a>
 

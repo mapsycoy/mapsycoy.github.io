@@ -8,7 +8,10 @@ const {
   title = "mapsycoy",
   description = "Visual Creation, AI Workflows, and Human-Centered Interaction.",
   previewImage = getSitePreviewImage(),
-  lang = defaultLanguage
+  lang = defaultLanguage,
+  ogType = "website",
+  publishedTime = undefined,
+  modifiedTime = undefined
 } = Astro.props;
 
 const currentLanguage = lang as Language;
@@ -24,6 +27,13 @@ const navItems = [
 ];
 const pathParts = Astro.url.pathname.split("/").filter(Boolean);
 const hasLanguagePrefix = isLanguage(pathParts[0]);
+const rawBasePath = hasLanguagePrefix ? `/${pathParts.slice(1).join("/")}` : Astro.url.pathname;
+const basePath = rawBasePath === "" || rawBasePath === "/"
+  ? "/"
+  : `${rawBasePath.replace(/\/+$/, "")}/`;
+const enUrl = new URL(basePath, siteUrl).toString();
+const koUrl = new URL(`/ko${basePath}`, siteUrl).toString();
+const canonicalUrl = currentLanguage === "ko" ? koUrl : enUrl;
 const alternateLanguage = getAlternateLanguage(currentLanguage);
 const alternatePath = hasLanguagePrefix
   ? `/${[alternateLanguage, ...pathParts.slice(1)].join("/")}`
@@ -42,10 +52,12 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     <meta name="theme-color" content="#f8f8f5" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#171817" media="(prefers-color-scheme: dark)" />
     <meta name="description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
+    {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+    {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
     <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:url" content={pageUrl} />
+    <meta property="og:url" content={canonicalUrl} />
     <meta property="og:image" content={previewImageUrl} />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -53,6 +65,10 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     <meta name="twitter:title" content={pageTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={previewImageUrl} />
+    <link rel="canonical" href={canonicalUrl} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="ko" href={koUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
     <link rel="alternate" type="application/rss+xml" title="mapsycoy — All" href="/rss.xml" />
     <link rel="alternate" type="application/rss+xml" title="mapsycoy — Essays & Papers" href="/rss-essays.xml" />
     <link rel="alternate" type="application/rss+xml" title="mapsycoy — News" href="/rss-news.xml" />

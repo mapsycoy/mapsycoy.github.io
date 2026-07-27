@@ -1,4 +1,5 @@
 import { defineConfig } from "astro/config";
+import sitemap from "@astrojs/sitemap";
 import mermaid from "astro-mermaid";
 import { unified } from "@astrojs/markdown-remark";
 import remarkGfm from "remark-gfm";
@@ -14,6 +15,13 @@ export default defineConfig({
       mermaidConfig: {
         themeVariables: { background: "transparent" },
       },
+    }),
+    sitemap({
+      i18n: {
+        defaultLocale: "en",
+        locales: { en: "en", ko: "ko" },
+      },
+      filter: (page) => !page.includes("/admin"),
     }),
   ],
   markdown: unified({
