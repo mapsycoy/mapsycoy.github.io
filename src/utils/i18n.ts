@@ -25,7 +25,9 @@ export const getLanguageFromParams = (value: string | undefined) =>
 
 export const withLanguage = (lang: Language, path: string) => {
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
-  return `/${lang}${normalizedPath}`.replace(/\/+$/g, "") || `/${lang}`;
+  const base = lang === defaultLanguage ? normalizedPath : `/${lang}${normalizedPath}`;
+  const trimmed = base.replace(/\/+$/g, "");
+  return trimmed === "" ? "/" : `${trimmed}/`;
 };
 
 export const getAlternateLanguage = (lang: Language): Language => (lang === "ko" ? "en" : "ko");

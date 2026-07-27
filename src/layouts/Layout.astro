@@ -35,9 +35,7 @@ const enUrl = new URL(basePath, siteUrl).toString();
 const koUrl = new URL(`/ko${basePath}`, siteUrl).toString();
 const canonicalUrl = currentLanguage === "ko" ? koUrl : enUrl;
 const alternateLanguage = getAlternateLanguage(currentLanguage);
-const alternatePath = hasLanguagePrefix
-  ? `/${[alternateLanguage, ...pathParts.slice(1)].join("/")}`
-  : withLanguage(alternateLanguage, Astro.url.pathname);
+const alternatePath = withLanguage(alternateLanguage, basePath);
 
 const linkedInUrl = "https://www.linkedin.com/in/mapsycoy/";
 const instagramUrl = "https://www.instagram.com/mapsycoy/";
