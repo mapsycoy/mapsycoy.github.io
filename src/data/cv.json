@@ -155,7 +155,8 @@
       "description": [
         {
           "ko": "메이플스토리 및 던전앤파이터의 인게임 생성형 AI 기능 '커스텀 일러스트'를 위한 참조 일러스트 제작 및 LoRA 학습 데이터셋 구축. 해당 기능은 유저가 착용한 인게임 착장을 기반으로 캐릭터 일러스트를 생성하여 캐릭터 정보창 및 시나리오 대화창에 적용함.",
-          "en": "Produced reference illustrations and built LoRA training datasets for Custom Illustration, an in-game generative AI feature in MapleStory and Dungeon & Fighter. The feature generates a character illustration from the player's equipped in-game outfit and applies it to the character info and scenario dialogue windows."
+          "en": "Produced reference illustrations and built LoRA training datasets for Custom Illustration, an in-game generative AI feature in MapleStory and Dungeon & Fighter. The feature generates a character illustration from the player's equipped in-game outfit and applies it to the character info and scenario dialogue windows.",
+          "href": "https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114"
         }
       ],
       "team": {
@@ -212,8 +213,18 @@
       "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-logo-unipuskr.webp",
       "description": [
         {
-          "en": "Led design across the initial launch and first major update of NETY",
-          "ko": "NETY 서비스의 최초 론칭 및 1차 메인 업데이트 전 과정 기여"
+          "en": "Owned the design function through NETY's 2023 launch; built the brand identity and character IP end to end",
+          "ko": "NETY 2023년 런칭까지 디자인 기능 전반을 담당. 브랜드 아이덴티티 및 캐릭터 IP 구축"
+        },
+        {
+          "en": "2023 성북구 청년 소셜벤처 혁신 경연대회 우수상",
+          "ko": "Excellence Award, 2023 Seongbuk-gu Youth Social Venture Competition",
+          "href": "https://www.seouland.com/arti/society/society_general/12383.html"
+        },
+        {
+          "en": "NETY acquired by TimeTree, Feb 2025",
+          "ko": "2025년 2월 타임트리(TimeTree)에 매각",
+          "href": "https://www.kspost.biz/ko-kr/articles/246"
         }
       ],
       "media": [],
