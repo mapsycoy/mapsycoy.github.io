@@ -2716,7 +2716,7 @@ html[lang="ko"] .cv-page {
 
 .cv-profile-name {
   margin: 0;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   font-weight: 700;
   line-height: 1.3;
 }
@@ -2749,7 +2749,7 @@ html[lang="ko"] .cv-page {
 }
 
 .cv-profile-education-item + .cv-profile-education-item {
-  margin-top: 10px;
+  margin-top: 32px;
 }
 
 
@@ -3554,7 +3554,7 @@ html[lang="ko"] .cv-page {
 
   .cv-profile-main {
     grid-template-columns: 1fr;
-    gap: 20px;
+    gap: 28px;
     align-items: start;
     padding-bottom: 32px;
   }
@@ -3575,9 +3575,6 @@ html[lang="ko"] .cv-page {
     object-position: center top;
   }
 
-  .cv-profile-education-item + .cv-profile-education-item {
-    margin-top: 14px;
-  }
 
   .cv-entry {
     grid-template-columns: 42px minmax(0, 1fr);
