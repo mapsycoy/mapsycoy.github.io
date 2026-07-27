@@ -9,6 +9,9 @@ const projectInitialCount = 4;
 const mediaItems = (items: MediaItem[] | undefined) => items?.filter((item) => item.src || item.href) ?? [];
 const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items).filter((item) => item.src);
 const localizedDescriptionLine = (line: any) => localize(line?.line ?? line, lang);
+const descriptionHref = (line: any) => line?.href;
+const descriptionListClass = (lines: any[]) =>
+  `cv-entry-description${lines.length > 1 ? " cv-entry-description-bulleted" : ""}`;
 const educationDescriptionLines = (item: any) => (item.description ?? []).filter((line: any) => {
   const minorKo = localize(item.minor, "ko");
   return !minorKo || localize(line?.line ?? line, "ko") !== minorKo;
@@ -56,8 +59,10 @@ const publicationVenueLine = (item: any) => {
             <p class="cv-profile-education-institution">{localize(item.institution, lang)}</p>
             <p class="cv-entry-period">{localize(item.period, lang)}</p>
             {educationDescriptionLines(item).length > 0 && (
-              <ul class="cv-entry-description">
-                {educationDescriptionLines(item).map((line: any) => <li>{localizedDescriptionLine(line)}</li>)}
+              <ul class={descriptionListClass(educationDescriptionLines(item))}>
+                {educationDescriptionLines(item).map((line: any) => (
+                  <li>{descriptionHref(line) ? <a href={descriptionHref(line)} target={descriptionHref(line).startsWith("http") ? "_blank" : undefined} rel={descriptionHref(line).startsWith("http") ? "noreferrer" : undefined}>{localizedDescriptionLine(line)}</a> : localizedDescriptionLine(line)}</li>
+                ))}
               </ul>
             )}
           </article>
@@ -112,8 +117,10 @@ const publicationVenueLine = (item: any) => {
                 {localize(item.period, lang)}{item.duration && ` · ${localize(item.duration, lang)}`}
               </p>
               {item.description && (
-                <ul class="cv-entry-description">
-                  {item.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
+                <ul class={descriptionListClass(item.description)}>
+                  {item.description.map((line) => (
+                    <li>{descriptionHref(line) ? <a href={descriptionHref(line)} target={descriptionHref(line).startsWith("http") ? "_blank" : undefined} rel={descriptionHref(line).startsWith("http") ? "noreferrer" : undefined}>{localizedDescriptionLine(line)}</a> : localizedDescriptionLine(line)}</li>
+                  ))}
                 </ul>
               )}
 
@@ -126,8 +133,10 @@ const publicationVenueLine = (item: any) => {
                         {localize(subEntry.period, lang)}{subEntry.duration && ` · ${localize(subEntry.duration, lang)}`}
                       </p>
                       {subEntry.description && (
-                        <ul class="cv-entry-description">
-                          {subEntry.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
+                        <ul class={descriptionListClass(subEntry.description)}>
+                          {subEntry.description.map((line) => (
+                            <li>{descriptionHref(line) ? <a href={descriptionHref(line)} target={descriptionHref(line).startsWith("http") ? "_blank" : undefined} rel={descriptionHref(line).startsWith("http") ? "noreferrer" : undefined}>{localizedDescriptionLine(line)}</a> : localizedDescriptionLine(line)}</li>
+                          ))}
                         </ul>
                       )}
                     </div>
@@ -172,8 +181,10 @@ const publicationVenueLine = (item: any) => {
                 <p class="cv-entry-period">{localize(item.period, lang)}</p>
               </div>
               {item.description && (
-                <ul class="cv-entry-description">
-                  {item.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
+                <ul class={descriptionListClass(item.description)}>
+                  {item.description.map((line) => (
+                    <li>{descriptionHref(line) ? <a href={descriptionHref(line)} target={descriptionHref(line).startsWith("http") ? "_blank" : undefined} rel={descriptionHref(line).startsWith("http") ? "noreferrer" : undefined}>{localizedDescriptionLine(line)}</a> : localizedDescriptionLine(line)}</li>
+                  ))}
                 </ul>
               )}
               {thumbnailMediaItems(item.media).length > 0 && (
