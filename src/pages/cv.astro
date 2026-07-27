@@ -101,10 +101,10 @@ const publicationVenueLine = (item: any) => {
                 {item.team && <span class="cv-entry-team">{localize(item.team, lang)}</span>}
               </h3>
               <p class="cv-entry-meta">
-                {localize(item.organization, lang)}{item.employmentType && ` / ${localize(item.employmentType, lang)}`}
+                {localize(item.organization, lang)}{item.employmentType && ` · ${localize(item.employmentType, lang)}`}
               </p>
               <p class="cv-entry-period">
-                {localize(item.period, lang)}{item.duration && ` / ${localize(item.duration, lang)}`}
+                {localize(item.period, lang)}{item.duration && ` · ${localize(item.duration, lang)}`}
               </p>
               {item.description && (
                 <ul class="cv-entry-description">
@@ -118,7 +118,7 @@ const publicationVenueLine = (item: any) => {
                     <div class="cv-subentry">
                       <h4>{localize(subEntry.title, lang)}</h4>
                       <p class="cv-entry-period">
-                        {localize(subEntry.period, lang)}{subEntry.duration && ` / ${localize(subEntry.duration, lang)}`}
+                        {localize(subEntry.period, lang)}{subEntry.duration && ` · ${localize(subEntry.duration, lang)}`}
                       </p>
                       {subEntry.description && (
                         <ul class="cv-entry-description">
