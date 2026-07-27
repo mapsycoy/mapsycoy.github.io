@@ -2755,10 +2755,7 @@ html[lang="ko"] .cv-page {
 
 
 .cv-profile-education-title {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 6px 0;
+  display: block;
   margin: 0;
   font-size: 1rem;
   font-weight: 700;
