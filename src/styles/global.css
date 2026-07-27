@@ -3575,6 +3575,10 @@ html[lang="ko"] .cv-page {
     object-position: center top;
   }
 
+  .cv-profile-education-item + .cv-profile-education-item {
+    margin-top: 14px;
+  }
+
   .cv-entry {
     grid-template-columns: 42px minmax(0, 1fr);
     gap: 12px;
