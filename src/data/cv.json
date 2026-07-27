@@ -14,7 +14,7 @@
     {
       "institution": {
         "ko": "연세대학교 커뮤니케이션대학원",
-        "en": "YONSEI Graduate School of Communication & Arts"
+        "en": "Yonsei University, Grad School of Communication & Arts"
       },
       "degree": {
         "ko": "입학 예정 · 공학석사과정(HCI디자인)",
@@ -35,6 +35,10 @@
         "ko": "영상디자인학(미술학사)",
         "en": "BFA, Entertainment Design"
       },
+      "minor": {
+        "ko": "미래기술융합디자인 부전공",
+        "en": "Minor in Future Tech. Convergence Design"
+      },
       "period": {
         "ko": "2019.03 - 2026.02",
         "en": "Mar 2019 - Feb 2026"
@@ -54,7 +58,7 @@
   "artsGiftedEducationCertificate": {
     "title": {
       "ko": "미술영재교육 수료",
-      "en": "Certificate of Completion ─ Art Gifted Education"
+      "en": "Certificate of Completion · Art Gifted Education"
     },
     "logos": [
       {

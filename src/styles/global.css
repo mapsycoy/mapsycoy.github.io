@@ -2771,17 +2771,21 @@ html[lang="ko"] .cv-page {
 
 .cv-profile-education-title span + span {
   color: var(--muted);
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 400;
 }
 
 .cv-profile-education-title span + span::before {
-  display: inline-block;
-  width: 1px;
-  height: 0.8em;
   margin: 0 7px;
-  background: currentColor;
-  content: "";
-  vertical-align: -0.05em;
+  color: var(--muted);
+  content: "·";
+}
+
+.cv-profile-education-institution {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.9rem;
+  line-height: 1.45;
 }
 
 .cv-certificate {
@@ -3089,12 +3093,21 @@ html[lang="ko"] .cv-page {
 .cv-entry-period {
   margin: 0;
   color: var(--muted);
-  font-size: 0.9rem;
   line-height: 1.45;
+}
+
+.cv-entry-meta {
+  font-size: 0.9rem;
+}
+
+.cv-entry-organization {
+  color: var(--text);
 }
 
 .cv-entry-period {
   margin-top: 1px;
+  font-size: 0.68rem;
+  letter-spacing: 0.02em;
 }
 
 .cv-entry-description {

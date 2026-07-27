@@ -33,6 +33,7 @@ export type ExperienceItem = {
 export type EducationItem = {
   institution: LocalizedText;
   degree: LocalizedText;
+  minor?: LocalizedText;
   period: LocalizedText;
   description?: LocalizedTextLine[];
   logo?: string;

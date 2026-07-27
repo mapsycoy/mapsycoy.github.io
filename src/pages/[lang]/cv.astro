@@ -13,6 +13,10 @@ const projectInitialCount = 4;
 const mediaItems = (items: MediaItem[] | undefined) => items?.filter((item) => item.src || item.href) ?? [];
 const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items).filter((item) => item.src);
 const localizedDescriptionLine = (line: any) => localize(line?.line ?? line, lang);
+const educationDescriptionLines = (item: any) => (item.description ?? []).filter((line: any) => {
+  const minorKo = localize(item.minor, "ko");
+  return !minorKo || localize(line?.line ?? line, "ko") !== minorKo;
+});
 const certificateItems = artsGiftedEducationCertificate.items ?? artsGiftedEducationCertificate.logos.map((logo) => ({
   institution: logo.alt,
   period: undefined,
@@ -51,12 +55,13 @@ const publicationVenueLine = (item: any) => {
           <article class="cv-profile-education-item">
             <h2 class="cv-profile-education-title">
               <span>{localize(item.degree, lang)}</span>
-              <span>{localize(item.institution, lang)}</span>
+              {item.minor && localize(item.minor, lang) && <span>{localize(item.minor, lang)}</span>}
             </h2>
+            <p class="cv-profile-education-institution">{localize(item.institution, lang)}</p>
             <p class="cv-entry-period">{localize(item.period, lang)}</p>
-            {item.description && (
+            {educationDescriptionLines(item).length > 0 && (
               <ul class="cv-entry-description">
-                {item.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
+                {educationDescriptionLines(item).map((line: any) => <li>{localizedDescriptionLine(line)}</li>)}
               </ul>
             )}
           </article>
@@ -105,10 +110,11 @@ const publicationVenueLine = (item: any) => {
                 {item.team && <span class="cv-entry-team">{localize(item.team, lang)}</span>}
               </h3>
               <p class="cv-entry-meta">
-                {localize(item.organization, lang)}{item.employmentType && ` / ${localize(item.employmentType, lang)}`}
+                <span class="cv-entry-organization">{localize(item.organization, lang)}</span>
+                {item.employmentType && <span> · {localize(item.employmentType, lang)}</span>}
               </p>
               <p class="cv-entry-period">
-                {localize(item.period, lang)}{item.duration && ` / ${localize(item.duration, lang)}`}
+                {localize(item.period, lang)}{item.duration && ` · ${localize(item.duration, lang)}`}
               </p>
               {item.description && (
                 <ul class="cv-entry-description">
@@ -122,7 +128,7 @@ const publicationVenueLine = (item: any) => {
                     <div class="cv-subentry">
                       <h4>{localize(subEntry.title, lang)}</h4>
                       <p class="cv-entry-period">
-                        {localize(subEntry.period, lang)}{subEntry.duration && ` / ${localize(subEntry.duration, lang)}`}
+                        {localize(subEntry.period, lang)}{subEntry.duration && ` · ${localize(subEntry.duration, lang)}`}
                       </p>
                       {subEntry.description && (
                         <ul class="cv-entry-description">

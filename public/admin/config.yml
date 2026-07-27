@@ -678,6 +678,19 @@ collections:
                     name: en
                     widget: string
                     required: false
+              - label: Minor
+                name: minor
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
               - label: Period
                 name: period
                 widget: object
