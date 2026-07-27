@@ -154,8 +154,8 @@
       },
       "description": [
         {
-          "ko": "메이플스토리 및 던전앤파이터의 인게임 생성형 AI 기능 '커스텀 일러스트'를 위한 참조 일러스트 제작 및 LoRA 학습 데이터셋 구축. 해당 기능은 유저가 착용한 인게임 착장을 기반으로 캐릭터 일러스트를 생성하여 캐릭터 정보창 및 시나리오 대화창에 적용함.",
-          "en": "Produced reference illustrations and built LoRA training datasets for Custom Illustration, an in-game generative AI feature in MapleStory and Dungeon & Fighter. The feature generates a character illustration from the player's equipped in-game outfit and applies it to the character info and scenario dialogue windows.",
+          "ko": "메이플스토리 및 던전앤파이터의 인게임 생성형 AI 기능 '커스텀 일러스트'를 위한 참조 일러스트 제작 및 LoRA 학습 데이터셋 구축",
+          "en": "Produced reference illustrations and built LoRA training datasets for Custom Illustration, an in-game generative AI feature in MapleStory and DNF",
           "href": "https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114"
         }
       ],
@@ -217,8 +217,8 @@
           "ko": "NETY 2023년 런칭까지 디자인 기능 전반을 담당. 브랜드 아이덴티티 및 캐릭터 IP 구축"
         },
         {
-          "en": "2023 성북구 청년 소셜벤처 혁신 경연대회 우수상",
-          "ko": "Excellence Award, 2023 Seongbuk-gu Youth Social Venture Competition",
+          "en": "Excellence Award, 2023 Seongbuk-gu Youth Social Venture Competition",
+          "ko": "2023 성북구 청년 소셜벤처 혁신 경연대회 우수상",
           "href": "https://www.seouland.com/arti/society/society_general/12383.html"
         },
         {
@@ -432,8 +432,12 @@
       },
       "description": [
         {
-          "ko": "국내 파충류 시장 타깃 프로젝트",
-          "en": "On-going project for the reptile industry"
+          "ko": "파충류 사육 플랫폼. iOS·구글 플레이 오픈 베타 출시",
+          "en": "Reptile husbandry platform on iOS and Google Play (open beta)"
+        },
+        {
+          "en": "Pre-incorporation stage",
+          "ko": "예비창업 단계"
         }
       ]
     }
