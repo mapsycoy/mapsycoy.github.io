@@ -154,8 +154,8 @@
       },
       "description": [
         {
-          "ko": "주요 게임 IP(메이플스토리, 던전앤파이터) AI 서비스 적용을 위한 수작업 리소스 제작 및 LoRA 데이터셋 고도화",
-          "en": "Manual drawing and LoRA dataset refinement for implementing AI services in major game IPs (MapleStory, DNF)"
+          "ko": "메이플스토리 및 던전앤파이터의 인게임 생성형 AI 기능 '커스텀 일러스트'를 위한 참조 일러스트 제작 및 LoRA 학습 데이터셋 구축. 해당 기능은 유저가 착용한 인게임 착장을 기반으로 캐릭터 일러스트를 생성하여 캐릭터 정보창 및 시나리오 대화창에 적용함.",
+          "en": "Produced reference illustrations and built LoRA training datasets for Custom Illustration, an in-game generative AI feature in MapleStory and Dungeon & Fighter. The feature generates a character illustration from the player's equipped in-game outfit and applies it to the character info and scenario dialogue windows."
         }
       ],
       "team": {
@@ -339,7 +339,11 @@
           ]
         }
       ],
-      "description": []
+      "description": [],
+      "duration": {
+        "ko": "수료생",
+        "en": "Program alumnus"
+      }
     }
   ],
   "projects": [
