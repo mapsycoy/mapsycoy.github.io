@@ -9,6 +9,10 @@ const projectInitialCount = 4;
 const mediaItems = (items: MediaItem[] | undefined) => items?.filter((item) => item.src || item.href) ?? [];
 const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items).filter((item) => item.src);
 const localizedDescriptionLine = (line: any) => localize(line?.line ?? line, lang);
+const educationDescriptionLines = (item: any) => (item.description ?? []).filter((line: any) => {
+  const minorKo = localize(item.minor, "ko");
+  return !minorKo || localize(line?.line ?? line, "ko") !== minorKo;
+});
 const certificateItems = artsGiftedEducationCertificate.items ?? artsGiftedEducationCertificate.logos.map((logo) => ({
   institution: logo.alt,
   period: undefined,
@@ -47,12 +51,13 @@ const publicationVenueLine = (item: any) => {
           <article class="cv-profile-education-item">
             <h2 class="cv-profile-education-title">
               <span>{localize(item.degree, lang)}</span>
-              <span>{localize(item.institution, lang)}</span>
+              {item.minor && localize(item.minor, lang) && <span>{localize(item.minor, lang)}</span>}
             </h2>
+            <p class="cv-profile-education-institution">{localize(item.institution, lang)}</p>
             <p class="cv-entry-period">{localize(item.period, lang)}</p>
-            {item.description && (
+            {educationDescriptionLines(item).length > 0 && (
               <ul class="cv-entry-description">
-                {item.description.map((line) => <li>{localizedDescriptionLine(line)}</li>)}
+                {educationDescriptionLines(item).map((line: any) => <li>{localizedDescriptionLine(line)}</li>)}
               </ul>
             )}
           </article>
