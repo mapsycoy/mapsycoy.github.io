@@ -257,6 +257,35 @@
     },
     {
       "role": {
+        "ko": "병장 · 만기전역",
+        "en": "Sergeant · Completed Mandatory Service"
+      },
+      "organization": {
+        "ko": "대한민국 공군",
+        "en": "Republic of Korea Air Force"
+      },
+      "employmentType": {
+        "ko": "군복무",
+        "en": "Military Service"
+      },
+      "period": {
+        "ko": "2020.02 - 2021.11",
+        "en": "Feb 2020 - Nov 2021"
+      },
+      "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@ae788063c903de244e4e38a6a217b98147595515/uploads/cv/cv-logo-rokaf.svg",
+      "description": [
+        {
+          "ko": "코로나19 방역 지침에 따른 미복귀 전역으로 2021년 9월부터 전역일까지 자택에서 대기했으며, 이 기간 중 2021년 10월부터 프리랜서 업무를 시작함",
+          "en": "Began terminal leave in Sep 2021 under the COVID-19 non-return discharge policy and remained off base through the official discharge date; began freelance work in Oct 2021"
+        }
+      ],
+      "duration": {
+        "ko": "1년 10개월",
+        "en": "1 yr 10 mos"
+      }
+    },
+    {
+      "role": {
         "ko": "서울교육대학교",
         "en": "Seoul National University of Education"
       },
