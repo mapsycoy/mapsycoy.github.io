@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import { marked } from "marked";
 import { artsGiftedEducationCertificate, education, experiences, profile, projects, publications, type MediaItem } from "../../data/cv";
 import { getLanguageFromParams, languages, localize, type Language } from "../../utils/i18n";
 
@@ -12,8 +13,10 @@ const projectInitialCount = 4;
 
 const mediaItems = (items: MediaItem[] | undefined) => items?.filter((item) => item.src || item.href) ?? [];
 const thumbnailMediaItems = (items: MediaItem[] | undefined) => mediaItems(items).filter((item) => item.src);
-const localizedDescriptionLine = (line: any) => localize(line?.line ?? line, lang);
-const descriptionHref = (line: any) => line?.href;
+const localizedDescriptionHtml = (line: any) =>
+  marked
+    .parseInline(localize(line?.line ?? line, lang))
+    .replaceAll("<a href=", '<a target="_blank" rel="noreferrer" href=');
 const descriptionListClass = (lines: any[]) =>
   `cv-entry-description${lines.length > 1 ? " cv-entry-description-bulleted" : ""}`;
 const educationDescriptionLines = (item: any) => (item.description ?? []).filter((line: any) => {
@@ -65,7 +68,7 @@ const publicationVenueLine = (item: any) => {
             {educationDescriptionLines(item).length > 0 && (
               <ul class={descriptionListClass(educationDescriptionLines(item))}>
                 {educationDescriptionLines(item).map((line: any) => (
-                  <li>{descriptionHref(line) ? <a href={descriptionHref(line)} target={descriptionHref(line).startsWith("http") ? "_blank" : undefined} rel={descriptionHref(line).startsWith("http") ? "noreferrer" : undefined}>{localizedDescriptionLine(line)}</a> : localizedDescriptionLine(line)}</li>
+                  <li set:html={localizedDescriptionHtml(line)} />
                 ))}
               </ul>
             )}
@@ -124,7 +127,7 @@ const publicationVenueLine = (item: any) => {
               {item.description && (
                 <ul class={descriptionListClass(item.description)}>
                   {item.description.map((line) => (
-                    <li>{descriptionHref(line) ? <a href={descriptionHref(line)} target={descriptionHref(line).startsWith("http") ? "_blank" : undefined} rel={descriptionHref(line).startsWith("http") ? "noreferrer" : undefined}>{localizedDescriptionLine(line)}</a> : localizedDescriptionLine(line)}</li>
+                    <li set:html={localizedDescriptionHtml(line)} />
                   ))}
                 </ul>
               )}
@@ -140,7 +143,7 @@ const publicationVenueLine = (item: any) => {
                       {subEntry.description && (
                         <ul class={descriptionListClass(subEntry.description)}>
                           {subEntry.description.map((line) => (
-                            <li>{descriptionHref(line) ? <a href={descriptionHref(line)} target={descriptionHref(line).startsWith("http") ? "_blank" : undefined} rel={descriptionHref(line).startsWith("http") ? "noreferrer" : undefined}>{localizedDescriptionLine(line)}</a> : localizedDescriptionLine(line)}</li>
+                            <li set:html={localizedDescriptionHtml(line)} />
                           ))}
                         </ul>
                       )}
@@ -188,7 +191,7 @@ const publicationVenueLine = (item: any) => {
               {item.description && (
                 <ul class={descriptionListClass(item.description)}>
                   {item.description.map((line) => (
-                    <li>{descriptionHref(line) ? <a href={descriptionHref(line)} target={descriptionHref(line).startsWith("http") ? "_blank" : undefined} rel={descriptionHref(line).startsWith("http") ? "noreferrer" : undefined}>{localizedDescriptionLine(line)}</a> : localizedDescriptionLine(line)}</li>
+                    <li set:html={localizedDescriptionHtml(line)} />
                   ))}
                 </ul>
               )}

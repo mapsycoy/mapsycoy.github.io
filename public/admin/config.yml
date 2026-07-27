@@ -711,17 +711,16 @@ collections:
                 fields:
                   - label: Korean
                     name: ko
-                    widget: string
+                    widget: markdown
+                    minimal: true
+                    buttons: ["bold", "italic", "link"]
                     required: false
                   - label: English
                     name: en
-                    widget: string
+                    widget: markdown
+                    minimal: true
+                    buttons: ["bold", "italic", "link"]
                     required: false
-                  - label: Link URL
-                    name: href
-                    widget: string
-                    required: false
-                    hint: Optional URL applied to this description text.
           - label: Arts Gifted Education Certificate
             name: artsGiftedEducationCertificate
             widget: object
@@ -913,17 +912,16 @@ collections:
                 fields:
                   - label: Korean
                     name: ko
-                    widget: string
+                    widget: markdown
+                    minimal: true
+                    buttons: ["bold", "italic", "link"]
                     required: false
                   - label: English
                     name: en
-                    widget: string
+                    widget: markdown
+                    minimal: true
+                    buttons: ["bold", "italic", "link"]
                     required: false
-                  - label: Link URL
-                    name: href
-                    widget: string
-                    required: false
-                    hint: Optional URL applied to this description text.
               - label: Sub Entries
                 name: subEntries
                 widget: list
@@ -978,17 +976,16 @@ collections:
                     fields:
                       - label: Korean
                         name: ko
-                        widget: string
+                        widget: markdown
+                        minimal: true
+                        buttons: ["bold", "italic", "link"]
                         required: false
                       - label: English
                         name: en
-                        widget: string
+                        widget: markdown
+                        minimal: true
+                        buttons: ["bold", "italic", "link"]
                         required: false
-                      - label: Link URL
-                        name: href
-                        widget: string
-                        required: false
-                        hint: Optional URL applied to this description text.
               - label: Media
                 name: media
                 widget: list
@@ -1078,17 +1075,16 @@ collections:
                 fields:
                   - label: Korean
                     name: ko
-                    widget: string
+                    widget: markdown
+                    minimal: true
+                    buttons: ["bold", "italic", "link"]
                     required: false
                   - label: English
                     name: en
-                    widget: string
+                    widget: markdown
+                    minimal: true
+                    buttons: ["bold", "italic", "link"]
                     required: false
-                  - label: Link URL
-                    name: href
-                    widget: string
-                    required: false
-                    hint: Optional URL applied to this description text.
               - label: Media
                 name: media
                 widget: list
@@ -1236,17 +1232,16 @@ collections:
                 fields:
                   - label: Korean
                     name: ko
-                    widget: string
+                    widget: markdown
+                    minimal: true
+                    buttons: ["bold", "italic", "link"]
                     required: false
                   - label: English
                     name: en
-                    widget: string
+                    widget: markdown
+                    minimal: true
+                    buttons: ["bold", "italic", "link"]
                     required: false
-                  - label: Link URL
-                    name: href
-                    widget: string
-                    required: false
-                    hint: Optional URL applied to this description text.
               - label: Links
                 name: links
                 widget: list

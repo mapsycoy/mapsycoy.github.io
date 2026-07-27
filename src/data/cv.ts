@@ -1,9 +1,7 @@
 import cvData from "./cv.json";
 import type { LocalizedText } from "../utils/i18n";
 
-export type LocalizedTextLine =
-  | (LocalizedText & { href?: string })
-  | { line?: LocalizedText; href?: string };
+export type LocalizedTextLine = LocalizedText | { line?: LocalizedText };
 
 export type MediaItem = {
   type: "image" | "link";

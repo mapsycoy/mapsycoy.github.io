@@ -154,9 +154,8 @@
       },
       "description": [
         {
-          "ko": "메이플스토리 및 던전앤파이터의 인게임 생성형 AI 기능 '커스텀 일러스트'를 위한 참조 일러스트 제작 및 LoRA 학습 데이터셋 구축",
-          "en": "Produced reference illustrations and built LoRA training datasets for Custom Illustration, an in-game generative AI feature in MapleStory and DNF",
-          "href": "https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114"
+          "ko": "메이플스토리 및 던전앤파이터의 인게임 생성형 AI 기능 [커스텀 일러스트](https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114)를 위한 참고 일러스트 제작 및 LoRA 학습 데이터셋 구축",
+          "en": "Produced reference illustrations and built LoRA training datasets for [Custom Illustration](https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114), an in-game generative AI feature in MapleStory and Dungeon & Fighter"
         }
       ],
       "team": {
@@ -217,14 +216,12 @@
           "ko": "NETY 2023년 런칭까지 디자인 기능 전반을 담당. 브랜드 아이덴티티 및 캐릭터 IP 구축"
         },
         {
-          "en": "Excellence Award, 2023 Seongbuk-gu Youth Social Venture Competition",
-          "ko": "2023 성북구 청년 소셜벤처 혁신 경연대회 우수상",
-          "href": "https://www.seouland.com/arti/society/society_general/12383.html"
+          "ko": "우수상, [2023 성북구 청년 소셜벤처 경진대회](https://www.seouland.com/arti/society/society_general/12383.html)",
+          "en": "Excellence Award, [2023 Seongbuk-gu Youth Social Venture Competition](https://www.seouland.com/arti/society/society_general/12383.html)"
         },
         {
-          "en": "NETY acquired by TimeTree, Feb 2025",
-          "ko": "2025년 2월 타임트리(TimeTree)에 매각",
-          "href": "https://www.kspost.biz/ko-kr/articles/246"
+          "ko": "NETY [TimeTree에 인수](https://platum.kr/archives/252293), 2025년 2월",
+          "en": "NETY [acquired by TimeTree](https://platum.kr/archives/252293), Feb 2025"
         }
       ],
       "media": [],
@@ -432,12 +429,16 @@
       },
       "description": [
         {
-          "ko": "파충류 사육 플랫폼. iOS·구글 플레이 오픈 베타 출시",
-          "en": "Reptile husbandry platform on iOS and Google Play (open beta)"
+          "ko": "브랜드 아이덴티티 및 제품 디자인 구축",
+          "en": "Built brand identity and product design"
         },
         {
-          "en": "Pre-incorporation stage",
-          "ko": "예비창업 단계"
+          "ko": "[iOS](https://apps.apple.com/kr/app/id6754797035) 및 [Google Play](https://play.google.com/store/apps/details?id=com.Direp.DirepApp)에서 제공되는 파충류 사육 플랫폼 (오픈 베타)",
+          "en": "Reptile husbandry platform on [iOS](https://apps.apple.com/kr/app/id6754797035) and [Google Play](https://play.google.com/store/apps/details?id=com.Direp.DirepApp) (open beta)"
+        },
+        {
+          "ko": "법인 설립 전 단계",
+          "en": "Pre-incorporation stage"
         }
       ]
     }
