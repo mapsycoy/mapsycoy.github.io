@@ -213,7 +213,7 @@
       "description": [
         {
           "en": "Led design across the initial launch and first major update of NETY",
-          "ko": "[NETY] 서비스의 최초 론칭 및 1차 메인 업데이트 전 과정 기여"
+          "ko": "NETY 서비스의 최초 론칭 및 1차 메인 업데이트 전 과정 기여"
         }
       ],
       "media": [],
@@ -247,7 +247,7 @@
       "description": [
         {
           "ko": "채널 애니메이션 콘텐츠 컷·씬 단위 작업, 프로덕션 에셋 제작, 굿즈 컨셉 시안",
-          "en": "Shot and Scene Animation & Channel Illustration, Assets & MD Concepts"
+          "en": "Shot- and scene-level animation, channel illustration, production assets, and merchandise concepts"
         }
       ],
       "duration": {
@@ -257,8 +257,8 @@
     },
     {
       "role": {
-        "ko": "병장 · 만기전역",
-        "en": "Sergeant · Completed Mandatory Service"
+        "ko": "병장 (만기전역)",
+        "en": "Sergeant (Completed Mandatory Service)"
       },
       "organization": {
         "ko": "대한민국 공군",
@@ -273,12 +273,7 @@
         "en": "Feb 2020 - Nov 2021"
       },
       "logo": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@ae788063c903de244e4e38a6a217b98147595515/uploads/cv/cv-logo-rokaf.svg",
-      "description": [
-        {
-          "ko": "코로나19 방역 지침에 따른 미복귀 전역으로 2021년 9월 최종 휴가 후 부대에 복귀하지 않았으며, 같은 달 서울교육대학교 행정 조교 업무를, 10월에는 프리랜서 업무를 시작함",
-          "en": "Did not return to base after beginning terminal leave in Sep 2021 under the COVID-19 non-return discharge policy; began working as an administrative assistant at Seoul National University of Education that month and as a freelancer in Oct"
-        }
-      ],
+      "description": [],
       "duration": {
         "ko": "1년 10개월",
         "en": "1 yr 10 mos"
