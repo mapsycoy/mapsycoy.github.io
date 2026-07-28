@@ -187,8 +187,16 @@
       },
       "description": [
         {
-          "ko": "아동 맞춤형 AI 교육 콘텐츠 시각 리소스 제작",
-          "en": "Visual Resource Creation for Child-Centered AI Educational Content"
+          "ko": "생성형 AI를 활용한 ['토도원'](https://www.todo-one.com/) 컷씬 일러스트 제작. 교재 수록 참고 영상 및 토도원 유튜브 채널에 활용",
+          "en": "Produced cutscene illustrations using generative AI for [Todo One](https://www.todo-one.com/), used across in-workbook reference videos and the Todo One YouTube channel"
+        },
+        {
+          "en": "Ran internal workshops on generative AI tools and models for the content team",
+          "ko": "콘텐츠팀 대상 생성형 AI 툴·모델 사내 워크샵 진행"
+        },
+        {
+          "en": "Introduced a bundled generation platform for image workflows",
+          "ko": "이미지 작업 대상 번들형 생성 플랫폼 도입"
         }
       ],
       "duration": {
@@ -405,6 +413,7 @@
           "ko": "에임인텔리전스 인하우스 프로젝트 외부 참여",
           "en": "Aim Intelligence In-house Project (External Contributor)"
         },
+        {},
         {
           "en": "Finalist, IVS Crypto THE DEMODAY 2024 (10 of 99 submissions)",
           "ko": "IVS Crypto THE DEMODAY 2024 파이널리스트 (99개 출품작 중 10개 선정)"
