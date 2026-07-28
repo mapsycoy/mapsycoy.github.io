@@ -84,6 +84,8 @@ const renderInlineMarkdown = (value: string) =>
   escapeHtml(value)
     .replace(/\[\^([^\]]+)\]/g, renderFootnoteReference)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
+    .replace(/\*\*\*([^*]+)\*([^*]*?)\*\*/g, "<strong><em>$1</em>$2</strong>")
+    .replace(/\*\*\*([^*]+)\*\*\*/g, "<strong><em>$1</em></strong>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>")
     .replace(/\*([^*]+)\*/g, "<em>$1</em>")
     .replace(/\[((?:[^\[\]]|\[[^\]]*\])+)\]\(([^)]+)\)/g, '<a href="$2" target="_blank" rel="noreferrer">$1</a>')
@@ -107,12 +109,14 @@ const renderMarkdownTable = (lines: string[]) => {
   if (!headers.length) return "";
 
   return [
+    '<div class="blog-table-scroll">',
     "<table>",
     `<thead><tr>${headers.map((cell) => `<th>${renderInlineMarkdown(cell)}</th>`).join("")}</tr></thead>`,
     `<tbody>${rows
       .map((cells) => `<tr>${headers.map((_, index) => `<td>${renderInlineMarkdown(cells[index] ?? "")}</td>`).join("")}</tr>`)
       .join("")}</tbody>`,
     "</table>",
+    "</div>",
   ].join("");
 };
 
