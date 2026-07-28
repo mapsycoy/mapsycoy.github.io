@@ -1455,6 +1455,12 @@ h3 {
   width: 100%;
 }
 
+.work-text-block figcaption {
+  font-family: "Space Grotesk", "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-synthesis: weight style;
+  letter-spacing: normal;
+}
+
 .work-text-block figure img,
 .blog-post-body figure img {
   margin: 0;
