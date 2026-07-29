@@ -7,27 +7,6 @@
   font-style: normal;
   font-display: swap;
 }
-@font-face {
-  font-family: "Source Serif 4";
-  src: url("/fonts/SourceSerif4-Regular-latin.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Source Serif 4";
-  src: url("/fonts/SourceSerif4-Italic-latin.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-@font-face {
-  font-family: "Source Serif 4";
-  src: url("/fonts/SourceSerif4-Semibold-latin.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
 
 :root {
   color-scheme: light dark;
@@ -861,8 +840,9 @@ main {
   margin: 0;
   padding: 13px 0 15px;
   color: var(--muted);
-  font-family: "Source Serif 4", "Pretendard", "Noto Sans KR", Georgia, serif;
-  font-synthesis: none;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-synthesis: weight style;
+  font-weight: 300;
   column-count: 2;
   column-gap: 36px;
   font-size: 0.82rem;
@@ -872,6 +852,7 @@ main {
 html[lang="ko"] .home-caption {
   font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-synthesis: weight style;
+  font-weight: 400;
 }
 
 .eyebrow,
@@ -1629,16 +1610,18 @@ h3 {
 
 .work-text-block {
   color: var(--muted);
-  font-family: "Source Serif 4", "Pretendard", "Noto Sans KR", Georgia, serif;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 17px;
-  font-synthesis: none;
+  font-synthesis: weight style;
+  font-weight: 300;
   letter-spacing: 0;
 }
 
 .work-content-flow > p {
-  font-family: "Source Serif 4", "Pretendard", "Noto Sans KR", Georgia, serif;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 17px;
-  font-synthesis: none;
+  font-synthesis: weight style;
+  font-weight: 300;
   letter-spacing: 0;
   line-height: 1.55;
 }
@@ -1648,20 +1631,23 @@ html[lang="ko"] .work-content-flow > p {
   font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 1rem;
   font-synthesis: weight style;
+  font-weight: 400;
   letter-spacing: normal;
 }
 
 .blog-post-body {
   color: var(--muted);
-  font-family: "Source Serif 4", "Pretendard", "Noto Sans KR", Georgia, serif;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 17px;
-  font-synthesis: none;
+  font-synthesis: weight style;
+  font-weight: 300;
   letter-spacing: 0;
 }
 
 html[lang="ko"] .blog-post-body {
   font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 1rem;
+  font-weight: 400;
   letter-spacing: normal;
 }
 
@@ -2431,9 +2417,10 @@ html[lang="ko"] .blog-post-body ol {
 .blog-series-description {
   margin: 0 0 28px;
   color: var(--muted);
-  font-family: "Source Serif 4", "Pretendard", "Noto Sans KR", Georgia, serif;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 17px;
-  font-synthesis: none;
+  font-synthesis: weight style;
+  font-weight: 300;
   letter-spacing: 0;
   line-height: 1.55;
 }
@@ -2442,6 +2429,7 @@ html[lang="ko"] .blog-series-description {
   font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 1rem;
   font-synthesis: weight style;
+  font-weight: 400;
   letter-spacing: normal;
   line-height: 1.45;
 }
@@ -2613,9 +2601,9 @@ ul.blog-text-list {
 }
 
 .blog-series-list .blog-list-summary {
-  font-family: "Source Serif 4", "Pretendard", "Noto Sans KR", Georgia, serif;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 15px;
-  font-synthesis: none;
+  font-synthesis: weight style;
   letter-spacing: 0;
   line-height: 1.5;
 }
