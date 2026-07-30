@@ -86,50 +86,44 @@ const paginationItems = (() => {
 
 {hub && currentPage === 1 ? (
   <div class="blog-hub">
+    <div class="blog-series-index">
     {seriesGroups.map((group) => (
       <section id={`series-${group.id}`} class="blog-text-section blog-series-block" aria-labelledby={`series-${group.id}-title`}>
-        <p class="blog-series-label">Series</p>
-        <div class="blog-series-panel">
-          <div class="blog-series-heading">
-            <span class="blog-series-number" aria-label={`Series ${group.metadata.number}`}>
-              {String(group.metadata.number).padStart(2, "0")}
-            </span>
+        <details class="blog-series-stack">
+          <summary class="blog-series-intro">
+            <span class="blog-series-kicker">Series {String(group.metadata.number).padStart(2, "0")}</span>
             <h1 id={`series-${group.id}-title`}>{localize(group.metadata.title, lang)}</h1>
+            <span class="blog-series-description">{localize(group.metadata.description, lang).split(/\n\s*\n/).map((paragraph) => <span>{paragraph}</span>)}</span>
+            <span class="blog-series-action">
+              <span class="blog-series-count">{lang === "ko" ? `${group.posts.length}편` : `${group.posts.length} posts`}</span>
+              <span class="blog-series-action-label">
+                <span class="when-closed">{lang === "ko" ? "메모 펼치기" : "Unfold notes"}</span>
+                <span class="when-open">{lang === "ko" ? "메모 접기" : "Fold notes"}</span>
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 9 7 7 7-7" /></svg>
+              </span>
+            </span>
+          </summary>
+          <svg class="blog-series-tree" aria-hidden="true"><path data-series-tree-path /></svg>
+          <div class="blog-series-notes">
+            {group.posts.map((post, index) => (
+              <a
+                class="blog-series-entry"
+                href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}
+                style={`--series-index: ${index}`}
+              >
+                <span class="blog-series-entry-number">{String(index + 1).padStart(2, "0")}</span>
+                <h2 class:list={[hasKoreanText(getPostTitle(post)) && "ko-title"]}>{getPostTitle(post)}</h2>
+                <span class="blog-series-entry-meta">
+                  <span>{post.data.tag}</span>
+                  <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
+                </span>
+              </a>
+            ))}
           </div>
-          <p class="blog-series-description"><span>{localize(group.metadata.description, lang)}</span></p>
-          <details class="blog-series-contents">
-            <summary>
-              <span class="blog-series-expand-label">
-                {lang === "ko" ? `${group.posts.length}편 펼쳐보기` : `Show ${group.posts.length} entries`}
-              </span>
-              <span class="blog-series-collapse-label">
-                {lang === "ko" ? "목차 접기" : "Hide entries"}
-              </span>
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="m5 9 7 7 7-7" />
-              </svg>
-            </summary>
-            <ol class="blog-text-list blog-series-list">
-              {group.posts.map((post) => (
-                <li>
-                  <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
-                    <span class:list={["blog-list-title", hasKoreanText(getPostTitle(post)) && "ko-title"]}>
-                      {getPostTitle(post)}
-                      {post.data.tag !== "Essay" && <small class="blog-series-tag">{post.data.tag}</small>}
-                    </span>
-                    <time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time>
-                    {post.data.summary && localize(post.data.summary, lang).trim() && (
-                      <span class:list={["blog-list-summary", lang === "ko" && "is-korean"]}>{localize(post.data.summary, lang)}</span>
-                    )}
-                  </a>
-                </li>
-              ))}
-            </ol>
-          </details>
-        </div>
+        </details>
       </section>
     ))}
-
+    </div>
     {nonSeriesPosts.length > 0 && (
       <section class="blog-text-section" aria-labelledby="other-posts-title">
         <h2 id="other-posts-title">{lang === "ko" ? "시리즈 외 글" : "Other writing"}</h2>
@@ -238,19 +232,82 @@ const paginationItems = (() => {
     </div>
   </nav>
 )}
-
 <script is:inline>
   (() => {
-    const openLinkedSeries = () => {
-      if (!window.location.hash.startsWith("#series-")) return;
-      const section = document.querySelector(window.location.hash);
-      section?.querySelector("details.blog-series-contents")?.setAttribute("open", "");
+    const drawSeriesTree = (stack) => {
+      const svg = stack.querySelector(".blog-series-tree");
+      const path = svg?.querySelector("[data-series-tree-path]");
+      const intro = stack.querySelector(".blog-series-intro");
+      const notes = stack.querySelector(".blog-series-notes");
+      const entries = [...stack.querySelectorAll(".blog-series-entry")];
+      if (!svg || !path || !intro || !notes || !stack.open || !entries.length) return;
+
+      const stackWidth = stack.clientWidth;
+      const stackHeight = stack.clientHeight;
+      const notesLeft = notes.offsetLeft;
+      const notesTop = notes.offsetTop;
+      const introLeft = intro.offsetLeft;
+      const introTop = intro.offsetTop;
+      const introRight = introLeft + intro.offsetWidth;
+      const introBottom = introTop + intro.offsetHeight;
+      const trunkX = notesLeft;
+      const endX = notesLeft + entries[0].offsetLeft - 0.5;
+      const centers = entries.map((entry) => notesTop + entry.offsetTop + entry.offsetHeight / 2);
+      const stacked = notesTop >= introBottom - 1;
+      const startX = stacked
+        ? introLeft + Math.min(28, intro.offsetWidth / 4)
+        : introRight;
+      const startY = stacked
+        ? introBottom
+        : introTop + intro.offsetHeight / 2;
+      const trunkTop = Math.min(startY, centers[0]);
+      const trunkBottom = Math.max(startY, centers[centers.length - 1]);
+      const commands = [
+        `M ${startX} ${startY} H ${trunkX}`,
+        `M ${trunkX} ${trunkTop} V ${trunkBottom}`,
+        ...centers.map((center) => `M ${trunkX} ${center} H ${endX}`),
+      ];
+
+      svg.setAttribute("viewBox", `0 0 ${stackWidth} ${stackHeight}`);
+      path.setAttribute("d", commands.join(" "));
     };
 
+    const drawAllSeriesTrees = () => {
+      document.querySelectorAll("details.blog-series-stack").forEach((stack) => drawSeriesTree(stack));
+    };
+
+    const setupSeriesTrees = () => {
+      document.querySelectorAll("details.blog-series-stack").forEach((stack) => {
+        if (!stack.dataset.treeReady) {
+          stack.dataset.treeReady = "true";
+          stack.addEventListener("toggle", () => {
+            const notes = stack.querySelector(".blog-series-notes");
+            notes?.classList.remove("is-unfolding");
+            if (stack.open && notes) {
+              void notes.offsetWidth;
+              notes.classList.add("is-unfolding");
+            }
+            requestAnimationFrame(() => drawSeriesTree(stack));
+          });
+          new ResizeObserver(() => drawSeriesTree(stack)).observe(stack);
+        }
+      });
+      requestAnimationFrame(drawAllSeriesTrees);
+    };
+
+    const openLinkedSeries = () => {
+      if (!window.location.hash.startsWith("#series-")) return;
+      document.querySelector(window.location.hash)?.querySelector("details.blog-series-stack")?.setAttribute("open", "");
+    };
     openLinkedSeries();
+    setupSeriesTrees();
     if (window.__mapsycoySeriesHashNavigation) return;
     window.__mapsycoySeriesHashNavigation = true;
-    document.addEventListener("astro:page-load", openLinkedSeries);
+    document.addEventListener("astro:page-load", () => {
+      openLinkedSeries();
+      setupSeriesTrees();
+    });
     window.addEventListener("hashchange", openLinkedSeries);
+    window.addEventListener("resize", () => requestAnimationFrame(drawAllSeriesTrees));
   })();
 </script>

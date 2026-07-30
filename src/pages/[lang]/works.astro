@@ -52,7 +52,7 @@ const workSections = [
         aria-expanded="false"
         aria-label="Show more categories"
       >
-        {"\u00b7\u00b7\u00b7"}
+        <span class="works-filter-toggle-icon" aria-hidden="true"></span>
       </button>
     )}
   </section>
@@ -144,7 +144,6 @@ const workSections = [
         toggleButton.addEventListener("click", () => {
           const willExpand = !filterRoot.classList.contains("is-expanded");
           filterRoot.classList.toggle("is-expanded", willExpand);
-          toggleButton.textContent = willExpand ? "\u00d7" : "\u00b7\u00b7\u00b7";
           toggleButton.setAttribute("aria-expanded", willExpand ? "true" : "false");
           toggleButton.setAttribute(
             "aria-label",
