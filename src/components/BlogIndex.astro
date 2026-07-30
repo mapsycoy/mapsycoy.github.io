@@ -258,7 +258,7 @@ const paginationItems = (() => {
         ? introLeft + Math.min(28, intro.offsetWidth / 4)
         : introRight;
       const startY = stacked
-        ? introBottom
+        ? introBottom + Math.max(6, Math.min(14, (notesTop - introBottom) / 2))
         : introTop + intro.offsetHeight / 2;
       const trunkTop = Math.min(startY, centers[0]);
       const trunkBottom = Math.max(startY, centers[centers.length - 1]);
