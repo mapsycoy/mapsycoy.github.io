@@ -56,8 +56,8 @@ const publicationVenueLine = (item: any) => {
         {education.map((item) => (
           <article class="cv-profile-education-item">
             <h2 class="cv-profile-education-title">
-              <span>{localize(item.degree, lang)}</span>
-              {item.minor && localize(item.minor, lang) && <span>{localize(item.minor, lang)}</span>}
+              {localize(item.degree, lang)}
+              {item.minor && localize(item.minor, lang) && <span class="cv-profile-education-minor">{localize(item.minor, lang)}</span>}
             </h2>
             <p class="cv-profile-education-institution">{localize(item.institution, lang)}</p>
             <p class="cv-entry-period">{localize(item.period, lang)}</p>

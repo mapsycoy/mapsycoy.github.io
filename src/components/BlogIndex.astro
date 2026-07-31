@@ -258,12 +258,17 @@ const paginationItems = (() => {
         ? introLeft + Math.min(28, intro.offsetWidth / 4)
         : introRight;
       const startY = stacked
-        ? introBottom + Math.max(6, Math.min(14, (notesTop - introBottom) / 2))
+        ? introBottom
         : introTop + intro.offsetHeight / 2;
-      const trunkTop = Math.min(startY, centers[0]);
+      const elbowY = stacked
+        ? introBottom + Math.max(6, Math.min(14, (notesTop - introBottom) / 2))
+        : startY;
+      const trunkTop = Math.min(elbowY, centers[0]);
       const trunkBottom = Math.max(startY, centers[centers.length - 1]);
       const commands = [
-        `M ${startX} ${startY} H ${trunkX}`,
+        stacked
+          ? `M ${startX} ${startY} V ${elbowY} H ${trunkX}`
+          : `M ${startX} ${startY} H ${trunkX}`,
         `M ${trunkX} ${trunkTop} V ${trunkBottom}`,
         ...centers.map((center) => `M ${trunkX} ${center} H ${endX}`),
       ];

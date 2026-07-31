@@ -2969,20 +2969,21 @@ html[lang="ko"] .cv-page {
   line-height: 1.35;
 }
 
-.cv-profile-education-title span:first-child {
-  color: inherit;
-}
-
-.cv-profile-education-title span + span {
+.cv-profile-education-minor {
   color: var(--muted);
   font-size: 0.9rem;
   font-weight: 400;
 }
 
-.cv-profile-education-title span + span::before {
+.cv-profile-education-minor::before {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
   margin: 0 7px;
-  color: var(--muted);
-  content: "·";
+  border-radius: 50%;
+  background: currentColor;
+  content: "";
+  vertical-align: 0.22em;
 }
 
 .cv-profile-education-institution {
@@ -3872,7 +3873,7 @@ html[lang="ko"] .cv-page {
 
   .cv-project-entry .cv-media-row {
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
   .cv-project-entry .cv-media-thumb {
@@ -3953,9 +3954,23 @@ html[lang="ko"] .cv-page {
   }
 
   .work-info-list > div {
-    grid-template-columns: 1fr;
-    gap: 4px;
-    align-items: start;
+    grid-template-columns: max-content minmax(0, 1fr);
+    gap: 10px;
+    align-items: center;
+  }
+
+  .work-info-list dt {
+    font-size: 0.68rem;
+  }
+
+  .work-info-list dd {
+    font-size: 0.9rem;
+    line-height: 1.35;
+  }
+
+  .work-meta-icon {
+    width: 1rem;
+    height: 1rem;
   }
 
   .work-media-carousel,
@@ -3995,7 +4010,7 @@ html[lang="ko"] .cv-page {
   }
 }
 
-@media (min-width: 1100px) {
+@media (min-width: 960px) {
   .works-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
