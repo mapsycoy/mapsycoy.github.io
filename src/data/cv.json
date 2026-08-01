@@ -221,6 +221,7 @@
         },
         {
           "ko": "우수상, [2023 성북구 청년 소셜벤처 경진대회](https://www.seouland.com/arti/society/society_general/12383.html)",
+          "award": true,
           "en": "Excellence Award, [2023 Seongbuk-gu Youth Social Venture Competition](https://www.seouland.com/arti/society/society_general/12383.html)"
         },
         {
@@ -410,6 +411,7 @@
           "en": "Aim Intelligence In-house Project (External Contributor)"
         },
         {
+          "award": true,
           "en": "Finalist, IVS Crypto THE DEMODAY 2024 (10 of 99 submissions)",
           "ko": "IVS Crypto THE DEMODAY 2024 파이널리스트 (99개 출품작 중 10개 선정)"
         }
@@ -428,8 +430,8 @@
     },
     {
       "title": {
-        "ko": "",
-        "en": "Direp"
+        "ko": "Direpx",
+        "en": "Direpx"
       },
       "period": {
         "ko": "2025.11 - 현재",
@@ -437,16 +439,12 @@
       },
       "description": [
         {
-          "ko": "브랜드 아이덴티티 및 제품 디자인 구축",
-          "en": "Built brand identity and product design"
+          "ko": "브랜드 기획 및 론칭",
+          "en": "Planned and launched the brand"
         },
         {
-          "ko": "[iOS](https://apps.apple.com/kr/app/id6754797035) 및 [Google Play](https://play.google.com/store/apps/details?id=com.Direp.DirepApp)에서 제공되는 파충류 사육 플랫폼 (오픈 베타)",
-          "en": "Reptile husbandry platform on [iOS](https://apps.apple.com/kr/app/id6754797035) and [Google Play](https://play.google.com/store/apps/details?id=com.Direp.DirepApp) (open beta)"
-        },
-        {
-          "ko": "법인 설립 전 단계",
-          "en": "Pre-incorporation stage"
+          "ko": "2026년 경기도경제과학진흥원(GBSA) 반려동물산업 스타트업 발굴 및 창업지원 선정, 경기창업혁신공간 남서부권(안양) 입주",
+          "en": "Selected for the 2026 GBSA Pet Industry Startup Support Program; based at Gyeonggi Startup Innovation Space, Anyang"
         }
       ]
     }

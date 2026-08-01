@@ -139,7 +139,7 @@ const paginationItems = (() => {
       <h2 id="news-archive-title" class="blog-section-label">News / Archive</h2>
       <ul class="blog-text-list">
         {posts.map((post) => (
-          <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{getPostTitle(post)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
+          <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span class="blog-news-title" style="font-size:0.82rem;line-height:1.35;min-height:1.11rem;">{getPostTitle(post)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
         ))}
       </ul>
     </section>
@@ -176,7 +176,7 @@ const paginationItems = (() => {
             </p>
           )}
           <h2 class:list={[hasKoreanText(getPostTitle(post)) && "ko-title"]}>{getPostTitle(post)}</h2>
-          <p class="blog-entry-date">
+          <p class="blog-entry-date" style="font-size:0.64rem;line-height:1.4;min-height:0.9rem;font-variant-numeric:tabular-nums;">
             {getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}
           </p>
         </div>

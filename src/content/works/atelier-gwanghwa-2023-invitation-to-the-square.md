@@ -24,8 +24,8 @@ contentBlocks:
       en: "Atelier Gwanghwa: 2023 Invitation to the Square [The 1st Edition]"
   - type: text
     body:
-      ko: <편지화, 그릴 수 없는 사랑의 빛깔>, <은지화에 담긴 예술혼>, <가족, 마음으로 그린 그림> 모션 작업
-      en: Motion work for <편지화, 그릴 수 없는 사랑의 빛깔>, <은지화에 담긴 예술혼>, <가족, 마음으로 그린 그림>
+      ko: "*〈편지화, 그릴 수 없는 사랑의 빛깔〉*, *〈은지화에 담긴 예술혼〉*, *〈가족, 마음으로 그린 그림〉* 모션 작업"
+      en: "Motion design for *〈Letter Paintings: The Unpaintable Colors of Love〉*, *〈Artistic Spirit in Tinfoil Paintings〉*, and *〈Family: Painted from the Heart〉*"
   - type: statsLink
     ctaLabel:
       ko: ""

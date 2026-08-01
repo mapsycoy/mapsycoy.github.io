@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import CvDescriptionItem from "../components/CvDescriptionItem.astro";
 import { marked } from "marked";
 import { artsGiftedEducationCertificate, education, experiences, profile, projects, publications, type MediaItem } from "../data/cv";
 import { defaultLanguage, localize, type Language } from "../utils/i18n";
@@ -64,7 +65,7 @@ const publicationVenueLine = (item: any) => {
             {educationDescriptionLines(item).length > 0 && (
               <ul class={descriptionListClass(educationDescriptionLines(item))}>
                 {educationDescriptionLines(item).map((line: any) => (
-                  <li set:html={localizedDescriptionHtml(line)} />
+                  <CvDescriptionItem line={line} lang={lang} showMarker={educationDescriptionLines(item).length > 1} />
                 ))}
               </ul>
             )}
@@ -122,7 +123,7 @@ const publicationVenueLine = (item: any) => {
               {item.description && (
                 <ul class={descriptionListClass(item.description)}>
                   {item.description.map((line) => (
-                    <li set:html={localizedDescriptionHtml(line)} />
+                    <CvDescriptionItem line={line} lang={lang} showMarker={(item.description?.length ?? 0) > 1} />
                   ))}
                 </ul>
               )}
@@ -138,7 +139,7 @@ const publicationVenueLine = (item: any) => {
                       {subEntry.description && (
                         <ul class={descriptionListClass(subEntry.description)}>
                           {subEntry.description.map((line) => (
-                            <li set:html={localizedDescriptionHtml(line)} />
+                            <CvDescriptionItem line={line} lang={lang} showMarker={(subEntry.description?.length ?? 0) > 1} />
                           ))}
                         </ul>
                       )}
@@ -186,7 +187,7 @@ const publicationVenueLine = (item: any) => {
               {item.description && (
                 <ul class={descriptionListClass(item.description)}>
                   {item.description.map((line) => (
-                    <li set:html={localizedDescriptionHtml(line)} />
+                    <CvDescriptionItem line={line} lang={lang} showMarker={(item.description?.length ?? 0) > 1} />
                   ))}
                 </ul>
               )}
