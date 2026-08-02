@@ -10,10 +10,19 @@ export default defineConfig({
   site: "https://mapsycoy.com",
   integrations: [
     mermaid({
-      autoTheme: true,
+      autoTheme: false,
       enableLog: false,
       mermaidConfig: {
-        themeVariables: { background: "transparent" },
+        theme: "base",
+        themeVariables: {
+          primaryColor: "transparent",
+          mainBkg: "transparent",
+          primaryBorderColor: "#808080",
+          primaryTextColor: "#808080",
+          lineColor: "#808080",
+          textColor: "#808080",
+        },
+        flowchart: { htmlLabels: true },
       },
     }),
     sitemap({
