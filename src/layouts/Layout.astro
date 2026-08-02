@@ -36,6 +36,7 @@ const koUrl = new URL(`/ko${basePath}`, siteUrl).toString();
 const canonicalUrl = currentLanguage === "ko" ? koUrl : enUrl;
 const alternateLanguage = getAlternateLanguage(currentLanguage);
 const alternatePath = withLanguage(alternateLanguage, basePath);
+const isDuplicateLanguageRoute = hasLanguagePrefix && pathParts[0] === defaultLanguage;
 
 const linkedInUrl = "https://www.linkedin.com/in/mapsycoy/";
 const instagramUrl = "https://www.instagram.com/mapsycoy/";
@@ -99,7 +100,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
       html { overflow-y: scroll; }
     </style>
   </head>
-  <body>
+  <body data-pagefind-ignore={isDuplicateLanguageRoute ? "all" : undefined}>
     <div class="site-shell">
       <header class="site-header" aria-label="Site header">
         <a class="site-title" href={withLanguage(currentLanguage, "/")} aria-label="mapsycoy home">

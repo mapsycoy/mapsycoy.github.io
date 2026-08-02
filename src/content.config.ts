@@ -1,5 +1,11 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
+import seriesRegistry from "./data/series.json";
+
+const registeredSeriesIds = Object.keys(seriesRegistry);
+const seriesIdSchema = z.string().refine((value) => registeredSeriesIds.includes(value), {
+  message: `Unknown series id. Register it in src/data/series.json first. Known ids: ${registeredSeriesIds.join(", ")}`,
+});
 
 const statusSchema = z.enum(["draft", "published"]).default("published");
 const workTypeSchema = z.enum(["independent", "collaborative"]).default("independent");
@@ -24,8 +30,8 @@ const blog = defineCollection({
     status: statusSchema,
     pinned: z.boolean().default(false),
     tag: z.enum(["Essay", "AI News", "Paper Review"]),
-    series: z.string().optional(),
-    seriesOrder: z.number().optional(),
+    series: seriesIdSchema.optional(),
+    seriesOrder: z.number().int().positive().optional(),
     summary: localizedTextSchema.optional(),
     thumbnail: imagePathSchema,
     heroImage: imagePathSchema,
@@ -54,6 +60,22 @@ const blog = defineCollection({
         ])
       )
       .default([]),
+  }).superRefine((data, context) => {
+    if (data.series && data.seriesOrder === undefined) {
+      context.addIssue({
+        code: "custom",
+        path: ["seriesOrder"],
+        message: "seriesOrder is required when series is set.",
+      });
+    }
+
+    if (!data.series && data.seriesOrder !== undefined) {
+      context.addIssue({
+        code: "custom",
+        path: ["series"],
+        message: "series is required when seriesOrder is set.",
+      });
+    }
   }),
 });
 

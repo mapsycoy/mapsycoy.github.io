@@ -1,5 +1,5 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import { series, type SeriesId } from "./series";
+import { getSeriesMetadata, getSeriesStatus, isSeriesId, series, seriesIds, type SeriesId } from "./series";
 
 export type BlogTag = "Essay" | "AI News" | "Paper Review";
 export type BlogPost = CollectionEntry<"blog">;
@@ -55,11 +55,10 @@ export const sortSeriesPosts = (posts: BlogPost[]) =>
 export const getSeriesPosts = (posts: BlogPost[], seriesId: string) =>
   sortSeriesPosts(posts.filter((post) => post.data.series === seriesId));
 
-export const getPostSeriesMetadata = (post: BlogPost) => {
-  if (!post.data.series || !(post.data.series in series)) return undefined;
+export const getPostSeriesMetadata = (post: BlogPost) => getSeriesMetadata(post.data.series);
 
-  return series[post.data.series as SeriesId];
-};
+export const getPostSeriesId = (post: BlogPost) =>
+  isSeriesId(post.data.series) ? post.data.series : undefined;
 
 export const getSeriesGroups = (posts: BlogPost[]) =>
   (Object.entries(series) as Array<[SeriesId, (typeof series)[SeriesId]]>)
@@ -80,17 +79,19 @@ export const getNewsPosts = (posts: BlogPost[]) =>
   sortBlogPosts(posts.filter((post) => post.data.tag === "AI News"));
 
 export const getNonSeriesPosts = (posts: BlogPost[]) =>
-  sortBlogPosts(posts.filter((post) => !post.data.series && post.data.tag !== "AI News"));
+  sortBlogPosts(posts.filter((post) => !isSeriesId(post.data.series) && post.data.tag !== "AI News"));
 
 export const getSeriesPosition = (posts: BlogPost[], post: BlogPost) => {
-  if (!post.data.series) return undefined;
+  const seriesId = getPostSeriesId(post);
+  if (!seriesId) return undefined;
 
-  const seriesPosts = getSeriesPosts(posts, post.data.series);
+  const seriesPosts = getSeriesPosts(posts, seriesId);
   const index = seriesPosts.findIndex((candidate) => getBlogPostSlug(candidate) === getBlogPostSlug(post));
   if (index < 0) return undefined;
 
   return {
     posts: seriesPosts,
+    seriesId,
     index,
     previous: seriesPosts[index - 1],
     next: seriesPosts[index + 1],

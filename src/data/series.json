@@ -1,6 +1,11 @@
 {
   "child-ai": {
     "number": 1,
+    "status": "active",
+    "label": {
+      "ko": "아이 곁의 AI",
+      "en": "AI Beside the Child"
+    },
     "title": {
       "ko": "아이 곁의 AI, 무엇을 남겨둘 것인가",
       "en": "AI Beside the Child: What Should Be Left for the Child to Do?"

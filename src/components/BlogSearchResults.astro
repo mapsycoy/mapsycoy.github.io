@@ -1,0 +1,181 @@
+---
+import { blogTags } from "../data/blog";
+import { defaultLanguage, type Language } from "../utils/i18n";
+
+type Props = { lang?: Language };
+const { lang = defaultLanguage } = Astro.props;
+const isKo = lang === "ko";
+const languagePrefix = lang === defaultLanguage ? "" : "/" + lang;
+const blogPath = languagePrefix + "/blog/";
+const searchPath = languagePrefix + "/blog/search/";
+---
+
+<section class="blog-search blog-search-page" aria-label={isKo ? "블로그 검색 결과" : "Blog search results"}>
+  <div class="blog-filters">
+    <nav class="works-filter blog-filter-row" aria-label={isKo ? "블로그로 돌아가기" : "Back to blog"}>
+      <a id="blog-search-back" class="work-back-link" href={blogPath}>← Blog</a>
+    </nav>
+  </div>
+
+  <div id="pagefind-search" class="blog-search-mount blog-search-results-mount">
+    <form class="blog-search-form" role="search" action={searchPath} method="get">
+      <label class="sr-only" for="blog-search-input">{isKo ? "글 검색" : "Search posts"}</label>
+      <div class="blog-search-input-wrap">
+        <button class="blog-search-submit" type="submit" aria-label={isKo ? "검색" : "Search"}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6" /><path d="m15.5 15.5 4 4" /></svg>
+        </button>
+        <input id="blog-search-input" class="blog-search-input" name="q" type="search" placeholder={isKo ? "글 검색" : "Search posts"} autocomplete="off" pattern=".*[^ ].*" required />
+        <button class="blog-search-clear" type="button" hidden>{isKo ? "지우기" : "Clear"}</button>
+      </div>
+    </form>
+
+<div class="blog-search-filters" hidden>
+      <fieldset class="blog-search-filter-group">
+        <legend>Format</legend>
+        <label>
+          <input type="radio" name="blog-search-format" data-filter-name="Format" value="" />
+          <span>All</span>
+        </label>
+        {blogTags.map((tag) => (
+          <label>
+            <input type="radio" name="blog-search-format" data-filter-name="Format" value={tag} />
+            <span>{tag}</span>
+          </label>
+        ))}
+      </fieldset>
+    </div>
+
+    <p class="blog-search-status" aria-live="polite"></p>
+    <ol class="blog-search-results"></ol>
+    <button class="blog-search-more" type="button" hidden>{isKo ? "더 보기" : "Load more"}</button>
+  </div>
+
+  <noscript><p class="blog-search-notice">{isKo ? "검색에는 자바스크립트가 필요합니다." : "Search requires JavaScript."}</p></noscript>
+  <p id="pagefind-search-fallback" class="blog-search-notice" hidden>{isKo ? "검색 색인을 찾지 못했습니다. 검색은 npm run build 이후의 미리보기에서 동작합니다." : "No search index found. Search works in the preview after npm run build."}</p>
+</section>
+
+<script is:inline define:vars={{ isKo, searchPath, blogTags }}>
+  (() => {
+    const PAGE_SIZE = 8;
+
+    const setupSearch = async () => {
+      const mount = document.querySelector("#pagefind-search");
+      const fallback = document.querySelector("#pagefind-search-fallback");
+      if (!mount || mount.dataset.ready) return;
+      mount.dataset.ready = "loading";
+
+      const input = mount.querySelector(".blog-search-input");
+      const form = mount.querySelector(".blog-search-form");
+      const clear = mount.querySelector(".blog-search-clear");
+      const filtersRoot = mount.querySelector(".blog-search-filters");
+      const status = mount.querySelector(".blog-search-status");
+      const resultsRoot = mount.querySelector(".blog-search-results");
+      const more = mount.querySelector(".blog-search-more");
+      const initialParams = new URLSearchParams(location.search);
+      let activeFormat = blogTags.includes(initialParams.get("format")) ? initialParams.get("format") : "";
+      let pagefind;
+      let searchId = 0;
+      let visibleCount = PAGE_SIZE;
+      let results = [];
+      let debounceTimer;
+
+      input.value = initialParams.get("q") || "";
+      mount.querySelectorAll('input[name="blog-search-format"]').forEach((radio) => {
+        radio.checked = radio.value === activeFormat;
+      });
+
+      const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      })[character]);
+
+      const syncLocation = (term) => {
+        const params = new URLSearchParams();
+        if (term) params.set("q", term);
+        if (activeFormat) params.set("format", activeFormat);
+        const query = params.toString();
+        history.replaceState(null, "", searchPath + (query ? "?" + query : ""));
+      };
+
+      const updateContext = (term) => {
+        filtersRoot.hidden = !term;
+      };
+
+      const renderResults = async () => {
+        const currentSearchId = searchId;
+        const data = await Promise.all(results.slice(0, visibleCount).map((result) => result.data()));
+        if (currentSearchId !== searchId) return;
+
+        resultsRoot.innerHTML = data.map((item) => {
+          const title = escapeHtml(item.meta?.title || item.url);
+          const metadata = [item.meta?.series, item.meta?.format, item.meta?.date]
+            .filter(Boolean)
+            .map(escapeHtml)
+            .join(" · ");
+          return '<li class="blog-search-result"><a href="' + escapeHtml(item.url) + '"><h2>' + title + '</h2>' +
+            (metadata ? '<p class="blog-search-result-meta">' + metadata + '</p>' : '') +
+            '<p class="blog-search-result-excerpt">' + (item.excerpt || '') + '</p></a></li>';
+        }).join("");
+
+        more.hidden = visibleCount >= results.length;
+      };
+
+      const runSearch = async ({ sync = true } = {}) => {
+        const term = input.value.trim();
+        clear.hidden = !term;
+        updateContext(term);
+        if (sync) syncLocation(term);
+        const currentSearchId = ++searchId;
+        visibleCount = PAGE_SIZE;
+
+        if (!term) {
+          results = [];
+          resultsRoot.innerHTML = "";
+          status.textContent = "";
+          more.hidden = true;
+          return;
+        }
+
+        status.textContent = isKo ? "검색 중…" : "Searching…";
+        const filters = activeFormat ? { Format: activeFormat } : {};
+        const response = await pagefind.search(term, { filters });
+        if (currentSearchId !== searchId) return;
+
+        results = response.results;
+        status.textContent = results.length
+          ? (isKo ? "결과 " + results.length + "건" : results.length + " results")
+          : (isKo ? "“" + term + "”에 대한 결과가 없습니다." : "No results for “" + term + "”.");
+        await renderResults();
+      };
+
+      try {
+        pagefind = await import("/pagefind/pagefind.js");
+        mount.dataset.ready = "true";
+        form.addEventListener("submit", (event) => { event.preventDefault(); runSearch(); });
+        input.addEventListener("input", () => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(() => runSearch(), 180);
+        });
+        clear.addEventListener("click", () => {
+          input.value = "";
+          runSearch();
+          input.focus();
+        });
+        filtersRoot.addEventListener("change", (event) => {
+          activeFormat = event.target.value;
+          runSearch();
+        });
+        more.addEventListener("click", () => {
+          visibleCount += PAGE_SIZE;
+          renderResults();
+        });
+        await runSearch({ sync: false });
+      } catch {
+        delete mount.dataset.ready;
+        if (fallback) fallback.hidden = false;
+      }
+    };
+
+    setupSearch();
+    document.addEventListener("astro:page-load", setupSearch);
+  })();
+</script>
