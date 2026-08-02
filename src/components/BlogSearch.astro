@@ -1,0 +1,21 @@
+---
+import { defaultLanguage, type Language } from "../utils/i18n";
+
+type Props = { lang?: Language; embedded?: boolean };
+const { lang = defaultLanguage, embedded = false } = Astro.props;
+const isKo = lang === "ko";
+const languagePrefix = lang === defaultLanguage ? "" : "/" + lang;
+const searchPath = languagePrefix + "/blog/search/";
+---
+
+<section class:list={["blog-search", embedded && "is-embedded"]} aria-label={isKo ? "블로그 검색" : "Blog search"}>
+  <form class="blog-search-form" role="search" action={searchPath} method="get">
+    <label class="sr-only" for="blog-search-input">{isKo ? "글 검색" : "Search posts"}</label>
+    <div class="blog-search-input-wrap">
+      <button class="blog-search-submit" type="submit" aria-label={isKo ? "검색" : "Search"}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6" /><path d="m15.5 15.5 4 4" /></svg>
+      </button>
+      <input id="blog-search-input" class="blog-search-input" name="q" type="search" placeholder={isKo ? "글 검색" : "Search posts"} autocomplete="off" pattern=".*[^ ].*" required />
+    </div>
+  </form>
+</section>

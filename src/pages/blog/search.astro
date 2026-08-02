@@ -1,0 +1,9 @@
+---
+import BlogSearchResults from "../../components/BlogSearchResults.astro";
+import Layout from "../../layouts/Layout.astro";
+import { defaultLanguage } from "../../utils/i18n";
+---
+
+<Layout title="Search" description="Search essays, paper reviews, and news notes by mapsycoy." lang={defaultLanguage}>
+  <BlogSearchResults lang={defaultLanguage} />
+</Layout>

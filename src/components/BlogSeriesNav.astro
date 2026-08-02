@@ -1,6 +1,6 @@
 ---
 import { getBlogPostSlug, type BlogPost } from "../data/blog";
-import { series, type SeriesId } from "../data/series";
+import { formatSeriesNumber, series, type SeriesId } from "../data/series";
 import { defaultLanguage, localize, type Language } from "../utils/i18n";
 
 type Props = {
@@ -17,11 +17,12 @@ const previous = posts[index - 1];
 const next = posts[index + 1];
 const meta = series[seriesId];
 const postPath = (post: BlogPost) => `${languagePrefix}/blog/${getBlogPostSlug(post)}/`;
+const seriesPath = `${languagePrefix}/blog/#series-${seriesId}`;
 ---
 
 {placement === "header" ? (
   <p class="blog-series-context">
-    <a href={`${languagePrefix}/blog/#series-${seriesId}`}>{localize(meta.title, lang)}</a>
+    <a href={seriesPath}><span class="blog-series-context-number">Series {formatSeriesNumber(meta.number)}</span><span aria-hidden="true"> · </span><span>{localize(meta.title, lang)}</span></a>
     <span aria-hidden="true"> · </span>
     <span>{index + 1}/{posts.length}</span>
   </p>

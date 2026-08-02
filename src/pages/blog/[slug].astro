@@ -3,6 +3,7 @@ import Layout from "../../layouts/Layout.astro";
 import BlogSeriesNav from "../../components/BlogSeriesNav.astro";
 import { render } from "astro:content";
 import { formatTitlePunctuation, getBlogPostSlug, getBlogPosts, getPostDateLabel, getSeriesPosition, hasKoreanText, type BlogPost } from "../../data/blog";
+import { formatSeriesNumber, series } from "../../data/series";
 import { defaultLanguage, localize, type Language } from "../../utils/i18n";
 import { smartenText } from "../../utils/smartTypography.mjs";
 
@@ -267,8 +268,15 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   publishedTime={new Date(post.data.publishedAt).toISOString()}
   modifiedTime={post.data.updatedAt ? new Date(post.data.updatedAt).toISOString() : undefined}
 >
-  <article class="blog-post">
-    <a class="work-back-link" href="/blog/">&#8592; Blog</a>
+  <article class="blog-post" data-pagefind-body>
+  <div class="pagefind-meta" hidden aria-hidden="true">
+    <span data-pagefind-filter={`Format:${post.data.tag}`}></span>
+    {seriesPosition && <span data-pagefind-filter={`Series:${localize(series[seriesPosition.seriesId].title, lang)}`}></span>}
+    {seriesPosition && <span data-pagefind-meta={`series:Series ${formatSeriesNumber(series[seriesPosition.seriesId].number)} · ${seriesPosition.index + 1}/${seriesPosition.posts.length}`}></span>}
+    <span data-pagefind-meta={`date:${post.data.publishedAt.toISOString().slice(0, 10)}`}></span>
+    <span data-pagefind-meta={`format:${post.data.tag}`}></span>
+  </div>
+    <a class="work-back-link" href="/blog/" data-pagefind-ignore>&#8592; Blog</a>
 
     <header class="blog-post-header">
       <p class="entry-meta blog-entry-meta">
@@ -282,7 +290,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
         <span>{post.data.tag}</span>
       </p>
       <h1 class:list={["blog-post-title", hasKoreanText(postTitle) && "ko-title"]}>{postTitle}</h1>
-      {seriesPosition && post.data.series === "child-ai" && <BlogSeriesNav posts={seriesPosition.posts} index={seriesPosition.index} seriesId="child-ai" lang={lang} placement="header" />}
+      {seriesPosition && <BlogSeriesNav posts={seriesPosition.posts} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="header" />}
 
       <div class="blog-post-byline" aria-label="Post information">
         <span>{getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}</span>
@@ -314,6 +322,6 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
         <Content />
       )}
     </div>
-    {seriesPosition && post.data.series === "child-ai" && <BlogSeriesNav posts={seriesPosition.posts} index={seriesPosition.index} seriesId="child-ai" lang={lang} placement="footer" />}
+    {seriesPosition && <BlogSeriesNav posts={seriesPosition.posts} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="footer" />}
   </article>
 </Layout>
