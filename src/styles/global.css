@@ -288,6 +288,20 @@ main {
   forced-color-adjust: none;
 }
 
+@media (prefers-color-scheme: dark) {
+  .home-instrument.is-raw-fallback .home-instrument-source {
+    filter: saturate(0) contrast(1.08) invert(1);
+  }
+
+  .home-instrument.is-raw-fallback::after {
+    background:
+      radial-gradient(circle, rgba(242, 241, 235, 0.68) 0 1.05px, transparent 1.28px)
+      center / 4px 4px;
+    mix-blend-mode: screen;
+    opacity: 0.45;
+  }
+}
+
 :root[data-theme="dark"] .home-instrument.is-raw-fallback .home-instrument-source {
   filter: saturate(0) contrast(1.08) invert(1);
 }
@@ -307,7 +321,6 @@ main {
   aspect-ratio: auto;
   min-height: 0;
   overflow: hidden;
-  border: 1px solid var(--line);
   border-radius: 0;
   background: var(--soft);
   isolation: isolate;
@@ -4041,6 +4054,7 @@ html[lang="ko"] .cv-page {
 pre.mermaid,
 pre.mermaid[data-processed] {
   max-width: 100%;
+  color: var(--text);
   overflow-x: auto;
   background: transparent !important;
 }
@@ -4049,6 +4063,71 @@ pre.mermaid svg {
   display: block;
   max-width: 100%;
   height: auto;
+  color: inherit;
+}
+
+pre.mermaid svg .node rect,
+pre.mermaid svg .node circle,
+pre.mermaid svg .node ellipse,
+pre.mermaid svg .node polygon,
+pre.mermaid svg .node path {
+  fill: transparent !important;
+  stroke: currentColor !important;
+}
+
+pre.mermaid svg .label,
+pre.mermaid svg .node,
+pre.mermaid svg .edgeLabel,
+pre.mermaid svg .cluster-label {
+  color: inherit !important;
+}
+
+pre.mermaid svg .nodeLabel,
+pre.mermaid svg .nodeLabel p,
+pre.mermaid svg .nodeLabel span {
+  color: inherit !important;
+}
+
+pre.mermaid svg text.nodeLabel,
+pre.mermaid svg .nodeLabel text {
+  fill: currentColor !important;
+}
+
+pre.mermaid svg .flowchart-link,
+pre.mermaid svg .edgePath path {
+  stroke: currentColor !important;
+}
+
+pre.mermaid svg marker path {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+pre.mermaid svg .edgeLabel,
+pre.mermaid svg .edgeLabel p,
+pre.mermaid svg .edgeLabel span {
+  color: inherit !important;
+  background-color: var(--bg) !important;
+}
+
+pre.mermaid svg .edgeLabel text {
+  fill: currentColor !important;
+}
+
+pre.mermaid svg .edgeLabel rect {
+  fill: var(--bg) !important;
+  opacity: 1 !important;
+}
+
+pre.mermaid svg .cluster rect {
+  fill: var(--soft) !important;
+  stroke: var(--line) !important;
+}
+
+pre.mermaid svg .cluster-label,
+pre.mermaid svg .cluster-label * {
+  color: var(--muted) !important;
+  fill: var(--muted) !important;
 }
 
 @media (prefers-color-scheme: dark) {
