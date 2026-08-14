@@ -78,7 +78,7 @@ const paginationItems = (() => {
       <a class:list={["work-filter-button", activeTag === tag && "is-active"]} href={tagPath(tag)} aria-current={activeTag === tag ? "page" : undefined}>{tag}</a>
     ))}
     {hub && currentPage === 1 && (
-      <a class="blog-notes-entry" href={notesPath}>{lang === "ko" ? "학습 노트 →" : "Working notes →"}</a>
+      <a class="blog-notes-entry" href={notesPath}>{lang === "ko" ? "학습 노트 →" : "Study notes →"}</a>
     )}
   </section>
 </div>
