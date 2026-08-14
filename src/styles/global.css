@@ -5268,18 +5268,6 @@ html[lang="ko"] .blog-series-description {
   line-height: 1.45;
   overflow-wrap: anywhere;
 }
-.note-disclaimer {
-  box-sizing: border-box;
-  margin-top: 16px;
-  margin-bottom: 22px;
-  padding: 7px 0;
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  line-height: 1.5;
-}
 .note-body { color: var(--text); font-size: 14px; line-height: 1.55; word-break: keep-all; }
 .note-body h2,
 .note-body h3 {
