@@ -50,7 +50,7 @@ const copy = lang === "ko"
         <ol class="notes-index-list">
           {notes.map((note) => (
             <li data-note-row data-topic={note.data.topic}>
-              <a href={withLanguage(lang, `/notes/${note.id}`)}>
+              <a href={withLanguage(lang, `/blog/notes/${note.id}`)}>
                 <time datetime={(note.data.updated ?? note.data.date).toISOString()}>
                   {formatNoteYearMonth(note.data.updated ?? note.data.date)}
                 </time>

@@ -53,7 +53,7 @@ collections:
     extension: md
     format: frontmatter
     slug: "{{slug}}"
-    preview_path: notes/{{slug}}
+    preview_path: blog/notes/{{slug}}
     summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
     sortable_fields: [date, topic, status]
     fields:

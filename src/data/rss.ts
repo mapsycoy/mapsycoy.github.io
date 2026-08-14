@@ -43,5 +43,5 @@ export const notesToRssItems = (notes: NoteEntry[], site: URL) =>
     title: note.data.title,
     description: "[노트] 학습 중 기록 — 정리되지 않음",
     pubDate: note.data.updated ?? note.data.date,
-    link: new URL(`/notes/${note.id}/`, site).toString(),
+    link: new URL(`/blog/notes/${note.id}/`, site).toString(),
   }));

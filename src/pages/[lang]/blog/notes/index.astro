@@ -1,7 +1,7 @@
 ---
-import NotesIndex from "../../../components/NotesIndex.astro";
-import { getNotes } from "../../../data/notes";
-import { getLanguageFromParams, languages, type Language } from "../../../utils/i18n";
+import NotesIndex from "../../../../components/NotesIndex.astro";
+import { getNotes } from "../../../../data/notes";
+import { getLanguageFromParams, languages, type Language } from "../../../../utils/i18n";
 
 export function getStaticPaths() {
   return languages.map((lang) => ({
