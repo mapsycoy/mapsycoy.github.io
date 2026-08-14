@@ -50,6 +50,7 @@ const toPagePath = (page: number) => {
 const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
 const allPath = `${languagePrefix}/blog/`;
 const tagPath = (tag: BlogTag) => `${languagePrefix}/blog/tag/${normalizeBlogTag(tag)}/`;
+const notesPath = languagePrefix + "/blog/notes/";
 const seriesGroups = hub ? getSeriesGroups(hubPosts) : [];
 const nonSeriesPosts = hub ? getNonSeriesPosts(hubPosts) : [];
 const getPostTitle = (post: BlogPost) => formatTitlePunctuation(localize(post.data.title, lang));
@@ -76,6 +77,9 @@ const paginationItems = (() => {
     {blogTags.map((tag) => (
       <a class:list={["work-filter-button", activeTag === tag && "is-active"]} href={tagPath(tag)} aria-current={activeTag === tag ? "page" : undefined}>{tag}</a>
     ))}
+    {hub && currentPage === 1 && (
+      <a class="blog-notes-entry" href={notesPath}>{lang === "ko" ? "학습 노트 →" : "Working notes →"}</a>
+    )}
   </section>
 </div>
 
