@@ -5196,7 +5196,7 @@ html[lang="ko"] .blog-series-description {
 .notes-index,
 .note-post { width: 100%; margin: 0 auto; }
 .note-post { max-width: 74ch; }
-.notes-index { max-width: 780px; padding: 38px 0 72px; }
+.notes-index { max-width: 74ch; padding: 34px 0 72px; }
 .notes-index > .note-back-link { margin-bottom: 20px; }
 .notes-index-header { margin-bottom: 24px; }
 .notes-index-header h1 {
