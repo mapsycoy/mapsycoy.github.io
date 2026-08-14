@@ -163,7 +163,11 @@ const copy = lang === "ko"
       mount.dataset.ready = "true";
     };
 
-    setupNotesSearch();
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", setupNotesSearch, { once: true });
+    } else {
+      setupNotesSearch();
+    }
     document.addEventListener("astro:page-load", setupNotesSearch);
   })();
 </script>
