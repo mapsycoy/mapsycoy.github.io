@@ -5212,30 +5212,8 @@ html[lang="ko"] .blog-series-description {
 .notes-index-header p,
 .notes-index-empty { margin: 5px 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
 .notes-index-empty { padding: 8px 0 0; }
-.notes-index-topics {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 7px;
-  margin-bottom: 10px;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.68rem;
-}
-.notes-index-topics button {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  background: transparent;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
-}
-.notes-index-topics button:hover,
-.notes-index-topics button[aria-pressed="true"] { color: var(--accent); }
-.notes-index-topics button:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
 .notes-index-list { margin: 0; padding: 0; border-bottom: 1px solid var(--line); list-style: none; }
 .notes-index-list li { border-top: 1px solid var(--line); }
-.notes-index-list li[hidden] { display: none; }
 .notes-index-list a {
   display: grid;
   grid-template-columns: 5.8rem minmax(0, 1fr) auto;
