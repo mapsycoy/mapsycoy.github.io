@@ -5311,16 +5311,15 @@ html[lang="ko"] .blog-series-description {
 .note-body table,
 .note-body .mermaid {
   box-sizing: border-box;
-  width: min(var(--max-width), calc(100vw - 32px));
-  max-width: none;
-  margin: 1.5em 0 1.5em 50%;
-  transform: translateX(-50%);
+  width: 100%;
+  margin: 1.5em 0;
 }
 .note-body pre {
   padding: 10px 0;
   overflow-x: auto;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  border-radius: 0;
   background: transparent;
   white-space: pre;
 }
