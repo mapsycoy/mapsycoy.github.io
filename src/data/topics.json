@@ -1,0 +1,22 @@
+{
+  "tooling": {
+    "number": 1,
+    "label": { "ko": "도구·환경", "en": "Tooling" },
+    "description": { "ko": "uv, Polars, Altair, pandas 브릿지", "en": "uv, Polars, Altair, and the bridge to pandas" }
+  },
+  "measurement": {
+    "number": 2,
+    "label": { "ko": "측정·설계", "en": "Measurement & design" },
+    "description": { "ko": "조작화, 척도, 실험설계, 주효과와 상호작용", "en": "Operationalization, scales, design, main effects and interactions" }
+  },
+  "linear-model": {
+    "number": 3,
+    "label": { "ko": "선형모형", "en": "Linear models" },
+    "description": { "ko": "t-test부터 회귀까지 — 하나의 프레임", "en": "From t-test to regression — one framework" }
+  },
+  "reading": {
+    "number": 4,
+    "label": { "ko": "논문", "en": "Papers" },
+    "description": { "ko": "읽으며 쓴 날것의 메모", "en": "Raw notes taken while reading" }
+  }
+}
