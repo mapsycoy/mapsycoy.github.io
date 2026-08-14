@@ -27,8 +27,13 @@ const copy = lang === "ko"
 <section class="notes-search" aria-label={copy.label} data-notes-search>
   <form class="notes-search-form" role="search">
     <label class="sr-only" for="notes-search-input">{copy.label}</label>
-    <input id="notes-search-input" class="notes-search-input" type="search" placeholder={copy.placeholder} autocomplete="off" />
-    <button class="notes-search-clear" type="button" hidden>{copy.clear}</button>
+    <div class="blog-search-input-wrap notes-search-input-wrap">
+      <button class="blog-search-submit notes-search-submit" type="submit" aria-label={copy.label}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6" /><path d="m15.5 15.5 4 4" /></svg>
+      </button>
+      <input id="notes-search-input" class="blog-search-input notes-search-input" type="search" placeholder={copy.placeholder} autocomplete="off" />
+      <button class="blog-search-clear notes-search-clear" type="button" hidden>{copy.clear}</button>
+    </div>
   </form>
   <p class="notes-search-status" aria-live="polite"></p>
   <ol class="notes-search-results" hidden></ol>
