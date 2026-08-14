@@ -1,0 +1,142 @@
+---
+import { defaultLanguage, type Language } from "../utils/i18n";
+
+type Props = { lang?: Language };
+const { lang = defaultLanguage } = Astro.props;
+const copy = lang === "ko"
+  ? {
+      label: "학습 노트 검색",
+      placeholder: "노트 검색",
+      clear: "지우기",
+      searching: "검색 중…",
+      result: "개 결과",
+      empty: "검색 결과가 없습니다.",
+      more: "더 보기",
+    }
+  : {
+      label: "Search working notes",
+      placeholder: "Search notes",
+      clear: "Clear",
+      searching: "Searching…",
+      result: " results",
+      empty: "No matching notes.",
+      more: "Load more",
+    };
+---
+
+<section class="notes-search" aria-label={copy.label} data-notes-search>
+  <form class="notes-search-form" role="search">
+    <label class="sr-only" for="notes-search-input">{copy.label}</label>
+    <input id="notes-search-input" class="notes-search-input" type="search" placeholder={copy.placeholder} autocomplete="off" />
+    <button class="notes-search-clear" type="button" hidden>{copy.clear}</button>
+  </form>
+  <p class="notes-search-status" aria-live="polite"></p>
+  <ol class="notes-search-results" hidden></ol>
+  <button class="notes-search-more" type="button" hidden>{copy.more}</button>
+</section>
+
+<script is:inline define:vars={{ copy }}>
+  (() => {
+    const PAGE_SIZE = 12;
+
+    const setupNotesSearch = async () => {
+      const mount = document.querySelector("[data-notes-search]");
+      const archive = document.querySelector("[data-notes-archive]");
+      if (!mount || !archive || mount.dataset.ready) return;
+      mount.dataset.ready = "loading";
+
+      const form = mount.querySelector(".notes-search-form");
+      const input = mount.querySelector(".notes-search-input");
+      const clear = mount.querySelector(".notes-search-clear");
+      const status = mount.querySelector(".notes-search-status");
+      const resultsRoot = mount.querySelector(".notes-search-results");
+      const more = mount.querySelector(".notes-search-more");
+      let pagefind;
+      let results = [];
+      let visibleCount = PAGE_SIZE;
+      let searchId = 0;
+      let debounceTimer;
+
+      const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, (character) => ({
+        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
+      })[character]);
+
+      const showArchive = () => {
+        archive.hidden = false;
+        resultsRoot.hidden = true;
+        resultsRoot.innerHTML = "";
+        status.textContent = "";
+        more.hidden = true;
+      };
+
+      const renderResults = async () => {
+        const currentSearchId = searchId;
+        const data = await Promise.all(results.slice(0, visibleCount).map((result) => result.data()));
+        if (currentSearchId !== searchId) return;
+
+        resultsRoot.innerHTML = data.map((item) => {
+          const title = escapeHtml(item.meta?.title || item.url);
+          const date = escapeHtml(String(item.meta?.date || "").slice(0, 10));
+          const noteStatus = escapeHtml(item.meta?.status || "");
+          const metadata = [date, noteStatus].filter(Boolean).join(" · ");
+          return '<li><a href="' + escapeHtml(item.url) + '"><span class="notes-search-result-title">' + title + '</span>' +
+            (metadata ? '<span class="notes-search-result-meta">' + metadata + '</span>' : '') +
+            '<span class="notes-search-result-excerpt">' + (item.excerpt || '') + '</span></a></li>';
+        }).join("");
+
+        resultsRoot.hidden = false;
+        more.hidden = visibleCount >= results.length;
+      };
+
+      const runSearch = async () => {
+        const term = input.value.trim();
+        clear.hidden = !term;
+        const currentSearchId = ++searchId;
+        visibleCount = PAGE_SIZE;
+
+        if (!term) {
+          results = [];
+          showArchive();
+          return;
+        }
+
+        status.textContent = copy.searching;
+        const response = await pagefind.search(term, { filters: { Kind: "Note" } });
+        if (currentSearchId !== searchId) return;
+
+        results = response.results;
+        archive.hidden = true;
+        status.textContent = results.length ? results.length + copy.result : copy.empty;
+        await renderResults();
+      };
+
+      try {
+        pagefind = await import("/pagefind/pagefind.js");
+        mount.dataset.ready = "true";
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          runSearch();
+        });
+        input.addEventListener("input", () => {
+          clearTimeout(debounceTimer);
+          debounceTimer = setTimeout(runSearch, 180);
+        });
+        clear.addEventListener("click", () => {
+          input.value = "";
+          runSearch();
+          input.focus();
+        });
+        more.addEventListener("click", () => {
+          visibleCount += PAGE_SIZE;
+          renderResults();
+        });
+      } catch {
+        delete mount.dataset.ready;
+        showArchive();
+      }
+    };
+
+    setupNotesSearch();
+    document.addEventListener("astro:page-load", setupNotesSearch);
+  })();
+</script>

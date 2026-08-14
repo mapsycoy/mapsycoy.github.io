@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import NotesSearch from "./NotesSearch.astro";
 import { formatNoteYearMonth, getNoteStatusLabel, type NoteEntry } from "../data/notes";
 import { withLanguage, type Language } from "../utils/i18n";
 
@@ -30,10 +31,12 @@ const copy = lang === "ko"
       <p>{copy.introduction}</p>
     </header>
 
+    <NotesSearch lang={lang} />
+
     {notes.length === 0 ? (
       <p class="notes-index-empty">{copy.empty}</p>
     ) : (
-      <ol class="notes-index-list">
+      <ol class="notes-index-list" data-notes-archive>
           {notes.map((note) => (
             <li>
               <a href={withLanguage(lang, `/blog/notes/${note.id}`)}>

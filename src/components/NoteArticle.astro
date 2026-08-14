@@ -35,6 +35,7 @@ const copy = lang === "ko"
   <article class="note-post" data-pagefind-body>
     <div class="pagefind-meta" hidden aria-hidden="true">
       <span data-pagefind-filter="Kind:Note"></span>
+      <span data-pagefind-meta={"status:" + status}></span>
       <span data-pagefind-meta={`date:${(updated ?? date).toISOString()}`}></span>
       <span data-pagefind-meta={`topic:${topic}`}></span>
     </div>
