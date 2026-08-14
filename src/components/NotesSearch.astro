@@ -63,10 +63,25 @@ const copy = lang === "ko"
 
       const showArchive = () => {
         archive.hidden = false;
+        archive.querySelectorAll("[data-note-row]").forEach((row) => { row.hidden = false; });
         resultsRoot.hidden = true;
         resultsRoot.innerHTML = "";
         status.textContent = "";
         more.hidden = true;
+      };
+
+      const runLocalSearch = (term) => {
+        const normalizedTerm = term.toLocaleLowerCase();
+        let matches = 0;
+        archive.hidden = false;
+        archive.querySelectorAll("[data-note-row]").forEach((row) => {
+          const matched = row.dataset.searchText.includes(normalizedTerm);
+          row.hidden = !matched;
+          if (matched) matches += 1;
+        });
+        resultsRoot.hidden = true;
+        more.hidden = true;
+        status.textContent = matches ? matches + copy.result : copy.empty;
       };
 
       const renderResults = async () => {
@@ -100,8 +115,20 @@ const copy = lang === "ko"
           return;
         }
 
+        if (!pagefind) {
+          runLocalSearch(term);
+          return;
+        }
+
         status.textContent = copy.searching;
-        const response = await pagefind.search(term, { filters: { Kind: "Note" } });
+        let response;
+        try {
+          response = await pagefind.search(term, { filters: { Kind: "Note" } });
+        } catch {
+          pagefind = null;
+          runLocalSearch(term);
+          return;
+        }
         if (currentSearchId !== searchId) return;
 
         results = response.results;
@@ -110,30 +137,30 @@ const copy = lang === "ko"
         await renderResults();
       };
 
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        runSearch();
+      });
+      input.addEventListener("input", () => {
+        clearTimeout(debounceTimer);
+        debounceTimer = setTimeout(runSearch, 180);
+      });
+      clear.addEventListener("click", () => {
+        input.value = "";
+        runSearch();
+        input.focus();
+      });
+      more.addEventListener("click", () => {
+        visibleCount += PAGE_SIZE;
+        renderResults();
+      });
+
       try {
         pagefind = await import("/pagefind/pagefind.js");
-        mount.dataset.ready = "true";
-        form.addEventListener("submit", (event) => {
-          event.preventDefault();
-          runSearch();
-        });
-        input.addEventListener("input", () => {
-          clearTimeout(debounceTimer);
-          debounceTimer = setTimeout(runSearch, 180);
-        });
-        clear.addEventListener("click", () => {
-          input.value = "";
-          runSearch();
-          input.focus();
-        });
-        more.addEventListener("click", () => {
-          visibleCount += PAGE_SIZE;
-          renderResults();
-        });
       } catch {
-        delete mount.dataset.ready;
-        showArchive();
+        pagefind = null;
       }
+      mount.dataset.ready = "true";
     };
 
     setupNotesSearch();
