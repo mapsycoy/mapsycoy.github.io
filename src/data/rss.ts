@@ -1,4 +1,5 @@
 import type { BlogPost } from "./blog";
+import type { NoteEntry } from "./notes";
 import { localize } from "../utils/i18n";
 
 export const localizeKoreanFirst = (value: BlogPost["data"]["title"] | BlogPost["data"]["summary"]) =>
@@ -35,4 +36,12 @@ export const toRssItems = (posts: BlogPost[], site: URL) =>
     description: getRssDescription(post),
     pubDate: post.data.publishedAt,
     link: new URL(`/blog/${post.data.slug}`, site).toString(),
+  }));
+
+export const notesToRssItems = (notes: NoteEntry[], site: URL) =>
+  notes.map((note) => ({
+    title: note.data.title,
+    description: "[노트] 학습 중 기록 — 정리되지 않음",
+    pubDate: note.data.updated ?? note.data.date,
+    link: new URL(`/notes/${note.id}/`, site).toString(),
   }));
