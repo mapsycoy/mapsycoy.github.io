@@ -4918,7 +4918,7 @@ html[lang="ko"] .blog-series-description {
 @media (max-width: 640px) { .blog-filter-search { margin-left: 0; } }
 
 .blog-inline-search {
-  margin: 0 0 48px;
+  margin: 0 0 28px;
 }
 /* Stabilize Pagefind controls against global form styles. */
 .blog-search-mount .pagefind-ui__search-input {
