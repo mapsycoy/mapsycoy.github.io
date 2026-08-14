@@ -1,0 +1,20 @@
+---
+import NoteArticle from "../../../components/NoteArticle.astro";
+import { getNotes, type NoteEntry } from "../../../data/notes";
+import { getLanguageFromParams, languages, type Language } from "../../../utils/i18n";
+
+export async function getStaticPaths() {
+  const notes = await getNotes();
+
+  return languages.flatMap((lang) =>
+    notes.map((note) => ({
+      params: { lang, slug: note.id },
+      props: { note, lang: getLanguageFromParams(lang) },
+    }))
+  );
+}
+
+const { note, lang } = Astro.props as { note: NoteEntry; lang: Language };
+---
+
+<NoteArticle note={note} lang={lang} />

@@ -1,0 +1,71 @@
+---
+import { render } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import { formatNoteDate, getNoteStatusLabel, type NoteEntry } from "../data/notes";
+import { getTopicLabel } from "../data/topics";
+import { withLanguage, type Language } from "../utils/i18n";
+
+type Props = {
+  note: NoteEntry;
+  lang: Language;
+};
+
+const { note, lang } = Astro.props;
+const { Content } = await render(note);
+const { title, date, updated, topic, status, tags, source } = note.data;
+const copy = lang === "ko"
+  ? {
+      description: "통계와 연구방법을 공부하며 쌓은 작업 로그.",
+      tags: "태그",
+      disclaimer: "학습 중 기록입니다. 정리되지 않았고, 이후 수정되거나 철회될 수 있습니다.",
+    }
+  : {
+      description: "A working note on statistics and research methods. Written in Korean.",
+      tags: "Tags",
+      disclaimer: "A working note. Unpolished, and subject to revision or retraction. Written in Korean.",
+    };
+---
+
+<Layout
+  title={title}
+  description={copy.description}
+  lang={lang}
+  ogType="article"
+  publishedTime={date.toISOString()}
+  modifiedTime={updated?.toISOString()}
+>
+  <article class="note-post">
+    <header class="note-header">
+      <a class="note-back-link" href={withLanguage(lang, "/notes")}>← notes</a>
+      <div class="note-header-meta">
+        <span>{getTopicLabel(topic, lang)}</span>
+        <span aria-hidden="true">·</span>
+        <span class={`note-status note-status-${status}`}>{getNoteStatusLabel(status, lang)}</span>
+        <span aria-hidden="true">·</span>
+        <time datetime={date.toISOString()}>{formatNoteDate(date, lang)}</time>
+        {updated && (
+          <>
+            <span aria-hidden="true">·</span>
+            <time datetime={updated.toISOString()}>upd {formatNoteDate(updated, lang)}</time>
+          </>
+        )}
+      </div>
+      <h1 class="note-title ko-title">{title}</h1>
+      {source && <p class="note-source">src: {source}</p>}
+    </header>
+
+    <p class="note-disclaimer">{copy.disclaimer}</p>
+
+    <div class="note-body">
+      <Content />
+    </div>
+
+    <footer class="note-footer">
+      {tags.length > 0 && (
+        <ul class="note-tags" aria-label={copy.tags}>
+          {tags.map((tag, index) => <li>{index > 0 && <span aria-hidden="true">·</span>} {tag}</li>)}
+        </ul>
+      )}
+    </footer>
+  </article>
+</Layout>

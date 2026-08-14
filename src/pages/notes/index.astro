@@ -1,0 +1,9 @@
+---
+import NotesIndex from "../../components/NotesIndex.astro";
+import { getNotes } from "../../data/notes";
+import { defaultLanguage } from "../../utils/i18n";
+
+const notes = await getNotes();
+---
+
+<NotesIndex notes={notes} lang={defaultLanguage} />

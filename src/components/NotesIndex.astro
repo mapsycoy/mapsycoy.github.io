@@ -1,0 +1,86 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { formatNoteYearMonth, getNoteStatusLabel, getUsedTopicIds, type NoteEntry } from "../data/notes";
+import { getTopicLabel } from "../data/topics";
+import { withLanguage, type Language } from "../utils/i18n";
+
+type Props = {
+  notes: NoteEntry[];
+  lang: Language;
+};
+
+const { notes, lang } = Astro.props;
+const usedTopicIds = getUsedTopicIds(notes);
+const copy = lang === "ko"
+  ? {
+      description: "통계와 연구방법을 공부하며 쌓은 작업 로그.",
+      introduction: "학습 중 기록. 정리되지 않았고 수정될 수 있음.",
+      empty: "아직 공개된 노트가 없습니다.",
+      filterLabel: "주제 필터",
+    }
+  : {
+      description: "Working notes on statistics and research methods. Written in Korean.",
+      introduction: "Working notes. Unpolished and subject to revision. Written in Korean.",
+      empty: "No public notes yet.",
+      filterLabel: "Topic filters",
+    };
+---
+
+<Layout title="Notes" description={copy.description} lang={lang}>
+  <section class="notes-index">
+    <header class="notes-index-header">
+      <h1>notes</h1>
+      <p>{copy.introduction}</p>
+    </header>
+
+    {notes.length === 0 ? (
+      <p class="notes-index-empty">{copy.empty}</p>
+    ) : (
+      <>
+        <div class="notes-index-topics" aria-label={copy.filterLabel}>
+          {usedTopicIds.map((topic, index) => (
+            <>
+              {index > 0 && <span aria-hidden="true">·</span>}
+              <button type="button" data-note-topic={topic} aria-pressed="false">
+                {getTopicLabel(topic, lang)}
+              </button>
+            </>
+          ))}
+        </div>
+        <ol class="notes-index-list">
+          {notes.map((note) => (
+            <li data-note-row data-topic={note.data.topic}>
+              <a href={withLanguage(lang, `/notes/${note.id}`)}>
+                <time datetime={(note.data.updated ?? note.data.date).toISOString()}>
+                  {formatNoteYearMonth(note.data.updated ?? note.data.date)}
+                </time>
+                <span class="notes-index-title">{note.data.title}</span>
+                <span class={`note-status note-status-${note.data.status}`}>
+                  {getNoteStatusLabel(note.data.status, lang)}
+                </span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </>
+    )}
+  </section>
+</Layout>
+
+<script>
+  const filters = document.querySelectorAll<HTMLButtonElement>("[data-note-topic]");
+  const rows = document.querySelectorAll<HTMLElement>("[data-note-row]");
+
+  filters.forEach((filter) => {
+    filter.addEventListener("click", () => {
+      const selectedTopic = filter.dataset.noteTopic;
+      const isActive = filter.getAttribute("aria-pressed") === "true";
+
+      filters.forEach((item) => item.setAttribute("aria-pressed", "false"));
+      filter.setAttribute("aria-pressed", String(!isActive));
+      rows.forEach((row) => {
+        row.hidden = !isActive && row.dataset.topic !== selectedTopic;
+      });
+    });
+  });
+</script>
