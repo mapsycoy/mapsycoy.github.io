@@ -98,9 +98,11 @@ const copy = lang === "ko"
           const title = escapeHtml(item.meta?.title || item.url);
           const date = escapeHtml(String(item.meta?.date || "").slice(0, 10));
           const noteStatus = escapeHtml(item.meta?.status || "");
+          const noteTags = escapeHtml(item.meta?.tags || "");
           const metadata = [date, noteStatus].filter(Boolean).join(" · ");
+          const visibleMetadata = [metadata, noteTags].filter(Boolean).join(" \u00b7 ");
           return '<li><a href="' + escapeHtml(item.url) + '"><span class="notes-search-result-title">' + title + '</span>' +
-            (metadata ? '<span class="notes-search-result-meta">' + metadata + '</span>' : '') +
+            (visibleMetadata ? '<span class="notes-search-result-meta">' + visibleMetadata + '</span>' : '') +
             '<span class="notes-search-result-excerpt">' + (item.excerpt || '') + '</span></a></li>';
         }).join("");
 

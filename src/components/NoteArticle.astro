@@ -38,6 +38,7 @@ const copy = lang === "ko"
       <span data-pagefind-meta={"status:" + status}></span>
       <span data-pagefind-meta={`date:${(updated ?? date).toISOString()}`}></span>
       <span data-pagefind-meta={`topic:${topic}`}></span>
+      <span data-pagefind-meta={`tags:${tags.join(" ")}`}></span>
     </div>
     <header class="note-header">
       <a class="note-back-link" href={withLanguage(lang, "/blog/notes")}>← notes</a>
