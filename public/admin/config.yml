@@ -55,15 +55,13 @@ collections:
     slug: "{{slug}}"
     preview_path: blog/notes/{{slug}}
     summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
-    sortable_fields: [date, topic, status]
+    sortable_fields: [date, status]
     fields:
       - { name: title, label: 제목, widget: string }
       - { name: date, label: 작성일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD }
       - { name: updated, label: 수정일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD, required: false }
-      - { name: topic, label: 주제, widget: select, options: [tooling, measurement, linear-model, reading] }
       - { name: status, label: 상태, widget: select, options: [draft, working, settled], default: working }
       - { name: tags, label: 태그, widget: list, required: false }
-      - { name: source, label: 출처, widget: string, required: false }
       - { name: body, label: 본문, widget: markdown }
 
   - name: blog

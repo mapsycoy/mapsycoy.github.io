@@ -17,7 +17,7 @@ const copy = lang === "ko"
       empty: "아직 공개된 노트가 없습니다.",
     }
   : {
-      description: "Study notes on statistics and research methods. Written in Korean.",
+      description: "Study notes and learning logs. Written in Korean.",
       introduction: "Study notes. Unpolished and subject to revision. Written in Korean.",
       empty: "No public notes yet.",
     };
@@ -38,7 +38,7 @@ const copy = lang === "ko"
     ) : (
       <ol class="notes-index-list" data-notes-archive>
           {notes.map((note) => (
-            <li data-note-row data-search-text={`${note.data.title} ${note.data.topic} ${note.data.status} ${note.data.tags.join(" ")}`.toLocaleLowerCase()}>
+            <li data-note-row data-search-text={`${note.data.title} ${note.data.status} ${note.data.tags.join(" ")}`.toLocaleLowerCase()}>
               <a href={withLanguage(lang, `/blog/notes/${note.id}`)}>
                 <time datetime={(note.data.updated ?? note.data.date).toISOString()}>
                   {formatNoteYearMonth(note.data.updated ?? note.data.date)}

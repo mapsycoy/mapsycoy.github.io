@@ -2,7 +2,6 @@
 import { render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { formatNoteDate, getNoteStatusLabel, type NoteEntry } from "../data/notes";
-import { getTopicLabel } from "../data/topics";
 import { withLanguage, type Language } from "../utils/i18n";
 
 type Props = {
@@ -12,14 +11,14 @@ type Props = {
 
 const { note, lang } = Astro.props;
 const { Content } = await render(note);
-const { title, date, updated, topic, status, tags, source } = note.data;
+const { title, date, updated, status, tags } = note.data;
 const copy = lang === "ko"
   ? {
       description: "통계와 연구방법을 공부하며 쌓은 작업 로그.",
       tags: "태그",
     }
   : {
-      description: "A working note on statistics and research methods. Written in Korean.",
+      description: "A study note and learning log. Written in Korean.",
       tags: "Tags",
     };
 ---
@@ -37,14 +36,11 @@ const copy = lang === "ko"
       <span data-pagefind-filter="Kind:Note"></span>
       <span data-pagefind-meta={"status:" + status}></span>
       <span data-pagefind-meta={`date:${(updated ?? date).toISOString()}`}></span>
-      <span data-pagefind-meta={`topic:${topic}`}></span>
       <span data-pagefind-meta={`tags:${tags.join(" ")}`}></span>
     </div>
     <header class="note-header">
       <a class="note-back-link" href={withLanguage(lang, "/blog/notes")}>← notes</a>
       <div class="note-header-meta">
-        <span>{getTopicLabel(topic, lang)}</span>
-        <span aria-hidden="true">·</span>
         <span class={`note-status note-status-${status}`}>{getNoteStatusLabel(status, lang)}</span>
         <span aria-hidden="true">·</span>
         <time datetime={date.toISOString()}>{formatNoteDate(date, lang)}</time>
@@ -56,7 +52,6 @@ const copy = lang === "ko"
         )}
       </div>
       <h1 class="note-title ko-title">{title}</h1>
-      {source && <p class="note-source">src: {source}</p>}
     </header>
 
     <div class="note-body">

@@ -1,16 +1,10 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import seriesRegistry from "./data/series.json";
-import topicRegistry from "./data/topics.json";
 
 const registeredSeriesIds = Object.keys(seriesRegistry);
 const seriesIdSchema = z.string().refine((value) => registeredSeriesIds.includes(value), {
   message: `Unknown series id. Register it in src/data/series.json first. Known ids: ${registeredSeriesIds.join(", ")}`,
-});
-
-const registeredTopicIds = Object.keys(topicRegistry);
-const topicIdSchema = z.string().refine((value) => registeredTopicIds.includes(value), {
-  message: `Unknown topic id. Register it in src/data/topics.json first. Known ids: ${registeredTopicIds.join(", ")}`,
 });
 
 const statusSchema = z.enum(["draft", "published"]).default("published");
@@ -155,10 +149,8 @@ const notes = defineCollection({
     title: z.string(),
     date: z.coerce.date(),
     updated: z.coerce.date().optional(),
-    topic: topicIdSchema,
     status: z.enum(["draft", "working", "settled"]).default("working"),
     tags: z.array(z.string()).default([]),
-    source: z.string().optional(),
   }),
 });
 

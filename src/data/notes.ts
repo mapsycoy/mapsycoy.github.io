@@ -1,5 +1,4 @@
 import { getCollection, type CollectionEntry } from "astro:content";
-import { topicIds, type TopicId } from "./topics";
 import type { Language } from "../utils/i18n";
 
 export type NoteEntry = CollectionEntry<"notes">;
@@ -12,9 +11,6 @@ export const getNotes = async ({ includeDrafts = false } = {}) => {
     (a, b) => (b.data.updated ?? b.data.date).getTime() - (a.data.updated ?? a.data.date).getTime()
   );
 };
-
-export const getUsedTopicIds = (notes: NoteEntry[]): TopicId[] =>
-  topicIds.filter((topic) => notes.some((note) => note.data.topic === topic));
 
 export const getNoteStatusLabel = (status: NoteEntry["data"]["status"], lang: Language) => {
   const labels = {

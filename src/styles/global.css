@@ -5289,14 +5289,6 @@ html[lang="ko"] .blog-series-description {
   line-height: 1.45;
 }
 .note-title { margin: 0; color: var(--text); font-family: var(--font-mono); font-size: 17px; font-weight: 500; line-height: 1.35; }
-.note-source {
-  margin: 6px 0 0;
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
-}
 .note-body { color: var(--text); font-family: var(--font-mono); font-size: 14px; line-height: 1.55; word-break: keep-all; }
 .note-body h2,
 .note-body h3 {
