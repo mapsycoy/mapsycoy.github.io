@@ -23,6 +23,7 @@ const previewImageUrl = new URL(previewImage, siteUrl).toString();
 const navItems = [
   { href: withLanguage(currentLanguage, "/works"), label: "Works" },
   { href: withLanguage(currentLanguage, "/blog"), label: "Blog" },
+  { href: withLanguage(currentLanguage, "/notes"), label: "Notes" },
   { href: withLanguage(currentLanguage, "/cv"), label: "CV" }
 ];
 const pathParts = Astro.url.pathname.split("/").filter(Boolean);
