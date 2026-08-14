@@ -17,6 +17,7 @@
   --soft: #efede7;
   --accent: #2f4f48;
   --max-width: 960px;
+  --font-mono: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
   --dot-rule: radial-gradient(circle, var(--line) 0 1.25px, transparent 1.45px) left center / 7px 2px repeat-x;
   font-family:
    "Space Grotesk", "Pretendard", "Noto Sans KR", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -5178,3 +5179,181 @@ html[lang="ko"] .blog-series-description {
   text-underline-offset: 3px;
 }
 .blog-search-scope a:hover { color: var(--accent); }
+
+/* Study notes */
+.pagefind-meta { display: none; }
+.notes-index,
+.note-post { width: 100%; margin: 0 auto; }
+.notes-index { max-width: 780px; padding: 38px 0 72px; }
+.notes-index-header { margin-bottom: 24px; }
+.notes-index-header h1 {
+  margin: 0;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: lowercase;
+}
+.notes-index-header p,
+.notes-index-empty { margin: 5px 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
+.notes-index-empty { padding: 8px 0 0; }
+.notes-index-topics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 7px;
+  margin-bottom: 10px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+.notes-index-topics button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+.notes-index-topics button:hover,
+.notes-index-topics button[aria-pressed="true"] { color: var(--accent); }
+.notes-index-topics button:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
+.notes-index-list { margin: 0; padding: 0; border-bottom: 1px solid var(--line); list-style: none; }
+.notes-index-list li { border-top: 1px solid var(--line); }
+.notes-index-list li[hidden] { display: none; }
+.notes-index-list a {
+  display: grid;
+  grid-template-columns: 5.8rem minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 14px;
+  padding: 9px 0;
+  color: var(--text);
+  text-decoration: none;
+}
+.notes-index-list a:hover .notes-index-title { color: var(--accent); }
+.notes-index-list a:focus-visible,
+.note-back-link:focus-visible,
+.note-body a:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
+.notes-index-title { min-width: 0; font-size: 0.79rem; font-weight: 450; line-height: 1.4; }
+.notes-index-list time,
+.note-status { color: var(--muted); font-family: var(--font-mono); font-size: 0.65rem; white-space: nowrap; }
+.note-status {
+  padding: 0;
+  border: 0;
+  line-height: inherit;
+}
+.note-status-draft { opacity: 0.55; font-weight: 400; }
+.note-status-working { font-weight: 400; }
+.note-status-settled { color: var(--text); font-weight: 500; }
+.note-header,
+.note-disclaimer,
+.note-body,
+.note-footer { width: min(100%, 62ch); margin-right: auto; margin-left: auto; }
+.note-header { padding: 34px 0 18px; border-bottom: 1px solid var(--line); }
+.note-back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  text-decoration: none;
+}
+.note-back-link:hover { color: var(--accent); }
+.note-header-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin-bottom: 6px;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.45;
+}
+.note-title { margin: 0; color: var(--text); font-size: 17px; font-weight: 500; line-height: 1.35; }
+.note-source {
+  margin: 6px 0 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.note-disclaimer {
+  box-sizing: border-box;
+  margin-top: 16px;
+  margin-bottom: 22px;
+  padding: 7px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  line-height: 1.5;
+}
+.note-body { color: var(--text); font-size: 14px; line-height: 1.55; word-break: keep-all; }
+.note-body h2,
+.note-body h3 {
+  margin: 1rem 0 3px;
+  padding: 0;
+  border: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+}
+.note-body p,
+.note-body ul,
+.note-body ol { margin: 0 0 1rem; }
+.note-body pre,
+.note-body table,
+.note-body .mermaid {
+  box-sizing: border-box;
+  width: min(var(--max-width), calc(100vw - 32px));
+  max-width: none;
+  margin: 1.5em 0 1.5em 50%;
+  transform: translateX(-50%);
+}
+.note-body pre {
+  padding: 10px 0;
+  overflow-x: auto;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: transparent;
+  white-space: pre;
+}
+.note-body pre code { white-space: inherit; }
+.note-body :not(pre) > code { font-family: var(--font-mono); }
+.note-body table { display: block; overflow-x: auto; border-collapse: collapse; white-space: nowrap; }
+.note-body th,
+.note-body td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; }
+.note-body a { color: var(--text); text-decoration-color: var(--line); text-underline-offset: 3px; }
+.note-body a:hover { color: var(--accent); }
+.note-body [data-section] { box-sizing: border-box; margin: 1rem 0; padding: 0 0 0 0.75rem; background: transparent; }
+.note-body [data-section] > h2 { margin-top: 0; }
+.note-body [data-section="result"] { border-left: 2px solid var(--accent); }
+.note-body [data-section="result"] > h2 { color: var(--accent); }
+.note-body [data-section="uncertain"] { border-left: 2px dashed var(--line); color: var(--muted); }
+.note-footer { margin-top: 30px; padding: 10px 0 64px; border-top: 1px solid var(--line); }
+.note-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  list-style: none;
+}
+@media (max-width: 640px) {
+  .notes-index,
+  .note-header { padding-top: 28px; }
+  .notes-index-list a { grid-template-columns: 5.3rem minmax(0, 1fr); gap: 8px; }
+  .notes-index-list .note-status { grid-column: 2; }
+}
