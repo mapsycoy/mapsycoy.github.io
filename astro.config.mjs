@@ -5,6 +5,7 @@ import { unified } from "@astrojs/markdown-remark";
 import remarkGfm from "remark-gfm";
 import rehypeLinkPreviews from "./src/utils/rehypeLinkPreviews.mjs";
 import rehypeSmartTypography from "./src/utils/smartTypography.mjs";
+import rehypeNoteSections from "./src/utils/rehypeNoteSections.mjs";
 
 export default defineConfig({
   site: "https://mapsycoy.com",
@@ -49,8 +50,10 @@ export default defineConfig({
       filter: (page) => !page.includes("/admin"),
     }),
   ],
-  markdown: unified({
-    remarkPlugins: [remarkGfm],
-    rehypePlugins: [rehypeSmartTypography, rehypeLinkPreviews],
-  }),
+  markdown: {
+    processor: unified({
+      remarkPlugins: [remarkGfm],
+      rehypePlugins: [rehypeSmartTypography, rehypeLinkPreviews, rehypeNoteSections],
+    }),
+  },
 });
