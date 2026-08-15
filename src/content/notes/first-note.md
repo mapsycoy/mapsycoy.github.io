@@ -165,6 +165,49 @@ xlabel: 관측값
 caption: 두 정규분포의 겹침
 ```
 
+F 분포의 오른쪽 기각역을 표시한다.
+
+```dist
+kind: f
+df1: 3
+df2: 20
+xmax: 6
+shade: right 3.1
+mark: 3.1=임계값
+xlabel: F
+caption: 자유도 3, 20인 F 분포
+```
+
+카이제곱 분포의 오른쪽 꼬리를 확인한다.
+
+```dist
+kind: chi2
+df: 4
+xmax: 16
+shade: right 9.49
+mark: 9.49=임계값
+xlabel: χ²
+caption: 자유도 4인 카이제곱 분포
+```
+
+원자료와 표본평균 분포의 폭을 비교한다.
+
+```dist
+kind: sampling
+n: 25
+sigma: 0.9
+caption: 원자료와 표본평균의 표집분포
+```
+
+동일한 seed로 반복 가능한 신뢰구간 모식을 만든다.
+
+```dist
+kind: ci
+n: 20
+level: 0.95
+seed: 17
+caption: 95% 신뢰구간의 반복 표집
+```
 아래 블록은 잘못된 설정이 빌드를 중단하지 않고 원래 코드블록으로 남는지 검증한다.
 
 ```dist

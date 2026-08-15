@@ -6,7 +6,7 @@ import { formatTitlePunctuation, getBlogPostSlug, getBlogPosts, getPostDateLabel
 import { formatSeriesNumber, series } from "../../data/series";
 import { defaultLanguage, localize, type Language } from "../../utils/i18n";
 import { smartenText } from "../../utils/smartTypography.mjs";
-import { renderDistChart } from "../../utils/remarkDistChart.mjs";
+import { renderDistBlock } from "../../utils/remarkDistChart.mjs";
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
@@ -194,7 +194,7 @@ const renderMarkdownBlock = (value: string) => {
     const distFence = trimmed.match(/^`{3}dist\s*\n([\s\S]*?)\n`{3}$/i);
     if (distFence) {
       try {
-        html.push(renderDistChart(distFence[1]));
+        html.push(renderDistBlock(distFence[1]));
       } catch (error) {
         console.warn(`[dist-chart] Keeping invalid blog dist block: ${error instanceof Error ? error.message : String(error)}`);
         html.push(`<pre><code class="language-dist">${escapeHtml(distFence[1])}</code></pre>`);
