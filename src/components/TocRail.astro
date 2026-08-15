@@ -1,0 +1,26 @@
+---
+type Heading = {
+  slug: string;
+  text: string;
+};
+
+type Props = {
+  headings: Heading[];
+  label: string;
+};
+
+const { headings, label } = Astro.props;
+---
+
+{headings.length > 0 && (
+  <aside class="note-toc" aria-label={label}>
+    <nav>
+      <span class="note-toc-label">{label}</span>
+      <ol>
+        {headings.map((heading) => (
+          <li><a href={"#" + heading.slug}><span>{heading.text}</span></a></li>
+        ))}
+      </ol>
+    </nav>
+  </aside>
+)}

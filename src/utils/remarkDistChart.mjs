@@ -134,6 +134,14 @@ function parseMarks(spec) {
     })
     .filter(Boolean);
 }
+function parseData(spec) {
+  if (!spec) return [];
+  const values = spec.split(",").map((chunk) => Number.parseFloat(chunk.trim()));
+  if (!values.length || values.some((value) => !Number.isFinite(value))) {
+    throw new Error("data must be a comma-separated list of numbers");
+  }
+  return values;
+}
 
 /* ---------- 곡선 → path ---------- */
 
@@ -194,9 +202,11 @@ function shadeRanges(shade, xMin, xMax) {
 const esc = (s) =>
   String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
 
-function buildSvg({ curves, shade, marks, xMin, xMax, yMax, xlabel, aria }) {
+function buildSvg({ curves, shade, marks, data, rugPositions, xMin, xMax, yMax, xlabel, aria }) {
   const s = makeScale(xMin, xMax, yMax);
   const parts = [];
+  const hasSpreadGuides = curves.some((curve) => curve.spreadLabel);
+  const svgH = H + (hasSpreadGuides ? 36 : 0);
 
   // 음영은 첫 곡선 기준
   const main = curves.find((c) => !c.faint) ?? curves[0];
@@ -222,6 +232,39 @@ function buildSvg({ curves, shade, marks, xMin, xMax, yMax, xlabel, aria }) {
   parts.push(
     `<line x1="${PAD.left}" y1="${BASE_Y}" x2="${W - PAD.right}" y2="${BASE_Y}" stroke="var(--line)" stroke-width="1" />`
   );
+  // 원자료 러그. 곡선은 개념도이고, 점은 data의 최소–최대 범위를 별도로 사용한다.
+  if (data.length) {
+    const dataMin = Math.min(...data);
+    const dataMax = Math.max(...data);
+    const dataSpan = dataMax - dataMin;
+    const rows = [-Infinity, -Infinity, -Infinity];
+    const placed = data
+      .map((value, index) => ({ value, index }))
+      .sort((a, b) => a.value - b.value)
+      .map(({ value, index }) => {
+        const px = rugPositions
+          ? s.sx(rugPositions[index])
+          : dataSpan === 0
+            ? PAD.left + PLOT_W / 2
+            : PAD.left + ((value - dataMin) / dataSpan) * PLOT_W;
+        let row = rows.findIndex((lastX) => px - lastX >= 18);
+        if (row === -1) row = rows.indexOf(Math.min(...rows));
+        rows[row] = px;
+        return { value, px, row };
+      });
+
+    for (const point of placed) {
+      const cy = BASE_Y + 5 + point.row * 5;
+      const ly = BASE_Y + 17 + point.row * 5;
+      const anchor = point.px <= PAD.left + 4 ? "start" : point.px >= W - PAD.right - 4 ? "end" : "middle";
+      parts.push(
+        `<circle cx="${point.px.toFixed(1)}" cy="${cy}" r="2.5" fill="var(--accent)" />`
+      );
+      parts.push(
+        `<text x="${point.px.toFixed(1)}" y="${ly}" fill="var(--muted)" font-family="var(--font-mono, monospace)" font-size="9" text-anchor="${anchor}">${esc(point.value)}</text>`
+      );
+    }
+  }
 
   // 세로 표시선
   for (const m of marks) {
@@ -236,9 +279,10 @@ function buildSvg({ curves, shade, marks, xMin, xMax, yMax, xlabel, aria }) {
         `<text x="${px}" y="${ly}" fill="var(--muted)" font-family="var(--font-mono, monospace)" font-size="10" text-anchor="middle">${esc(m.label)}</text>`
       );
     }
-    if (!m.hideValue) {
+    if (!m.hideValue && !(data.length && m.label)) {
+      const valueY = m.valueAboveAxis ? BASE_Y - 6 : BASE_Y + 14;
       parts.push(
-        `<text x="${px}" y="${BASE_Y + 14}" fill="var(--muted)" font-family="var(--font-mono, monospace)" font-size="10" text-anchor="middle">${esc(m.x)}</text>`
+        `<text x="${px}" y="${valueY}" fill="var(--muted)" font-family="var(--font-mono, monospace)" font-size="10" text-anchor="middle">${esc(m.x)}</text>`
       );
     }
   }
@@ -251,14 +295,38 @@ function buildSvg({ curves, shade, marks, xMin, xMax, yMax, xlabel, aria }) {
         ` />`
     );
   }
-
-  if (xlabel) {
+  // 곡선 직접 라벨. 곡선과 겹치지 않도록 지정 지점보다 위에 둔다.
+  for (const c of curves) {
+    if (!c.label || !Number.isFinite(c.labelX) || !Number.isFinite(c.labelY)) continue;
+    const lx = s.sx(c.labelX);
+    const ly = Math.max(PAD.top + 10, s.sy(c.labelY) - 8);
     parts.push(
-      `<text x="${W - PAD.right}" y="${H - 6}" fill="var(--muted)" font-family="var(--font-mono, monospace)" font-size="10" text-anchor="end">${esc(xlabel)}</text>`
+      `<text x="${lx.toFixed(1)}" y="${ly.toFixed(1)}" fill="var(--muted)" font-family="var(--font-mono, monospace)" font-size="10" text-anchor="${c.labelAnchor || "middle"}">${esc(c.label)}</text>`
+    );
+  }
+  // 평균에서 +1 SD까지의 거리를 직접 보여주는 수평 가이드.
+  let spreadRow = 0;
+  for (const c of curves) {
+    if (!c.spreadLabel || !Number.isFinite(c.spreadFrom) || !Number.isFinite(c.spreadTo)) continue;
+    const x1 = s.sx(c.spreadFrom);
+    const x2 = s.sx(c.spreadTo);
+    const gy = BASE_Y + 16 + spreadRow * 18;
+    spreadRow++;
+    parts.push(
+      `<path d="M${x1.toFixed(1)} ${gy - 3} V${gy + 3} M${x1.toFixed(1)} ${gy} H${x2.toFixed(1)} M${x2.toFixed(1)} ${gy - 3} V${gy + 3}" fill="none" stroke="var(--muted)" stroke-width="1" />`
+    );
+    parts.push(
+      `<text x="${((x1 + x2) / 2).toFixed(1)}" y="${gy - 6}" fill="var(--muted)" font-family="var(--font-mono, monospace)" font-size="9" text-anchor="middle">${esc(c.spreadLabel)}</text>`
     );
   }
 
-  return `<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(aria)}">${parts.join("")}</svg>`;
+  if (xlabel) {
+    parts.push(
+      `<text x="${W - PAD.right}" y="${svgH - 6}" fill="var(--muted)" font-family="var(--font-mono, monospace)" font-size="10" text-anchor="end">${esc(xlabel)}</text>`
+    );
+  }
+
+  return `<svg viewBox="0 0 ${W} ${svgH}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="${esc(aria)}">${parts.join("")}</svg>`;
 }
 
 /* ---------- kind별 ---------- */
@@ -268,9 +336,11 @@ function render(src) {
   const kind = o.kind;
   const shade = parseShade(o.shade);
   const marks = parseMarks(o.mark);
+  const data = parseData(o.data);
   const xlabel = o.xlabel || null;
 
   let curves, xMin, xMax, aria;
+  let rugPositions = null;
 
   if (kind === "normal") {
     const mu = num(o.mean, 0);
@@ -278,6 +348,7 @@ function render(src) {
     xMin = mu - 4 * sd;
     xMax = mu + 4 * sd;
     curves = [{ pts: sample((x) => normalPdf(x, mu, sd), xMin, xMax) }];
+    rugPositions = data.length ? [...data] : null;
     aria = `평균 ${mu}, 표준편차 ${sd}인 정규분포 곡선`;
   } else if (kind === "t") {
     const df = num(o.df, 5);
@@ -314,6 +385,36 @@ function render(src) {
 
     const uMean = o.mean ?? null;
     const uMedian = o.median ?? null;
+    // skew-right 원자료는 중앙값·평균 표시선과 같은 좌표계에 맞춘다.
+    // 실제 간격을 그대로 보존하지 않고 세 구간을 단조롭게 보간한 시각적 안내다.
+    const meanValue = Number.parseFloat(uMean);
+    const medianValue = Number.parseFloat(uMedian);
+    if (
+      !flip &&
+      data.length &&
+      Number.isFinite(meanValue) &&
+      Number.isFinite(medianValue) &&
+      meanValue > medianValue
+    ) {
+      const dataMin = Math.min(...data);
+      const dataMax = Math.max(...data);
+      rugPositions = data.map((value) => {
+        if (value <= medianValue) {
+          const span = medianValue - dataMin;
+          return span > 0
+            ? xMin + ((value - dataMin) / span) * (shapeMedian - xMin)
+            : shapeMedian;
+        }
+        if (value <= meanValue) {
+          return shapeMedian +
+            ((value - medianValue) / (meanValue - medianValue)) * (shapeMean - shapeMedian);
+        }
+        const span = dataMax - meanValue;
+        return span > 0
+          ? shapeMean + ((value - meanValue) / span) * (xMax - shapeMean)
+          : shapeMean;
+      });
+    }
 
     marks.push(
       {
@@ -337,11 +438,35 @@ function render(src) {
     const s2 = num(o.sd2, 1);
     xMin = Math.min(m1 - 4 * s1, m2 - 4 * s2);
     xMax = Math.max(m1 + 4 * s1, m2 + 4 * s2);
+    const labelX1 = m1 - 0.8 * s1;
+    const labelX2 = m2 + 1.2 * s2;
     curves = [
-      { pts: sample((x) => normalPdf(x, m1, s1), xMin, xMax), overlap: true },
-      { pts: sample((x) => normalPdf(x, m2, s2), xMin, xMax), overlap: true },
+      {
+        pts: sample((x) => normalPdf(x, m1, s1), xMin, xMax),
+        overlap: true,
+        label: o.label || null,
+        labelX: labelX1,
+        labelY: normalPdf(labelX1, m1, s1),
+        labelAnchor: "end",
+        spreadFrom: m1,
+        spreadTo: m1 + s1,
+        spreadLabel: `${o.label || "X"} · 1 SD (${s1}초)`,
+      },
+      {
+        pts: sample((x) => normalPdf(x, m2, s2), xMin, xMax),
+        overlap: true,
+        label: o.label2 || null,
+        labelX: labelX2,
+        labelY: normalPdf(labelX2, m2, s2),
+        labelAnchor: "start",
+        spreadFrom: m2,
+        spreadTo: m2 + s2,
+        spreadLabel: `${o.label2 || "Y"} · 1 SD (${s2}초)`,
+      },
     ];
-    aria = `평균이 다른 두 정규분포의 겹침`;
+    // 아래쪽 SD 가이드와 겹치지 않도록 공통 평균의 축 값은 기준선 위에 둔다.
+    for (const mark of marks) mark.valueAboveAxis = true;
+    aria = `평균 ${m1}, 표준편차 ${s1}인 분포와 평균 ${m2}, 표준편차 ${s2}인 분포의 겹침`;
   } else if (kind === "f") {
     const d1 = num(o.df1, 3);
     const d2 = num(o.df2, 20);
@@ -379,7 +504,7 @@ function render(src) {
   }
 
   const yMax = Math.max(...curves.flatMap((c) => c.pts.map(([, y]) => y)));
-  const svg = buildSvg({ curves, shade, marks, xMin, xMax, yMax, xlabel, aria });
+  const svg = buildSvg({ curves, shade, marks, data, rugPositions, xMin, xMax, yMax, xlabel, aria });
   const caption = o.caption
     ? `<figcaption>${esc(o.caption)}</figcaption>`
     : "";

@@ -417,6 +417,23 @@ collections:
                   - captioned-image
                   - image-grid
                   - divider
+          - label: Special Thanks
+            name: specialThanks
+            widget: object
+            fields:
+              - label: Body
+                name: body
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: markdown
+                    required: false
+                  - label: English
+                    name: en
+                    widget: markdown
+                    required: false
           - label: Video
             name: video
             widget: object

@@ -37,10 +37,10 @@ contentBlocks:
     subtitle:
       ko: ""
       en: 광화문광장에 쏘아 올린 다섯 학생의 도전
-  - type: text
+  - type: specialThanks
     body:
-      ko: "*도움주신 **하준수** 교수님께 감사의 말씀드립니다.*"
-      en: "*Special Thanks to Prof. **Ha Junsu***"
+      ko: "도움주신 **하준수** 교수님께 감사의 말씀드립니다."
+      en: "Special Thanks to Prof. **Ha Junsu**"
 tags:
   - Media Art
 thumbnail: https://www.ilyoweekly.co.kr/news/data/20230727/p1065594020970021_262_thum.jpg

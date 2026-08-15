@@ -1,6 +1,7 @@
 ---
 import { render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
+import TocRail from "./TocRail.astro";
 import { formatNoteDate, getNoteStatusLabel, type NoteEntry } from "../data/notes";
 import { withLanguage, type Language } from "../utils/i18n";
 
@@ -10,16 +11,19 @@ type Props = {
 };
 
 const { note, lang } = Astro.props;
-const { Content } = await render(note);
+const { Content, headings } = await render(note);
+const tocHeadings = headings.filter((heading) => heading.depth === 2);
 const { title, date, updated, status, tags } = note.data;
 const copy = lang === "ko"
   ? {
       description: "통계와 연구방법을 공부하며 쌓은 작업 로그.",
       tags: "태그",
+      toc: "목차",
     }
   : {
       description: "A study note and learning log. Written in Korean.",
       tags: "Tags",
+      toc: "Contents",
     };
 ---
 
@@ -39,7 +43,7 @@ const copy = lang === "ko"
       <span data-pagefind-meta={`tags:${tags.join(" ")}`}></span>
     </div>
     <header class="note-header">
-      <a class="note-back-link" href={withLanguage(lang, "/blog/notes")}>← notes</a>
+      <a class="work-back-link note-back-link" href={withLanguage(lang, "/blog/notes")}>← notes</a>
       <div class="note-header-meta">
         <span class={`note-status note-status-${status}`}>{getNoteStatusLabel(status, lang)}</span>
         <span aria-hidden="true">·</span>
@@ -54,8 +58,12 @@ const copy = lang === "ko"
       <h1 class="note-title ko-title">{title}</h1>
     </header>
 
-    <div class="note-body">
-      <Content />
+    <div class="note-content-shell">
+      <TocRail headings={tocHeadings} label={copy.toc} />
+
+      <div class="note-body">
+        <Content />
+      </div>
     </div>
 
     <footer class="note-footer">

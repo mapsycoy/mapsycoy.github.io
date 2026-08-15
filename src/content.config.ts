@@ -111,6 +111,10 @@ const works = defineCollection({
             body: localizedTextSchema,
           }),
           z.object({
+            type: z.literal("specialThanks"),
+            body: localizedTextSchema,
+          }),
+          z.object({
             type: z.literal("video"),
             embed: z.string(),
             caption: localizedTextSchema.optional(),

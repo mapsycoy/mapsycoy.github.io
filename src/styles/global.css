@@ -1,5 +1,3 @@
-@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
-@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css");
 @font-face {
   font-family: 'EBSHunminjeongeum';
   src: url('/fonts/EBSHunminjeongeumR.woff2') format('woff2');
@@ -1633,7 +1631,20 @@ h3 {
   letter-spacing: 0;
 }
 
-.work-content-flow > p {
+.work-special-thanks {
+  margin: 1.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+.work-special-thanks p {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  line-height: inherit;
+}.work-content-flow > p {
   font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 17px;
   font-synthesis: weight style;
@@ -1643,7 +1654,20 @@ h3 {
 }
 
 html[lang="ko"] .work-text-block,
-html[lang="ko"] .work-content-flow > p {
+html[lang="ko"] .work-special-thanks {
+  margin: 1.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+.work-special-thanks p {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  line-height: inherit;
+}.work-content-flow > p {
   font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 1rem;
   font-synthesis: weight style;
@@ -1680,7 +1704,20 @@ html[lang="ko"] .blog-post-body {
 }
 
 html[lang="ko"] .work-text-block p,
-html[lang="ko"] .work-content-flow > p {
+html[lang="ko"] .work-special-thanks {
+  margin: 1.4rem 0 0;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-style: italic;
+  line-height: 1.45;
+}
+.work-special-thanks p {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  line-height: inherit;
+}.work-content-flow > p {
   line-height: 1.4;
 }
 
@@ -3843,7 +3880,8 @@ html[lang="ko"] .cv-page {
     font-size: 2.35rem;
   }
 
-  .blog-post-body .footnote-popover {
+  .blog-post-body .footnote-popover,
+  .note-body .footnote-popover {
     width: max-content;
     max-width: min(20rem, calc(100vw - 40px));
     max-height: min(42vh, 18rem);
@@ -3853,7 +3891,8 @@ html[lang="ko"] .cv-page {
     -webkit-overflow-scrolling: touch;
   }
 
-  .blog-post-body .footnote-popover.is-positioned {
+  .blog-post-body .footnote-popover.is-positioned,
+  .note-body .footnote-popover.is-positioned {
     position: fixed;
     top: var(--footnote-popover-top, 20px);
     left: var(--footnote-popover-left, 20px);
@@ -4808,6 +4847,7 @@ html[lang="ko"] .blog-series-description {
   margin-bottom: 0;
   gap: 10px 16px;
 }
+.blog-filter-options { display: contents; }
 
 .blog-filter-label {
   flex: 0 0 auto;
@@ -4890,7 +4930,24 @@ html[lang="ko"] .blog-series-description {
 }
 
 @media (max-width: 640px) {
-  .blog-filter-label {
+  .blog-filters .works-filter.blog-filter-row {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+    gap: 10px 12px;
+  }
+  .blog-filter-options {
+    display: flex;
+    min-width: 0;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 16px;
+  }
+  .blog-filter-options .work-filter-button { line-height: 18px; }
+  .blog-notes-entry {
+    align-self: start;
+    margin-left: 0;
+  }  .blog-filter-label {
     flex-basis: 100%;
     min-width: 0;
   }
@@ -5184,26 +5241,51 @@ html[lang="ko"] .blog-series-description {
 /* Study notes */
 .pagefind-meta { display: none; }
 .blog-notes-entry {
+  display: inline-flex;
+  width: 34px;
+  height: 18px;
+  align-items: center;
+  justify-content: center;
   margin-left: auto;
-  padding-bottom: 4px;
+  padding: 0 0 4px;
   color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
   text-decoration: none;
+}
+.blog-notes-entry-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
+  border: 0;
+}
+.blog-notes-entry-icon {
+  display: block;
+  width: 18px;
+  height: 18px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 .blog-notes-entry:hover { color: var(--accent); }
 .blog-notes-entry:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
-.notes-index,
+@media (prefers-reduced-motion: reduce) {
+  .blog-notes-entry-fold { transition: none; }
+}.notes-index,
 .note-post { width: 100%; margin: 0 auto; }
 .note-post { max-width: 74ch; }
-.notes-index { max-width: 74ch; padding: 34px 0 72px; }
+.notes-index { display: grid; max-width: 40rem; padding: 34px 0 72px; font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; }
 .notes-index > .note-back-link { margin-bottom: 20px; }
 .notes-index-header { margin-bottom: 24px; }
 .notes-index-header h1 {
   margin: 0;
   color: var(--text);
-  font-family: var(--font-mono);
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 0.72rem;
   font-weight: 500;
   letter-spacing: 0.1em;
@@ -5214,18 +5296,20 @@ html[lang="ko"] .blog-series-description {
 .notes-index-empty { margin: 5px 0 0; color: var(--muted); font-size: 0.78rem; line-height: 1.55; }
 .notes-index-empty { padding: 8px 0 0; }
 .notes-search { margin: 0 0 18px; }
+.notes-search .blog-search-input,
+.notes-search .blog-search-clear { font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; }
 .notes-search-more {
   padding: 0;
   border: 0;
   background: transparent;
   color: var(--muted);
-  font-family: var(--font-mono);
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 0.65rem;
   cursor: pointer;
 }
 .notes-search-more:hover { color: var(--accent); }
 .notes-search-more:focus-visible { outline: 1px solid var(--line); outline-offset: 3px; }
-.notes-search-status { margin: 8px 0 0; color: var(--muted); font-family: var(--font-mono); font-size: 0.65rem; }
+.notes-search-status { margin: 8px 0 0; color: var(--muted); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.65rem; }
 .notes-search-results { margin: 8px 0 0; padding: 0; border-bottom: 1px solid var(--line); list-style: none; }
 .notes-search-results li { border-top: 1px solid var(--line); }
 .notes-search-results a {
@@ -5236,8 +5320,8 @@ html[lang="ko"] .blog-series-description {
   color: var(--text);
   text-decoration: none;
 }
-.notes-search-result-title { font-size: 0.79rem; }
-.notes-search-result-meta { color: var(--muted); font-family: var(--font-mono); font-size: 0.65rem; white-space: nowrap; }
+.notes-search-result-title { font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.79rem; }
+.notes-search-result-meta { color: var(--muted); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.65rem; white-space: nowrap; }
 .notes-search-result-excerpt { grid-column: 1 / -1; color: var(--muted); font-size: 0.72rem; line-height: 1.45; }
 .notes-search-result-excerpt mark { background: transparent; color: var(--accent); font-weight: 500; }
 .notes-search-more { margin-top: 10px; }
@@ -5256,9 +5340,9 @@ html[lang="ko"] .blog-series-description {
 .notes-index-list a:focus-visible,
 .note-back-link:focus-visible,
 .note-body a:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
-.notes-index-title { min-width: 0; font-size: 0.79rem; font-weight: 450; line-height: 1.4; }
+.notes-index-title { min-width: 0; overflow-wrap: anywhere; font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.79rem; font-weight: 450; line-height: 1.4; }
 .notes-index-list time,
-.note-status { color: var(--muted); font-family: var(--font-mono); font-size: 0.65rem; white-space: nowrap; }
+.note-status { color: var(--muted); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.65rem; white-space: nowrap; }
 .note-status {
   padding: 0;
   border: 0;
@@ -5269,14 +5353,10 @@ html[lang="ko"] .blog-series-description {
 .note-status-settled { color: var(--text); font-weight: 500; }
 .note-header { padding: 34px 0 18px; border-bottom: 1px solid var(--line); }
 .note-back-link {
-  display: inline-block;
   margin-bottom: 24px;
-  color: var(--muted);
-  font-family: var(--font-mono);
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 0.67rem;
-  text-decoration: none;
 }
-.note-back-link:hover { color: var(--accent); }
 .note-header-meta {
   display: flex;
   flex-wrap: wrap;
@@ -5284,28 +5364,231 @@ html[lang="ko"] .blog-series-description {
   gap: 5px;
   margin-bottom: 6px;
   color: var(--muted);
-  font-family: var(--font-mono);
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 0.65rem;
   line-height: 1.45;
 }
-.note-title { margin: 0; color: var(--text); font-family: var(--font-mono); font-size: 17px; font-weight: 500; line-height: 1.35; }
-.note-body { color: var(--text); font-family: var(--font-mono); font-size: 14px; line-height: 1.55; word-break: keep-all; }
-.note-body h2,
+.note-title { margin: 0; color: var(--text); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 17px; font-weight: 700; line-height: 1.35; }
+.note-body { padding-top: 20px; color: var(--text); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 14px; line-height: 1.55; word-break: keep-all; }
+.note-content-shell { position: relative; }
+.note-toc { display: none; }
+.note-body h2 { scroll-margin-top: 24px; }
+@media (min-width: 1120px) {
+  .note-toc {
+    position: fixed;
+    top: 50%;
+    left: calc(50% + 37ch + 32px);
+    display: block;
+    width: 220px;
+    height: auto;
+    pointer-events: none;
+    transform: translateY(-50%);
+  }
+  .note-toc nav {
+    width: 30px;
+    padding: 10px 0;
+    overflow-x: clip;
+    overflow-y: visible;
+    background: var(--bg);
+    pointer-events: auto;
+    transition: width 160ms ease, padding 160ms ease;
+  }
+  .note-toc nav:hover,
+  .note-toc nav:focus-within {
+    width: 220px;
+    padding-right: 12px;
+  }
+  .note-toc-label {
+    display: block;
+    margin: 0 0 10px 26px;
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    opacity: 0;
+    text-transform: uppercase;
+    white-space: nowrap;
+    transition: opacity 120ms ease;
+  }
+  .note-toc nav:hover .note-toc-label,
+  .note-toc nav:focus-within .note-toc-label { opacity: 1; }
+  .note-toc ol {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    list-style: none;
+  }
+  .note-toc li {
+    position: relative;
+    height: 10px;
+    margin: 0;
+  }
+  .note-toc nav:hover li,
+  .note-toc nav:focus-within li { height: auto; }
+  .note-toc li::before {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 0;
+    width: 18px;
+    height: 2px;
+    background: var(--line);
+    transition: width 120ms ease, background-color 120ms ease;
+  }
+  .note-toc nav:hover li::before,
+  .note-toc nav:focus-within li::before { top: 12px; }
+  .note-toc li:hover::before,
+  .note-toc li:focus-within::before {
+    width: 23px;
+    background: var(--accent);
+  }
+  .note-toc a {
+    display: block;
+    width: 204px;
+    height: 10px;
+    padding: 0 0 0 26px;
+    color: var(--muted);
+    font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+    font-size: 11.5px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+    text-decoration: none;
+  }
+  .note-toc nav:hover a,
+  .note-toc nav:focus-within a {
+    height: auto;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+  .note-toc a span {
+    display: block;
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 120ms ease, transform 160ms ease;
+  }
+  .note-toc nav:hover a span,
+  .note-toc nav:focus-within a span {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .note-toc a:hover,
+  .note-toc a:focus-visible { color: var(--accent); }
+  .note-toc a:focus-visible {
+    outline: 1px solid var(--line);
+    outline-offset: 2px;
+  }
+}
+@media (min-width: 1120px) and (max-width: 1279px) {
+  .blog-post .note-toc { display: none; }
+}
+@media (min-width: 1280px) {
+  .blog-post .note-toc { left: calc(50% + 404px); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .note-toc nav,
+  .note-toc-label,
+  .note-toc li::before,
+  .note-toc a span { transition: none; }
+}.note-body h2,
 .note-body h3 {
   margin: 1rem 0 3px;
   padding: 0;
   border: 0;
   color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  font-weight: 500;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-size: 13px;
+  font-weight: 700;
   letter-spacing: 0.1em;
   line-height: 1.4;
   text-transform: uppercase;
 }
-.note-body p,
+.note-body h3 { font-size: 12.5px; }
+.note-body > h2,
+.note-body > h3 {
+  width: fit-content;
+  padding: 3px 6px;
+  background: var(--soft);
+}.note-body p,
 .note-body ul,
 .note-body ol { margin: 0 0 1rem; }
+.note-body .footnote-ref-wrap {
+  position: relative;
+  white-space: nowrap;
+}
+.note-body .footnote-ref {
+  padding: 0 0.08em;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+}
+.note-body .footnote-popover {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 0.45rem);
+  z-index: 20;
+  display: none;
+  width: max-content;
+  max-width: min(18rem, 78vw);
+  padding: 0.55rem 0.65rem;
+  border: 1px solid color-mix(in srgb, var(--text) 18%, transparent);
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.82rem;
+  line-height: 1.4;
+  text-align: left;
+  white-space: normal;
+  transform: translateX(-50%);
+}
+.note-body .footnote-ref-wrap:hover .footnote-popover,
+.note-body .footnote-ref-wrap:focus-within .footnote-popover { display: block; }
+.note-body .footnotes {
+  margin-top: 2rem;
+  color: var(--muted);
+  font-size: 0.82em;
+  line-height: 1.4;
+}
+.note-body .footnotes ol { padding-left: 0; list-style: none; }
+.note-body .footnotes li { padding-left: 1.2em; text-indent: -1.2em; }
+.note-body .footnotes li > p { display: inline; }
+.note-body .footnote-label { margin-right: 0.28em; text-decoration: none; }
+.note-body img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 1.5em 0;
+  object-fit: contain;
+}
+.note-body hr {
+  height: 1px;
+  margin: 1.5rem 0;
+  border: 0;
+  background: var(--line);
+}.note-body blockquote {
+  box-sizing: border-box;
+  margin: 1.5em 0;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--muted);
+}
+.note-body blockquote > :first-child { margin-top: 0; }
+.note-body blockquote > :last-child { margin-bottom: 0; }
+.note-body .contains-task-list {
+  padding-left: 1.5em;
+  list-style: none;
+}
+.note-body .task-list-item { list-style: none; }
+.note-body .task-list-item > input[type="checkbox"] {
+  margin: 0 0.5em 0 0;
+  vertical-align: -0.08em;
+}
 .note-body pre,
 .note-body table,
 .note-body .mermaid {
@@ -5313,7 +5596,8 @@ html[lang="ko"] .blog-series-description {
   width: 100%;
   margin: 1.5em 0;
 }
-.note-body pre {
+.note-body h2 + table,
+.note-body h3 + table { margin-top: 0.5em; }.note-body pre {
   padding: 10px 0;
   overflow-x: auto;
   border-top: 1px solid var(--line);
@@ -5324,16 +5608,83 @@ html[lang="ko"] .blog-series-description {
 }
 .note-body pre code { white-space: inherit; }
 .note-body :not(pre) > code { font-family: var(--font-mono); }
-.note-body table { display: block; overflow-x: auto; border-collapse: collapse; white-space: nowrap; }
+.note-body table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-collapse: collapse;
+  background: transparent;
+  color: var(--muted);
+  font-size: 0.9rem;
+  line-height: 1.4;
+  white-space: nowrap;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
 .note-body th,
-.note-body td { padding: 8px 12px; border: 1px solid var(--line); text-align: left; }
+.note-body td {
+  padding: 0.55rem 0.7rem;
+  border: 1px solid var(--line);
+  vertical-align: top;
+  text-align: left;
+}
+.note-body th {
+  background: var(--soft);
+  color: var(--text);
+  font-weight: 600;
+}
+.note-body tbody tr:nth-child(even) {
+  background: var(--soft);
+  background: color-mix(in srgb, var(--soft) 45%, transparent);
+}
+@media (max-width: 680px) {
+  .note-body th,
+  .note-body td {
+    padding: 0.4rem 0.45rem;
+  }
+  .note-body td { white-space: normal; }
+  .note-body th { white-space: nowrap; }
+}
 .note-body a { color: var(--text); text-decoration-color: var(--line); text-underline-offset: 3px; }
 .note-body a:hover { color: var(--accent); }
-.note-body [data-section] { box-sizing: border-box; margin: 1rem 0; padding: 0 0 0 0.75rem; background: transparent; }
+.note-body a[href^="http://"],
+.note-body a[href^="https://"] {
+  color: var(--accent);
+  text-decoration-line: underline;
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.22em;
+}
+.note-body a[href^="http://"]:hover,
+.note-body a[href^="https://"]:hover { text-decoration-thickness: 2px; }
+.note-body [data-section] {
+  box-sizing: border-box;
+  margin: 1.5rem 0;
+  background: transparent;
+}
 .note-body [data-section] > h2 { margin-top: 0; }
-.note-body [data-section="result"] { border-left: 2px solid var(--accent); }
-.note-body [data-section="result"] > h2 { color: var(--accent); }
-.note-body [data-section="uncertain"] { border-left: 2px dashed var(--line); color: var(--muted); }
+.note-body [data-section="result"] {
+  padding: 12px 14px;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+}
+.note-body [data-section="result"] > h2 { color: inherit; }
+.note-body h2#참고-자료 + p {
+  color: var(--muted);
+  font-size: 0.82em;
+  line-height: 1.4;
+}.note-body [data-section="references"] {
+  color: var(--muted);
+  font-size: 0.82em;
+  line-height: 1.4;
+}
+.note-body [data-section="references"] .footnotes { font-size: 1em; }.note-body [data-section="uncertain"] {
+  padding: 12px 14px;
+  border: 2px dashed var(--line);
+  color: var(--muted);
+}
 .note-footer { margin-top: 30px; padding: 10px 0 64px; border-top: 1px solid var(--line); }
 .note-tags {
   display: flex;
@@ -5342,20 +5693,24 @@ html[lang="ko"] .blog-series-description {
   margin: 0;
   padding: 0;
   color: var(--muted);
-  font-family: var(--font-mono);
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 0.65rem;
   list-style: none;
 }
 @media (max-width: 640px) {
-  .notes-index,
+  @media (prefers-reduced-motion: reduce) {
+  .blog-notes-entry-fold { transition: none; }
+}.notes-index,
   .note-header { padding-top: 28px; }
-  .notes-index-list a { grid-template-columns: 5.3rem minmax(0, 1fr); gap: 8px; }
-  .notes-index-list .note-status { grid-column: 2; }
+  .notes-index-list a { grid-template-columns: 5.3rem minmax(0, 1fr) auto; align-items: start; gap: 8px; }
 }
 /* Build-time distribution figures */
-.note-dist { margin: 0 0 20px; }
-.note-dist svg { width: 100%; height: auto; display: block; }
-.note-dist figcaption {
+.note-dist,
+.note-observation-compare { margin: 0 0 20px; }
+.note-dist svg,
+.note-observation-compare svg { width: 100%; height: auto; display: block; }
+.note-dist figcaption,
+.note-observation-compare figcaption {
   font-family: var(--font-mono);
   font-size: 11px;
   color: var(--muted);

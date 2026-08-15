@@ -1,6 +1,7 @@
 const sectionNames = new Map([
   ["결과 문장", "result"],
   ["확신 없는 곳", "uncertain"],
+  ["참고 자료", "references"],
 ]);
 
 const getText = (node) => {
@@ -32,7 +33,9 @@ const markSections = (node) => {
     index += 1;
     while (index < node.children.length) {
       const sibling = node.children[index];
-      if (sibling?.type === "element" && sibling.tagName === "h2") break;
+      const isHeadingBoundary = sibling?.type === "element" && sibling.tagName === "h2";
+      const isSectionBoundary = sibling?.type === "element" && sibling.tagName === "section";
+      if (isHeadingBoundary || isSectionBoundary) break;
       sectionChildren.push(sibling);
       index += 1;
     }

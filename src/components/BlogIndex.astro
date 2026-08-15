@@ -73,12 +73,20 @@ const paginationItems = (() => {
 
 <div class="blog-filters">
   <section class="works-filter blog-filter-row" aria-label={lang === "ko" ? "형식으로 거르기" : "Filter blog entries by format"}>
-    <a class:list={["work-filter-button", !activeTag && "is-active"]} href={allPath} aria-current={!activeTag ? "page" : undefined}>All</a>
-    {blogTags.map((tag) => (
-      <a class:list={["work-filter-button", activeTag === tag && "is-active"]} href={tagPath(tag)} aria-current={activeTag === tag ? "page" : undefined}>{tag}</a>
-    ))}
+    <span class="blog-filter-options">
+      <a class:list={["work-filter-button", !activeTag && "is-active"]} href={allPath} aria-current={!activeTag ? "page" : undefined}>All</a>
+      {blogTags.map((tag) => (
+        <a class:list={["work-filter-button", activeTag === tag && "is-active"]} href={tagPath(tag)} aria-current={activeTag === tag ? "page" : undefined}>{tag}</a>
+      ))}
+    </span>
     {hub && currentPage === 1 && (
-      <a class="blog-notes-entry" href={notesPath}>{lang === "ko" ? "학습 노트 →" : "Study notes →"}</a>
+      <a class="blog-notes-entry" href={notesPath}>
+        <span class="blog-notes-entry-label">{lang === "ko" ? "학습 노트 →" : "Study notes →"}</span>
+        <svg class="blog-notes-entry-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path>
+          <path d="M16 3v5h5"></path>
+        </svg>
+      </a>
     )}
   </section>
 </div>

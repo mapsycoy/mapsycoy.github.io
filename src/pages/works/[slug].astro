@@ -447,7 +447,7 @@ const visibleInfoItems = infoItems.filter(
 
 <Layout title={`${workTitle} | Works`} description={workTitle} lang={lang}>
   <article class="work-detail">
-    <a class="work-back-link" href="/works/">&#8592; Works</a>
+    <a class="work-back-link" href="/works/" aria-label="Back to Works">&#8592;</a>
 
     <header class="work-detail-header">
       <h1 class="work-detail-title">{workTitle}</h1>
@@ -521,6 +521,8 @@ const visibleInfoItems = infoItems.filter(
         {blockItems.map((block, index) => (
           block.type === "text" ? (
             <div class="work-text-block" set:html={renderTextBlock(localize(block.body, lang))} />
+          ) : block.type === "specialThanks" ? (
+            <aside class="work-text-block work-special-thanks" set:html={renderTextBlock(localize(block.body, lang))} />
           ) : block.type === "video" && block.embedUrl && block.embedUrl !== leadVideo?.embedUrl ? (
             <div class="work-video-item">
               <div class="work-video-embed">

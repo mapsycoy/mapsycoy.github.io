@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import TocRail from "../../components/TocRail.astro";
 import BlogSeriesNav from "../../components/BlogSeriesNav.astro";
 import { render } from "astro:content";
 import { formatTitlePunctuation, getBlogPostSlug, getBlogPosts, getPostDateLabel, getSeriesPosition, hasKoreanText, type BlogPost } from "../../data/blog";
@@ -26,9 +27,37 @@ type Props = {
 const { post, allPosts, lang = defaultLanguage } = Astro.props;
 const seriesPosition = getSeriesPosition(allPosts, post);
 const postTitle = formatTitlePunctuation(localize(post.data.title, lang));
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
 const contentBlocks = post.data.contentBlocks ?? [];
+const headingSlugCounts = new Map<string, number>();
+const makeHeadingSlug = (value: string) => {
+  const base = value
+    .toLowerCase()
+    .trim()
+    .replace(/\[([^\]]+)\]\([^)]+\)/g, "$1")
+    .replace(/[*_]/g, "")
+    .replace(/[^\p{L}\p{N}\s-]/gu, "")
+    .replace(/\s+/g, "-")
+    .replace(/-+/g, "-")
+    .replace(/^-+|-+$/g, "") || "section";
+  const count = headingSlugCounts.get(base) ?? 0;
+  headingSlugCounts.set(base, count + 1);
+  return count === 0 ? base : base + "-" + count;
+};
+const structuredHeadings = contentBlocks
+  .filter((block) => block.type === "text")
+  .flatMap((block) =>
+    localize(block.body, lang)
+      .split("\n")
+      .map((line) => line.trim().match(/^##\s+(.+)$/)?.[1]?.trim())
+      .filter((text): text is string => Boolean(text))
+  )
+  .map((text) => ({ slug: makeHeadingSlug(text), text: text.replace(/\[([^\]]+)\]\([^)]+\)/g, "$1").replace(/[*_]/g, "") }));
+const tocHeadings = contentBlocks.length > 0
+  ? structuredHeadings
+  : headings.filter((heading) => heading.depth === 2).map(({ slug, text }) => ({ slug, text }));
+let structuredHeadingIndex = 0;
 const footnoteDefinitions = new Map<string, string>();
 const footnoteOrder: string[] = [];
 
@@ -222,7 +251,9 @@ const renderMarkdownBlock = (value: string) => {
 
     const heading = trimmed.match(/^(#{1,6})\s+(.+)$/);
     if (heading) {
-      html.push(`<h${heading[1].length}>${renderInlineMarkdown(heading[2].trim())}</h${heading[1].length}>`);
+      const depth = heading[1].length;
+      const id = depth === 2 ? structuredHeadings[structuredHeadingIndex++]?.slug : undefined;
+      html.push("<h" + depth + (id ? ' id="' + id + '"' : "") + ">" + renderInlineMarkdown(heading[2].trim()) + "</h" + depth + ">");
       return;
     }
 
@@ -287,7 +318,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
     <span data-pagefind-meta={`date:${post.data.publishedAt.toISOString().slice(0, 10)}`}></span>
     <span data-pagefind-meta={`format:${post.data.tag}`}></span>
   </div>
-    <a class="work-back-link" href="/blog/" data-pagefind-ignore>&#8592; Blog</a>
+    <a class="work-back-link" href="/blog/" data-pagefind-ignore aria-label="Back to Blog">&#8592;</a>
 
     <header class="blog-post-header">
       <p class="entry-meta blog-entry-meta">
@@ -322,6 +353,8 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
         <div class="blog-post-hero-placeholder" aria-hidden="true"></div>
       )}
     </figure>
+
+    <TocRail headings={tocHeadings} label={lang === "ko" ? "목차" : "Contents"} />
 
     <div class="blog-post-body">
       {contentBlocks.length > 0 ? (
