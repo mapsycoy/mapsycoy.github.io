@@ -51,8 +51,6 @@ function erf(x) {
   return s * y;
 }
 
-const normalCdf = (x) => 0.5 * (1 + erf(x / Math.SQRT2));
-
 const beta = (a, b) => (gamma(a) * gamma(b)) / gamma(a + b);
 
 function fPdf(x, d1, d2) {
@@ -93,10 +91,6 @@ function gaussPair(rand) {
   return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * v);
 }
 
-// 왜도 모식도용 skew-normal. 실제 적합이 아니라 고정 형태다.
-function skewNormalPdf(x, alpha) {
-  return 2 * normalPdf(x) * normalCdf(alpha * x);
-}
 
 /* ---------- 파싱 ---------- */
 
@@ -215,8 +209,9 @@ function buildSvg({ curves, shade, marks, xMin, xMax, yMax, xlabel, aria }) {
     }
   }
 
-  // two-normal 겹침
-  if (curves.length === 2 && !shade) {
+  // 겹침 채우기는 two-normal 전용이다.
+  // t / sampling에서는 두 곡선의 최솟값이 아무 의미도 없는 얼룩이 된다.
+  if (curves.length === 2 && curves[0].overlap && !shade) {
     const overlap = curves[0].pts.map(([x, y], i) => [x, Math.min(y, curves[1].pts[i][1])]);
     parts.push(
       `<path d="${toArea(overlap, s)}" fill="var(--accent)" fill-opacity="0.16" stroke="none" />`
@@ -343,8 +338,8 @@ function render(src) {
     xMin = Math.min(m1 - 4 * s1, m2 - 4 * s2);
     xMax = Math.max(m1 + 4 * s1, m2 + 4 * s2);
     curves = [
-      { pts: sample((x) => normalPdf(x, m1, s1), xMin, xMax) },
-      { pts: sample((x) => normalPdf(x, m2, s2), xMin, xMax) },
+      { pts: sample((x) => normalPdf(x, m1, s1), xMin, xMax), overlap: true },
+      { pts: sample((x) => normalPdf(x, m2, s2), xMin, xMax), overlap: true },
     ];
     aria = `평균이 다른 두 정규분포의 겹침`;
   } else if (kind === "f") {
@@ -378,7 +373,7 @@ function render(src) {
     marks.push({ x: popMean, label: `모평균`, hideValue: true, row: 0 });
     aria = `원자료 분포와 표본크기 ${n}일 때 표본평균의 분포`;
   } else if (kind === "ci") {
-    return renderCi(o, marks);
+    return renderCi(o);
   } else {
     return null; // 알 수 없는 kind → 코드블록으로 남긴다
   }
