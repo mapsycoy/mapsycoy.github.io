@@ -1,6 +1,6 @@
 const WIDTH = 640;
 const HEIGHT = 200;
-const MARGIN = { top: 12, right: 18, bottom: 34, left: 32 };
+const MARGIN = { top: 30, right: 16, bottom: 34, left: 16 };
 const SAMPLES = 200;
 const KINDS = new Set(["normal", "t", "skew-right", "skew-left", "two-normal"]);
 
@@ -50,10 +50,13 @@ const normalPdf = (x, mean, sd) =>
 const tPdf = (x, df) =>
   gamma((df + 1) / 2) / (Math.sqrt(df * Math.PI) * gamma(df / 2)) * (1 + x ** 2 / df) ** (-(df + 1) / 2);
 
-const skewPdf = (x, direction) => {
-  const value = direction === "right" ? x : -x;
-  return value < 0 ? 0 : value ** 2 * Math.exp(-value);
-};
+const LOG_NORMAL_SIGMA = 0.9;
+const LOG_NORMAL_MEDIAN = 1;
+const LOG_NORMAL_MEAN = Math.exp(LOG_NORMAL_SIGMA ** 2 / 2);
+const logNormalPdf = (x) => x <= 0
+  ? 0
+  : Math.exp(-(Math.log(x) ** 2) / (2 * LOG_NORMAL_SIGMA ** 2))
+    / (x * LOG_NORMAL_SIGMA * Math.sqrt(2 * Math.PI));
 
 const parseShade = (value) => {
   if (!value) return null;
@@ -155,10 +158,15 @@ const renderChart = (spec) => {
     const skewMean = number(spec.mean, NaN);
     const median = number(spec.median, NaN);
     if (!Number.isFinite(skewMean) || !Number.isFinite(median)) throw new Error(`${kind} requires mean and median`);
-    min = kind === "skew-right" ? 0 : -8;
-    max = kind === "skew-right" ? 8 : 0;
-    points = makePoints(min, max, (x) => skewPdf(x, kind === "skew-right" ? "right" : "left"));
-    marks.push({ position: skewMean, label: `mean ${skewMean}` }, { position: median, label: `median ${median}` });
+    min = 0;
+    max = 5;
+    points = makePoints(min, max, (x) => logNormalPdf(kind === "skew-right" ? x : 5 - x));
+    const medianPosition = kind === "skew-right" ? LOG_NORMAL_MEDIAN : 5 - LOG_NORMAL_MEDIAN;
+    const meanPosition = kind === "skew-right" ? LOG_NORMAL_MEAN : 5 - LOG_NORMAL_MEAN;
+    marks.push(
+      { position: medianPosition, label: `median ${median}` },
+      { position: meanPosition, label: `mean ${skewMean}` },
+    );
   }
 
   const plotLeft = MARGIN.left;
@@ -171,14 +179,22 @@ const renderChart = (spec) => {
   const caption = spec.caption || "";
   const ariaLabel = caption || kindLabel[kind];
   const xlabel = spec.xlabel ? `<text class="note-dist-label" x="${(plotLeft + plotRight) / 2}" y="194" text-anchor="middle">${escapeHtml(spec.xlabel)}</text>` : "";
-  const markSvg = marks.filter(({ position }) => position >= min && position <= max).map(({ position, label }, index) => {
-    const x = xScale(position).toFixed(2);
-    const anchor = xScale(position) > plotRight - 55 ? "end" : xScale(position) < plotLeft + 55 ? "start" : "middle";
-    const labelX = anchor === "end" ? Number(x) - 3 : anchor === "start" ? Number(x) + 3 : x;
-    return `<line class="note-dist-mark" x1="${x}" y1="${MARGIN.top}" x2="${x}" y2="${baseline}"/><text class="note-dist-label" x="${labelX}" y="${MARGIN.top + 10 + index % 2 * 12}" text-anchor="${anchor}">${escapeHtml(label)}</text>`;
+  let previousMarkX = -Infinity;
+  let collisionRow = 0;
+  const markSvg = marks.filter(({ position }) => position >= min && position <= max).map(({ position, label }) => {
+    const scaledX = xScale(position);
+    if (scaledX - previousMarkX < 64) collisionRow = (collisionRow + 1) % 2;
+    else collisionRow = 0;
+    previousMarkX = scaledX;
+    const x = scaledX.toFixed(2);
+    const anchor = scaledX > plotRight - 55 ? "end" : scaledX < plotLeft + 55 ? "start" : "middle";
+    const labelX = anchor === "end" ? scaledX - 3 : anchor === "start" ? scaledX + 3 : scaledX;
+    const labelY = 11 + collisionRow * 12;
+    return `<line class="note-dist-mark" x1="${x}" y1="${MARGIN.top}" x2="${x}" y2="${baseline}"/><text class="note-dist-label" x="${labelX.toFixed(2)}" y="${labelY}" text-anchor="${anchor}">${escapeHtml(label)}</text>`;
   }).join("");
+  const secondaryClass = kind === "t" ? " note-dist-curve-reference" : "";
 
-  return `<figure class="note-dist"><svg viewBox="0 0 ${WIDTH} ${HEIGHT}" role="img" aria-label="${escapeHtml(ariaLabel)}"><line class="note-dist-axis" x1="${plotLeft}" y1="${baseline}" x2="${plotRight}" y2="${baseline}"/>${overlapPoints ? `<path class="note-dist-overlap" d="${areaPath(overlapPoints, xScale, yScale, baseline)}"/>` : ""}${areas.map((path) => `<path class="note-dist-shade" d="${path}"/>`).join("")}<path class="note-dist-curve" d="${linePath(points, xScale, yScale)}"/>${secondPoints ? `<path class="note-dist-curve note-dist-curve-secondary" d="${linePath(secondPoints, xScale, yScale)}"/>` : ""}${markSvg}${xlabel}</svg>${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}</figure>`;
+  return `<figure class="note-dist"><svg viewBox="0 0 ${WIDTH} ${HEIGHT}" role="img" aria-label="${escapeHtml(ariaLabel)}"><line class="note-dist-axis" x1="${plotLeft}" y1="${baseline}" x2="${plotRight}" y2="${baseline}"/>${overlapPoints ? `<path class="note-dist-overlap" d="${areaPath(overlapPoints, xScale, yScale, baseline)}"/>` : ""}${areas.map((path) => `<path class="note-dist-shade" d="${path}"/>`).join("")}<path class="note-dist-curve" d="${linePath(points, xScale, yScale)}"/>${secondPoints ? `<path class="note-dist-curve${secondaryClass}" d="${linePath(secondPoints, xScale, yScale)}"/>` : ""}${markSvg}${xlabel}</svg>${caption ? `<figcaption>${escapeHtml(caption)}</figcaption>` : ""}</figure>`;
 };
 
 export const renderDistChart = (source) => renderChart(parseSpec(source));
