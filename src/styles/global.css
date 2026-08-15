@@ -5352,59 +5352,12 @@ html[lang="ko"] .blog-series-description {
   .notes-index-list a { grid-template-columns: 5.3rem minmax(0, 1fr); gap: 8px; }
   .notes-index-list .note-status { grid-column: 2; }
 }
-
 /* Build-time distribution figures */
-.note-dist {
-  width: 100%;
-  max-width: 100%;
-  margin: 1.5rem 0;
-  padding: 0;
-  overflow: hidden;
-  border: 0;
-  border-radius: 0;
-  background: transparent;
-  color: var(--text);
-}
-.note-dist svg {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: visible;
-}
-.note-dist-axis,
-.note-dist-mark {
-  fill: none;
-  stroke: var(--line);
-  stroke-width: 1;
-  vector-effect: non-scaling-stroke;
-}
-.note-dist-curve {
-  fill: none;
-  stroke: currentColor;
-  stroke-width: 1.5;
-  vector-effect: non-scaling-stroke;
-}
-.note-dist-curve-secondary {
-  stroke-dasharray: 5 4;
-  opacity: 0.5;
-}
-.note-dist-shade,
-.note-dist-overlap {
-  fill: var(--accent);
-  fill-opacity: 0.18;
-  stroke: none;
-}
-.note-dist-overlap { fill-opacity: 0.12; }
-.note-dist-label {
-  fill: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 10px;
-}
+.note-dist { margin: 0 0 20px; }
+.note-dist svg { width: 100%; height: auto; display: block; }
 .note-dist figcaption {
-  margin-top: 6px;
-  color: var(--muted);
   font-family: var(--font-mono);
   font-size: 11px;
-  line-height: 1.4;
-  text-align: left;
+  color: var(--muted);
+  margin-top: 4px;
 }
