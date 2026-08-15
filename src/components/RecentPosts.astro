@@ -1,15 +1,28 @@
 ---
 import { getBlogPostSlug, getBlogPosts, getNewsPosts, sortBlogPosts } from "../data/blog";
+import { getNotes } from "../data/notes";
 import { defaultLanguage, localize, type Language } from "../utils/i18n";
 
 type Props = { lang?: Language };
 
 const { lang = defaultLanguage } = Astro.props;
 const posts = await getBlogPosts();
+const notes = await getNotes();
 const recentPosts = [
-  ...sortBlogPosts(posts.filter((post) => post.data.tag === "Essay")).slice(0, 1),
-  ...sortBlogPosts(posts.filter((post) => post.data.tag === "Paper Review")).slice(0, 1),
-  ...getNewsPosts(posts).slice(0, 1),
+  ...sortBlogPosts(posts.filter((post) => post.data.tag === "Essay")).slice(0, 1).map((post) => ({
+    href: `/blog/${getBlogPostSlug(post)}/`, track: post.data.tag, title: localize(post.data.title, lang),
+  })),
+  ...sortBlogPosts(posts.filter((post) => post.data.tag === "Paper Review")).slice(0, 1).map((post) => ({
+    href: `/blog/${getBlogPostSlug(post)}/`, track: post.data.tag, title: localize(post.data.title, lang),
+  })),
+  ...getNewsPosts(posts).slice(0, 1).map((post) => ({
+    href: `/blog/${getBlogPostSlug(post)}/`, track: post.data.tag, title: localize(post.data.title, lang),
+  })),
+  ...notes.slice(0, 1).map((note) => ({
+    href: `/blog/notes/${note.id}/`,
+    track: lang === "en" ? "Note \u00b7 KO" : "Note",
+    title: lang === "en" ? note.data.titleEn : note.data.title,
+  })),
 ];
 const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
 ---
@@ -20,9 +33,9 @@ const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
     <ul>
       {recentPosts.map((post) => (
         <li>
-          <a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}>
-            <span class="home-recent-track">{post.data.tag}</span>
-            <span class="home-recent-title">{localize(post.data.title, lang)}</span>
+          <a href={`${languagePrefix}${post.href}`}>
+            <span class="home-recent-track">{post.track}</span>
+            <span class="home-recent-title">{post.title}</span>
           </a>
         </li>
       ))}

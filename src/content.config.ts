@@ -151,6 +151,7 @@ const notes = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/notes" }),
   schema: z.object({
     title: z.string(),
+    titleEn: z.string(),
     date: z.coerce.date(),
     updated: z.coerce.date().optional(),
     status: z.enum(["draft", "working", "settled"]).default("working"),
