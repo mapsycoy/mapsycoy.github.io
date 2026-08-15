@@ -652,6 +652,15 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         });
       };
 
+      const initializeNoteTables = () => {
+        document.querySelectorAll(".note-body table").forEach((table) => {
+          if (!(table instanceof HTMLTableElement) || table.parentElement?.classList.contains("markdown-table-scroll")) return;
+          const wrapper = document.createElement("div");
+          wrapper.className = "markdown-table-scroll";
+          table.before(wrapper);
+          wrapper.append(table);
+        });
+      };
       const initializeFootnotePopovers = () => {
         const toSuperscriptNumber = (value) => String(value).replace(/[0-9]/g, (digit) => "⁰¹²³⁴⁵⁶⁷⁸⁹"[Number(digit)]);
 
@@ -786,6 +795,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         initializeWorksFilters();
         initializeBlogFilters();
         initializeCvToggles();
+        initializeNoteTables();
         initializeFootnotePopovers();
       };
 

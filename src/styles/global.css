@@ -5597,7 +5597,9 @@ html[lang="ko"] .blog-series-description {
   margin: 1.5em 0;
 }
 .note-body h2 + table,
-.note-body h3 + table { margin-top: 0.5em; }.note-body pre {
+.note-body h3 + table,
+.note-body h2 + .markdown-table-scroll,
+.note-body h3 + .markdown-table-scroll { margin-top: 0.5em; }.note-body pre {
   padding: 10px 0;
   overflow-x: auto;
   border-top: 1px solid var(--line);
@@ -5608,21 +5610,26 @@ html[lang="ko"] .blog-series-description {
 }
 .note-body pre code { white-space: inherit; }
 .note-body :not(pre) > code { font-family: var(--font-mono); }
-.note-body table {
-  display: block;
-  width: 100%;
+.note-body .markdown-table-scroll {
+  max-width: 100%;
+  margin: 1.4rem 0;
   overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scrollbar-width: thin;
+  -webkit-overflow-scrolling: touch;
+}
+.note-body table {
+  display: table;
+  width: 100%;
+  margin: 1.4rem 0;
   border: 1px solid var(--line);
   border-collapse: collapse;
   background: transparent;
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.4;
-  white-space: nowrap;
-  overscroll-behavior-inline: contain;
-  scrollbar-width: thin;
-  -webkit-overflow-scrolling: touch;
 }
+.note-body .markdown-table-scroll table { margin: 0; }
 .note-body th,
 .note-body td {
   padding: 0.55rem 0.7rem;
@@ -5634,18 +5641,22 @@ html[lang="ko"] .blog-series-description {
   background: var(--soft);
   color: var(--text);
   font-weight: 600;
+  white-space: nowrap;
 }
 .note-body tbody tr:nth-child(even) {
   background: var(--soft);
   background: color-mix(in srgb, var(--soft) 45%, transparent);
 }
 @media (max-width: 680px) {
+  .note-body table {
+    width: 40rem;
+    min-width: 100%;
+  }
   .note-body th,
   .note-body td {
     padding: 0.4rem 0.45rem;
   }
   .note-body td { white-space: normal; }
-  .note-body th { white-space: nowrap; }
 }
 .note-body a { color: var(--text); text-decoration-color: var(--line); text-underline-offset: 3px; }
 .note-body a:hover { color: var(--accent); }
