@@ -13,7 +13,8 @@ type Props = {
 const { note, lang } = Astro.props;
 const { Content, headings } = await render(note);
 const tocHeadings = headings.filter((heading) => heading.depth === 2);
-const { title, date, updated, status, tags } = note.data;
+const { title, titleEn, date, updated, status, tags } = note.data;
+const localizedTitle = lang === "en" ? titleEn : title;
 const copy = lang === "ko"
   ? {
       description: "통계와 연구방법을 공부하며 쌓은 작업 로그.",
@@ -28,7 +29,7 @@ const copy = lang === "ko"
 ---
 
 <Layout
-  title={title}
+  title={localizedTitle}
   description={copy.description}
   lang={lang}
   ogType="article"
@@ -55,7 +56,7 @@ const copy = lang === "ko"
           </>
         )}
       </div>
-      <h1 class="note-title ko-title">{title}</h1>
+      <h1 class:list={["note-title", lang === "ko" && "ko-title"]}>{localizedTitle}</h1>
     </header>
 
     <div class="note-content-shell">

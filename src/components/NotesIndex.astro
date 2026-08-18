@@ -37,19 +37,22 @@ const copy = lang === "ko"
       <p class="notes-index-empty">{copy.empty}</p>
     ) : (
       <ol class="notes-index-list" data-notes-archive>
-          {notes.map((note) => (
-            <li data-note-row data-search-text={`${note.data.title} ${note.data.status} ${note.data.tags.join(" ")}`.toLocaleLowerCase()}>
+          {notes.map((note) => {
+            const noteTitle = lang === "en" ? note.data.titleEn : note.data.title;
+            return (
+            <li data-note-row data-search-text={`${noteTitle} ${note.data.title} ${note.data.status} ${note.data.tags.join(" ")}`.toLocaleLowerCase()}>
               <a href={withLanguage(lang, `/blog/notes/${note.id}`)}>
                 <time datetime={(note.data.updated ?? note.data.date).toISOString()}>
                   {formatNoteYearMonth(note.data.updated ?? note.data.date)}
                 </time>
-                <span class="notes-index-title">{note.data.title}</span>
+                <span class="notes-index-title">{noteTitle}</span>
                 <span class={`note-status note-status-${note.data.status}`}>
                   {getNoteStatusLabel(note.data.status, lang)}
                 </span>
               </a>
             </li>
-          ))}
+            );
+          })}
       </ol>
     )}
   </section>

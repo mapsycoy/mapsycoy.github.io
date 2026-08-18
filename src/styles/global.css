@@ -5546,6 +5546,13 @@ html[lang="ko"] .blog-series-description {
 }
 .note-body .footnote-ref-wrap:hover .footnote-popover,
 .note-body .footnote-ref-wrap:focus-within .footnote-popover { display: block; }
+.note-body .footnote-popover.is-positioned {
+  position: fixed;
+  top: var(--footnote-popover-top, 20px);
+  left: var(--footnote-popover-left, 20px);
+  bottom: auto;
+  transform: none;
+}
 .note-body .footnotes {
   margin-top: 2rem;
   color: var(--muted);
@@ -5649,13 +5656,14 @@ html[lang="ko"] .blog-series-description {
 }
 @media (max-width: 680px) {
   .note-body table {
-    width: 40rem;
+    width: 100%;
     min-width: 100%;
   }
   .note-body th,
   .note-body td {
     padding: 0.4rem 0.45rem;
   }
+  .note-body th,
   .note-body td { white-space: normal; }
 }
 .note-body a { color: var(--text); text-decoration-color: var(--line); text-underline-offset: 3px; }

@@ -633,7 +633,6 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         if (!(trigger instanceof HTMLElement) || !(popover instanceof HTMLElement)) return;
 
         popover.classList.remove("is-positioned");
-        if (!window.matchMedia("(max-width: 680px)").matches) return;
 
         requestAnimationFrame(() => {
           const margin = 20;
