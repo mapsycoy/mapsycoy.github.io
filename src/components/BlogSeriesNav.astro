@@ -28,7 +28,11 @@ const seriesPath = `${languagePrefix}/blog/#series-${seriesId}`;
   </p>
 ) : (
   <nav class="blog-series-navigation" aria-label={lang === "ko" ? "시리즈 글 탐색" : "Series navigation"}>
-    {previous ? <a href={postPath(previous)}>&larr; {lang === "ko" ? "이전 편" : "Previous"}: {localize(previous.data.title, lang)}</a> : <span></span>}
-    {next && <a href={postPath(next)}>{lang === "ko" ? "다음 편" : "Next"}: {localize(next.data.title, lang)} &rarr;</a>}
+    <span class="blog-series-navigation-previous">
+      {previous && <a href={postPath(previous)}><span class="blog-series-navigation-arrow" aria-hidden="true">&larr;</span><span class="blog-series-navigation-text">{lang === "ko" ? "이전 편" : "Previous"}: {localize(previous.data.title, lang)}</span></a>}
+    </span>
+    <span class="blog-series-navigation-next">
+      {next && <a href={postPath(next)}><span class="blog-series-navigation-text">{lang === "ko" ? "다음 편" : "Next"}: {localize(next.data.title, lang)}</span><span class="blog-series-navigation-arrow" aria-hidden="true">&rarr;</span></a>}
+    </span>
   </nav>
 )}

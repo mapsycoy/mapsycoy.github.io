@@ -11,6 +11,7 @@ artistOrRole:
 venue:
   ko: 세종문화회관
   en: Sejong Center for the Performing Arts
+locationMap: jongno
 thumbnail: https://cdn.globalnewsagency.kr/news/photo/202408/340015_349000_4231.png
 heroImage: ""
 videoUrl: <iframe width="560" height="315"

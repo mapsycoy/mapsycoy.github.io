@@ -11,6 +11,7 @@ artistOrRole:
 venue:
   ko: 국민대 조형대
   en: KMU Design
+locationMap: seongbuk
 contentBlocks:
   - type: video
     embed: <iframe title="vimeo-player"

@@ -374,6 +374,11 @@ collections:
             name: en
             widget: string
             required: false
+      - label: Location Map Points
+        name: locationMap
+        widget: string
+        required: false
+        hint: "Comma-separated: jongno, gangnam, mapo, seongbuk, seocho, suwon, songdo"
       - label: Content Blocks
         name: contentBlocks
         widget: list

@@ -8,6 +8,8 @@ import { formatSeriesNumber, series } from "../../../data/series";
 import { getLanguageFromParams, languages, localize, type Language } from "../../../utils/i18n";
 import { smartenText } from "../../../utils/smartTypography.mjs";
 import { renderDistBlock } from "../../../utils/remarkDistChart.mjs";
+import { getLinkPreviewMetadata } from "../../../utils/linkMetadata";
+import { buildLinkPreviewStyles } from "../../../utils/linkPreviewStyles";
 
 export async function getStaticPaths() {
   const posts = await getBlogPosts();
@@ -32,6 +34,12 @@ const postTitle = formatTitlePunctuation(localize(post.data.title, lang));
 const { Content, headings } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
 const contentBlocks = post.data.contentBlocks ?? [];
+const standaloneLinkPattern = /^\[((?:[^\[\]]|\[[^\]]*\])+)\]\((https?:\/\/[^)]+)\)$/;
+const previewUrls = contentBlocks.flatMap((block) => block.type === "text"
+  ? localize(block.body, lang).split(/\n\s*\n/).map((value) => value.trim().match(standaloneLinkPattern)?.[2] ?? "").filter(Boolean)
+  : block.type === "link" ? [block.url] : []);
+const previewResults = await Promise.all([...new Set(previewUrls)].map(async (url) => ({ url, ...(await getLinkPreviewMetadata(url)) })));
+const linkPreviewStyles = buildLinkPreviewStyles(previewResults);
 const headingSlugCounts = new Map<string, number>();
 const makeHeadingSlug = (value: string) => {
   const base = value
@@ -113,6 +121,7 @@ const escapeAttribute = (value: string) =>
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;")
     .replaceAll("'", "&#39;");
+
 const renderInlineMarkdown = (value: string) =>
   escapeHtml(value)
     .replace(/\[\^([^\]]+)\]/g, renderFootnoteReference)
@@ -269,6 +278,12 @@ const renderMarkdownBlock = (value: string) => {
       return;
     }
 
+    const standaloneLink = trimmed.match(standaloneLinkPattern);
+    if (standaloneLink) {
+      html.push(`<p class="text-link-preview"><a href="${escapeAttribute(standaloneLink[2])}" target="_blank" rel="noreferrer"><span class="text-link-preview-title">${renderInlineMarkdown(standaloneLink[1])}</span><span class="text-link-preview-url">${escapeHtml(standaloneLink[2])}</span></a></p>`);
+      return;
+    }
+
     html.push(`<p>${renderInlineMarkdown(trimmed).replace(/\n/g, "<br>")}</p>`);
   });
 
@@ -297,7 +312,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   if (block.type === "link") {
     const title = localize(block.title, lang);
     const subtitle = localize(block.subtitle, lang);
-    return `<p><a href="${escapeAttribute(block.url)}" target="_blank" rel="noreferrer">${renderInlineMarkdown(title || block.url)}</a>${subtitle ? `<br><span>${renderInlineMarkdown(subtitle)}</span>` : ""}</p>`;
+    return `<p class="text-link-preview"><a href="${escapeAttribute(block.url)}" target="_blank" rel="noreferrer"><span class="text-link-preview-title">${renderInlineMarkdown(title || block.url)}</span>${subtitle ? `<span class="text-link-preview-url">${renderInlineMarkdown(subtitle)}</span>` : ""}</a></p>`;
   }
   if (block.type === "divider") return "<hr>";
   return "";
@@ -312,6 +327,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   publishedTime={new Date(post.data.publishedAt).toISOString()}
   modifiedTime={post.data.updatedAt ? new Date(post.data.updatedAt).toISOString() : undefined}
 >
+  {linkPreviewStyles && <style is:inline set:html={linkPreviewStyles} />}
   <article class="blog-post" data-pagefind-body>
   <div class="pagefind-meta" hidden aria-hidden="true">
     <span data-pagefind-filter={`Format:${post.data.tag}`}></span>

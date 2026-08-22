@@ -15,18 +15,18 @@ export async function getStaticPaths() {
       const page = index + 2;
       return {
         params: { tag: normalizeBlogTag(tag), page: String(page) },
-        props: { tag, allPosts: tagPosts, page },
+        props: { tag, allPosts: tagPosts, seriesPosts: allPosts, page },
       };
     });
   });
 }
 
 const lang = defaultLanguage;
-const { tag, allPosts, page } = Astro.props;
+const { tag, allPosts, seriesPosts, page } = Astro.props;
 const posts = getBlogPagePosts(allPosts, page);
 const basePath = `/blog/tag/${normalizeBlogTag(tag)}`;
 ---
 
 <Layout title={`${tag} Blog Page ${page}`} description={`${tag} essays, technical notes, and archived writings by mapsycoy.`} lang={lang}>
-  <BlogIndex posts={posts} allPosts={allPosts} lang={lang} currentPage={page} basePath={basePath} activeTag={tag} />
+  <BlogIndex posts={posts} allPosts={allPosts} seriesPosts={seriesPosts} lang={lang} currentPage={page} basePath={basePath} activeTag={tag} />
 </Layout>

@@ -1,17 +1,17 @@
 ---
 import BlogSearch from "./BlogSearch.astro";
+import BlogFilterNav from "./BlogFilterNav.astro";
 import {
-  blogTags,
   getNonSeriesPosts,
   getBlogPostSlug,
   getBlogPageCount,
   getPostSeriesMetadata,
+  getSeriesPosition,
   getSeriesGroups,
   formatPostDate,
   formatTitlePunctuation,
   getPostDateLabel,
   hasKoreanText,
-  normalizeBlogTag,
   type BlogPost,
   type BlogTag,
 } from "../data/blog";
@@ -20,6 +20,7 @@ import { defaultLanguage, localize, type Language } from "../utils/i18n";
 type Props = {
   posts: BlogPost[];
   allPosts: BlogPost[];
+  seriesPosts?: BlogPost[];
   lang?: Language;
   currentPage?: number;
   basePath?: string;
@@ -32,6 +33,7 @@ type Props = {
 const {
   posts,
   allPosts,
+  seriesPosts = allPosts,
   lang = defaultLanguage,
   currentPage = 1,
   basePath = "/blog",
@@ -48,12 +50,14 @@ const toPagePath = (page: number) => {
   return `${normalizedBasePath}/page/${page}/`;
 };
 const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
-const allPath = `${languagePrefix}/blog/`;
-const tagPath = (tag: BlogTag) => `${languagePrefix}/blog/tag/${normalizeBlogTag(tag)}/`;
-const notesPath = languagePrefix + "/blog/notes/";
 const seriesGroups = hub ? getSeriesGroups(hubPosts) : [];
 const nonSeriesPosts = hub ? getNonSeriesPosts(hubPosts) : [];
 const getPostTitle = (post: BlogPost) => formatTitlePunctuation(localize(post.data.title, lang));
+const getSeriesEntryPosition = (post: BlogPost) => {
+  const position = getSeriesPosition(seriesPosts, post);
+  if (!position) return "";
+  return `${String(position.index + 1).padStart(2, "0")}/${String(position.posts.length).padStart(2, "0")}`;
+};
 const paginationItems = (() => {
   const pages = new Set([1, pageCount, currentPage - 1, currentPage, currentPage + 1]);
   const sortedPages = [...pages]
@@ -71,25 +75,7 @@ const paginationItems = (() => {
 })();
 ---
 
-<div class="blog-filters">
-  <section class="works-filter blog-filter-row" aria-label={lang === "ko" ? "형식으로 거르기" : "Filter blog entries by format"}>
-    <span class="blog-filter-options">
-      <a class:list={["work-filter-button", !activeTag && "is-active"]} href={allPath} aria-current={!activeTag ? "page" : undefined}>All</a>
-      {blogTags.map((tag) => (
-        <a class:list={["work-filter-button", activeTag === tag && "is-active"]} href={tagPath(tag)} aria-current={activeTag === tag ? "page" : undefined}>{tag}</a>
-      ))}
-    </span>
-    {hub && currentPage === 1 && (
-      <a class="blog-notes-entry" href={notesPath}>
-        <span class="blog-notes-entry-label">{lang === "ko" ? "학습 노트 →" : "Study notes →"}</span>
-        <svg class="blog-notes-entry-icon" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M16 3H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8Z"></path>
-          <path d="M16 3v5h5"></path>
-        </svg>
-      </a>
-    )}
-  </section>
-</div>
+<BlogFilterNav lang={lang} activeTag={activeTag} />
 
 {hub && currentPage === 1 && (
   <div class="blog-inline-search" style="min-height: 48px; margin-bottom: 28px;">
@@ -182,9 +168,7 @@ const paginationItems = (() => {
               {!activeTag && <span>{post.data.tag}</span>}
               {activeTag && getPostSeriesMetadata(post) && (
                 <span class="blog-entry-series-meta">
-                  Series {String(getPostSeriesMetadata(post)?.number).padStart(2, "0")}
-                  {" · "}
-                  {localize(getPostSeriesMetadata(post)!.title, lang)}
+                  Series {String(getPostSeriesMetadata(post)?.number).padStart(2, "0")} · {getSeriesEntryPosition(post)}
                 </span>
               )}
             </p>

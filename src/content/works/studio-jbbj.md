@@ -11,6 +11,7 @@ artistOrRole:
 venue:
   ko: 스튜디오 장삐쭈
   en: Studio JBBJ
+locationMap: mapo
 contentBlocks:
   - type: video
     embed: <iframe width="560" height="315"

@@ -108,8 +108,8 @@ const publicationVenueLine = (item: any) => {
             <div class="cv-entry-logo" aria-hidden="true">
               {item.logo && (
                 <picture>
-                  {item.logoDark && <source media="(prefers-color-scheme: dark)" srcset={item.logoDark} />}
-                  <img src={item.logo} alt="" loading="lazy" onerror="this.hidden=true" />
+                  <img class="cv-entry-logo-light" src={item.logo} alt="" loading="lazy" onerror="this.hidden=true" />
+                  {item.logoDark && <img class="cv-entry-logo-dark" src={item.logoDark} alt="" loading="lazy" onerror="this.hidden=true" />}
                 </picture>
               )}
             </div>

@@ -9,8 +9,9 @@ artistOrRole:
   ko: 제작자
   en: Maker
 venue:
-  ko: 서울
-  en: Seoul
+  ko: 논스케일드 갤러리, 서울
+  en: NONSCALED Gallery, Seoul
+locationMap: mapo
 contentBlocks:
   - type: video
     embed: <iframe title="vimeo-player"

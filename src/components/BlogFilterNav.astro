@@ -1,0 +1,26 @@
+---
+import { blogTags, normalizeBlogTag, type BlogTag } from "../data/blog";
+import { defaultLanguage, type Language } from "../utils/i18n";
+
+type Props = {
+  lang?: Language;
+  activeTag?: BlogTag;
+  activeNotes?: boolean;
+};
+
+const { lang = defaultLanguage, activeTag, activeNotes = false } = Astro.props;
+const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
+const allPath = `${languagePrefix}/blog/`;
+const tagPath = (tag: BlogTag) => `${languagePrefix}/blog/tag/${normalizeBlogTag(tag)}/`;
+const notesPath = `${languagePrefix}/blog/notes/`;
+---
+
+<div class="blog-filters">
+  <nav class="works-filter blog-filter-row" aria-label={lang === "ko" ? "블로그 카테고리" : "Blog categories"}>
+    <a class:list={["work-filter-button", !activeTag && !activeNotes && "is-active"]} href={allPath} aria-current={!activeTag && !activeNotes ? "page" : undefined}>All</a>
+    {blogTags.map((tag) => (
+      <a class:list={["work-filter-button", activeTag === tag && "is-active"]} href={tagPath(tag)} aria-current={activeTag === tag ? "page" : undefined}>{tag}</a>
+    ))}
+    <a class:list={["work-filter-button", "blog-notes-entry", activeNotes && "is-active"]} href={notesPath} aria-current={activeNotes ? "page" : undefined}>Notes</a>
+  </nav>
+</div>

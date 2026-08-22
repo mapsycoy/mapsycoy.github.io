@@ -1,4 +1,9 @@
-const metadataCache = new Map<string, Promise<string>>();
+type LinkPreviewMetadata = {
+  image: string;
+  description: string;
+};
+
+const metadataCache = new Map<string, Promise<LinkPreviewMetadata>>();
 
 const META_IMAGE_KEYS = new Set([
   "og:image",
@@ -7,6 +12,8 @@ const META_IMAGE_KEYS = new Set([
   "twitter:image",
   "twitter:image:src",
 ]);
+
+const META_DESCRIPTION_KEYS = new Set(["og:description", "twitter:description", "description"]);
 
 const getAttributeValue = (tag: string, name: string) => {
   const match = tag.match(new RegExp(`\\s${name}\\s*=\\s*("[^"]*"|'[^']*'|[^\\s>]+)`, "i"));
@@ -31,31 +38,41 @@ const toAbsoluteUrl = (value: string, pageUrl: string) => {
   }
 };
 
-const extractPreviewImage = (html: string, pageUrl: string) => {
+const extractPreviewMetadata = (html: string, pageUrl: string): LinkPreviewMetadata => {
   const metaTags = html.match(/<meta\b[^>]*>/gi) ?? [];
+  let image = "";
+  let description = "";
 
   for (const tag of metaTags) {
     const key = (getAttributeValue(tag, "property") || getAttributeValue(tag, "name")).toLowerCase();
-    if (!META_IMAGE_KEYS.has(key)) continue;
-
     const content = getAttributeValue(tag, "content");
-    if (content) return toAbsoluteUrl(content, pageUrl);
+    if (!content) continue;
+
+    if (!image && META_IMAGE_KEYS.has(key)) image = toAbsoluteUrl(content, pageUrl);
+    if (!description && META_DESCRIPTION_KEYS.has(key)) {
+      description = decodeHtml(content).replace(/\s+/g, " ").trim();
+    }
   }
 
-  const linkTags = html.match(/<link\b[^>]*>/gi) ?? [];
+  if (!image) {
+    const linkTags = html.match(/<link\b[^>]*>/gi) ?? [];
 
-  for (const tag of linkTags) {
-    const rel = getAttributeValue(tag, "rel").toLowerCase();
-    if (!rel.split(/\s+/).includes("image_src")) continue;
+    for (const tag of linkTags) {
+      const rel = getAttributeValue(tag, "rel").toLowerCase();
+      if (!rel.split(/\s+/).includes("image_src")) continue;
 
-    const href = getAttributeValue(tag, "href");
-    if (href) return toAbsoluteUrl(href, pageUrl);
+      const href = getAttributeValue(tag, "href");
+      if (href) {
+        image = toAbsoluteUrl(href, pageUrl);
+        break;
+      }
+    }
   }
 
-  return "";
+  return { image, description };
 };
 
-const fetchPreviewImage = async (url: string) => {
+const fetchPreviewMetadata = async (url: string): Promise<LinkPreviewMetadata> => {
   const controller = new AbortController();
   const timeout = setTimeout(() => controller.abort(), 8000);
 
@@ -68,27 +85,29 @@ const fetchPreviewImage = async (url: string) => {
       signal: controller.signal,
     });
 
-    if (!response.ok) return "";
+    if (!response.ok) return { image: "", description: "" };
 
     const html = await response.text();
-    return extractPreviewImage(html, response.url || url);
+    return extractPreviewMetadata(html, response.url || url);
   } catch {
-    return "";
+    return { image: "", description: "" };
   } finally {
     clearTimeout(timeout);
   }
 };
 
-export const getLinkPreviewImage = (url: string) => {
+export const getLinkPreviewMetadata = (url: string) => {
   const trimmedUrl = url.trim();
 
   if (!/^https?:\/\//i.test(trimmedUrl)) {
-    return Promise.resolve("");
+    return Promise.resolve({ image: "", description: "" });
   }
 
   if (!metadataCache.has(trimmedUrl)) {
-    metadataCache.set(trimmedUrl, fetchPreviewImage(trimmedUrl));
+    metadataCache.set(trimmedUrl, fetchPreviewMetadata(trimmedUrl));
   }
 
-  return metadataCache.get(trimmedUrl) ?? Promise.resolve("");
+  return metadataCache.get(trimmedUrl) ?? Promise.resolve({ image: "", description: "" });
 };
+
+export const getLinkPreviewImage = async (url: string) => (await getLinkPreviewMetadata(url)).image;

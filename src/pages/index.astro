@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import RecentPosts from "../components/RecentPosts.astro";
+import SeoulLocationMap from "../components/SeoulLocationMap.astro";
 import { getHomeCaption, getHomeContact, getHomeGreeting, getHomeMedia, getHomeMusic } from "../data/home";
 
 const homeContact = getHomeContact();
@@ -88,7 +89,6 @@ const homeMusic = getHomeMusic();
                 step="0.1"
                 aria-label={`Seek ${homeMusic.title}`}
               />
-              <span class="home-music-time" data-home-music-time>00:00 / 00:00</span>
             </div>
           </div>
         </div>
@@ -98,8 +98,9 @@ const homeMusic = getHomeMusic();
               <path d="M12 2.5c-3.6 0-6.5 2.9-6.5 6.5 0 4.9 6.5 12.5 6.5 12.5S18.5 13.9 18.5 9c0-3.6-2.9-6.5-6.5-6.5Zm0 9a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5Z" />
             </svg>
           </span>
-          <span>Republic of Korea / Seoul</span>
+          <span class="home-location-name">Republic of Korea / Seoul</span>
           <time data-seoul-time datetime="">00/00/0000 00:00:00 KST</time>
+          <SeoulLocationMap />
         </div>
       </figcaption>
     </figure>
@@ -237,7 +238,7 @@ const homeMusic = getHomeMusic();
         drawCoverFrame(source);
 
         const { cellSize, contrast, gamma, minDotRadius, maxDotRadius, paper, ink } = SCREENTONE;
-        const isDark = document.documentElement.dataset.theme === "dark" || window.matchMedia("(prefers-color-scheme: dark)").matches;
+        const isDark = document.documentElement.dataset.theme === "dark";
         const frame = sampleContext.getImageData(0, 0, width, height);
         const pixels = frame.data;
 

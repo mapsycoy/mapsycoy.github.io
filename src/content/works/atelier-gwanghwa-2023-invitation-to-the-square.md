@@ -11,6 +11,7 @@ artistOrRole:
 venue:
   ko: 세종문화회관
   en: Sejong Center for the Performing Arts
+locationMap: jongno
 contentBlocks:
   - type: video
     embed: <iframe title="vimeo-player"

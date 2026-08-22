@@ -14,16 +14,17 @@ export async function getStaticPaths() {
         lang,
         tag,
         allPosts: allPosts.filter((post) => post.data.tag === tag),
+        seriesPosts: allPosts,
       },
     }))
   );
 }
 
-const { lang, tag, allPosts } = Astro.props as { lang: Language; tag: typeof blogTags[number]; allPosts: Awaited<ReturnType<typeof getBlogPosts>> };
+const { lang, tag, allPosts, seriesPosts } = Astro.props as { lang: Language; tag: typeof blogTags[number]; allPosts: Awaited<ReturnType<typeof getBlogPosts>>; seriesPosts: Awaited<ReturnType<typeof getBlogPosts>> };
 const posts = getBlogPagePosts(allPosts, 1);
 const basePath = `/${lang}/blog/tag/${normalizeBlogTag(tag)}`;
 ---
 
 <Layout title={`${tag} Blog`} description={`${tag} essays, technical notes, and archived writings by mapsycoy.`} lang={lang}>
-  <BlogIndex posts={posts} allPosts={allPosts} lang={lang} currentPage={1} basePath={basePath} activeTag={tag} />
+  <BlogIndex posts={posts} allPosts={allPosts} seriesPosts={seriesPosts} lang={lang} currentPage={1} basePath={basePath} activeTag={tag} />
 </Layout>

@@ -43,8 +43,8 @@ const copy = lang === "ko"
       <span data-pagefind-meta={`date:${(updated ?? date).toISOString()}`}></span>
       <span data-pagefind-meta={`tags:${tags.join(" ")}`}></span>
     </div>
+    <a class="work-back-link" href={withLanguage(lang, "/blog/notes")} aria-label="Back to Notes">&#8592;</a>
     <header class="note-header">
-      <a class="work-back-link note-back-link" href={withLanguage(lang, "/blog/notes")}>← notes</a>
       <div class="note-header-meta">
         <span class={`note-status note-status-${status}`}>{getNoteStatusLabel(status, lang)}</span>
         <span aria-hidden="true">·</span>

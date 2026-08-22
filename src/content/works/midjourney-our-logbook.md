@@ -11,6 +11,7 @@ artistOrRole:
 venue:
   ko: 서울예술의전당
   en: Seoul Arts Center
+locationMap: seocho
 contentBlocks:
   - type: video
     embed: <iframe title="vimeo-player"

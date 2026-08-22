@@ -1,7 +1,9 @@
 ---
 import Layout from "../../../layouts/Layout.astro";
+import SeoulLocationMap from "../../../components/SeoulLocationMap.astro";
 import { getWorks, type WorkItem } from "../../../data/works";
 import { getLinkPreviewImage } from "../../../utils/linkMetadata";
+import { getVimeoAspectRatio } from "../../../utils/vimeoMetadata";
 import { getLanguageFromParams, languages, localize, type Language } from "../../../utils/i18n";
 
 type Props = {
@@ -29,7 +31,7 @@ const getVideoSource = (value: string) => {
 const withVimeoEmbedParams = (url: string) => {
   const parsed = new URL(url);
 
-  parsed.searchParams.set("transparent", "0");
+  parsed.searchParams.delete("transparent");
   parsed.searchParams.set("title", "0");
   parsed.searchParams.set("byline", "0");
   parsed.searchParams.set("portrait", "0");
@@ -437,17 +439,16 @@ const leadVideo = !heroImage ? uniqueVideoItems[0] : undefined;
 const legacySectionVideos = hasContentBlocks ? [] : legacyVideoItems.filter(
   (video) => video.embedUrl && video.embedUrl !== leadVideo?.embedUrl
 );
-const infoItems: { label: string; value: string | undefined; icon?: "location" }[] = [
-  { label: "Role", value: localize(work.data.artistOrRole, lang) },
-  { label: "Year", value: work.data.year },
-  { label: "Location", value: localize(work.data.venue, lang), icon: "location" }
-];
-const visibleInfoItems = infoItems.filter(
-  (item): item is { label: string; value: string; icon?: "location" } => Boolean(item.value)
-);
+const videoAspectRatios = new Map(await Promise.all(uniqueVideoItems.map(async (video) => [video.embedUrl, await getVimeoAspectRatio(video.embedUrl)] as const)));
+const getVideoAspectStyle = (url: string) => `aspect-ratio:${videoAspectRatios.get(url) ?? 16 / 9}`;
+const workMapLocations = (work.data.locationMap || "").split(",").map((value) => value.trim()).filter(Boolean);
+const roleValue = localize(work.data.artistOrRole, lang);
+const yearValue = work.data.year;
+const locationValue = localize(work.data.venue, lang);
+const hasWorkInfo = Boolean(roleValue || yearValue || locationValue);
 ---
 
-<Layout title={`${workTitle} | Works`} description={workTitle} lang={lang}>
+<Layout title={`${workTitle} | Works`} description={workTitle} lang={lang} preconnectX={hasXEmbed}>
   <article class="work-detail">
     <a class="work-back-link" href={`/${lang}/works/`} aria-label="Back to Works">&#8592;</a>
 
@@ -455,35 +456,27 @@ const visibleInfoItems = infoItems.filter(
       <h1 class="work-detail-title">{workTitle}</h1>
     </header>
 
-    {visibleInfoItems.length > 0 && (
+    {hasWorkInfo && (
       <dl class="work-info-list" aria-label="Project information">
-        {visibleInfoItems.map((item) => (
-          <div>
-            <dt class:list={[item.icon === "location" && "work-meta-icon-label"]}>
-              {item.icon === "location" ? (
-                <>
-                  <svg class="work-meta-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                    <path
-                      fill="currentColor"
-                      d="M12 2.75c-3.31 0-6 2.69-6 6 0 4.5 6 12.5 6 12.5s6-8 6-12.5c0-3.31-2.69-6-6-6Zm0 8.25a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z"
-                    />
-                  </svg>
-                  <span class="sr-only">Location</span>
-                </>
-              ) : (
-                item.label
-              )}
-            </dt>
-            <dd>{item.value}</dd>
+        {(roleValue || yearValue) && (
+          <div class="work-info-primary">
+            <dt class="work-role-icon-label"><svg class="work-meta-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4" /></svg><span class="sr-only">Role</span></dt><dd class="work-info-role">{roleValue}</dd>
+            <dt class="sr-only">Year</dt><dd class="work-info-year">{yearValue}</dd>
           </div>
-        ))}
+        )}
+        {locationValue && (
+          <div class="work-info-location">
+            <dt class="work-meta-icon-label"><svg class="work-meta-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2.75c-3.31 0-6 2.69-6 6 0 4.5 6 12.5 6 12.5s6-8 6-12.5c0-3.31-2.69-6-6-6Zm0 8.25a2.25 2.25 0 1 1 0-4.5 2.25 2.25 0 0 1 0 4.5Z" /></svg><span class="sr-only">Location</span></dt>
+            <dd class="work-location-value"><span>{locationValue}</span>{workMapLocations.length > 0 && <SeoulLocationMap locations={workMapLocations} context="work" />}</dd>
+          </div>
+        )}
       </dl>
     )}
 
     <section class:list={["work-media-carousel", (leadVideo || heroImage) && "work-media-carousel-unframed"]} data-work-carousel aria-label={`${workTitle} media`}>
       {leadVideo ? (
         <div class="work-video-item">
-          <div class="work-video-embed">
+          <div class="work-video-embed" style={getVideoAspectStyle(leadVideo.embedUrl)}>
             <iframe
               src={leadVideo.embedUrl}
               title={`${workTitle} video`}
@@ -508,7 +501,7 @@ const visibleInfoItems = infoItems.filter(
       <div class="work-detail-body work-content-flow">
         {legacySectionVideos.map((video, index) => (
           <div class="work-video-item">
-            <div class="work-video-embed">
+            <div class="work-video-embed" style={getVideoAspectStyle(video.embedUrl)}>
               <iframe
                 src={video.embedUrl}
                 title={`${workTitle} video ${index + 1}`}
@@ -527,7 +520,7 @@ const visibleInfoItems = infoItems.filter(
             <aside class="work-text-block work-special-thanks" set:html={renderTextBlock(localize(block.body, lang))} />
           ) : block.type === "video" && block.embedUrl && block.embedUrl !== leadVideo?.embedUrl ? (
             <div class="work-video-item">
-              <div class="work-video-embed">
+              <div class="work-video-embed" style={getVideoAspectStyle(block.embedUrl)}>
                 <iframe
                   src={block.embedUrl}
                   title={`${workTitle} video block ${index + 1}`}
@@ -541,11 +534,11 @@ const visibleInfoItems = infoItems.filter(
           ) : block.type === "embed" ? (
             <div class="work-text-block" set:html={renderExternalEmbed({ ...block, caption: localize(block.caption, lang) })} />
           ) : block.type === "statsLink" ? (
-            <aside class:list={["work-stats-link", block.previewImage && "work-stats-link-with-thumb"]} aria-label={localize(block.title, lang)}>
+            <a class:list={["work-stats-link", block.previewImage && "work-stats-link-with-thumb"]} href={block.url} target="_blank" rel="noreferrer" aria-label={`Open ${localize(block.title, lang)}`}>
               {block.previewImage && (
-                <a class="work-stats-link-thumb" href={block.url} target="_blank" rel="noreferrer" aria-label={`Open ${localize(block.title, lang)}`}>
+                <div class="work-stats-link-thumb">
                   <img src={block.previewImage} alt={`${localize(block.title, lang)} thumbnail`} loading="lazy" referrerpolicy="no-referrer" />
-                </a>
+                </div>
               )}
               <div class="work-stats-link-content">
                 <div class="work-stats-link-main">
@@ -553,9 +546,6 @@ const visibleInfoItems = infoItems.filter(
                     <h2>{localize(block.title, lang)}</h2>
                     {localize(block.subtitle, lang) && <p class="work-stats-link-subtitle">{localize(block.subtitle, lang)}</p>}
                   </div>
-                  <a class="work-stats-link-action" href={block.url} target="_blank" rel="noreferrer">
-                    {localize(block.ctaLabel, lang) || "View link"}
-                  </a>
                 </div>
                 {block.stats.length > 0 && (
                   <dl class="work-stats-list">
@@ -568,7 +558,7 @@ const visibleInfoItems = infoItems.filter(
                   </dl>
                 )}
               </div>
-            </aside>
+            </a>
           ) : null
         ))}
       </div>

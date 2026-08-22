@@ -9,8 +9,9 @@ artistOrRole:
   ko: 외부 협업
   en: External Contributor
 venue:
-  ko: zAIon · 에임인텔리전스
-  en: zAIon · Aim Intelligence
+  ko: 에임인텔리전스, 서울 · 교토, 일본
+  en: Aim Intelligence, Seoul · Kyoto, Japan
+locationMap: gangnam, seongdong, kyoto
 contentBlocks:
   - type: text
     body:

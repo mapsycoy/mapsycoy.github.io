@@ -11,6 +11,7 @@ artistOrRole:
 venue:
   ko: 수원메쎄 /  송도컨벤시아
   en: Suwon Messe / Songdo Convensia
+locationMap: suwon, songdo
 contentBlocks:
   - type: text
     body:

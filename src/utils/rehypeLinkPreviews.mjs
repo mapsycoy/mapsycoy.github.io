@@ -87,6 +87,23 @@ const getBrokenBracketLinkPreview = (node) => {
   return { href, title };
 };
 
+const getStandaloneLinkPreview = (node) => {
+  if (node?.type !== "element" || node.tagName !== "p" || !Array.isArray(node.children)) return null;
+
+  const meaningfulChildren = node.children.filter(
+    (child) => child.type !== "text" || String(child.value ?? "").trim()
+  );
+  if (meaningfulChildren.length !== 1) return null;
+
+  const link = meaningfulChildren[0];
+  if (link?.type !== "element" || link.tagName !== "a") return null;
+
+  const href = typeof link.properties?.href === "string" ? link.properties.href : "";
+  if (!/^https?:\/\//i.test(href)) return null;
+
+  return { href, title: getText(link).trim() };
+};
+
 const visit = (node) => {
   if (!node || !Array.isArray(node.children)) return;
 
@@ -97,7 +114,7 @@ const visit = (node) => {
       addClassName(child, "ko-title");
     }
 
-    const preview = getBrokenBracketLinkPreview(child);
+    const preview = getStandaloneLinkPreview(child) ?? getBrokenBracketLinkPreview(child);
 
     if (preview) {
       child.properties = {

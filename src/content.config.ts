@@ -88,6 +88,7 @@ const works = defineCollection({
     workType: workTypeSchema,
     artistOrRole: localizedTextSchema.optional(),
     venue: localizedTextSchema.optional(),
+    locationMap: z.string().optional(),
     summary: localizedTextSchema.optional(),
     tags: z.array(z.string()).default([]),
     thumbnail: requiredImagePathSchema,
