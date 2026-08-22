@@ -10,6 +10,18 @@ import rehypeNoteSections from "./src/utils/rehypeNoteSections.mjs";
 
 export default defineConfig({
   site: "https://mapsycoy.com",
+  devToolbar: {
+    enabled: false,
+  },
+  vite: {
+    optimizeDeps: {
+      // Vite's automatic crawl walks the large Mermaid dependency graph and can
+      // leave the Windows dev server stuck while the page waits for its client
+      // bundle. The home page only needs this client dependency up front.
+      noDiscovery: true,
+      include: ["gifuct-js"],
+    },
+  },
   integrations: [
     mermaid({
       autoTheme: false,
