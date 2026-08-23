@@ -58,6 +58,7 @@ collections:
     sortable_fields: [date, status]
     fields:
       - { name: title, label: 제목, widget: string }
+      - { name: titleEn, label: 영문 제목, widget: string }
       - { name: date, label: 작성일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD }
       - { name: updated, label: 수정일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD, required: false }
       - { name: status, label: 상태, widget: select, options: [draft, working, settled], default: working }
