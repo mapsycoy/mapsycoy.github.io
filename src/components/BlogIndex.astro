@@ -1,6 +1,7 @@
 ---
 import BlogSearch from "./BlogSearch.astro";
 import BlogFilterNav from "./BlogFilterNav.astro";
+import SeriesOneIllustration from "./SeriesOneIllustration.astro";
 import {
   getNonSeriesPosts,
   getBlogPostSlug,
@@ -91,8 +92,16 @@ const paginationItems = (() => {
         <details class="blog-series-stack">
           <summary class="blog-series-intro">
             <span class="blog-series-kicker">Series {String(group.metadata.number).padStart(2, "0")}</span>
+            {group.metadata.number === 1 && <SeriesOneIllustration />}
             <h1 id={`series-${group.id}-title`}>{localize(group.metadata.title, lang)}</h1>
-            <span class="blog-series-description">{localize(group.metadata.description, lang).split(/\n\s*\n/).map((paragraph) => <span>{paragraph}</span>)}</span>
+            <span class="blog-series-description">
+              {localize(group.metadata.description, lang).split(/\n\s*\n/).map((paragraph, index) => (
+                <Fragment>
+                  {index > 0 && <><br /><br /></>}
+                  {paragraph}
+                </Fragment>
+              ))}
+            </span>
             <span class="blog-series-action">
               <span class="blog-series-count">{lang === "ko" ? `${group.posts.length}편` : `${group.posts.length} posts`}</span>
               {group.isArchived && <span class="blog-series-status">{lang === "ko" ? "완결" : "Archived"}</span>}

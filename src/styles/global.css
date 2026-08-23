@@ -1163,10 +1163,17 @@ h3 {
 }
 
 .work-card h2 {
+  display: -webkit-box;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
   margin: 0;
   font-family: "Space Grotesk", "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-size: 1.18rem;
   line-height: 1.28;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .work-tags {
@@ -1184,6 +1191,7 @@ h3 {
   min-height: 24px;
   padding: 2px 8px;
   border: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg) 45%, var(--soft));
   color: var(--muted);
   font-size: 0.76rem;
 }
@@ -1747,6 +1755,7 @@ h3 {
 
 .work-location-flight-plane {
   fill: var(--text);
+  stroke: none;
 }
 .work-special-thanks p {
   margin: 0;
@@ -2918,8 +2927,28 @@ html[lang="ko"] .blog-series-list .blog-list-summary {
 .home-seoul-map-outline {
   fill: none;
   stroke: var(--text);
-  stroke-width: 0.9;
+  stroke-width: 1.1;
   stroke-linejoin: round;
+}
+
+.home-seoul-map-outline-echo {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 0.7;
+  opacity: 0.34;
+}
+
+.home-seoul-map-outline .pressure-thin {
+  stroke-width: 0.92;
+  opacity: 0.94;
+}
+
+.home-seoul-map-outline .pressure-light {
+  stroke-width: 1.14;
+}
+
+.home-seoul-map-outline .pressure-heavy {
+  stroke-width: 1.46;
 }
 
 .home-seoul-map-seongbuk-cutout {
@@ -2929,7 +2958,7 @@ html[lang="ko"] .blog-series-list .blog-list-summary {
 .home-seoul-map-river {
   fill: none;
   stroke: var(--text);
-  stroke-width: 0.8;
+  stroke-width: 2.2;
   stroke-linecap: round;
 }
 
@@ -2941,15 +2970,17 @@ html[lang="ko"] .blog-series-list .blog-list-summary {
   fill: var(--text);
 }
 
+.home-seoul-map-location-point .location-point-blot {
+  opacity: 0.58;
+  transform: translate(0.65px, -0.35px);
+}
+
 .home-seoul-map .home-seoul-map-outline,
+.home-seoul-map .home-seoul-map-outline-echo,
 .home-seoul-map .home-seoul-map-river,
 .home-seoul-map .home-seoul-map-river-bank {
   stroke-linecap: round;
   stroke-linejoin: round;
-}
-
-.home-seoul-map .home-seoul-map-outline {
-  stroke-dasharray: 10 0.7 4 0.45;
 }
 
 .blog-series-list time,
@@ -4294,11 +4325,12 @@ html[lang="ko"] .cv-page {
   }
 
   .works-grid {
-    grid-template-columns: minmax(0, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
   }
 
   .work-card .work-media {
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 1;
   }
 
   .works-filter:not(.is-expanded) .work-filter-button.is-mobile-extra {
@@ -4415,9 +4447,13 @@ html[lang="ko"] .cv-page {
   }
 }
 
-@media (max-width: 300px) {
+@media (max-width: 320px) {
   .works-grid {
     grid-template-columns: 1fr;
+  }
+
+  .work-card .work-media {
+    aspect-ratio: 3 / 2;
   }
 }
 
@@ -4597,6 +4633,39 @@ pre.mermaid svg .cluster-label * {
   font-size: clamp(1.08rem, 1.8vw, 1.4rem);
   letter-spacing: -0.025em;
   line-height: 1.2;
+}
+
+.blog-series-illustration {
+  position: static;
+  align-self: flex-start;
+  display: block;
+  width: 128px;
+  height: 80px;
+  margin-top: 12px;
+  contain: paint;
+  color: var(--text);
+  pointer-events: none;
+}
+
+.blog-series-illustration .series-stroke-thin {
+  stroke-width: 0.92;
+  opacity: 0.94;
+}
+
+.blog-series-illustration .series-stroke-light {
+  stroke-width: 1.14;
+}
+
+.blog-series-illustration .series-stroke-heavy {
+  stroke-width: 1.46;
+}
+
+@media (max-width: 680px) {
+  .blog-series-illustration {
+    width: 128px;
+    height: 80px;
+    margin-top: 10px;
+  }
 }
 
 .blog-series-description {
@@ -5147,6 +5216,7 @@ html[lang="ko"] .blog-series-description {
 .blog-series-intro:hover .blog-series-action-label {
   color: inherit;
 }
+
 .works-filter-toggle {
   justify-content: center;
   min-width: 18px;
@@ -5606,6 +5676,20 @@ html[lang="ko"] .blog-series-description {
   stroke-width: 1.5;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+.blog-notes-page .pressure-thin {
+  stroke-width: 1.12;
+  opacity: 1;
+}
+.blog-notes-page .pressure-light {
+  stroke-width: 1.3;
+}
+.blog-notes-page .pressure-heavy {
+  stroke-width: 1.5;
+}
+.blog-notes-fold {
+  stroke-width: 0.85;
+  opacity: 0.8;
 }
 .blog-notes-entry:hover { color: var(--accent); }
 .blog-notes-entry:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }

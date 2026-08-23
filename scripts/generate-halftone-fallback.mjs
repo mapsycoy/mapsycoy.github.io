@@ -42,20 +42,39 @@ const getFrame = async (index, width, height) => {
 
 const renderHalftoneFrame = (source, width, height) => {
   const output = Buffer.alloc(width * height);
-  const { cellSize, contrast, gamma, minDotRadius, maxDotRadius, paper, ink } = SCREENTONE;
+  const { cellSize: baseCellSize, contrast, gamma, minDotRadius, maxDotRadius, paper, ink } = SCREENTONE;
+  const cellSize = width >= 600 ? 7 : baseCellSize;
+  const dotScale = cellSize / baseCellSize;
 
-  const fillDot = (centerX, centerY, radius) => {
-    const left = Math.max(0, Math.floor(centerX - radius));
-    const right = Math.min(width - 1, Math.ceil(centerX + radius));
-    const top = Math.max(0, Math.floor(centerY - radius));
-    const bottom = Math.min(height - 1, Math.ceil(centerY + radius));
+  const seededUnit = (gridX, gridY, salt) => {
+    const value = Math.sin(gridX * 12.9898 + gridY * 78.233 + salt * 37.719) * 43758.5453;
+    return value - Math.floor(value);
+  };
+
+  const fillDot = (centerX, centerY, radius, gridX, gridY) => {
+    const stretchX = 0.88 + seededUnit(gridX, gridY, 1) * 0.24;
+    const stretchY = 0.88 + seededUnit(gridX, gridY, 2) * 0.24;
+    const phase = seededUnit(gridX, gridY, 3) * Math.PI * 2;
+    const frequencyA = 2 + Math.floor(seededUnit(gridX, gridY, 6) * 4);
+    const frequencyB = frequencyA + 1 + Math.floor(seededUnit(gridX, gridY, 7) * 2);
+    const wobbleA = 0.035 + seededUnit(gridX, gridY, 8) * 0.065;
+    const wobbleB = 0.018 + seededUnit(gridX, gridY, 9) * 0.04;
+    const shiftX = (seededUnit(gridX, gridY, 4) - 0.5) * radius * 0.28;
+    const shiftY = (seededUnit(gridX, gridY, 5) - 0.5) * radius * 0.28;
+    const reach = radius * 1.35;
+    const left = Math.max(0, Math.floor(centerX - reach));
+    const right = Math.min(width - 1, Math.ceil(centerX + reach));
+    const top = Math.max(0, Math.floor(centerY - reach));
+    const bottom = Math.min(height - 1, Math.ceil(centerY + reach));
     const radiusSquared = radius * radius;
 
     for (let y = top; y <= bottom; y += 1) {
       for (let x = left; x <= right; x += 1) {
-        const dx = x + 0.5 - centerX;
-        const dy = y + 0.5 - centerY;
-        if (dx * dx + dy * dy > radiusSquared) continue;
+        const dx = (x + 0.5 - centerX - shiftX) / stretchX;
+        const dy = (y + 0.5 - centerY - shiftY) / stretchY;
+        const angle = Math.atan2(dy, dx);
+        const edge = 1 + Math.sin(angle * frequencyA + phase) * wobbleA + Math.sin(angle * frequencyB - phase * 0.7) * wobbleB;
+        if (dx * dx + dy * dy > radiusSquared * edge * edge) continue;
 
         output[y * width + x] = 1;
       }
@@ -84,7 +103,7 @@ const renderHalftoneFrame = (source, width, height) => {
       const average = count ? luminance / count / 255 : 1;
       const contrasted = Math.min(1, Math.max(0, (average - 0.5) * contrast + 0.5));
       const inkAmount = Math.pow(1 - contrasted, gamma);
-      const radius = minDotRadius + inkAmount * (maxDotRadius - minDotRadius);
+      const radius = (minDotRadius + inkAmount * (maxDotRadius - minDotRadius)) * dotScale;
 
       if (radius < 0.12) continue;
 
@@ -93,7 +112,7 @@ const renderHalftoneFrame = (source, width, height) => {
       const centerY = y + cellSize / 2;
 
       if (centerX > width + radius) continue;
-      fillDot(centerX, centerY, radius);
+      fillDot(centerX, centerY, radius, x / cellSize, y / cellSize);
     }
   }
 

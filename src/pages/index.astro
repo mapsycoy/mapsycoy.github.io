@@ -237,7 +237,9 @@ const homeMusic = getHomeMusic();
         resize();
         drawCoverFrame(source);
 
-        const { cellSize, contrast, gamma, minDotRadius, maxDotRadius, paper, ink } = SCREENTONE;
+        const { cellSize: baseCellSize, contrast, gamma, minDotRadius, maxDotRadius, paper, ink } = SCREENTONE;
+        const cellSize = window.matchMedia("(min-width: 900px)").matches ? 7 : baseCellSize;
+        const dotScale = cellSize / baseCellSize;
         const isDark = document.documentElement.dataset.theme === "dark";
         const frame = sampleContext.getImageData(0, 0, width, height);
         const pixels = frame.data;
@@ -264,7 +266,7 @@ const homeMusic = getHomeMusic();
             const average = count ? luminance / count / 255 : 1;
             const contrasted = Math.min(1, Math.max(0, (average - 0.5) * contrast + 0.5));
             const inkAmount = Math.pow(isDark ? contrasted : 1 - contrasted, gamma);
-            const radius = minDotRadius + inkAmount * (maxDotRadius - minDotRadius);
+            const radius = (minDotRadius + inkAmount * (maxDotRadius - minDotRadius)) * dotScale;
 
             if (radius < 0.12) continue;
 
@@ -274,8 +276,32 @@ const homeMusic = getHomeMusic();
 
             if (centerX > width + radius) continue;
 
+            const gridX = x / cellSize;
+            const gridY = y / cellSize;
+            const seededUnit = (salt) => {
+              const value = Math.sin(gridX * 12.9898 + gridY * 78.233 + salt * 37.719) * 43758.5453;
+              return value - Math.floor(value);
+            };
+            const stretchX = 0.88 + seededUnit(1) * 0.24;
+            const stretchY = 0.88 + seededUnit(2) * 0.24;
+            const phase = seededUnit(3) * Math.PI * 2;
+            const frequencyA = 2 + Math.floor(seededUnit(6) * 4);
+            const frequencyB = frequencyA + 1 + Math.floor(seededUnit(7) * 2);
+            const wobbleA = 0.035 + seededUnit(8) * 0.065;
+            const wobbleB = 0.018 + seededUnit(9) * 0.04;
+            const shiftX = (seededUnit(4) - 0.5) * radius * 0.28;
+            const shiftY = (seededUnit(5) - 0.5) * radius * 0.28;
+
             context.beginPath();
-            context.arc(centerX, centerY, radius, 0, Math.PI * 2);
+            for (let step = 0; step < 16; step += 1) {
+              const angle = (step / 16) * Math.PI * 2;
+              const edge = 1 + Math.sin(angle * frequencyA + phase) * wobbleA + Math.sin(angle * frequencyB - phase * 0.7) * wobbleB;
+              const dotX = centerX + shiftX + Math.cos(angle) * radius * stretchX * edge;
+              const dotY = centerY + shiftY + Math.sin(angle) * radius * stretchY * edge;
+              if (step === 0) context.moveTo(dotX, dotY);
+              else context.lineTo(dotX, dotY);
+            }
+            context.closePath();
             context.fill();
           }
         }
