@@ -3,6 +3,9 @@ import Layout from "../layouts/Layout.astro";
 import BlogFilterNav from "./BlogFilterNav.astro";
 import NotesSearch from "./NotesSearch.astro";
 import { formatNoteYearMonth, getNoteStatusLabel, type NoteEntry } from "../data/notes";
+import { getBlogPosts } from "../data/blog";
+import { getSeriesEntryPosition } from "../data/seriesEntries";
+import { formatSeriesNumber, series } from "../data/series";
 import { withLanguage, type Language } from "../utils/i18n";
 
 type Props = {
@@ -11,6 +14,7 @@ type Props = {
 };
 
 const { notes, lang } = Astro.props;
+const blogPosts = await getBlogPosts();
 const copy = lang === "ko"
   ? {
       description: "통계와 연구방법을 공부하며 쌓은 작업 로그.",
@@ -36,6 +40,7 @@ const copy = lang === "ko"
       <ol class="notes-index-list" data-notes-archive>
           {notes.map((note) => {
             const noteTitle = lang === "en" ? note.data.titleEn : note.data.title;
+            const seriesPosition = getSeriesEntryPosition(blogPosts, notes, { kind: "note", item: note });
             return (
             <li data-note-row data-search-text={`${noteTitle} ${note.data.title} ${note.data.status} ${note.data.tags.join(" ")}`.toLocaleLowerCase()}>
               <a href={withLanguage(lang, `/blog/notes/${note.id}`)}>
@@ -43,6 +48,11 @@ const copy = lang === "ko"
                   {formatNoteYearMonth(note.data.updated ?? note.data.date)}
                 </time>
                 <span class="notes-index-title">{noteTitle}</span>
+                {seriesPosition && (
+                  <span class="notes-index-series">
+                    Series {formatSeriesNumber(series[seriesPosition.seriesId].number)} · {seriesPosition.index + 1}/{seriesPosition.entries.length}
+                  </span>
+                )}
                 <span class={`note-status note-status-${note.data.status}`}>
                   {getNoteStatusLabel(note.data.status, lang)}
                 </span>

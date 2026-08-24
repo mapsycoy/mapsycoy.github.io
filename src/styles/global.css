@@ -5754,7 +5754,7 @@ html[lang="ko"] .blog-series-description {
 .notes-index-list li { border-top: 1px solid var(--line); }
 .notes-index-list a {
   display: grid;
-  grid-template-columns: 5.8rem minmax(0, 1fr) auto;
+  grid-template-columns: 5.8rem minmax(0, 1fr) auto auto;
   align-items: center;
   gap: 14px;
   padding: 9px 0;
@@ -5765,6 +5765,8 @@ html[lang="ko"] .blog-series-description {
 .notes-index-list a:focus-visible,
 .note-body a:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
 .notes-index-title { min-width: 0; overflow: hidden; font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.79rem; font-weight: 450; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; }
+.notes-index-series { color: var(--muted); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.65rem; line-height: 1.4; white-space: nowrap; }
+.notes-index-list .note-status { grid-column: 4; }
 .notes-index-list time,
 .note-status { color: var(--muted); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.65rem; white-space: nowrap; }
 .note-status {
@@ -6136,6 +6138,8 @@ html[lang="ko"] .blog-series-description {
 }.notes-index,
   .note-header { padding-top: 28px; }
   .notes-index-list a { grid-template-columns: 5.3rem minmax(0, 1fr) auto; align-items: start; gap: 8px; }
+  .notes-index-series { grid-column: 2 / -1; grid-row: 2; }
+  .notes-index-list .note-status { grid-column: 3; }
 }
 /* Build-time distribution figures */
 .note-dist,

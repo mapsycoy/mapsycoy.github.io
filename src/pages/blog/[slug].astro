@@ -3,8 +3,10 @@ import Layout from "../../layouts/Layout.astro";
 import TocRail from "../../components/TocRail.astro";
 import BlogSeriesNav from "../../components/BlogSeriesNav.astro";
 import { render } from "astro:content";
-import { formatTitlePunctuation, getBlogPostSlug, getBlogPosts, getPostDateLabel, getSeriesPosition, hasKoreanText, type BlogPost } from "../../data/blog";
+import { formatTitlePunctuation, getBlogPostSlug, getBlogPosts, getPostDateLabel, hasKoreanText, type BlogPost } from "../../data/blog";
 import { formatSeriesNumber, series } from "../../data/series";
+import { getNotes } from "../../data/notes";
+import { getSeriesEntryPosition } from "../../data/seriesEntries";
 import { defaultLanguage, localize, type Language } from "../../utils/i18n";
 import { smartenText } from "../../utils/smartTypography.mjs";
 import { renderDistBlock } from "../../utils/remarkDistChart.mjs";
@@ -27,7 +29,8 @@ type Props = {
 };
 
 const { post, allPosts, lang = defaultLanguage } = Astro.props;
-const seriesPosition = getSeriesPosition(allPosts, post);
+const allNotes = await getNotes();
+const seriesPosition = getSeriesEntryPosition(allPosts, allNotes, { kind: "blog", item: post });
 const postTitle = formatTitlePunctuation(localize(post.data.title, lang));
 const { Content, headings } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
@@ -330,7 +333,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   <div class="pagefind-meta" hidden aria-hidden="true">
     <span data-pagefind-filter={`Format:${post.data.tag}`}></span>
     {seriesPosition && <span data-pagefind-filter={`Series:${localize(series[seriesPosition.seriesId].title, lang)}`}></span>}
-    {seriesPosition && <span data-pagefind-meta={`series:Series ${formatSeriesNumber(series[seriesPosition.seriesId].number)} · ${seriesPosition.index + 1}/${seriesPosition.posts.length}`}></span>}
+    {seriesPosition && <span data-pagefind-meta={`series:Series ${formatSeriesNumber(series[seriesPosition.seriesId].number)} · ${seriesPosition.index + 1}/${seriesPosition.entries.length}`}></span>}
     <span data-pagefind-meta={`date:${post.data.publishedAt.toISOString().slice(0, 10)}`}></span>
     <span data-pagefind-meta={`format:${post.data.tag}`}></span>
   </div>
@@ -348,7 +351,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
         <span>{post.data.tag}</span>
       </p>
       <h1 class:list={["blog-post-title", hasKoreanText(postTitle) && "ko-title"]}>{postTitle}</h1>
-      {seriesPosition && <BlogSeriesNav posts={seriesPosition.posts} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="header" />}
+      {seriesPosition && <BlogSeriesNav entries={seriesPosition.entries} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="header" />}
 
       <div class="blog-post-byline" aria-label="Post information">
         <span>{getPostDateLabel(post.data.publishedAt, post.data.updatedAt)}</span>
@@ -382,6 +385,6 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
         <Content />
       )}
     </div>
-    {seriesPosition && <BlogSeriesNav posts={seriesPosition.posts} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="footer" />}
+    {seriesPosition && <BlogSeriesNav entries={seriesPosition.entries} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="footer" />}
   </article>
 </Layout>

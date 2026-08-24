@@ -2,8 +2,13 @@
 import { render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import TocRail from "./TocRail.astro";
+import BlogSeriesNav from "./BlogSeriesNav.astro";
 import { formatNoteDate, getNoteStatusLabel, type NoteEntry } from "../data/notes";
-import { withLanguage, type Language } from "../utils/i18n";
+import { getNotes } from "../data/notes";
+import { getBlogPosts } from "../data/blog";
+import { getSeriesEntryPosition } from "../data/seriesEntries";
+import { formatSeriesNumber, series } from "../data/series";
+import { localize, withLanguage, type Language } from "../utils/i18n";
 
 type Props = {
   note: NoteEntry;
@@ -15,6 +20,8 @@ const { Content, headings } = await render(note);
 const tocHeadings = headings.filter((heading) => heading.depth === 2);
 const { title, titleEn, date, updated, status, tags } = note.data;
 const localizedTitle = lang === "en" ? titleEn : title;
+const [allPosts, allNotes] = await Promise.all([getBlogPosts(), getNotes()]);
+const seriesPosition = getSeriesEntryPosition(allPosts, allNotes, { kind: "note", item: note });
 const copy = lang === "ko"
   ? {
       description: "통계와 연구방법을 공부하며 쌓은 작업 로그.",
@@ -42,6 +49,8 @@ const copy = lang === "ko"
       <span data-pagefind-meta={"status:" + status}></span>
       <span data-pagefind-meta={`date:${(updated ?? date).toISOString()}`}></span>
       <span data-pagefind-meta={`tags:${tags.join(" ")}`}></span>
+      {seriesPosition && <span data-pagefind-filter={`Series:${localize(series[seriesPosition.seriesId].title, lang)}`}></span>}
+      {seriesPosition && <span data-pagefind-meta={`series:Series ${formatSeriesNumber(series[seriesPosition.seriesId].number)} · ${seriesPosition.index + 1}/${seriesPosition.entries.length}`}></span>}
     </div>
     <a class="work-back-link" href={withLanguage(lang, "/blog/notes")} aria-label="Back to Notes">&#8592;</a>
     <header class="note-header">
@@ -57,6 +66,7 @@ const copy = lang === "ko"
         )}
       </div>
       <h1 class:list={["note-title", lang === "ko" && "ko-title"]}>{localizedTitle}</h1>
+      {seriesPosition && <BlogSeriesNav entries={seriesPosition.entries} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="header" />}
     </header>
 
     <div class="note-content-shell">
@@ -74,5 +84,6 @@ const copy = lang === "ko"
         </ul>
       )}
     </footer>
+    {seriesPosition && <BlogSeriesNav entries={seriesPosition.entries} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="footer" />}
   </article>
 </Layout>

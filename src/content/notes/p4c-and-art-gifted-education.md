@@ -5,6 +5,8 @@ date: 2026-08-23
 status: working
 tags:
   - P4C
+series: child-ai
+seriesOrder: 11
 ---
 시리즈 01의 첫 글에서 내가 주목했던 것은 말을 잘하는 존재가 아니라 말하지 않는 존재였다.
 

@@ -157,6 +157,15 @@ const notes = defineCollection({
     updated: z.coerce.date().optional(),
     status: z.enum(["draft", "working", "settled"]).default("working"),
     tags: z.array(z.string()).default([]),
+    series: seriesIdSchema.optional(),
+    seriesOrder: z.number().int().positive().optional(),
+  }).superRefine((data, context) => {
+    if (data.series && data.seriesOrder === undefined) {
+      context.addIssue({ code: "custom", path: ["seriesOrder"], message: "seriesOrder is required when series is set." });
+    }
+    if (!data.series && data.seriesOrder !== undefined) {
+      context.addIssue({ code: "custom", path: ["series"], message: "series is required when seriesOrder is set." });
+    }
   }),
 });
 
