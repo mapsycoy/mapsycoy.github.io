@@ -6120,18 +6120,7 @@ html[lang="ko"] .blog-series-description {
   border: 2px dashed var(--line);
   color: var(--muted);
 }
-.note-footer { margin-top: 30px; padding: 10px 0 64px; border-top: 1px solid var(--line); }
-.note-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin: 0;
-  padding: 0;
-  color: var(--muted);
-  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
-  font-size: 0.65rem;
-  list-style: none;
-}
+.note-footer { margin-top: 30px; padding: 10px 0 64px; }
 @media (max-width: 640px) {
   @media (prefers-reduced-motion: reduce) {
   .blog-notes-entry-fold { transition: none; }

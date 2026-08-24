@@ -79,8 +79,8 @@ const copy = lang === "ko"
 
     <footer class="note-footer">
       {tags.length > 0 && (
-        <ul class="note-tags" aria-label={copy.tags}>
-          {tags.map((tag, index) => <li>{index > 0 && <span aria-hidden="true">·</span>} {tag}</li>)}
+        <ul class="work-tags" aria-label={copy.tags}>
+          {tags.map((tag) => <li>{tag}</li>)}
         </ul>
       )}
     </footer>
