@@ -55,6 +55,13 @@ const blog = defineCollection({
             subtitle: localizedTextSchema.default(""),
           }),
           z.object({
+            type: z.literal("embed"),
+            provider: z.enum(["x", "reddit"]),
+            embedCode: z.string().default(""),
+            url: z.string().default(""),
+            caption: localizedTextSchema.optional(),
+          }),
+          z.object({
             type: z.literal("divider"),
           }),
         ])

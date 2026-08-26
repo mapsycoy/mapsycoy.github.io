@@ -61,7 +61,27 @@ const renderHalftoneFrame = (source, width, height) => {
     const wobbleB = 0.018 + seededUnit(gridX, gridY, 9) * 0.04;
     const shiftX = (seededUnit(gridX, gridY, 4) - 0.5) * radius * 0.28;
     const shiftY = (seededUnit(gridX, gridY, 5) - 0.5) * radius * 0.28;
-    const reach = radius * 1.35;
+    let minX = Infinity;
+    let maxX = -Infinity;
+    let minY = Infinity;
+    let maxY = -Infinity;
+
+    // Measure the irregular outline before rasterizing it. Edge dots are
+    // omitted unless their complete shape fits inside the frame.
+    for (let step = 0; step < 128; step += 1) {
+      const angle = (step / 128) * Math.PI * 2;
+      const edge = 1 + Math.sin(angle * frequencyA + phase) * wobbleA + Math.sin(angle * frequencyB - phase * 0.7) * wobbleB;
+      const dotX = centerX + shiftX + Math.cos(angle) * radius * stretchX * edge;
+      const dotY = centerY + shiftY + Math.sin(angle) * radius * stretchY * edge;
+      minX = Math.min(minX, dotX);
+      maxX = Math.max(maxX, dotX);
+      minY = Math.min(minY, dotY);
+      maxY = Math.max(maxY, dotY);
+    }
+
+    if (minX < 0 || maxX > width || minY < 0 || maxY > height) return;
+
+    const reach = radius * 1.5;
     const left = Math.max(0, Math.floor(centerX - reach));
     const right = Math.min(width - 1, Math.ceil(centerX + reach));
     const top = Math.max(0, Math.floor(centerY - reach));

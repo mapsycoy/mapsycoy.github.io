@@ -2,6 +2,7 @@
 import Layout from "../../layouts/Layout.astro";
 import RecentPosts from "../../components/RecentPosts.astro";
 import SeoulLocationMap from "../../components/SeoulLocationMap.astro";
+import HandwrittenEmail from "../../components/HandwrittenEmail.astro";
 import { getHomeCaption, getHomeContact, getHomeGreeting, getHomeMedia, getHomeMusic } from "../../data/home";
 import { getLanguageFromParams, languages, type Language } from "../../utils/i18n";
 
@@ -123,7 +124,7 @@ const homeMusic = getHomeMusic(lang);
           aria-label={`이메일 주소 ${homeContact.email} 복사`}
         >
           <span class="home-contact-glyph" aria-hidden="true">▛▚▞▜ ▞▚ █ ▙</span>
-          <span class="home-contact-real" aria-hidden="true">{homeContact.email}</span>
+          <span class="home-contact-real"><HandwrittenEmail /></span>
         </button>
       </div>
     </div>
@@ -298,15 +299,22 @@ const homeMusic = getHomeMusic(lang);
             const shiftX = (seededUnit(4) - 0.5) * radius * 0.28;
             const shiftY = (seededUnit(5) - 0.5) * radius * 0.28;
 
-            context.beginPath();
+            const outline: Array<{ x: number; y: number }> = [];
             for (let step = 0; step < 16; step += 1) {
               const angle = (step / 16) * Math.PI * 2;
               const edge = 1 + Math.sin(angle * frequencyA + phase) * wobbleA + Math.sin(angle * frequencyB - phase * 0.7) * wobbleB;
               const dotX = centerX + shiftX + Math.cos(angle) * radius * stretchX * edge;
               const dotY = centerY + shiftY + Math.sin(angle) * radius * stretchY * edge;
+              outline.push({ x: dotX, y: dotY });
+            }
+
+            if (outline.some(({ x: dotX, y: dotY }) => dotX < 0 || dotX > width || dotY < 0 || dotY > height)) continue;
+
+            context.beginPath();
+            outline.forEach(({ x: dotX, y: dotY }, step) => {
               if (step === 0) context.moveTo(dotX, dotY);
               else context.lineTo(dotX, dotY);
-            }
+            });
             context.closePath();
             context.fill();
           }

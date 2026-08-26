@@ -6,6 +6,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Snake';
+  src: url('https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@7d0d6a9/uploads/site/Snake.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   color-scheme: light dark;
   --bg: #f8f7f2;
@@ -794,6 +802,7 @@ main {
 }
 
 .home-contact-address {
+  --contact-rule-color: color-mix(in srgb, var(--muted) 62%, var(--bg));
   display: grid;
   align-items: center;
   justify-items: start;
@@ -802,9 +811,11 @@ main {
   min-width: 0;
   padding: 0;
   border: 0;
-  border-bottom: 1px solid var(--text);
+  border-bottom: 0;
   border-radius: 0;
-  background: transparent;
+  background:
+    radial-gradient(circle, var(--contact-rule-color) 0 0.72px, transparent 0.88px)
+    left calc(100% - 7px) / 5px 2px repeat-x;
   color: var(--text);
   font: inherit;
   line-height: 1.4;
@@ -821,6 +832,8 @@ main {
 .home-contact-address::after {
   content: attr(data-contact-copied);
   opacity: 0;
+  font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-weight: 400;
 }
 
 .home-contact-glyph {
@@ -829,13 +842,28 @@ main {
 
 .home-contact-real {
   opacity: 0;
+  width: min(100%, 280px);
+  height: 42px;
+}
+
+.home-contact-handwriting {
+  display: block;
+  font-family: 'Snake', cursive;
+  font-size: 2rem;
+  font-style: normal;
+  font-synthesis: none;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  line-height: 42px;
+  white-space: nowrap;
+  transform: translateY(2px);
 }
 
 .home-contact-address:hover,
 .home-contact-address:focus-visible {
+  --contact-rule-color: var(--accent);
   color: var(--accent);
   outline: none;
-  border-bottom-color: var(--accent);
 }
 
 .home-contact-address:hover .home-contact-glyph,

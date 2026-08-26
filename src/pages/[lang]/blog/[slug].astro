@@ -37,6 +37,8 @@ const postTitle = formatTitlePunctuation(localize(post.data.title, lang));
 const { Content, headings } = await render(post);
 const heroImageCaption = localize(post.data.heroImageCaption, lang).trim();
 const contentBlocks = post.data.contentBlocks ?? [];
+const hasXEmbed = contentBlocks.some((block) => block.type === "embed" && block.provider === "x");
+const hasRedditEmbed = contentBlocks.some((block) => block.type === "embed" && block.provider === "reddit");
 const standaloneLinkPattern = /^\[((?:[^\[\]]|\[[^\]]*\])+)\]\((https?:\/\/[^)]+)\)$/;
 const previewUrls = contentBlocks.flatMap((block) => block.type === "text"
   ? localize(block.body, lang).split(/\n\s*\n/).map((value) => value.trim().match(standaloneLinkPattern)?.[2] ?? "").filter(Boolean)
@@ -306,6 +308,27 @@ const renderFootnotes = () => {
     })
     .join("")}</ol></section>`;
 };
+const stripEmbedScripts = (value: string) =>
+  value
+    .replace(/<script\b[\s\S]*?<\/script>/gi, "")
+    .replace(/\s+on[a-z]+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
+    .trim();
+
+const renderExternalEmbed = (block: Extract<BlogPost["data"]["contentBlocks"][number], { type: "embed" }>) => {
+  const html = stripEmbedScripts(block.embedCode ?? "");
+  const href = block.url.trim();
+  const caption = localize(block.caption, lang);
+  const label = caption || (block.provider === "x" ? "X post" : "Reddit post");
+
+  if (html) {
+    return `<figure class="work-social-embed work-social-embed-${block.provider}"><div class="work-social-embed-inner">${html}</div>${caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : ""}</figure>`;
+  }
+  if (!/^https?:\/\//i.test(href)) return "";
+
+  const className = block.provider === "x" ? "twitter-tweet" : "reddit-embed-bq";
+  const attributes = block.provider === "x" ? ' data-media-max-width="560"' : "";
+  return `<figure class="work-social-embed work-social-embed-${block.provider}"><blockquote class="${className}"${attributes}><a href="${escapeAttribute(href)}">${escapeHtml(label)}</a></blockquote>${caption ? `<figcaption>${renderInlineMarkdown(caption)}</figcaption>` : ""}</figure>`;
+};
 const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   if (block.type === "text") return renderMarkdownBlock(localize(block.body, lang));
   if (block.type === "image") {
@@ -317,6 +340,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
     const subtitle = localize(block.subtitle, lang);
     return `<p class="text-link-preview"><a href="${escapeAttribute(block.url)}" target="_blank" rel="noreferrer"><span class="text-link-preview-title">${renderInlineMarkdown(title || block.url)}</span>${subtitle ? `<span class="text-link-preview-url">${renderInlineMarkdown(subtitle)}</span>` : ""}</a></p>`;
   }
+  if (block.type === "embed") return renderExternalEmbed(block);
   if (block.type === "divider") return "<hr>";
   return "";
 };
@@ -329,6 +353,7 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
   ogType="article"
   publishedTime={new Date(post.data.publishedAt).toISOString()}
   modifiedTime={post.data.updatedAt ? new Date(post.data.updatedAt).toISOString() : undefined}
+  preconnectX={hasXEmbed}
 >
   {linkPreviewStyles && <style is:inline set:html={linkPreviewStyles} />}
   <article class="blog-post" data-pagefind-body>
@@ -390,3 +415,5 @@ const renderBlogBlock = (block: BlogPost["data"]["contentBlocks"][number]) => {
     {seriesPosition && <BlogSeriesNav entries={seriesPosition.entries} index={seriesPosition.index} seriesId={seriesPosition.seriesId} lang={lang} placement="footer" />}
   </article>
 </Layout>
+{hasXEmbed && <script async src="https://platform.x.com/widgets.js" charset="utf-8"></script>}
+{hasRedditEmbed && <script async src="https://embed.reddit.com/widgets.js" charset="utf-8"></script>}

@@ -280,6 +280,43 @@ collections:
                     name: en
                     widget: string
                     required: false
+          - label: Embed
+            name: embed
+            widget: object
+            summary: "{{fields.provider}} - {{fields.url}}"
+            fields:
+              - label: Provider
+                name: provider
+                widget: select
+                default: x
+                options:
+                  - label: X Post
+                    value: x
+                  - label: Reddit Post
+                    value: reddit
+              - label: URL
+                name: url
+                widget: string
+                required: false
+                hint: Paste the X or Reddit post URL.
+              - label: Embed Code
+                name: embedCode
+                widget: text
+                required: false
+                hint: Optional official embed HTML. Script tags are handled by the site.
+              - label: Caption
+                name: caption
+                widget: object
+                required: false
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                    required: false
+                  - label: English
+                    name: en
+                    widget: string
+                    required: false
           - label: Divider
             name: divider
             widget: object
