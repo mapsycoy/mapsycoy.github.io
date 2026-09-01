@@ -3845,7 +3845,7 @@ html[lang="ko"] .cv-page {
 }
 
 .cv-page .cv-project-entry .cv-media-thumb img {
-  filter: grayscale(1) contrast(0.96) brightness(1.08) sepia(0.08) saturate(0.78);
+  filter: none;
 }
 
 .cv-page .cv-entry-logo img {
