@@ -17,12 +17,12 @@
         "en": "Yonsei University, Grad School of Communication & Arts"
       },
       "degree": {
-        "ko": "입학 예정 · 공학석사과정(HCI디자인)",
-        "en": "Incoming MS Student (HCI Design)"
+        "ko": "공학석사과정(HCI디자인)",
+        "en": "MS Student (HCI Design)"
       },
       "period": {
-        "ko": "2026.09 -",
-        "en": "Sep 2026 -"
+        "ko": "2026.09 - 현재",
+        "en": "Sep 2026 - Present"
       },
       "description": []
     },
@@ -445,6 +445,13 @@
         {
           "ko": "2026년 경기도경제과학진흥원(GBSA) 반려동물산업 스타트업 발굴 및 창업지원 선정, 경기창업혁신공간 남서부권(안양) 입주",
           "en": "Selected for the 2026 GBSA Pet Industry Startup Support Program; based at Gyeonggi Startup Innovation Space, Anyang"
+        }
+      ],
+      "media": [
+        {
+          "type": "image",
+          "href": "https://direpx.github.io/",
+          "src": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/cv/cv-project-direpx.webp"
         }
       ]
     }
