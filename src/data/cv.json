@@ -154,8 +154,8 @@
       },
       "description": [
         {
-          "ko": "메이플스토리 및 던전앤파이터의 인게임 생성형 AI 기능 [커스텀 일러스트](https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114)를 위한 참고 일러스트 제작 및 LoRA 학습 데이터셋 구축",
-          "en": "Produced reference illustrations and built LoRA training datasets for [Custom Illustration](https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114), an in-game generative AI feature in MapleStory and Dungeon & Fighter"
+          "ko": "[메이플스토리](https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114) 및 [던전앤파이터](https://df.nexon.com/pr/actupdate/MDAxNzM/?cat=3)의 인게임 생성형 AI 기능 커스텀 일러스트를 위한 참고 일러스트 제작 및 LoRA 학습 데이터셋 구축",
+          "en": "Produced reference illustrations and built LoRA training datasets for Custom Illustration, an in-game generative AI feature in [MapleStory](https://maplestory.nexon.com/Guide/N23GameInformation/Articles/142114) and [Dungeon & Fighter](https://df.nexon.com/pr/actupdate/MDAxNzM/?cat=3)"
         }
       ],
       "team": {
@@ -430,8 +430,8 @@
     },
     {
       "title": {
-        "ko": "Direpx",
-        "en": "Direpx"
+        "ko": "DirepX",
+        "en": "DirepX"
       },
       "period": {
         "ko": "2025.11 - 현재",
