@@ -1,5 +1,6 @@
 ---
 title: 의미 생성의 노동
+titleEn: The Labor of Meaning-Making
 graphLabel: 의미 노동
 graphLabelEn: Meaning Labor
 date: 2026-09-02

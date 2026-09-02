@@ -1,5 +1,6 @@
 ---
 title: 낯섦의 소진과 목격자
+titleEn: The Exhaustion of Strangeness and the Witness
 graphLabel: 낯섦과 목격자
 graphLabelEn: Strangeness & Witness
 date: 2026-09-02

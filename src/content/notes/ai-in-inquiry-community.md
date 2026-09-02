@@ -1,5 +1,6 @@
 ---
 title: AI는 탐구공동체의 구성원인가
+titleEn: Is AI a Member of the Community of Inquiry?
 graphLabel: AI와 탐구공동체
 graphLabelEn: AI in Inquiry
 date: 2026-09-02

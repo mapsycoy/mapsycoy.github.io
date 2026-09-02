@@ -5707,20 +5707,16 @@ html[lang="ko"] .blog-series-description {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.blog-notes-page .pressure-thin {
-  stroke-width: 1.12;
-  opacity: 1;
-}
-.blog-notes-page .pressure-light {
-  stroke-width: 1.3;
-}
-.blog-notes-page .pressure-heavy {
-  stroke-width: 1.5;
-}
-.blog-notes-fold {
-  stroke-width: 0.85;
-  opacity: 0.8;
-}
+.blog-notes-graph-edges { opacity: 0.42; }
+.blog-notes-graph-edges path { stroke-width: 0.68; }
+.blog-notes-graph-edges .is-strong { stroke-width: 1.05; opacity: 0.9; }
+.blog-notes-graph-edges .is-membership { stroke-dasharray: 1.2 2; opacity: 0.7; }
+.blog-notes-graph-hub { fill: var(--bg); stroke-width: 1.25; }
+.blog-notes-graph-hub-echo { fill: none; stroke-width: 0.55; opacity: 0.36; }
+.blog-notes-graph-core { fill: currentColor; stroke: var(--bg); stroke-width: 0.72; }
+.blog-notes-graph-outline { fill: var(--bg); stroke-width: 0.9; }
+.blog-notes-graph-node { fill: currentColor; stroke: none; opacity: 0.82; }
+.blog-notes-graph-node.is-tiny { opacity: 0.58; }
 .blog-notes-entry:hover { color: var(--accent); }
 .blog-notes-entry:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
@@ -5824,6 +5820,7 @@ html[lang="ko"] .blog-series-description {
   border-bottom: 1px solid var(--line);
 }
 .note-graph-local .note-graph-heading { border-bottom: 0; }
+.note-graph-global .note-graph-heading { border-bottom: 0; }
 .note-graph-heading h2,
 .note-backlinks h2 {
   margin: 0;

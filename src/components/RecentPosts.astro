@@ -1,6 +1,6 @@
 ---
 import { getBlogPostSlug, getBlogPosts, getNewsPosts, sortBlogPosts } from "../data/blog";
-import { getNotes } from "../data/notes";
+import { getNotes, getNoteTitle } from "../data/notes";
 import { defaultLanguage, localize, type Language } from "../utils/i18n";
 
 type Props = { lang?: Language };
@@ -21,7 +21,7 @@ const recentPosts = [
   ...notes.slice(0, 1).map((note) => ({
     href: `/blog/notes/${note.id}/`,
     track: lang === "en" ? "Note \u00b7 KO" : "Note",
-    title: lang === "en" ? note.data.titleEn : note.data.title,
+    title: getNoteTitle(note, lang),
   })),
 ];
 const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;

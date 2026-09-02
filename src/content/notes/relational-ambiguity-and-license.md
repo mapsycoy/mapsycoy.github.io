@@ -1,5 +1,6 @@
 ---
 title: 관계로서의 모호성과 해석의 허가
+titleEn: Ambiguity as Relation and Permission to Interpret
 graphLabel: 모호성과 해석의 허가
 graphLabelEn: Ambiguity & License
 date: 2026-09-02

@@ -1,5 +1,6 @@
 ---
 title: 아동의 상상력과 주체성에 관한 HCI 연구의 공백
+titleEn: The HCI Research Gap on Children's Imagination and Agency
 graphLabel: 아동 HCI 연구 공백
 graphLabelEn: Child HCI Gap
 date: 2026-09-02

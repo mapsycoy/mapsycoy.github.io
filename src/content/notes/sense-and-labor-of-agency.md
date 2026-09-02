@@ -1,5 +1,6 @@
 ---
 title: 행위성의 느낌과 노동
+titleEn: The Sense and Labor of Agency
 graphLabel: 행위성의 느낌과 노동
 graphLabelEn: Sense & Labor
 date: 2026-09-02

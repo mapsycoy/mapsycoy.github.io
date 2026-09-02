@@ -102,5 +102,16 @@ export const artsGiftedEducationCertificate = cvData.artsGiftedEducationCertific
   items?: CertificateCompletionItem[];
 };
 export const experiences = cvData.experiences as ExperienceItem[];
-export const projects = cvData.projects as ProjectItem[];
+const projectMonth = new Map([
+  ["Jan", 1], ["Feb", 2], ["Mar", 3], ["Apr", 4], ["May", 5], ["Jun", 6],
+  ["Jul", 7], ["Aug", 8], ["Sep", 9], ["Oct", 10], ["Nov", 11], ["Dec", 12],
+]);
+const getProjectRecency = (project: ProjectItem) => {
+  const period = project.period.en;
+  if (/present/i.test(period)) return Number.POSITIVE_INFINITY;
+  const dates = [...period.matchAll(/(?:(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s+)?(\d{4})/g)]
+    .map((match) => Number(match[2]) * 12 + (projectMonth.get(match[1]) ?? 0));
+  return dates.length ? Math.max(...dates) : 0;
+};
+export const projects = [...(cvData.projects as ProjectItem[])].sort((a, b) => getProjectRecency(b) - getProjectRecency(a));
 export const publications = (cvData.publications ?? []) as PublicationItem[];

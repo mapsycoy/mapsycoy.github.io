@@ -1,5 +1,6 @@
 ---
 title: 탐구를 여는 질문과 응답성
+titleEn: Questions That Open Inquiry and Responsiveness
 graphLabel: 질문과 응답성
 graphLabelEn: Questions & Response
 date: 2026-09-02

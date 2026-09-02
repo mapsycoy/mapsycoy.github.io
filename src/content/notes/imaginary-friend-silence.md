@@ -1,5 +1,6 @@
 ---
 title: 상상 속 친구의 수동성과 침묵
+titleEn: The Passivity and Silence of Imaginary Friends
 graphLabel: 상상 친구의 침묵
 graphLabelEn: Imaginary Friend
 date: 2026-09-02

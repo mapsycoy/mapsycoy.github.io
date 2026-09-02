@@ -1,5 +1,6 @@
 ---
 title: 미술영재교육의 다섯 가지 원칙
+titleEn: Five Principles of Art Gifted Education
 graphLabel: 미술영재교육 원칙
 graphLabelEn: Art Education
 date: 2026-09-02

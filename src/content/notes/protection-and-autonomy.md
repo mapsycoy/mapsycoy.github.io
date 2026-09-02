@@ -1,5 +1,6 @@
 ---
 title: 보호와 자율성
+titleEn: Protection and Autonomy
 graphLabel: 보호와 자율성
 graphLabelEn: Safety & Autonomy
 date: 2026-09-02
