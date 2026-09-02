@@ -57,12 +57,17 @@ collections:
     summary: "{{title}} — {{date | date('YYYY-MM-DD')}}"
     sortable_fields: [date, status]
     fields:
-      - { name: title, label: 제목, widget: string }
-      - { name: titleEn, label: 영문 제목, widget: string }
-      - { name: date, label: 작성일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD }
+      - { name: title, label: 제목, widget: string, required: false, hint: 비워 두면 파일명을 제목으로 사용합니다. }
+      - { name: titleEn, label: 영문 제목, widget: string, required: false }
+      - { name: graphLabel, label: 그래프 축약 제목, widget: string, required: false, hint: 비워 두면 본문 제목을 사용합니다. }
+      - { name: graphLabelEn, label: 그래프 영문 축약 제목, widget: string, required: false }
+      - { name: date, label: 작성일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD, required: false }
       - { name: updated, label: 수정일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD, required: false }
       - { name: status, label: 상태, widget: select, options: [draft, working, settled], default: working }
       - { name: tags, label: 태그, widget: list, required: false }
+      - { name: series, label: 시리즈, widget: string, required: false }
+      - { name: seriesOrder, label: 시리즈 순서, widget: number, value_type: int, required: false }
+      - { name: seriesHub, label: 시리즈 허브, widget: boolean, default: false, required: false, hint: 시리즈마다 하나의 NOTE에만 사용합니다. }
       - { name: body, label: 본문, widget: markdown }
 
   - name: blog

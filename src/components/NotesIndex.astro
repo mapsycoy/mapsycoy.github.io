@@ -2,7 +2,9 @@
 import Layout from "../layouts/Layout.astro";
 import BlogFilterNav from "./BlogFilterNav.astro";
 import NotesSearch from "./NotesSearch.astro";
-import { formatNoteYearMonth, getNoteStatusLabel, type NoteEntry } from "../data/notes";
+import NoteGraph from "./NoteGraph.astro";
+import { formatNoteYearMonth, getNoteDate, getNoteStatusLabel, getNoteTitle, type NoteEntry } from "../data/notes";
+import { createNoteGraph } from "../data/noteGraph";
 import { getBlogPosts } from "../data/blog";
 import { getSeriesEntryPosition } from "../data/seriesEntries";
 import { formatSeriesNumber, series } from "../data/series";
@@ -14,22 +16,31 @@ type Props = {
 };
 
 const { notes, lang } = Astro.props;
+const graph = createNoteGraph(notes, lang);
 const blogPosts = await getBlogPosts();
 const copy = lang === "ko"
   ? {
-      description: "통계와 연구방법을 공부하며 쌓은 작업 로그.",
-      introduction: "학습 중 기록. 정리되지 않았고 수정될 수 있음.",
+      description: "진행 중인 생각의 공개 지도. 서로 연결되고, 수정되며, 계속 확장됩니다.",
+      introduction: "진행 중인 생각의 공개 지도. 서로 연결되고, 수정되며, 계속 확장됩니다.",
+      aiNotice: "일부 노트에는 AI가 독립적으로 생성한 의견이 포함됩니다. AI가 작성한 부분은 모두 별도로 표시합니다.",
       empty: "아직 공개된 노트가 없습니다.",
     }
   : {
-      description: "Study notes and learning logs. Written in Korean.",
-      introduction: "Study notes. Unpolished and subject to revision. Written in Korean.",
+      description: "A public map of thoughts in progress. Connected, revised, and extended over time. Written in Korean.",
+      introduction: "A public map of thoughts in progress. Connected, revised, and extended over time. Written in Korean.",
+      aiNotice: "Some notes include independently generated AI commentary. Every AI-authored passage is explicitly labeled.",
       empty: "No public notes yet.",
     };
 ---
 
 <Layout title="Notes" description={copy.description} lang={lang}>
   <BlogFilterNav lang={lang} activeNotes />
+  <header class="notes-index-header">
+    <h1>NOTE</h1>
+    <p>{copy.introduction}</p>
+    <p class="notes-ai-notice">{copy.aiNotice}</p>
+  </header>
+  <NoteGraph graph={graph} mode="global" lang={lang} />
   <div class="blog-inline-search notes-inline-search" style="min-height: 48px;">
     <NotesSearch lang={lang} />
   </div>
@@ -39,14 +50,13 @@ const copy = lang === "ko"
     ) : (
       <ol class="notes-index-list" data-notes-archive>
           {notes.map((note) => {
-            const noteTitle = lang === "en" ? note.data.titleEn : note.data.title;
+            const noteTitle = getNoteTitle(note, lang);
+            const noteDate = getNoteDate(note);
             const seriesPosition = getSeriesEntryPosition(blogPosts, notes, { kind: "note", item: note });
             return (
-            <li data-note-row data-search-text={`${noteTitle} ${note.data.title} ${note.data.status} ${note.data.tags.join(" ")}`.toLocaleLowerCase()}>
+            <li data-note-row data-search-text={`${noteTitle} ${note.data.title ?? ""} ${note.data.status} ${note.data.tags.join(" ")}`.toLocaleLowerCase()}>
               <a href={withLanguage(lang, `/blog/notes/${note.id}`)}>
-                <time datetime={(note.data.updated ?? note.data.date).toISOString()}>
-                  {formatNoteYearMonth(note.data.updated ?? note.data.date)}
-                </time>
+                {noteDate ? <time datetime={noteDate.toISOString()}>{formatNoteYearMonth(noteDate)}</time> : <span class="notes-index-undated">—</span>}
                 <span class="notes-index-title">{noteTitle}</span>
                 {seriesPosition && (
                   <span class="notes-index-series">

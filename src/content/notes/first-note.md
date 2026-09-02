@@ -1,6 +1,8 @@
 ---
 title: 연구 데이터와 통계 입문 — 작품 앞 체류시간으로 시작하기
 titleEn: Research Data and Statistics - Starting with Artwork Dwell Time
+graphLabel: 작품 체류시간
+graphLabelEn: Artwork Dwell Time
 date: 2026-08-15
 updated: 2026-08-15
 status: settled
@@ -8,7 +10,7 @@ tags:
   - HCI
 ---
 대학원에 진학하면 연구에 앞서 통계를 배워야 한다.
-그런데 그림을 그려 대학에 들어갔고 학부에서도 통계를 다뤄본 적이 없는 나에게, HCI 데이터 분석과 통계는 생소할 수밖에 없다.
+그런데 그림을 그려 대학에 들어갔고 학부에서도 통계를 다뤄본 적이 없는 나에게, [[아동의 상상력과 주체성에 관한 HCI 연구의 공백|HCI 데이터 분석과 통계]]는 생소할 수밖에 없다.
 모르는 채로 연구를 시작하기보다 지금의 내가 이해할 수 있는 범위에서 기본 개념을 미리 정리해둘 필요를 느꼈다.
 이 스터디 노트는 그 준비 과정의 첫 기록이다.
 

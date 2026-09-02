@@ -1,0 +1,187 @@
+---
+import type { NoteGraphData, NoteGraphNode } from "../data/noteGraph";
+type Props = { graph: NoteGraphData; mode: "global" | "local"; currentId?: string; lang: "ko" | "en" };
+const { graph, mode, currentId, lang } = Astro.props;
+const nodeById = new Map(graph.nodes.map((node) => [node.id, node]));
+const neighborIds = currentId ? new Set(graph.edges.flatMap((edge) => edge.source === currentId ? [edge.target] : edge.target === currentId ? [edge.source] : [])) : new Set<string>();
+const nodes = mode === "local" ? graph.nodes.filter((node) => node.id === currentId || neighborIds.has(node.id)) : graph.nodes;
+const nodeIds = new Set(nodes.map((node) => node.id));
+const edges = graph.edges.filter((edge) => nodeIds.has(edge.source) && nodeIds.has(edge.target) && (mode === "global" || edge.source === currentId || edge.target === currentId));
+const hasLocalConnections = mode === "global" || nodes.length > 1;
+const outgoing = currentId ? (graph.outgoing[currentId] ?? []).map((id) => nodeById.get(id)).filter(Boolean) as NoteGraphNode[] : [];
+const backlinks = currentId ? (graph.backlinks[currentId] ?? []).map((id) => nodeById.get(id)).filter(Boolean) as NoteGraphNode[] : [];
+const copy = lang === "ko"
+  ? { global: "GLOBAL GRAPH", local: "LOCAL GRAPH", relationships: "연결 목록", linksTo: "LINKS TO", linkedFrom: "LINKED FROM", seriesLink: "시리즈 소속", conceptLink: "개념 연결", bothLink: "시리즈 소속 및 개념 연결" }
+  : { global: "GLOBAL GRAPH", local: "LOCAL GRAPH", relationships: "Note connections", linksTo: "LINKS TO", linkedFrom: "LINKED FROM", seriesLink: "Series membership", conceptLink: "Conceptual link", bothLink: "Series membership and conceptual link" };
+const payload = JSON.stringify({ nodes, edges, currentId }).replace(/</g, "\\u003c");
+---
+
+{hasLocalConnections && (
+  <section class:list={["note-graph-section", `note-graph-${mode}`]} aria-labelledby={`note-graph-${mode}-title`}>
+    <div class="note-graph-heading"><h2 id={`note-graph-${mode}-title`}>{mode === "global" ? copy.global : copy.local}</h2><span>{nodes.length} notes · {edges.length} links</span></div>
+    <div class="note-graph-canvas" data-note-graph data-mode={mode} role="group" aria-label={mode === "global" ? copy.global : copy.local}><script is:inline type="application/json" set:html={payload} /></div>
+    <ul class="sr-only">{nodes.map((node) => <li><a href={node.url}>{node.title}</a></li>)}</ul>
+    {edges.length > 0 && <ul class="sr-only" aria-label={copy.relationships}>{edges.map((edge) => <li><span>{edge.kind === "series" ? copy.seriesLink : edge.kind === "both" ? copy.bothLink : copy.conceptLink}: </span><a href={nodeById.get(edge.source)?.url}>{nodeById.get(edge.source)?.title}</a><span aria-hidden="true"> → </span><a href={nodeById.get(edge.target)?.url}>{nodeById.get(edge.target)?.title}</a></li>)}</ul>}
+  </section>
+)}
+{mode === "local" && (outgoing.length > 0 || backlinks.length > 0) && <nav class="note-backlinks" aria-label={copy.relationships}>
+  {outgoing.length > 0 && <section><h2>{copy.linksTo}</h2><ul>{outgoing.map((node) => <li><a href={node.url}>{node.title}</a></li>)}</ul></section>}
+  {backlinks.length > 0 && <section><h2>{copy.linkedFrom}</h2><ul>{backlinks.map((node) => <li><a href={node.url}>{node.title}</a></li>)}</ul></section>}
+</nav>}
+
+<script>
+  type ClientGraphNode = { id: string; title: string; graphLabel: string; url: string; linkCount: number; series?: string; kind: "hub" | "core" | "bridge" | "satellite" | "standalone"; clusterId?: string; importanceScore: number };
+  type ClientGraphEdge = { source: string; target: string; kind: "wikilink" | "series" | "both" };
+  type ClientGraphData = { nodes: ClientGraphNode[]; edges: ClientGraphEdge[]; currentId?: string };
+  type GraphPoint = { x: number; y: number };
+  const setupNoteGraphs = () => document.querySelectorAll<HTMLElement>("[data-note-graph]").forEach((mount) => {
+    if (mount.dataset.ready) return;
+    const dataNode = mount.querySelector<HTMLScriptElement>('script[type="application/json"]');
+    if (!dataNode) return;
+    let data: ClientGraphData;
+    try { data = JSON.parse(dataNode.textContent || "{}") as ClientGraphData; } catch { return; }
+    const nodes = data.nodes || []; const edges = data.edges || [];
+    if (!nodes.length) return;
+    mount.dataset.ready = "true";
+    const width = Math.max(320, Math.round(mount.getBoundingClientRect().width || 920));
+    const mobile = width < 640; const local = mount.dataset.mode === "local";
+    const compactOverview = !local && (mobile || nodes.length > 28);
+    const positions = new Map<string, GraphPoint>(); const clusterCenters = new Map<string, GraphPoint>(); let height = local ? (mobile ? 330 : 350) : 420;
+    const placeRing = (items: ClientGraphNode[], center: GraphPoint, radius: number, start = -Math.PI / 2) => items.forEach((node, index) => {
+      const angle = start + Math.PI * 2 * index / Math.max(1, items.length);
+      positions.set(node.id, { x: center.x + Math.cos(angle) * radius, y: center.y + Math.sin(angle) * radius });
+      clusterCenters.set(node.id, center);
+    });
+    if (local) {
+      const current = nodes.find((node) => node.id === data.currentId) ?? nodes[0];
+      const center = { x: width / 2, y: height / 2 - 8 }; positions.set(current.id, center); clusterCenters.set(current.id, center);
+      const neighbors = nodes.filter((node) => node.id !== current.id);
+      placeRing(neighbors.filter((node) => node.kind === "hub" || node.kind === "core"), center, mobile ? 68 : 82);
+      placeRing(neighbors.filter((node) => node.kind === "bridge"), center, mobile ? 103 : 116, -Math.PI / 2 + 0.22);
+      placeRing(neighbors.filter((node) => node.kind === "satellite" || node.kind === "standalone"), center, mobile ? 132 : 148, -Math.PI / 2 + 0.12);
+    } else {
+      const seriesKeys = [...new Set(nodes.map((node) => node.series).filter(Boolean))] as string[];
+      const unaffiliated = nodes.filter((node) => !node.series);
+      const islandCount = seriesKeys.length + (unaffiliated.length ? 1 : 0);
+      const columns = mobile ? 1 : Math.min(2, Math.max(1, islandCount));
+      const islandHeight = mobile ? 430 : 350; const seriesRows = Math.max(1, Math.ceil(seriesKeys.length / columns));
+      height = mobile ? seriesRows * islandHeight + (unaffiliated.length ? 150 : 0) : Math.ceil(islandCount / columns) * islandHeight;
+      const cellWidth = width / columns;
+      seriesKeys.forEach((series, index) => {
+        const center = { x: cellWidth * (index % columns + 0.5), y: islandHeight * Math.floor(index / columns) + islandHeight / 2 };
+        const cluster = nodes.filter((node) => node.series === series);
+        const hub = cluster.find((node) => node.kind === "hub"); if (hub) { positions.set(hub.id, center); clusterCenters.set(hub.id, center); }
+        const cores = cluster.filter((node) => node.kind === "core");
+        const bridges = cluster.filter((node) => node.kind === "bridge");
+        const satellites = cluster.filter((node) => node.kind === "satellite");
+        const coreRadius = mobile ? 104 : 68;
+        const bridgeRadius = mobile ? 139 : 99;
+        const satelliteRadius = Math.min(mobile ? 174 : 138, cellWidth * (mobile ? 0.45 : 0.34));
+        const coreAngles = new Map<string, number>();
+        cores.forEach((node, coreIndex) => {
+          const angle = -Math.PI / 2 + Math.PI * 2 * coreIndex / Math.max(1, cores.length);
+          coreAngles.set(node.id, angle);
+          positions.set(node.id, { x: center.x + Math.cos(angle) * coreRadius, y: center.y + Math.sin(angle) * coreRadius });
+          clusterCenters.set(node.id, center);
+        });
+        placeRing(bridges, center, bridgeRadius, -Math.PI / 2 + (cores.length > 1 ? Math.PI / cores.length : 0.45));
+        const unclustered: ClientGraphNode[] = [];
+        cores.forEach((core) => {
+          const group = satellites.filter((node) => node.clusterId === core.id);
+          const baseAngle = coreAngles.get(core.id) ?? -Math.PI / 2;
+          const step = Math.min(0.34, 1.15 / Math.max(1, group.length - 1));
+          group.forEach((node, groupIndex) => {
+            const angle = baseAngle + (groupIndex - (group.length - 1) / 2) * step;
+            const radius = satelliteRadius + (groupIndex % 2 ? 7 : -3);
+            positions.set(node.id, { x: center.x + Math.cos(angle) * radius, y: center.y + Math.sin(angle) * radius });
+            clusterCenters.set(node.id, center);
+          });
+        });
+        satellites.filter((node) => !positions.has(node.id)).forEach((node) => unclustered.push(node));
+        placeRing(unclustered, center, satelliteRadius, -Math.PI / 2 + 0.12);
+      });
+      if (unaffiliated.length) {
+        const index = seriesKeys.length;
+        const center = mobile
+          ? { x: width / 2, y: seriesRows * islandHeight + 58 }
+          : { x: cellWidth * (index % columns + 0.5), y: islandHeight * Math.floor(index / columns) + islandHeight / 2 };
+        placeRing(unaffiliated, center, unaffiliated.length === 1 ? 0 : Math.min(mobile ? 90 : 76, cellWidth * 0.22));
+      }
+    }
+    const ns = "http://www.w3.org/2000/svg"; const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("viewBox", `0 0 ${width} ${height}`); svg.setAttribute("role", "group"); svg.setAttribute("aria-label", local ? "Local note graph" : "Global note graph");
+    const hashOf = (value: string) => [...value].reduce((hash, character) => Math.imul(hash ^ character.charCodeAt(0), 16777619), 2166136261) >>> 0;
+    const edgeElements = new Map<ClientGraphEdge, SVGPathElement>(); const nodeElements = new Map<string, SVGAElement>();
+    edges.forEach((edge) => {
+      const source = positions.get(edge.source); const target = positions.get(edge.target); if (!source || !target) return;
+      const seed = hashOf(`${edge.source}:${edge.target}`); const dx = target.x - source.x; const dy = target.y - source.y; const length = Math.max(1, Math.hypot(dx, dy));
+      const bend = ((seed % 9) - 4) * 0.72; const midX = (source.x + target.x) / 2 - dy / length * bend; const midY = (source.y + target.y) / 2 + dx / length * bend;
+      const path = document.createElementNS(ns, "path"); path.setAttribute("d", `M ${source.x.toFixed(2)} ${source.y.toFixed(2)} Q ${midX.toFixed(2)} ${midY.toFixed(2)} ${target.x.toFixed(2)} ${target.y.toFixed(2)}`);
+      path.classList.add("note-graph-edge", `is-${edge.kind}`, `pressure-${seed % 3}`); edgeElements.set(edge, path); svg.append(path);
+    });
+    const radiusFor = (node: ClientGraphNode) => {
+      const weight = Math.min(1.4, Math.sqrt(Math.max(0, node.importanceScore || 0)) * 0.34);
+      const scale = mobile ? 1.16 : 1;
+      return (node.kind === "hub" ? 13 : node.kind === "core" ? 8.7 + weight : node.kind === "bridge" ? 6.7 + weight * 0.7 : node.kind === "standalone" ? 7 + weight * 0.45 : 5.2 + weight * 0.45) * scale;
+    };
+    const blobPath = (cx: number, cy: number, radius: number, seed: number, offsetX = 0.0, offsetY = 0.0) => {
+      const points = Array.from({ length: 10 }, (_, index) => {
+        const angle = Math.PI * 2 * index / 10; const wobble = 0.91 + (((seed >> (index % 16)) & 7) / 35);
+        return { x: cx + offsetX + Math.cos(angle) * radius * wobble, y: cy + offsetY + Math.sin(angle) * radius * wobble };
+      });
+      const first = points[0]; const last = points.at(-1)!; let d = `M ${((first.x + last.x) / 2).toFixed(2)} ${((first.y + last.y) / 2).toFixed(2)}`;
+      points.forEach((point, index) => { const next = points[(index + 1) % points.length]; d += ` Q ${point.x.toFixed(2)} ${point.y.toFixed(2)} ${((point.x + next.x) / 2).toFixed(2)} ${((point.y + next.y) / 2).toFixed(2)}`; });
+      return `${d} Z`;
+    };
+    nodes.forEach((node) => {
+      const point = positions.get(node.id); if (!point) return;
+      const link = document.createElementNS(ns, "a"); link.setAttribute("href", node.url); link.setAttribute("aria-label", node.title); link.dataset.nodeId = node.id;
+      link.classList.add("note-graph-node", `is-${node.kind}`); if (node.id === data.currentId) link.classList.add("is-current");
+      const title = document.createElementNS(ns, "title"); title.textContent = node.title; link.append(title);
+      const radius = radiusFor(node); const seed = hashOf(node.id);
+      if (node.kind === "hub") {
+        const echo = document.createElementNS(ns, "path"); echo.setAttribute("d", blobPath(point.x, point.y, radius + 2.1, seed + 17, 0.7, -0.45)); echo.classList.add("note-graph-node-echo"); link.append(echo);
+      }
+      const shape = document.createElementNS(ns, "path"); shape.setAttribute("d", blobPath(point.x, point.y, radius, seed)); shape.classList.add("note-graph-node-shape", `pressure-${seed % 3}`);
+      const label = document.createElementNS(ns, "text");
+      const center = clusterCenters.get(node.id) ?? point; const dx = point.x - center.x; const dy = point.y - center.y; const distance = Math.hypot(dx, dy);
+      const ux = distance ? dx / distance : 0; const uy = distance ? dy / distance : 1; const labelGap = radiusFor(node) + 10;
+      label.setAttribute("x", String(point.x + ux * labelGap)); label.setAttribute("y", String(point.y + uy * labelGap + 4));
+      label.setAttribute("text-anchor", ux < -0.28 ? "start" : ux > 0.28 ? "end" : "middle"); label.setAttribute("aria-hidden", "true"); label.textContent = node.graphLabel || node.title;
+      link.append(shape, label); nodeElements.set(node.id, link); svg.append(link);
+    });
+    const setExpandedCluster = (clusterId?: string) => {
+      if (!compactOverview) return;
+      svg.dataset.expandedCluster = clusterId || "";
+      const visibleIds = new Set<string>();
+      nodes.forEach((node) => {
+        const collapsed = node.kind === "satellite" && node.clusterId !== clusterId;
+        nodeElements.get(node.id)?.classList.toggle("is-collapsed", collapsed);
+        if (!collapsed) visibleIds.add(node.id);
+      });
+      edgeElements.forEach((element, edge) => element.classList.toggle("is-collapsed", !visibleIds.has(edge.source) || !visibleIds.has(edge.target)));
+    };
+    const fallbackActive = local ? data.currentId : undefined;
+    const activate = (id?: string) => {
+      const activeId = id || fallbackActive; const related = new Set<string>();
+      edgeElements.forEach((line, edge) => { const on = Boolean(activeId && (edge.source === activeId || edge.target === activeId)); line.classList.toggle("is-active", on); if (on) { related.add(edge.source); related.add(edge.target); } });
+      svg.classList.toggle("has-active-node", Boolean(activeId));
+      nodeElements.forEach((element, nodeId) => { element.classList.toggle("is-active", nodeId === activeId); element.classList.toggle("is-related", Boolean(activeId && related.has(nodeId) && nodeId !== activeId)); element.classList.toggle("is-dimmed", Boolean(activeId && !related.has(nodeId))); });
+      svg.dataset.activeNode = activeId || "";
+    };
+    nodeElements.forEach((element, id) => {
+      element.addEventListener("pointerenter", (event) => { if (event.pointerType !== "touch") activate(id); });
+      element.addEventListener("pointerleave", (event) => { if (event.pointerType !== "touch") activate(); });
+      element.addEventListener("focus", () => activate(id)); element.addEventListener("blur", () => activate());
+      element.addEventListener("click", (event) => {
+        const node = nodes.find((item) => item.id === id);
+        if (compactOverview && node?.kind === "core" && svg.dataset.expandedCluster !== id) {
+          event.preventDefault(); setExpandedCluster(id); activate(id); return;
+        }
+        if (window.matchMedia("(pointer: coarse)").matches && svg.dataset.activeNode !== id) { event.preventDefault(); activate(id); }
+      });
+    });
+    svg.addEventListener("click", (event) => { if (event.target === svg) { setExpandedCluster(); activate(); } }); mount.append(svg); setExpandedCluster(); activate();
+  });
+  document.addEventListener("astro:page-load", setupNoteGraphs); setupNoteGraphs();
+</script>

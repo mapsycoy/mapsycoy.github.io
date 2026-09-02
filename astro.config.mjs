@@ -5,6 +5,8 @@ import { unified } from "@astrojs/markdown-remark";
 import remarkGfm from "remark-gfm";
 import remarkDistChart from "./src/utils/remarkDistChart.mjs";
 import remarkMarkStrong from "./src/utils/remarkMarkStrong.mjs";
+import remarkWikilinks from "./src/utils/remarkWikilinks.mjs";
+import remarkAiOpinion from "./src/utils/remarkAiOpinion.mjs";
 import rehypeLinkPreviews from "./src/utils/rehypeLinkPreviews.mjs";
 import rehypeSmartTypography from "./src/utils/smartTypography.mjs";
 import rehypeNoteSections from "./src/utils/rehypeNoteSections.mjs";
@@ -66,7 +68,7 @@ export default defineConfig({
   ],
   markdown: {
     processor: unified({
-      remarkPlugins: [remarkGfm, remarkMarkStrong, remarkDistChart],
+      remarkPlugins: [remarkAiOpinion, remarkWikilinks, remarkGfm, remarkMarkStrong, remarkDistChart],
       rehypePlugins: [rehypeSmartTypography, rehypeLinkPreviews, rehypeNoteSections],
     }),
   },

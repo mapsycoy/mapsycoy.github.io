@@ -144,3 +144,6 @@ vite.config.ts.timestamp-*
 
 # Astro
 .astro/
+
+# Local Obsidian Vault settings (src/content/notes can be opened directly as a Vault)
+src/content/notes/.obsidian/

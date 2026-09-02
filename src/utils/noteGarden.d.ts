@@ -1,0 +1,11 @@
+export type NoteSourceRecord = { id: string; filename?: string; title: string; status: string; body: string };
+export function normalizeNoteKey(value?: string): string;
+export function titleFromNoteId(id: string): string;
+export function noteIdFromRelativePath(relativePath: string): string;
+export function splitWikilink(raw: string): { target: string; heading: string; alias: string };
+export function extractWikilinks(markdown?: string): Array<{ target: string; heading: string; alias: string; raw: string }>;
+export function splitAiOpinionBlocks(markdown?: string): { userContent: string; aiOpinions: string[] };
+export function extractAiOpinionWikilinks(markdown?: string): Array<{ target: string; heading: string; alias: string; raw: string }>;
+export function extractWikilinksByLayer(markdown?: string): { user: ReturnType<typeof extractWikilinks>; ai: ReturnType<typeof extractAiOpinionWikilinks> };
+export function createNoteResolver(records: NoteSourceRecord[]): (target: string) => NoteSourceRecord | undefined;
+export function noteHeadingSlug(heading: string): string;

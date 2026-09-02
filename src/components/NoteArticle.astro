@@ -3,7 +3,9 @@ import { render } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import TocRail from "./TocRail.astro";
 import BlogSeriesNav from "./BlogSeriesNav.astro";
-import { formatNoteDate, getNoteStatusLabel, type NoteEntry } from "../data/notes";
+import NoteGraph from "./NoteGraph.astro";
+import { formatNoteDate, getNoteStatusLabel, getNoteTitle, type NoteEntry } from "../data/notes";
+import { createNoteGraph } from "../data/noteGraph";
 import { getNotes } from "../data/notes";
 import { getBlogPosts } from "../data/blog";
 import { getSeriesEntryPosition } from "../data/seriesEntries";
@@ -18,9 +20,10 @@ type Props = {
 const { note, lang } = Astro.props;
 const { Content, headings } = await render(note);
 const tocHeadings = headings.filter((heading) => heading.depth === 2);
-const { title, titleEn, date, updated, status, tags } = note.data;
-const localizedTitle = lang === "en" ? titleEn : title;
+const { date, updated, status, tags } = note.data;
+const localizedTitle = getNoteTitle(note, lang);
 const [allPosts, allNotes] = await Promise.all([getBlogPosts(), getNotes()]);
+const graph = createNoteGraph(allNotes, lang);
 const seriesPosition = getSeriesEntryPosition(allPosts, allNotes, { kind: "note", item: note });
 const copy = lang === "ko"
   ? {
@@ -40,14 +43,14 @@ const copy = lang === "ko"
   description={copy.description}
   lang={lang}
   ogType="article"
-  publishedTime={date.toISOString()}
+  publishedTime={date?.toISOString()}
   modifiedTime={updated?.toISOString()}
 >
   <article class="note-post" data-pagefind-body>
     <div class="pagefind-meta" hidden aria-hidden="true">
       <span data-pagefind-filter="Kind:Note"></span>
       <span data-pagefind-meta={"status:" + status}></span>
-      <span data-pagefind-meta={`date:${(updated ?? date).toISOString()}`}></span>
+      {(updated ?? date) && <span data-pagefind-meta={`date:${(updated ?? date)?.toISOString()}`}></span>}
       <span data-pagefind-meta={`tags:${tags.join(" ")}`}></span>
       {seriesPosition && <span data-pagefind-filter={`Series:${localize(series[seriesPosition.seriesId].title, lang)}`}></span>}
       {seriesPosition && <span data-pagefind-meta={`series:Series ${formatSeriesNumber(series[seriesPosition.seriesId].number)} · ${seriesPosition.index + 1}/${seriesPosition.entries.length}`}></span>}
@@ -56,8 +59,7 @@ const copy = lang === "ko"
     <header class="note-header">
       <div class="note-header-meta">
         <span class={`note-status note-status-${status}`}>{getNoteStatusLabel(status, lang)}</span>
-        <span aria-hidden="true">·</span>
-        <time datetime={date.toISOString()}>{formatNoteDate(date, lang)}</time>
+        {date && <><span aria-hidden="true">·</span><time datetime={date.toISOString()}>{formatNoteDate(date, lang)}</time></>}
         {updated && (
           <>
             <span aria-hidden="true">·</span>
@@ -77,6 +79,7 @@ const copy = lang === "ko"
       </div>
     </div>
 
+    <NoteGraph graph={graph} mode="local" currentId={note.id} lang={lang} />
     <footer class="note-footer">
       {tags.length > 0 && (
         <ul class="work-tags" aria-label={copy.tags}>

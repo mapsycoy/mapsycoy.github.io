@@ -158,20 +158,23 @@ const works = defineCollection({
 const notes = defineCollection({
   loader: glob({ pattern: "**/[^_]*.md", base: "./src/content/notes" }),
   schema: z.object({
-    title: z.string(),
-    titleEn: z.string(),
-    date: z.coerce.date(),
+    title: z.string().optional(),
+    titleEn: z.string().optional(),
+    graphLabel: z.string().optional(),
+    graphLabelEn: z.string().optional(),
+    date: z.coerce.date().optional(),
     updated: z.coerce.date().optional(),
     status: z.enum(["draft", "working", "settled"]).default("working"),
     tags: z.array(z.string()).default([]),
     series: seriesIdSchema.optional(),
     seriesOrder: z.number().int().positive().optional(),
+    seriesHub: z.boolean().default(false),
   }).superRefine((data, context) => {
-    if (data.series && data.seriesOrder === undefined) {
-      context.addIssue({ code: "custom", path: ["seriesOrder"], message: "seriesOrder is required when series is set." });
-    }
     if (!data.series && data.seriesOrder !== undefined) {
       context.addIssue({ code: "custom", path: ["series"], message: "series is required when seriesOrder is set." });
+    }
+    if (!data.series && data.seriesHub) {
+      context.addIssue({ code: "custom", path: ["series"], message: "series is required when seriesHub is set." });
     }
   }),
 });
