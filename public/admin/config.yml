@@ -59,8 +59,6 @@ collections:
     fields:
       - { name: title, label: 제목, widget: string, required: false, hint: 비워 두면 파일명을 제목으로 사용합니다. }
       - { name: titleEn, label: 영문 제목, widget: string, required: false }
-      - { name: graphLabel, label: 그래프 축약 제목, widget: string, required: false, hint: 비워 두면 본문 제목을 사용합니다. }
-      - { name: graphLabelEn, label: 그래프 영문 축약 제목, widget: string, required: false }
       - { name: date, label: 작성일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD, required: false }
       - { name: updated, label: 수정일, widget: datetime, date_format: YYYY-MM-DD, time_format: false, format: YYYY-MM-DD, required: false }
       - { name: status, label: 상태, widget: select, options: [draft, working, settled], default: working }

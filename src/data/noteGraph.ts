@@ -1,6 +1,8 @@
 import type { NoteEntry } from "./notes";
 import { getNoteTitle } from "./notes";
 import { createNoteResolver, extractWikilinks } from "../utils/noteGarden.mjs";
+import { withLanguage } from "../utils/i18n";
+import graphLabelCache from "./note-graph-labels.json";
 
 export type NoteGraphNode = {
   id: string;
@@ -25,6 +27,12 @@ export type NoteGraphData = {
   outgoing: Record<string, string[]>;
   backlinks: Record<string, string[]>;
   unresolved: Array<{ source: string; target: string }>;
+};
+
+const noteTitleHash = (title: string, titleEn = "") => {
+  let hash = 2166136261;
+  for (const character of `${title}\u0000${titleEn}`) hash = Math.imul(hash ^ character.charCodeAt(0), 16777619);
+  return (hash >>> 0).toString(36);
 };
 
 export const createNoteGraph = (notes: NoteEntry[], lang: "ko" | "en" = "ko"): NoteGraphData => {
@@ -151,13 +159,19 @@ export const createNoteGraph = (notes: NoteEntry[], lang: "ko" | "en" = "ko"): N
     autoKind.set(note.id, "standalone");
     importance.set(note.id, conceptualNeighbors.get(note.id)?.size ?? 0);
   }
-  const prefix = lang === "ko" ? "" : `/${lang}`;
-  const nodes = publicNotes.map((note) => ({
+  const nodes = publicNotes.map((note) => {
+    const titleKo = getNoteTitle(note, "ko");
+    const titleEn = getNoteTitle(note, "en");
+    const cached = (graphLabelCache.entries as Record<string, { sourceHash: string; ko: string; en: string }>)[note.id];
+    const graphLabel = cached?.sourceHash === noteTitleHash(titleKo, titleEn)
+      ? (lang === "ko" ? cached.ko : cached.en)
+      : getNoteTitle(note, lang);
+    return ({
     id: note.id,
     title: getNoteTitle(note, lang),
-    graphLabel: (lang === "en" ? note.data.graphLabelEn : note.data.graphLabel) ?? note.data.graphLabel ?? getNoteTitle(note, lang),
+    graphLabel,
     slug: note.id,
-    url: `${prefix}/blog/notes/${note.id.split("/").map(encodeURIComponent).join("/")}/`,
+    url: withLanguage(lang, `/blog/notes/${note.id.split("/").map(encodeURIComponent).join("/")}/`),
     date: note.data.date?.toISOString(),
     updated: note.data.updated?.toISOString(),
     tags: note.data.tags,
@@ -166,7 +180,8 @@ export const createNoteGraph = (notes: NoteEntry[], lang: "ko" | "en" = "ko"): N
     kind: autoKind.get(note.id) ?? "standalone",
     clusterId: autoCluster.get(note.id),
     importanceScore: importance.get(note.id) ?? 0,
-  }));
+    });
+  });
 
   return { nodes, edges, outgoing, backlinks, unresolved };
 };

@@ -160,8 +160,6 @@ const notes = defineCollection({
   schema: z.object({
     title: z.string().optional(),
     titleEn: z.string().optional(),
-    graphLabel: z.string().optional(),
-    graphLabelEn: z.string().optional(),
     date: z.coerce.date().optional(),
     updated: z.coerce.date().optional(),
     status: z.enum(["draft", "working", "settled"]).default("working"),

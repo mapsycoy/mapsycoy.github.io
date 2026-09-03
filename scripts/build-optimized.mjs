@@ -2,12 +2,14 @@ import path from "node:path";
 import { existsSync } from "node:fs";
 import { spawnSync } from "node:child_process";
 import { deleteOriginalImages, prepareWebpImages } from "./optimize-images.mjs";
+import { generateNoteGraphLabels } from "./generate-note-graph-labels.mjs";
 
 const rootDir = process.cwd();
 const astroBin = path.join(rootDir, "node_modules", "astro", "bin", "astro.mjs");
 const pagefindBin = path.join(rootDir, "node_modules", "pagefind", "lib", "runner", "bin.cjs");
 const distDir = path.join(rootDir, "dist");
 
+await generateNoteGraphLabels();
 const { plan } = await prepareWebpImages();
 const build = spawnSync(process.execPath, [astroBin, "build"], {
   cwd: rootDir,

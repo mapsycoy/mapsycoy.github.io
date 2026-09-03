@@ -1,8 +1,6 @@
 ---
 title: 어린이 철학, P4C
 titleEn: Philosophy for Children, P4C
-graphLabel: P4C
-graphLabelEn: P4C
 date: 2026-08-23
 status: working
 tags:

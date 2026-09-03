@@ -6,6 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "generate:halftone": "node scripts/generate-halftone-fallback.mjs",
+    "generate:note-labels": "node scripts/generate-note-graph-labels.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "build": "node scripts/build-optimized.mjs",
     "preview": "astro preview"

@@ -1,8 +1,6 @@
 ---
 title: 연구 데이터와 통계 입문 — 작품 앞 체류시간으로 시작하기
 titleEn: Research Data and Statistics - Starting with Artwork Dwell Time
-graphLabel: 작품 체류시간
-graphLabelEn: Artwork Dwell Time
 date: 2026-08-15
 updated: 2026-08-15
 status: settled

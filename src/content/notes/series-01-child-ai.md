@@ -1,8 +1,6 @@
 ---
 title: 아이 곁의 AI, 무엇을 남겨둘 것인가
 titleEn: AI Beside the Child — What Should Be Left for the Child to Do?
-graphLabel: 아이 곁의 AI
-graphLabelEn: AI Beside the Child
 date: 2026-09-02
 status: working
 tags:

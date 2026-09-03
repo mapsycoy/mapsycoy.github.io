@@ -45,8 +45,9 @@ const payload = JSON.stringify({ nodes, edges, currentId }).replace(/</g, "\\u00
     mount.dataset.ready = "true";
     const width = Math.max(320, Math.round(mount.getBoundingClientRect().width || 920));
     const mobile = width < 640; const local = mount.dataset.mode === "local";
-    const compactOverview = !local && (mobile || nodes.length > 28);
-    const positions = new Map<string, GraphPoint>(); const clusterCenters = new Map<string, GraphPoint>(); let height = local ? (mobile ? 330 : 350) : 420;
+    const compactOverview = false;
+    const hashOf = (value: string) => [...value].reduce((hash, character) => Math.imul(hash ^ character.charCodeAt(0), 16777619), 2166136261) >>> 0;
+    const positions = new Map<string, GraphPoint>(); const clusterCenters = new Map<string, GraphPoint>(); let height = local ? 400 : 420;
     const placeRing = (items: ClientGraphNode[], center: GraphPoint, radius: number, start = -Math.PI / 2) => items.forEach((node, index) => {
       const angle = start + Math.PI * 2 * index / Math.max(1, items.length);
       positions.set(node.id, { x: center.x + Math.cos(angle) * radius, y: center.y + Math.sin(angle) * radius });
@@ -54,63 +55,58 @@ const payload = JSON.stringify({ nodes, edges, currentId }).replace(/</g, "\\u00
     });
     if (local) {
       const current = nodes.find((node) => node.id === data.currentId) ?? nodes[0];
-      const center = { x: width / 2, y: height / 2 - 8 }; positions.set(current.id, center); clusterCenters.set(current.id, center);
+      const center = { x: width / 2, y: height / 2 - 30 }; positions.set(current.id, center); clusterCenters.set(current.id, center);
       const neighbors = nodes.filter((node) => node.id !== current.id);
       placeRing(neighbors.filter((node) => node.kind === "hub" || node.kind === "core"), center, mobile ? 68 : 82);
       placeRing(neighbors.filter((node) => node.kind === "bridge"), center, mobile ? 103 : 116, -Math.PI / 2 + 0.22);
       placeRing(neighbors.filter((node) => node.kind === "satellite" || node.kind === "standalone"), center, mobile ? 132 : 148, -Math.PI / 2 + 0.12);
     } else {
-      const seriesKeys = [...new Set(nodes.map((node) => node.series).filter(Boolean))] as string[];
-      const unaffiliated = nodes.filter((node) => !node.series);
-      const islandCount = seriesKeys.length + (unaffiliated.length ? 1 : 0);
-      const columns = mobile ? 1 : Math.min(2, Math.max(1, islandCount));
-      const islandHeight = mobile ? 430 : 350; const seriesRows = Math.max(1, Math.ceil(seriesKeys.length / columns));
-      height = mobile ? seriesRows * islandHeight + (unaffiliated.length ? 150 : 0) : Math.ceil(islandCount / columns) * islandHeight;
-      const cellWidth = width / columns;
-      seriesKeys.forEach((series, index) => {
-        const center = { x: cellWidth * (index % columns + 0.5), y: islandHeight * Math.floor(index / columns) + islandHeight / 2 };
-        const cluster = nodes.filter((node) => node.series === series);
-        const hub = cluster.find((node) => node.kind === "hub"); if (hub) { positions.set(hub.id, center); clusterCenters.set(hub.id, center); }
-        const cores = cluster.filter((node) => node.kind === "core");
-        const bridges = cluster.filter((node) => node.kind === "bridge");
-        const satellites = cluster.filter((node) => node.kind === "satellite");
-        const coreRadius = mobile ? 104 : 68;
-        const bridgeRadius = mobile ? 139 : 99;
-        const satelliteRadius = Math.min(mobile ? 174 : 138, cellWidth * (mobile ? 0.45 : 0.34));
-        const coreAngles = new Map<string, number>();
-        cores.forEach((node, coreIndex) => {
-          const angle = -Math.PI / 2 + Math.PI * 2 * coreIndex / Math.max(1, cores.length);
-          coreAngles.set(node.id, angle);
-          positions.set(node.id, { x: center.x + Math.cos(angle) * coreRadius, y: center.y + Math.sin(angle) * coreRadius });
-          clusterCenters.set(node.id, center);
-        });
-        placeRing(bridges, center, bridgeRadius, -Math.PI / 2 + (cores.length > 1 ? Math.PI / cores.length : 0.45));
-        const unclustered: ClientGraphNode[] = [];
-        cores.forEach((core) => {
-          const group = satellites.filter((node) => node.clusterId === core.id);
-          const baseAngle = coreAngles.get(core.id) ?? -Math.PI / 2;
-          const step = Math.min(0.34, 1.15 / Math.max(1, group.length - 1));
-          group.forEach((node, groupIndex) => {
-            const angle = baseAngle + (groupIndex - (group.length - 1) / 2) * step;
-            const radius = satelliteRadius + (groupIndex % 2 ? 7 : -3);
-            positions.set(node.id, { x: center.x + Math.cos(angle) * radius, y: center.y + Math.sin(angle) * radius });
-            clusterCenters.set(node.id, center);
-          });
-        });
-        satellites.filter((node) => !positions.has(node.id)).forEach((node) => unclustered.push(node));
-        placeRing(unclustered, center, satelliteRadius, -Math.PI / 2 + 0.12);
+      height = mobile
+        ? Math.max(470, Math.min(610, width * 1.48))
+        : Math.max(360, Math.min(470, width * 0.48));
+      const marginX = mobile ? 34 : 54; const marginTop = mobile ? 38 : 42; const marginBottom = mobile ? 90 : 78;
+      const center = { x: width / 2, y: marginTop + (height - marginTop - marginBottom) / 2 };
+      const area = Math.max(1, (width - marginX * 2) * (height - marginTop - marginBottom));
+      const ideal = Math.sqrt(area / Math.max(1, nodes.length)) * 0.82;
+      const points = new Map<string, { x: number; y: number; vx: number; vy: number }>();
+      const goldenAngle = Math.PI * (3 - Math.sqrt(5));
+      nodes.forEach((node, index) => {
+        const seed = hashOf(node.id); const angle = index * goldenAngle + (seed % 37) / 37;
+        const progress = Math.sqrt((index + 0.7) / Math.max(1, nodes.length));
+        const spreadX = (width / 2 - marginX) * progress; const spreadY = ((height - marginTop - marginBottom) / 2) * progress;
+        const hub = node.kind === "hub";
+        points.set(node.id, { x: hub ? center.x : center.x + Math.cos(angle) * spreadX, y: hub ? center.y : center.y + Math.sin(angle) * spreadY, vx: 0, vy: 0 });
       });
-      if (unaffiliated.length) {
-        const index = seriesKeys.length;
-        const center = mobile
-          ? { x: width / 2, y: seriesRows * islandHeight + 58 }
-          : { x: cellWidth * (index % columns + 0.5), y: islandHeight * Math.floor(index / columns) + islandHeight / 2 };
-        placeRing(unaffiliated, center, unaffiliated.length === 1 ? 0 : Math.min(mobile ? 90 : 76, cellWidth * 0.22));
+      for (let iteration = 0; iteration < 240; iteration += 1) {
+        const temperature = 9 * Math.pow(1 - iteration / 240, 1.7) + 0.15;
+        const pointList = nodes.map((node) => ({ node, point: points.get(node.id)! }));
+        for (let leftIndex = 0; leftIndex < pointList.length; leftIndex += 1) {
+          for (let rightIndex = leftIndex + 1; rightIndex < pointList.length; rightIndex += 1) {
+            const left = pointList[leftIndex].point; const right = pointList[rightIndex].point;
+            let dx = left.x - right.x; let dy = left.y - right.y; let distance = Math.max(1, Math.hypot(dx, dy));
+            const force = Math.min(ideal * 1.8, (ideal * ideal) / distance) * 0.055;
+            dx /= distance; dy /= distance; left.vx += dx * force; left.vy += dy * force; right.vx -= dx * force; right.vy -= dy * force;
+          }
+        }
+        edges.forEach((edge) => {
+          const source = points.get(edge.source); const target = points.get(edge.target); if (!source || !target) return;
+          let dx = target.x - source.x; let dy = target.y - source.y; const distance = Math.max(1, Math.hypot(dx, dy));
+          const desired = ideal * (edge.kind === "series" ? 1.3 : 0.92); const force = (distance - desired) * (edge.kind === "series" ? 0.006 : 0.014);
+          dx /= distance; dy /= distance; source.vx += dx * force; source.vy += dy * force; target.vx -= dx * force; target.vy -= dy * force;
+        });
+        pointList.forEach(({ node, point }) => {
+          const gravity = node.kind === "hub" ? 0.045 : 0.006;
+          point.vx += (center.x - point.x) * gravity; point.vy += (center.y - point.y) * gravity;
+          const speed = Math.max(1, Math.hypot(point.vx, point.vy)); const step = Math.min(temperature, speed);
+          point.x += point.vx / speed * step; point.y += point.vy / speed * step;
+          point.x = Math.max(marginX, Math.min(width - marginX, point.x)); point.y = Math.max(marginTop, Math.min(height - marginBottom, point.y));
+          point.vx *= 0.72; point.vy *= 0.72;
+        });
       }
+      points.forEach((point, id) => { positions.set(id, { x: point.x, y: point.y }); clusterCenters.set(id, center); });
     }
     const ns = "http://www.w3.org/2000/svg"; const svg = document.createElementNS(ns, "svg");
     svg.setAttribute("viewBox", `0 0 ${width} ${height}`); svg.setAttribute("role", "group"); svg.setAttribute("aria-label", local ? "Local note graph" : "Global note graph");
-    const hashOf = (value: string) => [...value].reduce((hash, character) => Math.imul(hash ^ character.charCodeAt(0), 16777619), 2166136261) >>> 0;
     const edgeElements = new Map<ClientGraphEdge, SVGPathElement>(); const nodeElements = new Map<string, SVGAElement>();
     edges.forEach((edge) => {
       const source = positions.get(edge.source); const target = positions.get(edge.target); if (!source || !target) return;
@@ -142,13 +138,29 @@ const payload = JSON.stringify({ nodes, edges, currentId }).replace(/</g, "\\u00
       if (node.kind === "hub") {
         const echo = document.createElementNS(ns, "path"); echo.setAttribute("d", blobPath(point.x, point.y, radius + 2.1, seed + 17, 0.7, -0.45)); echo.classList.add("note-graph-node-echo"); link.append(echo);
       }
+      const hitTarget = document.createElementNS(ns, "circle"); hitTarget.setAttribute("cx", String(point.x)); hitTarget.setAttribute("cy", String(point.y)); hitTarget.setAttribute("r", String(Math.max(radius + 7, mobile ? 18 : 14))); hitTarget.classList.add("note-graph-node-hit-target");
       const shape = document.createElementNS(ns, "path"); shape.setAttribute("d", blobPath(point.x, point.y, radius, seed)); shape.classList.add("note-graph-node-shape", `pressure-${seed % 3}`);
       const label = document.createElementNS(ns, "text");
-      const center = clusterCenters.get(node.id) ?? point; const dx = point.x - center.x; const dy = point.y - center.y; const distance = Math.hypot(dx, dy);
-      const ux = distance ? dx / distance : 0; const uy = distance ? dy / distance : 1; const labelGap = radiusFor(node) + 10;
-      label.setAttribute("x", String(point.x + ux * labelGap)); label.setAttribute("y", String(point.y + uy * labelGap + 4));
-      label.setAttribute("text-anchor", "middle"); label.setAttribute("aria-hidden", "true"); label.textContent = node.graphLabel || node.title;
-      link.append(shape, label); nodeElements.set(node.id, link); svg.append(link);
+      const labelText = node.graphLabel || node.title; const fontSize = mobile ? 9.5 : 10; const lineHeight = fontSize * 1.28;
+      const characterWidth = (character: string) => /^[\u0000-\u00ff]$/.test(character) ? fontSize * (character === " " ? 0.34 : 0.58) : fontSize;
+      const maximumLineWidth = mobile ? 56 : 68; const labelLines: string[] = []; let currentLine = ""; let currentWidth = 0;
+      Array.from(labelText).forEach((character) => {
+        const nextWidth = currentWidth + characterWidth(character);
+        if (currentLine && nextWidth > maximumLineWidth) {
+          labelLines.push(currentLine.trimEnd()); currentLine = character.trimStart(); currentWidth = currentLine ? characterWidth(character) : 0;
+        } else { currentLine += character; currentWidth = nextWidth; }
+      });
+      if (currentLine) labelLines.push(currentLine.trimEnd());
+      const estimatedWidth = Math.max(...labelLines.map((line) => Array.from(line).reduce((sum, character) => sum + characterWidth(character), 0)));
+      const halfLabelWidth = Math.min(width / 2 - 8, estimatedWidth / 2 + 3);
+      const labelX = Math.max(halfLabelWidth + 5, Math.min(width - halfLabelWidth - 5, point.x));
+      const labelY = point.y + radius + fontSize + 7;
+      label.setAttribute("x", String(labelX)); label.setAttribute("y", String(labelY));
+      label.setAttribute("text-anchor", "middle"); label.setAttribute("aria-hidden", "true");
+      labelLines.forEach((line, lineIndex) => {
+        const tspan = document.createElementNS(ns, "tspan"); tspan.setAttribute("x", String(labelX)); tspan.setAttribute("dy", lineIndex === 0 ? "0" : String(lineHeight)); tspan.textContent = line; label.append(tspan);
+      });
+      link.append(hitTarget, shape, label); nodeElements.set(node.id, link); svg.append(link);
     });
     const setExpandedCluster = (clusterId?: string) => {
       if (!compactOverview) return;
@@ -169,6 +181,30 @@ const payload = JSON.stringify({ nodes, edges, currentId }).replace(/</g, "\\u00
       nodeElements.forEach((element, nodeId) => { element.classList.toggle("is-active", nodeId === activeId); element.classList.toggle("is-related", Boolean(activeId && related.has(nodeId) && nodeId !== activeId)); element.classList.toggle("is-dimmed", Boolean(activeId && !related.has(nodeId))); });
       svg.dataset.activeNode = activeId || "";
     };
+    const applyGraphSearch = (matchIds: string[]) => {
+      if (local) return;
+      const matches = new Set(matchIds.filter((id) => nodeElements.has(id)));
+      const related = new Set<string>();
+      edges.forEach((edge) => {
+        if (matches.has(edge.source) || matches.has(edge.target)) {
+          related.add(edge.source); related.add(edge.target);
+        }
+      });
+      svg.classList.toggle("has-search-results", matches.size > 0);
+      nodeElements.forEach((element, id) => {
+        element.classList.toggle("is-search-match", matches.has(id));
+        element.classList.toggle("is-search-related", !matches.has(id) && related.has(id));
+        element.classList.toggle("is-search-dimmed", matches.size > 0 && !matches.has(id) && !related.has(id));
+        if (matches.size > 0 && related.has(id)) element.classList.remove("is-collapsed");
+      });
+      edgeElements.forEach((element, edge) => {
+        const connected = matches.has(edge.source) || matches.has(edge.target);
+        element.classList.toggle("is-search-related", connected);
+        element.classList.toggle("is-search-dimmed", matches.size > 0 && !connected);
+        if (connected) element.classList.remove("is-collapsed");
+      });
+      if (!matches.size) setExpandedCluster();
+    };
     nodeElements.forEach((element, id) => {
       element.addEventListener("pointerenter", (event) => { if (event.pointerType !== "touch") activate(id); });
       element.addEventListener("pointerleave", (event) => { if (event.pointerType !== "touch") activate(); });
@@ -181,7 +217,31 @@ const payload = JSON.stringify({ nodes, edges, currentId }).replace(/</g, "\\u00
         if (window.matchMedia("(pointer: coarse)").matches && svg.dataset.activeNode !== id) { event.preventDefault(); activate(id); }
       });
     });
-    svg.addEventListener("click", (event) => { if (event.target === svg) { setExpandedCluster(); activate(); } }); mount.append(svg); setExpandedCluster(); activate();
+    svg.addEventListener("click", (event) => { if (event.target === svg) { setExpandedCluster(); activate(); } });
+    if (!local) {
+      document.addEventListener("notes-graph-search", ((event: CustomEvent<{ matchIds?: string[] }>) => {
+        applyGraphSearch(event.detail?.matchIds ?? []);
+      }) as EventListener);
+    }
+    mount.append(svg); setExpandedCluster(); activate();
+    if (!mount.dataset.resizeBound && typeof ResizeObserver !== "undefined") {
+      mount.dataset.resizeBound = "true";
+      let observedWidth = width;
+      let observedMobile = mobile;
+      let resizeTimer = 0;
+      new ResizeObserver((entries) => {
+        const nextWidth = Math.max(320, Math.round(entries[0]?.contentRect.width || observedWidth));
+        const nextMobile = nextWidth < 640;
+        if (Math.abs(nextWidth - observedWidth) < 48 && nextMobile === observedMobile) return;
+        observedWidth = nextWidth; observedMobile = nextMobile;
+        window.clearTimeout(resizeTimer);
+        resizeTimer = window.setTimeout(() => {
+          mount.querySelector("svg")?.remove();
+          delete mount.dataset.ready;
+          setupNoteGraphs();
+        }, 120);
+      }).observe(mount);
+    }
   });
   document.addEventListener("astro:page-load", setupNoteGraphs); setupNoteGraphs();
 </script>

@@ -1,8 +1,6 @@
 ---
 title: 철학적 탐구공동체
 titleEn: Community of Philosophical Inquiry
-graphLabel: 탐구공동체
-graphLabelEn: Inquiry Community
 date: 2026-09-02
 status: working
 tags:

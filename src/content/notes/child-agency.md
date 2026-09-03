@@ -1,8 +1,6 @@
 ---
 title: 아동의 주체성
 titleEn: Child Agency
-graphLabel: 아동의 주체성
-graphLabelEn: Child Agency
 date: 2026-09-02
 status: working
 tags:

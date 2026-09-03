@@ -1,8 +1,6 @@
 ---
 title: 노력을 인정하고 되돌려주는 피드백
 titleEn: Feedback That Recognizes and Returns Effort
-graphLabel: 노력의 피드백
-graphLabelEn: Effort Feedback
 date: 2026-09-02
 status: working
 tags:

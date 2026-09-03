@@ -9,164 +9,130 @@ const copy = lang === "ko"
       placeholder: "노트 검색",
       clear: "지우기",
       searching: "검색 중…",
-      result: "개 결과",
-      empty: "검색 결과가 없습니다.",
-      more: "더 보기",
+      result: "개 노트",
+      empty: "일치하는 노트가 없습니다.",
     }
   : {
       label: "Search study notes",
       placeholder: "Search notes",
       clear: "Clear",
       searching: "Searching…",
-      result: " results",
+      result: " notes",
       empty: "No matching notes.",
-      more: "Load more",
     };
 ---
 
-<section class="notes-search" aria-label={copy.label} data-notes-search>
+<section class="notes-search notes-graph-search" aria-label={copy.label} data-notes-search>
   <form class="notes-search-form" role="search">
     <label class="sr-only" for="notes-search-input">{copy.label}</label>
     <div class="blog-search-input-wrap notes-search-input-wrap">
       <button class="blog-search-submit notes-search-submit" type="submit" aria-label={copy.label}>
         <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6" /><path d="m15.5 15.5 4 4" /></svg>
       </button>
-      <input id="notes-search-input" class="blog-search-input notes-search-input" type="search" placeholder={copy.placeholder} autocomplete="off" />
+      <input id="notes-search-input" class="blog-search-input notes-search-input" type="search" placeholder={copy.placeholder} autocomplete="off" aria-describedby="notes-search-status" />
       <button class="blog-search-clear notes-search-clear" type="button" hidden>{copy.clear}</button>
     </div>
   </form>
-  <p class="notes-search-status" aria-live="polite"></p>
-  <ol class="notes-search-results" hidden></ol>
-  <button class="notes-search-more" type="button" hidden>{copy.more}</button>
+  <p id="notes-search-status" class="notes-search-status" aria-live="polite"></p>
 </section>
 
 <script is:inline define:vars={{ copy }}>
   (() => {
-    const PAGE_SIZE = 12;
-
     const setupNotesSearch = async () => {
       const mount = document.querySelector("[data-notes-search]");
-      const archive = document.querySelector("[data-notes-archive]");
-      if (!mount || !archive || mount.dataset.ready) return;
+      const graphMount = document.querySelector('[data-note-graph][data-mode="global"]');
+      if (!mount || !graphMount || mount.dataset.ready) return;
       mount.dataset.ready = "loading";
 
       const form = mount.querySelector(".notes-search-form");
       const input = mount.querySelector(".notes-search-input");
       const clear = mount.querySelector(".notes-search-clear");
       const status = mount.querySelector(".notes-search-status");
-      const resultsRoot = mount.querySelector(".notes-search-results");
-      const more = mount.querySelector(".notes-search-more");
+      const dataNode = graphMount.querySelector('script[type="application/json"]');
+      if (!form || !input || !clear || !status || !dataNode) return;
+
+      let graphData;
+      try { graphData = JSON.parse(dataNode.textContent || "{}"); } catch { return; }
+      const nodes = graphData.nodes || [];
       let pagefind;
-      let results = [];
-      let visibleCount = PAGE_SIZE;
+      let matches = [];
       let searchId = 0;
       let debounceTimer;
 
-      const escapeHtml = (value = "") => String(value).replace(/[&<>"']/g, (character) => ({
-        "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#039;"
-      })[character]);
-
-      const showArchive = () => {
-        archive.hidden = false;
-        archive.querySelectorAll("[data-note-row]").forEach((row) => { row.hidden = false; });
-        resultsRoot.hidden = true;
-        resultsRoot.innerHTML = "";
-        status.textContent = "";
-        more.hidden = true;
+      const normalizePath = (value = "") => {
+        try {
+          const path = new URL(value, window.location.origin).pathname;
+          return path.replace(/^\/(ko|en)(?=\/)/, "").replace(/\/+$/, "") || "/";
+        } catch {
+          return String(value).replace(/^\/(ko|en)(?=\/)/, "").replace(/\/+$/, "") || "/";
+        }
       };
-
-      const runLocalSearch = (term) => {
-        const normalizedTerm = term.toLocaleLowerCase();
-        let matches = 0;
-        archive.hidden = false;
-        archive.querySelectorAll("[data-note-row]").forEach((row) => {
-          const matched = row.dataset.searchText.includes(normalizedTerm);
-          row.hidden = !matched;
-          if (matched) matches += 1;
-        });
-        resultsRoot.hidden = true;
-        more.hidden = true;
-        status.textContent = matches ? matches + copy.result : copy.empty;
+      const nodeByPath = new Map(nodes.map((node) => [normalizePath(node.url), node]));
+      const dispatchMatches = (term, matchedNodes) => {
+        matches = matchedNodes;
+        document.dispatchEvent(new CustomEvent("notes-graph-search", {
+          detail: {
+            query: term,
+            matchIds: matchedNodes.map((node) => node.id),
+            primaryUrl: matchedNodes[0]?.url || "",
+          },
+        }));
+        status.textContent = !term ? "" : matchedNodes.length ? matchedNodes.length + copy.result : copy.empty;
       };
-
-      const renderResults = async () => {
-        const currentSearchId = searchId;
-        const data = await Promise.all(results.slice(0, visibleCount).map((result) => result.data()));
-        if (currentSearchId !== searchId) return;
-
-        resultsRoot.innerHTML = data.map((item) => {
-          const title = escapeHtml(item.meta?.title || item.url);
-          const date = escapeHtml(String(item.meta?.date || "").slice(0, 10));
-          const noteStatus = escapeHtml(item.meta?.status || "");
-          const noteTags = escapeHtml(item.meta?.tags || "");
-          const metadata = [date, noteStatus].filter(Boolean).join(" · ");
-          const visibleMetadata = [metadata, noteTags].filter(Boolean).join(" \u00b7 ");
-          return '<li><a href="' + escapeHtml(item.url) + '"><span class="notes-search-result-title">' + title + '</span>' +
-            (visibleMetadata ? '<span class="notes-search-result-meta">' + visibleMetadata + '</span>' : '') +
-            '<span class="notes-search-result-excerpt">' + (item.excerpt || '') + '</span></a></li>';
-        }).join("");
-
-        resultsRoot.hidden = false;
-        more.hidden = visibleCount >= results.length;
+      const localMatches = (term) => {
+        const normalized = term.toLocaleLowerCase();
+        return nodes.filter((node) =>
+          [node.title, node.graphLabel, ...(node.tags || [])]
+            .join(" ")
+            .toLocaleLowerCase()
+            .includes(normalized)
+        );
       };
-
       const runSearch = async () => {
         const term = input.value.trim();
         clear.hidden = !term;
         const currentSearchId = ++searchId;
-        visibleCount = PAGE_SIZE;
-
         if (!term) {
-          results = [];
-          showArchive();
+          dispatchMatches("", []);
           return;
         }
 
-        if (!pagefind) {
-          runLocalSearch(term);
-          return;
-        }
+        const immediate = localMatches(term);
+        dispatchMatches(term, immediate);
+        if (!pagefind) return;
 
         status.textContent = copy.searching;
-        let response;
         try {
-          response = await pagefind.search(term, { filters: { Kind: "Note" } });
+          const response = await pagefind.search(term, { filters: { Kind: "Note" } });
+          if (currentSearchId !== searchId) return;
+          const found = [];
+          for (const result of response.results) {
+            const item = await result.data();
+            const node = nodeByPath.get(normalizePath(item.url));
+            if (node && !found.some((candidate) => candidate.id === node.id)) found.push(node);
+          }
+          dispatchMatches(term, found);
         } catch {
           pagefind = null;
-          runLocalSearch(term);
-          return;
+          dispatchMatches(term, immediate);
         }
-        if (currentSearchId !== searchId) return;
-
-        results = response.results;
-        archive.hidden = true;
-        status.textContent = results.length ? results.length + copy.result : copy.empty;
-        await renderResults();
       };
 
       form.addEventListener("submit", (event) => {
         event.preventDefault();
-        runSearch();
+        if (matches[0]) window.location.href = matches[0].url;
       });
       input.addEventListener("input", () => {
         clearTimeout(debounceTimer);
-        debounceTimer = setTimeout(runSearch, 180);
+        debounceTimer = setTimeout(runSearch, 160);
       });
       clear.addEventListener("click", () => {
         input.value = "";
         runSearch();
         input.focus();
       });
-      more.addEventListener("click", () => {
-        visibleCount += PAGE_SIZE;
-        renderResults();
-      });
 
-      try {
-        pagefind = await import("/pagefind/pagefind.js");
-      } catch {
-        pagefind = null;
-      }
+      try { pagefind = await import("/pagefind/pagefind.js"); } catch { pagefind = null; }
       mount.dataset.ready = "true";
     };
 
