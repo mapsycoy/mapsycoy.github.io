@@ -98,7 +98,7 @@ export const getSeriesPosition = (posts: BlogPost[], post: BlogPost) => {
   };
 };
 
-export const getBlogPosts = async ({ includeDrafts = false } = {}) => {
+export const getBlogPosts = async ({ includeDrafts = import.meta.env.DEV } = {}) => {
   const posts = await getCollection("blog");
   const visiblePosts = includeDrafts ? posts : posts.filter((post) => post.data.status === "published");
 
