@@ -22,16 +22,6 @@ export const getNotes = async ({ includeDrafts = false } = {}) => {
   });
 };
 
-export const getNoteStatusLabel = (status: NoteEntry["data"]["status"], lang: Language) => {
-  const labels = {
-    draft: { ko: "초안", en: "Draft" },
-    working: { ko: "작업 중", en: "Working" },
-    settled: { ko: "정리됨", en: "Settled" },
-  } as const;
-
-  return labels[status][lang];
-};
-
 export const formatNoteDate = (date: Date, lang: Language) =>
   new Intl.DateTimeFormat(lang === "ko" ? "ko-KR" : "en-US", {
     year: "numeric",

@@ -16,10 +16,10 @@ const { notes, lang } = Astro.props;
 const graph = createNoteGraph(notes, lang);
 const copy = lang === "ko"
   ? {
-      description: "진행 중인 생각의 공개 지도. 서로 연결되고, 수정되며, 계속 확장됩니다.",
+      description: "개인 과제물과 연구 구상을 연결하는 노트. 글 사이에서 만나는 질문과 달라지는 생각을 기록합니다.",
     }
   : {
-      description: "A public map of thoughts in progress. Connected, revised, and extended over time. Written in Korean.",
+      description: "Notes connecting individual coursework and research ideas, tracing shared questions and changes in thinking. Written in Korean.",
     };
 ---
 

@@ -5707,16 +5707,8 @@ html[lang="ko"] .blog-series-description {
   stroke-linecap: round;
   stroke-linejoin: round;
 }
-.blog-notes-graph-edges { opacity: 0.42; }
-.blog-notes-graph-edges path { stroke-width: 0.68; }
-.blog-notes-graph-edges .is-strong { stroke-width: 1.05; opacity: 0.9; }
-.blog-notes-graph-edges .is-membership { stroke-dasharray: 1.2 2; opacity: 0.7; }
-.blog-notes-graph-hub { fill: var(--bg); stroke-width: 1.25; }
-.blog-notes-graph-hub-echo { fill: none; stroke-width: 0.55; opacity: 0.36; }
-.blog-notes-graph-core { fill: currentColor; stroke: var(--bg); stroke-width: 0.72; }
-.blog-notes-graph-outline { fill: var(--bg); stroke-width: 0.9; }
-.blog-notes-graph-node { fill: currentColor; stroke: none; opacity: 0.82; }
-.blog-notes-graph-node.is-tiny { opacity: 0.58; }
+.blog-notes-graph-edges { stroke-width: 1.35; }
+.blog-notes-graph-nodes { fill: currentColor; stroke: none; }
 .blog-notes-entry:hover { color: var(--accent); }
 .blog-notes-entry:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
 @media (prefers-reduced-motion: reduce) {
@@ -5790,17 +5782,7 @@ html[lang="ko"] .blog-series-description {
 .note-body a:focus-visible { outline: 1px solid var(--line); outline-offset: 4px; }
 .notes-index-title { min-width: 0; overflow: hidden; font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.79rem; font-weight: 450; line-height: 1.4; text-overflow: ellipsis; white-space: nowrap; }
 .notes-index-series { color: var(--muted); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.65rem; line-height: 1.4; white-space: nowrap; }
-.notes-index-list .note-status { grid-column: 4; }
-.notes-index-list time,
-.note-status { color: var(--muted); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.65rem; white-space: nowrap; }
-.note-status {
-  padding: 0;
-  border: 0;
-  line-height: inherit;
-}
-.note-status-draft { opacity: 0.55; font-weight: 400; }
-.note-status-working { font-weight: 400; }
-.note-status-settled { color: var(--text); font-weight: 500; }
+.notes-index-list time { color: var(--muted); font-family: "Pretendard", "Noto Sans KR", system-ui, sans-serif; font-size: 0.65rem; white-space: nowrap; }
 .notes-index-undated { color: var(--muted); font-family: var(--font-mono); font-size: 0.65rem; }
 .note-graph-section {
   width: 100%;
@@ -6339,7 +6321,6 @@ html[lang="ko"] .blog-series-description {
     -webkit-line-clamp: 2;
   }
   .notes-index-series { grid-column: 2 / -1; grid-row: 2; min-width: 0; overflow-wrap: anywhere; white-space: normal; }
-  .notes-index-list .note-status { grid-column: 3; grid-row: 1; }
   .note-graph-global { margin: 22px 0 12px; }
   .note-graph-canvas { min-height: 190px; }
   .note-graph-global .note-graph-canvas { min-height: 0; }

@@ -9,6 +9,8 @@ tags:
   - HCI
 series: child-ai
 ---
+> 이 글은 2026년 9월 4일의 초기 구상 기록이다. 오독 구상을 구체화한 현재 질문은 [[misreading-ai-and-child-creativity|오독하는 AI와 아동의 창작]]에 정리했다.
+
 ## 관심 도메인
 
 **주:** 아동–AI 상호작용 (Child–AI Interaction)  
@@ -78,9 +80,8 @@ AI 비평 도구는 대개 아이의 의도를 정확히 맞히려 한다. 그�
 
 셋 모두 아동 대상 연구 요건(심의 유형, 소요 기간, 기관 협조 방식)에 대한 확인이 선행되어야 한다. 이는 추정이 아니라 지도교수 및 IRB 사무국에 직접 확인할 사항이다.
 
-## 관련 노트
+## 관련 과제와 글
 
-- [[아이 곁의 AI, 무엇을 남겨둘 것인가|AI Beside the Child: What Should Be Left for the Child to Do?]]
-- [[행위성의 느낌과 노동]]
-- [[상상 속 친구의 수동성과 침묵]]
-- [[관계로서의 모호성과 해석의 허가]]
+- [[misreading-ai-and-child-creativity|오독하는 AI와 아동의 창작]]: 자기진술의 발생에 대한 초기 관심을, 의도 설명과 이후 창작의 연결에 관한 질문으로 구체화한 과제.
+- [[p4c-and-art-gifted-education|어린이 철학, P4C]]: 질문하고 이유를 만들며 다른 응답을 거쳐 판단을 검토하는 과정에 관한 노트.
+- [아이 곁의 AI, 무엇을 남겨둘 것인가](/ko/blog/#series-child-ai): 세 구상의 배경이 된 블로그 시리즈.
