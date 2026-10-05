@@ -36,6 +36,7 @@ const blog = defineCollection({
     thumbnail: imagePathSchema,
     heroImage: imagePathSchema,
     heroImageCaption: localizedTextSchema.default(""),
+    heroImageAlt: localizedTextSchema.default(""),
     contentBlocks: z
       .array(
         z.discriminatedUnion("type", [
