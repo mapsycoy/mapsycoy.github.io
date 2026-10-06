@@ -20,6 +20,12 @@ const siteUrl = Astro.site ?? Astro.url.origin;
 const pageTitle = title === "mapsycoy" ? "mapsycoy" : `${title} | mapsycoy`;
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const previewImageUrl = new URL(previewImage, siteUrl).toString();
+const faviconBase = "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@c50bdfc/uploads/site";
+const favicons = [
+  { extension: "ico", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
+  { extension: "png", type: "image/png", sizes: "32x32" },
+  { extension: "svg", type: "image/svg+xml", sizes: "any" }
+];
 
 const navItems = [
   { href: withLanguage(currentLanguage, "/works"), label: "Works" },
@@ -48,6 +54,17 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    {favicons.map(({ extension, type, sizes }) => (
+      <link
+        rel="icon"
+        type={type}
+        sizes={sizes}
+        href={`${faviconBase}/favicon${extension === "svg" ? "" : "-light"}.${extension}`}
+        data-favicon
+        data-light={`${faviconBase}/favicon-light.${extension}`}
+        data-dark={`${faviconBase}/favicon-dark.${extension}`}
+      />
+    ))}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="preconnect" href="https://cdn.jsdelivr.net" />
@@ -100,8 +117,15 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
           }
         };
         const getTheme = () => getStoredTheme() ?? (colorSchemeQuery.matches ? "dark" : "light");
+        const setFaviconTheme = (root, theme) => {
+          root.ownerDocument.querySelectorAll("link[data-favicon]").forEach((link) => {
+            const href = link.dataset[theme];
+            if (href && link.getAttribute("href") !== href) link.setAttribute("href", href);
+          });
+        };
         const setColorTheme = (root = document.documentElement) => {
           root.dataset.theme = getTheme();
+          setFaviconTheme(root, root.dataset.theme);
         };
         const updateToggle = () => {
           const button = document.querySelector("[data-theme-toggle]");
@@ -114,6 +138,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
           const nextTheme = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
           try { localStorage.setItem(storageKey, nextTheme); } catch {}
           document.documentElement.dataset.theme = nextTheme;
+          setFaviconTheme(document.documentElement, nextTheme);
           updateToggle();
         };
 
