@@ -20,7 +20,7 @@ const siteUrl = Astro.site ?? Astro.url.origin;
 const pageTitle = title === "mapsycoy" ? "mapsycoy" : `${title} | mapsycoy`;
 const pageUrl = new URL(Astro.url.pathname, siteUrl).toString();
 const previewImageUrl = new URL(previewImage, siteUrl).toString();
-const faviconBase = "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@c50bdfc/uploads/site";
+const faviconBase = "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@ce70fc3/uploads/site";
 const favicons = [
   { extension: "ico", type: "image/x-icon", sizes: "16x16 32x32 48x48" },
   { extension: "png", type: "image/png", sizes: "32x32" },
