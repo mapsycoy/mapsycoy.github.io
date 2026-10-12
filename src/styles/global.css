@@ -6100,6 +6100,7 @@ html[lang="ko"] .blog-series-description {
 }
 .note-body .footnote-ref-wrap:hover .footnote-popover,
 .note-body .footnote-ref-wrap:focus-within .footnote-popover { display: block; }
+.blog-post-body .footnote-popover.is-positioned,
 .note-body .footnote-popover.is-positioned {
   position: fixed;
   top: var(--footnote-popover-top, 20px);
