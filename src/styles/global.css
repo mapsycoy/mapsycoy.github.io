@@ -2147,8 +2147,13 @@ html[lang="ko"] .blog-post-body ol {
   color: var(--accent);
 }
 
-.blog-post-body .footnote-ref-wrap {
+.blog-post-body .footnote-ref-wrap,
+.note-body .footnote-ref-wrap {
   position: relative;
+  /* Raise references without increasing the surrounding text line box. */
+  top: -0.5em;
+  line-height: 0;
+  vertical-align: baseline;
   white-space: nowrap;
 }
 
@@ -6066,10 +6071,6 @@ html[lang="ko"] .blog-series-description {
 }.note-body p,
 .note-body ul,
 .note-body ol { margin: 0 0 1rem; }
-.note-body .footnote-ref-wrap {
-  position: relative;
-  white-space: nowrap;
-}
 .note-body .footnote-ref {
   padding: 0 0.08em;
   border: 0;
