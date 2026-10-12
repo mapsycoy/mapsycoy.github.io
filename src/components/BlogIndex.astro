@@ -138,7 +138,7 @@ const paginationItems = (() => {
     </div>
     {nonSeriesPosts.length > 0 && (
       <section class="blog-text-section" aria-labelledby="other-posts-title">
-        <h2 id="other-posts-title">{lang === "ko" ? "시리즈 외 글" : "Other writing"}</h2>
+        <h2 id="other-posts-title" class="blog-section-label">{lang === "ko" ? "시리즈 외 글" : "Other writing"}</h2>
         <ul class="blog-text-list">
           {nonSeriesPosts.map((post) => (
             <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span>{getPostTitle(post)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
