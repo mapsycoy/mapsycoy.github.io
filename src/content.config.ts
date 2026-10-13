@@ -34,6 +34,8 @@ const blog = defineCollection({
     seriesOrder: z.number().int().positive().optional(),
     summary: localizedTextSchema.optional(),
     thumbnail: imagePathSchema,
+    thumbnailPosition: z.string().optional(),
+    thumbnailAlt: localizedTextSchema.optional(),
     heroImage: imagePathSchema,
     heroImageCaption: localizedTextSchema.default(""),
     heroImageAlt: localizedTextSchema.default(""),

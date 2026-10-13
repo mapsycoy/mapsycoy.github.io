@@ -192,7 +192,12 @@ const paginationItems = (() => {
         </div>
         <div class="blog-entry-thumb" aria-label={`${getPostTitle(post)} thumbnail`}>
           {post.data.thumbnail ? (
-            <img src={post.data.thumbnail} alt="" loading="lazy" />
+            <img
+              src={post.data.thumbnail}
+              alt={post.data.thumbnailAlt ? localize(post.data.thumbnailAlt, lang) : ""}
+              style={post.data.thumbnailPosition ? { objectPosition: post.data.thumbnailPosition } : undefined}
+              loading="lazy"
+            />
           ) : (
             <div class="blog-entry-thumb-placeholder" aria-hidden="true"></div>
           )}
