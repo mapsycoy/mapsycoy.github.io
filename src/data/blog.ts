@@ -72,7 +72,7 @@ export const getSeriesGroups = (posts: BlogPost[]) =>
       return { id, metadata, posts: seriesPosts, latestPublishedAt };
     })
     .sort((a, b) =>
-      b.latestPublishedAt - a.latestPublishedAt || a.id.localeCompare(b.id)
+      a.metadata.number - b.metadata.number || a.id.localeCompare(b.id)
     );
 
 export const getNewsPosts = (posts: BlogPost[]) =>

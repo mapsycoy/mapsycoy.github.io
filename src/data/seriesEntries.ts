@@ -37,4 +37,4 @@ export const getMixedSeriesGroups = (posts: BlogPost[], notes: NoteEntry[]) =>
       const latestDate = entries.reduce((latest, entry) => Math.max(latest, getSeriesEntryDate(entry)?.getTime() ?? 0), 0);
       return { id, metadata, entries, latestDate, isArchived: getSeriesStatus(id) === "archived" };
     })
-    .sort((a, b) => b.latestDate - a.latestDate || a.id.localeCompare(b.id));
+    .sort((a, b) => a.metadata.number - b.metadata.number || a.id.localeCompare(b.id));
