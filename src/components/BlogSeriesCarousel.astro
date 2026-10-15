@@ -13,16 +13,13 @@ const isKo = lang === "ko";
 ---
 
 <blog-series-carousel class="series-carousel" aria-label={isKo ? "시리즈" : "Series"}>
-  <div class="series-carousel-heading">
-    <h2>{isKo ? "시리즈" : "Series"}</h2>
-    <div class="series-carousel-controls" data-series-controls hidden>
-      <button type="button" data-series-previous aria-label={isKo ? "이전 시리즈" : "Previous series"} disabled>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg>
-      </button>
-      <button type="button" data-series-next aria-label={isKo ? "다음 시리즈" : "Next series"}>
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
-      </button>
-    </div>
+  <div class="series-carousel-controls" data-series-controls hidden>
+    <button type="button" data-series-previous aria-label={isKo ? "이전 시리즈" : "Previous series"} disabled>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg>
+    </button>
+    <button type="button" data-series-next aria-label={isKo ? "다음 시리즈" : "Next series"}>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+    </button>
   </div>
   <div class="series-carousel-track" data-series-track>
     {groups.map((group) => (
@@ -84,9 +81,7 @@ const isKo = lang === "ko";
 
 <style>
   .series-carousel { display: block; min-width: 0; }
-  .series-carousel-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; margin-bottom: 12px; }
-  .series-carousel-heading h2 { margin: 0; font-size: 0.78rem; line-height: 1.4; font-weight: 500; }
-  .series-carousel-controls { display: flex; gap: 6px; }
+  .series-carousel-controls { display: flex; justify-content: flex-end; gap: 6px; margin-bottom: 12px; }
   .series-carousel-controls[hidden] { display: none; }
   .series-carousel-controls button { display: grid; place-items: center; width: 40px; height: 36px; padding: 0; border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer; }
   .series-carousel-controls button:disabled { opacity: 0.3; cursor: default; }
