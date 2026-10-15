@@ -676,6 +676,50 @@ collections:
                   - label: English
                     name: en
                     widget: text
+          - label: Communicating Intent
+            name: communicating-intent
+            widget: object
+            fields:
+              - label: Series Number
+                name: number
+                widget: number
+                value_type: int
+                min: 1
+              - label: Status
+                name: status
+                widget: select
+                options: [active, archived]
+                default: active
+              - label: Short Name
+                name: label
+                widget: object
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                  - label: English
+                    name: en
+                    widget: string
+              - label: Title
+                name: title
+                widget: object
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: string
+                  - label: English
+                    name: en
+                    widget: string
+              - label: Description
+                name: description
+                widget: object
+                fields:
+                  - label: Korean
+                    name: ko
+                    widget: text
+                  - label: English
+                    name: en
+                    widget: text
       - label: CV
         name: cv
         file: src/data/cv.json

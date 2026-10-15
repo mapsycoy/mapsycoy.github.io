@@ -4668,6 +4668,7 @@ pre.mermaid svg .cluster-label * {
   font-size: clamp(1.08rem, 1.8vw, 1.4rem);
   letter-spacing: -0.025em;
   line-height: 1.2;
+  word-break: keep-all;
 }
 
 .blog-series-illustration {
@@ -5015,6 +5016,7 @@ html[lang="ko"] .blog-series-description {
 
 .blog-series-index .blog-series-block {
   min-width: 0;
+  scroll-margin-top: 100px;
 }
 
 .blog-series-index .blog-series-block:has(> .blog-series-stack[open]) {

@@ -11,8 +11,24 @@
       "en": "AI Beside the Child: What Should Be Left for the Child to Do?"
     },
     "description": {
-      "ko": "AI가 아이의 곁에서 답하고 반응할 때, 아이에게는 무엇이 남아야 할까.\n\n상상력과 주체성, 의미를 만드는 노동, 모호성과 낯섦을 따라가며 아동을 위한 AI가 의미 생성을 대신하지 않고 지지하는 조건을 탐색합니다.",
-      "en": "When AI responds from beside a child, what should remain for the child to do?\n\nFollowing imagination and agency, the labor of meaning-making, ambiguity, and strangeness, this series explores how AI for children might support rather than replace their work of making meaning."
+      "ko": "아이의 상상력과 주체성을 지키면서 의미를 만들어 가는 과정을 돕는 AI의 조건을 살펴봅니다.",
+      "en": "This series explores how AI can support children in making meaning while preserving their imagination and agency."
+    }
+  },
+  "communicating-intent": {
+    "number": 2,
+    "status": "active",
+    "label": {
+      "ko": "의도 전달",
+      "en": "Communicating Intent"
+    },
+    "title": {
+      "ko": "서로 다른 생각, 어떻게 의도를 전할 것인가",
+      "en": "Different Minds: How Can We Communicate What We Mean?"
+    },
+    "description": {
+      "ko": "기획자·디자이너·개발자 사이에서 의도가 전달되는 과정과 AI의 역할을 살펴봅니다.",
+      "en": "This series explores how planners, designers, and developers communicate their intentions, and the role AI can play in that process."
     }
   }
 }
