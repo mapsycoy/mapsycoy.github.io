@@ -1,0 +1,266 @@
+---
+import SeriesOneIllustration from "./SeriesOneIllustration.astro";
+import IntentSeriesIllustration from "./IntentSeriesIllustration.astro";
+import { hasKoreanText, type BlogPost } from "../data/blog";
+import type { NoteEntry } from "../data/notes";
+import { getMixedSeriesGroups, getSeriesEntryPath, getSeriesEntryTitle } from "../data/seriesEntries";
+import { defaultLanguage, localize, type Language } from "../utils/i18n";
+
+type Props = { posts: BlogPost[]; notes: NoteEntry[]; lang?: Language };
+const { posts, notes, lang = defaultLanguage } = Astro.props;
+const groups = getMixedSeriesGroups(posts, notes);
+const isKo = lang === "ko";
+---
+
+<blog-series-carousel class="series-carousel" aria-label={isKo ? "시리즈" : "Series"}>
+  <div class="series-carousel-heading">
+    <h2>{isKo ? "시리즈" : "Series"}</h2>
+    <div class="series-carousel-controls" data-series-controls hidden>
+      <button type="button" data-series-previous aria-label={isKo ? "이전 시리즈" : "Previous series"} disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 12H5m6-6-6 6 6 6" /></svg>
+      </button>
+      <button type="button" data-series-next aria-label={isKo ? "다음 시리즈" : "Next series"}>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14m-6-6 6 6-6 6" /></svg>
+      </button>
+    </div>
+  </div>
+  <div class="series-carousel-track" data-series-track>
+    {groups.map((group) => (
+      <button
+        id={`series-${group.id}`}
+        type="button"
+        class="series-card"
+        data-series-open={`series-panel-${group.id}`}
+        aria-haspopup="dialog"
+        aria-controls={`series-panel-${group.id}`}
+        aria-label={`${localize(group.metadata.title, lang)} — ${isKo ? "글 목록 열기" : "View posts"}`}
+      >
+        <span class="series-card-kicker">Series {String(group.metadata.number).padStart(2, "0")}</span>
+        <span class:list={["series-card-title", hasKoreanText(localize(group.metadata.title, lang)) && "ko-title"]}>{localize(group.metadata.title, lang)}</span>
+        <span class="series-card-description">{localize(group.metadata.description, lang)}</span>
+        <span class="series-card-bottom">
+          <span class="series-card-art" aria-hidden="true">
+            {group.id === "child-ai" && <SeriesOneIllustration />}
+            {group.id === "communicating-intent" && <IntentSeriesIllustration />}
+          </span>
+        </span>
+      </button>
+    ))}
+  </div>
+
+  {groups.map((group) => (
+    <dialog
+      id={`series-panel-${group.id}`}
+      class="series-drawer"
+      data-series-panel
+      aria-labelledby={`series-panel-${group.id}-title`}
+    >
+      <div class="series-drawer-top">
+        <span class="series-card-kicker">Series {String(group.metadata.number).padStart(2, "0")}</span>
+        <button type="button" class="series-drawer-close" data-series-close aria-label={isKo ? "글 목록 닫기" : "Close post list"}>
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="series-drawer-intro">
+        <div class="series-drawer-art" data-series-art aria-hidden="true"></div>
+        <h2 id={`series-panel-${group.id}-title`} class:list={[hasKoreanText(localize(group.metadata.title, lang)) && "ko-title"]}>{localize(group.metadata.title, lang)}</h2>
+        <p>{localize(group.metadata.description, lang)}</p>
+      </div>
+      <div class="series-drawer-scroll">
+        <ol class="series-drawer-list">
+          {group.entries.map((entry, index) => (
+            <li>
+              <a href={getSeriesEntryPath(entry, lang)}>
+                <span class="series-drawer-entry-number" aria-hidden="true">{String(index + 1).padStart(2, "0")}</span>
+                <span class:list={["series-drawer-entry-title", hasKoreanText(getSeriesEntryTitle(entry, lang)) && "ko-title"]}>{getSeriesEntryTitle(entry, lang)}</span>
+              </a>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </dialog>
+  ))}
+</blog-series-carousel>
+
+<style>
+  .series-carousel { display: block; min-width: 0; }
+  .series-carousel-heading { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 44px; margin-bottom: 12px; }
+  .series-carousel-heading h2 { margin: 0; font-size: 0.78rem; line-height: 1.4; font-weight: 500; }
+  .series-carousel-controls { display: flex; gap: 6px; }
+  .series-carousel-controls[hidden] { display: none; }
+  .series-carousel-controls button { display: grid; place-items: center; width: 40px; height: 36px; padding: 0; border: 1px solid var(--line); background: transparent; color: var(--text); cursor: pointer; }
+  .series-carousel-controls button:disabled { opacity: 0.3; cursor: default; }
+  .series-carousel-controls button:not(:disabled):hover { border-color: var(--accent); background: var(--soft); }
+  .series-carousel-controls svg { width: 19px; height: 19px; fill: none; stroke: currentColor; stroke-width: 1.35; stroke-linecap: round; stroke-linejoin: round; }
+  .series-carousel-track { position: relative; display: flex; gap: 16px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 2px 0; }
+  .series-carousel-track::-webkit-scrollbar { display: none; }
+  .series-card { display: flex; flex-direction: column; flex: 0 0 calc((100% - 16px) / 2); min-width: 0; min-height: 280px; padding: 20px 22px 15px; border: 1px solid var(--line); border-radius: 0; background: var(--bg); color: var(--text); font: inherit; text-align: left; cursor: pointer; scroll-snap-align: start; scroll-margin-top: 150px; transition: background-color 160ms ease, border-color 160ms ease; }
+  .series-card:hover { border-color: var(--accent); background: var(--soft); }
+  .series-card:focus-visible { outline: 2px solid var(--accent); outline-offset: -3px; }
+  .series-card-kicker { font-size: 0.67rem; font-weight: 400; line-height: 1.5; text-transform: uppercase; letter-spacing: 0.06em; color: var(--muted); }
+  .series-card-title { display: block; margin: 9px 0; font-size: 1.25rem; line-height: 1.4; font-weight: 500; word-break: keep-all; overflow-wrap: anywhere; }
+  .series-card-description { font-size: 0.78rem; line-height: 1.7; color: var(--muted); word-break: keep-all; overflow-wrap: anywhere; }
+  .series-card-bottom { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 10px; margin-top: auto; padding-top: 12px; }
+  .series-card-art { width: 128px; height: 80px; margin-left: auto; flex: 0 0 128px; }
+  .series-card-art :global(.blog-series-illustration),
+  .series-drawer-art :global(.blog-series-illustration) { width: 128px; height: 80px; margin: 0; color: inherit; }
+
+  .series-drawer { position: fixed; inset: 0 0 0 auto; width: min(560px, 55vw); max-width: 100%; height: 100vh; height: 100dvh; max-height: none; margin: 0 0 0 auto; padding: 0; border: 0; border-left: 1px solid var(--line); background: var(--bg); color: var(--text); overflow: hidden; }
+  .series-drawer[open] { display: flex; flex-direction: column; animation: series-drawer-enter 200ms ease-out; }
+  .series-drawer[data-closing] { animation: series-drawer-exit 200ms ease-in both; }
+  .series-drawer::backdrop { background: rgb(0 0 0 / 35%); }
+  .series-drawer[data-closing]::backdrop { animation: series-backdrop-exit 200ms ease-in both; }
+  :global(html:has(dialog[data-series-panel][open])) { overflow: hidden; scrollbar-gutter: stable; }
+  .series-drawer-top { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 16px 0 6px 26px; flex: 0 0 auto; }
+  .series-drawer-close { display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 0; background: transparent; color: var(--muted); font: inherit; cursor: pointer; }
+  .series-drawer-close span { font-size: 1.1rem; line-height: 1; }
+  .series-drawer-close:hover { color: var(--accent); }
+  .series-drawer-intro { padding: 0 26px 18px; flex: 0 0 auto; }
+  .series-drawer-art { display: flex; justify-content: flex-start; height: 80px; margin-bottom: 12px; }
+  .series-drawer-art:empty { display: none; }
+  .series-drawer-intro h2 { margin: 0; font-size: 1.5rem; font-weight: 500; line-height: 1.4; word-break: keep-all; overflow-wrap: anywhere; }
+  .series-drawer-intro p { margin: 12px 0 0; font-size: 0.78rem; line-height: 1.7; color: var(--muted); word-break: keep-all; overflow-wrap: anywhere; }
+  .series-drawer-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 26px max(22px, env(safe-area-inset-bottom)); }
+  .series-drawer-list { margin: 0; padding: 0; list-style: none; }
+  .series-drawer-list a { display: flex; align-items: baseline; gap: 14px; min-height: 48px; padding: 13px 0; border-top: 1px solid var(--line); text-decoration: none; }
+  .series-drawer-list a:hover { color: var(--accent); }
+  .series-drawer-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+  .series-drawer-entry-number { flex: 0 0 20px; color: var(--muted); font-size: 0.7rem; font-variant-numeric: tabular-nums; }
+  .series-drawer-entry-title { font-size: 0.84rem; line-height: 1.6; word-break: keep-all; overflow-wrap: anywhere; }
+  @keyframes series-drawer-enter { from { transform: translateX(24px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
+  @keyframes series-drawer-exit { from { transform: translateX(0); opacity: 1; } to { transform: translateX(24px); opacity: 0; } }
+  @keyframes series-backdrop-exit { from { opacity: 1; } to { opacity: 0; } }
+  @media (max-width: 680px) {
+    .series-carousel-controls button { width: 44px; height: 44px; }
+    .series-carousel-track { gap: 12px; }
+    .series-card { flex-basis: calc(100% - 28px); min-height: 285px; padding: 17px 18px 12px; }
+    .series-card-title { font-size: 1.22rem; }
+    .series-drawer { width: 100%; border-left: 0; }
+    .series-drawer-top { padding: max(12px, env(safe-area-inset-top)) 0 4px 20px; }
+    .series-drawer-intro { padding: 0 20px 18px; }
+    .series-drawer-intro h2 { font-size: 1.4rem; }
+    .series-drawer-scroll { padding-right: 20px; padding-left: 20px; }
+  }
+  @media (max-width: 360px) { .series-card { flex-basis: 100%; } }
+  @media (max-height: 540px) { .series-drawer-art { display: none; } .series-drawer-intro p { margin-top: 8px; } }
+  @media (prefers-reduced-motion: reduce) { .series-card { transition: none; } .series-drawer[open] { animation: none; } }
+</style>
+
+<script>
+  class BlogSeriesCarousel extends HTMLElement {
+    private cleanup?: () => void;
+
+    connectedCallback() {
+      this.cleanup?.();
+      const track = this.querySelector<HTMLElement>("[data-series-track]");
+      const controls = this.querySelector<HTMLElement>("[data-series-controls]");
+      const previous = this.querySelector<HTMLButtonElement>("[data-series-previous]");
+      const next = this.querySelector<HTMLButtonElement>("[data-series-next]");
+      const cards = Array.from(this.querySelectorAll<HTMLButtonElement>("[data-series-open]"));
+      const panels = Array.from(this.querySelectorAll<HTMLDialogElement>("[data-series-panel]"));
+      if (!track || !controls || !previous || !next) return;
+      const controller = new AbortController();
+      const options = { signal: controller.signal };
+      const panelFor = (card: HTMLButtonElement) => panels.find((panel) => panel.id === card.dataset.seriesOpen);
+      const cardFor = (panel: HTMLDialogElement) => cards.find((card) => card.dataset.seriesOpen === panel.id);
+      const scrollBehavior = () => matchMedia("(prefers-reduced-motion: reduce)").matches ? "instant" as const : "smooth" as const;
+      const updateControls = () => {
+        const overflow = track.scrollWidth - track.clientWidth;
+        controls.hidden = overflow <= 2;
+        previous.disabled = track.scrollLeft <= 2;
+        next.disabled = track.scrollLeft >= overflow - 2;
+      };
+      const move = (direction: number) => {
+        const first = cards[0];
+        if (!first) return;
+        const step = first.getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap);
+        const target = (Math.round(track.scrollLeft / step) + direction) * step;
+        track.scrollTo({ left: target, behavior: scrollBehavior() });
+      };
+      const closePanel = async (panel: HTMLDialogElement) => {
+        if (!panel.open || panel.hasAttribute("data-closing")) return;
+        if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+          panel.close();
+          return;
+        }
+        panel.setAttribute("data-closing", "");
+        await Promise.allSettled(panel.getAnimations().map((animation) => animation.finished));
+        if (!controller.signal.aborted && panel.hasAttribute("data-closing")) panel.close();
+      };
+      const openPanel = (card: HTMLButtonElement, updateHash = true) => {
+        const panel = panelFor(card);
+        if (!panel || panel.open) return;
+        panels.filter((other) => other.open).forEach((other) => other.close());
+        const art = panel.querySelector<HTMLElement>("[data-series-art]");
+        if (art && !art.firstElementChild) {
+          const original = card.querySelector<SVGElement>(".blog-series-illustration");
+          if (original) {
+            const copy = original.cloneNode(true) as SVGElement;
+            copy.removeAttribute("id");
+            copy.removeAttribute("aria-labelledby");
+            copy.setAttribute("aria-hidden", "true");
+            copy.querySelectorAll("[id]").forEach((element) => element.removeAttribute("id"));
+            art.append(copy);
+          }
+        }
+        panel.showModal();
+        panel.querySelector<HTMLElement>("[data-series-close]")?.focus({ preventScroll: true });
+        if (updateHash) history.replaceState(history.state, "", `${location.pathname}${location.search}#${card.id}`);
+      };
+      const openLinkedSeries = () => {
+        const card = cards.find((item) => `#${item.id}` === location.hash);
+        if (card) {
+          track.scrollTo({ left: card.offsetLeft, behavior: "instant" });
+          openPanel(card, false);
+        } else {
+          panels.filter((panel) => panel.open).forEach((panel) => { void closePanel(panel); });
+        }
+        updateControls();
+      };
+
+      cards.forEach((card) => card.addEventListener("click", () => openPanel(card), options));
+      previous.addEventListener("click", () => move(-1), options);
+      next.addEventListener("click", () => move(1), options);
+      track.addEventListener("scroll", updateControls, { ...options, passive: true });
+      track.addEventListener("keydown", (event) => {
+        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+        const index = cards.indexOf(document.activeElement as HTMLButtonElement);
+        if (index < 0) return;
+        event.preventDefault();
+        const target = event.key === "Home" ? 0 : event.key === "End" ? cards.length - 1 : Math.max(0, Math.min(cards.length - 1, index + (event.key === "ArrowRight" ? 1 : -1)));
+        cards[target].focus({ preventScroll: true });
+        track.scrollTo({ left: cards[target].offsetLeft, behavior: scrollBehavior() });
+      }, options);
+      panels.forEach((panel) => {
+        panel.querySelector("[data-series-close]")?.addEventListener("click", () => { void closePanel(panel); }, options);
+        panel.addEventListener("cancel", (event) => {
+          event.preventDefault();
+          void closePanel(panel);
+        }, options);
+        panel.addEventListener("click", (event) => {
+          if (event.target !== panel) return;
+          const rect = panel.getBoundingClientRect();
+          if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) void closePanel(panel);
+        }, options);
+        panel.addEventListener("close", () => {
+          panel.removeAttribute("data-closing");
+          const card = cardFor(panel);
+          if (card && location.hash === `#${card.id}`) history.replaceState(history.state, "", `${location.pathname}${location.search}`);
+          card?.focus({ preventScroll: true });
+        }, options);
+      });
+      window.addEventListener("hashchange", openLinkedSeries, options);
+      window.addEventListener("pageshow", openLinkedSeries, options);
+      const observer = new ResizeObserver(updateControls);
+      observer.observe(track);
+      cards.forEach((card) => observer.observe(card));
+      document.fonts.ready.then(() => { if (!controller.signal.aborted) updateControls(); });
+      this.cleanup = () => { controller.abort(); observer.disconnect(); };
+      openLinkedSeries();
+    }
+
+    disconnectedCallback() { this.cleanup?.(); }
+  }
+
+  if (!customElements.get("blog-series-carousel")) customElements.define("blog-series-carousel", BlogSeriesCarousel);
+</script>
