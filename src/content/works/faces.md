@@ -25,56 +25,90 @@ contentBlocks:
       en: "[Trailer] FACES (KOR) | KIAFA[AniSEED]"
   - type: text
     body:
-      ko: |-
+      ko: >-
         3D 단편 영화 「FACES」(안효슬 연출) 컨셉 아트 컬렉션
 
+
         {{image-grid columns="2"}}
+
         ![주방](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-kitchen.webp)
+
         ![거실](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-living-room.webp)
+
         {{/image-grid}}
 
+
         {{image-grid columns="2"}}
+
         ![방](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-room.webp)
+
         ![욕실](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-bathroom.webp)
+
         {{/image-grid}}
 
+
         {{image-grid columns="2"}}
+
         ![엔딩](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-ending.webp)
+
         ![야외](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-outdoor.webp)
+
         {{/image-grid}}
 
+
         {{image-grid columns="2"}}
+
         ![거미](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-spider.webp)
+
         ![포스터 컨셉](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-poster-concept.webp)
+
         {{/image-grid}}
+
 
         ![포스터](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-poster.webp)
-      en: |-
+      en: >-
         Concept Art Collection for the 3D Short Film 「*FACES*」 by. *AHN Hyoseul*
 
+
         {{image-grid columns="2"}}
+
         ![Kitchen](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-kitchen.webp)
+
         ![Living room](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-living-room.webp)
+
         {{/image-grid}}
 
+
         {{image-grid columns="2"}}
+
         ![Room](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-room.webp)
+
         ![Bathroom](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-bathroom.webp)
+
         {{/image-grid}}
 
 
 
+
         {{image-grid columns="2"}}
+
         ![Ending](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-ending.webp)
+
         ![Outdoor](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-outdoor.webp)
+
         {{/image-grid}}
+
 
 
 
         {{image-grid columns="2"}}
+
         ![Spider](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-spider.webp)
+
         ![Poster concept](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-poster-concept.webp)
+
         {{/image-grid}}
+
 
         ![Poster](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-poster.webp)
   - type: statsLink
@@ -88,30 +122,53 @@ contentBlocks:
     title:
       ko: ""
       en: 페이시스 ∣ indieground
-    body: |-
+    body: >-
       Concept Art Collection for the 3D Short Film 「*FACES*」 by. *AHN Hyoseul*
 
+
       {{image-grid columns="2"}}
+
       ![Kitchen](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-kitchen.webp)
+
       ![Living room](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-living-room.webp)
+
       {{/image-grid}}
 
+
       {{image-grid columns="2"}}
+
       ![Room](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-room.webp)
+
       ![Bathroom](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-bathroom.webp)
+
       {{/image-grid}}
 
+
       {{image-grid columns="2"}}
+
       ![Ending](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-ending.webp)
+
       ![Outdoor](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-outdoor.webp)
+
       {{/image-grid}}
 
+
       {{image-grid columns="2"}}
+
       ![Spider](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-spider.webp)
+
       ![Poster concept](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-poster-concept.webp)
+
       {{/image-grid}}
+
 
       ![Poster](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces-poster.webp)
+  - type: statsLink
+    title:
+      ko: KMDb ∣ 겹
+      en: KMDb ∣ Faces (Peisiseu)
+    url: https://www.kmdb.or.kr/db/kor/detail/movie/K/39902
+    subtitle: 제18회 여성인권영화제(2025) - FIWOM Choice. 경쟁부문
 tags:
   - Illustration
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/faces.webp
