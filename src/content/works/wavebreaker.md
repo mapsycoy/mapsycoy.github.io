@@ -38,6 +38,15 @@ contentBlocks:
 
 
         Music by Suno AI
+  - type: text
+    body:
+      ko: "![전시
+        정보](https://raw.githubusercontent.com/mapsycoy/mapsycoy-assets/55b589e1\
+        c662a6654a3610bb50764e0a4f72e4b2/uploads/works/Dance-of-Horizon.webp)"
+      en: >-
+        
+
+        ![Exhibition info](https://raw.githubusercontent.com/mapsycoy/mapsycoy-assets/55b589e1c662a6654a3610bb50764e0a4f72e4b2/uploads/works/Dance-of-Horizon.webp)
 tags:
   - Media Art
   - AI
