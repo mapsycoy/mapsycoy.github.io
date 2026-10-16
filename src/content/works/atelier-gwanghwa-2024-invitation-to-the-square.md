@@ -65,10 +65,16 @@ contentBlocks:
       ko: '2024 아뜰리에 광화 "2024 광장으로의 초대" ㅣ 국민대학교 영상디자인학과 '
       en: 2024 Atelier Gwanghwa 'Invitation to the Square' | Kookmin University
         Entertainment Design
+  - type: statsLink
+    url: https://mediahub.seoul.go.kr/archives/2011915
+    title:
+      ko: 내 손안에 서울
+      en: Seoul in My Hands
+    subtitle: 거장의 작품이 미디어아트로 변신! '아뜰리에 광화'로 초대합니다
   - type: specialThanks
     body:
-      ko: "도움주신 **하준수** 교수님께 감사의 말씀드립니다."
-      en: "Special Thanks to Prof. **Ha Junsu**"
+      ko: 도움주신 **하준수** 교수님께 감사의 말씀드립니다.
+      en: Special Thanks to Prof. **Ha Junsu**
 tags:
   - Media Art
   - AI
