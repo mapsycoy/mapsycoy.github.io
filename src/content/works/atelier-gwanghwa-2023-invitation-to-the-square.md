@@ -26,7 +26,9 @@ contentBlocks:
   - type: text
     body:
       ko: "*〈편지화, 그릴 수 없는 사랑의 빛깔〉*, *〈은지화에 담긴 예술혼〉*, *〈가족, 마음으로 그린 그림〉* 모션 작업"
-      en: "Motion design for *〈Letter Paintings: The Unpaintable Colors of Love〉*, *〈Artistic Spirit in Tinfoil Paintings〉*, and *〈Family: Painted from the Heart〉*"
+      en: "Motion design for *〈Letter Paintings: The Unpaintable Colors of Love〉*,
+        *〈Artistic Spirit in Tinfoil Paintings〉*, and *〈Family: Painted from the
+        Heart〉*"
   - type: statsLink
     ctaLabel:
       ko: ""
@@ -38,10 +40,20 @@ contentBlocks:
     subtitle:
       ko: ""
       en: 광화문광장에 쏘아 올린 다섯 학생의 도전
+  - type: statsLink
+    url: https://www.sejongpac.or.kr/portal/performance/performance/performTicket.do?performIdx=34426&menuNo=200558
+    title:
+      ko: 세종문화회관 전시일정
+      en: " Sejong Center for the Performing Arts Exhibition Schedule"
+  - type: statsLink
+    title:
+      ko: 서울문화포털 문화행사 - 전시
+      en: " Seoul Culture Portal Cultural Events - Exhibition"
+    url: https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=142660&menuNo=200009
   - type: specialThanks
     body:
-      ko: "도움주신 **하준수** 교수님께 감사의 말씀드립니다."
-      en: "Special Thanks to Prof. **Ha Junsu**"
+      ko: 도움주신 **하준수** 교수님께 감사의 말씀드립니다.
+      en: Special Thanks to Prof. **Ha Junsu**
 tags:
   - Media Art
 thumbnail: https://www.ilyoweekly.co.kr/news/data/20230727/p1065594020970021_262_thum.jpg
