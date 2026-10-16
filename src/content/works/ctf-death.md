@@ -94,6 +94,14 @@ contentBlocks:
         /admin_force_fail
 
         ```
+  - type: pdf
+    url: https://drive.google.com/file/d/1-OFQPH_GpBz8MBgZh2iqQ6sxRmJ4tLrX/view?usp=sharing
+    title:
+      en: ""
+      ko: ""
+    caption:
+      ko: 기획안
+      en: Planning Document
 tags:
   - AI
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/ctfdeath.webp
