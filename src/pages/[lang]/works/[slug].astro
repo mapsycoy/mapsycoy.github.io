@@ -1,6 +1,7 @@
 ---
 import { getVideoEmbedUrl, renderInlineMarkdown, renderExternalEmbed, renderTextBlock } from "../../../utils/workMarkdown";
 import Layout from "../../../layouts/Layout.astro";
+import WorkPdf from "../../../components/WorkPdf.astro";
 import SeoulLocationMap from "../../../components/SeoulLocationMap.astro";
 import { getWorks, type WorkItem } from "../../../data/works";
 import { getLinkPreviewImage } from "../../../utils/linkMetadata";
@@ -175,6 +176,8 @@ const hasWorkInfo = Boolean(roleValue || yearValue || locationValue);
             </div>
           ) : block.type === "embed" ? (
             <div class="work-text-block" set:html={renderExternalEmbed({ ...block, caption: localize(block.caption, lang) })} />
+          ) : block.type === "pdf" ? (
+            <WorkPdf url={block.url} title={block.title} caption={block.caption} lang={lang} />
           ) : block.type === "statsLink" ? (
             <a class:list={["work-stats-link", block.previewImage && "work-stats-link-with-thumb"]} href={block.url} target="_blank" rel="noreferrer" aria-label={`Open ${localize(block.title, lang)}`}>
               {block.previewImage && (

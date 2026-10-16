@@ -480,6 +480,32 @@ collections:
                     name: en
                     widget: markdown
                     required: false
+          - label: PDF (Google Drive)
+            name: pdf
+            widget: object
+            summary: "PDF - {{fields.url}}"
+            fields:
+              - label: Google Drive PDF URL
+                name: url
+                widget: string
+                pattern:
+                  - '^https://drive\.google\.com/(file/d/[A-Za-z0-9_-]+(/(view|preview))?/?(\?[^\s]*)?|(open|uc)/?\?[^\s]+)$'
+                  - 'Paste a Google Drive file share link, not iframe HTML. / PDF 파일의 Google Drive 공유 링크를 입력하세요.'
+                hint: 'Upload a PDF to Google Drive, set General access to Anyone with the link / Viewer, then paste its share link (https://drive.google.com/file/d/FILE_ID/view). Visitors cannot view restricted files. / PDF를 Drive에 올리고 일반 액세스를 링크가 있는 모든 사용자 · 뷰어로 설정한 후 공유 링크를 붙여 넣으세요. GitHub raw 링크는 지원하지 않습니다.'
+              - label: Title / 제목
+                name: title
+                widget: object
+                required: false
+                fields:
+                  - { label: Korean, name: ko, widget: string, required: false }
+                  - { label: English, name: en, widget: string, required: false }
+              - label: Caption / 설명
+                name: caption
+                widget: object
+                required: false
+                fields:
+                  - { label: Korean, name: ko, widget: string, required: false }
+                  - { label: English, name: en, widget: string, required: false }
           - label: Video
             name: video
             widget: object

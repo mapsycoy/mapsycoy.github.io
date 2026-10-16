@@ -1,6 +1,7 @@
 import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 import seriesRegistry from "./data/series.json";
+import { getWorkPdfUrls } from "./utils/workPdf.mjs";
 
 const registeredSeriesIds = Object.keys(seriesRegistry);
 const seriesIdSchema = z.string().refine((value) => registeredSeriesIds.includes(value), {
@@ -124,6 +125,14 @@ const works = defineCollection({
           z.object({
             type: z.literal("specialThanks"),
             body: localizedTextSchema,
+          }),
+          z.object({
+            type: z.literal("pdf"),
+            url: z.string().trim().refine((value) => Boolean(getWorkPdfUrls(value)), {
+              message: "Use a Google Drive PDF file share link: https://drive.google.com/file/d/FILE_ID/view",
+            }),
+            title: localizedTextSchema.optional(),
+            caption: localizedTextSchema.optional(),
           }),
           z.object({
             type: z.literal("video"),

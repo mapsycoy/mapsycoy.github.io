@@ -1,0 +1,55 @@
+---
+import { getWorkPdfUrls } from "../utils/workPdf.mjs";
+import { localize, type Language, type LocalizedText } from "../utils/i18n";
+
+interface Props {
+  url: string;
+  title?: LocalizedText;
+  caption?: LocalizedText;
+  lang: Language;
+}
+
+const { url, title, caption, lang } = Astro.props;
+const urls = getWorkPdfUrls(url);
+const documentTitle = localize(title, lang).trim() || (lang === "ko" ? "PDF 문서" : "PDF document");
+const documentCaption = localize(caption, lang).trim();
+const openLabel = lang === "ko" ? "원본 열기 (새 탭)" : "Open original (new tab)";
+const help = lang === "ko"
+  ? "미리보기가 표시되지 않으면 원본을 새 탭에서 열어 주세요."
+  : "If the preview is unavailable, open the original in a new tab.";
+---
+
+{urls && (
+  <figure class="work-pdf">
+    <div class="work-pdf-header">
+      <span class="work-pdf-title">{documentTitle}</span>
+      <a href={urls.originalUrl} target="_blank" rel="noopener noreferrer" aria-label={`${documentTitle} — ${openLabel}`}>
+        {openLabel}<span aria-hidden="true"> ↗</span>
+      </a>
+    </div>
+    <iframe
+      src={urls.previewUrl}
+      title={`${documentTitle} — ${lang === "ko" ? "PDF 미리보기" : "PDF preview"}`}
+      loading="lazy"
+      allowfullscreen
+    ></iframe>
+    <p class="work-pdf-help">{help}</p>
+    {documentCaption && <figcaption>{documentCaption}</figcaption>}
+  </figure>
+)}
+
+<style>
+  .work-pdf { margin: 24px 0 0; min-width: 0; }
+  .work-pdf:first-child { margin-top: 0; }
+  .work-pdf-header { display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 8px 20px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .work-pdf-title { font-size: 0.92rem; font-weight: 500; overflow-wrap: anywhere; }
+  .work-pdf-header a { font-size: 0.8rem; color: var(--muted); text-underline-offset: 3px; }
+  .work-pdf-header a:hover { color: var(--text); }
+  .work-pdf-header a:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+  iframe { display: block; box-sizing: border-box; width: 100%; height: clamp(360px, 75vh, 860px); height: clamp(360px, 75svh, 860px); border: 1px solid var(--line); background: var(--soft); }
+  .work-pdf-help { margin: 8px 0 0; color: var(--muted); font-size: 0.75rem; line-height: 1.6; }
+  figcaption { margin-top: 10px; color: var(--muted); font-size: 0.86rem; line-height: 1.5; text-align: center; overflow-wrap: anywhere; }
+  @media (max-width: 600px) {
+    iframe { height: clamp(320px, 65vh, 640px); height: clamp(320px, 65svh, 640px); }
+  }
+</style>
