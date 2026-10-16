@@ -61,33 +61,24 @@ contentBlocks:
       en: Simulation for the New Humanity
   - type: text
     body:
-      ko: >-
-        ※ GPT-4o 기반의 AI 롤플레잉 기능은 현재 정상 작동하지 않습니다. 아래 명령어로 클리어·실패 엔딩을 확인할 수 있습니다.
+      ko: ※ GPT-4o 기반의 AI 롤플레잉 기능은 현재 정상 작동하지 않습니다. 아래 명령어로 클리어·실패 엔딩을 확인할 수 있습니다.
         (따옴표를 제외한 명령어만 입력)
-
-
+      en: ※ The GPT-4o-based AI roleplay feature is currently not working properly.
+        You can check the clear/fail endings using the commands below. (Enter
+        commands only, excluding quotes)
+  - type: text
+    body:
+      ko: |-
         ```python
-
         # 클리어 엔딩
-
         # 입력 후 약 3.5초 뒤 엔딩 영상으로 전환됩니다.
-
         "/admin_force_clear"
 
-
         # 실패 엔딩
-
         # 남은 시간이 5초로 변경된 뒤 실패 엔딩으로 전환됩니다.
-
         "/admin_force_fail"
-
         ```
       en: >-
-        ※ The GPT-4o-based AI roleplay feature is currently not working
-        properly. You can check the clear/fail endings using the commands below.
-        (Enter commands only, excluding quotes)
-
-
         ```python
 
         # Clear ending
