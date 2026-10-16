@@ -34,10 +34,16 @@ contentBlocks:
         as we made the film, it naturally turned into a story exploring what the
         children of that place—myself included—look like now as we’ve grown into
         adulthood.
+  - type: statsLink
+    url: https://product.kyobobook.co.kr/detail/S000001085967
+    title:
+      ko: 교보문고 ∣ 창조적 미술영재
+      en: ""
+    subtitle: 1%의 아이들이 가진 특별한 발상
   - type: specialThanks
     body:
-      ko: "도움주신 **백중열** 교수님께 감사의 말씀드립니다."
-      en: "Special Thanks to Prof. **Baek Jungyeol**"
+      ko: 도움주신 **백중열** 교수님께 감사의 말씀드립니다.
+      en: Special Thanks to Prof. **Baek Jungyeol**
 tags:
   - Documentary
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/midjourney.webp
