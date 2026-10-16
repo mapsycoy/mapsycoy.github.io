@@ -41,15 +41,11 @@ contentBlocks:
       ko: ""
       en: 광화문광장에 쏘아 올린 다섯 학생의 도전
   - type: statsLink
-    url: https://www.sejongpac.or.kr/portal/performance/performance/performTicket.do?performIdx=34426&menuNo=200558
     title:
-      ko: 세종문화회관 전시일정
-      en: " Sejong Center for the Performing Arts Exhibition Schedule"
-  - type: statsLink
-    title:
-      ko: 서울문화포털 문화행사 - 전시
-      en: " Seoul Culture Portal Cultural Events - Exhibition"
+      ko: 서울문화포털 ∣ 문화행사 ∣ 전시
+      en: " Seoul Culture Portal ∣ Cultural Events ∣ Exhibition"
     url: https://culture.seoul.go.kr/culture/culture/cultureEvent/view.do?cultcode=142660&menuNo=200009
+    subtitle: "[아뜰리에 광화] 2023 광장으로의 초대 이중섭"
   - type: specialThanks
     body:
       ko: 도움주신 **하준수** 교수님께 감사의 말씀드립니다.
