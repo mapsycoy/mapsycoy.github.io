@@ -29,7 +29,10 @@ contentBlocks:
         > 일반적으로 파도는 고난과 역경을 상징합니다. 이를 게임 포맷으로 표현함으로써 프로젝트는 하나의 메시지를 전달합니다. 플레이어가 포기하지 않고 계속 도전한다면 아무리 어려운 난이도의 게임일지라도 결국 클리어할 수 있듯이, 우리 역시 인생 앞에 놓인 파도 같은 시련과 고난을 필연적으로 극복해 낼 것이라는 믿음입니다.
 
 
-        음악: Suno AI
+        *음악: Suno AI*
+
+
+        ![전시 정보](https://raw.githubusercontent.com/mapsycoy/mapsycoy-assets/55b589e1c662a6654a3610bb50764e0a4f72e4b2/uploads/works/Dance-of-Horizon.webp)
       en: >-
         A Virtual Rhythm Game Motivated by Waves
 
@@ -37,14 +40,8 @@ contentBlocks:
         > On a fundamental level, waves symbolize hardships and adversity. By translating this into a gaming format, the project delivers a powerful message: just as players can eventually clear even the most punishingly difficult game levels if they refuse to give up and keep challenging themselves, we, too, will inevitably overcome the wave-like trials and tribulations that lie ahead of us in life.
 
 
-        Music by Suno AI
-  - type: text
-    body:
-      ko: "![전시
-        정보](https://raw.githubusercontent.com/mapsycoy/mapsycoy-assets/55b589e1\
-        c662a6654a3610bb50764e0a4f72e4b2/uploads/works/Dance-of-Horizon.webp)"
-      en: >-
-        
+        *Music by Suno AI*
+
 
         ![Exhibition info](https://raw.githubusercontent.com/mapsycoy/mapsycoy-assets/55b589e1c662a6654a3610bb50764e0a4f72e4b2/uploads/works/Dance-of-Horizon.webp)
 tags:
