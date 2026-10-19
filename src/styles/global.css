@@ -1529,6 +1529,15 @@ h3 {
   width: 100%;
 }
 
+.work-detail[data-work-id="ctf-death"] .work-image-grid figure {
+  aspect-ratio: 16 / 9;
+}
+
+.work-detail[data-work-id="ctf-death"] .work-image-grid img {
+  height: 100%;
+  object-fit: cover;
+}
+
 .work-text-block figcaption {
   font-family: "Space Grotesk", "Pretendard", "Noto Sans KR", system-ui, sans-serif;
   font-synthesis: weight style;

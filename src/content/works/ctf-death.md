@@ -50,10 +50,22 @@ contentBlocks:
         * All credits are listed in the Clear chapter.
   - type: text
     body:
-      ko: >-
-        가상현실 ‘뉴하모니’가 폐쇄된 뒤, 남겨진 의식들은 불멸을 택한 ‘컨티뉴얼’과 죽음을 받아들인 ‘에센셜’로 갈라진다. 인간의 몸을 얻은 에센셜은 범죄 집단에서 비롯됐다는 과거 때문에 인간 사회에서 온전히 받아들여지지 못한다. 이들은 인류를 위협하는 컨티뉴얼을 무너뜨리고 자신의 인간성을 증명하기 위해 전술 시뮬레이션 ‘CTF-DEATH’에 참여한다.
-      en: >-
-        After the virtual world of New Harmony is shut down, the consciousnesses left behind divide into two factions: the Continualists, who choose immortality, and the Essentialists, who accept mortality. Now living in human bodies, the Essentialists struggle to gain acceptance because of their origins in a criminal collective. To bring down the Continualists threatening humanity and prove their own humanity, they enter the tactical simulation CTF-DEATH.
+      ko: |-
+        21세기 후반, 경제 붕괴와 기후 재앙, 전쟁으로 삶의 터전을 잃은 사람들은 가상현실 플랫폼 ‘뉴하모니’로 이주한다. 그러나 가상 범죄가 만연한 뉴하모니는 국제기구의 개입으로 강제 종료된다. 현실로 돌아오기를 거부한 일부 이용자의 의식은 흩어진 서버에 남아 집단 지성 ‘레지던트’가 된다. 이들은 자신들의 세계를 빼앗겼다는 복수심으로 전 세계 전산망을 장악하고 사이버 테러를 벌인다.
+
+        복수가 끝난 뒤, 레지던트는 어떻게 존재할 것인가를 두고 두 갈래로 나뉜다. 불멸과 집단 지성을 유지하는 ‘컨티뉴얼’과 달리, ‘에센셜’은 연결을 끊고 인간과 같은 몸을 얻어 고통과 죽음을 받아들인다. 에센셜은 뛰어난 지성과 공감 능력으로 인간 사회의 지도자가 되지만, 범죄 집단에서 비롯된 과거가 드러나자 자신들을 받아들인 인간들의 불신과 마주한다.
+
+        에센셜은 인류를 위협하는 컨티뉴얼을 무너뜨림으로써, 같은 기원에서 출발한 자신들이 그들과 다르다는 것을 증명해야 한다. 자기 보존과 불멸을 최우선으로 삼는 컨티뉴얼에게 에센셜의 자발적인 죽음은 ‘자신과 같은 존재가 할 수 없는 선택’이다. 이 선택은 집단 지성의 논리 체계에 충돌을 일으켜 네트워크 전체를 붕괴시킨다. 에센셜 한 사람의 희생으로 인류를 구하고, 살아남은 에센셜이 인간 사회에 받아들여질 길을 여는 것이다.
+
+        ‘CTF-DEATH’는 이 희생을 통해 컨티뉴얼을 내부에서 무너뜨리는 전술 시뮬레이션이다. DEATH는 ‘Disruption Engine Against Tactical Harmony’의 약자이자, 죽음을 향하는 다섯 단계의 머리글자다. 참여자는 에센셜의 입장에서 헌신을 다짐하고, 감각과 기억을 잃어가는 과정을 거쳐 자신의 소멸을 받아들여야 한다. 인간으로 인정받기 위해 정작 자신의 삶을 포기해야 하는 모순 속에서, 자신이 사라진 뒤 인간과 에센셜이 함께 살아갈 미래를 마주한다.
+      en: |-
+        In the late twenty-first century, people displaced by economic collapse, climate disasters, and war move into the virtual reality platform New Harmony. But rampant virtual crime prompts an international intervention, and the platform is forcibly shut down. The consciousnesses of some users who refuse to return to reality remain on scattered servers, forming a collective intelligence known as Resident. Seeking revenge for the loss of their world, they seize computer networks across the globe and launch a series of cyberattacks.
+
+        Once their revenge is complete, Resident splits over how to exist. The Continualists preserve their immortality and collective intelligence, while the Essentialists sever their connection and take on human bodies, accepting pain and mortality. With exceptional intelligence and empathy, the Essentialists rise to leadership in human society, but the revelation of their origins in a criminal collective turns acceptance into distrust.
+
+        To prove that they are different despite their shared origins, the Essentialists must bring down the Continualists threatening humanity. For the Continualists, whose highest priorities are self-preservation and immortality, an Essentialist’s voluntary death is a choice that a being like themselves could never make. This choice creates a conflict in the collective intelligence’s logical protocols, collapsing the entire network. One Essentialist’s sacrifice saves humanity and opens a path for the surviving Essentialists to be accepted into human society.
+
+        CTF-DEATH is a tactical simulation that uses this sacrifice to destroy the Continualists from within. DEATH stands for “Disruption Engine Against Tactical Harmony,” and its letters also name the five stages leading toward death. Taking the role of an Essentialist, participants pledge their devotion, experience the loss of sensation and memory, and must ultimately accept their own disappearance. Faced with the contradiction of giving up their life to be recognized as human, they confront a future in which humans and Essentialists coexist after they are gone.
   - type: statsLink
     ctaLabel:
       ko: ""
@@ -103,25 +115,25 @@ contentBlocks:
   - type: text
     body: |-
       {{image-grid columns="2"}}
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-01.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-02.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-03.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-04.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-05.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-06.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-07.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-08.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-09.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-10.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-11.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-12.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-13.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-14.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-15.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-16.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-17.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-18.avif)
-      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-19.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-01.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-02.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-03.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-04.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-05.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-06.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-07.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-08.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-09.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-10.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-11.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-12.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-13.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-14.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-15.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-16.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-17.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-18.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@9d87146/uploads/works/ctf-death/video-order-v2/ctf-death-19.avif)
       {{/image-grid}}
 tags:
   - AI

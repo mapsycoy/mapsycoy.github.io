@@ -90,7 +90,7 @@ const hasWorkInfo = Boolean(roleValue || yearValue || locationValue);
 ---
 
 <Layout title={`${workTitle} | Works`} description={workTitle} lang={lang} preconnectX={hasXEmbed}>
-  <article class="work-detail">
+  <article class="work-detail" data-work-id={work.id}>
     <a class="work-back-link" href="/works/" aria-label="Back to Works">&#8592;</a>
 
     <header class="work-detail-header">
