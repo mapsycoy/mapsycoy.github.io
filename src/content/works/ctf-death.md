@@ -48,6 +48,12 @@ contentBlocks:
         * A brief explanation of the world-building is included in the Intro chapter.
 
         * All credits are listed in the Clear chapter.
+  - type: text
+    body:
+      ko: >-
+        가상현실 ‘뉴하모니’가 폐쇄된 뒤, 남겨진 의식들은 불멸을 택한 ‘컨티뉴얼’과 죽음을 받아들인 ‘에센셜’로 갈라진다. 인간의 몸을 얻은 에센셜은 범죄 집단에서 비롯됐다는 과거 때문에 인간 사회에서 온전히 받아들여지지 못한다. 이들은 인류를 위협하는 컨티뉴얼을 무너뜨리고 자신의 인간성을 증명하기 위해 전술 시뮬레이션 ‘CTF-DEATH’에 참여한다.
+      en: >-
+        After the virtual world of New Harmony is shut down, the consciousnesses left behind divide into two factions: the Continualists, who choose immortality, and the Essentialists, who accept mortality. Now living in human bodies, the Essentialists struggle to gain acceptance because of their origins in a criminal collective. To bring down the Continualists threatening humanity and prove their own humanity, they enter the tactical simulation CTF-DEATH.
   - type: statsLink
     ctaLabel:
       ko: ""
@@ -94,6 +100,29 @@ contentBlocks:
         /admin_force_fail
 
         ```
+  - type: text
+    body: |-
+      {{image-grid columns="2"}}
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-01.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-02.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-03.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-04.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-05.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-06.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-07.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-08.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-09.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-10.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-11.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-12.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-13.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-14.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-15.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-16.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-17.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-18.avif)
+      ![](https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@83e3c33/uploads/works/ctf-death/ctf-death-19.avif)
+      {{/image-grid}}
 tags:
   - AI
 thumbnail: https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/works/ctfdeath.webp
