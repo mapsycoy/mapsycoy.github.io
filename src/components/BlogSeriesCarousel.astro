@@ -1,6 +1,7 @@
 ---
 import SeriesOneIllustration from "./SeriesOneIllustration.astro";
 import IntentSeriesIllustration from "./IntentSeriesIllustration.astro";
+import GameSeriesIllustration from "./GameSeriesIllustration.astro";
 import { hasKoreanText, type BlogPost } from "../data/blog";
 import type { NoteEntry } from "../data/notes";
 import { getMixedSeriesGroups, getSeriesEntryPath, getSeriesEntryTitle } from "../data/seriesEntries";
@@ -39,6 +40,7 @@ const isKo = lang === "ko";
           <span class="series-card-art" aria-hidden="true">
             {group.id === "child-ai" && <SeriesOneIllustration />}
             {group.id === "communicating-intent" && <IntentSeriesIllustration />}
+            {group.id === "game-and-player" && <GameSeriesIllustration />}
           </span>
         </span>
       </button>
@@ -64,6 +66,9 @@ const isKo = lang === "ko";
         <p>{localize(group.metadata.description, lang)}</p>
       </div>
       <div class="series-drawer-scroll">
+        {group.entries.length === 0 && (
+          <p class="series-drawer-empty">{isKo ? "아직 등록된 글이 없습니다." : "No posts in this series yet."}</p>
+        )}
         <ol class="series-drawer-list">
           {group.entries.map((entry, index) => (
             <li>
@@ -117,6 +122,7 @@ const isKo = lang === "ko";
   .series-drawer-intro p { margin: 12px 0 0; font-size: 0.78rem; line-height: 1.7; color: var(--muted); word-break: keep-all; overflow-wrap: anywhere; }
   .series-drawer-scroll { flex: 1; min-height: 0; overflow-y: auto; overscroll-behavior: contain; padding: 0 26px max(22px, env(safe-area-inset-bottom)); }
   .series-drawer-list { margin: 0; padding: 0; list-style: none; }
+  .series-drawer-empty { margin: 0; padding: 18px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.84rem; line-height: 1.6; }
   .series-drawer-list a { display: flex; align-items: baseline; gap: 14px; min-height: 48px; padding: 13px 0; border-top: 1px solid var(--line); text-decoration: none; }
   .series-drawer-list a:hover { color: var(--accent); }
   .series-drawer-list a:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
@@ -125,6 +131,9 @@ const isKo = lang === "ko";
   @keyframes series-drawer-enter { from { transform: translateX(24px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
   @keyframes series-drawer-exit { from { transform: translateX(0); opacity: 1; } to { transform: translateX(24px); opacity: 0; } }
   @keyframes series-backdrop-exit { from { opacity: 1; } to { opacity: 0; } }
+  @media (min-width: 768px) {
+    .series-card { flex-basis: calc((100% - 32px) / 3); }
+  }
   @media (max-width: 680px) {
     .series-carousel-controls button { width: 44px; height: 44px; }
     .series-carousel-track { gap: 12px; }
