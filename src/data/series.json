@@ -30,21 +30,5 @@
       "ko": "기획자·디자이너·개발자 사이에서 의도가 전달되는 과정과 AI의 역할을 살펴봅니다.",
       "en": "This series explores how planners, designers, and developers communicate their intentions, and the role AI can play in that process."
     }
-  },
-  "game-and-player": {
-    "number": 3,
-    "status": "active",
-    "label": {
-      "ko": "서비스와 게이미피케이션",
-      "en": "Services and Gamification"
-    },
-    "title": {
-      "ko": "서비스의 본질을 흐리지 않는 게이미피케이션",
-      "en": "Gamification That Preserves a Service’s Core Purpose"
-    },
-    "description": {
-      "ko": "비게임 앱의 본래 목적을 유지하면서 게임적 요소를 어느 정도로, 어떤 위치와 역할로 넣을지 살펴봅니다.",
-      "en": "This series explores how much gamification to introduce into non-game apps, and where and how it should fit without obscuring their core purpose."
-    }
   }
 }
