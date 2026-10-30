@@ -1,0 +1,368 @@
+---
+import { MAX_FLOWERS } from "../utils/footer-sketch";
+import { defaultLanguage, type Language } from "../utils/i18n";
+const { lang = defaultLanguage } = Astro.props as { lang?: Language };
+const messages = lang === "ko"
+  ? {
+    step: "오늘도 한 뼘.\n내일도 한 뼘.",
+    spaces: "빈자리가 줄어들고 있어.\n신난다.",
+    radiant: "이 작은 세상이\n점점 찬란해져.",
+  }
+  : {
+    step: "A handspan today.\nA handspan tomorrow.",
+    spaces: "There’s less empty space now.\nI’m excited.",
+    radiant: "This little world is\ngrowing more radiant.",
+  };
+const greeting = messages.step;
+---
+
+<home-footer-sketch data-greeting={greeting} data-messages={JSON.stringify(messages)}>
+  <div class="sketch-stage" aria-hidden="true">
+    <svg class="sketch-lane" viewBox="0 0 360 115" preserveAspectRatio="xMidYMax meet" width="309" height="99" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      {Array.from({ length: MAX_FLOWERS }, (_, index) => <g data-flower={index} transform="translate(24 114)" opacity="0" stroke-width="1.15">
+        <path data-stem pathLength="1" d="M0 0Q2-6 .5-12T1-21" />
+        <g data-leaves class="sketch-fill">
+          <g data-leaf-left><path d="M0 0Z" /></g>
+          <g data-leaf-right><path d="M0 0Z" /></g>
+          <g data-leaf-third><path d="M0 0Z" /></g>
+        </g>
+        <g data-bloom transform="translate(1 -21)">
+          <path data-bud class="sketch-fill" d="M0 0Z" />
+          {Array.from({ length: 8 }, (_, index) => <path data-petal={index} class="sketch-fill" d="M0 -2Z" />)}
+          <path data-cup class="sketch-fill" d="M0 0Z" visibility="hidden" />
+          <path data-flower-center d="M-1-3Q2-5 3-2Q3 1 0 1Q-3 0-1-3Z" fill="currentColor" stroke="none" />
+        </g>
+      </g>)}
+      <path data-seed d="M-1-2Q2-3 2 0Q1 3-1 2Q-3 1-1-2Z" fill="currentColor" stroke="none" visibility="hidden" />
+      <g data-character="ai" transform="translate(180 114)">
+        <g data-body-motion>
+          <path data-side class="sketch-fill" d="M0 0Z" stroke="none" visibility="hidden" />
+          <path data-side-outline d="M0 0" stroke-width="1.1" visibility="hidden" />
+          <g data-front>
+          <g transform="translate(-24 -69)">
+            <!-- The eight visible paths are identical to the Series 01 AI.
+                 Only a closed, opaque backing is added beneath its four strokes. -->
+            <path data-body class="sketch-fill" stroke="none" d="M9.5 38q7-2 14.5-1t15.5 1L40 38q2 8 1 16t-2 14L38.5 68q-8 1.5-14.5 1T9 68L9 67.5q-2-7-1-13.5t1-16Z" />
+            <path data-ai-path="right" data-ground-ink d="M40 38q2 8 1 16t-2 14" stroke-width=".92" opacity=".94" />
+            <path data-ai-path="bottom" data-ground-ink d="M38.5 68q-8 1.5-14.5 1T9 68" stroke-width="1.46" />
+            <path data-ai-path="left" data-ground-ink d="M9 67.5q-2-7-1-13.5t1-16" stroke-width="1.14" />
+            <path data-ai-path="top" data-ground-ink d="M9.5 38q7-2 14.5-1t15.5 1" stroke-width="1.46" />
+            <g data-antenna>
+              <path data-ai-path="antenna-stem" d="M24 36.5q1-6 0-11.5" stroke-width=".92" opacity=".94" />
+              <path data-ai-path="antenna-tip" d="M21.1 22.1c.3-1.8 2-2.8 3.7-2.1 1.8.3 2.7 2 2 3.6-.3 1.7-2 2.6-3.6 2-1.6-.4-2.6-1.9-2.1-3.5Z" fill="currentColor" stroke="none" />
+            </g>
+            <g data-face stroke-width="1.14">
+              <path data-ai-path="left-eye" d="M15.2 50.4l2-.6 1.7 1.2-.3 1.8-1.5 1.1-2.1-.8-.4-1.4Z" />
+              <path data-ai-path="right-eye" d="M29.7 50l2.4.4.9 1.4-.8 2-1.8-.1-1.5-1.2.3-1.6Z" />
+            </g>
+          </g>
+          </g>
+        </g>
+      </g>
+      <g data-bubble visibility="hidden" transform="translate(180 1)">
+        <path data-bubble-surface class="sketch-speech" d="M-25 2Q0 0 25 2L25 21 4 22 0 28-4 22-25 21Z" />
+        <text data-bubble-text x="0" y="15" text-anchor="middle" stroke="none">{greeting}</text>
+      </g>
+    </svg>
+  </div>
+</home-footer-sketch>
+
+<style>
+  :global(.site-footer.has-home-sketch) { position: relative; }
+  :global(.home-main) { padding-bottom: 115px; }
+  home-footer-sketch { position: absolute; right: 0; bottom: calc(100% + 1px); left: 0; height: 99px; color: var(--muted); pointer-events: none; }
+  .sketch-stage { position: absolute; inset: 0; overflow: hidden; }
+  .sketch-lane { display: block; width: 100%; height: 100%; overflow: hidden; }
+  .sketch-fill { fill: var(--bg); fill-opacity: 1; opacity: 1; }
+  .sketch-speech { fill: currentColor; stroke: none; }
+  [data-bubble-text] { fill: var(--bg); font: 12.5px var(--font-sans, sans-serif); }
+  @media (max-width: 780px) {
+    :global(.home-main) { padding-bottom: 99px; }
+    home-footer-sketch { height: 83px; }
+  }
+</style>
+
+<script>
+  import { FooterAIWorld, aiProjection, flowerStages, flowerForms, leafOpening } from "../utils/footer-sketch";
+  const SCENE_HEIGHT = 115, FLOOR = 114;
+  const TRANSFER_KEY = 'mapsycoy:footer-ai-language-transfer:v2';
+  const SESSION_KEY = 'mapsycoy:footer-ai-garden:v2';
+  const homeLanguage = (path: string) => {
+    const route = path.replace(/\/+$/, '');
+    return route === '/ko' ? 'ko' : route === '' || route === '/en' ? 'en' : undefined;
+  };
+  const f = (n: number) => n.toFixed(3);
+  const put = (node: Element, name: string, value: string | number) => {
+    const text = String(value); if (node.getAttribute(name) !== text) node.setAttribute(name, text);
+  };
+  type InkPoint = { x: number; y: number; padding: number };
+  class HomeFooterSketch extends HTMLElement {
+    private world!: FooterAIWorld;
+    private resizeObserver?: ResizeObserver;
+    private events?: AbortController;
+    private observer?: IntersectionObserver;
+    private motion = matchMedia("(prefers-reduced-motion: reduce)");
+    private points: InkPoint[] = [];
+    private edges = new Map<string, { x: number; y: number }[]>();
+    private character!: SVGGElement;
+    private body!: SVGGElement;
+    private front!: SVGGElement;
+    private side!: SVGPathElement;
+    private sideOutline!: SVGPathElement;
+    private face!: SVGGElement;
+    private antenna!: SVGGElement;
+    private bubble!: SVGGElement;
+    private text!: SVGTextElement;
+    private bubbleSurface!: SVGPathElement;
+    private messages: Record<string, string> = {};
+    private measuredText = '';
+    private speechHalfWidth = 25;
+    private speechLines = 1;
+    private flowers: { group: SVGGElement; stem: SVGPathElement; leaves: SVGGElement[]; bloom: SVGGElement; bud: SVGPathElement; petals: SVGPathElement[]; cup: SVGPathElement; center: SVGPathElement; variant: number; anchors: { x: number; y: number }[] }[] = [];
+    private seed!: SVGPathElement;
+    private inView = false;
+    private running = false;
+    private frame = 0;
+    private lastTime = 0;
+    private lastPaint = 0;
+    private leaving = false;
+    private pendingLanguage?: string;
+
+    connectedCallback() {
+      if (this.events) return;
+      this.events = new AbortController(); const { signal } = this.events;
+      this.character = this.querySelector('[data-character]')!;
+      this.body = this.querySelector('[data-body-motion]')!;
+      this.front = this.querySelector('[data-front]')!;
+      this.side = this.querySelector('[data-side]')!;
+      this.sideOutline = this.querySelector('[data-side-outline]')!;
+      this.face = this.querySelector('[data-face]')!;
+      this.antenna = this.querySelector('[data-antenna]')!;
+      this.bubble = this.querySelector('[data-bubble]')!;
+      this.text = this.querySelector('[data-bubble-text]')!;
+      this.bubbleSurface = this.querySelector('[data-bubble-surface]')!;
+      this.messages = JSON.parse(this.dataset.messages || '{}');
+      this.flowers = [...this.querySelectorAll<SVGGElement>('[data-flower]')].map(group => ({
+        group, stem: group.querySelector('[data-stem]')!, leaves: [...group.querySelectorAll<SVGGElement>('[data-leaf-left],[data-leaf-right],[data-leaf-third]')],
+        bloom: group.querySelector('[data-bloom]')!, bud: group.querySelector('[data-bud]')!,
+        petals: [...group.querySelectorAll<SVGPathElement>('[data-petal]')], cup: group.querySelector('[data-cup]')!, center: group.querySelector('[data-flower-center]')!, variant: -1, anchors: [],
+      }));
+      this.seed = this.querySelector('[data-seed]')!;
+      for (const path of this.querySelectorAll<SVGPathElement>('[data-ground-ink],[data-body]')) {
+        const length = path.getTotalLength(), padding = Number(path.getAttribute('stroke-width') || 0) / 2;
+        for (let i = 0; i <= 120; i++) {
+          const p = path.getPointAtLength(length * i / 120);
+          this.points.push({ x: p.x - 24, y: p.y - 69, padding });
+        }
+      }
+      for (const side of ['left', 'right']) {
+        const path = this.querySelector<SVGPathElement>(`[data-ai-path="${side}"]`)!;
+        const length = path.getTotalLength();
+        const points = Array.from({ length: 41 }, (_, i) => {
+          const p = path.getPointAtLength(length * (side === 'left' ? 1 - i / 40 : i / 40));
+          return { x: p.x - 24, y: p.y - 69 };
+        });
+        this.edges.set(side, points);
+      }
+      try { sessionStorage.removeItem('mapsycoy:footer-sketch-paused'); } catch {}
+      this.measure(); this.saveSession();
+      this.resizeObserver = new ResizeObserver(() => { this.measure(); this.render(); });
+      this.resizeObserver.observe(this.querySelector('.sketch-stage')!);
+      document.addEventListener('visibilitychange', () => { this.sync(); if (document.hidden) this.saveSession(); }, { signal });
+      this.motion.addEventListener('change', this.onMotionChange);
+      document.addEventListener('click', event => {
+        if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+        const link = event.target instanceof Element ? event.target.closest('a') : null;
+        if (!(link instanceof HTMLAnchorElement) || link.hasAttribute('download') || (link.target && link.target !== '_self')) return;
+        const target = new URL(link.href, location.href), language = homeLanguage(target.pathname);
+        const isLanguageChange = link.classList.contains('language-toggle') && target.origin === location.origin
+          && language && language !== homeLanguage(location.pathname);
+        queueMicrotask(() => {
+          if (signal.aborted || event.defaultPrevented) return;
+          this.pendingLanguage = isLanguageChange ? language : undefined;
+          this.leaving = Boolean(this.pendingLanguage);
+          try { sessionStorage.removeItem(TRANSFER_KEY); } catch {}
+          this.sync();
+        });
+      }, { signal });
+      window.addEventListener('pagehide', () => {
+        this.leaving = true; this.sync(); this.saveSession();
+        try {
+          if (this.pendingLanguage) sessionStorage.setItem(TRANSFER_KEY, JSON.stringify({
+            version: 2, source: homeLanguage(location.pathname), target: this.pendingLanguage,
+            savedAt: Date.now(), state: this.world.snapshot(),
+          }));
+          else sessionStorage.removeItem(TRANSFER_KEY);
+        } catch {}
+      }, { signal });
+      window.addEventListener('pageshow', event => {
+        if (!event.persisted) return;
+        // The same tab keeps its garden across language changes and other pages.
+        // Navigation time is frozen rather than added to the animation clock.
+        this.pendingLanguage = undefined; this.leaving = false;
+        this.world = this.restoreWorld(this.world.width) ?? new FooterAIWorld(Math.random, this.world.width);
+        this.measure();
+        const bounds = this.getBoundingClientRect();
+        this.inView = bounds.bottom > 0 && bounds.top < innerHeight;
+        this.sync();
+      }, { signal });
+      this.observer = new IntersectionObserver(([entry]) => {
+        this.inView = entry.isIntersecting && entry.intersectionRatio > 0; this.sync();
+      });
+      this.observer.observe(this); this.sync(); this.dataset.ready = 'true';
+    }
+    private measure() {
+      const stage = this.querySelector<HTMLElement>('.sketch-stage')!;
+      const scale = Math.max(1, this.getBoundingClientRect().height) / SCENE_HEIGHT;
+      const width = stage.getBoundingClientRect().width / scale;
+      if (this.world) { this.world.displayScale = scale; this.world.resize(width); }
+      else { this.world = this.restoreWorld(width) ?? new FooterAIWorld(Math.random, width); this.world.displayScale = scale; }
+      this.querySelector('svg')!.setAttribute('viewBox', `0 0 ${this.world.width} ${SCENE_HEIGHT}`);
+    }
+    private saveSession() {
+      try { sessionStorage.setItem(SESSION_KEY, JSON.stringify({ version: 2, state: this.world.snapshot() })); } catch {}
+    }
+    private restoreWorld(width: number) {
+      try {
+        const raw = sessionStorage.getItem(TRANSFER_KEY);
+        sessionStorage.removeItem(TRANSFER_KEY);
+        if (raw) {
+          const transfer = JSON.parse(raw), age = Date.now() - transfer?.savedAt;
+          if (transfer?.version === 2 && Number.isFinite(age) && age >= 0 && age <= 120000
+            && transfer.target === homeLanguage(location.pathname) && ['ko', 'en'].includes(transfer.source)
+            && transfer.source !== transfer.target) {
+            const world = FooterAIWorld.fromSnapshot(transfer.state, width);
+            if (world) return world;
+          }
+        }
+        const session = JSON.parse(sessionStorage.getItem(SESSION_KEY) || 'null');
+        if (session?.version !== 2) return;
+        const world = FooterAIWorld.fromSnapshot(session.state, width);
+        if (world) return world;
+      } catch { return; }
+    }
+    private onMotionChange = () => this.sync();
+    private tick = (now: number) => {
+      this.frame = 0; if (!this.running) return;
+      // Honor the current preference even if a browser delays its change event.
+      if (document.hidden || this.motion.matches || !this.inView || this.leaving) { this.sync(); return; }
+      if (this.lastTime) this.world.update(Math.min(now - this.lastTime, 100));
+      this.lastTime = now;
+      if (now - this.lastPaint >= 1000 / 30) { this.render(); this.lastPaint = now; }
+      this.frame = requestAnimationFrame(this.tick);
+    };
+    private sync() {
+      this.running = this.inView && !document.hidden && !this.motion.matches && !this.leaving;
+      cancelAnimationFrame(this.frame); this.frame = 0; this.lastTime = 0; this.render();
+      if (this.running) this.frame = requestAnimationFrame(this.tick);
+      this.dataset.running = String(this.running); this.dataset.reduced = String(this.motion.matches);
+
+    }
+    private render() {
+      const reduced = this.motion.matches, w = this.world;
+      const x = reduced ? w.width / 2 : w.x, angle = reduced ? 0 : w.angle;
+      const turn = reduced ? 0 : w.turn, amount = Math.abs(turn);
+      const { sx, skew, shift, dx, dy } = aiProjection(turn);
+      put(this.front, 'transform', `matrix(${f(sx)} ${f(skew)} 0 1 ${f(shift)} 0)`);
+      // Both faces share the original curved edge, not an approximate rectangle.
+      // One depth vector moves every back-edge point, including both corners.
+      const shared = this.edges.get(turn > 0 ? 'left' : 'right')!.map(p => ({ x: p.x * sx + shift, y: p.y + p.x * skew }));
+      const back = shared.map(p => ({ x: p.x + dx, y: p.y + dy }));
+      const sidePoints = [...shared, ...back.slice().reverse()];
+      const pathPoints = (points: { x: number; y: number }[]) => points.map((p, i) => `${i ? 'L' : 'M'}${f(p.x)} ${f(p.y)}`).join(' ');
+      put(this.side, 'd', pathPoints(sidePoints) + 'Z');
+      put(this.sideOutline, 'd', pathPoints([shared[0], ...back, shared[shared.length - 1]]));
+      for (const part of [this.side, this.sideOutline]) put(part, 'visibility', amount > .015 ? 'visible' : 'hidden');
+      const radians = angle * Math.PI / 180, sin = Math.sin(radians), cos = Math.cos(radians);
+      // The supporting ink edge stays planted while the opposite edge lifts.
+      let support = -Infinity;
+      for (const p of this.points) support = Math.max(support, (p.x * sx + shift) * sin + (p.y + p.x * skew) * cos + p.padding);
+      if (amount > .015) for (const p of sidePoints) support = Math.max(support, p.x * sin + p.y * cos + .55);
+      put(this.character, 'transform', `translate(${f(x)} ${f(FLOOR - support)})`);
+      put(this.body, 'transform', `rotate(${f(angle)})`);
+      put(this.antenna, 'transform', `rotate(${f(reduced ? 0 : w.antenna)} 24 36.5)`);
+      put(this.face, 'transform', `translate(${f(reduced ? 0 : w.gaze)} 51.5) scale(1 ${reduced ? 1 : w.blink}) translate(0 -51.5)`);
+      put(this.bubble, 'visibility', !reduced && w.bubbleVisible ? 'visible' : 'hidden');
+      const text = this.messages[w.greeting] || this.dataset.greeting!;
+      const measureKey = text + ':' + Math.round(w.width);
+      if (this.measuredText !== measureKey) {
+        const lines = text.split('\n');
+        const spans = lines.map((line, index) => {
+          const span = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+          span.setAttribute('x', '0'); span.setAttribute('y', String(15 + index * 15)); span.textContent = line;
+          return span;
+        });
+        this.text.replaceChildren(...spans); this.measuredText = measureKey; this.speechLines = lines.length;
+        this.speechHalfWidth = Math.max(25, Math.min((w.width - 4) / 2, Math.ceil(Math.max(...spans.map(span => span.getComputedTextLength())) / 2 + 10)));
+      }
+      const half = this.speechHalfWidth, bottom = 22 + (this.speechLines - 1) * 15;
+      const bubbleX = Math.max(half + 2, Math.min(w.width - half - 2, x));
+      put(this.bubble, 'transform', `translate(${f(bubbleX)} ${1 + (3 - this.speechLines) * 15})`);
+      // Keep the small tail centered, including when the box is inset at an edge.
+      put(this.bubbleSurface, 'd', `M${-half} 2Q0 0 ${half} 2Q${half + 1} ${bottom / 2} ${half} ${bottom - 1}L4 ${bottom} 0 ${bottom + 6} -4 ${bottom} ${-half} ${bottom - 1}Q${-half - 1} ${bottom / 2} ${-half} 2Z`);
+      this.dataset.message = text.replaceAll('\n', ' ');
+      const visible = new Set(w.visibleGarden.map(flower => flower.slot));
+      for (const [index, parts] of this.flowers.entries()) {
+        const flower = w.garden[index];
+        const shown = Boolean(flower && visible.has(flower.slot));
+        put(parts.group, 'visibility', shown ? 'visible' : 'hidden');
+        // Child growth stages use explicit visibility. display:none on the whole
+        // flower prevents those children overriding a hidden responsive parent.
+        put(parts.group, 'display', shown ? 'inline' : 'none');
+        if (!shown || !flower) continue;
+        const growth = flower.growth, variant = flower.variant;
+        if (parts.variant !== variant) {
+          parts.variant = variant; put(parts.group, 'data-variant', variant);
+          put(parts.stem, 'd', flowerForms[variant].stem);
+          const length = parts.stem.getTotalLength(), tip = parts.stem.getPointAtLength(length);
+          parts.anchors = flowerForms[variant].leaves.map(leaf => parts.stem.getPointAtLength(length * leaf.at));
+          put(parts.bloom, 'transform', `translate(${f(tip.x)} ${f(tip.y)})`);
+        }
+      const stages = flowerStages(growth);
+      put(parts.group, 'transform', `translate(${f(w.flowerPosition(flower.slot))} ${FLOOR})`);
+      put(parts.group, 'opacity', 1);
+      put(parts.stem, 'stroke-dasharray', 1); put(parts.stem, 'stroke-dashoffset', f(1 - stages.stem));
+      for (const [index, leaf] of parts.leaves.entries()) {
+        const form = flowerForms[variant].leaves[index];
+        if (!form) { put(leaf, 'visibility', 'hidden'); continue; }
+        const anchor = parts.anchors[index], opening = leafOpening(stages.stem, form.at), direction = form.direction;
+        put(leaf, 'transform', `translate(${f(anchor.x)} ${f(anchor.y)})`);
+        put(leaf, 'visibility', opening > .001 ? 'visible' : 'hidden');
+        const { length, rise, width } = form;
+        put(leaf.querySelector('path')!, 'd', `M0 0Q${f(direction * 3 * opening)} ${f(-opening)} ${f(direction * length * opening)} ${f(-rise * opening)}Q${f(direction * 3 * opening)} ${f(-width * opening)} 0 0Z`);
+      }
+      put(parts.bud, 'visibility', stages.bud > .001 ? 'visible' : 'hidden');
+      put(parts.bud, 'd', `M0 0Q${f(-3 * stages.bud)} ${f(-3 * stages.bud)} 0 ${f(-6 * stages.bud)}Q${f(3 * stages.bud)} ${f(-3 * stages.bud)} 0 0Z`);
+      put(parts.bud, 'opacity', f(1 - stages.petals));
+      const petalCount = variant === 0 ? 5 : variant === 1 ? 8 : 0;
+      for (const [index, petal] of parts.petals.entries()) {
+        const open = stages.petals;
+        put(petal, 'visibility', index < petalCount && open > .001 ? 'visible' : 'hidden');
+        if (index >= petalCount) continue;
+        const a = -Math.PI / 2 + index * Math.PI * 2 / petalCount;
+        const radius = (variant === 1 ? 8.2 : 6) + [.8, -.3, .4, -.5, .2, -.4, .3, -.2][index];
+        const polar = (angle: number, r: number) => ({ x: Math.cos(angle) * r, y: -2 + Math.sin(angle) * r });
+        const spread = variant === 1 ? .24 : .65;
+        const left = polar(a - .35, 1.2), right = polar(a + .35, 1.2), c1 = polar(a - spread, 1.8 + open * 3.8), c2 = polar(a + spread, 1.8 + open * 3.8);
+        const tip = { x: Math.cos(a) * radius * open, y: -6 * (1 - open) + (-2 + Math.sin(a) * radius) * open };
+        put(petal, 'visibility', open > .001 ? 'visible' : 'hidden');
+        put(petal, 'd', `M${f(left.x)} ${f(left.y)}Q${f(c1.x)} ${f(c1.y)} ${f(tip.x)} ${f(tip.y)}Q${f(c2.x)} ${f(c2.y)} ${f(right.x)} ${f(right.y)}Z`);
+      }
+      const open = stages.petals, cupWidth = .15 + .85 * open, cupHeight = 6 + 3 * open;
+      put(parts.cup, 'visibility', variant === 2 && open > .001 ? 'visible' : 'hidden');
+      put(parts.cup, 'd', `M0 0Q${f(-6 * cupWidth)} -1 ${f(-6 * cupWidth)} ${f(-cupHeight)}Q${f(-2 * cupWidth)} ${f(-cupHeight * .55)} 0 ${f(-cupHeight - open)}Q${f(2 * cupWidth)} ${f(-cupHeight * .55)} ${f(6 * cupWidth)} ${f(-cupHeight)}Q${f(6 * cupWidth)} -1 0 0Z`);
+      put(parts.center, 'opacity', variant === 2 ? 0 : f(Math.max(0, Math.min(1, (stages.petals - .4) / .6))));
+      }
+      put(this.seed, 'visibility', !reduced && w.seed.visible ? 'visible' : 'hidden');
+      put(this.seed, 'transform', `translate(${f(w.seed.x)} ${f(FLOOR + w.seed.y)})`);
+      this.dataset.time = String(Math.round(w.time)); this.dataset.phase = reduced ? 'rest' : w.phase;
+      this.dataset.flowers = String(visible.size); this.dataset.storedFlowers = String(w.garden.length); this.dataset.capacity = String(w.capacity);
+    }
+    disconnectedCallback() {
+      this.saveSession(); this.running = false; cancelAnimationFrame(this.frame); this.frame = 0; this.lastTime = 0;
+      this.motion.removeEventListener('change', this.onMotionChange);
+      this.events?.abort(); this.events = undefined; this.observer?.disconnect(); this.resizeObserver?.disconnect(); this.points = []; this.edges.clear();
+    }
+  }
+  if (!customElements.get('home-footer-sketch')) customElements.define('home-footer-sketch', HomeFooterSketch);
+</script>

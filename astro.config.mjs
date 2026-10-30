@@ -19,10 +19,8 @@ export default defineConfig({
   vite: {
     optimizeDeps: {
       // Vite's automatic crawl walks the large Mermaid dependency graph and can
-      // leave the Windows dev server stuck while the page waits for its client
-      // bundle. The home page only needs this client dependency up front.
+      // leave the Windows dev server stuck while the page waits for its client bundle.
       noDiscovery: true,
-      include: ["gifuct-js"],
     },
   },
   integrations: [

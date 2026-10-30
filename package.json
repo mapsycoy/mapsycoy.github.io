@@ -5,7 +5,6 @@
   "private": true,
   "scripts": {
     "dev": "astro dev",
-    "generate:halftone": "node scripts/generate-halftone-fallback.mjs",
     "generate:note-labels": "node scripts/generate-note-graph-labels.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "build": "node scripts/build-optimized.mjs",
@@ -22,8 +21,6 @@
   },
   "devDependencies": {
     "@astrojs/sitemap": "^3.7.3",
-    "gifenc": "^1.0.3",
-    "gifuct-js": "^2.1.2",
     "pagefind": "^1.5.2"
   }
 }

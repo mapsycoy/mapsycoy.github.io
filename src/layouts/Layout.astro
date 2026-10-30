@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import LogoMark from "../components/LogoMark.astro";
+import HomeFooterSketch from "../components/HomeFooterSketch.astro";
 import { getSitePreviewImage } from "../data/home";
 import { defaultLanguage, getAlternateLanguage, isLanguage, withLanguage, type Language } from "../utils/i18n";
 
@@ -12,7 +13,8 @@ const {
   ogType = "website",
   publishedTime = undefined,
   modifiedTime = undefined,
-  preconnectX = false
+  preconnectX = false,
+  homeSketch = false
 } = Astro.props;
 
 const currentLanguage = lang as Language;
@@ -190,39 +192,11 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         </nav>
       </header>
 
-      <main>
+      <main class:list={{ "home-main": homeSketch }}>
         <slot />
       </main>
-      <div class="site-music-float" data-site-music-float hidden>
-        <button
-          class="site-music-float-toggle"
-          type="button"
-          aria-pressed="false"
-          aria-label="Play music"
-          data-site-music-control
-        >
-          <span class="site-music-float-icon" aria-hidden="true">
-            <svg class="site-music-float-play" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M8 5.5v13l11-6.5-11-6.5Z" />
-            </svg>
-            <svg class="site-music-float-pause" viewBox="0 0 24 24" aria-hidden="true">
-              <path d="M7 5.5h3.5v13H7v-13Zm6.5 0H17v13h-3.5v-13Z" />
-            </svg>
-          </span>
-          <span class="sr-only" data-site-music-label>Music</span>
-        </button>
-        <button
-          class="site-music-float-dismiss"
-          type="button"
-          aria-label="Hide music control"
-          data-site-music-dismiss
-        >
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="m6.7 5.65 5.3 5.3 5.3-5.3 1.05 1.05-5.3 5.3 5.3 5.3-1.05 1.05-5.3-5.3-5.3 5.3-1.05-1.05 5.3-5.3-5.3-5.3 1.05-1.05Z" />
-          </svg>
-        </button>
-      </div>
-      <footer class="site-footer">
+      <footer class:list={["site-footer", homeSketch && "has-home-sketch"]}>
+        {homeSketch && <HomeFooterSketch lang={currentLanguage} />}
         <p class="footer-copyright">
           <svg viewBox="0 0 24 24" aria-label="Copyright">
             <circle cx="12" cy="12" r="8.5" />
@@ -258,277 +232,6 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
     </div>
 
     <script is:inline>
-      const createMusicSystem = () => {
-        const storageKey = "mapsycoy:music";
-        const floatHiddenKey = "mapsycoy:music-float-hidden";
-        const audio = new Audio();
-        audio.preload = "metadata";
-        let controls = [];
-        let floatingControl = null;
-        let hasBeenActivated = false;
-
-        const readState = () => {
-          try {
-            return JSON.parse(window.localStorage.getItem(storageKey) || "{}");
-          } catch {
-            return {};
-          }
-        };
-
-        const writeState = () => {
-          const activeControl = controls.find(({ root }) => root.dataset.title);
-          try {
-            window.localStorage.setItem(storageKey, JSON.stringify({
-              src: audio.currentSrc || audio.src,
-              currentTime: audio.currentTime || 0,
-              wasPlaying: !audio.paused && !audio.ended,
-              activated: hasBeenActivated,
-              title: activeControl?.root.dataset.title || readState().title || ""
-            }));
-          } catch {
-            // Storage can be unavailable in private browsing modes.
-          }
-        };
-
-        const normalizeSrc = (src) => {
-          if (!src) return "";
-          return new URL(src, window.location.href).href;
-        };
-
-        const isFloatingHidden = () => {
-          try {
-            return window.localStorage.getItem(floatHiddenKey) === "true";
-          } catch {
-            return false;
-          }
-        };
-
-        const activateFloatingControl = () => {
-          hasBeenActivated = true;
-          try {
-            window.localStorage.removeItem(floatHiddenKey);
-          } catch {
-            // Storage can be unavailable in private browsing modes.
-          }
-        };
-
-        const updateFloatingPosition = () => {
-          if (!floatingControl?.root) return;
-          const footer = document.querySelector(".site-footer");
-          const baseOffset = 18;
-          let bottomOffset = baseOffset;
-
-          if (footer instanceof HTMLElement) {
-            const footerRect = footer.getBoundingClientRect();
-            if (footerRect.top < window.innerHeight) {
-              bottomOffset = Math.max(baseOffset, window.innerHeight - footerRect.top + baseOffset);
-            }
-          }
-
-          floatingControl.root.style.setProperty("--site-music-float-bottom", `${Math.round(bottomOffset)}px`);
-        };
-
-        const updateControls = () => {
-          const duration = audio.duration || 0;
-          const currentTime = audio.currentTime || 0;
-          const isPlaying = !audio.paused && !audio.ended;
-          const state = readState();
-          const hasMusic = hasBeenActivated && Boolean(audio.currentSrc || audio.src || state.src);
-          const isHomePage = Boolean(document.querySelector("[data-home-music]"));
-
-          controls.forEach(({ root, button, progress }) => {
-            if (progress) progress.value = duration ? String((currentTime / duration) * 100) : "0";
-            root.classList.toggle("is-playing", isPlaying);
-            button.setAttribute("aria-pressed", String(isPlaying));
-            button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${root.dataset.title || "music"}`);
-          });
-
-          if (floatingControl) {
-            const { root, button, label } = floatingControl;
-            const title = controls.find(({ root }) => root.dataset.title)?.root.dataset.title || state.title || "music";
-            root.hidden = isHomePage || !hasMusic || isFloatingHidden();
-            root.classList.toggle("is-playing", isPlaying);
-            button.setAttribute("aria-pressed", String(isPlaying));
-            button.setAttribute("aria-label", `${isPlaying ? "Pause" : "Play"} ${title}`);
-            if (label) label.textContent = title;
-            updateFloatingPosition();
-          }
-        };
-
-        const setSource = (src) => {
-          const nextSrc = normalizeSrc(src);
-          if (!nextSrc || normalizeSrc(audio.src) === nextSrc) return;
-          audio.src = nextSrc;
-          audio.load();
-        };
-
-        const bind = () => {
-          controls = [];
-          const floatingRoot = document.querySelector("[data-site-music-float]");
-          const floatingButton = document.querySelector("[data-site-music-control]");
-          const floatingDismiss = document.querySelector("[data-site-music-dismiss]");
-          if (floatingRoot instanceof HTMLElement && floatingButton instanceof HTMLButtonElement) {
-            floatingControl = {
-              root: floatingRoot,
-              button: floatingButton,
-              dismiss: floatingDismiss instanceof HTMLButtonElement ? floatingDismiss : null,
-              label: floatingButton.querySelector("[data-site-music-label]")
-            };
-
-            if (floatingButton.dataset.musicBound !== "true") {
-              floatingButton.dataset.musicBound = "true";
-              floatingButton.addEventListener("click", async () => {
-                const state = readState();
-                if (!audio.src && state.src) setSource(state.src);
-                if (!audio.src) return;
-
-                if (audio.paused || audio.ended) {
-                  try {
-                    await audio.play();
-                    activateFloatingControl();
-                    updateControls();
-                    writeState();
-                  } catch {
-                    updateControls();
-                  }
-                  return;
-                }
-
-                audio.pause();
-              });
-            }
-
-            if (floatingControl.dismiss && floatingControl.dismiss.dataset.musicBound !== "true") {
-              floatingControl.dismiss.dataset.musicBound = "true";
-              floatingControl.dismiss.addEventListener("click", () => {
-                audio.pause();
-                hasBeenActivated = false;
-                try {
-                  window.localStorage.setItem(floatHiddenKey, "true");
-                } catch {
-                  // Storage can be unavailable in private browsing modes.
-                }
-                updateControls();
-                writeState();
-              });
-            }
-          }
-
-          document.querySelectorAll("[data-home-music]").forEach((root) => {
-            if (!(root instanceof HTMLElement)) return;
-
-            const button = root.querySelector(".home-music-toggle");
-            const progress = root.querySelector(".home-music-progress");
-            const audioFile = root.dataset.audioFile || "";
-
-            if (
-              !(button instanceof HTMLButtonElement) ||
-              !(progress instanceof HTMLInputElement)
-            ) return;
-
-            if (!audioFile) {
-              button.disabled = true;
-              progress.disabled = true;
-              root.classList.add("is-unavailable");
-              return;
-            }
-
-            root.classList.remove("is-unavailable");
-            button.disabled = false;
-            progress.disabled = false;
-
-            if (!audio.src) {
-              setSource(audioFile);
-            }
-
-            controls.push({ root, button, progress });
-
-            if (root.dataset.musicBound === "true") return;
-            root.dataset.musicBound = "true";
-
-            button.addEventListener("click", async () => {
-              setSource(audioFile);
-
-              if (audio.paused || audio.ended) {
-                try {
-                  await audio.play();
-                  activateFloatingControl();
-                  updateControls();
-                  writeState();
-                } catch {
-                  updateControls();
-                }
-                return;
-              }
-
-              audio.pause();
-            });
-
-            progress.addEventListener("input", () => {
-              const duration = audio.duration || 0;
-              if (!duration) return;
-              audio.currentTime = (Number(progress.value) / 100) * duration;
-              updateControls();
-              writeState();
-            });
-          });
-
-          document.querySelectorAll(".work-video-embed").forEach((videoEmbed) => {
-            if (!(videoEmbed instanceof HTMLElement) || videoEmbed.dataset.musicPauseBound === "true") return;
-            videoEmbed.dataset.musicPauseBound = "true";
-            const pauseMusic = () => {
-              if (!audio.paused && !audio.ended) audio.pause();
-            };
-            videoEmbed.addEventListener("pointerdown", pauseMusic, { passive: true });
-            videoEmbed.addEventListener("focusin", pauseMusic);
-          });
-
-          updateControls();
-        };
-
-        const restore = () => {
-          const state = readState();
-          if (!state.src) return;
-
-          hasBeenActivated = state.activated === true && !isFloatingHidden();
-
-          setSource(state.src);
-
-          audio.addEventListener("loadedmetadata", () => {
-            if (Number.isFinite(state.currentTime)) {
-              audio.currentTime = Math.min(state.currentTime, audio.duration || state.currentTime);
-            }
-
-            if (state.wasPlaying && state.activated === true && !isFloatingHidden()) {
-              audio.play().catch(() => updateControls());
-            }
-          }, { once: true });
-        };
-
-        ["loadedmetadata", "timeupdate", "play", "pause", "ended", "durationchange"].forEach((eventName) => {
-          audio.addEventListener(eventName, () => {
-            updateControls();
-            writeState();
-          });
-        });
-
-        window.addEventListener("pagehide", writeState);
-        window.addEventListener("scroll", updateFloatingPosition, { passive: true });
-        window.addEventListener("resize", updateFloatingPosition, { passive: true });
-        document.addEventListener("astro:page-load", bind);
-        document.addEventListener("DOMContentLoaded", bind);
-
-        restore();
-        bind();
-
-        return { audio, bind };
-      };
-
-      if (!window.__mapsycoyMusicSystem) {
-        window.__mapsycoyMusicSystem = createMusicSystem();
-      } else {
-        window.__mapsycoyMusicSystem.bind();
-      }
       const initializeWorksFilters = () => {
         document.querySelectorAll("[data-works-filter]").forEach((filterRoot) => {
           if (!(filterRoot instanceof HTMLElement) || filterRoot.dataset.filterBound === "true") return;
@@ -571,7 +274,8 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
             toggleButton.addEventListener("click", () => {
               const willExpand = !filterRoot.classList.contains("is-expanded");
               filterRoot.classList.toggle("is-expanded", willExpand);
-              toggleButton.textContent = willExpand ? "\u00d7" : "\u00b7\u00b7\u00b7";
+              const icon = toggleButton.querySelector(".works-filter-toggle-icon");
+              if (icon) icon.textContent = willExpand ? "−" : "+";
               toggleButton.setAttribute("aria-expanded", willExpand ? "true" : "false");
               toggleButton.setAttribute("aria-label", willExpand ? "Show fewer categories" : "Show more categories");
 
