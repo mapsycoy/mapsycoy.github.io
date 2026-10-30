@@ -1,10 +1,8 @@
-type Phase = "rest" | "walk" | "settle" | "look" | "greet" | "plant-look" | "plant" | "grow" | "admire";
-type Message = "step" | "spaces" | "radiant";
+type Phase = "rest" | "walk" | "settle" | "look" | "observe" | "plant-look" | "plant" | "grow" | "admire";
 type Variant = 0 | 1 | 2;
 type Flower = { slot: number; x: number; growth: number; variant: Variant };
 export const MAX_FLOWERS = 40;
 const LEGACY_SLOT_SPAN = 9;
-const speechTime: Record<Message, number> = { step: 4800, spaces: 5600, radiant: 5500 };
 export const flowerForms = [
   { stem: 'M0 0Q2-6 .5-12T1-20', leaves: [{ at: .34, direction: -1, length: 7, rise: 5, width: 6 }, { at: .64, direction: 1, length: 7, rise: 5, width: 6 }] },
   { stem: 'M0 0Q-1-8-2-17Q-3-24-1-30', leaves: [{ at: .25, direction: -1, length: 8, rise: 7, width: 2.5 }, { at: .48, direction: 1, length: 8, rise: 7, width: 2.5 }, { at: .72, direction: -1, length: 7, rise: 7, width: 2.5 }] },
@@ -13,12 +11,12 @@ export const flowerForms = [
 type Walk = { from: number; to: number; steps: number; duration: number; lean: number; planting: boolean };
 type Snapshot = {
   version: 2; x: number; time: number; phase: Phase; angle: number; antenna: number; gaze: number; turn: number; blink: number;
-  greeting: Message; speechMuted?: boolean; completed: number; greetings: number; planted: number;
+  completed: number; planted: number;
   garden: Flower[]; targetSlot: number | null; targetX?: number | null;
   seed: { visible: boolean; y: number };
   start: number; end: number; walk: Walk | null; accumulator: number; antennaVelocity: number;
-  nextBlink: number; blinkEnd: number; nextSpeech: number; restSpeechAt: number | null;
-  nextPlant: number; planting: boolean; walksSincePlant: number; lookDirection: number; growTalk: boolean; growthWait?: number;
+  nextBlink: number; blinkEnd: number;
+  nextPlant: number; planting: boolean; walksSincePlant: number; lookDirection: number; growthWait?: number;
 };
 const clamp = (n: number, min: number, max: number) => Math.max(min, Math.min(max, n));
 const ease = (n: number) => n * n * (3 - 2 * n);
@@ -30,16 +28,13 @@ function validSnapshot(value: unknown): value is Snapshot {
   const finite = (n: unknown): n is number => typeof n === 'number' && Number.isFinite(n);
   const unit = (n: unknown) => finite(n) && n >= 0 && n <= 1;
   const count = (n: unknown) => finite(n) && Number.isInteger(n) && n >= 0;
-  if (s.version !== 2 || !unit(s.x) || !['rest', 'walk', 'settle', 'look', 'greet', 'plant-look', 'plant', 'grow', 'admire'].includes(s.phase)) return false;
-  if (!['legs', 'step', 'spaces', 'shade', 'beauty', 'gardener', 'shadows', 'radiant'].includes(s.greeting)) return false;
-  if (s.speechMuted !== undefined && typeof s.speechMuted !== 'boolean') return false;
-  if (![s.time, s.start, s.end, s.nextBlink, s.blinkEnd, s.nextSpeech, s.nextPlant].every(n => finite(n) && n >= 0)) return false;
+  if (s.version !== 2 || !unit(s.x) || !['rest', 'walk', 'settle', 'look', 'observe', 'plant-look', 'plant', 'grow', 'admire'].includes(s.phase)) return false;
+  if (![s.time, s.start, s.end, s.nextBlink, s.blinkEnd, s.nextPlant].every(n => finite(n) && n >= 0)) return false;
   if (s.start > s.time || s.end <= s.time || s.end <= s.start) return false;
   if (![s.angle, s.antenna, s.gaze, s.turn, s.blink, s.accumulator, s.antennaVelocity].every(finite)) return false;
   if (Math.abs(s.angle) > 20 || Math.abs(s.turn) > 1 || !unit(s.blink) || s.accumulator < 0 || s.accumulator > 1 / 120 + 1e-6) return false;
-  if (![s.completed, s.greetings, s.planted, s.walksSincePlant].every(count)) return false;
-  if (![s.planting, s.growTalk].every(n => typeof n === 'boolean') || ![-1, 1].includes(s.lookDirection)) return false;
-  if (s.restSpeechAt !== null && (!finite(s.restSpeechAt) || s.restSpeechAt < 0)) return false;
+  if (![s.completed, s.planted, s.walksSincePlant].every(count)) return false;
+  if (typeof s.planting !== 'boolean' || ![-1, 1].includes(s.lookDirection)) return false;
   if (s.growthWait !== undefined && (!finite(s.growthWait) || s.growthWait < 0 || s.growthWait > 10000)) return false;
   if (!Array.isArray(s.garden) || s.garden.length > MAX_FLOWERS || s.garden.some(f => !f || !count(f.slot) || f.slot >= MAX_FLOWERS || !unit(f.growth))) return false;
   if (s.garden.some(f => f.variant !== undefined && ![0, 1, 2].includes(f.variant))) return false;
@@ -91,9 +86,7 @@ export class FooterAIWorld {
   gaze = 0;
   turn = 0;
   blink = 1;
-  greeting: Message = "step";
   completed = 0;
-  greetings = 0;
   planted = 0;
   garden: Flower[] = [];
   targetSlot: number | null = null;
@@ -107,15 +100,11 @@ export class FooterAIWorld {
   private antennaVelocity = 0;
   private nextBlink = 0;
   private blinkEnd = 0;
-  private nextSpeech = 0;
-  private restSpeechAt = Infinity;
   private nextPlant = 0;
   private planting = false;
   private walksSincePlant = 0;
   private lookDirection = 1;
-  private growTalk = false;
   private growthWait = 0;
-  private speechMuted = false;
 
   constructor(random: () => number = Math.random, width = 360, snapshot?: Snapshot) {
     this.random = random;
@@ -124,30 +113,30 @@ export class FooterAIWorld {
     this.x = this.range(MARGIN + 8, this.width - MARGIN - 8);
     this.end = this.range(600, 1800);
     this.nextBlink = this.range(1800, 4300);
-    this.nextSpeech = this.range(1500, 5000);
     this.nextPlant = this.range(14000, 23000);
   }
   snapshot(): Snapshot {
     const normalize = (x: number) => clamp((x - MARGIN) / (this.width - MARGIN * 2), 0, 1);
     return {
       version: 2, x: normalize(this.x), time: this.time, phase: this.phase, angle: this.angle, antenna: this.antenna, gaze: this.gaze, turn: this.turn, blink: this.blink,
-      greeting: this.greeting, speechMuted: this.speechMuted, completed: this.completed, greetings: this.greetings, planted: this.planted,
+      completed: this.completed, planted: this.planted,
       garden: this.garden.map(f => ({ ...f })), targetSlot: this.targetSlot, targetX: this.targetX, seed: { visible: this.seed.visible, y: this.seed.y },
       start: this.start, end: this.end, walk: this.walk ? { ...this.walk, from: normalize(this.walk.from), to: normalize(this.walk.to) } : null,
       accumulator: this.accumulator, antennaVelocity: this.antennaVelocity,
-      nextBlink: this.nextBlink, blinkEnd: this.blinkEnd, nextSpeech: this.nextSpeech,
-      restSpeechAt: Number.isFinite(this.restSpeechAt) ? this.restSpeechAt : null,
-      nextPlant: this.nextPlant, planting: this.planting, walksSincePlant: this.walksSincePlant, lookDirection: this.lookDirection, growTalk: this.growTalk, growthWait: this.growthWait,
+      nextBlink: this.nextBlink, blinkEnd: this.blinkEnd,
+      nextPlant: this.nextPlant, planting: this.planting, walksSincePlant: this.walksSincePlant, lookDirection: this.lookDirection, growthWait: this.growthWait,
     };
   }
   static fromSnapshot(value: unknown, width: number, random: () => number = Math.random) {
+    // An old greeting becomes a silent observation with the same pose and clock.
+    // Obsolete message fields are ignored and omitted from the next saved state.
+    if (value && typeof value === 'object' && 'phase' in value && value.phase === 'greet') {
+      value = { ...value, phase: 'observe' };
+    }
     if (!validSnapshot(value)) return;
     // Upgrade existing gardens without moving, regrowing, or rerandomizing them.
-    // A removed utterance finishes silently in its original action/time window.
-    const removed = !['step', 'spaces', 'radiant'].includes(value.greeting);
     const migrated: Snapshot = {
-      ...value, greeting: removed ? 'step' : value.greeting,
-      speechMuted: removed || (value.speechMuted ?? false),
+      ...value,
       targetX: value.targetX ?? (value.targetSlot === null ? null : value.targetSlot / LEGACY_SLOT_SPAN),
       garden: value.garden.map((flower, index) => ({ ...flower, x: flower.x ?? flower.slot / LEGACY_SLOT_SPAN, variant: flower.variant ?? index % 3 as Variant })),
     };
@@ -157,15 +146,14 @@ export class FooterAIWorld {
     const position = (x: number) => MARGIN + x * (this.width - MARGIN * 2);
     this.x = position(s.x); this.time = s.time; this.phase = s.phase;
     this.angle = s.angle; this.antenna = s.antenna; this.gaze = s.gaze; this.turn = s.turn; this.blink = s.blink;
-    this.greeting = s.greeting; this.speechMuted = s.speechMuted ?? false; this.completed = s.completed; this.greetings = s.greetings; this.planted = s.planted;
+    this.completed = s.completed; this.planted = s.planted;
     this.garden = s.garden.map(f => ({ ...f })); this.targetSlot = s.targetSlot; this.targetX = s.targetX ?? null; this.seed = { ...s.seed, x: 0 };
     this.start = s.start; this.end = s.end;
     this.walk = s.walk ? { ...s.walk, from: position(s.walk.from), to: position(s.walk.to) } : undefined;
     this.accumulator = s.accumulator; this.antennaVelocity = s.antennaVelocity;
-    this.nextBlink = s.nextBlink; this.blinkEnd = s.blinkEnd; this.nextSpeech = s.nextSpeech;
-    this.restSpeechAt = s.restSpeechAt ?? Infinity;
+    this.nextBlink = s.nextBlink; this.blinkEnd = s.blinkEnd;
     this.nextPlant = s.nextPlant; this.planting = s.planting; this.walksSincePlant = s.walksSincePlant;
-    this.lookDirection = s.lookDirection; this.growTalk = s.growTalk; this.growthWait = s.growthWait ?? 0;
+    this.lookDirection = s.lookDirection; this.growthWait = s.growthWait ?? 0;
     if (this.phase === 'plant') this.updateSeed();
   }
   private range(min: number, max: number) { return min + (max - min) * this.random(); }
@@ -183,7 +171,7 @@ export class FooterAIWorld {
       && this.garden.some(f => Math.abs(this.flowerPosition(f.slot) - this.flowerX) < this.plantingGap)) {
       if (this.walk) this.walk.planting = false;
       this.planting = false;
-      if (this.phase === 'plant-look') { this.growTalk = false; this.enter('settle', 650); }
+      if (this.phase === 'plant-look') this.enter('settle', 650);
     }
     if (this.phase === 'plant') this.updateSeed();
   }
@@ -224,17 +212,6 @@ export class FooterAIWorld {
       Math.abs(this.flowerPosition(earlier.slot) - this.flowerPosition(flower.slot)) >= this.plantingGap - .001));
   }
   private get growingFlower() { return this.garden.find(f => f.slot === this.targetSlot); }
-  private get blooms() { return this.garden.filter(f => f.growth === 1).length; }
-  private readingTime() { return speechTime[this.greeting] + this.range(200, 700); }
-  get bubbleVisible() {
-    if (this.speechMuted) return false;
-    const progress = (this.time - this.start) / (this.end - this.start);
-    return this.phase === 'greet'
-      || (this.phase === 'plant-look' && this.growTalk && this.time - this.start > 250)
-      || (this.phase === 'plant' && this.growTalk && progress > .04 && progress < .98)
-      || (this.phase === 'grow' && this.growTalk && this.time - this.start > 250 && this.time - this.start < this.growthWait - 250)
-      || (this.phase === 'admire' && this.growTalk && this.time - this.start > 650);
-  }
   private startWalk() {
     const span = this.width - MARGIN * 2;
     let direction = this.random() < .5 ? -1 : 1;
@@ -272,26 +249,10 @@ export class FooterAIWorld {
   private rest() {
     this.angle = 0; this.gaze = 0;
     this.enter('rest', this.random() < .18 ? this.range(9500, 12500) : this.range(4000, 7800));
-    this.restSpeechAt = this.time >= this.nextSpeech && this.random() < .5 ? this.time + this.range(1000, 2300) : Infinity;
   }
   private look() {
     this.lookDirection = this.random() < .5 ? -1 : 1;
     this.enter('look', this.range(650, 1100));
-  }
-  private say(choices: Message[]) {
-    const candidates = choices.filter(m => this.greetings === 0 || m !== this.greeting);
-    if (!candidates.length) return false;
-    this.greeting = candidates[Math.floor(this.random() * candidates.length)];
-    this.speechMuted = false;
-    this.greetings++;
-    return true;
-  }
-  private speak() {
-    const choices: Message[] = ['step'];
-    const nearby = this.garden.some(f => f.growth === 1 && Math.abs(this.flowerPosition(f.slot) - this.x) < 95);
-    if (nearby) choices.push('radiant');
-    if (!this.say(choices)) { this.rest(); return; }
-    this.enter('greet', this.readingTime());
   }
   private nextVariant(): Variant {
     const counts = [0, 0, 0];
@@ -309,26 +270,22 @@ export class FooterAIWorld {
       this.angle = 0; this.walk = undefined; this.completed++; this.walksSincePlant++;
       this.enter('settle', this.range(650, 1000));
     } else if (this.phase === 'settle') {
-      if (this.planting) { this.growTalk = this.say(['step']); this.enter('plant-look', this.growTalk ? this.readingTime() + 250 : 1800); }
-      else if (this.time >= this.nextSpeech && this.random() < .72) this.look();
+      if (this.planting) this.enter('plant-look', 1800);
+      else if (this.random() < .72) this.look();
       else this.rest();
-    } else if (this.phase === 'look') this.speak();
-    else if (this.phase === 'greet') { this.nextSpeech = this.time + this.range(12000, 20000); this.rest(); }
-    else if (this.phase === 'plant-look') { this.growTalk = false; this.enter('plant', this.range(4200, 5000)); }
+    } else if (this.phase === 'look') this.enter('observe', this.range(3000, 5000));
+    else if (this.phase === 'observe') this.rest();
+    else if (this.phase === 'plant-look') this.enter('plant', this.range(4200, 5000));
     else if (this.phase === 'plant') {
       this.seed.visible = false;
       if (!this.growingFlower && this.garden.length < MAX_FLOWERS) this.garden.push({ slot: this.targetSlot!, x: this.targetX!, growth: 0, variant: this.nextVariant() });
-      this.growTalk = false; this.growthWait = this.range(650, 1100);
+      this.growthWait = this.range(650, 1100);
       this.enter('grow', this.growthWait + this.range(6000, 7000));
     } else if (this.phase === 'grow') {
       this.growingFlower!.growth = 1;
       this.planted++; this.walksSincePlant = 0; this.planting = false;
-      const choices: Message[] = ['radiant'];
-      if (this.blooms >= 2) choices.push('spaces');
-      this.growTalk = this.say(choices);
-      this.enter('admire', this.readingTime() + 650);
+      this.enter('admire', this.range(4500, 6500));
     } else {
-      this.nextSpeech = this.time + this.range(12000, 20000);
       this.nextPlant = this.time + this.range(18000, 32000); this.rest();
     }
   }
@@ -339,7 +296,6 @@ export class FooterAIWorld {
     while (this.accumulator >= dt) {
       this.accumulator -= dt; this.time += dt * 1000;
       if (this.time >= this.end) this.transition();
-      if (this.phase === 'rest' && this.time >= this.restSpeechAt) { this.restSpeechAt = Infinity; this.look(); }
       const progress = clamp((this.time - this.start) / (this.end - this.start), 0, 1);
       let turnTarget = 0;
       if (this.phase === 'walk') {
@@ -352,7 +308,7 @@ export class FooterAIWorld {
       } else if (this.phase === 'look') {
         this.angle = this.lookDirection * 2.5 * ease(progress);
         this.gaze *= .92;
-      } else if (this.phase === 'greet') {
+      } else if (this.phase === 'observe') {
         this.angle = this.lookDirection * 2.5 * (1 - ease(Math.min(1, progress * 2.4)));
         this.gaze *= .92;
       } else if (this.phase === 'plant') {

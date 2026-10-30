@@ -1,22 +1,8 @@
 ---
 import { MAX_FLOWERS } from "../utils/footer-sketch";
-import { defaultLanguage, type Language } from "../utils/i18n";
-const { lang = defaultLanguage } = Astro.props as { lang?: Language };
-const messages = lang === "ko"
-  ? {
-    step: "오늘도 한 뼘.\n내일도 한 뼘.",
-    spaces: "빈자리가 줄어들고 있어.\n신난다.",
-    radiant: "이 작은 세상이\n점점 찬란해져.",
-  }
-  : {
-    step: "A handspan today.\nA handspan tomorrow.",
-    spaces: "There’s less empty space now.\nI’m excited.",
-    radiant: "This little world is\ngrowing more radiant.",
-  };
-const greeting = messages.step;
 ---
 
-<home-footer-sketch data-greeting={greeting} data-messages={JSON.stringify(messages)}>
+<home-footer-sketch>
   <div class="sketch-stage" aria-hidden="true">
     <svg class="sketch-lane" viewBox="0 0 360 115" preserveAspectRatio="xMidYMax meet" width="309" height="99" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
       {Array.from({ length: MAX_FLOWERS }, (_, index) => <g data-flower={index} transform="translate(24 114)" opacity="0" stroke-width="1.15">
@@ -59,10 +45,6 @@ const greeting = messages.step;
           </g>
         </g>
       </g>
-      <g data-bubble visibility="hidden" transform="translate(180 1)">
-        <path data-bubble-surface class="sketch-speech" d="M-25 2Q0 0 25 2L25 21 4 22 0 28-4 22-25 21Z" />
-        <text data-bubble-text x="0" y="15" text-anchor="middle" stroke="none">{greeting}</text>
-      </g>
     </svg>
   </div>
 </home-footer-sketch>
@@ -74,8 +56,6 @@ const greeting = messages.step;
   .sketch-stage { position: absolute; inset: 0; overflow: hidden; }
   .sketch-lane { display: block; width: 100%; height: 100%; overflow: hidden; }
   .sketch-fill { fill: var(--bg); fill-opacity: 1; opacity: 1; }
-  .sketch-speech { fill: currentColor; stroke: none; }
-  [data-bubble-text] { fill: var(--bg); font: 12.5px var(--font-sans, sans-serif); }
   @media (max-width: 780px) {
     :global(.home-main) { padding-bottom: 99px; }
     home-footer-sketch { height: 83px; }
@@ -111,13 +91,6 @@ const greeting = messages.step;
     private sideOutline!: SVGPathElement;
     private face!: SVGGElement;
     private antenna!: SVGGElement;
-    private bubble!: SVGGElement;
-    private text!: SVGTextElement;
-    private bubbleSurface!: SVGPathElement;
-    private messages: Record<string, string> = {};
-    private measuredText = '';
-    private speechHalfWidth = 25;
-    private speechLines = 1;
     private flowers: { group: SVGGElement; stem: SVGPathElement; leaves: SVGGElement[]; bloom: SVGGElement; bud: SVGPathElement; petals: SVGPathElement[]; cup: SVGPathElement; center: SVGPathElement; variant: number; anchors: { x: number; y: number }[] }[] = [];
     private seed!: SVGPathElement;
     private inView = false;
@@ -138,10 +111,6 @@ const greeting = messages.step;
       this.sideOutline = this.querySelector('[data-side-outline]')!;
       this.face = this.querySelector('[data-face]')!;
       this.antenna = this.querySelector('[data-antenna]')!;
-      this.bubble = this.querySelector('[data-bubble]')!;
-      this.text = this.querySelector('[data-bubble-text]')!;
-      this.bubbleSurface = this.querySelector('[data-bubble-surface]')!;
-      this.messages = JSON.parse(this.dataset.messages || '{}');
       this.flowers = [...this.querySelectorAll<SVGGElement>('[data-flower]')].map(group => ({
         group, stem: group.querySelector('[data-stem]')!, leaves: [...group.querySelectorAll<SVGGElement>('[data-leaf-left],[data-leaf-right],[data-leaf-third]')],
         bloom: group.querySelector('[data-bloom]')!, bud: group.querySelector('[data-bud]')!,
@@ -282,25 +251,6 @@ const greeting = messages.step;
       put(this.body, 'transform', `rotate(${f(angle)})`);
       put(this.antenna, 'transform', `rotate(${f(reduced ? 0 : w.antenna)} 24 36.5)`);
       put(this.face, 'transform', `translate(${f(reduced ? 0 : w.gaze)} 51.5) scale(1 ${reduced ? 1 : w.blink}) translate(0 -51.5)`);
-      put(this.bubble, 'visibility', !reduced && w.bubbleVisible ? 'visible' : 'hidden');
-      const text = this.messages[w.greeting] || this.dataset.greeting!;
-      const measureKey = text + ':' + Math.round(w.width);
-      if (this.measuredText !== measureKey) {
-        const lines = text.split('\n');
-        const spans = lines.map((line, index) => {
-          const span = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
-          span.setAttribute('x', '0'); span.setAttribute('y', String(15 + index * 15)); span.textContent = line;
-          return span;
-        });
-        this.text.replaceChildren(...spans); this.measuredText = measureKey; this.speechLines = lines.length;
-        this.speechHalfWidth = Math.max(25, Math.min((w.width - 4) / 2, Math.ceil(Math.max(...spans.map(span => span.getComputedTextLength())) / 2 + 10)));
-      }
-      const half = this.speechHalfWidth, bottom = 22 + (this.speechLines - 1) * 15;
-      const bubbleX = Math.max(half + 2, Math.min(w.width - half - 2, x));
-      put(this.bubble, 'transform', `translate(${f(bubbleX)} ${1 + (3 - this.speechLines) * 15})`);
-      // Keep the small tail centered, including when the box is inset at an edge.
-      put(this.bubbleSurface, 'd', `M${-half} 2Q0 0 ${half} 2Q${half + 1} ${bottom / 2} ${half} ${bottom - 1}L4 ${bottom} 0 ${bottom + 6} -4 ${bottom} ${-half} ${bottom - 1}Q${-half - 1} ${bottom / 2} ${-half} 2Z`);
-      this.dataset.message = text.replaceAll('\n', ' ');
       const visible = new Set(w.visibleGarden.map(flower => flower.slot));
       for (const [index, parts] of this.flowers.entries()) {
         const flower = w.garden[index];
