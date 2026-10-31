@@ -14,7 +14,8 @@ const {
   publishedTime = undefined,
   modifiedTime = undefined,
   preconnectX = false,
-  homeSketch = false
+  homeSketch = false,
+  homeWalkSpeed = 1
 } = Astro.props;
 
 const currentLanguage = lang as Language;
@@ -196,7 +197,7 @@ const instagramUrl = "https://www.instagram.com/mapsycoy/";
         <slot />
       </main>
       <footer class:list={["site-footer", homeSketch && "has-home-sketch"]}>
-        {homeSketch && <HomeFooterSketch lang={currentLanguage} />}
+        {homeSketch && <HomeFooterSketch lang={currentLanguage} walkSpeed={homeWalkSpeed} />}
         <p class="footer-copyright">
           <svg viewBox="0 0 24 24" aria-label="Copyright">
             <circle cx="12" cy="12" r="8.5" />

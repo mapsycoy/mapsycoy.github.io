@@ -1,0 +1,44 @@
+---
+import { getHomeCaption, getHomeGreeting } from "../data/home";
+import { defaultLanguage, type Language } from "../utils/i18n";
+
+const { lang = defaultLanguage } = Astro.props;
+const language = lang as Language;
+---
+
+<section class="home-manifesto" aria-label={language === "ko" ? "MAPSYCOY에 담은 뜻" : "The meaning of MAPSYCOY"}>
+  <p class="manifesto-intro">{getHomeGreeting(language)}</p>
+  {getHomeCaption(language).split(/\n\s*\n/).map((paragraph) => <p set:html={paragraph} />)}
+</section>
+
+<script>
+  import "../utils/prose-lines.js";
+</script>
+
+<style is:global>
+  .home-main { display:flex; align-items:center; justify-content:center; padding:64px 0 156px; }
+  .home-manifesto {
+    max-width:560px; width:100%; text-align:left;
+    font-family:"Pretendard","Noto Sans KR",system-ui,sans-serif;
+    font-size:12px; line-height:2.05; font-weight:200;
+    word-break:keep-all; overflow-wrap:anywhere; color:var(--text);
+  }
+  .home-manifesto .hunmin { font-weight:400; font-synthesis:none; }
+  .home-manifesto .manifesto-math {
+    font-family:"Cambria Math","STIX Two Math","Noto Sans Math",serif;
+    font-weight:400; font-synthesis:none;
+  }
+  .home-manifesto p { position:relative; margin:0; white-space:pre-line; }
+  .home-manifesto .manifesto-underlines {
+    position:absolute; inset:0; width:100%; height:100%; overflow:visible;
+    fill:none; stroke:var(--muted); stroke-linecap:round; opacity:.5;
+    pointer-events:none; user-select:none;
+  }
+  .home-manifesto p + p { margin-top:26px; }
+  .home-manifesto .manifesto-intro + p { margin-top:32px; }
+  html[lang=en] .home-manifesto { text-wrap:pretty; }
+  @media(max-width:780px) {
+    .home-main { padding:70px 8px 145px; }
+    .home-manifesto { line-height:2; }
+  }
+</style>

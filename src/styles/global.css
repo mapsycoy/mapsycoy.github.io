@@ -3118,8 +3118,8 @@ html[lang="ko"] .cv-page {
   top: -1px;
   right: 0;
   left: 0;
-  height: 2px;
-  background: var(--dot-rule);
+  height: 1px;
+  background: var(--line);
   content: "";
 }
 

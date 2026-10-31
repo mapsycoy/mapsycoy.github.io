@@ -8,7 +8,7 @@ export const flowerForms = [
   { stem: 'M0 0Q-1-8-2-17Q-3-24-1-30', leaves: [{ at: .25, direction: -1, length: 8, rise: 7, width: 2.5 }, { at: .48, direction: 1, length: 8, rise: 7, width: 2.5 }, { at: .72, direction: -1, length: 7, rise: 7, width: 2.5 }] },
   { stem: 'M0 0Q3-7 2-13Q1-18 3-23', leaves: [{ at: .42, direction: 1, length: 9, rise: 3.5, width: 8 }] },
 ] as const;
-type Walk = { from: number; to: number; steps: number; duration: number; lean: number; planting: boolean };
+type Walk = { from: number; to: number; steps: number; duration: number; lean: number; planting: boolean; speed?: number; progressStart?: number };
 type Snapshot = {
   version: 2; x: number; time: number; phase: Phase; angle: number; antenna: number; gaze: number; turn: number; blink: number;
   completed: number; planted: number;
@@ -48,6 +48,8 @@ function validSnapshot(value: unknown): value is Snapshot {
   if (!s.seed || typeof s.seed.visible !== 'boolean' || !finite(s.seed.y)) return false;
   if ((s.phase === 'walk') !== (s.walk !== null)) return false;
   if (s.walk && (!unit(s.walk.from) || !unit(s.walk.to) || !count(s.walk.steps) || s.walk.steps < 2 || !finite(s.walk.duration) || s.walk.duration <= 0 || !finite(s.walk.lean) || typeof s.walk.planting !== 'boolean')) return false;
+  if (s.walk?.speed !== undefined && (!finite(s.walk.speed) || s.walk.speed < .25 || s.walk.speed > 2)) return false;
+  if (s.walk?.progressStart !== undefined && (!unit(s.walk.progressStart) || s.walk.progressStart >= 1)) return false;
   return true;
 }
 
@@ -105,6 +107,7 @@ export class FooterAIWorld {
   private walksSincePlant = 0;
   private lookDirection = 1;
   private growthWait = 0;
+  private walkSpeed = 1;
 
   constructor(random: () => number = Math.random, width = 360, snapshot?: Snapshot) {
     this.random = random;
@@ -157,6 +160,19 @@ export class FooterAIWorld {
     if (this.phase === 'plant') this.updateSeed();
   }
   private range(min: number, max: number) { return min + (max - min) * this.random(); }
+  setWalkSpeed(speed: number) {
+    const next = Number.isFinite(speed) ? clamp(speed, .25, 2) : 1;
+    this.walkSpeed = next;
+    const walk = this.walk;
+    if (!walk || this.phase !== 'walk' || (walk.speed ?? 1) === next) return;
+    // Re-time only the remaining walk. Keep the current step, pose and position,
+    // with a nonnegative phase start even when restoring a nearly completed walk.
+    const offset = walk.progressStart ?? 0;
+    const progress = offset + (1 - offset) * clamp((this.time - this.start) / (this.end - this.start), 0, 1);
+    walk.duration *= (walk.speed ?? 1) / next;
+    walk.speed = next; walk.progressStart = progress;
+    this.start = this.time; this.end = this.time + (1 - progress) * walk.duration;
+  }
   resize(width: number) {
     const next = Math.max(180, width), ratio = (next - MARGIN * 2) / (this.width - MARGIN * 2);
     this.x = MARGIN + (this.x - MARGIN) * ratio;
@@ -242,8 +258,8 @@ export class FooterAIWorld {
     // Each short weight transfer is a step. Progress slows at each planted edge,
     // instead of translating a continuously rocking sprite at constant speed.
     const steps = Math.max(2, Math.round(distance / this.range(10, 16)));
-    const duration = steps * this.range(330, 440);
-    this.walk = { from: this.x, to: target, steps, duration, lean: this.range(5.2, 6.5), planting };
+    const duration = steps * this.range(330, 440) / this.walkSpeed;
+    this.walk = { from: this.x, to: target, steps, duration, lean: this.range(5.2, 6.5), planting, speed: this.walkSpeed };
     this.enter('walk', duration);
   }
   private rest() {
@@ -299,7 +315,8 @@ export class FooterAIWorld {
       const progress = clamp((this.time - this.start) / (this.end - this.start), 0, 1);
       let turnTarget = 0;
       if (this.phase === 'walk') {
-        const w = this.walk!, step = progress * w.steps, index = Math.floor(step), part = step - index;
+        const w = this.walk!, walkProgress = (w.progressStart ?? 0) + (1 - (w.progressStart ?? 0)) * progress;
+        const step = walkProgress * w.steps, index = Math.floor(step), part = step - index;
         this.x = w.from + (w.to - w.from) * (index + ease(part)) / w.steps;
         const envelope = Math.min(1, step * 2, (w.steps - step) * 2);
         this.angle = Math.sin(step * Math.PI) * w.lean * envelope;

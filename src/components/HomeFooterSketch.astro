@@ -1,8 +1,9 @@
 ---
 import { MAX_FLOWERS } from "../utils/footer-sketch";
+const { walkSpeed = 1 } = Astro.props;
 ---
 
-<home-footer-sketch>
+<home-footer-sketch data-walk-speed={walkSpeed}>
   <div class="sketch-stage" aria-hidden="true">
     <svg class="sketch-lane" viewBox="0 0 360 115" preserveAspectRatio="xMidYMax meet" width="309" height="99" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
       {Array.from({ length: MAX_FLOWERS }, (_, index) => <g data-flower={index} transform="translate(24 114)" opacity="0" stroke-width="1.15">
@@ -186,6 +187,7 @@ import { MAX_FLOWERS } from "../utils/footer-sketch";
       const width = stage.getBoundingClientRect().width / scale;
       if (this.world) { this.world.displayScale = scale; this.world.resize(width); }
       else { this.world = this.restoreWorld(width) ?? new FooterAIWorld(Math.random, width); this.world.displayScale = scale; }
+      this.world.setWalkSpeed(Number(this.dataset.walkSpeed ?? 1));
       this.querySelector('svg')!.setAttribute('viewBox', `0 0 ${this.world.width} ${SCENE_HEIGHT}`);
     }
     private saveSession() {

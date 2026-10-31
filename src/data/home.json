@@ -3,11 +3,11 @@
     "previewImage": "https://cdn.jsdelivr.net/gh/mapsycoy/mapsycoy-assets@3698d9c/uploads/site/og-site-preview.webp"
   },
   "greeting": {
-    "ko": "안녕하세요.\n제 공간에 방문해주셔서 감사합니다.",
-    "en": "Hello.\nWelcome to my space."
+    "ko": "안녕하세요, HCI 연구자 김준엽입니다.",
+    "en": "Hello, I am Kim Junyeop, an HCI researcher."
   },
   "caption": {
-    "ko": "안녕하세요. 𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀라는 이름으로 활동하고 있는 김준엽입니다.\n이 이름은 형태와 스타일을 뜻하는 순우리말 “<span class=\"hunmin\">맵시</span>”에, 쉽게 다 드러내지 않는다는 뉘앙스의 영어 “𝑪𝑶𝒀”를 더해 만들었습니다.\n제가 추구하는 맵시는 무엇을 드러내고 어디에서 멈출지를 고르는 데서 만들어집니다. 저는 COY에 그 형태를 모두 닫아버리지 않고, 다른 사람의 생각과 해석이 들어올 자리를 남기는 절제의 태도를 담고 싶습니다.\n\n시각 작업에서는 누군가가 해석을 보탤 수 있는 형태를, 연구에서는 함께 이어가고 발전시킬 수 있는 질문과 제안을 건네고 싶습니다.\n𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀는 그렇게 다른 사람이 이어갈 여지를 남기며 형태를 만들어가는 이름입니다.",
-    "en": "Hello. I’m Junyeop Kim, working under the name 𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀.\nThis name combines the Korean word “<span class=\"hunmin\">맵시</span>,” meaning form and style, with the English word “𝑪𝑶𝒀” and its nuance of not readily revealing everything.\nThe sense of 맵시 I pursue takes shape in choosing what to reveal and where to stop. I want COY to convey an attitude of restraint: leaving that form open, with room for other people’s thoughts and interpretations.\n\nIn my visual work, I want to offer forms that others can add their interpretations to; in research, questions and proposals that we can take forward and develop together.\n𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀 is a name for giving things form while leaving room for others to carry them forward."
+    "ko": "다 말하지 않을 때 비로소 닿는 의미가 있습니다.\n저의 오랜 필명 <span class=\"manifesto-math\">𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀</span>는 형태를 뜻하는 순우리말 ‘<span class=\"hunmin\">맵시</span>’에, 함부로 다 드러내지 않는 절제의 ‘<span class=\"manifesto-math\">𝑪𝑶𝒀</span>’를 더한 것입니다.\n\n작업에서는 상상이 덧칠될 여유를, 연구에서는 함께 이어갈 수 있는 열린 질문을 건네고자 합니다.\n\n한 뼘을 구르는 데 온종일이 걸려도 기어코 씨앗을 심고 제 자리마저 내어주는 아래의 작은 로봇처럼, 제가 비워둔 자리가 당신의 이야기로 찬란하게 만개하기를 기다립니다.",
+    "en": "I believe there are meanings that can only be reached when not everything is said.\nMy long-held pen name, <span class=\"manifesto-math\">𝑴𝑨𝑷𝑺𝒀𝑪𝑶𝒀</span>, combines <span class=\"hunmin\">맵시</span>—the native Korean word for form and grace—with <span class=\"manifesto-math\">𝑪𝑶𝒀</span>, the restraint of holding back.\n\nI want to offer space for imagination to layer upon in my design, and open questions to explore together in my research.\n\nLike the small robot below—which takes all day to roll an inch, yet stubbornly plants its seeds and yields even its own space—I wait for the margins I leave behind to bloom with your stories."
   }
 }
