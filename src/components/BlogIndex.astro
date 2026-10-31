@@ -7,7 +7,6 @@ import {
   getBlogPostSlug,
   getBlogPageCount,
   getPostSeriesMetadata,
-  getSeriesPosition,
   formatPostDate,
   formatTitlePunctuation,
   getPostDateLabel,
@@ -17,6 +16,7 @@ import {
 } from "../data/blog";
 import { defaultLanguage, localize, type Language } from "../utils/i18n";
 import { getNotes } from "../data/notes";
+import { getSeriesEntryPosition } from "../data/seriesEntries";
 
 type Props = {
   posts: BlogPost[];
@@ -51,13 +51,13 @@ const toPagePath = (page: number) => {
   return `${normalizedBasePath}/page/${page}/`;
 };
 const languagePrefix = lang === defaultLanguage ? "" : `/${lang}`;
-const notes = hub ? await getNotes() : [];
+const notes = await getNotes();
 const nonSeriesPosts = hub ? getNonSeriesPosts(hubPosts) : [];
 const getPostTitle = (post: BlogPost) => formatTitlePunctuation(localize(post.data.title, lang));
-const getSeriesEntryPosition = (post: BlogPost) => {
-  const position = getSeriesPosition(seriesPosts, post);
+const getPostSeriesPositionLabel = (post: BlogPost) => {
+  const position = getSeriesEntryPosition(seriesPosts, notes, { kind: "blog", item: post });
   if (!position) return "";
-  return `${String(position.index + 1).padStart(2, "0")}/${String(position.posts.length).padStart(2, "0")}`;
+  return `${String(position.index + 1).padStart(2, "0")}/${String(position.entries.length).padStart(2, "0")}`;
 };
 const paginationItems = (() => {
   const pages = new Set([1, pageCount, currentPage - 1, currentPage, currentPage + 1]);
@@ -131,7 +131,7 @@ const paginationItems = (() => {
               {!activeTag && <span>{post.data.tag}</span>}
               {activeTag && getPostSeriesMetadata(post) && (
                 <span class="blog-entry-series-meta">
-                  Series {String(getPostSeriesMetadata(post)?.number).padStart(2, "0")} · {getSeriesEntryPosition(post)}
+                  Series {String(getPostSeriesMetadata(post)?.number).padStart(2, "0")} · {getPostSeriesPositionLabel(post)}
                 </span>
               )}
             </p>

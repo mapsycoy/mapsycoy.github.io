@@ -8,6 +8,7 @@ tags:
   - Research Idea
   - HCI
 series: child-ai
+seriesOrder: 11
 ---
 > 이 글은 2026년 9월 4일의 초기 구상 기록이다. 그림을 좋아하는 아이와 부모에 관한 최근 관심은 [창조적인 아이를 대하는 방식](/ko/blog/16/)에 정리했다.
 
