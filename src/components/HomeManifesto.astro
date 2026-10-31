@@ -20,7 +20,7 @@ const language = lang as Language;
   .home-manifesto {
     max-width:560px; width:100%; text-align:left;
     font-family:"Pretendard","Noto Sans KR",system-ui,sans-serif;
-    font-size:12px; line-height:2.05; font-weight:200;
+    font-size:13px; line-height:2.05; font-weight:200;
     word-break:keep-all; overflow-wrap:anywhere; color:var(--text);
   }
   .home-manifesto .hunmin { font-weight:400; font-synthesis:none; }
@@ -29,6 +29,13 @@ const language = lang as Language;
     font-weight:400; font-synthesis:none;
   }
   .home-manifesto p { position:relative; margin:0; white-space:pre-line; }
+  .home-manifesto .manifesto-intro {
+    font-size:18px; line-height:1.7; font-weight:700; font-synthesis:none;
+  }
+  html[lang=en] .home-manifesto .manifesto-intro {
+    font-family:"Space Grotesk","Pretendard",system-ui,sans-serif;
+    font-weight:600;
+  }
   .home-manifesto .manifesto-underlines {
     position:absolute; inset:0; width:100%; height:100%; overflow:visible;
     fill:none; stroke:var(--muted); stroke-linecap:round; opacity:.5;
@@ -40,5 +47,6 @@ const language = lang as Language;
   @media(max-width:780px) {
     .home-main { padding:70px 8px 145px; }
     .home-manifesto { line-height:2; }
+    .home-manifesto .manifesto-intro { font-size:17px; }
   }
 </style>
