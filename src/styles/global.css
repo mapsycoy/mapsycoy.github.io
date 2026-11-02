@@ -3577,6 +3577,10 @@ html[lang="ko"] .cv-page {
   gap: 7px;
 }
 
+.footer-copyright span {
+  font-size: 0.8125rem;
+}
+
 .footer-copyright svg {
   display: block;
   flex: 0 0 auto;
