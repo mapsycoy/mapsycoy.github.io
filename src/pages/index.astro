@@ -1,8 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import HomeManifesto from "../components/HomeManifesto.astro";
+import PortfolioChatPreview from "../components/PortfolioChatPreview.astro";
 ---
 
 <Layout homeSketch homeWalkSpeed={0.5}>
-  <HomeManifesto />
+  {import.meta.env.PORTFOLIO_CHAT_PREVIEW === "1" || import.meta.env.PUBLIC_PORTFOLIO_API_ORIGIN ? <PortfolioChatPreview lang="en" /> : <HomeManifesto />}
 </Layout>

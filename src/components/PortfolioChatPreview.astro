@@ -1,0 +1,104 @@
+---
+import { getChatPreview } from "../data/chatPreview";
+import type { Language } from "../utils/i18n";
+const content = getChatPreview(Astro.props.lang as Language);
+---
+
+<portfolio-chat-preview class="chat-landing" data-content={JSON.stringify(content)} data-pagefind-ignore>
+  <h1 id="chat-title" tabindex="-1">{content.title}</h1>
+  <p class="sr-only" id="chat-description">{content.keyboard}</p>
+  <div class="chat-conversation" data-chat-conversation tabindex="0" aria-label={Astro.props.lang === "ko" ? "대화 기록" : "Conversation history"}>
+    <div class="chat-messages" data-chat-messages role="log" aria-live="polite" aria-relevant="additions" aria-label={Astro.props.lang === "ko" ? "대화" : "Conversation"}></div>
+  </div>
+  <div class="chat-composer-area">
+    <form class="chat-form" data-chat-form novalidate>
+      <label class="sr-only" for="chat-prompt">{content.promptLabel}</label>
+      <div class="chat-input-reserve"><div class="chat-input-wrap">
+        <svg class="chat-input-outline" viewBox="0 0 800 64" preserveAspectRatio="none" aria-hidden="true">
+          <path class="chat-input-paper" d="M6 5 Q163 2 314 4 T604 4 Q697 3 793 5 L794 22 L793 43 L794 59 Q610 61 430 59 T6 60 L6.7 43 L5.3 23Z" />
+        </svg>
+        <textarea id="chat-prompt" name="question" rows="1" maxlength="600" placeholder={content.placeholder} aria-describedby="chat-description chat-error" autocomplete="off" spellcheck="false" enterkeyhint="send"></textarea>
+        <button class="chat-submit" type="submit" aria-label={content.submit}>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path class="chat-send-icon" d="M11.8 19 Q12.6 12 12 5 M5.8 11.1 Q9 7.7 12 4.7 Q15.5 8.2 18.1 10.7" /><path class="chat-stop-icon" d="M6 6.4L17.6 6L18 17.7L6.3 18Z" /></svg>
+        </button>
+      </div></div>
+      <div class="chat-error" id="chat-error" data-chat-error role="alert"></div>
+    </form>
+  </div>
+</portfolio-chat-preview>
+
+<script>
+  import "../utils/chat-preview";
+</script>
+
+<style>
+  :global(html:has(portfolio-chat-preview)), :global(body:has(portfolio-chat-preview)) { height:100%; overflow:clip; }
+  :global(.site-shell:has(portfolio-chat-preview)) { height:var(--chat-viewport-height,100dvh); min-height:0; display:grid; grid-template-rows:auto minmax(0,1fr) auto; }
+  :global(.site-shell:has(portfolio-chat-preview) .site-header) { position:relative; }
+  :global(.home-main:has(portfolio-chat-preview)) { display:flex; min-height:0; align-items:stretch; justify-content:center; padding:20px 0 120px; overflow:clip; }
+  portfolio-chat-preview { display:grid; grid-template-rows:minmax(0,1fr) auto; position:relative; width:100%; max-width:740px; min-height:0; padding:0; font-family:"Space Grotesk","Pretendard",system-ui,sans-serif; color:var(--text); }
+  portfolio-chat-preview:not([data-has-messages="true"]) { display:flex; flex-direction:column; justify-content:center; }
+  portfolio-chat-preview:not([data-has-messages="true"]) h1 { flex:none; align-self:stretch; }
+  portfolio-chat-preview:not([data-has-messages="true"]) .chat-composer-area { flex:none; }
+  :global(html[lang="ko"]) portfolio-chat-preview { font-family:"Pretendard",system-ui,sans-serif; }
+  h1 { grid-area:1/1; align-self:end; margin:0 0 30px; text-align:center; font-size:21px; line-height:1.5; font-weight:400; letter-spacing:-.035em; word-break:keep-all; }
+  h1:focus { outline:none; }
+  .chat-conversation:has(.chat-messages:empty) { display:none; }
+  .chat-conversation { grid-area:1/1; min-height:0; overflow-y:auto; overflow-x:hidden; overscroll-behavior:contain; overflow-anchor:none; padding:12px 14px 0; scrollbar-width:none; -ms-overflow-style:none; }
+  .chat-conversation::-webkit-scrollbar { display:none; width:0; height:0; }
+  .chat-conversation:focus-visible { outline:1px solid var(--muted); outline-offset:2px; }
+  .chat-composer-area { grid-area:2/1; position:relative; min-height:0; max-height:var(--chat-composer-max-height,100%); padding-top:12px; background:var(--bg); }
+  .chat-composer-area[data-overflow="true"] { overflow-y:auto; overscroll-behavior:contain; scrollbar-width:none; }
+  .chat-composer-area::-webkit-scrollbar { display:none; }
+  button, textarea { font:inherit; color:inherit; }
+  button { cursor:pointer; }
+  /* The composer bottom is a grid track, so growth consumes history space
+     upward without moving the page footer or adding document scroll. */
+  .chat-input-reserve { position:relative; }
+  .chat-input-wrap { display:flex; position:relative; align-items:flex-end; gap:8px; padding:11px 14px 11px 23px; min-height:62px; }
+  .chat-input-wrap[data-stacked="true"] { display:grid; grid-template-columns:minmax(0,1fr); gap:0; }
+  .chat-input-wrap[data-stacked="true"] .chat-submit { justify-self:end; }
+  .chat-input-outline { position:absolute; inset:0; width:100%; height:100%; overflow:visible; pointer-events:none; }
+  .chat-input-paper { fill:var(--bg); stroke:var(--muted); stroke-width:1.2; vector-effect:non-scaling-stroke; stroke-linecap:round; }
+  .chat-input-wrap:focus-within .chat-input-paper { stroke:var(--accent); stroke-width:1.8; }
+  textarea { position:relative; z-index:1; width:100%; min-width:0; min-height:26px; margin:7px 0; padding:0; resize:none; overflow:hidden; white-space:pre-wrap; overflow-wrap:anywhere; border:0; outline:none; background:transparent; font-size:15px; line-height:1.65; font-weight:400; }
+  textarea::placeholder { color:var(--muted); opacity:.8; font-size:13px; }
+  .chat-submit { display:grid; place-items:center; position:relative; z-index:1; flex:none; width:40px; height:40px; padding:8px; border:0; background:none; }
+  .chat-submit svg { width:23px; height:23px; fill:none; stroke:currentColor; stroke-width:1.35; stroke-linecap:round; stroke-linejoin:round; }
+  .chat-stop-icon, [data-pending="true"] .chat-send-icon { display:none; }
+  [data-pending="true"] .chat-stop-icon { display:inline; }
+  .chat-submit:hover { color:var(--accent); }
+  .chat-submit:disabled { opacity:.35; cursor:wait; }
+  .chat-error { font-size:12px; margin:0 13px; line-height:1.6; }
+  .chat-error:empty { display:none; }
+  button:focus-visible { outline:2px solid var(--accent); outline-offset:3px; border-radius:3px; }
+  [data-has-messages="true"] h1 { display:none; }
+  :global(.chat-message) { margin:0 0 34px; }
+  :global(.chat-message-body) { white-space:pre-wrap; overflow-wrap:anywhere; font-size:14px; line-height:1.95; }
+  :global(.chat-loading) { display:inline-flex; align-items:center; min-height:1.95em; color:var(--muted); vertical-align:top; }
+  :global(.chat-loading svg) { display:block; width:36px; height:16px; fill:currentColor; }
+  :global(.chat-loading path) { opacity:0; animation:conversation-dot 1.5s ease-in-out infinite; }
+  :global(.chat-loading path:nth-child(2)) { animation-delay:.18s; }
+  :global(.chat-loading path:nth-child(3)) { animation-delay:.36s; }
+  @keyframes conversation-dot { 0%,60%,100% { opacity:0; } 20%,40% { opacity:1; } }
+  @media(prefers-reduced-motion:reduce) { :global(.chat-loading path) { animation:none; opacity:1; } }
+  :global(.chat-citations), :global(.chat-source) { display:none !important; }
+  :global(.chat-message-body a) { color:inherit; text-underline-offset:3px; }
+  :global(.chat-message-question) { width:fit-content; max-width:85%; min-width:0; margin-left:auto; padding:10px 14px; border-radius:5px; background:var(--soft); }
+  @media(max-width:780px) {
+    :global(.home-main:has(portfolio-chat-preview)) { padding:12px 0 110px; }
+    portfolio-chat-preview { max-width:660px; padding:0 7px; }
+    h1 { font-size:18px; margin-bottom:24px; }
+    .chat-input-wrap { padding:10px 11px 10px 19px; min-height:60px; }
+    textarea { font-size:16px; margin:8px 0; }
+    textarea::placeholder { font-size:12px; }
+    .chat-submit { width:40px; height:44px; }
+    .chat-conversation { padding:8px 6px 0; }
+  }
+  :global(.site-shell:has(portfolio-chat-preview[data-keyboard="true"]) .site-header) { flex-direction:row; align-items:center; padding:10px 0; }
+  :global(.site-shell:has(portfolio-chat-preview[data-keyboard="true"]) .site-title) { width:85px; min-width:85px; }
+  :global(.site-shell:has(portfolio-chat-preview[data-keyboard="true"]) .site-nav) { gap:10px; font-size:12px; }
+  :global(.site-shell:has(portfolio-chat-preview[data-keyboard="true"]) .site-footer) { padding:10px 0; font-size:10px; }
+  :global(.home-main:has(portfolio-chat-preview[data-keyboard="true"])) { padding:4px 0 94px; }
+  [data-keyboard="true"] h1 { font-size:16px; margin-bottom:18px; }
+</style>

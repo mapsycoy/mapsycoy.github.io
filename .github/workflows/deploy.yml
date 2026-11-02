@@ -27,8 +27,16 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm install
+      - name: Check conversation lifecycle
+        run: |
+          node scripts/test-chat-lifecycle.mjs --production
+          node --test scripts/footer-walk-speed.test.mjs scripts/serverless-chat-client.test.mjs
       - name: Build
+        env:
+          PUBLIC_PORTFOLIO_API_ORIGIN: https://api.mapsycoy.com
         run: npm run build
+      - name: Verify public chat artifacts
+        run: node scripts/verify-chat-preview.mjs --production
       - name: Commit optimized images
         run: |
           if [ -n "$(git status --porcelain)" ]; then

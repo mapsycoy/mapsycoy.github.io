@@ -1,6 +1,7 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import HomeManifesto from "../../components/HomeManifesto.astro";
+import PortfolioChatPreview from "../../components/PortfolioChatPreview.astro";
 import { getLanguageFromParams, languages, type Language } from "../../utils/i18n";
 
 export function getStaticPaths() {
@@ -11,5 +12,5 @@ const lang: Language = getLanguageFromParams(Astro.params.lang);
 ---
 
 <Layout lang={lang} homeSketch homeWalkSpeed={0.5}>
-  <HomeManifesto lang={lang} />
+  {import.meta.env.PORTFOLIO_CHAT_PREVIEW === "1" || import.meta.env.PUBLIC_PORTFOLIO_API_ORIGIN ? <PortfolioChatPreview lang={lang} /> : <HomeManifesto lang={lang} />}
 </Layout>
