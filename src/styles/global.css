@@ -68,6 +68,8 @@ html {
   color-scheme: light dark;
   min-height: 100%;
   overflow-y: scroll;
+  /* Keep centered content aligned when the chat landing hides document scroll. */
+  scrollbar-gutter: stable;
 }
 
 html,

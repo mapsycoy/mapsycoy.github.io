@@ -32,7 +32,9 @@ const content = getChatPreview(Astro.props.lang as Language);
 </script>
 
 <style>
-  :global(html:has(portfolio-chat-preview)), :global(body:has(portfolio-chat-preview)) { height:100%; overflow:clip; }
+  /* Unlike clip, hidden preserves the shared scrollbar gutter. */
+  :global(html:has(portfolio-chat-preview)) { height:100%; overflow:hidden; }
+  :global(body:has(portfolio-chat-preview)) { height:100%; overflow:clip; }
   :global(.site-shell:has(portfolio-chat-preview)) { height:var(--chat-viewport-height,100dvh); min-height:0; display:grid; grid-template-rows:auto minmax(0,1fr) auto; }
   :global(.site-shell:has(portfolio-chat-preview) .site-header) { position:relative; }
   :global(.home-main:has(portfolio-chat-preview)) { display:flex; min-height:0; align-items:stretch; justify-content:center; padding:20px 0 120px; overflow:clip; }
