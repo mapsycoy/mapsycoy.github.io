@@ -131,6 +131,9 @@ const isKo = lang === "ko";
   @keyframes series-drawer-enter { from { transform: translateX(24px); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
   @keyframes series-drawer-exit { from { transform: translateX(0); opacity: 1; } to { transform: translateX(24px); opacity: 0; } }
   @keyframes series-backdrop-exit { from { opacity: 1; } to { opacity: 0; } }
+  @media (min-width: 1024px) {
+    .series-card { flex-basis: calc((100% - 32px) / 3); }
+  }
   @media (max-width: 680px) {
     .series-carousel-controls button { width: 44px; height: 44px; }
     .series-carousel-track { gap: 12px; }
