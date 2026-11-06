@@ -30,7 +30,7 @@ jobs:
       - name: Check conversation lifecycle
         run: |
           node scripts/test-chat-lifecycle.mjs --production
-          node --test scripts/footer-walk-speed.test.mjs scripts/serverless-chat-client.test.mjs
+          node --test scripts/footer-walk-speed.test.mjs scripts/serverless-chat-client.test.mjs scripts/public-knowledge.test.mjs
       - name: Build
         env:
           PUBLIC_PORTFOLIO_API_ORIGIN: https://api.mapsycoy.com

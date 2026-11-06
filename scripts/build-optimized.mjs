@@ -4,6 +4,8 @@ import { spawnSync } from "node:child_process";
 import { deleteOriginalImages, prepareWebpImages } from "./optimize-images.mjs";
 import { generateNoteGraphLabels } from "./generate-note-graph-labels.mjs";
 
+import { buildPublicKnowledge } from './build-public-knowledge.mjs';
+
 const rootDir = process.cwd();
 const astroBin = path.join(rootDir, "node_modules", "astro", "bin", "astro.mjs");
 const pagefindBin = path.join(rootDir, "node_modules", "pagefind", "lib", "runner", "bin.cjs");
@@ -22,6 +24,7 @@ if (build.status !== 0) {
 }
 
 await deleteOriginalImages(plan, { distDir });
+await buildPublicKnowledge(rootDir);
 if (!existsSync(pagefindBin)) {
   console.error("Pagefind is not installed. Run `npm install` before building.");
   process.exit(1);
