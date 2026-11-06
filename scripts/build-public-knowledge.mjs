@@ -8,7 +8,7 @@ import { splitAiOpinionBlocks } from '../src/utils/noteGarden.mjs';
 import {cvEntryIdentity,stableId,buildSiteIndex,seriesDocuments} from './public-knowledge-schema.mjs';
 
 
-const hash = text => createHash('sha256').update(text).digest('hex');
+const hash = text => createHash('sha256').update(text.replace(/\r\n?/g,'\n')).digest('hex');
 export async function buildPublicKnowledge(root=process.cwd()) {
   const read = p => fs.readFile(path.join(root,p),'utf8');
   const documents=[],siteEntries=[],revisions={};

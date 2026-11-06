@@ -25,6 +25,9 @@ test('published built sources refresh additions, edits and withdrawals without e
     assert(first.documents.some(d=>d.source.endsWith('/21.md')));
     assert(!JSON.stringify(first).match(/SECRET|PRIVATE|_hidden|22\.md/));
     const {hash,...payload}=first;assert.equal(hash,createHash('sha256').update(JSON.stringify(payload)).digest('hex'));
+    const sourcePath=path.join(root,'src/content/blog/21.md');
+    await fs.writeFile(sourcePath,(await fs.readFile(sourcePath,'utf8')).replace(/\r?\n/g,'\r\n'));
+    assert.equal((await buildPublicKnowledge(root)).hash,first.hash,'Windows and Linux builds must agree');
     await write('src/content/blog/21.md',article('published','수정된 글은 세대 사이에 이야기를 건네고 새로운 추억을 쌓는다는 점을 더욱 분명하게 설명합니다.'));
     const edited=await buildPublicKnowledge(root);assert.notEqual(edited.hash,first.hash);assert(!edited.documents.some(d=>d.text.includes('새롭게 공개한')));
     await write('src/content/blog/21.md',article('draft','이제 비공개로 전환된 글의 본문은 최신 공개 자료에 남아 있으면 안 됩니다.'));
