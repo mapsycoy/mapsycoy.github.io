@@ -1,6 +1,7 @@
 ---
 import SeriesOneIllustration from "./SeriesOneIllustration.astro";
 import IntentSeriesIllustration from "./IntentSeriesIllustration.astro";
+import InheritanceSeriesIllustration from "./InheritanceSeriesIllustration.astro";
 import { hasKoreanText, type BlogPost } from "../data/blog";
 import type { NoteEntry } from "../data/notes";
 import { getMixedSeriesGroups, getSeriesEntryPath, getSeriesEntryTitle } from "../data/seriesEntries";
@@ -39,6 +40,7 @@ const isKo = lang === "ko";
           <span class="series-card-art" aria-hidden="true">
             {group.id === "child-ai" && <SeriesOneIllustration />}
             {group.id === "communicating-intent" && <IntentSeriesIllustration />}
+            {group.id === "ip-inheritance" && <InheritanceSeriesIllustration />}
           </span>
         </span>
       </button>

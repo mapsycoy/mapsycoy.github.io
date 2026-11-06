@@ -30,5 +30,21 @@
       "ko": "의도를 나누고 업무를 조율하는 과정에서, AI가 협업을 돕기 위한 조건을 살펴봅니다.",
       "en": "This series explores the conditions under which AI can help us collaborate as we share intentions and coordinate work."
     }
+  },
+  "ip-inheritance": {
+    "number": 3,
+    "status": "active",
+    "label": {
+      "ko": "IP의 정서적 계승",
+      "en": "IP Across Generations"
+    },
+    "title": {
+      "ko": "IP의 정서적 계승",
+      "en": "The Emotional Legacy of IP"
+    },
+    "description": {
+      "ko": "이전 세대의 애착은 어떻게 다음 세대의 새로운 경험으로 이어질까? 오래된 IP를 둘러싼 기억과 변화의 조건을 살펴봅니다.",
+      "en": "How can one generation’s attachment become a new experience for the next? This series explores memory and change around long-lived IP."
+    }
   }
 }
