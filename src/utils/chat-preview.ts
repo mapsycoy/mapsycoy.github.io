@@ -138,7 +138,7 @@ class PortfolioChatPreview extends HTMLElement {
         const raw=await response.text();if(raw.length>16000)throw new Error("invalid_response");
         const answer=JSON.parse(raw);
         if(pending?.controller!==controller)return;
-        if(!["answer","unconfigured","refused","quota","error","cancelled","invalid","duplicate","session_required"].includes(answer.kind)||answer.sources!==undefined||answer.grounding!==undefined||(answer.presentation!==undefined&&answer.presentation!=='conversation')||typeof answer.message!=="string"||answer.message.length>900||!Array.isArray(answer.links)||answer.links.length>3||answer.links.some((s:PublicLink)=>typeof s.label!=="string"||s.label.length>300||!isPublicChatLink(s.url))||(answer.reference!==undefined&&(typeof answer.reference!=='string'||!/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/.test(answer.reference))))throw new Error("invalid_response");
+        if(!["answer","unconfigured","unavailable","refused","quota","error","cancelled","invalid","duplicate","session_required"].includes(answer.kind)||answer.sources!==undefined||answer.grounding!==undefined||(answer.presentation!==undefined&&answer.presentation!=='conversation')||typeof answer.message!=="string"||answer.message.length>900||!Array.isArray(answer.links)||answer.links.length>3||answer.links.some((s:PublicLink)=>typeof s.label!=="string"||s.label.length>300||!isPublicChatLink(s.url))||(answer.reference!==undefined&&(typeof answer.reference!=='string'||!/^[a-f0-9]{8}(?:-[a-f0-9]{4}){3}-[a-f0-9]{12}$/.test(answer.reference))))throw new Error("invalid_response");
         notice.body.textContent=answer.message;
         if(response.ok&&answer.kind==="answer"){
           renderLinks(notice.body,answer.links);

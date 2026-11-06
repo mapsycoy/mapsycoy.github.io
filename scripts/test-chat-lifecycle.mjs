@@ -3,7 +3,15 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs/promises';
 import vm from 'node:vm';
 import {build} from 'esbuild';
+import {isPublicChatLink} from '../src/utils/chat-public-links.mjs';
 const production=process.argv.includes('--production');
+for(const host of ['mapsycoy.com','mapsycoy.github.io'])for(const prefix of ['','ko/']){
+ assert.equal(isPublicChatLink(`https://${host}/${prefix}blog/`),true);
+ assert.equal(isPublicChatLink(`https://${host}/${prefix}blog/21/`),true);
+}
+for(const url of ['https://mapsycoy.com.evil.test/ko/blog/','https://evil.test/ko/blog/','http://mapsycoy.com/ko/blog/','https://mapsycoy.com/admin/','https://mapsycoy.com/ko/blog/?next=https://evil.test','https://mapsycoy.com/ko/blog/../admin/','https://mapsycoy.com@evil.test/ko/blog/','javascript:alert(1)','file:///private'])assert.equal(isPublicChatLink(url),false,url);
+// Captured public production response: a series index and its article together.
+const seriesLinks=JSON.parse(await fs.readFile(new URL('./fixtures/chat-series-links.json',import.meta.url),'utf8'));
 const placements=[];let reducedMotion=false;
 class Node extends EventTarget {
  dataset={};children=[];hidden=false;value='';text='';attributes=new Map();nodes=new Map();
@@ -40,6 +48,8 @@ const fetchMock=async(url,options)=>{
  if(mode==='bad-grounding')body={kind:'answer',message:'Unsafe.',links:[],grounding:{}};
  if(mode==='bad-external')body={kind:'answer',message:'Unsafe.',links:[{label:'Spoof',url:'https://mapsycoy.tistory.com.evil.test/42'}]};
  if(mode==='public-links')body={kind:'answer',message:'Requested pages.',reference,links:[{label:'Article',url:'https://mapsycoy.github.io/ko/blog/19/'},{label:'Tistory',url:'https://mapsycoy.tistory.com/42'}]};
+ if(mode==='series-links')body={...seriesLinks,reference};
+ if(mode==='source-unavailable')body={kind:'unavailable',message:'최신 공개 자료를 확인하지 못했어요. 잠시 후 다시 시도해 주세요.',links:[]};
  if(mode==='bad-history')body={kind:'answer',message:'Internal.',links:[{label:'Internal',url:'https://github.com/owner/source'}]};
  if(mode==='legacy-source')body={kind:'answer',message:'Legacy.',links:[],sources:[{id:'internal',url:'file:///private'}]};
  return {ok:body.kind==='answer',text:async()=>JSON.stringify(body)};
@@ -71,6 +81,13 @@ historyPane.scrollHeight=1400;historyPane.scrollTop=100;historyPane.dispatchEven
 await send('spoof','bad-external');assert.equal(messages.children.at(-1).children[1].textContent,'Unavailable');
 historyPane.scrollTop=900;historyPane.dispatchEvent(new Event('scroll'));historyPane.scrollHeight=1600;await send('follow bottom');assert.equal(historyPane.scrollTop,1100);
 const linked=await send('원문 링크를 보여줘','public-links');assert.equal(linked.children.length,2);assert.equal(linked.children[1].children[1].href,'https://mapsycoy.github.io/ko/blog/19/');assert.equal(linked.children[1].children[3].href,'https://mapsycoy.tistory.com/42');assert.equal(linked.children[1].children[1].rel,'noreferrer');
+const seriesLinked=await send('그 시리즈의 글 제목과 원문 링크를 알려줘.','series-links');
+assert.ok(seriesLinked.children[1].textContent.startsWith(seriesLinks.message),'A valid series link must not discard the entire answer');
+assert.deepEqual(seriesLinked.children[1].children.filter(n=>n.href).map(n=>n.href),seriesLinks.links.map(l=>l.url));
+await send('그 글을 설명해 줘');assert.equal(sentBodies.at(-1).history.at(-1).reference,reference);
+const unavailable=await send('현재 자료를 알려줘','source-unavailable');
+assert.equal(unavailable.children[1].textContent,'최신 공개 자료를 확인하지 못했어요. 잠시 후 다시 시도해 주세요.');
+assert.equal(unavailable.children[1].children.length,0);
 for(const invalid of ['bad-history','legacy-source']){const result=await send('invalid fixture',invalid);assert.equal(result.children.length,2);assert.equal(result.children[1].textContent,'Unavailable');assert.equal(result.children[1].children.length,0);}
 chat.disconnectedCallback();
-console.log(JSON.stringify({passed:true,compositionAndShiftEnter:true,initialCenterAndFirstValidSubmit:true,loadingDotsCleanup:true,repeatAndCancelCleanup:true,noForcedHistoryJump:true,legacyCardsRemovedFromDOM:true,noAutomaticCitationLists:true,onlyRequestedPublicLinks:true,opaqueHistoryReferences:true,internalAndSpoofLinksRejected:true,reducedMotion:true,nativeIME:false},null,2));
+console.log(JSON.stringify({passed:true,compositionAndShiftEnter:true,initialCenterAndFirstValidSubmit:true,loadingDotsCleanup:true,repeatAndCancelCleanup:true,noForcedHistoryJump:true,legacyCardsRemovedFromDOM:true,noAutomaticCitationLists:true,onlyRequestedPublicLinks:true,seriesIndexAndArticleLinks:true,unavailableMessagePreserved:true,opaqueHistoryReferences:true,internalAndSpoofLinksRejected:true,reducedMotion:true,nativeIME:false},null,2));

@@ -1,0 +1,10 @@
+{
+  "kind": "answer",
+  "presentation": "conversation",
+  "disposition": "answer",
+  "message": "시리즈 03에는 「IP의 정서적 계승은 어디까지 이어져야 할까?」 한 편이 있어요. 원문 링크는 요청하신 공개 페이지로 연결해 드릴게요.",
+  "links": [
+    { "label": "IP의 정서적 계승", "url": "https://mapsycoy.github.io/ko/blog/" },
+    { "label": "IP의 정서적 계승은 어디까지 이어져야 할까?", "url": "https://mapsycoy.github.io/ko/blog/21/" }
+  ]
+}
