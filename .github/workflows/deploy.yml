@@ -35,6 +35,8 @@ jobs:
         env:
           PUBLIC_PORTFOLIO_API_ORIGIN: https://api.mapsycoy.com
         run: npm run build
+      - name: Check blog hub pagination
+        run: node --test scripts/blog-hub-pagination.test.mjs
       - name: Verify public chat artifacts
         run: node scripts/verify-chat-preview.mjs --production
       - name: Commit optimized images

@@ -9,7 +9,8 @@ import { defaultLanguage, localize, type Language } from "../utils/i18n";
 
 type Props = { posts: BlogPost[]; notes: NoteEntry[]; lang?: Language };
 const { posts, notes, lang = defaultLanguage } = Astro.props;
-const groups = getMixedSeriesGroups(posts, notes);
+const groups = getMixedSeriesGroups(posts, notes)
+  .sort((a, b) => b.metadata.number - a.metadata.number || a.id.localeCompare(b.id));
 const isKo = lang === "ko";
 ---
 

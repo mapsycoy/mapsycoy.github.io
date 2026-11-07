@@ -1,0 +1,33 @@
+---
+import { blogPostsPerPage, formatPostDate, formatTitlePunctuation, getBlogPostSlug, type BlogPost } from "../data/blog";
+import { defaultLanguage, localize, type Language } from "../utils/i18n";
+type Props = { posts: BlogPost[]; lang: Language; sectionId: string; pageParam: string; title: string };
+const { posts, lang, sectionId, pageParam, title } = Astro.props;
+const prefix = lang === defaultLanguage ? "" : `/${lang}`;
+---
+{posts.length > 0 && (
+  <blog-hub-list class="blog-text-section blog-news-archive" id={sectionId} data-page-param={pageParam} data-page-size={blogPostsPerPage} data-lang={lang}>
+    <section aria-labelledby={`${sectionId}-title`}>
+      <h2 id={`${sectionId}-title`} class="blog-section-label" tabindex="-1">{title}</h2>
+      <ul class="blog-text-list">
+        {posts.map(post => <li data-hub-entry><a href={`${prefix}/blog/${getBlogPostSlug(post)}/`}><span class="blog-news-title" style="font-size:0.82rem;line-height:1.35;min-height:1.11rem;">{formatTitlePunctuation(localize(post.data.title, lang))}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>)}
+      </ul>
+      <nav class="hub-pagination" aria-label={`${title} ${lang === "ko" ? "페이지" : "pages"}`} hidden></nav>
+      <span class="hub-page-status" aria-live="polite" aria-atomic="true"></span>
+    </section>
+  </blog-hub-list>
+)}
+<style>
+  blog-hub-list { display: block; scroll-margin-top: 100px; }
+  [data-hub-entry][hidden], .hub-pagination[hidden] { display: none; }
+  .hub-pagination { display: flex; align-items: center; flex-wrap: wrap; justify-content: center; gap: 8px; margin-top: 22px; }
+  .hub-pagination :global(a) { display: inline-flex; justify-content: center; align-items: center; min-width: 36px; min-height: 44px; padding: 0 4px; font-size: 0.78rem; color: var(--muted); text-decoration: none; }
+  .hub-pagination :global(a[aria-current="page"]) { color: var(--text); text-decoration: underline; text-underline-offset: 6px; }
+  .hub-pagination :global(a:hover) { color: var(--accent); }
+  .hub-pagination :global(a:focus-visible) { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .hub-page-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+</style>
+<script>
+  import { BlogHubList } from "../utils/blogHubPagination.js";
+  if (!customElements.get("blog-hub-list")) customElements.define("blog-hub-list", BlogHubList);
+</script>

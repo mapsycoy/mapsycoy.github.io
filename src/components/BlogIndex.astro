@@ -1,4 +1,5 @@
 ---
+import BlogHubList from "./BlogHubList.astro";
 import BlogSearch from "./BlogSearch.astro";
 import BlogFilterNav from "./BlogFilterNav.astro";
 import BlogSeriesCarousel from "./BlogSeriesCarousel.astro";
@@ -87,25 +88,8 @@ const paginationItems = (() => {
 {hub && currentPage === 1 ? (
   <div class="blog-hub">
     <BlogSeriesCarousel posts={hubPosts} notes={notes} lang={lang} />
-    {nonSeriesPosts.length > 0 && (
-      <section class="blog-text-section blog-news-archive" aria-labelledby="other-posts-title">
-        <h2 id="other-posts-title" class="blog-section-label">{lang === "ko" ? "시리즈 외 글" : "Other writing"}</h2>
-        <ul class="blog-text-list">
-          {nonSeriesPosts.map((post) => (
-            <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span class="blog-news-title" style="font-size:0.82rem;line-height:1.35;min-height:1.11rem;">{getPostTitle(post)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
-          ))}
-        </ul>
-      </section>
-    )}
-
-    <section class="blog-text-section blog-news-archive" aria-labelledby="news-archive-title">
-      <h2 id="news-archive-title" class="blog-section-label">News / Archive</h2>
-      <ul class="blog-text-list">
-        {posts.map((post) => (
-          <li><a href={`${languagePrefix}/blog/${getBlogPostSlug(post)}/`}><span class="blog-news-title" style="font-size:0.82rem;line-height:1.35;min-height:1.11rem;">{getPostTitle(post)}</span><time datetime={post.data.publishedAt.toISOString()}>{formatPostDate(post.data.publishedAt)}</time></a></li>
-        ))}
-      </ul>
-    </section>
+    <BlogHubList posts={nonSeriesPosts} lang={lang} sectionId="other-writing" pageParam="writingPage" title={lang === "ko" ? "시리즈 외 글" : "Other writing"} />
+    <BlogHubList posts={posts} lang={lang} sectionId="news-archive" pageParam="newsPage" title="News / Archive" />
   </div>
 ) : (
 <section class="entry-list blog-entry-list" aria-label="Blog entries">
