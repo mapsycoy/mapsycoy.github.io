@@ -5866,3 +5866,13 @@ html[lang="ko"] .blog-series-description {
   color: var(--muted);
   margin-top: 4px;
 }
+
+/* Keep the publisher's complete book cover legible in both editorial placements. */
+.blog-entry-thumb img[src$="klara-and-the-sun-minumsa-cover.webp"] {
+  object-fit: contain;
+  background: var(--soft);
+}
+.blog-post-hero img[src$="klara-and-the-sun-minumsa-cover.webp"] {
+  max-height: 600px;
+  object-fit: contain;
+}
