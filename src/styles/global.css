@@ -1063,9 +1063,12 @@ h3 {
   letter-spacing: normal;
 }
 
-.work-text-block figure img,
-.blog-post-body figure img {
+.work-text-block figure img {
   margin: 0;
+}
+
+.blog-post-body figure img {
+  margin-block: 0;
 }
 
 .work-media-slide figcaption,
@@ -2843,12 +2846,8 @@ html[lang="ko"] .blog-series-list .blog-list-summary {
 .blog-post-body img {
   display: block;
   height: auto;
-  margin: 1.6rem 0;
+  margin: 1.6rem auto;
   border: 1px solid var(--line);
-}
-
-.blog-post-body p > img:only-child {
-  margin: 1.6rem 0;
 }
 
 .tag-list {
